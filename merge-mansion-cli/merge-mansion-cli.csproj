@@ -1,0 +1,197 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>merge_mansion_cli</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Images\**" />
+    <EmbeddedResource Remove="Images\**" />
+    <None Remove="Images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Dumper\EventDumper.cs~RF77ba044c.TMP" />
+    <None Remove="Program.cs~RF82e0342.TMP" />
+    <None Remove="Resources\Dialogue\dialogue_banner.png" />
+    <None Remove="Resources\Dialogue\dialogue_box.png" />
+    <None Remove="Resources\Dialogue\People\CharlieCalling.png" />
+    <None Remove="Resources\Dialogue\People\CharlieTalking.png" />
+    <None Remove="Resources\Dialogue\People\DebAnnoyed.png" />
+    <None Remove="Resources\Dialogue\People\DebCharming.png" />
+    <None Remove="Resources\Dialogue\People\DebDefault.png" />
+    <None Remove="Resources\Dialogue\People\DebDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\DebDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\DebEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\DebFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\DebJoyous.png" />
+    <None Remove="Resources\Dialogue\People\DebRelaxed.png" />
+    <None Remove="Resources\Dialogue\People\DebSurprised.png" />
+    <None Remove="Resources\Dialogue\People\DebThinking.png" />
+    <None Remove="Resources\Dialogue\People\DebWorried.png" />
+    <None Remove="Resources\Dialogue\People\DogAnnoyed.png" />
+    <None Remove="Resources\Dialogue\People\DogCharming.png" />
+    <None Remove="Resources\Dialogue\People\DogDefault.png" />
+    <None Remove="Resources\Dialogue\People\DogDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\DogDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\DogEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\DogFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\DogJoyous.png" />
+    <None Remove="Resources\Dialogue\People\DogSurprised.png" />
+    <None Remove="Resources\Dialogue\People\DogThinking.png" />
+    <None Remove="Resources\Dialogue\People\DogWorried.png" />
+    <None Remove="Resources\Dialogue\People\JackieAnnoyed.png" />
+    <None Remove="Resources\Dialogue\People\JackieDefault.png" />
+    <None Remove="Resources\Dialogue\People\JackieDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\JackieEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\JackieSurprised.png" />
+    <None Remove="Resources\Dialogue\People\JackieThinking.png" />
+    <None Remove="Resources\Dialogue\People\JuliusCharming.png" />
+    <None Remove="Resources\Dialogue\People\JuliusDefault.png" />
+    <None Remove="Resources\Dialogue\People\JuliusDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\JuliusDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\JuliusEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\JuliusFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\JuliusJoyous.png" />
+    <None Remove="Resources\Dialogue\People\JuliusRelaxed.png" />
+    <None Remove="Resources\Dialogue\People\JuliusSurprised.png" />
+    <None Remove="Resources\Dialogue\People\JuliusThinking.png" />
+    <None Remove="Resources\Dialogue\People\JuliusWorried.png" />
+    <None Remove="Resources\Dialogue\People\MaddieAnnoyed.png" />
+    <None Remove="Resources\Dialogue\People\MaddieCharming.png" />
+    <None Remove="Resources\Dialogue\People\MaddieDefault.png" />
+    <None Remove="Resources\Dialogue\People\MaddieDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\MaddieDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\MaddieEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\MaddieFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\MaddieJoyous.png" />
+    <None Remove="Resources\Dialogue\People\MaddieRelaxed.png" />
+    <None Remove="Resources\Dialogue\People\MaddieSurprised.png" />
+    <None Remove="Resources\Dialogue\People\MaddieThinking.png" />
+    <None Remove="Resources\Dialogue\People\MaddieWorried.png" />
+    <None Remove="Resources\Dialogue\People\RoddyCharming.png" />
+    <None Remove="Resources\Dialogue\People\RoddyDefault.png" />
+    <None Remove="Resources\Dialogue\People\RoddyDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\RoddyDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\RoddyEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\RoddyFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\RoddyJoyous.png" />
+    <None Remove="Resources\Dialogue\People\RoddyRelaxed.png" />
+    <None Remove="Resources\Dialogue\People\RoddySurprised.png" />
+    <None Remove="Resources\Dialogue\People\RoddyThinking.png" />
+    <None Remove="Resources\Dialogue\People\RoddyWorried.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaAnnoyed.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaCharming.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaDefault.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaDiscouraged.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaDoubtful.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaEncouraging.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaFrustrated.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaJoyous.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaRelaxed.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaThinking.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaWateringCan.png" />
+    <None Remove="Resources\Dialogue\People\UrsulaWorried.png" />
+    <None Remove="Resources\Fonts\tisa_sans.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Dialogue\dialogue_banner.png" />
+    <EmbeddedResource Include="Resources\Dialogue\dialogue_box.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\CharlieCalling.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\CharlieTalking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebAnnoyed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebRelaxed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebSurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DebWorried.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogAnnoyed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogSurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\DogWorried.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieAnnoyed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieSurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JackieThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusRelaxed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusSurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\JuliusWorried.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieAnnoyed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieRelaxed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieSurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\MaddieWorried.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyRelaxed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddySurprised.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\RoddyWorried.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaAnnoyed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaCharming.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDefault.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDiscouraged.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDoubtful.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaEncouraging.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaFrustrated.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaJoyous.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaRelaxed.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaThinking.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaWateringCan.png" />
+    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaWorried.png" />
+    <EmbeddedResource Include="Resources\Fonts\tisa_sans.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="morelinq" Version="3.3.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+    <PackageReference Include="SixLabors.Fonts" Version="1.0.0-beta18" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
+    <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta15" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Metaplay\Metaplay.csproj" />
+  </ItemGroup>
+
+</Project>
