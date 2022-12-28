@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using CommandLine;
+using CommandLine.Text;
 using merge_mansion_cli.Dumper;
 using Metaplay;
 using Metaplay.Metaplay.Core;
@@ -9,20 +12,81 @@ using Metaplay.Metaplay.Unity;
 
 namespace merge_mansion_cli
 {
+    class Options
+    {
+        [Option('m', "mode", Required = true, HelpText = "Set the mode to dump data with\n  1: all\n  2: merge chains\n  3: areas\n  4: events\n  5: dialogs")]
+        public int Mode { get; set; }
+    }
+
+    public enum Mode
+    {
+        All = 1,
+        MergeChains,
+        Areas,
+        Events,
+        Dialogs
+    }
+
     class Program
     {
         static async Task Main(string[] args)
         {
+            var parser = new Parser(parserSettings => parserSettings.AutoHelp = true);
+
+            var parsedResult = parser.ParseArguments<Options>(args);
+
+            await parsedResult
+                .WithNotParsed(errors => DisplayHelp(parsedResult, errors))
+                .WithParsedAsync(Execute);
+        }
+
+        private static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errors)
+        {
+            var helpText = HelpText.AutoBuild(result, h =>
+            {
+                h.AdditionalNewLineAfterOption = false;
+                return HelpText.DefaultParsingErrorsHandler(result, h);
+            }, e => e);
+
+            Console.WriteLine(helpText);
+        }
+
+        private static async Task Execute(Options o)
+        {
             await SetupSystem();
 
-            new ChainDumper(true).WriteJson(@"chain_item_odds.json", ClientGlobal.SharedGameConfig);
-            new AreaDumper().WriteJson(@"areas.json", ClientGlobal.SharedGameConfig);
-            new EventDumper().WriteJson(@"events.json", ClientGlobal.SharedGameConfig);
-            new DialogDumper().ExportImages(@"dialogs", ClientGlobal.SharedGameConfig);
+            Console.Write("Dump data... ");
+
+            switch ((Mode)o.Mode)
+            {
+                case Mode.All:
+                    DumpHelper.DumpAll();
+                    break;
+
+                case Mode.MergeChains:
+                    DumpHelper.DumpMergeChains();
+                    break;
+
+                case Mode.Areas:
+                    DumpHelper.DumpAreas();
+                    break;
+
+                case Mode.Events:
+                    DumpHelper.DumpEvents();
+                    break;
+
+                case Mode.Dialogs:
+                    DumpHelper.DumpDialogs();
+                    break;
+            }
+
+            Console.WriteLine("Ok");
         }
 
         private static async Task SetupSystem()
         {
+            Console.Write("Setup game session... ");
+
             MetaplayCore.Initialize();
 
             var client = new MetaplayClient();
@@ -32,25 +96,10 @@ namespace merge_mansion_cli
             while (ClientGlobal.SharedGameConfig == null)
             {
                 client.Update();
-                await Task.Delay(TimeSpan.FromMilliseconds(500));
+                await Task.Delay(TimeSpan.FromMilliseconds(300));
             }
-        }
 
-        private static PatchedConfigArchive GetConfigArchive()
-        {
-            var path = @"76F659E7AB90CB8E-0E30B0812599E63C";
-
-            var configBytes = File.ReadAllBytes(path);
-            var archive = ConfigArchive.FromBytes(configBytes);
-
-            return PatchedConfigArchive.WithNoPatches(archive);
-            //new PatchedConfigArchive(archive);
-        }
-
-        private static ISharedGameConfig ImportConfig(PatchedConfigArchive configArchive)
-        {
-            var factory = GameConfigFactory.Instance;
-            return factory.ImportSharedGameConfig(configArchive);
+            Console.WriteLine("Ok");
         }
     }
 }

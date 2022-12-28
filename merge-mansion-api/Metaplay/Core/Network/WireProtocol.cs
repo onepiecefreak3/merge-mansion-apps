@@ -39,9 +39,6 @@ namespace Metaplay.Metaplay.Core.Network
             if (payloadSize > MaxPacketWirePayloadSize && enforcePacketPayloadSizeLimit)
                 throw new InvalidOperationException($"Too large encoded packet size: {payloadSize}");
 
-            // DEBUG
-            //Console.WriteLine($"Type: {buffer[offset] & 7}, Comp: {(buffer[offset] >> 3) & 3}, Size: {payloadSize}");
-
             return new WirePacketHeader((WirePacketType)(buffer[offset] & 7), (WirePacketCompression)((buffer[offset] >> 3) & 3), payloadSize);
         }
 
@@ -60,19 +57,7 @@ namespace Metaplay.Metaplay.Core.Network
         {
             using var reader = new IOReader(buffer, payloadOffset, payloadSize);
 
-            MetaMessage message=null;
-            try
-            {
-                message = MetaSerialization.DeserializeTagged<MetaMessage>(reader, MetaSerializationFlags.SendOverNetwork, resolver, null, null);
-            }
-            catch (Exception e)
-            {
-                ;
-            }
-
-            // DEBUG: Output message type
-            Console.WriteLine($"Received: {message.GetType().Name}");
-
+            var message = MetaSerialization.DeserializeTagged<MetaMessage>(reader, MetaSerializationFlags.SendOverNetwork, resolver, null, null);
             return message;
         }
     }

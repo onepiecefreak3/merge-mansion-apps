@@ -9,9 +9,6 @@ namespace Metaplay.Metaplay.Core.Network
     {
         protected byte[] EncodeMessage(MetaMessage message, bool enableCompression)
         {
-            // DEBUG: Output message type
-            Console.WriteLine($"Sent: {message.GetType().Name}");
-
             var serialized = MetaSerialization.SerializeTagged(message, MetaSerializationFlags.IncludeAll, null, null);
 
             var originalLength = serialized.Length;
@@ -32,12 +29,6 @@ namespace Metaplay.Metaplay.Core.Network
                     WireProtocol.EncodePacketHeader(header, buffer);
 
                     Buffer.BlockCopy(serialized, 0, buffer, 4, serialized.Length);
-
-                    // DEBUG: Output serialize buffer
-                    for (var i = 0; i < buffer.Length / 16; i++)
-                        Console.WriteLine(string.Join(" ", buffer.Skip(i * 16).Take(16).Select(x => $"{x:x2}")));
-                    if (buffer.Length % 16 > 0)
-                        Console.WriteLine(string.Join(" ", buffer.Skip(buffer.Length - buffer.Length % 16).Take(buffer.Length % 16).Select(x => $"{x:x2}")));
 
                     return buffer;
                 }

@@ -503,10 +503,6 @@ namespace Metaplay.Metaplay.Core.Network
 
         private bool TryProcessMessage(ref ReadWriteBuffer buffer, out int framedSize, CancellationToken ct)
         {
-            // DEBUG
-            Console.WriteLine($"Limit: {buffer.Limit}");
-            Console.WriteLine($"Position: {buffer.Position}");
-
             framedSize = 4;
 
             if (buffer.Limit - buffer.Position < 4)
@@ -781,9 +777,6 @@ namespace Metaplay.Metaplay.Core.Network
 
             public void Compact(int capacity)
             {
-                // DEBUG
-                //Console.WriteLine($"Capacity: {capacity}");
-
                 if (Array == null)
                     Array = new byte[capacity];
                 else

@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>merge_mansion_cli</RootNamespace>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
   </PropertyGroup>
 
   <ItemGroup>
@@ -181,6 +182,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Serilog" Version="2.12.0" />
@@ -191,7 +193,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Metaplay\Metaplay.csproj" />
+    <ProjectReference Include="..\merge-mansion-api\merge-mansion-api.csproj" />
   </ItemGroup>
 
 </Project>
