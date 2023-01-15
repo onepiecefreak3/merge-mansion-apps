@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using merge_mansion_cli.Dumper.Json;
 using merge_mansion_cli.Dumper.Support;
 using merge_mansion_cli.Graphs;
 using merge_mansion_cli.Models.Area;
@@ -11,21 +12,36 @@ using Metaplay.GameLogic.Config;
 using Metaplay.GameLogic.Player.Requirements;
 using Metaplay.GameLogic.Story;
 using Metaplay.Metaplay.Core.Schedule;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace merge_mansion_cli.Dumper
 {
-    class EventDumper : JsonDumper<IDictionary<string, EventModel>>
+    class EventDumper : JsonDumper<IList<object>>
     {
-        protected override IDictionary<string, EventModel> Dump(SharedGameConfig config)
+        protected override IList<object> Dump(SharedGameConfig config)
         {
-            var res = new Dictionary<string, EventModel>();
+            return config.BoardEvents.EnumerateAll().Select(x => x.Value).Concat(config.ProgressionEvents.EnumerateAll().Select(x => x.Value)).ToList();
+            //var res = new Dictionary<string, EventModel>();
 
-            foreach (var eventPair in config.BoardEvents.EnumerateAll())
-                res[((EventId)eventPair.Key).Value] = GetEventModel((BoardEventInfo)eventPair.Value, config);
-            foreach (var eventPair in config.ProgressionEvents.EnumerateAll())
-                res[((ProgressionEventId)eventPair.Key).Value] = GetEventModel((ProgressionEventInfo)eventPair.Value, config);
+            //foreach (var eventPair in config.BoardEvents.EnumerateAll())
+            //    res[((EventId)eventPair.Key).Value] = GetEventModel((BoardEventInfo)eventPair.Value, config);
+            //foreach (var eventPair in config.ProgressionEvents.EnumerateAll())
+            //    res[((ProgressionEventId)eventPair.Key).Value] = GetEventModel((ProgressionEventInfo)eventPair.Value, config);
 
-            return res;
+            //return res;
+        }
+
+        protected override JsonSerializerSettings CreateSettings(SharedGameConfig config)
+        {
+            return new JsonSerializerSettings(base.CreateSettings(config))
+            {
+                Converters =
+                {
+                    new MergeMansionJsonConverter(config, Output, false),
+                    new StringEnumConverter()
+                }
+            };
         }
 
         private EventModel GetEventModel(BoardEventInfo eventInfo, SharedGameConfig config)

@@ -32,6 +32,11 @@ namespace Metaplay.Metaplay.Core
             return Value?.GetHashCode() ?? 0;
         }
 
+        public override string ToString()
+        {
+            return Value;
+        }
+
         public static bool operator ==(StringId<TStringId> a, StringId<TStringId> b) => a?.Value == b?.Value;
         public static bool operator !=(StringId<TStringId> a, StringId<TStringId> b) => a?.Value != b?.Value;
     }

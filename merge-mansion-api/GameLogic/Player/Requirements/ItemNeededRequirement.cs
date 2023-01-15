@@ -13,6 +13,6 @@ namespace Metaplay.GameLogic.Player.Requirements
     public class ItemNeededRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]
-        private MetaRef<ItemDefinition> ItemRef { get; set; }
+        public MetaRef<ItemDefinition> ItemRef { get; set; }
     }
 }

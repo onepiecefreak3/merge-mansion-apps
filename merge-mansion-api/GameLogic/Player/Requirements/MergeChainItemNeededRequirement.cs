@@ -13,10 +13,10 @@ namespace Metaplay.GameLogic.Player.Requirements
     public class MergeChainItemNeededRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]
-        private MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
+        public MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
         [MetaMember(2, 0)]
-        private Nullable<int> MinLevel { get; set; }
+        public Nullable<int> MinLevel { get; set; }
         [MetaMember(3, 0)]
-        private Nullable<int> MaxLevel { get; set; }
+        public Nullable<int> MaxLevel { get; set; }
     }
 }

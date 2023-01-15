@@ -17,6 +17,7 @@ using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.Math;
 using Metaplay.Metaplay.Core.Model;
+using Newtonsoft.Json;
 
 namespace Metaplay.GameLogic.Player.Items
 {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -54,19 +53,23 @@ namespace merge_mansion_cli.Dumper
             foreach (var area in config.Areas.EnumerateAll())
                 foreach (var hotspot in ((AreaInfo)area.Value).HotspotsRefs)
                 {
-                    foreach (var dialogueAction in hotspot.Ref.CompletionActions.OfType<TriggerDialogue>())
+                    var actions = hotspot.Ref.CompletionActions.OfType<TriggerDialogue>().Select(x => ("Completion", x));
+                    actions = actions.Concat(hotspot.Ref.AppearActions.OfType<TriggerDialogue>().Select(x => ("Appear", x)));
+                    actions = actions.Concat(hotspot.Ref.FinalizationActions.OfType<TriggerDialogue>().Select(x => ("Finalization", x)));
+
+                    foreach (var dialogueAction in actions)
                     {
                         var leftChar = DialogCharacterType.None;
                         var leftMood = DialogCharacterState.Default;
                         var rightChar = DialogCharacterType.None;
                         var rightMood = DialogCharacterState.Default;
 
-                        foreach (var dialog in ((StoryElementInfo)config.StoryElements.GetInfoByKey(dialogueAction.DialogueId)).DialogItems.Select(x => x.Value))
+                        foreach (var dialog in ((StoryElementInfo)config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId)).DialogItems.Select(x => x.Value))
                         {
                             var dialogImg = CreateImage(dialog.Ref, leftChar, rightChar, leftMood, rightMood);
                             if (dialogImg != null)
                             {
-                                yield return (Path.Combine(((AreaId)area.Key).Value, hotspot.Ref.Id.ToString(), dialog.Ref.ConfigKey.Value), dialogImg);
+                                yield return (Path.Combine(((AreaId)area.Key).Value, hotspot.Ref.Id.ToString(), dialogueAction.Item1, dialog.Ref.ConfigKey.Value), dialogImg);
                                 dialogImg.Dispose();
                             }
 
@@ -99,28 +102,50 @@ namespace merge_mansion_cli.Dumper
             var leftMood = dialog.LeftCharacterState == DialogCharacterState.NoChange ? prevLeftMood : dialog.LeftCharacterState;
             if (leftCharacter != DialogCharacterType.None)
             {
-                var resizeSize = dialog.LeftSpeaks ? bigSize : smallSize;
-                var leftImg = LoadImageFromResource(string.Format(PeopleResource_, GetTypeName(leftCharacter), leftMood));
-                if (leftImg != null)
+                if (Enum.IsDefined(leftCharacter))
                 {
-                    leftImg.Mutate(x => x.Resize(resizeSize));
+                    if (!ExistsPeopleResource(leftCharacter, leftMood))
+                    {
+                        Output.Warning("Unknown asset for character {0} with mood {1}", GetCharacterResourceName(leftCharacter), leftMood);
+                        leftMood = DialogCharacterState.Default;
+                    }
 
-                    res.Mutate(x => x.DrawImage(leftImg, new Point(CharacterXDelta_ + (defaultSize.Width - resizeSize.Width) / 2, bigSize.Height - resizeSize.Height), 1));
+                    var resizeSize = dialog.LeftSpeaks ? bigSize : smallSize;
+                    var leftImg = LoadImageFromResource(GetCharacterResourcePath(leftCharacter, leftMood));
+                    if (leftImg != null)
+                    {
+                        leftImg.Mutate(x => x.Resize(resizeSize));
+
+                        res.Mutate(x => x.DrawImage(leftImg, new Point(CharacterXDelta_ + (defaultSize.Width - resizeSize.Width) / 2, bigSize.Height - resizeSize.Height), 1));
+                    }
                 }
+                else
+                    Output.Error("Unknown dialogue character {0}", leftCharacter);
             }
 
             var rightCharacter = dialog.RightCharacter == DialogCharacterType.NoChange ? prevRightType : dialog.RightCharacter;
             var rightMood = dialog.RightCharacterState == DialogCharacterState.NoChange ? prevRightMood : dialog.RightCharacterState;
             if (rightCharacter != DialogCharacterType.None)
             {
-                var resizeSize = dialog.RightSpeaks ? bigSize : smallSize;
-                var rightImg = LoadImageFromResource(string.Format(PeopleResource_, GetTypeName(rightCharacter), rightMood));
-                if (rightImg != null)
+                if (Enum.IsDefined(rightCharacter))
                 {
-                    rightImg.Mutate(x => x.Flip(FlipMode.Horizontal).Resize(resizeSize));
+                    if (!ExistsPeopleResource(rightCharacter, rightMood))
+                    {
+                        Output.Warning("Unknown asset for character {0} with mood {1}", GetCharacterResourceName(rightCharacter), rightMood);
+                        rightMood = DialogCharacterState.Default;
+                    }
 
-                    res.Mutate(x => x.DrawImage(rightImg, new Point(res.Width - CharacterXDelta_ - defaultSize.Width + (defaultSize.Width - resizeSize.Width) / 2, bigSize.Height - resizeSize.Height), 1));
+                    var resizeSize = dialog.RightSpeaks ? bigSize : smallSize;
+                    var rightImg = LoadImageFromResource(GetCharacterResourcePath(rightCharacter, rightMood));
+                    if (rightImg != null)
+                    {
+                        rightImg.Mutate(x => x.Flip(FlipMode.Horizontal).Resize(resizeSize));
+
+                        res.Mutate(x => x.DrawImage(rightImg, new Point(res.Width - CharacterXDelta_ - defaultSize.Width + (defaultSize.Width - resizeSize.Width) / 2, bigSize.Height - resizeSize.Height), 1));
+                    }
                 }
+                else
+                    Output.Error("Unknown dialogue character {0}", rightCharacter);
             }
 
             // Draw box
@@ -131,18 +156,19 @@ namespace merge_mansion_cli.Dumper
             res.Mutate(x => x.DrawImage(_bannerImg, bannerPos, 1));
 
             // Draw name text
-            var name = GetSpeakerName(dialog.LeftSpeaks ? leftCharacter : rightCharacter);
-            var nameSize = TextMeasurer.Measure(name, new TextOptions(_nameFont));
-            var namePoint = bannerPos + new PointF((_bannerImg.Width - nameSize.Width) / 2, 0);
+            var activeSpeaker = dialog.LeftSpeaks ? leftCharacter : rightCharacter;
+            if (Enum.IsDefined(activeSpeaker))
+            {
+                var name = GetSpeakerName(activeSpeaker);
+                var nameSize = TextMeasurer.Measure(name, new TextOptions(_nameFont));
+                var namePoint = bannerPos + new PointF((_bannerImg.Width - nameSize.Width) / 2, 0);
 
-            res.Mutate(x => x.DrawText(name, _nameFont, Brushes.Solid(NameColor), Pens.Solid(NameBorderColor, 1.6f), namePoint));
+                res.Mutate(x => x.DrawText(name, _nameFont, Brushes.Solid(NameColor), Pens.Solid(NameBorderColor, 1.6f), namePoint));
+            }
 
             // Draw dialog text
             var wrappedText = WrapText(LocMan.Get(dialog.LocalizationId), 750, _dialogFont);
             var wrappedTextSizes = wrappedText.Select(x => TextMeasurer.Measure(x, new TextOptions(_dialogFont))).ToArray();
-
-            //if (wrappedText.Count > 1)
-            //    Console.WriteLine(dialog.DialogItemId.Value);
 
             var lineHeight = wrappedTextSizes.Max(x => x.Height);
             var lineY = aboveBox - 14 + (_boxImg.Height - wrappedTextSizes.Length * lineHeight) / 2;
@@ -193,16 +219,24 @@ namespace merge_mansion_cli.Dumper
 
         private string GetSpeakerName(DialogCharacterType type)
         {
-            return LocMan.Get(string.Format(DialogTitle_, GetTypeName(type)));
+            return LocMan.Get(string.Format(DialogTitle_, GetLocalizationName(type)));
         }
 
-        private string GetTypeName(DialogCharacterType type)
+        private string GetCharacterResourcePath(DialogCharacterType character, DialogCharacterState mood)
         {
+            return string.Format(PeopleResource_, GetCharacterResourceName(character), mood);
+        }
+
+        private string GetLocalizationName(DialogCharacterType type)
+        {
+            if (!Enum.IsDefined(type))
+            {
+                Output.Error("Unknown dialogue character {0}", type);
+                return string.Empty;
+            }
+
             switch (type)
             {
-                case DialogCharacterType.Maddie:
-                    return "Maddie";
-
                 case DialogCharacterType.Grandma:
                     return "Ursula";
 
@@ -212,37 +246,45 @@ namespace merge_mansion_cli.Dumper
                 case DialogCharacterType.Dog:
                     return "Rufus";
 
-                case DialogCharacterType.Jackie:
-                    return "Jackie";
+                case DialogCharacterType.Phone:
+                    return "Charlie";
 
-                case DialogCharacterType.Deb:
-                    return "Deb";
+                default:
+                    return type.ToString();
+            }
+        }
 
-                case DialogCharacterType.Roddy:
-                    return "Roddy";
+        private string GetCharacterResourceName(DialogCharacterType type)
+        {
+            if (!Enum.IsDefined(type))
+            {
+                Output.Error("Unknown dialogue character {0}", type);
+                return string.Empty;
+            }
 
-                case DialogCharacterType.Jackson:
-                    return "Jackson";
+            switch (type)
+            {
+                case DialogCharacterType.Grandma:
+                    return "Ursula";
 
-                case DialogCharacterType.Arthur:
-                    return "Arthur";
+                case DialogCharacterType.AntiqueDealer:
+                    return "Julius";
 
                 case DialogCharacterType.Phone:
                     return "Charlie";
 
-                case DialogCharacterType.Holden:
-                    return "Holden";
-
                 case DialogCharacterType.Winston:
-                    return "Winston";
-
-                case DialogCharacterType.Cherry:
-                    return "Cherry";
+                    return "Butler";
 
                 default:
-                    Output.Error("Unknown dialogue type {0}", type);
-                    throw new InvalidOperationException($"Unknown dialogue type {type}.");
+                    return type.ToString();
             }
+        }
+
+        private bool ExistsPeopleResource(DialogCharacterType character, DialogCharacterState mood)
+        {
+            var resourceName = GetCharacterResourcePath(character, mood);
+            return Assembly.GetExecutingAssembly().GetManifestResourceNames().Contains(resourceName);
         }
 
         private Image<Rgba32> LoadImageFromResource(string resourceName)

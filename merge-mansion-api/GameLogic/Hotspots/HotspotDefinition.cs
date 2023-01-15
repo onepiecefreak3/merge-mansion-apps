@@ -16,8 +16,6 @@ namespace Metaplay.GameLogic.Hotspots
 {
     public class HotspotDefinition : IGameConfigData<HotspotId>, IHasRequirements
     {
-        public HotspotId ConfigKey => Id;
-
         [MetaMember(1, 0)]
         public HotspotId Id { get; set; }
         [MetaMember(2, 0)]
@@ -29,7 +27,7 @@ namespace Metaplay.GameLogic.Hotspots
         [MetaMember(5, 0)]
         public List<PlayerRequirement> RequirementsList { get; set; }
         [MetaMember(6, 0)]
-        public List<HotspotId> OpensAfterCompletion { get; set; }
+        public List<MetaRef<HotspotDefinition>> UnlockingParentRefs { get; set; }
         [MetaMember(7, 0)]
         public List<PlayerReward> Rewards { get; set; }
         [MetaMember(8, 0)]
@@ -38,5 +36,7 @@ namespace Metaplay.GameLogic.Hotspots
         public List<IDirectorAction> FinalizationActions { get; set; }
         [MetaMember(10, 0)]
         public List<IDirectorAction> AppearActions { get; set; }
-	}
+
+        public HotspotId ConfigKey => Id;
+    }
 }

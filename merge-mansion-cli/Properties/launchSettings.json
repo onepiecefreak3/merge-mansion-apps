@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "merge-mansion-cli": {
+      "commandName": "Project",
+      "commandLineArgs": "-m 1"
+    }
+  }
+}

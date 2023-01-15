@@ -6,6 +6,9 @@ namespace Metaplay.Metaplay.Core.Math
     {
         public int Raw; // 0x0
 
+        public float Float => Fixed32.ToFloat(Raw);
+        public double Double => Fixed32.ToDouble(Raw);
+
         public F32(int raw)
         {
             Raw = raw;

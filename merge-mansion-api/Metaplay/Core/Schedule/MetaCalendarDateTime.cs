@@ -21,5 +21,10 @@ namespace Metaplay.Metaplay.Core.Schedule
         public int Minute { get; set; }
         [MetaMember(6, 0)]
         public int Second { get; set; }
-	}
+
+        public DateTime ToDateTime()
+        {
+            return new DateTime(Year, Month, Day, Hour, Minute, Second);
+        }
+    }
 }

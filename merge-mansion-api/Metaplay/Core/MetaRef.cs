@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Metaplay.Metaplay.Core.Config;
+using Newtonsoft.Json;
 
 namespace Metaplay.Metaplay.Core
 {
@@ -13,9 +14,11 @@ namespace Metaplay.Metaplay.Core
         private readonly object _key; // 0x10
         private readonly TItem _item; // 0x18
 
+        public Type ItemType => typeof(TItem);
         public object KeyObject => _key;
-        public TItem Ref => _item ?? throw new InvalidOperationException($"Tried to get reference to '{_key}' from MetaRef<{typeof(TItem)}> but the reference hasn't yet been resolved");
         public bool IsResolved => _item != null;
+
+        public TItem Ref => _item ?? throw new InvalidOperationException($"Tried to get reference to '{_key}' from MetaRef<{typeof(TItem)}> but the reference hasn't yet been resolved");
 
         private MetaRef(object key, TItem item)
         {
@@ -35,7 +38,7 @@ namespace Metaplay.Metaplay.Core
             return new MetaRef<TItem>(key1, null);
         }
 
-        public MetaRef<TItem> CreateResolved(IGameConfigDataResolver resolver)
+        public IMetaRef CreateResolved(IGameConfigDataResolver resolver)
         {
             if (_key is IStringId sid)
                 if (sid.Value == null)
