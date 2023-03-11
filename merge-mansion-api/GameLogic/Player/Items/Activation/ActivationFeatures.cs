@@ -26,6 +26,8 @@ namespace Metaplay.GameLogic.Player.Items.Activation
         public IItemProducer DecayAfterLastCycleProducer { get; set; }
         [MetaMember(6)]
         public ItemVisibility SpawnVisibility { get; set; }
+        [MetaMember(7)]
+        public string OverrideSfx { get; set; }
 
         public bool Activable => ActivationSpawn != null && !(ActivationSpawn is EmptyProducer);
 

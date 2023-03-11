@@ -585,11 +585,14 @@ namespace Metaplay.Metaplay.Core.Network
                     return;
             }
 
-            var isFiltered = _earlyMessageFilterSyncFn?.Invoke(message) ?? false;
-            if (!isFiltered)
+            if (_handshakePhase != ServerHandshakePhase.Error)
             {
-                lock (_incomingLock)
-                    _incomingMessages.Add(message);
+                var isFiltered = _earlyMessageFilterSyncFn?.Invoke(message) ?? false;
+                if (!isFiltered)
+                {
+                    lock (_incomingLock)
+                        _incomingMessages.Add(message);
+                }
             }
         }
 
@@ -903,7 +906,7 @@ namespace Metaplay.Metaplay.Core.Network
         {
             lock (_transportLock)
             {
-                _transport.Dispose();
+                _transport?.Dispose();
                 _transport = null;
             }
         }

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Metaplay.Code.GameLogic.GameEvents;
+using Metaplay.GameLogic.Player.Items;
 using Metaplay.GameLogic.Player.Items.Chest;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Config;
@@ -149,6 +151,10 @@ namespace Metaplay.Metaplay.Generated
 
             for (var i = 0; i < collectionSize; i++)
             {
+#if DEBUG
+                Console.Write($"\r{i:00000}");
+#endif
+
                 var item = Activator.CreateInstance(listType);
                 Deserialize_Members(ref context, reader, item);
 
@@ -503,9 +509,9 @@ namespace Metaplay.Metaplay.Generated
 
                 // Classes and Nullable<T> where T : struct
                 case WireDataType.NullableStruct:
-                    var structCount = reader.ReadVarInt();
-                    if (structCount == 0)
-                        return;
+                    var hasValue = reader.ReadVarInt();
+                    if (hasValue == 0)
+                        break;
 
                     if (memberType.IsGenericType && memberType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         value = Activator.CreateInstance(memberType.GenericTypeArguments[0], true);
@@ -522,11 +528,14 @@ namespace Metaplay.Metaplay.Generated
                         targetTypes.Where(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>() != null);
 
                     var deriveId = reader.ReadVarInt();
+                    if (deriveId == 0)
+                        break;
+
                     var targetType = memberType == typeof(MetaMessage) ?
                         targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaMessageAttribute>().TypeCode == deriveId) :
                         targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>().DeriveId == deriveId);
                     if (targetType == null)
-                        break;
+                        throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}.");
 
                     value = Activator.CreateInstance(targetType, true);
                     Deserialize_Members(ref context, reader, value);
@@ -546,7 +555,7 @@ namespace Metaplay.Metaplay.Generated
                     break;
 
                 default:
-                    break;
+                    throw new InvalidOperationException($"Unknown wire type {wireType}.");
             }
         }
 

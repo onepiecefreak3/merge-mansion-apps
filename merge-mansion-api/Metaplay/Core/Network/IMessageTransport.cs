@@ -20,5 +20,8 @@ namespace Metaplay.Metaplay.Core.Network
 
         // RVA: -1 Offset: -1 Slot: 13
         void Dispose();
+
+        // CUSTOM: Tells if the transport got closed
+        //bool WasClosed();
     }
 }

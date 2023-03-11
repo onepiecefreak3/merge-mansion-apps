@@ -13,5 +13,9 @@ namespace Metaplay.GameLogic.Player.Items.Collectable
         public bool Collectable { get; set; }
         [MetaMember(2)]
         public ICollectAction CollectAction { get; set; }
+        [MetaMember(3)]
+        public string OverrideSfx { get; set; }
+        [MetaMember(4)]
+        public bool ConfirmCollectBelowMergeChainLevel { get; set; }
     }
 }

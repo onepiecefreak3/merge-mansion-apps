@@ -53,6 +53,14 @@ namespace Metaplay.Metaplay.Core.Network
             }
         }
 
+        //public override bool WasClosed()
+        //{
+        //    if (_connectionTask == null)
+        //        return false;
+
+        //    return _connectionTask.Status == TaskStatus.Faulted || _connectionTask.Status == TaskStatus.Canceled;
+        //}
+
         public override void EnqueueSendMessage(MetaMessage message)
         {
             Interlocked.Increment(ref _debugDiagnostics.MetaMessageEnqueuesAttempted);

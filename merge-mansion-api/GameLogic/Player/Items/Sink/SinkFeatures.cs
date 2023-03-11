@@ -13,5 +13,7 @@ namespace Metaplay.GameLogic.Player.Items.Sink
         public bool IsSink { get; set; }
         [MetaMember(2, 0)]
         public ISinkStateFactory Factory { get; set; }
+        [MetaMember(3, 0)]
+        public string OverrideSfx { get; set; }
     }
 }

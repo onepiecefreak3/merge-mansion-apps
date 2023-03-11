@@ -41,16 +41,34 @@ namespace Metaplay.Metaplay.Core.Serialization
                 case WireDataType.Null:
                     return;
 
-                case WireDataType.VarInt128:
-                    reader.ReadVarUInt128();
-                    break;
-
                 case WireDataType.VarInt:
                     reader.ReadVarLong();
                     break;
 
-                case WireDataType.Struct:
-                    SkipStructMembers(reader);
+                case WireDataType.VarInt128:
+                    reader.ReadVarUInt128();
+                    break;
+
+                case WireDataType.F32:
+                    reader.ReadF32();
+                    break;
+
+                //case WireDataType.F32Vec2:
+                //case WireDataType.F32Vec3:
+
+                case WireDataType.F64:
+                    reader.ReadF64();
+                    break;
+
+                //case WireDataType.F64Vec2:
+                //case WireDataType.F64Vec3:
+
+                case WireDataType.Float32:
+                    reader.SkipBytes(4);
+                    break;
+
+                case WireDataType.Float64:
+                    reader.SkipBytes(8);
                     break;
 
                 case WireDataType.String:
@@ -62,17 +80,24 @@ namespace Metaplay.Metaplay.Core.Serialization
                     reader.SkipBytes(length);
                     break;
 
-                case WireDataType.F64:
-                    reader.ReadF64();
-                    break;
-
-                case WireDataType.NullableF64:
-                    var nullable = NullablePrimitiveWireTypeUnwrap(wireType);
-                    var v = reader.ReadVarInt();
-                    if (v == 0)
+                case WireDataType.AbstractStruct:
+                    var isNullFlag2 = reader.ReadVarInt();
+                    if (isNullFlag2 == 0)
                         return;
 
-                    SkipWireType(reader, nullable);
+                    SkipStructMembers(reader);
+                    break;
+
+                case WireDataType.NullableStruct:
+                    var isNullFlag1 = reader.ReadByte();
+                    if (isNullFlag1 == 0)
+                        return;
+
+                    SkipStructMembers(reader);
+                    break;
+
+                case WireDataType.Struct:
+                    SkipStructMembers(reader);
                     break;
 
                 case WireDataType.ValueCollection:
@@ -86,41 +111,56 @@ namespace Metaplay.Metaplay.Core.Serialization
 
                     break;
 
-                case WireDataType.NullableStruct:
-                    var isNullFlag1 = reader.ReadByte();
-                    if (isNullFlag1 == 0)
+                case WireDataType.KeyValueCollection:
+                    var collectionSize1 = reader.ReadVarInt();
+                    if (collectionSize1 < 0)
                         return;
 
-                    SkipStructMembers(reader);
+                    var itemWireType1 = (WireDataType)reader.ReadByte();
+                    var itemWireType2 = (WireDataType)reader.ReadByte();
+
+                    for (var i = 0; i < collectionSize1; i++)
+                    {
+                        SkipWireType(reader, itemWireType1);
+                        SkipWireType(reader, itemWireType2);
+                    }
+
                     break;
 
-                case WireDataType.AbstractStruct:
-                    var isNullFlag2 = reader.ReadVarInt();
-                    if (isNullFlag2 == 0)
+                case WireDataType.NullableVarInt:
+                case WireDataType.NullableVarInt128:
+                case WireDataType.NullableF32:
+                case WireDataType.NullableF32Vec2:
+                case WireDataType.NullableF32Vec3:
+                case WireDataType.NullableF64:
+                case WireDataType.NullableF64Vec2:
+                case WireDataType.NullableF64Vec3:
+                case WireDataType.NullableFloat32:
+                case WireDataType.NullableFloat64:
+                case WireDataType.NullableMetaGuid:
+                    var nullable = NullablePrimitiveWireTypeUnwrap(wireType);
+                    var isNullFlag3 = reader.ReadVarInt();
+                    if (isNullFlag3 == 0)
                         return;
 
-                    SkipStructMembers(reader);
+                    SkipWireType(reader, nullable);
+                    break;
+
+                case WireDataType.MetaGuid:
+                    reader.SkipBytes(16);
                     break;
 
                 default:
-                    break;
+                    throw new InvalidOperationException($"Unknown skip wire type {wireType}.");
             }
         }
 
         public static WireDataType NullablePrimitiveWireTypeUnwrap(WireDataType wireType)
         {
-            var types = new[]
-            {
-                WireDataType.VarInt, WireDataType.VarInt128, WireDataType.F32, WireDataType.F32Vec2,
-                WireDataType.F32Vec3, WireDataType.F64, WireDataType.F64Vec2, WireDataType.F64Vec3,
-                WireDataType.Float32, WireDataType.Float64, WireDataType.VarInt, WireDataType.MetaGuid
-            };
+            if (wireType == WireDataType.NullableMetaGuid)
+                return WireDataType.MetaGuid;
 
-            var wt = (int)wireType - 0x15;
-            if (wt < 0xC && (0xBFF >> (wt & 0x1F) & 1) != 0)
-                return types[wt];
-
-            throw new ArgumentException(nameof(wireType));
+            return wireType - 19;
         }
 
         private static void SkipStructMembers(IOReader reader)

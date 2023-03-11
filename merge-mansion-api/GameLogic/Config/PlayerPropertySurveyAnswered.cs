@@ -10,7 +10,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1014)]
-    public class PlayerPropertySurveyAnswered : TypedPlayerPropertyIdCustom<bool, SurveyString>
+    public class PlayerPropertySurveyAnswered : PlayerPropertyMatcher<int>
     {
     }
 }

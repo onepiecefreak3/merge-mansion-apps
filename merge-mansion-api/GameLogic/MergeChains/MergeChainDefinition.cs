@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Metaplay.GameLogic.Codex;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Config;
@@ -19,5 +20,13 @@ namespace Metaplay.GameLogic.MergeChains
         public MetaRef<CodexCategoryInfo> CodexCategory { get; set; }
         [MetaMember(5, 0)]
         public MetaRef<CodexDiscoveryRewardInfo> DiscoveryRewardRef { get; set; }
-	}
+        [MetaMember(6, 0)]
+        public string CompletionSfx { get; set; }
+        [MetaMember(7, 0)]
+        public int? InitialLevel { get; set; }
+        [MetaMember(8, 0)]
+        public int? UnsellableUntilPlayerLevel { get; set; }
+        [MetaMember(9, 0)]
+        public int? ShowSellConfirmationUntilPlayerLevel { get; set; }
+    }
 }

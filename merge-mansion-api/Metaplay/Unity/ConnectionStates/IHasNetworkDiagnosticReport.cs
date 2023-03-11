@@ -9,6 +9,6 @@ namespace Metaplay.Metaplay.Unity.ConnectionStates
 {
     public interface IHasNetworkDiagnosticReport
     {
-        public abstract NetworkDiagnosticReport NetworkDiagnosticReport { get; set; }
+        public NetworkDiagnosticReport NetworkDiagnosticReport { get; set; }
     }
 }

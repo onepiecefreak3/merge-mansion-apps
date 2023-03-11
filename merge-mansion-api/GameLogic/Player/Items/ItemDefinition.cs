@@ -45,6 +45,7 @@ namespace Metaplay.GameLogic.Player.Items
         public F64 UnlockOnBoardPriceGems { get; set; }
         [MetaMember(11)]
         public int ExperienceValue { get; set; }
+
         [MetaMember(12)]
         public MergeFeatures MergeFeatures { get; set; }    // 0x60
         [MetaMember(13)]
@@ -71,6 +72,7 @@ namespace Metaplay.GameLogic.Player.Items
         public ChargesFeatures ChargesFeatures { get; set; }
         [MetaMember(24)]
         public TimeContainerFeatures TimeContainer { get; set; }
+
         [MetaMember(25)]
         public List<string> Tags { get; set; }
         [MetaMember(26)]
@@ -79,6 +81,16 @@ namespace Metaplay.GameLogic.Player.Items
         public List<string> ConfirmableMergeResults { get; set; }
         [MetaMember(28)]
         private List<IDirectorAction> OnDiscoveredActions { get; set; }
+        [MetaMember(29)]
+        public bool ShowTutorialFingerOnDiscovery { get; set; }
+        [MetaMember(30)]
+        public List<string> AnalyticsMetaData { get; set; }
+        [MetaMember(31)]
+        public List<ItemType> CombineInfoWithItem { get; set; }
+        [MetaMember(32)]
+        public ItemRarity Rarity { get; set; }
+        [MetaMember(33)]
+        public bool Unsellable { get; set; }
 
         public IEnumerable<IDirectorAction> OnDiscovered => OnDiscoveredActions;
     }

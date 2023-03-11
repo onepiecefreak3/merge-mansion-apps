@@ -21,7 +21,7 @@ namespace Metaplay.GameLogic.Hotspots
         [MetaMember(2, 0)]
         public HotspotType Type { get; set; }
         [MetaMember(3, 0)]
-        private MetaRef<AreaInfo> AreaRef { get; set; }
+        public MetaRef<AreaInfo> AreaRef { get; set; }
         [MetaMember(4, 0)]
         public MergeBoardId MergeBoardId { get; set; }
         [MetaMember(5, 0)]

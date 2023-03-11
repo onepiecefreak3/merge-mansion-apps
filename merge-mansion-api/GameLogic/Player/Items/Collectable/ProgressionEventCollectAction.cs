@@ -10,7 +10,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(6)]
-    public class ProgressionEventCollectAction : ICollectAction
+    public class ProgressionEventCollectAction : IProgressCollectAction
     {
         [MetaMember(1)]
         private MetaRef<ProgressionEventInfo> ProgressionEventRef { get; set; }

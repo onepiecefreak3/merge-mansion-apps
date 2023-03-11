@@ -27,6 +27,9 @@ namespace Metaplay.Metaplay.Core.Network
         // RVA: -1 Offset: -1 Slot: 23
         public abstract void Dispose();
 
+        // CUSTOM: Tells if the transport got closed
+        //public abstract bool WasClosed();
+
         protected void InvokeOnConnect(Handshake.ServerHello serverHello, TransportHandshakeReport transportHandshake)
         {
             OnConnect?.Invoke(serverHello, transportHandshake);

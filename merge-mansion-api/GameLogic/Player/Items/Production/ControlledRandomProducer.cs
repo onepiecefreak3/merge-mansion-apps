@@ -30,7 +30,7 @@ namespace Metaplay.GameLogic.Player.Items.Production
 
         public IEnumerable<ItemDefinition> Produce(IGenerationContext context, int quantity)
         {
-            return Enumerable.Range(0, quantity).Select(x =>
+            return Enumerable.Range(0, quantity).Select(_ =>
             {
                 var itemWeights = GenerationOdds.Select(y => (y.Type.Deref().ConfigKey, y.Weight)).ToList();
 

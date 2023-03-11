@@ -80,9 +80,7 @@ namespace Metaplay.Metaplay.Unity.DefaultIntegration
         }
 
         public void OnFullProtocolHashMismatch(uint clientProtocolHash, uint serverProtocolHash)
-        {
-            throw new NotImplementedException();
-        }
+        { }
 
         public void FlushPendingMessages()
         {

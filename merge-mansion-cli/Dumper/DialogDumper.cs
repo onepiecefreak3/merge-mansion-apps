@@ -48,7 +48,7 @@ namespace merge_mansion_cli.Dumper
             _dialogFont = family.CreateFont(28);
         }
 
-        protected override IEnumerable<(string, Image<Rgba32>)> Dump(SharedGameConfig config)
+        public override IEnumerable<(string, Image<Rgba32>)> Dump(SharedGameConfig config)
         {
             foreach (var area in config.Areas.EnumerateAll())
                 foreach (var hotspot in ((AreaInfo)area.Value).HotspotsRefs)
@@ -120,7 +120,7 @@ namespace merge_mansion_cli.Dumper
                     }
                 }
                 else
-                    Output.Error("Unknown dialogue character {0}", leftCharacter);
+                    Output.Warning("Unknown dialogue character {0}", leftCharacter);
             }
 
             var rightCharacter = dialog.RightCharacter == DialogCharacterType.NoChange ? prevRightType : dialog.RightCharacter;
@@ -145,7 +145,7 @@ namespace merge_mansion_cli.Dumper
                     }
                 }
                 else
-                    Output.Error("Unknown dialogue character {0}", rightCharacter);
+                    Output.Warning("Unknown dialogue character {0}", rightCharacter);
             }
 
             // Draw box

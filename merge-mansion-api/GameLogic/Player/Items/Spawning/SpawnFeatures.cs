@@ -26,6 +26,8 @@ namespace Metaplay.GameLogic.Player.Items.Spawning
         public IItemProducer DecayProducer { get; set; }
         [MetaMember(7)]
         public ItemVisibility SpawnVisibility { get; set; }
+        [MetaMember(8)]
+        public string OverrideSfx { get; set; }
 
         public F64 TimeSkipPriceGems(IGenerationContext context)
         {

@@ -21,6 +21,7 @@ namespace Metaplay.GameLogic.Player.Items.Bubble
         private MetaRef<ItemDefinition> ReplacementItem { get; set; }
         [MetaMember(5, 0)]
         public int SpawnOdds { get; set; }
+
         [IgnoreDataMember]
         public ItemDefinition Replacement { get; }
         [IgnoreDataMember]

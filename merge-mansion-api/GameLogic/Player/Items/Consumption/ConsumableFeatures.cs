@@ -18,5 +18,7 @@ namespace Metaplay.GameLogic.Player.Items.Consumption
         public bool AllowNearMatching { get; set; }
         [MetaMember(4, 0)]
         public bool DragSafeAreaEnabled { get; set; }
-	}
+        [MetaMember(5, 0)]
+        public int ItemStackCap { get; set; }
+    }
 }

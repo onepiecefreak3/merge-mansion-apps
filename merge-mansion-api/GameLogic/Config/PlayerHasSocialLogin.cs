@@ -9,7 +9,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1024)]
-    public class PlayerHasSocialLogin : TypedPlayerPropertyIdCustom<bool, string>
+    public class PlayerHasSocialLogin : PlayerPropertyMatcher<LoginDateTime>
     {
     }
 }

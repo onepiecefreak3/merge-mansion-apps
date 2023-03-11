@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using merge_mansion_cli.Dumper.Base;
 using merge_mansion_cli.Dumper.Json;
 using Metaplay.GameLogic.Area;
 using Metaplay.GameLogic.Config;
@@ -10,7 +11,7 @@ namespace merge_mansion_cli.Dumper
 {
     class AreaDumper : JsonDumper<IList<AreaInfo>>
     {
-        protected override IList<AreaInfo> Dump(SharedGameConfig config)
+        public override IList<AreaInfo> Dump(SharedGameConfig config)
         {
             return config.Areas.EnumerateAll().Select(x => (AreaInfo)x.Value).ToList();
         }

@@ -101,6 +101,8 @@ namespace Metaplay.GameLogic.Config
 
         public GameConfigLibrary<MergeRewardId, MergeReward> XpMergeRewards { get; set; }
 
+        public GameConfigLibrary<CollectibleBoardEventId, CollectibleBoardEventInfo> CollectibleBoardEvents { get; set; }
+
         //public GameConfigLibrary<int, SuppressedWarningsInfo> SuppressedWarnings { get; set; }
 
         public override void Import(GameConfigImporter importer)
@@ -138,6 +140,8 @@ namespace Metaplay.GameLogic.Config
             ProgressionEventPerks = importer.ImportBinaryLibrary<ProgressionEventPerkId, ProgressionEventPerkInfo>("ProgressionEventPerks.mpc");
             XpMergeRewards = importer.ImportBinaryLibrary<MergeRewardId, MergeReward>("MergeRewards.mpc");
 
+            CollectibleBoardEvents = importer.ImportBinaryLibrary<CollectibleBoardEventId, CollectibleBoardEventInfo>("CollectibleBoardEvents.mpc");
+
             // Resolve refs
             Languages.ResolveMetaRefs(this);
             InAppProducts.ResolveMetaRefs(this);
@@ -170,6 +174,8 @@ namespace Metaplay.GameLogic.Config
             ProgressionEvents.ResolveMetaRefs(this);
             ProgressionEventPerks.ResolveMetaRefs(this);
             XpMergeRewards.ResolveMetaRefs(this);
+
+            CollectibleBoardEvents.ResolveMetaRefs(this);
         }
     }
 }

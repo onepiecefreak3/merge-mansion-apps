@@ -60,6 +60,12 @@ namespace Metaplay.Metaplay.Core
             _instance = new EntityKindRegistry();
         }
 
+        // CUSTOM: Reset static instances for runtime re-initialization
+        public static void Reset()
+        {
+            _instance = null;
+        }
+
         public static bool IsValid(EntityKind kind)
         {
             return Instance.ByValue.ContainsKey(kind);

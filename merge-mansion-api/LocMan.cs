@@ -77,12 +77,16 @@ namespace Metaplay
 
         public static string GetHotspotDescription(HotspotId hotspotId)
         {
+            // CUSTOM: Check if hotspot is defined
+            if (!Enum.IsDefined(hotspotId))
+                return string.Empty;
+
             return Get(GetHotspotDescriptionLocId(hotspotId));
         }
 
         private static string GetHotspotDescriptionLocId(HotspotId hotspotId)
         {
-            return $"HotspotDescription_{hotspotId.ToString()}";
+            return $"HotspotDescription_{hotspotId}";
         }
 
         #endregion
@@ -111,17 +115,29 @@ namespace Metaplay
 
         public static string GetDescription(ItemType itemType, int level)
         {
+            // CUSTOM: Check if item type is defined
+            if (!Enum.IsDefined(itemType))
+                return string.Empty;
+
             var parts = itemType.ToString().Split('_');
             return Get($"Item_{parts[0]}{level}_Description");
         }
 
         public static string GetItemName(ItemType itemType)
         {
-            var parts = itemType.ToString().Split('_');
-            if (parts.Length != 2)
-                throw new Exception($"{itemType} contains too many _ (underscore)");
+            // CUSTOM: Check if item type is defined
+            if (!Enum.IsDefined(itemType))
+                return string.Empty;
 
-            return Get($"Item_{parts[0]}{int.Parse(parts[1])}");
+            var itemTypeName = itemType.ToString();
+            var lastUnderscore = itemTypeName.LastIndexOf('_');
+            if (lastUnderscore <= 0 || lastUnderscore >= itemTypeName.Length - 1)
+                throw new Exception($"{itemType} has invalid _ (underscore) placement. Last _ should separate item name and level.");
+
+            var itemName = "Item_" + itemTypeName[..lastUnderscore];
+            var level = int.Parse(itemTypeName[(lastUnderscore + 1)..]);
+
+            return Get($"{itemName}{level}");
         }
 
         #endregion

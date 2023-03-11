@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using merge_mansion_cli.Graphs;
@@ -265,6 +264,11 @@ namespace merge_mansion_cli.Dumper.Json
                     }
 
                     writer.WriteEndObject();
+                }
+                else if (requirement is ItemNeededAndConsumeRequirement inacReq)
+                {
+                    writer.WritePropertyName("ItemNeededAndConsumed");
+                    serializer.Serialize(writer, inacReq.ItemRefs.FirstOrDefault()?.KeyObject);
                 }
                 else
                     _output.Warning("Unknown requirement {0}", requirement.GetType().Name);
@@ -754,8 +758,6 @@ namespace merge_mansion_cli.Dumper.Json
 
         class MetaEventSerializer : BaseMetaJsonSerializer
         {
-            private readonly SharedGameConfig _config;
-            private readonly ILogger _output;
             private readonly Type[] _supportedTypes =
             {
                 typeof(BoardEventInfo),
@@ -763,12 +765,6 @@ namespace merge_mansion_cli.Dumper.Json
                 typeof(EventTaskInfo),
                 typeof(ShopEventInfo)
             };
-
-            public MetaEventSerializer(SharedGameConfig config, ILogger output)
-            {
-                _config = config;
-                _output = output;
-            }
 
             protected override Type[] GetTypes() => _supportedTypes;
 
@@ -1024,7 +1020,7 @@ namespace merge_mansion_cli.Dumper.Json
                 new MetaMathJsonSerializer(),
                 new MetaMergeChainSerializer(dropsAsPercent, output),
                 new MetaAreaSerializer(resolver, output),
-                new MetaEventSerializer(resolver, output),
+                new MetaEventSerializer(),
             };
         }
 

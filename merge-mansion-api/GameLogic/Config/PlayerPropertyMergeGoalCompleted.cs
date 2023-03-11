@@ -9,7 +9,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1007)]
-    public class PlayerPropertyMergeGoalCompleted : TypedPlayerPropertyIdCustom<bool, HotspotId>
+    public class PlayerPropertyMergeGoalCompleted : PlayerPropertyMatcher<HotspotId>
     {
     }
 }
