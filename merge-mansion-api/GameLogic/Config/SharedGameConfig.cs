@@ -1,4 +1,4 @@
-﻿using Metaplay.Code.GameLogic.GameEvents;
+using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.GameLogic.Area;
 using Metaplay.GameLogic.Codex;
 using Metaplay.GameLogic.Config.Map.Characters;
@@ -33,14 +33,6 @@ namespace Metaplay.GameLogic.Config
         // 0x98
         public GameConfigLibrary<MergeBoardId, TimedMergeBoard> TimedMergeBoards { get; set; }
 
-        //public GameConfigLibrary<AuthenticationPlatform, SocialAuthenticationConfig> SocialAuthentication { get; set; }
-
-        //public GameConfigLibrary<GameFeatureId, GameFeatureSetting> GameFeatures { get; set; }
-
-        //public GameConfigLibrary<VersionCheckId, SuggestedVersion> VersionCheck { get; set; }
-
-        //public GameConfigLibrary<AuthenticationPlatform, SocialAuthenticationReward> SocialAuthenticationRewards { get; set; }
-
         public GameConfigLibrary<MergeBoardId, BoardInfo> Boards { get; set; }
 
         public GameConfigLibrary<EventId, BoardEventInfo> BoardEvents { get; set; }
@@ -57,8 +49,6 @@ namespace Metaplay.GameLogic.Config
 
         public GameConfigLibrary<EventOfferId, EventOfferInfo> EventOffers { get; set; }
 
-        //public GameConfigLibrary<int, PlayerLevelData> PlayerLevels { get; set; }
-
         public GameConfigLibrary<HotspotId, HotspotDefinition> HotspotDefinitions { get; set; }
 
         public GameConfigLibrary<DecorationId, DecorationInfo> Decorations { get; set; }
@@ -68,28 +58,6 @@ namespace Metaplay.GameLogic.Config
         public GameConfigLibrary<DialogItemId, DialogItemInfo> DialogItems { get; set; }
 
         public GameConfigLibrary<MapCharacterEventId, MapCharacterEventDefinition> MapCharacterEvents { get; set; }
-
-        //public GameConfigLibrary<ShopItemId, ShopItemInfo> ShopItems { get; set; }
-
-        //public GameConfigLibrary<RotatingOfferGroupId, RotatingOfferGroupDefinition> RotatingOffers { get; set; }
-
-        //public GameConfigLibrary<GarageCleanupEventId, GarageCleanupEventInfo> GarageCleanupEvents { get; set; }
-
-        //public GameConfigLibrary<GarageCleanupBoardRowId, GarageCleanupBoardRowInfo> GarageCleanupBoardRows { get; set; }
-
-        //public GameConfigLibrary<GarageCleanupPatternSetId, GarageCleanupPatternSetInfo> GarageCleanupPatternSets { get; set; }
-
-        //public GameConfigLibrary<GarageCleanupPatternRowId, GarageCleanupPatternRowInfo> GarageCleanupPatternRows { get; set; }
-
-        //public GameConfigLibrary<GarageCleanupRewardId, GarageCleanupRewardInfo> GarageCleanupRewards { get; set; }
-
-        //public GameConfigLibrary<ShopLayoutId, ShopLayout> ShopLayouts { get; set; }
-
-        //public GameConfigLibrary<DailyTaskId, DailyTaskDefinition> DailyTasks { get; set; }
-
-        //public GameConfigLibrary<VideoId, Video> Videos { get; set; }
-
-        //public GameConfigLibrary<SlideShowId, SlideShow> SlideShows { get; set; }
 
         public GameConfigLibrary<BubblesSetupId, BubblesSetup> BubbleSetups { get; set; }
 
@@ -102,8 +70,6 @@ namespace Metaplay.GameLogic.Config
         public GameConfigLibrary<MergeRewardId, MergeReward> XpMergeRewards { get; set; }
 
         public GameConfigLibrary<CollectibleBoardEventId, CollectibleBoardEventInfo> CollectibleBoardEvents { get; set; }
-
-        //public GameConfigLibrary<int, SuppressedWarningsInfo> SuppressedWarnings { get; set; }
 
         public override void Import(GameConfigImporter importer)
         {
