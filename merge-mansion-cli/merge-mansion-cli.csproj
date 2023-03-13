@@ -174,8 +174,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WikiClientLibrary\WikiClientLibrary.Wikia\WikiClientLibrary.Wikia.csproj" />
-    <ProjectReference Include="..\..\WikiClientLibrary\WikiClientLibrary\WikiClientLibrary.csproj" />
     <ProjectReference Include="..\merge-mansion-api\merge-mansion-api.csproj" />
   </ItemGroup>
 

@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "merge-mansion-cli", "merge-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "merge-mansion-api", "merge-mansion-api\merge-mansion-api.csproj", "{B98C8EC2-716A-4323-BF40-82DDB1019CB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiClientLibrary.Wikia", "..\WikiClientLibrary\WikiClientLibrary.Wikia\WikiClientLibrary.Wikia.csproj", "{9BF7F68B-14D7-410A-A79F-5457E75F58BE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WikiClientLibrary", "..\WikiClientLibrary\WikiClientLibrary\WikiClientLibrary.csproj", "{96381A3B-0162-4C48-9E86-A799727559E2}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BF7F68B-14D7-410A-A79F-5457E75F58BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BF7F68B-14D7-410A-A79F-5457E75F58BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BF7F68B-14D7-410A-A79F-5457E75F58BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BF7F68B-14D7-410A-A79F-5457E75F58BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96381A3B-0162-4C48-9E86-A799727559E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96381A3B-0162-4C48-9E86-A799727559E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96381A3B-0162-4C48-9E86-A799727559E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96381A3B-0162-4C48-9E86-A799727559E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
