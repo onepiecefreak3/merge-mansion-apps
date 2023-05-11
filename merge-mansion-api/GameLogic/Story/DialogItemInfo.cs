@@ -42,8 +42,6 @@ namespace Metaplay.GameLogic.Story
         public bool NeedsTransition { get; set; }
         [MetaMember(15, 0)]
         public CameraTargetName MoveToCameraTarget { get; set; }
-        [MetaMember(16, 0)]
-        public HotspotId ScrollToHotSpot { get; set; }
         [MetaMember(17, 0)]
         public HotspotId ActivateHotSpot { get; set; }
         [MetaMember(18, 0)]
@@ -60,6 +58,10 @@ namespace Metaplay.GameLogic.Story
         public List<MetaRef<MapCharacterEventDefinition>> MapCharactersEventsRefs { get; set; }
         [MetaMember(24, 0)]
         public List<MapCharacterType> ResetMapCharacters { get; set; }
+        [MetaMember(25, 0)]
+        public IList<HotspotId> ScrollToHotSpot { get; set; }
+        [MetaMember(26, 0)]
+        public List<DialogCharacterType> DiscoveredCharacters { get; set; }
 
         public DialogItemId ConfigKey => DialogItemId;
     }

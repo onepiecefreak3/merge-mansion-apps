@@ -10,6 +10,7 @@ using Metaplay.GameLogic.Area;
 using Metaplay.GameLogic.Config;
 using Metaplay.GameLogic.Player.Director.Config;
 using Metaplay.GameLogic.Story;
+using Metaplay.Metaplay.Unity.ConnectionStates;
 using SixLabors.Fonts;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing.Processing;
@@ -63,6 +64,13 @@ namespace merge_mansion_cli.Dumper
                         var leftMood = DialogCharacterState.Default;
                         var rightChar = DialogCharacterType.None;
                         var rightMood = DialogCharacterState.Default;
+
+                        var storyElement = config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId);
+                        if (storyElement == null)
+                        {
+                            Output.Warning("Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.DialogueId, dialogueAction.Item1, hotspot.KeyObject);
+                            continue;
+                        }
 
                         foreach (var dialog in ((StoryElementInfo)config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId)).DialogItems.Select(x => x.Value))
                         {

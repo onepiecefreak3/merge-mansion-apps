@@ -13,12 +13,12 @@ namespace Metaplay.MetaplayIntegration.Deployment
         // TODO: Load resource Resources.Load<DeploymentConfig>("DeploymentConfig")
         public static DeploymentConfig Instance => instance ??= new DeploymentConfig
         {
-            SelectedSpecId = "port",
+            SelectedSpecId = "prod",
             Specs = new List<DeploymentSpec>
             {
                 new DeploymentSpec
                 {
-                    Id = "port",
+                    Id = "prod",
                     ServerHost = "prod.p1.game5backend.com",
                     ServerPort = 9339,
                     EnableTls = true,

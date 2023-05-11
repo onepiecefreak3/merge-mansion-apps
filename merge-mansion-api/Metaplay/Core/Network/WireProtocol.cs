@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.IO;
+using Metaplay.Metaplay.Core.Message;
 using Metaplay.Metaplay.Core.Serialization;
 
 namespace Metaplay.Metaplay.Core.Network
@@ -58,6 +60,11 @@ namespace Metaplay.Metaplay.Core.Network
             using var reader = new IOReader(buffer, payloadOffset, payloadSize);
 
             var message = MetaSerialization.DeserializeTagged<MetaMessage>(reader, MetaSerializationFlags.SendOverNetwork, resolver, null, null);
+
+#if DEBUG
+            Console.WriteLine("Receive: " + message.GetType().Name);
+#endif
+
             return message;
         }
     }

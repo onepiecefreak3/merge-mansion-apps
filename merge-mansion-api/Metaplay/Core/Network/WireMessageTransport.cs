@@ -8,6 +8,10 @@ namespace Metaplay.Metaplay.Core.Network
     {
         protected byte[] EncodeMessage(MetaMessage message, bool enableCompression)
         {
+#if DEBUG
+            Console.WriteLine("Send: " + message.GetType().Name);
+#endif
+
             var serialized = MetaSerialization.SerializeTagged(message, MetaSerializationFlags.IncludeAll, null, null);
 
             var originalLength = serialized.Length;

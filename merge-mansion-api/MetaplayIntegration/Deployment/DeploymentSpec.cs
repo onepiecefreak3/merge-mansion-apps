@@ -10,6 +10,7 @@ namespace Metaplay.MetaplayIntegration.Deployment
         public bool EnableTls; // 0x34
         public string CdnBaseUrl; // 0x38
         public List<ServerGatewaySpec> BackupGateways; // 0x48
+        public bool UseFakePurchasing; // 0x50
 
         public bool IsOfflineMode => string.IsNullOrEmpty(ServerHost);
     }

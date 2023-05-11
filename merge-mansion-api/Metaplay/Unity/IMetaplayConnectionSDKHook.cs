@@ -17,6 +17,9 @@ namespace Metaplay.Metaplay.Unity
         void OnSessionStarted(SessionProtocol.SessionStartSuccess sessionStart);
 
         // RVA: -1 Offset: -1 Slot: 3
-        void SuppressIncidentReportForNextNetworkError();
+        string GetDeviceGuid();
+
+        // RVA: -1 Offset: -1 Slot: 3
+        //void SuppressIncidentReportForNextNetworkError();
     }
 }

@@ -226,7 +226,7 @@ namespace Metaplay.Metaplay.Unity
             var loginCreds = new LoginCredentials(_credentials.DeviceId, _credentials.AuthToken, _credentials.PlayerId, false, creds);
 
             return new ServerConnection(serverConnectionConfig, Endpoint, createTransport, MetaplaySDK.BuildVersion,
-                loginCreds, initialResourceProposal, initialPauseStatus, Delegate.GetLoginDebugDiagnostics, MetaplaySDK.MessageDispatcher.InterceptMessage,
+                loginCreds, _sdkHook.GetDeviceGuid(), initialResourceProposal, initialPauseStatus, Delegate.GetLoginDebugDiagnostics, MetaplaySDK.MessageDispatcher.InterceptMessage,
                 true, MetaplaySDK.IncidentTracker.ReportWatchdogDeadlineExceededError, numFailedConnectionAttempts);
         }
 
@@ -349,7 +349,7 @@ namespace Metaplay.Metaplay.Unity
 	            private Task<NetworkDiagnosticReport> <networkDiagnosticReportTask>5__7; // 0x50
 	            private Task<MetaplayConnection.ServerStatusHint> <serverStatusHintFetchTask>5__8; // 0x58
 	            private ConnectionState <cannotConnectError>5__9; // 0x60
-	            private ConnectionState <sessionStartError>5__10; // 0x68
+	            private ErrorState <sessionStartError>5__10; // 0x68
 	            private MetaplayConnection.ConfigResourceLoader <configResourceLoader>5__11; // 0x70
 	            private List<MetaplayConnection.SessionResourceLoader> <sessionResourceLoaders>5__12; // 0x78
 	            private ScheduledMaintenanceMode <latestConnectionScheduledMaintenanceMode>5__13; // 0x80
@@ -360,17 +360,16 @@ namespace Metaplay.Metaplay.Unity
 	            private MetaTime <lastSessionResumptionPingSentAt>5__18; // 0xA0
 	            private int <lastIncidentReportedSessionResumptionPingId>5__19; // 0xA8
 	            private int <numSessionResumptionPingIncidentsReported>5__20; // 0xAC
-	            private Nullable<bool>[] <networkProbeResultBox>5__21; // 0xB0
-	            private CancellationTokenSource <networkProbeCts>5__22; // 0xB8
-	            private Task<ServerConnection> <connectTask>5__23; // 0xC0
-	            private bool <loggedIn>5__24; // 0xC8
-	            private bool <isConnected>5__25; // 0xC9
-	            private MetaTime <connectOrReconnectStartedAt>5__26; // 0xD0
-	            private Nullable<MetaTime> <sessionInitRequestTimeoutAt>5__27; // 0xD8
-	            private MessageTransport.Error <connectionError>5__28; // 0xE8
-	            private SessionProtocol.SessionStartAbortReasonTrailer <reasonTrailer>5__29; // 0xF0
-	            private Task <closeTask>5__30; // 0xF8
-	            private IHasNetworkDiagnosticReport <report>5__31; // 0x100 */
+	            private NetworkProbe <networkProbe>5__21; // 0xB0
+	            private Task<ServerConnection> <connectTask>5__22; // 0xB8
+	            private bool <loggedIn>5__23; // 0xC0
+	            private bool <isConnected>5__24; // 0xC1
+	            private MetaTime <connectOrReconnectStartedAt>5__25; // 0xC8
+	            private Nullable<MetaTime> <sessionInitRequestTimeoutAt>5__26; // 0xD0
+	            private MessageTransport.Error <connectionError>5__27; // 0xE0
+	            private SessionProtocol.SessionStartAbortReasonTrailer <reasonTrailer>5__28; // 0xE8
+	            private Task <closeTask>5__29; // 0xF0
+	            private IHasNetworkDiagnosticReport <report>5__30; // 0xF8 */
 
             var messageBuffer = new List<MetaMessage>();
             var delayedLoginMessageBuffer = new List<MetaMessage>();
@@ -1088,8 +1087,6 @@ namespace Metaplay.Metaplay.Unity
 
                     // Log debug reasonTrailer != null ? "Session start incident report sent." : "Session start abort request sent."
                 }
-
-                _sdkHook.SuppressIncidentReportForNextNetworkError();
 
                 var cannotConnectError = sessionStartError;
 

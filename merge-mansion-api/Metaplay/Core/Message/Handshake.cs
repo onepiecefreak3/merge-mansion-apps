@@ -105,6 +105,8 @@ namespace Metaplay.Metaplay.Core.Message
         public sealed class DeviceLoginRequest : LoginRequest
         {
             // Properties
+            [MetaMember(1, 0)]
+            public string DeviceId { get; set; } // 0x30
             [MetaMember(2, 0)]
             public string AuthToken { get; set; } // 0x38
             public override bool IsCreateAccountRequest => string.IsNullOrEmpty(DeviceId) && string.IsNullOrEmpty(AuthToken);
@@ -112,13 +114,14 @@ namespace Metaplay.Metaplay.Core.Message
             private DeviceLoginRequest() { }
 
             public DeviceLoginRequest(string deviceId, string authToken, EntityId playerId, bool isBot,
-                LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload) : base(deviceId, playerId, isBot, debugDiagnostics, gamePayload)
+                LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
             {
+                DeviceId = deviceId;
                 AuthToken = authToken;
             }
         }
 
-        [MetaMessage(8, MessageDirection.ClientToServer, true)]
+        [MetaMessage(8, MessageDirection.ServerToClient, true)]
         public class LoginResponse : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -178,9 +181,9 @@ namespace Metaplay.Metaplay.Core.Message
 
             private SocialAuthenticationLoginRequest() { }
 
-            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, string deviceId,
-                EntityId playerId, bool isBot, LoginDebugDiagnostics debugDiagnostics,
-                ILoginRequestGamePayload gamePayload) : base(deviceId, playerId, isBot, debugDiagnostics, gamePayload)
+            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, EntityId playerId, 
+                bool isBot, LoginDebugDiagnostics debugDiagnostics,
+                ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
             {
                 Claim = claim;
             }
@@ -207,10 +210,8 @@ namespace Metaplay.Metaplay.Core.Message
         public abstract class LoginRequest : MetaMessage
         {
             // Properties
-            [MetaMember(1, 0)]
-            public string DeviceId { get; set; } // 0x10
             [MetaMember(3, 0)]
-            public EntityId PlayerId { get; set; } // 0x18
+            public EntityId PlayerIdHint { get; set; } // 0x18
             [MetaMember(4, 0)]
             public bool IsBot { get; set; } // 0x20
             [MetaMember(5, 0)]
@@ -222,11 +223,10 @@ namespace Metaplay.Metaplay.Core.Message
 
             protected LoginRequest() { }
 
-            public LoginRequest(string deviceId, EntityId playerId, bool isBot, LoginDebugDiagnostics debugDiagnostics,
+            public LoginRequest(EntityId playerIdHint, bool isBot, LoginDebugDiagnostics debugDiagnostics,
                 ILoginRequestGamePayload gamePayload)
             {
-                DeviceId = deviceId;
-                PlayerId = playerId;
+                PlayerIdHint = playerIdHint;
                 IsBot = isBot;
                 DebugDiagnostics = debugDiagnostics;
                 GamePayload = gamePayload;

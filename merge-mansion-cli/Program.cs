@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
 using merge_mansion_cli.Dumper;
 using Metaplay;
 using Metaplay.Game.Logic;
+using Metaplay.GameLogic.Story;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Unity;
 using Metaplay.Metaplay.Unity.ConnectionStates;
@@ -57,6 +59,10 @@ namespace merge_mansion_cli
             var isSetup = SetupSystem();
             if (!isSetup)
                 return;
+
+            // DEBUG
+            var texts1 = ClientGlobal.SharedGameConfig.StoryElements.EnumerateAll().Select(x => x.Value).OfType<StoryElementInfo>().SelectMany(x => x.DialogItems.Where(y => y.Value.Ref.LocalizationId== "RomanticSpotOpening_01")).Select(y => LocMan.Get(y.Value.Ref.LocalizationId)).ToArray();
+            var texts = MetaplaySDK.ActiveLanguage.Translations.Where(x => x.Value.Contains("cute")).ToArray();
 
             // Dump data to files
             Dump(o);

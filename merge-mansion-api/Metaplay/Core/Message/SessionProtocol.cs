@@ -144,11 +144,14 @@ namespace Metaplay.Metaplay.Core.Message
             public MetaDuration DeletionRequestSafetyDelay; // 0x0
             [MetaMember(2, 0)]
             public string GameServerGooglePlaySignInOAuthClientId; // 0x8
+            [MetaMember(3, 0)]
+            public string ImmutableXLinkApiUrl; // 0x10
 
-            public ServerOptions(MetaDuration deletionRequestSafetyDelay, string gameServerGooglePlaySignInOAuthClientId)
+            public ServerOptions(MetaDuration deletionRequestSafetyDelay, string gameServerGooglePlaySignInOAuthClientId, string immutableXLinkApiUrl)
             {
                 DeletionRequestSafetyDelay = deletionRequestSafetyDelay;
                 GameServerGooglePlaySignInOAuthClientId = gameServerGooglePlaySignInOAuthClientId;
+                ImmutableXLinkApiUrl = immutableXLinkApiUrl;
             }
         }
 
@@ -158,28 +161,31 @@ namespace Metaplay.Metaplay.Core.Message
             [MetaMember(1, 0)]
             public int QueryId { get; set; } // 0x10
             [MetaMember(2, 0)]
-            public string DeviceModel { get; set; } // 0x18
+            public string DeviceGuid { get; set; } // 0x18
             [MetaMember(3, 0)]
-            public PlayerTimeZoneInfo TimeZoneInfo { get; set; } // 0x20
+            public string DeviceModel { get; set; } // 0x20
             [MetaMember(4, 0)]
-            public SessionResourceProposal ResourceProposal { get; set; } // 0x28
+            public PlayerTimeZoneInfo TimeZoneInfo { get; set; } // 0x28
             [MetaMember(5, 0)]
-            public bool IsDryRun { get; set; } // 0x50
+            public SessionProtocol.SessionResourceProposal ResourceProposal { get; set; } // 0x30
             [MetaMember(6, 0)]
-            public ISessionStartRequestGamePayload GamePayload { get; set; } // 0x58
+            public bool IsDryRun { get; set; } // 0x58
             [MetaMember(7, 0)]
-            public CompressionAlgorithmSet SupportedArchiveCompressions { get; set; } // 0x60
+            public SessionProtocol.ISessionStartRequestGamePayload GamePayload { get; set; } // 0x60
             [MetaMember(8, 0)]
-            public ClientAppPauseStatus ClientAppPauseStatus { get; set; } // 0x64
+            public CompressionAlgorithmSet SupportedArchiveCompressions { get; set; } // 0x68
+            [MetaMember(9, 0)]
+            public ClientAppPauseStatus ClientAppPauseStatus { get; set; } // 0x6C
 
             private SessionStartRequest() { }
 
-            public SessionStartRequest(int queryId, string deviceModel, PlayerTimeZoneInfo timeZoneInfo,
+            public SessionStartRequest(int queryId, string deviceGuid, string deviceModel, PlayerTimeZoneInfo timeZoneInfo,
                 SessionResourceProposal resourceProposal, bool isDryRun,
                 ISessionStartRequestGamePayload gamePayload,
                 CompressionAlgorithmSet supportedArchiveCompressions, ClientAppPauseStatus clientAppPauseStatus)
             {
                 QueryId = queryId;
+                DeviceGuid = deviceGuid;
                 DeviceModel = deviceModel;
                 TimeZoneInfo = timeZoneInfo;
                 ResourceProposal = resourceProposal;
@@ -217,6 +223,8 @@ namespace Metaplay.Metaplay.Core.Message
             public ISessionStartSuccessGamePayload GamePayload { get; set; } // 0x58
             [MetaMember(13, 0)]
             public ServerOptions ServerOptions { get; set; } // 0x60
+            [MetaMember(14, 0)]
+            public string CorrectedDeviceGuid { get; set; } // 0x78
 
             private SessionStartSuccess() { }
 
@@ -226,7 +234,7 @@ namespace Metaplay.Metaplay.Core.Message
                 Dictionary<LanguageId, ContentHash> localizationVersions,
                 List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass,
                 List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload,
-                ServerOptions serverOptions)
+                ServerOptions serverOptions, string correctDeviceGuid)
             {
                 QueryId = queryId;
                 LogicVersion = logicVersion;
@@ -240,6 +248,7 @@ namespace Metaplay.Metaplay.Core.Message
                 EntityStates = entityStates;
                 GamePayload = gamePayload;
                 ServerOptions = serverOptions;
+                CorrectedDeviceGuid = correctDeviceGuid;
             }
         }
 

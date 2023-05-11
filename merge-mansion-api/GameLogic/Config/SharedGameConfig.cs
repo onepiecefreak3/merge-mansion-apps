@@ -1,3 +1,4 @@
+using merge_mansion_api.Code.GameLogic.GameEvents;
 using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.GameLogic.Area;
 using Metaplay.GameLogic.Codex;
@@ -71,6 +72,8 @@ namespace Metaplay.GameLogic.Config
 
         public GameConfigLibrary<CollectibleBoardEventId, CollectibleBoardEventInfo> CollectibleBoardEvents { get; set; }
 
+        public GameConfigLibrary<LeaderboardEventId, LeaderboardEventInfo> LeaderBoardEvents { get; set; }
+
         public override void Import(GameConfigImporter importer)
         {
             // Import data
@@ -107,6 +110,8 @@ namespace Metaplay.GameLogic.Config
             XpMergeRewards = importer.ImportBinaryLibrary<MergeRewardId, MergeReward>("MergeRewards.mpc");
 
             CollectibleBoardEvents = importer.ImportBinaryLibrary<CollectibleBoardEventId, CollectibleBoardEventInfo>("CollectibleBoardEvents.mpc");
+
+            LeaderBoardEvents = importer.ImportBinaryLibrary<LeaderboardEventId, LeaderboardEventInfo>("LeaderboardEvents.mpc");
 
             // Resolve refs
             Languages.ResolveMetaRefs(this);

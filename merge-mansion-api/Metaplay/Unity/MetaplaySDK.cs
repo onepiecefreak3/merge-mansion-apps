@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Metaplay.Metaplay.Client.Messages;
 using Metaplay.Metaplay.Core;
+using Metaplay.Metaplay.Core.IO;
 using Metaplay.Metaplay.Core.Localization;
 using Metaplay.Metaplay.Core.Message;
 using Metaplay.Metaplay.Core.Network;
@@ -60,8 +61,12 @@ namespace Metaplay.Metaplay.Unity
         public static string ApplicationPauseReason { get; set; }
         // 0xE8
         public static MetaplayCdnAddress CdnAddress { get; set; }
-        // 0x100
+        // 0xF0
         public static BuildVersion BuildVersion { get; set; }
+        // 0x108
+        private static string DeviceGuid { get; set; }
+
+        private static int DeviceGuidFileVersion; // 0x128
 
         // 0x120
         public static Dictionary<PlayerExperimentId, ExperimentMembershipStatus> ActiveExperiments { get; set; }
@@ -72,6 +77,7 @@ namespace Metaplay.Metaplay.Unity
         {
             AppLaunchId = Guid.NewGuid();
             PersistentDataPath = null;
+            DeviceGuidFileVersion = 1;
         }
 
         public static void Start(MetaplaySDKConfig config)
@@ -98,6 +104,7 @@ namespace Metaplay.Metaplay.Unity
             // ...
 
             CdnAddress = CreateInitialCdnAddress(config.ServerEndpoint);
+            DeviceGuid = ReadDeviceGuid();
             BuildVersion = new BuildVersion(config.BuildVersion.Version ?? "undefined", config.BuildVersion.BuildNumber ?? "undefined", config.BuildVersion.CommitId ?? "undefined");
 
             Connection = new MetaplayConnection(config.ServerEndpoint, config.ConnectionConfig, config.ConnectionDelegate, new MetaplayConnectionSDKHook(), config.OfflineOptions);
@@ -176,6 +183,44 @@ namespace Metaplay.Metaplay.Unity
             _maintenanceModeChanged = true;
         }
 
+        private static string ReadDeviceGuid()
+        {
+            var devicePath = GetDeviceGuidPath();
+            var deviceGuid = AtomicBlobStore.TryReadBlob(devicePath);
+            if (deviceGuid == null)
+                return null;
+
+            using var reader = new IOReader(deviceGuid);
+
+            var fileVersion = reader.ReadInt32();
+            if (fileVersion == DeviceGuidFileVersion)
+                return reader.ReadString(0x80);
+
+            // Log Warning "Found incompatible DeviceGuid file version {fileVersion}, expected {DeviceGuidFileVersion}"
+            return null;
+        }
+
+        private static void SetDeviceGuid(string deviceGuid)
+        {
+            DeviceGuid = deviceGuid;
+
+            using var writer = new IOWriter();
+
+            writer.WriteInt32(DeviceGuidFileVersion);
+            writer.WriteString(deviceGuid);
+
+            var devicePath = GetDeviceGuidPath();
+            var blob = writer.ConvertToStream().ToArray();
+            var wasWritten = AtomicBlobStore.TryWriteBlob(devicePath, blob);
+            if (!wasWritten)
+                ; // Log Error "Storing DeviceGuid as blob {devicePath} failed"
+        }
+
+        private static string GetDeviceGuidPath()
+        {
+            return Path.Combine(PersistentDataPath, "MetaplayDeviceGuid.dat");
+        }
+
         private class MetaplayConnectionSDKHook : IMetaplayConnectionSDKHook
         {
             public void OnCurrentCdnAddressUpdated(MetaplayCdnAddress currentAddress)
@@ -201,6 +246,9 @@ namespace Metaplay.Metaplay.Unity
                     }
                 }
 
+                if (!string.IsNullOrEmpty(sessionStart.CorrectedDeviceGuid))
+                    SetDeviceGuid(sessionStart.CorrectedDeviceGuid);
+
                 var versionSet = new HashSet<ContentHash>(Connection.SessionStartResources.GameConfigBaselineVersions.Values);
                 UpkeepConfigCacheDirectory("SharedGameConfig", versionSet);
 
@@ -211,9 +259,9 @@ namespace Metaplay.Metaplay.Unity
                 //SocialAuthentication.OnSessionStarted();
             }
 
-            public void SuppressIncidentReportForNextNetworkError()
+            public string GetDeviceGuid()
             {
-                // STUB
+                return DeviceGuid;
             }
 
             private static void UpkeepConfigCacheDirectory(string cacheDirName, HashSet<ContentHash> retainedVersions)

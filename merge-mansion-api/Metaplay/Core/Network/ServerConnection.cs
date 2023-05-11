@@ -33,30 +33,31 @@ namespace Metaplay.Metaplay.Core.Network
         private CreateTransportFn _createTransport; // 0x80
         private readonly BuildVersion _buildVersion; // 0x88
         private LoginCredentials _credentials; // 0xA0
-        private SessionProtocol.SessionResourceProposal _resourceProposal; // 0xC8
-        private ClientAppPauseStatus _clientAppPauseStatus; // 0xF0
-        private int _currentSessionStartQueryId; // 0xF4
-        private GetDebugDiagnosticsFn _getDebugDiagnostics; // 0xF8
-        private EarlyMessageFilterSyncFn _earlyMessageFilterSyncFn; // 0x100
-        private SessionState _currentSession; // 0x108
-        private object _currentSessionSendQueueLock; // 0x110
-        private TaskCompletionSource<MessageTransport.Error> _terminatingErrorTask; // 0x118
-        private DateTime _connectionStartTime; // 0x120
-        //private MetaTimer _pauseTerminationTimer; // 0x128
-        private object _pauseTerminationTimerLock; // 0x130
-        internal Stats _statistics; // 0x138
-        private DateTime _watchdogDeadlineAt; // 0x148
-        private TimeSpan _watchdogDeadlineLastDuration; // 0x150
-        private object _watchdogLock; // 0x158
-        private DateTime? _resetupDeadlineAt; // 0x160
-        private TimeSpan _resetupDeadlineLastDuration; // 0x170
-        private bool _enableWatchdog; // 0x178
-        private Action _reportWatchdogViolation; // 0x180
-        private DateTime _previousUpdateAt; // 0x188
-        internal ServerGateway _currentGateway; // 0x190
-        private int _numSuccessfulSessionResumes; // 0x198
-        private LoginServerConnectionDebugDiagnostics _connDiagnostics; // 0x1A0
-        private LoginTransportDebugDiagnostics _transportDiagnostics; // 0x1A8
+        private string _deviceGuid; // 0xC8
+        private SessionProtocol.SessionResourceProposal _resourceProposal; // 0xD0
+        private ClientAppPauseStatus _clientAppPauseStatus; // 0xF8
+        private int _currentSessionStartQueryId; // 0xFC
+        private GetDebugDiagnosticsFn _getDebugDiagnostics; // 0x100
+        private EarlyMessageFilterSyncFn _earlyMessageFilterSyncFn; // 0x108
+        private SessionState _currentSession; // 0x110
+        private object _currentSessionSendQueueLock; // 0x118
+        private TaskCompletionSource<MessageTransport.Error> _terminatingErrorTask; // 0x120
+        private DateTime _connectionStartTime; // 0x128
+        //private MetaTimer _pauseTerminationTimer; // 0x130
+        private object _pauseTerminationTimerLock; // 0x138
+        internal Stats _statistics; // 0x140
+        private DateTime _watchdogDeadlineAt; // 0x150
+        private TimeSpan _watchdogDeadlineLastDuration; // 0x158
+        private object _watchdogLock; // 0x160
+        private DateTime? _resetupDeadlineAt; // 0x168
+        private TimeSpan _resetupDeadlineLastDuration; // 0x178
+        private bool _enableWatchdog; // 0x180
+        private Action _reportWatchdogViolation; // 0x188
+        private DateTime _previousUpdateAt; // 0x190
+        internal ServerGateway _currentGateway; // 0x198
+        private int _numSuccessfulSessionResumes; // 0x1A0
+        private LoginServerConnectionDebugDiagnostics _connDiagnostics; // 0x1A8
+        private LoginTransportDebugDiagnostics _transportDiagnostics; // 0x1B0
 
         //private LogChannel Log { get; } // 0x10
 
@@ -64,7 +65,7 @@ namespace Metaplay.Metaplay.Core.Network
 
         public ServerConnection(/*LogChannel log, */Config config, ServerEndpoint endpoint, CreateTransportFn createTransport,
             BuildVersion buildVersion,
-            LoginCredentials initialCredentials, SessionProtocol.SessionResourceProposal initialResourceProposal,
+            LoginCredentials initialCredentials, string initialDeviceGuid, SessionProtocol.SessionResourceProposal initialResourceProposal,
             ClientAppPauseStatus initialClientAppPauseStatus,
             GetDebugDiagnosticsFn getDebugDiagnostics,
             EarlyMessageFilterSyncFn earlyMessageFilterSync, bool enableWatchdog,
@@ -93,6 +94,7 @@ namespace Metaplay.Metaplay.Core.Network
             _createTransport = createTransport;
             _buildVersion = buildVersion;
             _credentials = initialCredentials;
+            _deviceGuid = initialDeviceGuid;
             _getDebugDiagnostics = getDebugDiagnostics;
             _earlyMessageFilterSyncFn = earlyMessageFilterSync;
             _enableWatchdog = enableWatchdog;
@@ -150,7 +152,7 @@ namespace Metaplay.Metaplay.Core.Network
                 return;
 
             _currentSessionStartQueryId++;
-            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
+            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _deviceGuid, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
 
             _transport.EnqueueSendMessage(req);
         }
@@ -638,6 +640,9 @@ namespace Metaplay.Metaplay.Core.Network
             }
 
             // Log info "Session created, token {sessionSuccess.SessionToken}"
+            if (!string.IsNullOrEmpty(sessionSuccess.CorrectedDeviceGuid))
+                _deviceGuid = sessionSuccess.CorrectedDeviceGuid;
+
             lock (_currentSessionSendQueueLock)
             {
                 var state = new SessionParticipantState(sessionSuccess.SessionToken);
@@ -848,12 +853,12 @@ namespace Metaplay.Metaplay.Core.Network
                 var loginDiag = _getDebugDiagnostics(_currentSession != null);
                 var loginMsg = _credentials.SocialAuthClaim == null ?
                     (MetaMessage)new Handshake.DeviceLoginRequest(_credentials.DeviceId, _credentials.AuthToken, _credentials.PlayerId, _credentials.IsBot, loginDiag, _config.LoginGamePayload) :
-                    new Handshake.SocialAuthenticationLoginRequest(_credentials.SocialAuthClaim, _credentials.AuthToken, _credentials.PlayerId, _credentials.IsBot, loginDiag, _config.LoginGamePayload);
+                    new Handshake.SocialAuthenticationLoginRequest(_credentials.SocialAuthClaim, _credentials.PlayerId, _credentials.IsBot, loginDiag, _config.LoginGamePayload);
 
                 _transport.EnqueueSendMessage(loginMsg);
 
                 var sessionReq = _currentSession == null ?
-                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
+                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _deviceGuid, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
                     new SessionProtocol.SessionResumeRequest(SessionResumptionInfo.FromParticipantState(_currentSession.SessionParticipant));
 
                 _transport.EnqueueSendMessage(sessionReq);

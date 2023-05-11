@@ -535,7 +535,7 @@ namespace Metaplay.Metaplay.Generated
                         targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaMessageAttribute>().TypeCode == deriveId) :
                         targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>().DeriveId == deriveId);
                     if (targetType == null)
-                        throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}.");
+                        throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}");
 
                     value = Activator.CreateInstance(targetType, true);
                     Deserialize_Members(ref context, reader, value);
