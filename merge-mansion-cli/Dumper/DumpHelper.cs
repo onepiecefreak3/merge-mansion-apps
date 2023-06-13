@@ -95,7 +95,7 @@ namespace merge_mansion_cli.Dumper
             return CreateAreaDumper().Dump(ClientGlobal.SharedGameConfig);
         }
 
-        public static IList<object> GetEventData()
+        public static IDictionary<string, object> GetEventData()
         {
             return CreateEventDumper().Dump(ClientGlobal.SharedGameConfig);
         }

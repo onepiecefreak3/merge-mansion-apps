@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using merge_mansion_api.Code.GameLogic.GameEvents;
 using merge_mansion_cli.Graphs;
 using Metaplay;
 using Metaplay.Code.GameLogic.GameEvents;
@@ -762,6 +763,8 @@ namespace merge_mansion_cli.Dumper.Json
             {
                 typeof(BoardEventInfo),
                 typeof(ProgressionEventInfo),
+                typeof(CollectibleBoardEventInfo),
+                typeof(LeaderboardEventInfo),
                 typeof(EventTaskInfo),
                 typeof(ShopEventInfo)
             };
@@ -774,6 +777,10 @@ namespace merge_mansion_cli.Dumper.Json
                     SerializeBoardEvent(writer, bei, serializer);
                 else if (value is ProgressionEventInfo pei)
                     SerializeProgressionEvent(writer, pei, serializer);
+                else if (value is CollectibleBoardEventInfo cbei)
+                    SerializeCollectibleBoardEvent(writer, cbei, serializer);
+                else if (value is LeaderboardEventInfo lei)
+                    SerializeLeaderboardEvent(writer, lei, serializer);
                 else if (value is EventTaskInfo eti)
                     SerializeEventTask(writer, eti, serializer);
                 else if (value is ShopEventInfo sei)
@@ -864,6 +871,58 @@ namespace merge_mansion_cli.Dumper.Json
                 foreach (var prop in typeof(ProgressionEventInfo).GetProperties((BindingFlags)52))
                 {
                     var value = prop.GetValue(progressionEvent);
+                    if (value == null && serializer.NullValueHandling == NullValueHandling.Ignore)
+                        continue;
+
+                    if (value is IMetaRef mRef && !mRef.IsResolved)
+                        continue;
+
+                    writer.WritePropertyName(prop.Name);
+                    serializer.Serialize(writer, value);
+                }
+
+                writer.WriteEndObject();
+            }
+
+            private void SerializeCollectibleBoardEvent(JsonWriter writer, CollectibleBoardEventInfo collectibleEvent, JsonSerializer serializer)
+            {
+                if (collectibleEvent.ConfigKey.Value == null)
+                {
+                    new JObject().WriteTo(writer);
+                    return;
+                }
+
+                writer.WriteStartObject();
+
+                foreach (var prop in typeof(CollectibleBoardEventInfo).GetProperties((BindingFlags)52))
+                {
+                    var value = prop.GetValue(collectibleEvent);
+                    if (value == null && serializer.NullValueHandling == NullValueHandling.Ignore)
+                        continue;
+
+                    if (value is IMetaRef mRef && !mRef.IsResolved)
+                        continue;
+
+                    writer.WritePropertyName(prop.Name);
+                    serializer.Serialize(writer, value);
+                }
+
+                writer.WriteEndObject();
+            }
+
+            private void SerializeLeaderboardEvent(JsonWriter writer, LeaderboardEventInfo leaderBoardEvent, JsonSerializer serializer)
+            {
+                if (leaderBoardEvent.ConfigKey.Value == null)
+                {
+                    new JObject().WriteTo(writer);
+                    return;
+                }
+
+                writer.WriteStartObject();
+
+                foreach (var prop in typeof(LeaderboardEventInfo).GetProperties((BindingFlags)52))
+                {
+                    var value = prop.GetValue(leaderBoardEvent);
                     if (value == null && serializer.NullValueHandling == NullValueHandling.Ignore)
                         continue;
 

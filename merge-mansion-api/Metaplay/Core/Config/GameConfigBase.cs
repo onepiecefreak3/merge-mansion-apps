@@ -13,6 +13,9 @@ namespace Metaplay.Metaplay.Core.Config
         // 0x10
         public ContentHash ArchiveVersion { get; private set; }
 
+        // CUSTOM: Expose CreatedAt from archive
+        public MetaTime ArchiveCreatedAt { get; private set; }
+
         protected GameConfigBase()
         {
             _refResolvers = new Dictionary<Type, List<Func<object, object>>>();
@@ -54,6 +57,7 @@ namespace Metaplay.Metaplay.Core.Config
                 throw new ArgumentNullException(nameof(baseResolver));
 
             ArchiveVersion = archive.BaselineArchive.Version;
+            ArchiveCreatedAt = archive.BaselineArchive.CreatedAt;
 
             var importer = new GameConfigImporter(archive, null, this);
             Import(importer);

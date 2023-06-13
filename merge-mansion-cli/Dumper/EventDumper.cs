@@ -8,13 +8,19 @@ using Newtonsoft.Json.Converters;
 
 namespace merge_mansion_cli.Dumper
 {
-    class EventDumper : JsonDumper<IList<object>>
+    class EventDumper : JsonDumper<IDictionary<string,object>>
     {
-        public override IList<object> Dump(SharedGameConfig config)
+        public override IDictionary<string, object> Dump(SharedGameConfig config)
         {
-            var boards = config.BoardEvents.EnumerateAll().Select(x => x.Value);
-            var progressions = config.ProgressionEvents.EnumerateAll().Select(x => x.Value);
-            return boards.Concat(progressions).ToArray();
+            var events = new Dictionary<string, object>
+            {
+                ["Boards"] = config.BoardEvents.EnumerateAll().Select(x => x.Value).ToArray(),
+                ["Progressions"] = config.ProgressionEvents.EnumerateAll().Select(x => x.Value).ToArray(),
+                ["CollectibleBoards"] = config.CollectibleBoardEvents.EnumerateAll().Select(x => x.Value).ToArray(),
+                ["Leaderboards"] = config.LeaderboardEvents.EnumerateAll().Select(x => x.Value).ToArray()
+            };
+
+            return events;
         }
 
         protected override JsonSerializerSettings CreateSettings(SharedGameConfig config)
