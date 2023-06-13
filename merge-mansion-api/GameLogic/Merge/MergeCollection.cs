@@ -10,7 +10,7 @@ namespace Metaplay.GameLogic.Merge
         [MetaMember(1)]
         public Dictionary<ItemPair, IItemProducer> Collection { get; set; }
 
-        public bool ContainsPair((ItemType, ItemType) pair)
+        public bool ContainsPair((ItemTypeConstant, ItemTypeConstant) pair)
         {
             var search=new ItemPair{First = pair.Item1,Second = pair.Item2};
 
@@ -21,9 +21,9 @@ namespace Metaplay.GameLogic.Merge
         public class ItemPair
         {
             [MetaMember(1)]
-            public ItemType First { get; set; }
+            public ItemTypeConstant First { get; set; }
             [MetaMember(2)]
-            public ItemType Second { get; set; }
+            public ItemTypeConstant Second { get; set; }
         }
     }
 }

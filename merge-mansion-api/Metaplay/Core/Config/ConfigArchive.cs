@@ -5,12 +5,13 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using merge_mansion_api.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.IO;
 using Metaplay.Metaplay.Core.Math;
 
 namespace Metaplay.Metaplay.Core.Config
 {
-    public class ConfigArchive
+    public class ConfigArchive : IConfigArchive
     {
         // 0x0
         public const int FileSchemaVersion = 5;

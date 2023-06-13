@@ -113,26 +113,26 @@ namespace Metaplay
 
         #region Item methods
 
-        public static string GetDescription(ItemType itemType, int level)
+        public static string GetDescription(ItemTypeConstant itemTypeConstant, int level)
         {
             // CUSTOM: Check if item type is defined
-            if (!Enum.IsDefined(itemType))
+            if (!Enum.IsDefined(itemTypeConstant))
                 return string.Empty;
 
-            var parts = itemType.ToString().Split('_');
+            var parts = itemTypeConstant.ToString().Split('_');
             return Get($"Item_{parts[0]}{level}_Description");
         }
 
-        public static string GetItemName(ItemType itemType)
+        public static string GetItemName(ItemTypeConstant itemTypeConstant)
         {
             // CUSTOM: Check if item type is defined
-            if (!Enum.IsDefined(itemType))
+            if (!Enum.IsDefined(itemTypeConstant))
                 return string.Empty;
 
-            var itemTypeName = itemType.ToString();
+            var itemTypeName = itemTypeConstant.ToString();
             var lastUnderscore = itemTypeName.LastIndexOf('_');
             if (lastUnderscore <= 0 || lastUnderscore >= itemTypeName.Length - 1)
-                throw new Exception($"{itemType} has invalid _ (underscore) placement. Last _ should separate item name and level.");
+                throw new Exception($"{itemTypeConstant} has invalid _ (underscore) placement. Last _ should separate item name and level.");
 
             var itemName = "Item_" + itemTypeName[..lastUnderscore];
             var level = int.Parse(itemTypeName[(lastUnderscore + 1)..]);

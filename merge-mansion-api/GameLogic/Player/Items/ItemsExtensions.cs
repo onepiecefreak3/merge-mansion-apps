@@ -59,7 +59,7 @@ namespace Metaplay.GameLogic.Player.Items
             if (refer == null)
                 throw new ArgumentNullException(nameof(definition.Ref));
 
-            if (refer.ConfigKey == ItemType.None)
+            if (refer.ConfigKey == ItemTypeConstant.None)
                 return null;
 
             return refer;

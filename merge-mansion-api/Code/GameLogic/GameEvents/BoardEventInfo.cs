@@ -36,7 +36,7 @@ namespace Metaplay.Code.GameLogic.GameEvents
 		[MetaMember(9, 0)]
 		public MetaRef<EventLevels> Levels { get; set; }
 		[MetaMember(12, 0)]
-		public ItemType? PortalItem { get; set; }
+		public ItemTypeConstant? PortalItem { get; set; }
 		[MetaMember(15, 0)]
 		public string NameLocalizationId { get; set; }
 		[MetaMember(16, 0)]

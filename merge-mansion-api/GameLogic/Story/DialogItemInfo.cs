@@ -59,7 +59,7 @@ namespace Metaplay.GameLogic.Story
         [MetaMember(24, 0)]
         public List<MapCharacterType> ResetMapCharacters { get; set; }
         [MetaMember(25, 0)]
-        public IList<HotspotId> ScrollToHotSpot { get; set; }
+        public List<HotspotId> ScrollToHotSpot { get; set; }
         [MetaMember(26, 0)]
         public List<DialogCharacterType> DiscoveredCharacters { get; set; }
 

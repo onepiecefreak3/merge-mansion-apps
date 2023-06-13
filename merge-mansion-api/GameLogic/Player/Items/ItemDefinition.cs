@@ -21,10 +21,10 @@ using Newtonsoft.Json;
 
 namespace Metaplay.GameLogic.Player.Items
 {
-    public class ItemDefinition: IGameConfigData<ItemType>
+    public class ItemDefinition: IGameConfigData<ItemTypeConstant>
     {
         [MetaMember(1)]
-        public ItemType ConfigKey { get; set; } // 0x10
+        public ItemTypeConstant ConfigKey { get; set; } // 0x10
         [MetaMember(2)]
         public string PoolTag { get; set; } // 0x18
         [MetaMember(3)]
@@ -86,7 +86,7 @@ namespace Metaplay.GameLogic.Player.Items
         [MetaMember(30)]
         public List<string> AnalyticsMetaData { get; set; }
         [MetaMember(31)]
-        public List<ItemType> CombineInfoWithItem { get; set; }
+        public List<ItemTypeConstant> CombineInfoWithItem { get; set; }
         [MetaMember(32)]
         public ItemRarity Rarity { get; set; }
         [MetaMember(33)]

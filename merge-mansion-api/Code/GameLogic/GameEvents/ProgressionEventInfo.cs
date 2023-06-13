@@ -34,7 +34,7 @@ namespace Metaplay.Code.GameLogic.GameEvents
         [MetaMember(9)]
         public List<int> ChancesToSpawnEventItemPerLevel { get; set; }
         [MetaMember(10)]
-        public ItemType EventItem { get; set; }
+        public ItemTypeConstant EventItem { get; set; }
         [MetaMember(11)]
         public MetaRef<InAppProductInfo> PremiumIAP { get; set; }
         [MetaMember(12, 0)]

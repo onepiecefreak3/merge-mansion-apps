@@ -15,7 +15,7 @@ namespace Metaplay.GameLogic.Player.Items.Boosting
         [MetaMember(2, 0)]
         public BoostAreaStyle BoostAreaStyle { get; set; }
         [MetaMember(3, 0)]
-        public List<ItemType> AffectedItemsSet { get; set; }
+        public List<ItemTypeConstant> AffectedItemsSet { get; set; }
         [MetaMember(4, 0)]
         public F32 BoostFactor { get; set; }
 	}

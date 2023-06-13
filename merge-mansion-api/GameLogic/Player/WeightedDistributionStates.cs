@@ -22,13 +22,13 @@ namespace Metaplay.GameLogic.Player
         [MetaMember(2, 0)]
         private Dictionary<string, uint> wdChecksums; // 0x18
 
-        public int Roll(RollHistoryType rollType, ItemType markerItem, List<ValueTuple<ItemType, int>> initialOddsList, RandomPCG rng)
+        public int Roll(RollHistoryType rollType, ItemTypeConstant markerItem, List<ValueTuple<ItemTypeConstant, int>> initialOddsList, RandomPCG rng)
         {
             var key = ToKey(rollType, markerItem);
             return Roll(key, initialOddsList, rng, wdStates, wdChecksums);
         }
 
-        private string ToKey(RollHistoryType rollType, ItemType markerItem)
+        private string ToKey(RollHistoryType rollType, ItemTypeConstant markerItem)
         {
             switch (rollType)
             {
@@ -55,7 +55,7 @@ namespace Metaplay.GameLogic.Player
             }
         }
 
-        private static int Roll(string key, List<(ItemType, int)> initialOddsList, RandomPCG rng,
+        private static int Roll(string key, List<(ItemTypeConstant, int)> initialOddsList, RandomPCG rng,
             IDictionary<string, Weight[]> wdStates, IDictionary<string, uint> wdChecksums)
         {
             var oddListHash = CalculateOddListHash(initialOddsList);
@@ -87,7 +87,7 @@ namespace Metaplay.GameLogic.Player
             return randomPick;
         }
 
-        private static uint CalculateOddListHash(List<(ItemType, int)> oddsList)
+        private static uint CalculateOddListHash(List<(ItemTypeConstant, int)> oddsList)
         {
             var result = 0u;
             foreach (var odd in oddsList)
@@ -96,7 +96,7 @@ namespace Metaplay.GameLogic.Player
             return result;
         }
 
-        private static WeightedDistribution GenerateWeightedDistributionFromOddsList(List<(ItemType, int)> oddsList)
+        private static WeightedDistribution GenerateWeightedDistributionFromOddsList(List<(ItemTypeConstant, int)> oddsList)
         {
             var weights = new List<F32>();
 

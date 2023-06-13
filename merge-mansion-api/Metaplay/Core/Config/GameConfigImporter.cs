@@ -18,6 +18,11 @@ namespace Metaplay.Metaplay.Core.Config
             _config = config;
         }
 
+        public bool Contains(string fileName)
+        {
+            return _archive.BaselineArchive.ContainsEntryWithName(fileName);
+        }
+
         public GameConfigLibrary<TKey, TValue> ImportBinaryLibrary<TKey, TValue>(string fileName)
             where TValue : IGameConfigData<TKey>
         {

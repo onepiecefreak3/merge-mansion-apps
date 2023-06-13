@@ -11,7 +11,7 @@ namespace Metaplay.Code.GameLogic.GameEvents
     public class BoardCell
     {
         [MetaMember(1, 0)]
-        public ItemType ItemType { get; set; }
+        public ItemTypeConstant ItemType { get; set; }
         [MetaMember(2, 0)]
         public ItemVisibility ItemVisibility { get; set; }
     }

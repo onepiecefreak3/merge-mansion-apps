@@ -459,7 +459,7 @@ namespace merge_mansion_cli.Dumper.Json
                 if (!Enum.IsDefined(item.ConfigKey))
                     _output.Warning("ItemType {0} unknown", item.ConfigKey);
 
-                if (item.ConfigKey == ItemType.None)
+                if (item.ConfigKey == ItemTypeConstant.None)
                 {
                     new JObject().WriteTo(writer);
                     return;

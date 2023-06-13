@@ -12,7 +12,9 @@ namespace merge_mansion_cli.Dumper
     {
         public override IList<object> Dump(SharedGameConfig config)
         {
-            return config.BoardEvents.EnumerateAll().Select(x => x.Value).Concat(config.ProgressionEvents.EnumerateAll().Select(x => x.Value)).ToList();
+            var boards = config.BoardEvents.EnumerateAll().Select(x => x.Value);
+            var progressions = config.ProgressionEvents.EnumerateAll().Select(x => x.Value);
+            return boards.Concat(progressions).ToArray();
         }
 
         protected override JsonSerializerSettings CreateSettings(SharedGameConfig config)

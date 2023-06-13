@@ -10,13 +10,13 @@ namespace Metaplay.GameLogic.Player.Requirements
     public class PlayerItemRequirement : PlayerRequirement
     {
         [MetaMember(3, 0)]
-        private List<ItemType> ItemTypes { get; set; }
+        private List<ItemTypeConstant> ItemTypes { get; set; }
         [MetaMember(1, 0)]
         private List<MetaRef<ItemDefinition>> ItemRefs { get; set; }
         [MetaMember(2, 0)]
         public int Requirement { get; set; }
 
-        public IReadOnlyCollection<ItemType> Items => ItemTypes;
+        public IReadOnlyCollection<ItemTypeConstant> Items => ItemTypes;
         public IEnumerable<ItemDefinition> ItemDefinitions => ItemRefs.Select(x => x.Ref);
         public ItemDefinition Item => ItemRefs.FirstOrDefault()?.Ref;
     }

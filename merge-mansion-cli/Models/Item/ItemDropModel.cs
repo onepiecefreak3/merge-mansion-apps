@@ -14,7 +14,7 @@ namespace merge_mansion_cli.Models.Item
         public int MaxStorage { get; set; }
         public int CycleAmount { get; set; }
         public DurationModel Delay { get; set; }
-        public IDictionary<ItemType, double> Odds { get; set; }
+        public IDictionary<ItemTypeConstant, double> Odds { get; set; }
     }
 
     class DurationModel

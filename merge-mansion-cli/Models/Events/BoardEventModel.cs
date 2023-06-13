@@ -22,7 +22,7 @@ namespace merge_mansion_cli.Models.Events
         public override EventType? EventType => Events.EventType.Board;
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public ItemType? EntranceItem { get; set; }
+        public ItemTypeConstant? EntranceItem { get; set; }
 
         public string TaskDependencies { get; set; }
         public IList<TaskModel> Tasks { get; set; }
@@ -33,7 +33,7 @@ namespace merge_mansion_cli.Models.Events
         public override EventType? EventType => Events.EventType.Progression;
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public ItemType? EventItem { get; set; }
+        public ItemTypeConstant? EventItem { get; set; }
 
         public IList<EventLevelModel> FreeRewards { get; set; }
         public IList<EventLevelModel> PremiumRewards { get; set; }

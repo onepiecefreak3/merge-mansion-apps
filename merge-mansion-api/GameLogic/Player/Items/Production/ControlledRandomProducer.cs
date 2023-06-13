@@ -15,7 +15,7 @@ namespace Metaplay.GameLogic.Player.Items.Production
         [MetaMember(1)]
         public RollHistoryType RollType { get; set; }   // 0x10
         [MetaMember(2)]
-        public ItemType ItemType { get; set; }  // 0x14
+        public ItemTypeConstant ItemType { get; set; }  // 0x14
         [MetaMember(3)]
         public List<ItemOdds> GenerationOdds { get; set; }  // 0x18
 

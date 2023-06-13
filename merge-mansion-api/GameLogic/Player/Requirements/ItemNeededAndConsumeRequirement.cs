@@ -13,7 +13,7 @@ namespace Metaplay.GameLogic.Player.Requirements
     public class ItemNeededAndConsumeRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]
-        private List<ItemType> ItemTypes { get; set; }
+        private List<ItemTypeConstant> ItemTypes { get; set; }
         [MetaMember(2, 0)]
         public List<MetaRef<ItemDefinition>> ItemRefs { get; set; }
     }
