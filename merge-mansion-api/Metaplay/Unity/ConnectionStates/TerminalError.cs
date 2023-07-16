@@ -111,5 +111,15 @@ namespace Metaplay.Metaplay.Unity.ConnectionStates
         {
             public NetworkDiagnosticReport NetworkDiagnosticReport { get; set; }
         }
+
+        public class ClientSideConnectionError : TerminalError
+        {
+            public readonly Exception Exception; // 0x10
+            
+            public ClientSideConnectionError(Exception exception)
+            {
+                Exception = exception;
+            }
+        }
     }
 }

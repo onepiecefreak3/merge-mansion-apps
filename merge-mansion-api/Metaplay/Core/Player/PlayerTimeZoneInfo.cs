@@ -1,4 +1,5 @@
-﻿using Metaplay.Metaplay.Core.Model;
+﻿using System;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Player
 {
@@ -17,6 +18,14 @@ namespace Metaplay.Metaplay.Core.Player
         public PlayerTimeZoneInfo GetCorrected()
         {
             return new PlayerTimeZoneInfo(Util.Clamp(CurrentUtcOffset, MetaDuration.FromHours(-18), MetaDuration.FromHours(18)));
+        }
+
+        public static PlayerTimeZoneInfo CreateForCurrentDevice()
+        {
+            var offset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
+            var metaOffset = MetaDuration.FromMilliseconds((long)offset.TotalMilliseconds);
+
+            return new PlayerTimeZoneInfo(metaOffset);
         }
     }
 }

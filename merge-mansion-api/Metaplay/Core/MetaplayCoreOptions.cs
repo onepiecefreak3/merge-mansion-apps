@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Metaplay.Metaplay.Core.Localization;
+using System;
 using System.Text.RegularExpressions;
 
 namespace Metaplay.Metaplay.Core
@@ -10,12 +11,12 @@ namespace Metaplay.Metaplay.Core
         public readonly string ProjectName; // 0x10
         public readonly string GameMagic; // 0x18
         public readonly MetaVersionRange SupportedLogicVersions; // 0x20
-        public readonly int LoginProtocolVersion; // 0x28
-        public readonly byte GuildInviteCodeSalt; // 0x2C
+        public readonly byte GuildInviteCodeSalt; // 0x28
         public readonly string[] SharedNamespaces; // 0x30
-        public readonly MetaplayFeatureFlags FeatureFlags; // 0x38
+        public readonly LanguageId DefaultLanguage; // 0x38
+        public readonly MetaplayFeatureFlags FeatureFlags; // 0x40
 
-        public MetaplayCoreOptions(string projectName, string gameMagic, MetaVersionRange supportedLogicVersions, int loginProtocolVersion, byte guildInviteCodeSalt, string[] sharedNamespaces, MetaplayFeatureFlags featureFlags)
+        public MetaplayCoreOptions(string projectName, string gameMagic, MetaVersionRange supportedLogicVersions, byte guildInviteCodeSalt, string[] sharedNamespaces, LanguageId defaultLanguage, MetaplayFeatureFlags featureFlags)
         {
             ProjectName = projectName ?? throw new ArgumentNullException(nameof(projectName));
             if (projectName == string.Empty) 
@@ -28,13 +29,15 @@ namespace Metaplay.Metaplay.Core
             if(gameMagic.Length!=4)
                 throw new ArgumentException("GameMagic must be exactly 4 characters long");
 
-            SupportedLogicVersions = supportedLogicVersions ?? throw new ArgumentNullException(nameof(supportedLogicVersions));
-
-            LoginProtocolVersion = loginProtocolVersion;
-            GuildInviteCodeSalt = guildInviteCodeSalt;
+            if (defaultLanguage != null)
+                DefaultLanguage = defaultLanguage;
 
             SharedNamespaces = sharedNamespaces ?? throw new ArgumentNullException(nameof(sharedNamespaces));
+
             FeatureFlags = featureFlags;
+            GuildInviteCodeSalt = guildInviteCodeSalt;
+
+            SupportedLogicVersions = supportedLogicVersions ?? throw new ArgumentNullException(nameof(supportedLogicVersions));
         }
     }
 }

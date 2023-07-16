@@ -11,6 +11,7 @@ using Metaplay.GameLogic.Story;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Unity;
 using Metaplay.Metaplay.Unity.ConnectionStates;
+using Metaplay.UnityEngine;
 
 namespace merge_mansion_cli
 {
@@ -89,6 +90,7 @@ namespace merge_mansion_cli
                         {
                             GlobalOptions.MinVersion = me.ServerAcceptedVersions.MinVersion;
                             GlobalOptions.MaxVersion = me.ServerAcceptedVersions.MaxVersion;
+                            Application.Version = $"{me.ServerAcceptedVersions.MinVersion}";
 
                             MetaplayCore.Reset();
 

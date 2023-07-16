@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using merge_mansion_api.Code.GameLogic.GameEvents;
 using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.GameLogic.Player.Items;
 using Metaplay.GameLogic.Player.Requirements;
@@ -14,7 +13,7 @@ using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.Model;
 using Metaplay.Metaplay.Core.Offers;
 
-namespace merge_mansion_api.Code.GameLogic.GameEvents
+namespace Metaplay.Code.GameLogic.GameEvents
 {
     public class LeaderboardEventInfo : IGameConfigData<LeaderboardEventId>
     {

@@ -13,6 +13,7 @@ using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Client;
 using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.Debugging;
+using Metaplay.Metaplay.Core.Localization;
 using Metaplay.Metaplay.Core.Message;
 using Metaplay.Metaplay.Core.Network;
 using Metaplay.Metaplay.Core.Player;
@@ -22,6 +23,7 @@ using Metaplay.Metaplay.Network;
 using Metaplay.Metaplay.Unity.ConnectionStates;
 using Metaplay.UnityEngine;
 using Newtonsoft.Json;
+using static Metaplay.Metaplay.Unity.MetaplayConnection;
 
 namespace Metaplay.Metaplay.Unity
 {
@@ -29,25 +31,25 @@ namespace Metaplay.Metaplay.Unity
     {
         public ConnectionConfig Config; // 0x30
 
-        public ClientSessionStartResources SessionStartResources; // 0x60
+        public ClientSessionStartResources SessionStartResources; // 0x78
 
-        private DeviceCredentials _credentials; // 0x70
-        private bool _credentialsPendingIOError; // 0x78
-        private ServerConnection _serverConnection; // 0x80
-        private IEnumerator<Marker> _supervisionLoop; // 0x88
-        private CancellationTokenSource _cancellation; // 0x90
-        private bool _flushEnqueuedMessagesBeforeClose; // 0x98
-        private bool _supervisionLoopRunning; // 0x99
-        private List<MetaMessage> _messagesToDispatch; // 0xA0
-        private ConnectionStatistics _statistics; // 0xA8
-        private IMetaplayConnectionSDKHook _sdkHook; // 0xB0
-        private uint _sessionConnectionNdx; // 0xB8
-        private uint _sessionNonce; // 0xBC
-        private bool _messageDispatchSuspended; // 0xC0
-        private List<MetaMessage> _suspendedDispatchMessages; // 0xC8
-        //private LogHandlerForwardingBuffer _logForwardingBuffer; // 0xD0
-        //private LogChannel _logForwardingChannel; // 0xD8
-        private MetaplayOfflineOptions _offlineOptions; // 0xE0
+        private DeviceCredentials _credentials; // 0x88
+        private bool _credentialsPendingIOError; // 0x90
+        private ServerConnection _serverConnection; // 0x98
+        private IEnumerator<Marker> _supervisionLoop; // 0xA0
+        private CancellationTokenSource _cancellation; // 0xA8
+        private bool _flushEnqueuedMessagesBeforeClose; // 0xB0
+        private bool _supervisionLoopRunning; // 0xB1
+        private List<MetaMessage> _messagesToDispatch; // 0xB8
+        private ConnectionStatistics _statistics; // 0xC0
+        private IMetaplayConnectionSDKHook _sdkHook; // 0xC8
+
+        private bool _messageDispatchSuspended; // 0xD0
+        private List<MetaMessage> _suspendedDispatchMessages; // 0xD8
+        //private LogHandlerForwardingBuffer _logForwardingBuffer; // 0xE0
+        private MetaplayOfflineOptions _offlineOptions; // 0xE8
+        private SessionNonceService _sessionNonceService; // 0xF0
+        private UnitySessionGuidService _sessionGuidService; // 0xF8
 
         // 0x10
         // private LogChannel Log { get; }
@@ -65,9 +67,9 @@ namespace Metaplay.Metaplay.Unity
         // 0x48
         public string LatestServerVersion { get; set; }
         // 0x50
-        public SessionProtocol.ServerOptions ServerOptions { get; set; }
+        public Handshake.ServerOptions ServerOptions { get; set; }
 
-        // 0x68
+        // 0x80
         public IOfflineServer OfflineServer { get; set; }
 
         private MetaDuration? JustEndedPauseDuration => MetaplaySDK.ApplicationPauseStatus == ApplicationPauseStatus.ResumedFromPauseThisFrame ? MetaplaySDK.ApplicationLastPauseDuration : (MetaDuration?)null;
@@ -82,7 +84,7 @@ namespace Metaplay.Metaplay.Unity
             Delegate = connDelegate;
             Endpoint = initialEndpoint;
             _sdkHook = sdkHook;
-            //Log = MetaplaySDK.IncidentTracker;
+            // Log = MetaplaySDK.IncidentTracker;
             _offlineOptions = offlineOptions;
 
             State = new NotConnected();
@@ -95,8 +97,7 @@ namespace Metaplay.Metaplay.Unity
 
             _messagesToDispatch = new List<MetaMessage>();
             _statistics = ConnectionStatistics.CreateNew();
-            //_logForwardingBuffer = new LogHandlerForwardingBuffer(Log, 100, TimeSpan.FromSeconds(5));
-            //_logForwardingChannel = new LogChannel(Log.0x10, new List<ILogHandler>{ _logForwardingBuffer });
+            // _logForwardingBuffer = new LogHandlerForwardingBuffer(Log, 100, TimeSpan.FromSeconds(5));
 
             Delegate.Init();
 
@@ -111,8 +112,11 @@ namespace Metaplay.Metaplay.Unity
                     PlayerId = EntityId.None
                 };
             }
+            else
+                ; // Log debug "Found credentials: deviceId={DeviceId}, playerId={PlayerId}"
 
-            // Log debug "Found device credentials: deviceId={_credentials.DeviceId}, playerId={_credentials.PlayerId}"
+            _sessionNonceService = new SessionNonceService(MetaplaySDK.AppLaunchId);
+            _sessionGuidService = new UnitySessionGuidService(sdkHook);
         }
 
         //public Task<ISharedGameConfig> GetSpecializedGameConfigAsync(ContentHash configVersion, ContentHash patchesVersion, GameConfigSpecializationKey specializationKey)
@@ -225,9 +229,9 @@ namespace Metaplay.Metaplay.Unity
 
             var loginCreds = new LoginCredentials(_credentials.DeviceId, _credentials.AuthToken, _credentials.PlayerId, false, creds);
 
-            return new ServerConnection(serverConnectionConfig, Endpoint, createTransport, MetaplaySDK.BuildVersion,
-                loginCreds, _sdkHook.GetDeviceGuid(), initialResourceProposal, initialPauseStatus, Delegate.GetLoginDebugDiagnostics, MetaplaySDK.MessageDispatcher.InterceptMessage,
-                true, MetaplaySDK.IncidentTracker.ReportWatchdogDeadlineExceededError, numFailedConnectionAttempts);
+            return new ServerConnection(serverConnectionConfig, Endpoint, _sessionNonceService, _sessionGuidService, createTransport, MetaplaySDK.BuildVersion,
+                loginCreds, initialResourceProposal, initialPauseStatus, Delegate.GetLoginDebugDiagnostics, MetaplaySDK.MessageDispatcher.InterceptMessage,
+                true, MetaplaySDK.IncidentTracker.ReportWatchdogDeadlineExceededError, numFailedConnectionAttempts, true);
         }
 
         private IMessageTransport CreateOnlineTransport(ServerGateway gateway, TimeSpan? maxConnectTimeout)
@@ -253,11 +257,11 @@ namespace Metaplay.Metaplay.Unity
             transportConfig.SupportedLogicVersions = MetaplayCore.Options.SupportedLogicVersions;
             transportConfig.FullProtocolHash = MetaSerializerTypeRegistry.FullProtocolHash;
             transportConfig.CommitId = MetaplaySDK.BuildVersion.CommitId;
-            transportConfig.ClientSessionConnectionNdx = _sessionConnectionNdx;
-            transportConfig.ClientSessionNonce = _sessionNonce;
-            transportConfig.AppLaunchId = BitConverter.ToUInt32(MetaplaySDK.AppLaunchId.ToByteArray());
+            transportConfig.ClientSessionConnectionNdx = _sessionNonceService.GetSessionConnectionIndex();
+            transportConfig.ClientSessionNonce = _sessionNonceService.GetSessionNonce();
+            transportConfig.AppLaunchId = _sessionNonceService.GetTransportAppLaunchId();
             transportConfig.Platform = ClientPlatform.Android;
-            transportConfig.LoginProtocolVersion = MetaplayCore.Options.LoginProtocolVersion;
+            transportConfig.LoginProtocolVersion = 2;
             transportConfig.ConnectTimeout = timeout;
             transportConfig.HeaderReadTimeout = Config.ServerIdentifyTimeout == MetaDuration.Zero ?
                 TimeSpan.FromMilliseconds(-1) :
@@ -268,8 +272,6 @@ namespace Metaplay.Metaplay.Unity
             transportConfig.ServerPort = gateway.ServerPort;
 
             // Log info "Opening connection to {ServerHost}:{ServerPort} (tls={EnableTls})"
-
-            _sessionConnectionNdx++;
 
             return tcpTransport;
         }
@@ -335,42 +337,44 @@ namespace Metaplay.Metaplay.Unity
             return next;
         }
 
+        // Version 23.06.01
         private IEnumerator<Marker> SupervisionLoop(CancellationToken ct)
         {
-            /*	private int <>1__state; // 0x10
-	            private MetaplayConnection.Marker <>2__current; // 0x14
-	            public MetaplayConnection <>4__this; // 0x18
-	            public CancellationToken ct; // 0x20
-	            private List<MetaMessage> <messageBuffer>5__2; // 0x28
-	            private List<MetaMessage> <delayedLoginMessageBuffer>5__3; // 0x30
-	            private TransportQosMonitor <qosMonitor>5__4; // 0x38
-	            private int <numConnectAttempts>5__5; // 0x40
-	            private MetaTime <latestMessagesTimestamp>5__6; // 0x48
-	            private Task<NetworkDiagnosticReport> <networkDiagnosticReportTask>5__7; // 0x50
-	            private Task<MetaplayConnection.ServerStatusHint> <serverStatusHintFetchTask>5__8; // 0x58
-	            private ConnectionState <cannotConnectError>5__9; // 0x60
-	            private ErrorState <sessionStartError>5__10; // 0x68
-	            private MetaplayConnection.ConfigResourceLoader <configResourceLoader>5__11; // 0x70
-	            private List<MetaplayConnection.SessionResourceLoader> <sessionResourceLoaders>5__12; // 0x78
-	            private ScheduledMaintenanceMode <latestConnectionScheduledMaintenanceMode>5__13; // 0x80
-	            private Handshake.ConnectionOptions <latestConnectionOptions>5__14; // 0x88
-	            private ClientAppPauseStatus <lastConnectionPauseStatus>5__15; // 0x90
-	            private int <lastSentSessionResumptionPingId>5__16; // 0x94
-	            private int <lastReceivedSessionResumptionPongId>5__17; // 0x98
-	            private MetaTime <lastSessionResumptionPingSentAt>5__18; // 0xA0
-	            private int <lastIncidentReportedSessionResumptionPingId>5__19; // 0xA8
-	            private int <numSessionResumptionPingIncidentsReported>5__20; // 0xAC
-	            private NetworkProbe <networkProbe>5__21; // 0xB0
-	            private Task<ServerConnection> <connectTask>5__22; // 0xB8
-	            private bool <loggedIn>5__23; // 0xC0
-	            private bool <isConnected>5__24; // 0xC1
-	            private MetaTime <connectOrReconnectStartedAt>5__25; // 0xC8
-	            private Nullable<MetaTime> <sessionInitRequestTimeoutAt>5__26; // 0xD0
-	            private MessageTransport.Error <connectionError>5__27; // 0xE0
-	            private SessionProtocol.SessionStartAbortReasonTrailer <reasonTrailer>5__28; // 0xE8
-	            private Task <closeTask>5__29; // 0xF0
-	            private IHasNetworkDiagnosticReport <report>5__30; // 0xF8 */
+            /*		private int <>1__state; // 0x10
+	                private MetaplayConnection.Marker <>2__current; // 0x14
+	                public MetaplayConnection <>4__this; // 0x18
+	                public CancellationToken ct; // 0x20
+	                private List<MetaMessage> <messageBuffer>5__2; // 0x28
+	                private List<MetaMessage> <delayedLoginMessageBuffer>5__3; // 0x30
+	                private TransportQosMonitor <qosMonitor>5__4; // 0x38
+	                private int <numConnectAttempts>5__5; // 0x40
+	                private MetaTime <latestMessagesTimestamp>5__6; // 0x48
+	                private Task<NetworkDiagnosticReport> <networkDiagnosticReportTask>5__7; // 0x50
+	                private Task<MetaplayConnection.ServerStatusHint> <serverStatusHintFetchTask>5__8; // 0x58
+	                private ConnectionState <cannotConnectError>5__9; // 0x60
+	                private ErrorState <sessionStartError>5__10; // 0x68
+	                private MetaplayConnection.ConfigResourceLoader <configResourceLoader>5__11; // 0x70
+	                private List<MetaplayConnection.SessionResourceLoader> <sessionResourceLoaders>5__12; // 0x78
+	                private ScheduledMaintenanceMode <latestConnectionScheduledMaintenanceMode>5__13; // 0x80
+	                private Handshake.ServerOptions <latestServerOptions>5__14; // 0x88
+	                private ClientAppPauseStatus <lastConnectionPauseStatus>5__15; // 0xB0
+	                private int <lastSentSessionResumptionPingId>5__16; // 0xB4
+	                private int <lastReceivedSessionResumptionPongId>5__17; // 0xB8
+	                private MetaTime <lastSessionResumptionPingSentAt>5__18; // 0xC0
+	                private int <lastIncidentReportedSessionResumptionPingId>5__19; // 0xC8
+	                private int <numSessionResumptionPingIncidentsReported>5__20; // 0xCC
+	                private NetworkProbe <networkProbe>5__21; // 0xD0
+	                private Task<ServerConnection> <connectTask>5__22; // 0xD8
+	                private bool <loggedIn>5__23; // 0xE0
+	                private bool <isConnected>5__24; // 0xE1
+	                private MetaTime <connectOrReconnectStartedAt>5__25; // 0xE8
+	                private Nullable<MetaTime> <sessionInitRequestTimeoutAt>5__26; // 0xF0
+	                private MessageTransport.Error <connectionError>5__27; // 0x100
+	                private SessionProtocol.SessionStartAbortReasonTrailer <reasonTrailer>5__28; // 0x108
+	                private Task <closeTask>5__29; // 0x110
+	                private IHasNetworkDiagnosticReport <report>5__30; // 0x118 */
 
+            // L254
             var messageBuffer = new List<MetaMessage>();
             var delayedLoginMessageBuffer = new List<MetaMessage>();
             var qosMonitor = new TransportQosMonitor();
@@ -380,777 +384,817 @@ namespace Metaplay.Metaplay.Unity
             var numConnectAttempts = 0;
             MetaTime latestMessagesTimestamp = default;
 
+            // L273
             var configResourceLoader = new ConfigResourceLoader(ct);
             var sessionResourceLoaders = new List<SessionResourceLoader>();
 
-            ScheduledMaintenanceMode latestConnectionScheduledMaintenanceMode = null;
-            Handshake.ConnectionOptions latestConnectionOptions = default;
-            var lastConnectionPauseStatus = ClientAppPauseStatus.Running;
+            // L288
             var lastSentSessionResumptionPingId = 0;
             var lastReceivedSessionResumptionPongId = 0;
+            ScheduledMaintenanceMode latestConnectionScheduledMaintenanceMode = null;
+            Handshake.ServerOptions latestServerOptions = default;
 
+            // L296
             var lastSessionResumptionPingSentAt = MetaTime.Epoch;
             var lastIncidentReportedSessionResumptionPingId = 0;
             var numSessionResumptionPingIncidentsReported = 0;
-            SessionToken sessionToken = default;
-            SessionProtocol.SessionStartAbortReasonTrailer reasonTrailer = null;
 
-            _statistics = default;
-
+            // L303
             State = new Connecting(0);
 
-            // Setup session information
-            _sessionConnectionNdx = 0;
-            _sessionNonce = BitConverter.ToUInt32(Guid.NewGuid().ToByteArray());
-
-            // Setup resource loaders
-            sessionResourceLoaders.Add(new LocalizationResourceLoader(ct));
+            // L307
             sessionResourceLoaders.Add(configResourceLoader);
 
-            // Setup network probe
-            var networkProbeResultBox = new bool?[1];
-            CancellationTokenSource networkProbeCts = null;
-            if (Endpoint.IsOfflineMode)
+            // L312
+            var networkProbe = NetworkProbe.TestConnectivity(Endpoint);
+
+            // L315
+            if (_credentialsPendingIOError)
             {
-                networkProbeResultBox[0] = true;
-            }
-            else
-            {
-                networkProbeCts = new CancellationTokenSource();
-                RunNetworkProbeAsync(Endpoint.CdnBaseUrl, networkProbeCts.Token, networkProbeResultBox);
+                // L1257
+                // Log debug "Failure while updating credentials to disk."
+
+                var cannotConnectError = new TerminalError.ClientSideConnectionError(new CannotWriteCredentialsOnDiskError());
+
+                // L1790
+                SendReport(cannotConnectError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                yield break;
             }
 
+            // CUSTOM: Initialize state variables to null for default state
             ConnectionState sessionStartError = null;
-            ConnectionState cannotConnectError = null;
+            MetaTime connectOrReconnectStartedAt;
 
-            // Z363
-            if (!_credentialsPendingIOError)
+            do
             {
-                MetaTime connectOrReconnectStartedAt;
+                // L326
+                foreach (var loader in sessionResourceLoaders)
+                    loader.Reset();
 
-                do
+                // L347
+                var lastConnectionPauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
+
+                // L361
+                var connectTask = CreateConnection(configResourceLoader.NegotiationResources.ToResourceProposal(), lastConnectionPauseStatus);
+                connectTask.Wait(ct);
+
+                if (ct.IsCancellationRequested)
                 {
-                    // Reset resource loaders
-                    foreach (var loader in sessionResourceLoaders)
-                        loader.Reset();
+                    TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                    yield break;
+                }
 
-                    // Create connection
-                    lastConnectionPauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
+                // L389
+                _serverConnection = connectTask.Result;
 
-                    var connectTask = CreateConnection(GetResourceProposal(configResourceLoader.NegotiationResources), lastConnectionPauseStatus);
-                    connectTask.Wait(ct);
+                // L390
+                networkDiagnosticReportTask = null;
 
-                    if (ct.IsCancellationRequested)
-                        if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                            yield break;
+                // L391
+                qosMonitor.Reset();
+                delayedLoginMessageBuffer.Clear();
 
-                    _serverConnection = connectTask.Result;
+                // L408
+                MetaplaySDK.MessageDispatcher.SetConnection(this);
 
-                    networkDiagnosticReportTask = null;
+                // L421
+                var loggedIn = false;
+                var isConnected = false;
+                connectOrReconnectStartedAt = MetaTime.Now;
+                MetaTime? sessionInitRequestTimeoutAt = null;
 
-                    qosMonitor.Reset();
-                    delayedLoginMessageBuffer.Clear();
+            // L429
+            ReceiveMessages:
+                var receiveMessageError = _serverConnection.ReceiveMessages(messageBuffer);
+                qosMonitor.ProcessMessages(messageBuffer, _serverConnection.IsLoggedIn);
 
-                    MetaplaySDK.MessageDispatcher.SetConnection(this);
-
-                    var loggedIn = false;
-                    var isConnected = false;
-                    connectOrReconnectStartedAt = MetaTime.Now;
-                    MetaTime? sessionInitRequestTimeoutAt = null;
-
-                ReceiveMessages:
-                    var receiveMessageError = _serverConnection.ReceiveMessages(messageBuffer);
-                    qosMonitor.ProcessMessages(messageBuffer, _serverConnection.IsLoggedIn);
-
-                    foreach (var msg in messageBuffer)
+                // L439
+                foreach (var msg in messageBuffer)
+                {
+                    if (msg is ConnectedToServer cts)
                     {
-                        if (msg is ConnectedToServer conn)
+                        // L863
+                        if (!Endpoint.IsOfflineMode)
                         {
-                            // Z868
-                            if (!Endpoint.IsOfflineMode)
-                            {
-                                var cdnAddress = MetaplayCdnAddress.Create(Endpoint.CdnBaseUrl, conn.IsIPv4);
-                                _sdkHook.OnCurrentCdnAddressUpdated(cdnAddress);
-                            }
-                            else
-                            {
-                                var cdnAddress = MetaplayCdnAddress.Empty;
-                                _sdkHook.OnCurrentCdnAddressUpdated(cdnAddress);
-                            }
-
-                            var primaryUrl = MetaplaySDK.CdnAddress.PrimaryBaseUrl;
-                            var backupGateways = Endpoint.BackupGateways.ToList();
-
-                            Endpoint = new ServerEndpoint(Endpoint.ServerHost, Endpoint.ServerPort, Endpoint.EnableTls, primaryUrl, backupGateways);
-
-                            latestMessagesTimestamp = MetaTime.Now;
-                            _statistics.CurrentConnection.HasCompletedHandshake = true;
-                            isConnected = true;
-
-                            sessionInitRequestTimeoutAt = MetaTime.Now + Config.ServerSessionInitTimeout;
-
-                            Delegate.OnHandshakeComplete();
+                            var cdnAddress = MetaplayCdnAddress.Create(Endpoint.CdnBaseUrl, cts.IsIPv4);
+                            _sdkHook.OnCurrentCdnAddressUpdated(cdnAddress);
                         }
-                        else if (msg is SessionProtocol.SessionStartSuccess suc)
+                        else
                         {
-                            loggedIn = true;
-                            latestConnectionScheduledMaintenanceMode = suc.ScheduledMaintenanceMode;
+                            var cdnAddress = MetaplayCdnAddress.Empty;
+                            _sdkHook.OnCurrentCdnAddressUpdated(cdnAddress);
+                        }
+
+                        // L946
+                        LatestTlsPeerDescription = cts.TlsPeerDescription;
+
+                        // L952
+                        var primaryUrl = MetaplaySDK.CdnAddress.PrimaryBaseUrl;
+                        var backupGateways = Endpoint.BackupGateways.ToList();
+
+                        Endpoint = new ServerEndpoint(Endpoint.ServerHost, Endpoint.ServerPort, Endpoint.EnableTls, primaryUrl, backupGateways);
+
+                        // L986
+                        latestMessagesTimestamp = MetaTime.Now;
+                        _statistics.CurrentConnection.HasCompletedHandshake = true;
+                        isConnected = true;
+
+                        // L993
+                        Delegate.OnHandshakeComplete();
+                    }
+                    else if (msg is Handshake.ClientHelloAccepted cha)
+                    {
+                        // L851
+                        latestServerOptions = cha.ServerOptions;
+                    }
+                    else if (msg is SessionProtocol.SessionStartSuccess sss)
+                    {
+                        // L730
+                        loggedIn = true;
+                        latestConnectionScheduledMaintenanceMode = sss.ScheduledMaintenanceMode;
+                        sessionInitRequestTimeoutAt = null;
+
+                        // L747
+                        foreach (var loader in sessionResourceLoaders)
+                        {
+                            var error = loader.TrySpecialize(sss);
+                            if (error == null)
+                                continue;
+
+                            sessionStartError = error;
+                            break;
+                        }
+
+                        // L778
+                        if (sessionStartError != null)
+                        {
+                            CloseSupervisionLoop(sessionStartError, latestServerOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                            TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                            yield break;
+                        }
+
+                        // L790
+                        ServerOptions = latestServerOptions;
+
+                        // L804
+                        _sdkHook.OnSessionStarted(sss);
+                        Delegate.OnSessionStarted(SessionStartResources);
+                    }
+                    else if (msg is UpdateScheduledMaintenanceMode usmm)
+                    {
+                        // L726
+                        latestConnectionScheduledMaintenanceMode = usmm.ScheduledMaintenanceMode;
+                    }
+                    else if (msg is MessageTransportInfoWrapperMessage mtiwm)
+                    {
+                        // L535
+                        if (mtiwm.Info is ServerConnection.GotServerHello gsh)
+                        {
+                            // L716
+                            LatestServerVersion = gsh.ServerHello.ServerVersion;
+                        }
+                        else if (mtiwm.Info is ServerConnection.LoginCredentialsChangedInfo lcci)
+                        {
+                            // L683
+                            var handled = HandleCredentialsChanged(lcci);
+                            if (!handled)
+                            {
+                                // Log debug "Failure while writing credentials to disk."
+                                sessionStartError = new TerminalError.ClientSideConnectionError(new CannotWriteCredentialsOnDiskError());
+
+                                CloseSupervisionLoop(sessionStartError, latestServerOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                                TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                                yield break;
+                            }
+                        }
+                        else if (mtiwm.Info is ServerConnection.ResourceCorrectionInfo rci)
+                        {
+                            // L642
                             sessionInitRequestTimeoutAt = null;
-                            sessionToken = suc.SessionToken;
 
                             foreach (var loader in sessionResourceLoaders)
-                            {
-                                var error = loader.TrySpecialize(suc);
-                                if (error == null)
-                                    continue;
-
-                                sessionStartError = error;
-                                break;
-                            }
-
-                            if (sessionStartError != null)
-                            {
-                                if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                    if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                        yield break;
-                            }
-
-                            ServerOptions = suc.ServerOptions;
-
-                            _sdkHook.OnSessionStarted(suc);
-                            Delegate.OnSessionStarted(SessionStartResources);
+                                loader.SetupFromResourceCorrection(rci.ResourceCorrection);
                         }
-                        else if (msg is UpdateScheduledMaintenanceMode maintenance)
+                        else if (mtiwm.Info is ServerConnection.FullProtocolHashMismatchInfo fphmi)
                         {
-                            latestConnectionScheduledMaintenanceMode = maintenance.ScheduledMaintenanceMode;
-                            var state = ScheduledMaintenanceModeToMaintenanceModeState(latestConnectionScheduledMaintenanceMode);
-
-                            _sdkHook.OnScheduledMaintenanceModeUpdated(state);
+                            // L608
+                            Delegate.OnFullProtocolHashMismatch(fphmi.ClientProtocolHash, fphmi.ServerProtocolHash);
                         }
-                        else if (msg is Handshake.LoginResponse loginRes)
+                        else if (mtiwm.Info is ServerConnection.SessionStartRequested)
                         {
-                            latestConnectionOptions = loginRes.Options;
-                        }
-                        else if (msg is MessageTransportInfoWrapperMessage infoWrap)
-                        {
-                            if (infoWrap.Info is ServerConnection.GotServerHello hello)
-                            {
-                                LatestServerVersion = hello.ServerHello.ServerVersion;
-                            }
-                            else if (infoWrap.Info is ServerConnection.LoginCredentialsChangedInfo credChanged)
-                            {
-                                var handled = HandleCredentialsChanged(credChanged);
-                                if (!handled)
-                                {
-                                    // Log debug "Failure while writing credentials to disk."
-
-                                    sessionStartError = new TerminalError.NoFreeDiskSpace();
-
-                                    if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                        if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                            yield break;
-                                }
-                            }
-                            else if (infoWrap.Info is ServerConnection.ResourceCorrectionInfo rci)
-                            {
-                                sessionInitRequestTimeoutAt = null;
-
-                                foreach (var loader in sessionResourceLoaders)
-                                    loader.SetupFromResourceCorrection(rci.ResourceCorrection);
-                            }
-                            else if (infoWrap.Info is ServerConnection.FullProtocolHashMismatchInfo hashMismatch)
-                            {
-                                Delegate.OnFullProtocolHashMismatch(hashMismatch.ClientProtocolHash, hashMismatch.ServerProtocolHash);
-                            }
-                        }
-                        else if (msg is Handshake.OperationStillOngoing)
-                        {
+                            // L587
                             sessionInitRequestTimeoutAt = MetaTime.Now + Config.ServerSessionInitTimeout;
                         }
                     }
+                    else if (msg is Handshake.OperationStillOngoing)
+                    {
+                        // L503
+                        sessionInitRequestTimeoutAt = MetaTime.Now + Config.ServerSessionInitTimeout;
+                    }
+                }
 
-                    if (messageBuffer.Count > 0)
-                        latestMessagesTimestamp = MetaTime.Now;
+                // L1024
+                if (messageBuffer.Count > 0)
+                    latestMessagesTimestamp = MetaTime.Now;
 
-                    delayedLoginMessageBuffer.AddRange(messageBuffer);
+                // L1032
+                delayedLoginMessageBuffer.AddRange(messageBuffer);
+                messageBuffer.Clear();
+
+                // L1051
+                _statistics.CurrentConnection.NetworkProbeStatus = networkProbe.TryGetConnectivityState();
+
+                // L1054
+                if (receiveMessageError == null)
+                {
+                    // L1055
+                    if (sessionInitRequestTimeoutAt.HasValue)
+                    {
+                        // L1065
+                        if (MetaTime.Now >= sessionInitRequestTimeoutAt.Value)
+                        {
+                            // L1074
+                            // Log warning "Timeout while waiting for session init response from server."
+
+                            // L1093
+                            sessionStartError = new TransientError.Timeout(TransientError.Timeout.TimeoutSource.Stream);
+
+                            CloseSupervisionLoop(sessionStartError, latestServerOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                            TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                            yield break;
+                        }
+                    }
+
+                    // L1130
+                    var allActivated = false;
+                    var allPolled = true;
+
+                    // L1452
+                    foreach (var loader in sessionResourceLoaders)
+                    {
+                        // L1642
+                        if (loader.IsComplete)
+                            continue;
+
+                        // L1651
+                        if (!loader.PollDownload(out var pollError))
+                        {
+                            allPolled = false;
+                            continue;
+                        }
+
+                        // L1448
+                        if (pollError == null)
+                        {
+                            // L1449
+                            pollError = loader.TryActivate();
+                            allActivated = true;
+                        }
+
+                        // L1451
+                        if (pollError == null)
+                            continue;
+
+                        // L1657
+                        CloseSupervisionLoop(pollError, latestServerOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                        TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                        yield break;
+                    }
+
+                    // L1465
+                    if (allPolled && allActivated)
+                    {
+                        // L1468
+                        var resourceProposal = configResourceLoader.NegotiationResources.ToResourceProposal();
+                        lastConnectionPauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
+
+                        // L1488
+                        _serverConnection.RetrySessionStart(resourceProposal, lastConnectionPauseStatus);
+                    }
+
+                    // L1502
+                    if (!loggedIn)
+                    {
+                        // L1503
+                        if (!isConnected && serverStatusHintFetchTask == null)
+                        {
+                            // L1504
+                            if (MetaTime.Now >= connectOrReconnectStartedAt + Config.ServerStatusHintCheckDelay)
+                                serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
+                        }
+
+                        // L1520
+                        if (serverStatusHintFetchTask != null)
+                        {
+                            serverStatusHintFetchTask.Wait(ct);
+
+                            if (ct.IsCancellationRequested)
+                            {
+                                CloseSupervisionLoop(sessionStartError, latestServerOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                                TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                                yield break;
+                            }
+
+                            // L1529
+                            var maintenanceMode = serverStatusHintFetchTask.Result.MaintenanceMode;
+                            if (maintenanceMode != null)
+                            {
+                                // L1868
+                                var start = maintenanceMode.GetStartAtMetaTime();
+                                var estimated = maintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
+                                var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
+
+                                // L1895
+                                _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
+
+                                // L2397
+                                State = new TerminalError.InMaintenance();
+
+                                TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                                yield break;
+                            }
+                        }
+
+                        goto ReceiveMessages;
+                    }
+
+                    // L1534
+                    _statistics.CurrentConnection.HasCompletedSessionInit = true;
+
+                    // L1535
+                    State = new Connected(qosMonitor.IsHealthy, latestMessagesTimestamp);
+
+                    // L1542
+                    var pauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
+                    if (lastConnectionPauseStatus != pauseStatus)
+                    {
+                        // L1557
+                        switch (MetaplaySDK.ApplicationPauseStatus)
+                        {
+                            case ApplicationPauseStatus.Running:
+                            case ApplicationPauseStatus.ResumedFromPauseThisFrame:
+                                _serverConnection.EnqueueSendMessage(new ClientLifecycleHintUnpaused());
+                                break;
+
+                            case ApplicationPauseStatus.Pausing:
+                                _serverConnection.EnqueueSendMessage(new ClientLifecycleHintPausing(MetaplaySDK.ApplicationPauseDeclaredMaxDuration, MetaplaySDK.ApplicationPauseReason));
+                                break;
+                        }
+                    }
+
+                    // L1608
+                    _messagesToDispatch.AddRange(delayedLoginMessageBuffer);
+                    delayedLoginMessageBuffer.Clear();
+
+                    // L1628
+                    var maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(latestConnectionScheduledMaintenanceMode);
+
+                    // L1932
+                    _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
+
+                // L1938
+                ReceiveMessages2:
+                    var connectionError = _serverConnection.ReceiveMessages(messageBuffer);
+                    qosMonitor.ProcessMessages(messageBuffer, _serverConnection.IsLoggedIn);
+
+                    // L1951
+                    var msgCount = messageBuffer.Count;
+                    foreach (var msg in messageBuffer)
+                    {
+                        // L1967
+                        if (msg == null)
+                            continue;
+
+                        // L1968
+                        if (msg is SessionProtocol.SessionResumeSuccess srs)
+                        {
+                            // L2050
+                            latestConnectionScheduledMaintenanceMode = srs.ScheduledMaintenanceMode;
+
+                            maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(srs.ScheduledMaintenanceMode);
+                            _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
+
+                            // L2086
+                            lastSentSessionResumptionPingId++;
+                            _serverConnection.EnqueueSendMessage(new SessionPing(lastSentSessionResumptionPingId));
+
+                            // L2100
+                            lastSessionResumptionPingSentAt = MetaTime.Now;
+                        }
+                        else if (msg is SessionPong sp)
+                        {
+                            // L2046
+                            lastReceivedSessionResumptionPongId = sp.Id;
+                        }
+                        else if (msg is UpdateScheduledMaintenanceMode usmm)
+                        {
+                            // L2007
+                            latestConnectionScheduledMaintenanceMode = usmm.ScheduledMaintenanceMode;
+
+                            maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(usmm.ScheduledMaintenanceMode);
+                            _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
+                        }
+                        else if (msg is Handshake.ClientHelloAccepted cha)
+                        {
+                            // L1995
+                            latestServerOptions = cha.ServerOptions;
+                        }
+                    }
+
+                    // L2110
+                    _messagesToDispatch.AddRange(messageBuffer);
                     messageBuffer.Clear();
 
-                    _statistics.CurrentConnection.NetworkProbeStatus = networkProbeResultBox[0];
-                    if (receiveMessageError == null)
+                    // L2129
+                    _statistics.CurrentConnection.NetworkProbeStatus = networkProbe.TryGetConnectivityState();
+
+                    // L2132
+                    if (msgCount > 0)
+                        latestMessagesTimestamp = MetaTime.Now;
+
+                    // L2139
+                    if (connectionError == null)
                     {
-                        if (sessionInitRequestTimeoutAt.HasValue)
+                        // L2140
+                        if (ShouldEndSessionDueToRecentPause)
                         {
-                            if (MetaTime.Now >= sessionInitRequestTimeoutAt.Value)
-                            {
-                                // Log debug "Timeout while waiting for session init response from server."
+                            // L2265
+                            // Log debug "A long duration in background just ended, will end session"
+                            State = new TransientError.SessionLostInBackground();
 
-                                sessionStartError = new TransientError.Timeout(TransientError.Timeout.TimeoutSource.Stream);
-
-                                if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                    if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                        yield break;
-                            }
+                            _messagesToDispatch.Add(new DisconnectedFromServer());
                         }
-
-                        // Z1130
-                        bool bVar4 = false;
-                        bool bVar23 = true;
-                        foreach (var loader in sessionResourceLoaders)
+                        else
                         {
-                            // Z1913
-                            if (loader.IsComplete)
-                                continue;
+                            // L2142
+                            if (msgCount < 1 && allActivated)
+                                State = new Connected(lastSentSessionResumptionPingId == lastReceivedSessionResumptionPongId && qosMonitor.IsHealthy, latestMessagesTimestamp);
 
-                            // Z1922
-                            if (!loader.PollDownload(out var pollError))
+                            // L2154
+                            var unpauseTime = MetaplaySDK.ApplicationLastPauseBeganAt + MetaplaySDK.ApplicationLastPauseDuration;
+                            if (lastSentSessionResumptionPingId != lastReceivedSessionResumptionPongId && lastSentSessionResumptionPingId != lastIncidentReportedSessionResumptionPingId)
                             {
-                                bVar23 = false;
-                                continue;
-                            }
-
-                            // Z1709
-                            if (pollError != null)
-                            {
-                                // Z1928
-                                if (CloseSupervisionLoop(pollError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                    if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                        yield break;
-                            }
-
-                            var activateError = loader.TryActivate();
-                            if (activateError != null)
-                            {
-                                // Z1928
-                                if (CloseSupervisionLoop(activateError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                    if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                        yield break;
-                            }
-
-                            bVar4 = true;
-                        }
-
-                        // Z1721
-                        if (bVar23 && bVar4)
-                        {
-                            // Z1727
-                            lastConnectionPauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
-
-                            _serverConnection.RetrySessionStart(GetResourceProposal(configResourceLoader.NegotiationResources), lastConnectionPauseStatus);
-
-                            sessionInitRequestTimeoutAt = MetaTime.Now + Config.ServerSessionInitTimeout;
-                        }
-
-                        // Z1771
-                        if (!loggedIn)
-                        {
-                            if (!isConnected && serverStatusHintFetchTask == null)
-                            {
-                                // Z1773
-                                if (MetaTime.Now >= connectOrReconnectStartedAt + Config.ServerStatusHintCheckDelay)
-                                    serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
-                            }
-
-                            // Z1789
-                            if (serverStatusHintFetchTask != null)
-                            {
-                                serverStatusHintFetchTask.Wait(ct);
-
-                                if (ct.IsCancellationRequested)
-                                    if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                        if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                            yield break;
-
-                                if (serverStatusHintFetchTask.Result.MaintenanceMode != null)
+                                if (numSessionResumptionPingIncidentsReported < Config.MaxSessionPingPongDurationIncidentsPerSession)
                                 {
-                                    var start = serverStatusHintFetchTask.Result.MaintenanceMode.GetStartAtMetaTime();
-                                    var estimated = serverStatusHintFetchTask.Result.MaintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
-                                    var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
-
-                                    _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                                    State = new TerminalError.InMaintenance();
-
-                                    if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                        yield break;
-                                }
-                            }
-
-                            goto ReceiveMessages;
-                        }
-
-                        // Z1803
-                        _statistics.CurrentConnection.HasCompletedSessionInit = true;
-
-                        State = new Connected(qosMonitor.IsHealthy, latestMessagesTimestamp);
-
-                        var pauseStatus = ToClientAppPauseStatus(MetaplaySDK.ApplicationPauseStatus);
-                        if (lastConnectionPauseStatus != pauseStatus)
-                        {
-                            // Z1827
-                            switch (MetaplaySDK.ApplicationPauseStatus)
-                            {
-                                case ApplicationPauseStatus.Running:
-                                case ApplicationPauseStatus.ResumedFromPauseThisFrame:
-                                    _serverConnection.EnqueueSendMessage(new ClientLifecycleHintUnpaused());
-                                    break;
-
-                                case ApplicationPauseStatus.Pausing:
-                                    _serverConnection.EnqueueSendMessage(new ClientLifecycleHintPausing(MetaplaySDK.ApplicationPauseDeclaredMaxDuration, MetaplaySDK.ApplicationPauseReason));
-                                    break;
-                            }
-                        }
-
-                        // Z1879
-                        _messagesToDispatch.AddRange(delayedLoginMessageBuffer);
-                        delayedLoginMessageBuffer.Clear();
-
-                        var maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(latestConnectionScheduledMaintenanceMode);
-                        _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
-
-                    // Z2231
-                    ReceiveMessages2:
-                        var connectionError = _serverConnection.ReceiveMessages(messageBuffer);
-                        qosMonitor.ProcessMessages(messageBuffer, _serverConnection.IsLoggedIn);
-
-                        // Z2250
-                        var msgCount = messageBuffer.Count;
-                        foreach (var msg in messageBuffer)
-                        {
-                            if (msg == null)
-                                continue;
-
-                            if (msg is SessionProtocol.SessionResumeSuccess suc)
-                            {
-                                // Z2335
-                                latestConnectionScheduledMaintenanceMode = suc.ScheduledMaintenanceMode;
-                                maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(suc.ScheduledMaintenanceMode);
-
-                                _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
-
-                                lastSentSessionResumptionPingId++;
-                                _serverConnection.EnqueueSendMessage(new SessionPing(lastSentSessionResumptionPingId));
-
-                                lastSessionResumptionPingSentAt = MetaTime.Now;
-                            }
-                            else if (msg is SessionPong pong)
-                            {
-                                lastReceivedSessionResumptionPongId = pong.Id;
-                            }
-                            else if (msg is UpdateScheduledMaintenanceMode modeMsg)
-                            {
-                                latestConnectionScheduledMaintenanceMode = modeMsg.ScheduledMaintenanceMode;
-
-                                maintenanceState = ScheduledMaintenanceModeToMaintenanceModeState(modeMsg.ScheduledMaintenanceMode);
-                                _sdkHook.OnScheduledMaintenanceModeUpdated(maintenanceState);
-                            }
-                            else if (msg is Handshake.LoginResponse loginRes)
-                            {
-                                latestConnectionOptions = loginRes.Options;
-                            }
-                        }
-
-                        // Z2397
-                        _messagesToDispatch.AddRange(messageBuffer);
-                        messageBuffer.Clear();
-
-                        // Z2417
-                        _statistics.CurrentConnection.NetworkProbeStatus = networkProbeResultBox[0];
-
-                        // Z2421
-                        if (msgCount > 0)
-                            latestMessagesTimestamp = MetaTime.Now;
-
-                        if (connectionError == null)
-                        {
-                            // Z2429
-                            if (ShouldEndSessionDueToRecentPause)
-                            {
-                                // Log debug "A long duration in background just ended, will end session"
-                                State = new TransientError.SessionLostInBackground();
-
-                                _messagesToDispatch.Add(new DisconnectedFromServer());
-                            }
-                            else
-                            {
-                                // Z2431
-                                if (msgCount < 1 && bVar4)
-                                    State = new Connected(lastSentSessionResumptionPingId == lastReceivedSessionResumptionPongId && qosMonitor.IsHealthy, latestMessagesTimestamp);
-
-                                var unpauseTime = MetaplaySDK.ApplicationLastPauseBeganAt + MetaplaySDK.ApplicationLastPauseDuration;
-                                if (lastSentSessionResumptionPingId != lastReceivedSessionResumptionPongId && lastSentSessionResumptionPingId != lastIncidentReportedSessionResumptionPingId)
-                                {
-                                    if (numSessionResumptionPingIncidentsReported < Config.MaxSessionPingPongDurationIncidentsPerSession)
+                                    if (MetaplaySDK.ApplicationPauseStatus == ApplicationPauseStatus.Running)
                                     {
-                                        if (MetaplaySDK.ApplicationPauseStatus == ApplicationPauseStatus.Running)
+                                        if (MetaTime.Now > unpauseTime + MetaDuration.FromSeconds(5))
                                         {
-                                            if (MetaTime.Now > unpauseTime + MetaDuration.FromSeconds(5))
+                                            // L2202
+                                            var lastPingTime = MetaTime.Now - lastSessionResumptionPingSentAt;
+                                            var connectedDuration = MetaDuration.FromTimeSpan(_serverConnection._statistics.DurationToConnected);
+                                            var pingThreshold = connectedDuration + Config.SessionPingPongDurationIncidentThreshold;
+
+                                            if (lastPingTime > pingThreshold)
                                             {
-                                                var lastPingTime = MetaTime.Now - lastSessionResumptionPingSentAt;
-                                                var connectedDuration = MetaDuration.FromTimeSpan(_serverConnection._statistics.DurationToConnected);
-                                                var pingThreshold = connectedDuration + Config.SessionPingPongDurationIncidentThreshold;
+                                                // L2219
+                                                var loginDiag = Delegate.GetLoginDebugDiagnostics(true);
+                                                MetaplaySDK.IncidentTracker.ReportSessionPingPongDurationThresholdExceeded(loginDiag, connectedDuration, _serverConnection._currentGateway, lastSentSessionResumptionPingId, lastPingTime);
 
-                                                if (lastPingTime > pingThreshold)
-                                                {
-                                                    var loginDiag = Delegate.GetLoginDebugDiagnostics(true);
-                                                    MetaplaySDK.IncidentTracker.ReportSessionPingPongDurationThresholdExceeded(loginDiag, connectedDuration, _serverConnection._currentGateway, sessionToken, lastSentSessionResumptionPingId, lastPingTime);
-
-                                                    lastIncidentReportedSessionResumptionPingId = lastSentSessionResumptionPingId;
-                                                    numSessionResumptionPingIncidentsReported++;
-                                                }
+                                                lastIncidentReportedSessionResumptionPingId = lastSentSessionResumptionPingId;
+                                                numSessionResumptionPingIncidentsReported++;
                                             }
                                         }
                                     }
                                 }
                             }
-
-                            yield return Marker.HandleMessagesAndCallAgain;
-
-                            // Z1353 (case 3 to case 4)
-                            if (ct.IsCancellationRequested)
-                            {
-                                if (State.Status == ConnectionStatus.Connected)
-                                {
-                                    if (_flushEnqueuedMessagesBeforeClose)
-                                    {
-                                        // Log info "signaled connection to close, waiting"
-                                        Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (connectionError == null)
-                                {
-                                    if (!ShouldEndSessionDueToRecentPause)
-                                    {
-                                        if (!ct.IsCancellationRequested)
-                                            goto ReceiveMessages2;
-
-                                        if (_flushEnqueuedMessagesBeforeClose)
-                                        {
-                                            // Log info "signaled connection to close, waiting"
-                                            Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                    yield break;
                         }
 
-                        // Z2595
-                        var connectionState = TranslateError(connectionError);
-                        // Log debug "Failure during session. {connectionError}, causes {connectionState}"
+                        // L2279
+                        yield return Marker.HandleMessagesAndCallAgain;
 
-                        // Z2627
-                        if (!(connectionState is TerminalError.InMaintenance))
-                        {
-                            State = TranslateConnectionErrorForUser(connectionState);
-                            yield return Marker.HandleMessagesAndCallAgain;
+                        if (HandleAndCall(connectionError, ct))
+                            goto ReceiveMessages2;
 
-                            // Z1353 (case 3 to case 4)
-                            if (ct.IsCancellationRequested)
-                            {
-                                if (State.Status == ConnectionStatus.Connected)
-                                {
-                                    if (_flushEnqueuedMessagesBeforeClose)
-                                    {
-                                        // Log info "signaled connection to close, waiting"
-                                        Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (connectionError == null)
-                                {
-                                    if (!ShouldEndSessionDueToRecentPause)
-                                    {
-                                        if (!ct.IsCancellationRequested)
-                                            goto ReceiveMessages2;
-
-                                        if (_flushEnqueuedMessagesBeforeClose)
-                                        {
-                                            // Log info "signaled connection to close, waiting"
-                                            Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
-                                        }
-                                    }
-                                }
-                            }
-
-                            if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                    yield break;
-                        }
-
-                        // Z2640
-                        if (latestConnectionScheduledMaintenanceMode == null)
-                        {
-                            var ongoing = MaintenanceModeState.CreateOngoing(MetaTime.Now, null);
-                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                        }
-                        else
-                        {
-                            MetaTime? estimated = null;
-                            if (latestConnectionScheduledMaintenanceMode.EstimationIsValid)
-                                estimated = latestConnectionScheduledMaintenanceMode.StartAt + MetaDuration.FromMinutes(latestConnectionScheduledMaintenanceMode.EstimatedDurationInMinutes);
-
-                            var ongoing = MaintenanceModeState.CreateOngoing(latestConnectionScheduledMaintenanceMode.StartAt, estimated);
-                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                        }
-
-                        // Z2726
-                        State = new TerminalError.InMaintenance();
-
-                        if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                            if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                yield break;
+                        TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                        yield break;
                     }
 
-                    // Z1143
-                    if (receiveMessageError is ServerConnection.RedirectToServerError redError)
+                    // L2283
+                    var connectionState = TranslateError(connectionError);
+                    // Log debug "Failure during session. {connectionError}, causes {connectionState}"
+
+                    // L2294
+                    if (!(connectionState is TerminalError.InMaintenance))
                     {
-                        // Z1150
-                        // Log info "Redirecting to server: {redError.RedirectToServer}"
-                        Endpoint = redError.RedirectToServer;
-                        continue;
+                        State = TranslateConnectionErrorForUser(connectionState);
+
+                        // L2279
+                        yield return Marker.HandleMessagesAndCallAgain;
+
+                        if (HandleAndCall(connectionError, ct))
+                            goto ReceiveMessages2;
+
+                        TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                        yield break;
                     }
 
-                    // Z1164
-                    var translatedState = TranslateError(receiveMessageError);
-                    // Log debug "Failure while connecting. {receiveMessageError}, causes {translatedState}"
-
-                    if (translatedState == null)
+                    // L2307
+                    if (latestConnectionScheduledMaintenanceMode == null)
                     {
-                        // Z1191
-                        cannotConnectError = TranslateConnectionErrorForUser(translatedState);
-
-                        if (SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                            if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                yield break;
-                    }
-
-                    // Z1196
-                    if (translatedState is TransientError te)
-                    {
-                        // Z1220
-                        networkDiagnosticReportTask ??= GetNetworkDiagnosticReportAsync();
-                        serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
-
-                        numConnectAttempts++;
-                        if (Config.ConnectAttemptsMaxCount <= numConnectAttempts)
-                        {
-                            // Z1237
-                            serverStatusHintFetchTask?.Wait(ct);
-
-                            cannotConnectError = TranslateConnectionErrorForUser(translatedState);
-
-                            if (SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                    yield break;
-                        }
-
-                        // Z1242
-                        var connectingState = new Connecting(numConnectAttempts);
-
-                        State = connectingState;
-
-                        _serverConnection?.Dispose();
-                        _serverConnection = null;
-
-                        serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
-
-                        connectOrReconnectStartedAt = MetaTime.Now + Config.ConnectAttemptInterval;
-                        // Log info "Reconnecting in {Config.ConnectAttemptInterval} (try {numConnectAttempts} out of {Config.ConnectAttemptsMaxCount})..."
-
-                        if (serverStatusHintFetchTask.Result.MaintenanceMode != null)
-                        {
-                            var start = serverStatusHintFetchTask.Result.MaintenanceMode.GetStartAtMetaTime();
-                            var estimated = serverStatusHintFetchTask.Result.MaintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
-                            var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
-
-                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                            State = new TerminalError.InMaintenance();
-                        }
-
-                        State = cannotConnectError;
-
-                        if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                            yield break;
-                    }
-                    else if (translatedState is TerminalError.InMaintenance)
-                    {
-                        // Z1210
-                        serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
-                        serverStatusHintFetchTask.Wait(ct);
-
-                        // Z1217
-                        if (ct.IsCancellationRequested)
-                            if (CloseSupervisionLoop(sessionStartError, latestConnectionOptions, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                                if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                    yield break;
-
-                        if (serverStatusHintFetchTask.Result.MaintenanceMode != null)
-                        {
-                            var start = serverStatusHintFetchTask.Result.MaintenanceMode.GetStartAtMetaTime();
-                            var estimated = serverStatusHintFetchTask.Result.MaintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
-                            var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
-
-                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                            State = new TerminalError.InMaintenance();
-                        }
-
-                        State = cannotConnectError;
-
-                        if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                            yield break;
+                        // L2309
+                        var ongoing = MaintenanceModeState.CreateOngoing(MetaTime.Now, null);
+                        _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
                     }
                     else
                     {
-                        // Z1191
-                        cannotConnectError = TranslateConnectionErrorForUser(translatedState);
+                        // L2340
+                        MetaTime? estimated = null;
+                        if (latestConnectionScheduledMaintenanceMode.EstimationIsValid)
+                            estimated = latestConnectionScheduledMaintenanceMode.StartAt + MetaDuration.FromMinutes(latestConnectionScheduledMaintenanceMode.EstimatedDurationInMinutes);
 
-                        if (SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                            if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                                yield break;
+                        // L2360
+                        var ongoing = MaintenanceModeState.CreateOngoing(latestConnectionScheduledMaintenanceMode.StartAt, estimated);
+                        _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
                     }
-                } while (MetaTime.Now >= connectOrReconnectStartedAt);
+
+                    // L2397
+                    State = new TerminalError.InMaintenance();
+
+                    TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                    yield break;
+                }
+
+                // L1119
+                if (receiveMessageError is ServerConnection.RedirectToServerError rtse)
+                {
+                    // L1248
+                    // Log info "Redirecting to server: {rtse.RedirectToServer}"
+                    Endpoint = rtse.RedirectToServer;
+                    continue;
+                }
+
+                // L1126
+                var translatedState = TranslateError(receiveMessageError);
+                // Log debug "Failure while connecting. {receiveMessageError}, causes {translatedState}"
+
+                // L1146
+                if (translatedState is TransientError)
+                {
+                    // L1171
+                    networkDiagnosticReportTask ??= GetNetworkDiagnosticReportAsync();
+                    serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
+
+                    // L1182
+                    numConnectAttempts++;
+
+                    // L1185
+                    if (numConnectAttempts >= Config.ConnectAttemptsMaxCount)
+                    {
+                        // L1187
+                        serverStatusHintFetchTask?.Wait(ct);
+                    }
+                    else
+                    {
+                        // L1192
+                        var connectingState = new Connecting(numConnectAttempts);
+
+                        // L1196
+                        _serverConnection?.Dispose();
+                        _serverConnection = null;
+
+                        // L1199
+                        serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
+
+                        // L1205
+                        connectOrReconnectStartedAt = MetaTime.Now + Config.ConnectAttemptInterval;
+                        // Log info "Reconnecting in {ReconnectTimeout} (try {RetryCount} out of {MaxRetryCount})..."
+
+                        // L1222
+                        serverStatusHintFetchTask?.Wait(ct);
+
+                        if (!ct.IsCancellationRequested)
+                        {
+                            var maintenanceMode = serverStatusHintFetchTask.Result.MaintenanceMode;
+
+                            // L1868
+                            var start = maintenanceMode.GetStartAtMetaTime();
+                            var estimated = maintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
+                            var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
+
+                            // L1894
+                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
+
+                            // L2395
+                            State = new TerminalError.InMaintenance();
+                        }
+
+                        TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                        yield break;
+                    }
+                }
+                else if (translatedState is TerminalError.InMaintenance)
+                {
+                    // L1162
+                    serverStatusHintFetchTask ??= GetServerStatusHintAsync(Endpoint, Config);
+                    serverStatusHintFetchTask.Wait(ct);
+
+                    // L1387
+                    if (ct.IsCancellationRequested)
+                    {
+                        TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                        yield break;
+                    }
+
+                    // L1396
+                    var maintenanceMode1 = serverStatusHintFetchTask.Result.MaintenanceMode;
+                    if (maintenanceMode1 != null)
+                    {
+                        // L1855
+                        serverStatusHintFetchTask.Wait(ct);
+
+                        if (!ct.IsCancellationRequested)
+                        {
+                            // L1868
+                            var start = maintenanceMode1.GetStartAtMetaTime();
+                            var estimated = maintenanceMode1.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
+                            var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
+
+                            // L1894
+                            _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
+                        }
+                    }
+                    else
+                    {
+                        // L1403
+                        var ongoing = MaintenanceModeState.CreateOngoing(MetaTime.Now, null);
+
+                        // L1419
+                        _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
+                    }
+
+                    // L2395
+                    State = new TerminalError.InMaintenance();
+
+                    TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                    yield break;
+                }
+
+                // L1140
+                var cannotConnectError = TranslateConnectionErrorForUser(translatedState);
+
+                SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
+                TerminateConnection(sessionResourceLoaders, ref networkProbe);
+                yield break;
+            } while (MetaTime.Now >= connectOrReconnectStartedAt);
+        }
+
+        // CUSTOM: Moves enumeration with HandleMessagesAndCallAgain and terminates connection when necessary
+        private bool HandleAndCall(MessageTransport.Error connectionError, CancellationToken ct)
+        {
+            // L1287
+            if (ct.IsCancellationRequested)
+            {
+                // L1298
+                if (State.Status == ConnectionStatus.Connected)
+                {
+                    // L1312
+                    if (_flushEnqueuedMessagesBeforeClose)
+                    {
+                        // L1314
+                        // Log info "signaled connection to close, waiting"
+                        Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
+                    }
+                }
+            }
+            else
+            {
+                // L1289
+                if (connectionError == null)
+                {
+                    // L1292
+                    if (!ShouldEndSessionDueToRecentPause)
+                    {
+                        if (!ct.IsCancellationRequested)
+                            return true;
+
+                        // L1312
+                        if (_flushEnqueuedMessagesBeforeClose)
+                        {
+                            // L1314
+                            // Log info "signaled connection to close, waiting"
+                            Task.WaitAny(_serverConnection.EnqueueCloseAsync(), Task.Delay((int)Config.CloseFlushTimeout.Milliseconds, ct));
+                        }
+                    }
+                }
             }
 
-            // Z1313
-            // Log debug "Failure while updating credentials to disk."
-
-            sessionStartError = new TerminalError.NoFreeDiskSpace();
-
-            if (SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                if (TerminateConnection(sessionResourceLoaders, networkProbeCts))
-                    yield break;
+            return false;
         }
 
         // CUSTOM: Closes the supervision loop connections
-        private bool CloseSupervisionLoop(ConnectionState sessionStartError, Handshake.ConnectionOptions latestConnectionOptions, CancellationToken ct, ref Task<ServerStatusHint> serverStatusHintFetchTask, ref Task<NetworkDiagnosticReport> networkDiagnosticReportTask)
+        private void CloseSupervisionLoop(ConnectionState sessionStartError, Handshake.ServerOptions latestServerOptions, CancellationToken ct, ref Task<ServerStatusHint> serverStatusHintFetchTask, ref Task<NetworkDiagnosticReport> networkDiagnosticReportTask)
         {
-            // SupervisionLoop Z1936
-
+            // L1666
             // Log info "Client failed to start session. Sending failure report to server when network diagnostics complete."
 
-            if (serverStatusHintFetchTask == null && sessionStartError != null)
-                if (sessionStartError is TransientError)
-                    serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
+            if (serverStatusHintFetchTask == null && sessionStartError is TransientError)
+                serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
 
             networkDiagnosticReportTask ??= GetNetworkDiagnosticReportAsync();
             networkDiagnosticReportTask.Wait(ct);
 
-            if (!ct.IsCancellationRequested)
+            if (ct.IsCancellationRequested)
+                return;
+
+            SessionProtocol.SessionStartAbortReasonTrailer reasonTrailer = null;
+
+            var failedReport = MetaplaySDK.IncidentTracker.TryCreateSessionStartFailureReport(sessionStartError, Endpoint, LatestTlsPeerDescription, networkDiagnosticReportTask.Result, false);
+            if (failedReport == null)
             {
-                SessionProtocol.SessionStartAbortReasonTrailer reasonTrailer = null;
-
-                var failedReport = MetaplaySDK.IncidentTracker.TryCreateSessionStartFailureReport(sessionStartError, Endpoint, LatestTlsPeerDescription, networkDiagnosticReportTask.Result, false);
-                if (failedReport == null)
+                // Log debug "Session start incident report throttled. Will not send the report."
+            }
+            else
+            {
+                var suffix = (uint)PlayerIncidentUtil.GetSuffixFromIncidentId(failedReport.ErrorType);
+                var coinFlip = KeyedStableWeightedCoinflip.FlipACoin(0x1247a312, suffix, latestServerOptions.PushUploadPercentageSessionStartFailedIncidentReport * 10);
+                if (!coinFlip)
                 {
-                    // Log debug "Session start incident report throttled. Will not send the report."
+                    // Log debug "Session start incident report throttled due to server-side limit. Will not send the report."
                 }
                 else
                 {
-                    var suffix = (uint)PlayerIncidentUtil.GetSuffixFromIncidentId(failedReport.ErrorType);
-                    var coinFlip = KeyedStableWeightedCoinflip.FlipACoin(0x1247a312, suffix, latestConnectionOptions.PushUploadPercentageSessionStartFailedIncidentReport * 10);
-                    if (!coinFlip)
-                    {
-                        // Log debug "Session start incident report throttled due to server-side limit. Will not send the report."
-                    }
-                    else
-                    {
-                        var delivery = PlayerIncidentUtil.TryCompressIncidentForNetworkDelivery(failedReport);
-                        if (delivery != null)
-                            reasonTrailer = new SessionProtocol.SessionStartAbortReasonTrailer(failedReport.ErrorType, delivery);
-                    }
+                    var delivery = PlayerIncidentUtil.TryCompressIncidentForNetworkDelivery(failedReport);
+                    if (delivery != null)
+                        reasonTrailer = new SessionProtocol.SessionStartAbortReasonTrailer(failedReport.ErrorType, delivery);
                 }
-
-                var aborted = _serverConnection.AbortSessionStart(reasonTrailer);
-                if (!aborted)
-                {
-                    // Log debug "Transport was lost before session start incident report could be sent."
-                }
-                else
-                {
-                    var closeTask = _serverConnection.EnqueueCloseAsync();
-                    var connectOrReconnectStartedAt = MetaTime.Now + Config.CloseFlushTimeout;
-
-                    closeTask.Wait(ct);
-
-                    if (MetaTime.Now <= connectOrReconnectStartedAt)
-                    {
-                        if (ct.IsCancellationRequested)
-                            goto CloseFinal;
-                    }
-
-                    // Log debug reasonTrailer != null ? "Session start incident report sent." : "Session start abort request sent."
-                }
-
-                var cannotConnectError = sessionStartError;
-
-                if (SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask))
-                    goto CloseFinal;
             }
 
-        CloseFinal:
-            return true;
+            var aborted = _serverConnection.AbortSessionStart(reasonTrailer);
+            if (!aborted)
+            {
+                // Log debug "Transport was lost before session start incident report could be sent."
+            }
+            else
+            {
+                var closeTask = _serverConnection.EnqueueCloseAsync();
+                var connectOrReconnectStartedAt = MetaTime.Now + Config.CloseFlushTimeout;
+
+                closeTask.Wait(ct);
+
+                if (MetaTime.Now <= connectOrReconnectStartedAt)
+                {
+                    if (ct.IsCancellationRequested)
+                        return;
+                }
+
+                // Log debug reasonTrailer != null ? "Session start incident report sent." : "Session start abort request sent."
+            }
+
+            var cannotConnectError = sessionStartError;
+            SendReport(sessionStartError, cannotConnectError, ct, ref serverStatusHintFetchTask, ref networkDiagnosticReportTask);
         }
 
-        // CUSTOM: 
-        private bool SendReport(ConnectionState sessionStartError, ConnectionState cannotConnectError, CancellationToken ct, ref Task<ServerStatusHint> serverStatusHintFetchTask, ref Task<NetworkDiagnosticReport> networkDiagnosticReportTask)
+        // CUSTOM: Sends a report and other terminating behaviour
+        private void SendReport(ConnectionState sessionStartError, ConnectionState cannotConnectError, CancellationToken ct, ref Task<ServerStatusHint> serverStatusHintFetchTask, ref Task<NetworkDiagnosticReport> networkDiagnosticReportTask)
         {
-            if (serverStatusHintFetchTask == null && sessionStartError != null)
-                if (sessionStartError is TransientError)
-                    serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
+            // L1790
+            if (serverStatusHintFetchTask == null && sessionStartError is TransientError)
+                serverStatusHintFetchTask = GetServerStatusHintAsync(Endpoint, Config);
 
-            // Z2108
+            // L1804
             var report = (IHasNetworkDiagnosticReport)sessionStartError;
             if (report != null)
             {
-                // Z2106
+                // L1809
                 networkDiagnosticReportTask ??= GetNetworkDiagnosticReportAsync();
                 networkDiagnosticReportTask.Wait(ct);
 
                 if (ct.IsCancellationRequested)
-                    goto CloseFinal;
+                    return;
 
                 report.NetworkDiagnosticReport = networkDiagnosticReportTask.Result;
             }
 
-            // Z2152
-            if (serverStatusHintFetchTask != null && cannotConnectError != null)
+            // L1847
+            if (serverStatusHintFetchTask != null && cannotConnectError is TransientError)
             {
-                if (cannotConnectError is TransientError)
-                {
-                    // Z1473
-                    serverStatusHintFetchTask.Wait(ct);
-                    if (ct.IsCancellationRequested)
-                        // LAB_01cbcf34
-                        goto CloseFinal;
+                // L1855
+                serverStatusHintFetchTask.Wait(ct);
 
-                    // Z1497
-                    var start = serverStatusHintFetchTask.Result.MaintenanceMode.GetStartAtMetaTime();
-                    var estimated = serverStatusHintFetchTask.Result.MaintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
-                    var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
+                if (ct.IsCancellationRequested)
+                    return;
 
-                    _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
-                    State = new TerminalError.InMaintenance();
+                // L1868
+                var start = serverStatusHintFetchTask.Result.MaintenanceMode.GetStartAtMetaTime();
+                var estimated = serverStatusHintFetchTask.Result.MaintenanceMode.GetEstimatedMaintenanceOverAtMetaTimeMaybe();
+                var ongoing = MaintenanceModeState.CreateOngoing(start, estimated);
 
-                    goto CloseFinal;
-                }
+                _sdkHook.OnScheduledMaintenanceModeUpdated(ongoing);
+
+                // L2395
+                State = new TerminalError.InMaintenance();
             }
-
-            State = cannotConnectError;
-
-        CloseFinal:
-            return true;
+            else
+                // L1917
+                State = cannotConnectError;
         }
 
         // CUSTOM: Terminates connection instances in SupervisionLoop
-        private bool TerminateConnection(List<SessionResourceLoader> sessionResourceLoaders, CancellationTokenSource networkProbeCts)
+        private void TerminateConnection(List<SessionResourceLoader> sessionResourceLoaders, ref NetworkProbe networkProbe)
         {
+            // L2401
             // Log info "Connection terminated"
 
             _serverConnection?.Dispose();
@@ -1161,9 +1205,8 @@ namespace Metaplay.Metaplay.Unity
 
             MetaplaySDK.MessageDispatcher.SetConnection(null);
 
-            networkProbeCts?.Cancel();
-
-            return true;
+            networkProbe?.Dispose();
+            networkProbe = null;
         }
 
         private ConnectionState TranslateConnectionErrorForUser(ConnectionState defaultResult)
@@ -1342,14 +1385,6 @@ namespace Metaplay.Metaplay.Unity
 
         private static async Task<ServerStatusHint> GetServerStatusHintAsync(/*LogChannel log, */ServerEndpoint endpoint, ConnectionConfig config)
         {
-            /*	public int <>1__state; // 0x0
-	            public AsyncTaskMethodBuilder<MetaplayConnection.ServerStatusHint> <>t__builder; // 0x8
-	            public LogChannel log; // 0x20
-	            public ServerEndpoint endpoint; // 0x28
-	            public ConnectionConfig config; // 0x30
-	            private List.Enumerator<string> <>7__wrap1; // 0x38
-	            private TaskAwaiter<MetaplayConnection.ServerStatusHint> <>u__1; // 0x50 */
-
             // Log debug "Server status check started"
 
             var urls = new List<string>();
@@ -1425,40 +1460,6 @@ namespace Metaplay.Metaplay.Unity
             return ServerStatusHint.TryParseFromRecord(hintObj);
         }
 
-        private static async Task RunNetworkProbeAsync(/*LogChannel log,*/ string probeUrl, CancellationToken ct, bool?[] networkProbeResultBox)
-        {
-            /*	public int <>1__state; // 0x0
-	            public AsyncTaskMethodBuilder <>t__builder; // 0x8
-	            public CancellationToken ct; // 0x20
-	            public LogChannel log; // 0x28
-	            private MetaplayConnection.<>c__DisplayClass89_0 <>8__1; // 0x30
-	            public string probeUrl; // 0x38
-	            public Nullable<bool>[] networkProbeResultBox; // 0x40
-	            private int <attemptNdx>5__2; // 0x48
-	            private Stopwatch <sw>5__3; // 0x50
-	            private ConfiguredTaskAwaitable.ConfiguredTaskAwaiter<WebResponse> <>u__1; // 0x58
-	            private ConfiguredTaskAwaitable.ConfiguredTaskAwaiter <>u__2; // 0x68 */
-
-            var attemptNdx = 0;
-
-            HttpWebRequest networkProbe = null;
-            ct.Register(() => networkProbe?.Abort());
-
-            // Log debug "Testing network reachability with a network probe."
-
-            var sw = Stopwatch.StartNew();
-
-            networkProbe = WebRequest.CreateHttp(probeUrl);
-            networkProbe.Method = "HEAD";
-
-            // Log debug "Sending network probe {attemptNdx + 1}"
-
-            using var response = await networkProbe.GetResponseAsync();
-            networkProbeResultBox[0] = false;
-
-            // Log debug "Network probe {attemptNdx + 1} completed successfully (took {sw.ElapsedMilliseconds}ms)."
-        }
-
         private bool HandleCredentialsChanged(ServerConnection.LoginCredentialsChangedInfo credentialUpdate)
         {
             if (credentialUpdate.Change == ServerConnection.LoginCredentialsChangedInfo.ChangeType.PlayerIdChanged)
@@ -1483,19 +1484,13 @@ namespace Metaplay.Metaplay.Unity
 
             _credentials = credentials;
 
-            // This method got inlined in the original code, but it does exactly the same
+            // HINT: This method got inlined in the original code, but it does exactly the same
             return CredentialsStore.StoreCredentials(credentials);
         }
 
         private static ClientAppPauseStatus ToClientAppPauseStatus(ApplicationPauseStatus status)
         {
             return (ClientAppPauseStatus)status;
-        }
-
-        private SessionProtocol.SessionResourceProposal GetResourceProposal(ClientSessionNegotiationResources negotiationState)
-        {
-            var activeLang = MetaplaySDK.LocalizationManager.ActiveLocalizationLanguage;
-            return negotiationState.ToResourceProposal(activeLang, MetaplaySDK.LocalizationManager.ActiveLocalizationVersion);
         }
 
         private async Task<ConfigArchive> DownloadConfigArchiveAsync(string name, ContentHash version, string nullableUriSuffix, CancellationToken ct)
@@ -1642,7 +1637,8 @@ namespace Metaplay.Metaplay.Unity
         {
             private Dictionary<ClientSlot, DownloadTaskWrapper<ConfigArchive>> _configArchiveDownloads; // 0x28
             private Dictionary<ClientSlot, DownloadTaskWrapper<GameConfigSpecializationPatches>> _patchArchiveDownloads; // 0x30
-            private ClientSessionNegotiationResources _negotiationResources; // 0x38
+            private DownloadTaskWrapper<LocalizationLanguage> _localizationDownload; // 0x38
+            private ClientSessionNegotiationResources _negotiationResources; // 0x40
 
             public ClientSessionNegotiationResources NegotiationResources => _negotiationResources;
 
@@ -1658,6 +1654,11 @@ namespace Metaplay.Metaplay.Unity
                     _negotiationResources.ConfigArchives[value.Key] = value.Value.GetResult();
                 foreach (var value in _patchArchiveDownloads)
                     _negotiationResources.PatchArchives[value.Key] = value.Value.GetResult();
+
+                if (_localizationDownload != null)
+                    _negotiationResources.ActiveLanguage = _localizationDownload.GetResult();
+
+                MetaplaySDK.LocalizationManager.ActivateSessionStartLanguage(_negotiationResources.ActiveLanguage);
             }
 
             public override void Reset()
@@ -1669,7 +1670,15 @@ namespace Metaplay.Metaplay.Unity
 
                 _configArchiveDownloads.Clear();
                 _patchArchiveDownloads.Clear();
-                _negotiationResources = new ClientSessionNegotiationResources();
+
+                _localizationDownload?.Dispose();
+                _localizationDownload = null;
+
+                _negotiationResources = new ClientSessionNegotiationResources
+                {
+                    ActiveLanguage = MetaplaySDK.ActiveLanguage
+                };
+
                 IsComplete = true;
             }
 
@@ -1693,9 +1702,17 @@ namespace Metaplay.Metaplay.Unity
                     _patchArchiveDownloads[clientSlot] = patch;
                 }
 
-                if (_configArchiveDownloads.Count < 1)
-                    if (_patchArchiveDownloads.Count < 1)
-                        return;
+                if (resourceCorrection.LanguageUpdate.HasValue)
+                {
+                    var update = resourceCorrection.LanguageUpdate.Value;
+                    var config = MetaplaySDK.Connection.Config;
+
+                    var fetchTask = MetaplaySDK.LocalizationManager.FetchLanguageAsync(update.ActiveLanguage, update.LocalizationVersion, MetaplaySDK.CdnAddress, config.ConfigFetchAttemptsMaxCount, config.ConfigFetchTimeout, _ct);
+                    _localizationDownload = new DownloadTaskWrapper<LocalizationLanguage>(fetchTask);
+                }
+
+                if (_configArchiveDownloads.Count < 1 && _patchArchiveDownloads.Count < 1 && _localizationDownload == null)
+                    return;
 
                 IsComplete = false;
             }
@@ -1707,20 +1724,26 @@ namespace Metaplay.Metaplay.Unity
 
                 foreach (var update in _configArchiveDownloads)
                 {
-                    PollSingleDownload(update.Key, update.Value, out var isComplete, out error);
+                    PollSingleDownload($"slot {update.Key.Id}", update.Value, out var isComplete, out error);
                     totalComplete &= isComplete;
                 }
 
                 foreach (var update in _patchArchiveDownloads)
                 {
-                    PollSingleDownload(update.Key, update.Value, out var isComplete, out error);
+                    PollSingleDownload($"slot {update.Key.Id}", update.Value, out var isComplete, out error);
+                    totalComplete &= isComplete;
+                }
+
+                if (_localizationDownload != null)
+                {
+                    PollSingleDownload("localizations", _localizationDownload, out var isComplete, out error);
                     totalComplete &= isComplete;
                 }
 
                 return totalComplete;
             }
 
-            private void PollSingleDownload(ClientSlot slot, IDownload task, out bool isComplete, out TransientError error)
+            private void PollSingleDownload(string resourceNameForErrorMessage, IDownload task, out bool isComplete, out TransientError error)
             {
                 error = null;
 
@@ -1730,13 +1753,13 @@ namespace Metaplay.Metaplay.Unity
                         break;
 
                     case DownloadStatus.StatusCode.Timeout:
-                        // Log debug "Timeout while fetching resource for slot {slot}"
+                        // Log warning "Timeout while fetching resource for {resourceNameForErrorMessage}"
                         error = new TransientError.Timeout(TransientError.Timeout.TimeoutSource.ResourceFetch);
                         break;
 
                     case DownloadStatus.StatusCode.Error:
-                        // Log debug "Failure while fetching resource for slot {slot}: {task.Status.Code}"
-                        error = new TransientError.Timeout(TransientError.Timeout.TimeoutSource.ResourceFetch);
+                        // Log warning "Failure while fetching resource for {resourceNameForErrorMessage}: {task.Status.Error}"
+                        error = new TransientError.ConfigFetchFailed(task.Status.Error, TransientError.ConfigFetchFailed.FailureSource.ResourceFetch);
                         break;
 
                     default:
@@ -1758,99 +1781,21 @@ namespace Metaplay.Metaplay.Unity
                     var specPatches = tuple.Value.Item1.GetPatchesForSpecialization(tuple.Value.Item2);
                     return GameConfigFactory.Instance.ImportSharedGameConfig(new PatchedConfigArchive(archive, specPatches));
                 });
-
                 MetaplaySDK.Connection.SessionStartResources = startResources;
-                var playerArchive = _negotiationResources.ConfigArchives[ClientSlotCore.Player];
+
+                var configs = _negotiationResources.ConfigArchives[ClientSlotCore.Player];
                 var patches = _negotiationResources.PatchArchives.GetValueOrDefault(ClientSlotCore.Player);
+
+                var archiveVersion = configs.Version;
                 var patchesVersion = patches?.Version ?? ContentHash.None;
 
                 if (!_negotiationResources.PatchArchives.ContainsKey(ClientSlotCore.Player))
-                    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(playerArchive.Version, patchesVersion, null);
+                    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(archiveVersion, patchesVersion, null);
                 else
                 {
                     var experiments = sessionStartSuccess.ActiveExperiments.Select(x => new ExperimentVariantPair(x.ExperimentId, x.VariantId)).ToList();
-                    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(playerArchive.Version, patchesVersion, experiments);
+                    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(archiveVersion, patchesVersion, experiments);
                 }
-            }
-        }
-
-        private class LocalizationResourceLoader : DownloadResourceLoader // TypeDefIndex: 12689
-        {
-            public LocalizationResourceLoader(/*LogChannel log,*/ CancellationToken ct) : base(/*log,*/ ct)
-            { }
-
-            protected override void Activate()
-            {
-                if (Download is MetaplayLocalizationManager.LocalizationDownload ld)
-                    ld.SetAsActiveLocalization();
-            }
-
-            public override void SetupFromResourceCorrection(SessionProtocol.SessionResourceCorrection resourceCorrection)
-            {
-                var langUpdate = resourceCorrection.LanguageUpdate;
-                if (!langUpdate.HasValue)
-                {
-                    Reset();
-                    return;
-                }
-
-                var download = MetaplaySDK.LocalizationManager.BeginFetchLanguage(langUpdate.Value.ActiveLanguage, langUpdate.Value.LocalizationVersion, _ct);
-
-                // HINT: This code was inlined, but that's what the method is supposed for in the base class
-                SetupWithDownload(download);
-            }
-        }
-
-        private abstract class DownloadResourceLoader : SessionResourceLoader
-        {
-            protected IDownload Download { get; set; }  // 0x28
-
-            protected DownloadResourceLoader( /*LogChannel log,*/ CancellationToken ct) : base( /*log,*/ ct)
-            { }
-
-            public sealed override bool PollDownload(out TransientError error)
-            {
-                error = null;
-
-                if (Download == null)
-                    return false;
-
-                switch (Download.Status.Code)
-                {
-                    case DownloadStatus.StatusCode.Completed:
-                        break;
-
-                    case DownloadStatus.StatusCode.Timeout:
-                        // Debug log: Timeout while fetching resource
-                        error = new TransientError.Timeout(TransientError.Timeout.TimeoutSource.ResourceFetch);
-                        break;
-
-                    case DownloadStatus.StatusCode.Error:
-                        // Debug log: Failure while fetching resource: {State}
-                        error = new TransientError.ConfigFetchFailed(Download.Status.Error, TransientError.ConfigFetchFailed.FailureSource.ResourceFetch);
-                        break;
-
-                    default:
-                        return false;
-                }
-
-                return true;
-            }
-
-            public override void Reset()
-            {
-                Download?.Dispose();
-
-                Download = null;
-                IsComplete = true;
-            }
-
-            protected void SetupWithDownload(IDownload download)
-            {
-                Reset();
-
-                Download = download;
-                IsComplete = false;
             }
         }
 
@@ -1881,22 +1826,22 @@ namespace Metaplay.Metaplay.Unity
                 return null;
             }
 
-            // Slot: 4; 0x178; 0x180
+            // Slot: 4; 0x178
             public virtual void Reset()
             {
                 IsComplete = true;
             }
 
-            // Slot: 5; 0x188; 0x190
+            // Slot: 5; 0x188
             public abstract void SetupFromResourceCorrection(SessionProtocol.SessionResourceCorrection resourceCorrection);
 
-            // Slot: 6; 0x198; 0x1A0
+            // Slot: 6; 0x198
             public abstract bool PollDownload(out TransientError error);
 
-            // Slot: 7; 0x1A8; 0x1B0
+            // Slot: 7; 0x1A8
             protected abstract void Activate();
 
-            // Slot: 8; 0x1b8; 0x1c0
+            // Slot: 8; 0x1B8
             protected virtual void Specialize(SessionProtocol.SessionStartSuccess sessionStartSuccess)
             { }
         }

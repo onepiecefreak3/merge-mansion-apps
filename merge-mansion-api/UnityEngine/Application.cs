@@ -25,6 +25,9 @@ namespace Metaplay.UnityEngine
         // CUSTOM: To access assets from the APK
         public static string ApkPath => Path.Combine(Root, "apk");
 
+        // CUSTOM: To access and write temporary data of the user
+        public static string TemporaryCachePath => Path.Combine(DataPath, "cache");
+
         // CUSTOM: To access the player preferences with the same pattern as all other paths in the engine
         public static string SharedPrefsPath => Path.Combine(DataPath, "shared_prefs");
 
@@ -58,7 +61,7 @@ namespace Metaplay.UnityEngine
 
         private static void EnsureVersions()
         {
-            Versions[SystemLanguage.English] = "23.04.01";
+            Versions[SystemLanguage.English] = "23.06.01";
         }
 
         private static void EnsureIdentifiers()
@@ -80,6 +83,7 @@ namespace Metaplay.UnityEngine
             EnsureDirectory(PersistentDataPath);
             EnsureDirectory(ApkPath);
 
+            EnsureDirectory(TemporaryCachePath);
             EnsureDirectory(SharedPrefsPath);
         }
 

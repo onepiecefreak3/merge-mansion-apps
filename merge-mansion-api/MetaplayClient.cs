@@ -31,13 +31,13 @@ namespace Metaplay
 
             MetaplaySDK.Start(new MetaplaySDKConfig
             {
-                BuildVersion = new BuildVersion(Application.Version, "local", "7d56c04751bbe1f136a94a3c2e158c1dc0d027ee"),
+                BuildVersion = new BuildVersion(Application.Version, "local", "aa48939ad4e4f32ed0619042be5da8137afa16c0"),
                 AutoCreateMetaplaySDKBehavior = false,
                 ServerEndpoint = GetServerEndpoint(),
                 ConnectionConfig = null,
                 OfflineOptions = new MetaplayOfflineOptions { PersistState = DeploymentConfig.Instance.PersistOfflineState },
                 ConnectionDelegate = _connectionDelegate = new GameConnectionDelegate { SessionContext = this },
-                LocalizationDelegate = new GameLocalizationDelegate { SessionContext = this },
+                LocalizationDelegate = new DefaultMetaplayLocalizationDelegate(),
                 SessionContext = this
 
                 // ...

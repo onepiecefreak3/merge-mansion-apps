@@ -11,11 +11,11 @@ namespace Metaplay.Metaplay.Core
         // 0x8
         public static readonly MetaTime Epoch = default;
         // 0x10
-        public static readonly DateTime DateTimeEpoch = new DateTime(1970, 1, 1, 0, 0, 0, 1, 0);
+        public static readonly DateTime DateTimeEpoch = new(1970, 1, 1, 0, 0, 0, 1, 0);
         // 0x18
-        private static readonly ConfigLexer.CustomTokenSpec s_dateConfigToken = new ConfigLexer.CustomTokenSpec("([0-9]|-)+", "Date part of MetaTime");
+        private static readonly ConfigLexer.CustomTokenSpec s_dateConfigToken = new("([0-9]|-)+", "Date part of MetaTime");
         // 0x20
-        private static readonly ConfigLexer.CustomTokenSpec s_timeOfDayConfigToken = new ConfigLexer.CustomTokenSpec("([0-9]|:|\\.)+", "Time-of-day part of MetaTime");
+        private static readonly ConfigLexer.CustomTokenSpec s_timeOfDayConfigToken = new("([0-9]|:|\\.)+", "Time-of-day part of MetaTime");
         // 0x28
         private static readonly string s_dateFormat = "yyyy-M-d";
         // 0x30

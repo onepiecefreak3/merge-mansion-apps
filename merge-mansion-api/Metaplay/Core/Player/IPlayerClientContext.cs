@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Metaplay.Metaplay.Core.Client;
 
 namespace Metaplay.Metaplay.Core.Player
 {
@@ -10,7 +6,13 @@ namespace Metaplay.Metaplay.Core.Player
     {
         // STUB
 
+        // RVA: -1 Offset: -1 Slot: 0
+        IClientPlayerModelJournal Journal { get; }
+
         // RVA: -1 Offset: -1 Slot: 2
         MetaTime LastUpdateTimeDebug { get; }
+
+        // RVA: -1 Offset: -1 Slot: 3
+        //MetaActionResult ExecuteAction(PlayerActionBase action);
     }
 }

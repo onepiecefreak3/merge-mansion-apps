@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using merge_mansion_api.Code.GameLogic.GameEvents;
+using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.GameLogic.Player.Items.Collectable;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
 
-namespace merge_mansion_api.GameLogic.Player.Items.Collectable
+namespace Metaplay.GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(8)]
     public class LeaderboardEventCollectAction : IProgressCollectAction

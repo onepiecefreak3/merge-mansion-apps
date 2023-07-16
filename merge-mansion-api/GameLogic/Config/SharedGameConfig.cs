@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics;
 using System.Reflection;
-using merge_mansion_api.Code.GameLogic.GameEvents;
-using merge_mansion_api.Metaplay.Core.Config;
 using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.GameLogic.Area;
 using Metaplay.GameLogic.Codex;

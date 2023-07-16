@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using merge_mansion_api.Metaplay.Core.Config;
+using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.InAppPurchase;
 using Metaplay.Metaplay.Core.Localization;
 using Metaplay.Metaplay.Core.Offers;

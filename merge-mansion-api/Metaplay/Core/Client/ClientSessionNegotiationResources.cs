@@ -9,8 +9,9 @@ namespace Metaplay.Metaplay.Core.Client
     {
         public Dictionary<ClientSlot, ConfigArchive> ConfigArchives; // 0x10
         public Dictionary<ClientSlot, GameConfigSpecializationPatches> PatchArchives; // 0x18
+        public LocalizationLanguage ActiveLanguage; // 0x20
 
-        public SessionProtocol.SessionResourceProposal ToResourceProposal(LanguageId clientActiveLanguage, ContentHash clientLocalizationVersion)
+        public SessionProtocol.SessionResourceProposal ToResourceProposal()
         {
             var dict = new Dictionary<ClientSlot, ContentHash>();
             var dict2 = new Dictionary<ClientSlot, ContentHash>();
@@ -20,7 +21,7 @@ namespace Metaplay.Metaplay.Core.Client
             foreach (var value in PatchArchives)
                 dict2[value.Key] = value.Value.Version;
 
-            return new SessionProtocol.SessionResourceProposal(dict, dict2, clientActiveLanguage, clientLocalizationVersion);
+            return new SessionProtocol.SessionResourceProposal(dict, dict2, ActiveLanguage.LanguageId, ActiveLanguage.Version);
         }
 
         public ClientSessionNegotiationResources()

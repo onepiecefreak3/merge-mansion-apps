@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Metaplay.Metaplay.Client.Messages;
@@ -16,60 +17,63 @@ namespace Metaplay.Metaplay.Core.Network
     {
         private readonly Config _config; // 0x18
         private readonly ServerEndpoint _endpoint; // 0x20
-
-        private IMessageTransport _transport; // 0x28
-        private object _transportLock; // 0x30
-        private object _transportResetupLock; // 0x38
-        private CancellationTokenSource _transportResetupCancellation; // 0x40
-        private Task _transportResetupTask; // 0x48
-
-        private object _incomingLock; // 0x50
-        private List<MetaMessage> _incomingMessages; // 0x58
-        private MessageTransport.Error _incomingError; // 0x60
-        private ServerHandshakePhase _handshakePhase; // 0x68
-
-        private object _enqueueCloseLock; // 0x70
-        private bool _closeEnqueued; // 0x78
-        private CreateTransportFn _createTransport; // 0x80
-        private readonly BuildVersion _buildVersion; // 0x88
-        private LoginCredentials _credentials; // 0xA0
-        private string _deviceGuid; // 0xC8
-        private SessionProtocol.SessionResourceProposal _resourceProposal; // 0xD0
-        private ClientAppPauseStatus _clientAppPauseStatus; // 0xF8
-        private int _currentSessionStartQueryId; // 0xFC
-        private GetDebugDiagnosticsFn _getDebugDiagnostics; // 0x100
-        private EarlyMessageFilterSyncFn _earlyMessageFilterSyncFn; // 0x108
-        private SessionState _currentSession; // 0x110
-        private object _currentSessionSendQueueLock; // 0x118
-        private TaskCompletionSource<MessageTransport.Error> _terminatingErrorTask; // 0x120
-        private DateTime _connectionStartTime; // 0x128
-        //private MetaTimer _pauseTerminationTimer; // 0x130
-        private object _pauseTerminationTimerLock; // 0x138
-        internal Stats _statistics; // 0x140
-        private DateTime _watchdogDeadlineAt; // 0x150
-        private TimeSpan _watchdogDeadlineLastDuration; // 0x158
-        private object _watchdogLock; // 0x160
-        private DateTime? _resetupDeadlineAt; // 0x168
-        private TimeSpan _resetupDeadlineLastDuration; // 0x178
-        private bool _enableWatchdog; // 0x180
-        private Action _reportWatchdogViolation; // 0x188
-        private DateTime _previousUpdateAt; // 0x190
-        internal ServerGateway _currentGateway; // 0x198
-        private int _numSuccessfulSessionResumes; // 0x1A0
-        private LoginServerConnectionDebugDiagnostics _connDiagnostics; // 0x1A8
-        private LoginTransportDebugDiagnostics _transportDiagnostics; // 0x1B0
+        private readonly SessionNonceService _nonceService; // 0x28
+        private readonly ISessionDeviceGuidService _guidService; // 0x30
+        private IMessageTransport _transport; // 0x38
+        private object _transportLock; // 0x40
+        private object _transportResetupLock; // 0x48
+        private CancellationTokenSource _transportResetupCancellation; // 0x50
+        private Task _transportResetupTask; // 0x58
+        private object _incomingLock; // 0x60
+        private List<MetaMessage> _incomingMessages; // 0x68
+        private MessageTransport.Error _incomingError; // 0x70
+        private ServerHandshakePhase _handshakePhase; // 0x78
+        private object _enqueueCloseLock; // 0x80
+        private bool _closeEnqueued; // 0x88
+        private CreateTransportFn _createTransport; // 0x90
+        private readonly BuildVersion _buildVersion; // 0x98
+        private LoginCredentials _credentials; // 0xB0
+        private SessionProtocol.SessionResourceProposal _resourceProposal; // 0xD8
+        private ClientAppPauseStatus _clientAppPauseStatus; // 0x100
+        private int _currentSessionStartQueryId; // 0x104
+        private GetDebugDiagnosticsFn _getDebugDiagnostics; // 0x108
+        private EarlyMessageFilterSyncFn _earlyMessageFilterSyncFn; // 0x110
+        private SessionState _currentSession; // 0x118
+        private object _currentSessionSendQueueLock; // 0x120
+        private TaskCompletionSource<MessageTransport.Error> _terminatingErrorTask; // 0x128
+        private DateTime _connectionStartTime; // 0x130
+        //private MetaTimer _pauseTerminationTimer; // 0x138
+        private object _pauseTerminationTimerLock; // 0x140
+        private bool _pauseTerminationEnabled; // 0x148
+        internal Stats _statistics; // 0x150
+        private DateTime _watchdogDeadlineAt; // 0x158
+        private TimeSpan _watchdogDeadlineLastDuration; // 0x160
+        private object _watchdogLock; // 0x168
+        private DateTime? _resetupDeadlineAt; // 0x170
+        private TimeSpan _resetupDeadlineLastDuration; // 0x188
+        private bool _enableWatchdog; // 0x190
+        private Action _reportWatchdogViolation; // 0x198
+        private DateTime _previousUpdateAt; // 0x1A0
+        internal ServerGateway _currentGateway; // 0x1A8
+        private int _numSuccessfulSessionResumes; // 0x1B0
+        private CancellationTokenSource _disposeCts; // 0x1B8
+        private LoginServerConnectionDebugDiagnostics _connDiagnostics; // 0x1C0
+        private LoginTransportDebugDiagnostics _transportDiagnostics; // 0x1C8
 
         //private LogChannel Log { get; } // 0x10
 
         public bool IsLoggedIn => _handshakePhase == ServerHandshakePhase.InSession;
 
-        public ServerConnection(/*LogChannel log, */Config config, ServerEndpoint endpoint, CreateTransportFn createTransport,
-            BuildVersion buildVersion,
-            LoginCredentials initialCredentials, string initialDeviceGuid, SessionProtocol.SessionResourceProposal initialResourceProposal,
+        public ServerConnection(/*LogChannel log, */Config config, ServerEndpoint endpoint,
+            SessionNonceService nonceService, ISessionDeviceGuidService guidService,
+            CreateTransportFn createTransport,
+            BuildVersion buildVersion, LoginCredentials initialCredentials,
+            SessionProtocol.SessionResourceProposal initialResourceProposal,
             ClientAppPauseStatus initialClientAppPauseStatus,
             GetDebugDiagnosticsFn getDebugDiagnostics,
             EarlyMessageFilterSyncFn earlyMessageFilterSync, bool enableWatchdog,
-            Action reportWatchdogViolation, int numFailedConnectionAttempts)
+            Action reportWatchdogViolation, int numFailedConnectionAttempts,
+            bool isReconnectToSameEndpoint)
         {
             _transportLock = new object();
             _transportResetupLock = new object();
@@ -91,10 +95,11 @@ namespace Metaplay.Metaplay.Core.Network
 
             _config = config;
             _endpoint = endpoint;
+            _nonceService = nonceService;
+            _guidService = guidService;
             _createTransport = createTransport;
             _buildVersion = buildVersion;
             _credentials = initialCredentials;
-            _deviceGuid = initialDeviceGuid;
             _getDebugDiagnostics = getDebugDiagnostics;
             _earlyMessageFilterSyncFn = earlyMessageFilterSync;
             _enableWatchdog = enableWatchdog;
@@ -104,6 +109,8 @@ namespace Metaplay.Metaplay.Core.Network
             _terminatingErrorTask = new TaskCompletionSource<MessageTransport.Error>();
             _previousUpdateAt = DateTime.UtcNow;
             _currentGateway = ServerGatewayScheduler.SelectGatewayForInitialConnection(_endpoint, numFailedConnectionAttempts);
+
+            _nonceService.NewSession();
 
             SetupTransport(null);
         }
@@ -151,8 +158,10 @@ namespace Metaplay.Metaplay.Core.Network
             if (_handshakePhase != ServerHandshakePhase.WaitingForSessionHandshakeCompletion)
                 return;
 
+            EnqueueInfo(new SessionStartRequested());
+
             _currentSessionStartQueryId++;
-            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _deviceGuid, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
+            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceModel, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
 
             _transport.EnqueueSendMessage(req);
         }
@@ -322,18 +331,13 @@ namespace Metaplay.Metaplay.Core.Network
                 return false;
             }
 
-            var t = 9;
             lock (_enqueueCloseLock)
             {
-                if (!_closeEnqueued)
-                {
-                    RemoveTransport();
-                    t = 10;
-                }
-            }
+                if (_closeEnqueued)
+                    return false;
 
-            if (t != 10)
-                return false;
+                RemoveTransport();
+            }
 
             StartResetupTransportForSessionResumption(previousTransportError, ts, ts1);
             return true;
@@ -494,98 +498,7 @@ namespace Metaplay.Metaplay.Core.Network
 
         private void HandleOnReceive(MetaMessage message)
         {
-            switch (_handshakePhase)
-            {
-                case ServerHandshakePhase.InSession:
-                    if (message is SessionForceTerminateMessage sftm)
-                    {
-                        // Log info "Got {message}"
-                        TerminateWithError(new SessionForceTerminatedError(sftm.Reason));
-                    }
-                    else
-                    {
-                        Interlocked.Increment(ref _connDiagnostics.SessionMessagesReceived);
-
-                        SessionUtil.ReceiveResult result;
-                        lock (_currentSessionSendQueueLock)
-                            result = SessionUtil.HandleReceive(_currentSession.SessionParticipant, message);
-
-                        if (result == null)
-                            throw new InvalidOperationException("Unknown ReceiveResult: null");
-
-                        if (result is SessionUtil.ReceiveResult.HandleAck har)
-                            OnHandledSessionAckFromServer(har.Value);
-                        else if (result is SessionUtil.ReceiveResult.ReceivePayloadMessage rpm)
-                        {
-                            Interlocked.Increment(ref _connDiagnostics.SessionPayloadMessagesReceived);
-                            OnSessionPayloadMessageReceivedFromServer(rpm.Value, message);
-                        }
-                        else
-                            throw new InvalidOperationException($"Unknown ReceiveResult: {result.GetType()}");
-                    }
-                    break;
-
-                case ServerHandshakePhase.WaitingForSessionHandshakeCompletion:
-                    if (message is SessionProtocol.SessionStartSuccess sss)
-                    {
-                        HandleSessionStartSuccess(sss);
-                    }
-                    else if (message is SessionProtocol.SessionStartFailure ssf)
-                    {
-                        HandleSessionStartFailure(ssf);
-                    }
-                    else if (message is SessionProtocol.SessionResumeSuccess srs)
-                    {
-                        HandleSessionResumeSuccess(srs);
-                    }
-                    else if (message is SessionProtocol.SessionResumeFailure srf)
-                    {
-                        HandleSessionResumeFailure(srf);
-                    }
-                    else if (message is Handshake.OperationStillOngoing opo)
-                        break;
-                    else
-                    {
-                        // Log debug "Expected session response, got {message.GetType()}"
-                        TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
-                    }
-
-                    break;
-
-                case ServerHandshakePhase.WaitingForLoginCompletion:
-                    if (message is Handshake.LoginResponse lr)
-                    {
-                        HandleLoginResponse(lr);
-                    }
-                    else if (message is Handshake.LogicVersionMismatch lvm)
-                    {
-                        HandleLogicVersionMismatch(lvm);
-                    }
-                    else if (message is Handshake.RedirectToServer rts)
-                    {
-                        HandleRedirectToServer(rts);
-                    }
-                    else if (message is Handshake.LoginFailureDueToMaintenanceResponse lfr)
-                    {
-                        HandleMaintenanceModeFailure(lfr);
-                    }
-                    else if (message is Handshake.SocialAuthenticationLoginFailure sar)
-                    {
-                        HandleSocialAuthenticationLoginFailure(sar);
-                    }
-                    else if (message is Handshake.OperationStillOngoing opo)
-                        break;
-                    else
-                    {
-                        // Log debug "Expected login response, got {message}"
-                        TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
-                    }
-
-                    break;
-
-                case ServerHandshakePhase.Error:
-                    return;
-            }
+            DispatchToInternalHandlers(message);
 
             if (_handshakePhase != ServerHandshakePhase.Error)
             {
@@ -598,12 +511,137 @@ namespace Metaplay.Metaplay.Core.Network
             }
         }
 
+        private void DispatchToInternalHandlers(MetaMessage message)
+        {
+            if (_handshakePhase < ServerHandshakePhase.WaitingForSessionHandshakeCompletion)
+            {
+                switch (message)
+                {
+                    case Handshake.LogicVersionMismatch lvm:
+                        HandleLogicVersionMismatch(lvm);
+                        return;
+
+                    case Handshake.OngoingMaintenance om:
+                        HandleOngoingMaintenance(om);
+                        return;
+                }
+            }
+
+            if (_handshakePhase < ServerHandshakePhase.InSession)
+            {
+                if (message is Handshake.OperationStillOngoing)
+                    return;
+            }
+
+            switch (_handshakePhase)
+            {
+                case ServerHandshakePhase.WaitingForHelloAcceptedFollowedByLoginCompletion:
+                    switch (message)
+                    {
+                        case Handshake.LoginProtocolVersionMismatch lpvm:
+                            HandleLoginProtocolVersionMismatch(lpvm);
+                            return;
+
+                        case Handshake.RedirectToServer rts:
+                            HandleRedirectToServer(rts);
+                            return;
+
+                        case Handshake.ClientHelloAccepted cha:
+                            HandleClientHelloAccepted(cha);
+                            return;
+                    }
+
+                    // Log debug "Expected hello response, got {Message}"
+                    TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
+
+                    break;
+
+                case ServerHandshakePhase.WaitingForLoginCompletion:
+                    switch (message)
+                    {
+                        case Handshake.LoginResponse lr:
+                            HandleLoginResponse(lr);
+                            return;
+
+                        case Handshake.SocialAuthenticationLoginFailure sar:
+                            HandleSocialAuthenticationLoginFailure(sar);
+                            return;
+                    }
+
+                    // Log debug "Expected login response, got {Message}"
+                    TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
+
+                    return;
+
+                case ServerHandshakePhase.WaitingForSessionHandshakeCompletion:
+                    switch (message)
+                    {
+                        case SessionProtocol.SessionStartSuccess sss:
+                            HandleSessionStartSuccess(sss);
+                            return;
+
+                        case SessionProtocol.SessionStartFailure ssf:
+                            HandleSessionStartFailure(ssf);
+                            return;
+
+                        case SessionProtocol.SessionResumeSuccess srs:
+                            HandleSessionResumeSuccess(srs);
+                            return;
+
+                        case SessionProtocol.SessionResumeFailure srf:
+                            HandleSessionResumeFailure(srf);
+                            return;
+                    }
+
+                    // Log debug "Expected session response, got {Message}"
+                    TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
+
+                    return;
+
+                case ServerHandshakePhase.InSession:
+                    if (message is SessionForceTerminateMessage sftm)
+                    {
+                        // Log info "Got {message}"
+                        TerminateWithError(new SessionForceTerminatedError(sftm.Reason));
+
+                        return;
+                    }
+
+                    Interlocked.Increment(ref _connDiagnostics.SessionMessagesReceived);
+
+                    SessionUtil.ReceiveResult result;
+                    lock (_currentSessionSendQueueLock)
+                        result = SessionUtil.HandleReceive(_currentSession.SessionParticipant, message);
+
+                    if (result == null)
+                        throw new InvalidOperationException("Unknown ReceiveResult: null");
+
+                    switch (result)
+                    {
+                        case SessionUtil.ReceiveResult.HandleAck ack:
+                            OnHandledSessionAckFromServer(ack.Value);
+                            return;
+
+                        case SessionUtil.ReceiveResult.ReceivePayloadMessage rpm:
+                            Interlocked.Increment(ref _connDiagnostics.SessionPayloadMessagesReceived);
+                            OnSessionPayloadMessageReceivedFromServer(rpm.Value, message);
+
+                            return;
+                    }
+
+                    throw new InvalidOperationException($"Unknown ReceiveResult: {result.GetType()}");
+
+                default:
+                    return;
+            }
+        }
+
         private void OnHandledSessionAckFromServer(SessionUtil.ValidateAckResult result)
         {
             if (result == null)
                 throw new InvalidOperationException("Unknown ValidateAckResult: null");
 
-            if (result is SessionUtil.ValidateAckResult.Success s)
+            if (result is SessionUtil.ValidateAckResult.Success)
                 return;
 
             if (result is SessionUtil.ValidateAckResult.Failure f)
@@ -641,7 +679,7 @@ namespace Metaplay.Metaplay.Core.Network
 
             // Log info "Session created, token {sessionSuccess.SessionToken}"
             if (!string.IsNullOrEmpty(sessionSuccess.CorrectedDeviceGuid))
-                _deviceGuid = sessionSuccess.CorrectedDeviceGuid;
+                _guidService.StoreDeviceGuid(sessionSuccess.CorrectedDeviceGuid);
 
             lock (_currentSessionSendQueueLock)
             {
@@ -692,6 +730,12 @@ namespace Metaplay.Metaplay.Core.Network
             TerminateWithError(new SessionResumeFailed());
         }
 
+        private void HandleLoginProtocolVersionMismatch(Handshake.LoginProtocolVersionMismatch versionMismatch)
+        {
+            // Log warning "Client Protocol version is not compatible with server: client={ClientProtocolVersion}, server={ServerProtocolVersion}"
+            TerminateWithError(new LoginProtocolVersionMismatchError(2, versionMismatch.ServerAcceptedProtocolVersion));
+        }
+
         private void HandleLogicVersionMismatch(Handshake.LogicVersionMismatch versionMismatch)
         {
             // Log warning "Client LogicVersion is too old for server: clientSupportedLogicVersions={MetaplayCore.Options.SupportedLogicVersions}, serverAcceptedLogicVersions={versionMismatch.ServerAcceptedLogicVersions.MinVersion}..{versionMismatch.ServerAcceptedLogicVersions.MaxVersion}
@@ -712,7 +756,7 @@ namespace Metaplay.Metaplay.Core.Network
             TerminateWithError(new RedirectToServerError(redirect.RedirectToEndpoint));
         }
 
-        private void HandleMaintenanceModeFailure(Handshake.LoginFailureDueToMaintenanceResponse maintenanceFailure)
+        private void HandleOngoingMaintenance(Handshake.OngoingMaintenance maintenanceFailure)
         {
             // Log warning "Server is currently ongoing maintenance!"
             TerminateWithError(new MaintenanceModeOngoingError());
@@ -829,8 +873,7 @@ namespace Metaplay.Metaplay.Core.Network
 
         private void HandleOnReceiveServerHello(Handshake.ServerHello serverHello)
         {
-            var msg = new GotServerHello(serverHello);
-            EnqueueInfo(msg);
+            EnqueueInfo(new GotServerHello(serverHello));
 
             if (serverHello.FullProtocolHash != MetaSerializerTypeRegistry.FullProtocolHash)
                 EnqueueInfo(new FullProtocolHashMismatchInfo(MetaSerializerTypeRegistry.FullProtocolHash, serverHello.FullProtocolHash));
@@ -857,8 +900,10 @@ namespace Metaplay.Metaplay.Core.Network
 
                 _transport.EnqueueSendMessage(loginMsg);
 
+                EnqueueInfo(new SessionStartRequested());
+
                 var sessionReq = _currentSession == null ?
-                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _deviceGuid, _config.DeviceModel, GetPlayerTimeZoneInfo(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
+                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceModel, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
                     new SessionProtocol.SessionResumeRequest(SessionResumptionInfo.FromParticipantState(_currentSession.SessionParticipant));
 
                 _transport.EnqueueSendMessage(sessionReq);
@@ -868,16 +913,19 @@ namespace Metaplay.Metaplay.Core.Network
                 else
                     Interlocked.Increment(ref _connDiagnostics.InitialLoginsSent);
 
-                _handshakePhase = ServerHandshakePhase.WaitingForLoginCompletion;
+                _handshakePhase = ServerHandshakePhase.WaitingForHelloAcceptedFollowedByLoginCompletion;
             }
         }
 
-        private static PlayerTimeZoneInfo GetPlayerTimeZoneInfo()
+        private void HandleClientHelloAccepted(Handshake.ClientHelloAccepted accepted)
         {
-            var offset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
-            var metaOffset = MetaDuration.FromMilliseconds((long)offset.TotalMilliseconds);
+            if (_handshakePhase == ServerHandshakePhase.WaitingForHelloAcceptedFollowedByLoginCompletion)
+            {
+                _handshakePhase = ServerHandshakePhase.WaitingForLoginCompletion;
+                return;
+            }
 
-            return new PlayerTimeZoneInfo(metaOffset);
+            throw new InvalidOperationException("unreachable");
         }
 
         private void TerminateWithError(MessageTransport.Error error)
@@ -951,6 +999,10 @@ namespace Metaplay.Metaplay.Core.Network
             }
         }
 
+        public class SessionStartRequested : MessageTransport.Info
+        {
+        }
+
         public class SessionResumptionAttempt
         {
             public MessageTransport.Error PreviousTransportError; // 0x10
@@ -973,10 +1025,11 @@ namespace Metaplay.Metaplay.Core.Network
         public enum ServerHandshakePhase
         {
             NotConnected = 0,
-            WaitingForLoginCompletion = 1,
-            WaitingForSessionHandshakeCompletion = 2,
-            InSession = 3,
-            Error = 4
+            WaitingForHelloAcceptedFollowedByLoginCompletion = 1,
+            WaitingForLoginCompletion = 2,
+            WaitingForSessionHandshakeCompletion = 3,
+            InSession = 4,
+            Error = 5
         }
 
         #endregion
@@ -1077,6 +1130,18 @@ namespace Metaplay.Metaplay.Core.Network
             {
                 ClientSupportedVersions = clientSupportedVersions;
                 ServerAcceptedVersions = serverAcceptedVersions;
+            }
+        }
+
+        public class LoginProtocolVersionMismatchError : MessageTransport.Error
+        {
+            public int ClientVersion { get; } // 0x10
+            public int ServerVersion { get; } // 0x14
+
+            public LoginProtocolVersionMismatchError(int clientVersion, int serverVersion)
+            {
+                ClientVersion = clientVersion;
+                ServerVersion = serverVersion;
             }
         }
 

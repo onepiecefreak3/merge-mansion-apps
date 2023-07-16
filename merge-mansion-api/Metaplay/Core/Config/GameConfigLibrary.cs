@@ -53,7 +53,12 @@ namespace Metaplay.Metaplay.Core.Config
 
             info = _infos[key];
             return true;
+        }
 
+        public TInfo GetValueOrDefault(TKey key)
+        {
+            TryGetValue(key, out var info);
+            return info;
         }
 
         internal static GameConfigLibrary<TKey, TInfo> FromItems(Dictionary<TKey, TInfo> items, IGameConfigDataRegistry registry)

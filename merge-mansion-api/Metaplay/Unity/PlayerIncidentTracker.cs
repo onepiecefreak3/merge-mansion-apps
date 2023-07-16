@@ -31,9 +31,7 @@ namespace Metaplay.Metaplay.Unity
             return null;
         }
 
-        public void ReportSessionPingPongDurationThresholdExceeded(LoginDebugDiagnostics debugDiagnostics,
-            MetaDuration roundtripEstimate, ServerGateway serverGateway, SessionToken sessionToken, int pingId,
-            MetaDuration timeSincePing)
+        public void ReportSessionPingPongDurationThresholdExceeded(LoginDebugDiagnostics debugDiagnostics, MetaDuration roundtripEstimate, ServerGateway serverGateway, int pingId, MetaDuration timeSincePing)
         {
             // STUB
         }

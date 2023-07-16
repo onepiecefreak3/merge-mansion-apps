@@ -92,6 +92,19 @@ namespace Metaplay.Metaplay.Unity
             return true;
         }
 
+        public static bool TryDeleteBlob(string path)
+        {
+            var lck = FileAccessLock.AcquireSync(path);
+            if (File.Exists(path))
+                File.Delete(path);
+
+            if (File.Exists(path + ".old"))
+                File.Delete(path + ".old");
+
+            lck.Dispose();
+            return true;
+        }
+
         private static bool TryWriteEnvelope(string path, byte[] envelopePayload)
         {
             var data = WrapEnvelope(envelopePayload);

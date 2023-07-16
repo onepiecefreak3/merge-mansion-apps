@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Metaplay.Metaplay.Core.Impl;
 
 namespace Metaplay.Metaplay.Core
 {
@@ -12,10 +15,12 @@ namespace Metaplay.Metaplay.Core
             if (IsRemotePath(filePath))
                 return await ReadRemoteFileBytesAsync(filePath);
 
-            if (!File.Exists(filePath))
-                return null;
+            return await FileUtilImplFileSystem.ReadAllBytesAsync(filePath);
+        }
 
-            return await File.ReadAllBytesAsync(filePath);
+        public static Task<bool> WriteAllBytesAtomicAsync(string filePath, byte[] bytes)
+        {
+            return FileUtilImplFileSystem.WriteAllBytesAtomicAsync(filePath, bytes);
         }
 
         public static async Task WriteAllBytesAsync(string filePath, byte[] bytes)
@@ -25,8 +30,7 @@ namespace Metaplay.Metaplay.Core
 
         public static Task DeleteAsync(string filePath)
         {
-            File.Delete(filePath);
-            return Task.CompletedTask;
+            return FileUtilImplFileSystem.DeleteAsync(filePath);
         }
 
         public static byte[] ReadAllBytes(string filePath)
@@ -109,6 +113,55 @@ namespace Metaplay.Metaplay.Core
         public static bool IsRemotePath(string filePath)
         {
             return filePath.Contains("jar:file:/");
+        }
+
+        public static string NormalizePath(string path)
+        {
+            if (path == string.Empty)
+                return string.Empty;
+
+            var split = path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+
+            var i = 1;
+            if (split[0] != string.Empty)
+                i = split[0].Contains(':') ? 1 : 0;
+
+            var stack = new Stack<string>();
+
+            var j = 0;
+            if (i < split.Length)
+            {
+                for (var s = i; s < split.Length; s++)
+                {
+                    if (split[s] != string.Empty)
+                    {
+                        if (split[s] != "..")
+                        {
+                            if (split[s] != ".")
+                                stack.Push(split[s]);
+                        }
+                        else
+                        {
+                            if (stack.Count < 1)
+                            {
+                                if (i != 0)
+                                    throw new ArgumentException($"Absolute path '{path}' references the parent of the root directory");
+
+                                j++;
+                            }
+                            else
+                                stack.Pop();
+                        }
+                    }
+                    else if (split.Length - 1 != i)
+                        throw new ArgumentException($"Path '{path}' is invalid: contains two subsequent directory separators");
+                }
+            }
+
+            if (i == 0)
+                return string.Join('/', Enumerable.Repeat("..", j).Concat(stack.Reverse()));
+            
+            return split[0] + '/' + string.Join('/', stack.Reverse());
         }
     }
 }

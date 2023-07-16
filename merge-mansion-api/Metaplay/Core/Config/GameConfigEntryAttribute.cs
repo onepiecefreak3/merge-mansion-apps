@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace merge_mansion_api.Metaplay.Core.Config
+namespace Metaplay.Metaplay.Core.Config
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class GameConfigEntryAttribute : Attribute

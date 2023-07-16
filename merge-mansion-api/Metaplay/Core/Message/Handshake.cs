@@ -1,4 +1,5 @@
-﻿using Metaplay.Metaplay.Core.Model;
+﻿using System.Runtime.CompilerServices;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Message
 {
@@ -181,7 +182,7 @@ namespace Metaplay.Metaplay.Core.Message
 
             private SocialAuthenticationLoginRequest() { }
 
-            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, EntityId playerId, 
+            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, EntityId playerId,
                 bool isBot, LoginDebugDiagnostics debugDiagnostics,
                 ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
             {
@@ -196,9 +197,9 @@ namespace Metaplay.Metaplay.Core.Message
         }
 
         [MetaMessage(88, MessageDirection.ClientToServer, true)]
-        public class LoginFailureDueToMaintenanceResponse : MetaMessage
+        public class OngoingMaintenance : MetaMessage
         {
-            public static LoginFailureDueToMaintenanceResponse Instance = new LoginFailureDueToMaintenanceResponse();
+            public static OngoingMaintenance Instance = new OngoingMaintenance();
         }
 
         [MetaMessage(89, MessageDirection.ClientToServer, false)]
@@ -207,17 +208,33 @@ namespace Metaplay.Metaplay.Core.Message
             public static OperationStillOngoing Instance = new OperationStillOngoing();
         }
 
+        [MetaMessage(90, MessageDirection.ServerToClient, false)]
+        public class ClientHelloAccepted : MetaMessage
+        {
+            // Properties
+            [MetaMember(1, 0)]
+            public ServerOptions ServerOptions { get; set; }
+        }
+
+        [MetaMessage(91, MessageDirection.ServerToClient, true)]
+        public class LoginProtocolVersionMismatch : MetaMessage
+        {
+            // Properties
+            [MetaMember(1, 0)]
+            public int ServerAcceptedProtocolVersion { get; set; }
+        }
+
         public abstract class LoginRequest : MetaMessage
         {
             // Properties
             [MetaMember(3, 0)]
-            public EntityId PlayerIdHint { get; set; } // 0x18
+            public EntityId PlayerIdHint { get; set; } // 0x10
             [MetaMember(4, 0)]
-            public bool IsBot { get; set; } // 0x20
+            public bool IsBot { get; set; } // 0x18
             [MetaMember(5, 0)]
-            public LoginDebugDiagnostics DebugDiagnostics { get; set; } // 0x28
+            public LoginDebugDiagnostics DebugDiagnostics { get; set; } // 0x20
             [MetaMember(6, 0)]
-            public ILoginRequestGamePayload GamePayload { get; set; } // 0x30
+            public ILoginRequestGamePayload GamePayload { get; set; } // 0x28
 
             public abstract bool IsCreateAccountRequest { get; }
 
@@ -247,6 +264,22 @@ namespace Metaplay.Metaplay.Core.Message
                     pushUploadPercentageSessionStartFailedIncidentReport;
                 EnableWireCompression = enableWireCompression;
             }
+        }
+
+        public struct ServerOptions
+        {
+            [MetaMember(1, 0)]
+            public int PushUploadPercentageSessionStartFailedIncidentReport; // 0x0
+            [MetaMember(2, 0)]
+            public bool EnableWireCompression; // 0x4
+            [MetaMember(3, 0)]
+            public MetaDuration DeletionRequestSafetyDelay; // 0x8
+            [MetaMember(4, 0)]
+            public string GameServerGooglePlaySignInOAuthClientId; // 0x10
+            [MetaMember(5, 0)]
+            public string ImmutableXLinkApiUrl; // 0x18
+            [MetaMember(6, 0)]
+            public string GameEnvironment; // 0x20
         }
 
         public interface ILoginRequestGamePayload

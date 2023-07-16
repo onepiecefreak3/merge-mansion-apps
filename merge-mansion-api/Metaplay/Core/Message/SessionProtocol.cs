@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Metaplay.Metaplay.Core.Client;
 using Metaplay.Metaplay.Core.Localization;
 using Metaplay.Metaplay.Core.Model;
@@ -105,7 +106,7 @@ namespace Metaplay.Metaplay.Core.Message
             [MetaMember(1, 0)]
             public MetaSerialized<IPlayerModelBase> PlayerModel { get; set; } // 0x10
             [MetaMember(2, 0)]
-            public int CurrentOperation { get; set; } // 0x18
+            public int CurrentOperation { get; set; } // 0x20
 
             private InitialPlayerState() { }
 
@@ -141,17 +142,26 @@ namespace Metaplay.Metaplay.Core.Message
         public struct ServerOptions
         {
             [MetaMember(1, 0)]
-            public MetaDuration DeletionRequestSafetyDelay; // 0x0
+            public int PushUploadPercentageSessionStartFailedIncidentReport; // 0x0
             [MetaMember(2, 0)]
-            public string GameServerGooglePlaySignInOAuthClientId; // 0x8
+            public bool EnableWireCompression; // 0x4
             [MetaMember(3, 0)]
-            public string ImmutableXLinkApiUrl; // 0x10
+            public MetaDuration DeletionRequestSafetyDelay; // 0x8
+            [MetaMember(4, 0)]
+            public string GameServerGooglePlaySignInOAuthClientId; // 0x10
+            [MetaMember(5, 0)]
+            public string ImmutableXLinkApiUrl; // 0x18
+            [MetaMember(6, 0)]
+            public string GameEnvironment; // 0x20
 
-            public ServerOptions(MetaDuration deletionRequestSafetyDelay, string gameServerGooglePlaySignInOAuthClientId, string immutableXLinkApiUrl)
+            public ServerOptions(int pushUploadPercentageSessionStartFailedIncidentReport, bool enableWireCompression, MetaDuration deletionRequestSafetyDelay, string gameServerGooglePlaySignInOAuthClientId, string immutableXLinkApiUrl, string gameEnvironment)
             {
+                PushUploadPercentageSessionStartFailedIncidentReport = pushUploadPercentageSessionStartFailedIncidentReport;
+                EnableWireCompression = enableWireCompression;
                 DeletionRequestSafetyDelay = deletionRequestSafetyDelay;
                 GameServerGooglePlaySignInOAuthClientId = gameServerGooglePlaySignInOAuthClientId;
                 ImmutableXLinkApiUrl = immutableXLinkApiUrl;
+                GameEnvironment = gameEnvironment;
             }
         }
 
@@ -221,10 +231,8 @@ namespace Metaplay.Metaplay.Core.Message
             public List<EntityInitialState> EntityStates { get; set; } // 0x50
             [MetaMember(12, 0)]
             public ISessionStartSuccessGamePayload GamePayload { get; set; } // 0x58
-            [MetaMember(13, 0)]
-            public ServerOptions ServerOptions { get; set; } // 0x60
             [MetaMember(14, 0)]
-            public string CorrectedDeviceGuid { get; set; } // 0x78
+            public string CorrectedDeviceGuid { get; set; } // 0x60
 
             private SessionStartSuccess() { }
 
@@ -234,7 +242,7 @@ namespace Metaplay.Metaplay.Core.Message
                 Dictionary<LanguageId, ContentHash> localizationVersions,
                 List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass,
                 List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload,
-                ServerOptions serverOptions, string correctDeviceGuid)
+                string correctDeviceGuid)
             {
                 QueryId = queryId;
                 LogicVersion = logicVersion;
@@ -247,7 +255,6 @@ namespace Metaplay.Metaplay.Core.Message
                 DeveloperMaintenanceBypass = developerMaintenanceBypass;
                 EntityStates = entityStates;
                 GamePayload = gamePayload;
-                ServerOptions = serverOptions;
                 CorrectedDeviceGuid = correctDeviceGuid;
             }
         }

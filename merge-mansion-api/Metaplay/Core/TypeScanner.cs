@@ -18,7 +18,7 @@ namespace Metaplay.Metaplay.Core
             };
             var assemblies = AppDomain.CurrentDomain.GetAssemblies();
 
-            foreach (var assembly in assemblies)
+            foreach (var assembly in assemblies.Where(x => !x.IsDynamic))
                 if (exclude.All(e => !assembly.FullName.StartsWith(e)))
                     result.Add(assembly);
 

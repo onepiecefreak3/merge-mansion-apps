@@ -4,6 +4,7 @@ using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.IO;
 using Metaplay.Metaplay.Core.Message;
 using Metaplay.Metaplay.Core.Serialization;
+using Newtonsoft.Json;
 
 namespace Metaplay.Metaplay.Core.Network
 {
@@ -63,6 +64,7 @@ namespace Metaplay.Metaplay.Core.Network
 
 #if DEBUG
             Console.WriteLine("Receive: " + message.GetType().Name);
+            Console.WriteLine(JsonConvert.SerializeObject(message, Formatting.Indented));
 #endif
 
             return message;

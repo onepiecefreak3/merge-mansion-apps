@@ -9,61 +9,72 @@ namespace Metaplay.Metaplay.Core.Localization
 {
     public class LocalizationLanguage
     {
-        [MetaMember(1, 0)]
-        public LanguageId LanguageId { get; set; } // 0x10
-        [MetaMember(2, 0)]
-        public Dictionary<TranslationId, string> Translations { get; set; } // 0x18
+        private const byte PayloadHeaderMagicPrefixByte = 255;
 
-        public LocalizationLanguage() { }
+        public LanguageId LanguageId { get; } // 0x10
+        public ContentHash Version { get; } // 0x18
+        public Dictionary<TranslationId, string> Translations { get; } // 0x28
 
-        public LocalizationLanguage(LanguageId languageId, Dictionary<TranslationId, string> translations)
+        public LocalizationLanguage(LanguageId languageId, ContentHash version, Dictionary<TranslationId, string> translations)
         {
             LanguageId = languageId;
+            Version = version;
             Translations = translations;
         }
 
-        public static LocalizationLanguage FromBytes(LanguageId languageId, byte[] bytes, LocalizationStorageFormat storageFormat)
+        public static LocalizationLanguage FromBytes(LanguageId languageId, ContentHash version, byte[] bytes, LocalizationStorageFormat storageFormat)
         {
-            switch (storageFormat)
+            if (storageFormat == LocalizationStorageFormat.Binary)
             {
-                case LocalizationStorageFormat.LegacyCsv:
-                    // CUSTOM
-                    throw new InvalidOperationException("LegacyCsv storage format is not supported.");
+                var lang = ImportBinary(version, bytes);
+                if (lang.LanguageId != languageId)
+                    throw new ArgumentException($"Language '{languageId}' was specified, but blob contains '{lang.LanguageId}'", nameof(languageId));
 
-                case LocalizationStorageFormat.Binary:
-                    var lang = ImportBinary(bytes);
-                    if (lang.LanguageId.Equals(languageId))
-                        return lang;
-
-                    throw new ArgumentException(nameof(languageId));
-
-                default:
-                    throw new InvalidEnumArgumentException(nameof(storageFormat));
+                return lang;
             }
+
+            if (storageFormat != LocalizationStorageFormat.LegacyCsv)
+                throw new InvalidEnumArgumentException(nameof(storageFormat), (int)storageFormat, typeof(LocalizationStorageFormat));
+
+            // CUSTOM: Throw exception instead of implementing legacy code
+            throw new InvalidOperationException("LegacyCsv storage format is not supported.");
         }
 
-        public static LocalizationLanguage ImportBinary(byte[] bytes)
+        public static LocalizationLanguage ImportBinary(ContentHash version, byte[] bytes)
         {
-            if (bytes[0] != 0xFF && bytes[0] != 0xF)
-                throw new InvalidOperationException($"Expected {nameof(bytes)} to start with either byte 0xF (WireDataType.NullableStruct) or 0xFF, but it starts with {bytes[0]:X2}");
+            BinaryV1 binary;
 
-            if (bytes[0] == 0xF)
-                return MetaSerialization.DeserializeTagged<LocalizationLanguage>(bytes, MetaSerializationFlags.IncludeAll, null, null, null);
+            if (bytes[0] != 0xFF)
+            {
+                if (bytes[0] != 0xF)
+                    throw new InvalidOperationException($"Expected {nameof(bytes)} to start with either byte 0xF (WireDataType.NullableStruct) or 0xFF, but it starts with {bytes[0]:X2}");
 
-            var reader = new IOReader(bytes, 1, bytes.Length - 1);
+                binary = MetaSerialization.DeserializeTagged<BinaryV1>(bytes, MetaSerializationFlags.IncludeAll, null, null, null);
+                return new LocalizationLanguage(binary.LanguageId, version, binary.Translations);
+            }
 
-            var v = reader.ReadVarUInt();
-            var vu = (uint)(-(v & 1) ^ v >> 1);
-            if (vu != 1)
-                throw new InvalidOperationException($"Invalid schema version: {vu}");
+            using var reader = new IOReader(bytes, 1, bytes.Length - 1);
 
-            var v1 = reader.ReadVarUInt();
-            var vu1 = (uint)(-(v1 & 1) ^ v1 >> 1);
-            if (vu1 != 1)
-                throw new InvalidOperationException($"Invalid compression algorithm {vu1}");
+            var schemaVersion = reader.ReadVarInt();
+            if (schemaVersion != 1)
+                throw new InvalidOperationException($"Invalid schema version: {schemaVersion}");
 
-            var decompBytes = CompressUtil.DeflateDecompress(bytes, reader.Offset);
-            return MetaSerialization.DeserializeTagged<LocalizationLanguage>(decompBytes, MetaSerializationFlags.IncludeAll, null, null, null);
+            var compressionAlgorithm = reader.ReadVarInt();
+            if (compressionAlgorithm != 1)
+                throw new InvalidOperationException($"Invalid compression algorithm {compressionAlgorithm}");
+
+            var decompBytes = CompressUtil.DeflateDecompress(bytes, reader.Offset + 1);
+
+            binary = MetaSerialization.DeserializeTagged<BinaryV1>(decompBytes, MetaSerializationFlags.IncludeAll, null, null, null);
+            return new LocalizationLanguage(binary.LanguageId, version, binary.Translations);
+        }
+
+        public class BinaryV1
+        {
+            [MetaMember(1, 0)]
+            public LanguageId LanguageId; // 0x10
+            [MetaMember(2, 0)]
+            public Dictionary<TranslationId, string> Translations; // 0x18
         }
     }
 }

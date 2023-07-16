@@ -19,7 +19,7 @@ namespace Metaplay.Metaplay.Unity
         // RVA: -1 Offset: -1 Slot: 3
         string GetDeviceGuid();
 
-        // RVA: -1 Offset: -1 Slot: 3
-        //void SuppressIncidentReportForNextNetworkError();
+        // RVA: -1 Offset: -1 Slot: 4
+        void SetDeviceGuid(string deviceGuid);
     }
 }

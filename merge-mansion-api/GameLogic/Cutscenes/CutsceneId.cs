@@ -1,6 +1,6 @@
 ﻿using Metaplay.Metaplay.Core;
 
-namespace merge_mansion_api.GameLogic.Cutscenes
+namespace Metaplay.GameLogic.Cutscenes
 {
     public class CutsceneId : StringId<CutsceneId>
     {

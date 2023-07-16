@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using merge_mansion_api.Code.GameLogic.GameEvents;
+using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.Metaplay.Core.Player;
 
-namespace merge_mansion_api.GameLogic.Config
+namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1033)]
     public class PlayerPointsInLeaderboardEvent : TypedPlayerPropertyId<int>

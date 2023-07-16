@@ -2,7 +2,7 @@
 using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.Metaplay.Core.Model;
 
-namespace merge_mansion_api.Code.GameLogic.GameEvents
+namespace Metaplay.Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(3)]
     public class ProgressionEventFreeDailyShopItemPerk : ProgressionEventPerk

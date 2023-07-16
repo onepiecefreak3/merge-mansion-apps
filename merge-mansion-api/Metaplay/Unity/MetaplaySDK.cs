@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Localization;
 using Metaplay.Metaplay.Core.Message;
 using Metaplay.Metaplay.Core.Network;
 using Metaplay.Metaplay.Core.Player;
+using Metaplay.Metaplay.Unity.Localization;
 using Metaplay.UnityEngine;
 
 namespace Metaplay.Metaplay.Unity
@@ -32,46 +33,42 @@ namespace Metaplay.Metaplay.Unity
         public static MetaplayLocalizationManager LocalizationManager { get; set; }
         // 0x48
         public static LocalizationLanguage ActiveLanguage { get; set; }
-        // 0x50
-        //public static SocialAuthManager SocialAuthentication { get; set; }
+
         // 0x58
         public static string DownloadCachePath { get; set; }
         // 0x60
-        public static string LocalizationsDownloadPath { get; set; }
-        // 0x68
-        public static string LocalizationsBuiltinPath { get; set; }
-        // 0x70
         public static Guid AppLaunchId;
-        // 0x80
+        // 0x70
         public static MaintenanceModeState MaintenanceMode { get; set; }
 
-        // 0xA8
+        // 0x98
         public static MetaTime ApplicationPreviousEndOfTheFrameAt { get; set; } = MetaTime.Now;
-        // 0xB0
+        // 0xA0
         public static MetaDuration ApplicationLastPauseDuration { get; set; }
-        // 0xB8
+        // 0xA8
         public static MetaTime ApplicationLastPauseBeganAt { get; set; }
-        // 0xC0
+        // 0xB0
         public static ApplicationPauseStatus ApplicationPauseStatus { get; set; }
-        // 0xC8
+        // 0xB8
         public static MetaDuration ApplicationPauseMaxDuration { get; set; }
-        // 0xD0
+        // 0xC0
         public static MetaDuration? ApplicationPauseDeclaredMaxDuration { get; set; }
-        // 0xE0
+        // 0xD0
         public static string ApplicationPauseReason { get; set; }
-        // 0xE8
+        // 0xD8
         public static MetaplayCdnAddress CdnAddress { get; set; }
         // 0xF0
         public static BuildVersion BuildVersion { get; set; }
         // 0x108
         private static string DeviceGuid { get; set; }
-
-        private static int DeviceGuidFileVersion; // 0x128
-
-        // 0x120
+        // 0x110
+        public static ISessionContextProvider SessionContext { get; set; }
+        // 0x118
         public static Dictionary<PlayerExperimentId, ExperimentMembershipStatus> ActiveExperiments { get; set; }
-        // 0x128
+        // 0x120
         public static string PersistentDataPath { get; set; }
+        // 0x128
+        private static int DeviceGuidFileVersion;
 
         static MetaplaySDK()
         {
@@ -123,15 +120,16 @@ namespace Metaplay.Metaplay.Unity
             // ...
 
             DownloadCachePath = Path.Combine(PersistentDataPath, "GameConfigCache");
-            LocalizationsDownloadPath = Path.Combine(DownloadCachePath, "Localizations");
-            LocalizationsBuiltinPath = Path.Combine(Application.ApkPath, "Localizations");
 
-            LocalizationManager = new MetaplayLocalizationManager(config.LocalizationDelegate);
+            BuiltinLanguageRepository.Initialize();
+
+            LocalizationManager = new MetaplayLocalizationManager();
+            LocalizationManager.Start(config.LocalizationDelegate);
 
             // ...
 
             LocalizationManager.AfterSDKInit();
-            LocalizationManager.Start();
+            SessionContext = config.SessionContext;
         }
 
         public static void Update()
@@ -246,44 +244,18 @@ namespace Metaplay.Metaplay.Unity
                     }
                 }
 
-                if (!string.IsNullOrEmpty(sessionStart.CorrectedDeviceGuid))
-                    SetDeviceGuid(sessionStart.CorrectedDeviceGuid);
-
-                var versionSet = new HashSet<ContentHash>(Connection.SessionStartResources.GameConfigBaselineVersions.Values);
-                UpkeepConfigCacheDirectory("SharedGameConfig", versionSet);
-
-                versionSet = new HashSet<ContentHash>(Connection.SessionStartResources.GameConfigPatchVersions.Values);
-                UpkeepConfigCacheDirectory("SharedGameConfigPatches", versionSet);
-
-                LocalizationManager.OnSessionStarted(sessionStart);
+                MetaplayConfigManager.OnSessionStarted();
                 //SocialAuthentication.OnSessionStarted();
             }
 
-            public string GetDeviceGuid()
+            string IMetaplayConnectionSDKHook.GetDeviceGuid()
             {
                 return DeviceGuid;
             }
 
-            private static void UpkeepConfigCacheDirectory(string cacheDirName, HashSet<ContentHash> retainedVersions)
+            void IMetaplayConnectionSDKHook.SetDeviceGuid(string deviceGuid)
             {
-                var path = Path.Combine(DownloadCachePath, cacheDirName);
-                var files = Directory.GetFiles(path);
-
-                if (files.Length <= 9)
-                    return;
-
-                for (var i = 0; i < files.Length; i++)
-                {
-                    var fileName = Path.GetFileName(files[i]);
-                    if (!ContentHash.TryParseString(fileName, out var fileHash))
-                        continue;
-
-                    if (!retainedVersions.Contains(fileHash))
-                        continue;
-
-                    // Log info "Pruning cached {cacheDirName} version {fileHash}"
-                    File.Delete(files[i]);
-                }
+                SetDeviceGuid(deviceGuid);
             }
         }
     }

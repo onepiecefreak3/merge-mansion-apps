@@ -3,7 +3,7 @@ using Metaplay.GameLogic.Player.Rewards;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
 
-namespace merge_mansion_api.GameLogic.Player.Rewards
+namespace Metaplay.GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(21)]
     public class RewardLayeredDecoration : PlayerReward

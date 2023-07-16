@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using merge_mansion_api.Metaplay.Core.Config;
+using Metaplay.Metaplay.Core.Config;
 using Metaplay.Metaplay.Core.IO;
 using Metaplay.Metaplay.Core.Math;
 

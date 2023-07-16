@@ -7,7 +7,7 @@ using Metaplay.Code.GameLogic.GameEvents;
 using Metaplay.Metaplay.Core.Model;
 using Metaplay.Metaplay.Core.Player;
 
-namespace merge_mansion_api.GameLogic.Config
+namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1034)]
     public class PlayerEventCurrencyAmount : TypedPlayerPropertyId<long>

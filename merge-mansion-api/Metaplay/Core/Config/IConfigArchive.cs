@@ -1,6 +1,6 @@
 ﻿using Metaplay.Metaplay.Core;
 
-namespace merge_mansion_api.Metaplay.Core.Config
+namespace Metaplay.Metaplay.Core.Config
 {
     public interface IConfigArchive
     {
