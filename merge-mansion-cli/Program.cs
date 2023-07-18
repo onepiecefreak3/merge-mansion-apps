@@ -110,7 +110,11 @@ namespace merge_mansion_cli
             }
             catch (Exception e)
             {
+                Console.WriteLine("An error occurred setting up the session. Did the data models change?");
+#if DEBUG
                 Console.WriteLine($"Aborted ({e.Message})");
+#endif
+
                 return false;
             }
 
@@ -124,7 +128,7 @@ namespace merge_mansion_cli
                 case Mode.All:
                     DumpHelper.DumpAll();
                     break;
-
+                
                 case Mode.MergeChains:
                     DumpHelper.DumpMergeChains();
                     break;
