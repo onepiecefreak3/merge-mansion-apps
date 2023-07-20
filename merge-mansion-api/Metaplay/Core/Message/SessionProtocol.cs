@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Metaplay.Metaplay.Core.Client;
 using Metaplay.Metaplay.Core.Localization;
@@ -12,6 +12,7 @@ namespace Metaplay.Metaplay.Core.Message
 {
     public static class SessionProtocol
     {
+        [MetaSerializable]
         public class SessionResourceCorrection
         {
             [MetaMember(1, 0)]
@@ -100,6 +101,8 @@ namespace Metaplay.Metaplay.Core.Message
                 }
             }
         }
+
+        [MetaSerializable]
 
         public class InitialPlayerState
         {

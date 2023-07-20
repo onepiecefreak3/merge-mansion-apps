@@ -1,7 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.MultiplayerEntity.Messages
 {
+	[MetaSerializable]
 	public class EntityInitialState
     {
         [MetaMember(1, 0)]

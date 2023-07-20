@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Items.Boosting
 {
+    [MetaSerializable]
     public sealed class BoosterFeatures
     {
         [MetaMember(1, 0)]

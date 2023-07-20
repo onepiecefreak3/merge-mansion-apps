@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Message
 {
+    [MetaSerializable]
     public class ServerEndpoint
     {
         [MetaMember(1, 0)]

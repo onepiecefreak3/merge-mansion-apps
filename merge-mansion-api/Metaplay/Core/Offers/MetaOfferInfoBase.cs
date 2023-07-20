@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ using Metaplay.Metaplay.Core.Rewards;
 
 namespace Metaplay.Metaplay.Core.Offers
 {
+    [MetaSerializable]
     public abstract class MetaOfferInfoBase : IGameConfigData<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers
     {
         [MetaMember(100, 0)] public MetaOfferId OfferId { get; set; }

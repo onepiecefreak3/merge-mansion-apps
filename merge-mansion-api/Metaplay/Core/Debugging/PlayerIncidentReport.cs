@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ namespace Metaplay.Metaplay.Core.Debugging
     public abstract class PlayerIncidentReport
     {
         [MetaSerializableDerived(4)]
+        [MetaSerializable]
         public class SessionStartFailed : PlayerIncidentReport
         {
             [MetaMember(4, 0)]

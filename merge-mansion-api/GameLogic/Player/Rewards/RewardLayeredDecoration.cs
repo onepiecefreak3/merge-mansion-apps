@@ -1,4 +1,4 @@
-﻿using Metaplay.GameLogic.Decorations;
+using Metaplay.GameLogic.Decorations;
 using Metaplay.GameLogic.Player.Rewards;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
@@ -6,6 +6,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(21)]
+    [MetaSerializable]
     public class RewardLayeredDecoration : PlayerReward
     {
         [MetaMember(1, 0)]

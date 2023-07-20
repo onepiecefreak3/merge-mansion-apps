@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Metaplay.GameLogic.Codex;
 using Metaplay.Metaplay.Core;
@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace Metaplay.GameLogic.MergeChains
 {
+    [MetaSerializable]
     public class MergeChainDefinition : IGameConfigData<MergeChainId>
     {
         [MetaMember(1, 0)]

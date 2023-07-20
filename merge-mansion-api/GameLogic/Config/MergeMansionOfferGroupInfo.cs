@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Offers;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1)]
+    [MetaSerializable]
     public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals
     {
         [MetaMember(1, 0)]

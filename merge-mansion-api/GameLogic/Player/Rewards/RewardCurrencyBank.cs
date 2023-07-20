@@ -1,4 +1,4 @@
-﻿using Metaplay.GameLogic.Player.Rewards;
+using Metaplay.GameLogic.Player.Rewards;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Rewards
 {
+    [MetaSerializable]
     public class RewardCurrencyBank : PlayerReward
     {
         [MetaMember(1, 0)]

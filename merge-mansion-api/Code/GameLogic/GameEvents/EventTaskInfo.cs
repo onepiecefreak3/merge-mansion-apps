@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Code.GameLogic.GameEvents
 {
+    [MetaSerializable]
     public class EventTaskInfo: IGameConfigData<EventTaskId>
     {
         [MetaMember(1, 0)]

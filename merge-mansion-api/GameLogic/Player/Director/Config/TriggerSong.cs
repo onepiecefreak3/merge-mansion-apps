@@ -1,8 +1,9 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(11)]
+    [MetaSerializable]
     public class TriggerSong : IDirectorAction
     {
         [MetaMember(1, 0)]

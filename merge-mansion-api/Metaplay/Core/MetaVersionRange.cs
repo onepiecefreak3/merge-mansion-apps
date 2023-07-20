@@ -1,7 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core
 {
+    [MetaSerializable]
     public class MetaVersionRange
     {
         [MetaMember(1, 0)]

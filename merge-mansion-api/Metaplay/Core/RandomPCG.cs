@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core
 {
+    [MetaSerializable]
     public class RandomPCG
     {
         private const ulong Multiplier = 0x5851f42d4c957f2d;

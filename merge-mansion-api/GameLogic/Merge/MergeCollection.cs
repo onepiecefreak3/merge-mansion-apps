@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Metaplay.GameLogic.Player.Items.Production;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Merge
 {
+    [MetaSerializable]
     public class MergeCollection
     {
         [MetaMember(1)]
@@ -17,6 +18,8 @@ namespace Metaplay.GameLogic.Merge
             // TODO: Implement Equals and GetHashCode for ItemPair
             return Collection.ContainsKey(search);
         }
+
+        [MetaSerializable]
 
         public class ItemPair
         {

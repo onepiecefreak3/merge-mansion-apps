@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Activables
 {
+    [MetaSerializable]
     public class ExtendableEventParams
     {
         [MetaMember(1, 0)]

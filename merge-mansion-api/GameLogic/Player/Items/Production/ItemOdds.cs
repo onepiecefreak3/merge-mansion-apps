@@ -1,8 +1,9 @@
-﻿using Metaplay.Metaplay.Core;
+using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Items.Production
 {
+    [MetaSerializable]
     public class ItemOdds
     {
         [MetaMember(1)] 

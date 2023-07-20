@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Metaplay.GameLogic.Random;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(11)]
+    [MetaSerializable]
     public class PrefixProducer : IItemSpawner
     {
         [MetaMember(1)]

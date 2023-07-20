@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,8 @@ namespace Metaplay.GameLogic.Player.Items.Collectable
 {
     // Namespace: GameLogic.Player.Items.Collectable
     [MetaSerializableDerived(1)]
+    // Namespace: GameLogic.Player.Items.Collectable
+    [MetaSerializable]
     public class LevelBasedCollectValue : ICalculateCollectValue
     {
         [MetaMember(1, 0)]

@@ -1,4 +1,4 @@
-﻿using Metaplay.GameLogic.Merge;
+using Metaplay.GameLogic.Merge;
 using Metaplay.GameLogic.Player.Director.Config;
 using Metaplay.GameLogic.Player.Items;
 using Metaplay.Metaplay.Core;
@@ -7,6 +7,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(2)]
+    [MetaSerializable]
     public class ReplaceItemsOnBoard : IDirectorAction
     {
         [MetaMember(1, 0)]

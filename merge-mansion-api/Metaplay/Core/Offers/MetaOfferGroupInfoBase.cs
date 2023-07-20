@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Offers
 {
+    [MetaSerializable]
     public abstract class MetaOfferGroupInfoBase : IGameConfigData<MetaOfferGroupId>, IGameConfigPostLoad
     {
         [MetaMember(100, 0)]

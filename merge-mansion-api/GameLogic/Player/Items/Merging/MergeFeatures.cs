@@ -1,8 +1,9 @@
-﻿using Metaplay.GameLogic.Player.Items.Production;
+using Metaplay.GameLogic.Player.Items.Production;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Items.Merging
 {
+    [MetaSerializable]
     public class MergeFeatures
     {
         [MetaMember(1)]

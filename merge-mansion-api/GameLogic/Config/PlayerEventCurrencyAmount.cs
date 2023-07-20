@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1034)]
+    [MetaSerializable]
     public class PlayerEventCurrencyAmount : TypedPlayerPropertyId<long>
     {
         [MetaMember(1, 0)]

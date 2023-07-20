@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Metaplay.GameLogic.MergeChains;
 using Metaplay.GameLogic.Player.Director.Config;
 using Metaplay.GameLogic.Player.Items.Activation;
@@ -21,6 +21,7 @@ using Newtonsoft.Json;
 
 namespace Metaplay.GameLogic.Player.Items
 {
+    [MetaSerializable]
     public class ItemDefinition: IGameConfigData<ItemTypeConstant>
     {
         [MetaMember(1)]

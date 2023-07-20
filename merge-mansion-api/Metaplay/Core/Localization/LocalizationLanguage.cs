@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Metaplay.Metaplay.Core.IO;
@@ -68,6 +68,8 @@ namespace Metaplay.Metaplay.Core.Localization
             binary = MetaSerialization.DeserializeTagged<BinaryV1>(decompBytes, MetaSerializationFlags.IncludeAll, null, null, null);
             return new LocalizationLanguage(binary.LanguageId, version, binary.Translations);
         }
+
+        [MetaSerializable]
 
         public class BinaryV1
         {

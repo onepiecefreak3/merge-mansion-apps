@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Metaplay.GameLogic.Player.Items.Production;
 using Metaplay.GameLogic.Random.ControlledRandom;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player
 {
+    [MetaSerializable]
     public class WeightedDistributionStates
     {
         private const string MergePrefix = "me_";

@@ -1,4 +1,4 @@
-﻿using Metaplay.Metaplay.Core.Config;
+using Metaplay.Metaplay.Core.Config;
 using System.Collections.Generic;
 using Metaplay.GameLogic.Player.Items;
 using Metaplay.GameLogic.Player.Requirements;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core;
 
 namespace Metaplay.Code.GameLogic.GameEvents
 {
+    [MetaSerializable]
     public class CollectibleBoardEventInfo : IGameConfigData<CollectibleBoardEventId>
     {
         [MetaMember(1, 0)]

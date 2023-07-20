@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Config
 {
+    [MetaSerializable]
     public class InAppProductInfo : InAppProductInfoBase
     {
         [MetaMember(201)]

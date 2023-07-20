@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Schedule;
 
 namespace Metaplay.Metaplay.Core.Activables
 {
+    [MetaSerializable]
     public class MetaActivableParams
     {
         [MetaMember(1)]

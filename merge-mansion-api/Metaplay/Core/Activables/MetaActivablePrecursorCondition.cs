@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Player;
 
 namespace Metaplay.Metaplay.Core.Activables
 {
+    [MetaSerializable]
     public abstract class MetaActivablePrecursorCondition<TId> : PlayerCondition
     {
         [MetaMember(1, 0)]

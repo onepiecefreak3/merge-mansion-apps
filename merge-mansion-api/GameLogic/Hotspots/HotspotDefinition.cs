@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +14,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Hotspots
 {
+    [MetaSerializable]
     public class HotspotDefinition : IGameConfigData<HotspotId>, IHasRequirements
     {
         [MetaMember(1, 0)]

@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Message
 {
+    [MetaSerializable]
     public class ScheduledMaintenanceMode // TypeDefIndex: 966
     {
         [MetaMember(1, 0)]

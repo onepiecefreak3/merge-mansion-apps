@@ -1,7 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.MultiplayerEntity
 {
+    [MetaSerializable]
     public abstract class MultiplayerMemberPrivateStateBase
     {
         [MetaMember(100, 0)]

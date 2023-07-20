@@ -1,7 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Message
 {
+    [MetaSerializable]
     public class LoginServerConnectionDebugDiagnostics
     {
         [MetaMember(1, 0)]

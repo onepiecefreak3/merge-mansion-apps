@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Items.Bubble
 {
+    [MetaSerializable]
     public class BubbleFeatures
     {
         [MetaMember(1, 0)]

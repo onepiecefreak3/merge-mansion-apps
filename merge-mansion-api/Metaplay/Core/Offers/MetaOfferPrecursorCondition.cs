@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.Metaplay.Core.Offers
 {
     [MetaSerializableDerived(1100)]
+    [MetaSerializable]
     public class MetaOfferPrecursorCondition : PlayerCondition
     {
         [MetaMember(1, 0)]

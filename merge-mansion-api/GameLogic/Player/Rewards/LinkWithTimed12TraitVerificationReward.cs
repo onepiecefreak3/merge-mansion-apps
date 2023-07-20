@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(10)]
+    [MetaSerializable]
     public class LinkWithTimed12TraitVerificationReward : PlayerReward
     {
         [MetaMember(1, 0)]

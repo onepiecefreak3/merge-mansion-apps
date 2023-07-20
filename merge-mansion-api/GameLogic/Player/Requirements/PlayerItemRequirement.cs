@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using Metaplay.GameLogic.Player.Items;
 using Metaplay.Metaplay.Core;
@@ -7,6 +7,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(1)]
+    [MetaSerializable]
     public class PlayerItemRequirement : PlayerRequirement
     {
         [MetaMember(3, 0)]

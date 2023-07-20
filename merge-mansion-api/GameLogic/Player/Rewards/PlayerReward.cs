@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Rewards;
 
 namespace Metaplay.GameLogic.Player.Rewards
 {
+    [MetaSerializable]
     public abstract class PlayerReward:MetaPlayerRewardBase
     {
         [MetaMember(100)]

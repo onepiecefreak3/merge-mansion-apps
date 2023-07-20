@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,6 +11,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(20)]
+    [MetaSerializable]
     public class RewardLevelUpMergeChain : PlayerReward
     {
         [MetaMember(1, 0)]

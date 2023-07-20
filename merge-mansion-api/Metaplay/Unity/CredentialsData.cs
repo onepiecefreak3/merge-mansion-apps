@@ -1,8 +1,9 @@
-﻿using Metaplay.Metaplay.Core;
+using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Unity
 {
+    [MetaSerializable]
     public class CredentialsData
     {
         [MetaMember(1, 0)]

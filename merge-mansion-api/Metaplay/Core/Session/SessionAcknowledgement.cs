@@ -1,7 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Session
 {
+    [MetaSerializable]
     public class SessionAcknowledgement
     {
         [MetaMember(1, 0)]

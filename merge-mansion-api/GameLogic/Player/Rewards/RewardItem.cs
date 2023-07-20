@@ -1,4 +1,4 @@
-﻿using Metaplay.GameLogic.Merge;
+using Metaplay.GameLogic.Merge;
 using Metaplay.GameLogic.Player.Items;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
@@ -6,6 +6,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(6)]
+    [MetaSerializable]
     public class RewardItem : PlayerReward
     {
         [MetaMember(1, 0)]

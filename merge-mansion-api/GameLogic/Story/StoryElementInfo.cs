@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Metaplay.GameLogic.Player.Director.Config;
 using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Config;
@@ -6,6 +6,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Story
 {
+    [MetaSerializable]
     public class StoryElementInfo : IGameConfigData<StoryDefinitionId>
     {
 		[MetaMember(1, 0)]

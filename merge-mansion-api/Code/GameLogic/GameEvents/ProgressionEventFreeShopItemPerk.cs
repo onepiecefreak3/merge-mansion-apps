@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(1)]
+    [MetaSerializable]
     public class ProgressionEventFreeShopItemPerk : ProgressionEventPerk
     {
         [MetaMember(1, 0)]

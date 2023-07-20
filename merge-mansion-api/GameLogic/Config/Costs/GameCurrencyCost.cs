@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Config.Costs
 {
     [MetaSerializableDerived(1)]
+    [MetaSerializable]
     public class GameCurrencyCost : CurrencyCost
     {
         [MetaMember(2, 0)]

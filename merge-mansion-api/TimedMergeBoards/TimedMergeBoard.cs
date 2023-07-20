@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.TimedMergeBoards
 {
+    [MetaSerializable]
     public class TimedMergeBoard : IGameConfigData<MergeBoardId>
     {
         [MetaMember(1, 0)]

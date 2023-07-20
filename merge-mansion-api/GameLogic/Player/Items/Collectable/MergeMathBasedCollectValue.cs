@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(2)]
+    [MetaSerializable]
     public class MergeMathBasedCollectValue : ICalculateCollectValue
     {
         [MetaMember(1, 0)]

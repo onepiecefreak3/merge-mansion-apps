@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Codex
 {
+    [MetaSerializable]
     public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>
     {
         [MetaMember(1, 0)]

@@ -1,4 +1,4 @@
-﻿using Metaplay.Metaplay.Core.Model;
+using Metaplay.Metaplay.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Player;
 namespace Metaplay.GameLogic.Config
 {
     [MetaSerializableDerived(1033)]
+    [MetaSerializable]
     public class PlayerPointsInLeaderboardEvent : TypedPlayerPropertyId<int>
     {
         [MetaMember(1, 0)]

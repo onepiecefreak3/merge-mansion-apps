@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Items.Sink
 {
     [MetaSerializableDerived(1)]
+    [MetaSerializable]
     public class SimpleSinkStateFactory : ISinkStateFactory
     {
         [MetaMember(1, 0)]

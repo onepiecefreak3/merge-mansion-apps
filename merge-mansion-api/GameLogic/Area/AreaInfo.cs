@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +12,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Area
 {
+    [MetaSerializable]
     public class AreaInfo : IGameConfigData<AreaId>
     {
         [MetaMember(1, 0)]

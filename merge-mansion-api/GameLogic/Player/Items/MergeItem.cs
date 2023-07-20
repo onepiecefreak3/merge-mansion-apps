@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.GameLogic.Player.Items
 {
+    [MetaSerializable]
     public sealed class MergeItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
@@ -60,6 +61,8 @@ namespace Metaplay.GameLogic.Player.Items
             var sellIndex = Math.Clamp(itemDefinition.LevelNumber - 1, 0, mergeMathPrice.Length - 1);
             return mergeMathPrice[sellIndex];
         }
+
+        [MetaSerializable]
 
         class MergeItemExtra
         {

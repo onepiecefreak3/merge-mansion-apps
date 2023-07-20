@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Metaplay.Metaplay.Core.Model;
 using Metaplay.Metaplay.Core.Player;
@@ -6,6 +6,7 @@ using Metaplay.Metaplay.Core.Serialization;
 
 namespace Metaplay.Metaplay.Core.Config
 {
+    [MetaSerializable]
     public class GameConfigSpecializationPatches
     {
         [MetaMember(1, 0)]

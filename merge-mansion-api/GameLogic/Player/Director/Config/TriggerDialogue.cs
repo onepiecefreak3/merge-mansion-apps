@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +9,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(4)]
+    [MetaSerializable]
     public class TriggerDialogue : IDirectorAction
     {
         [MetaMember(1, 0)]

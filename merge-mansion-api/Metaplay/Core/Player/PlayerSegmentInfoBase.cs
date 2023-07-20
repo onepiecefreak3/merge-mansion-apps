@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +8,7 @@ using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Player
 {
+    [MetaSerializable]
     public abstract class PlayerSegmentInfoBase: IGameConfigData<PlayerSegmentId>
     {
         [MetaMember(100)]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +11,8 @@ namespace Metaplay.GameLogic.Config
     public abstract class PlayerPropertyMatcher : PlayerPropertyId
     {
     }
+
+    [MetaSerializable]
 
     public abstract class PlayerPropertyMatcher<TValue> : PlayerPropertyMatcher
     {

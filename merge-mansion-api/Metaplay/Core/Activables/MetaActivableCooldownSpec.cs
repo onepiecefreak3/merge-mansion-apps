@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ namespace Metaplay.Metaplay.Core.Activables
     public abstract class MetaActivableCooldownSpec
     {
         [MetaSerializableDerived(1)]
+        [MetaSerializable]
         public class Fixed: MetaActivableCooldownSpec
         {
             [MetaMember(1, 0)]

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ using Metaplay.Metaplay.Core.Model;
 namespace Metaplay.GameLogic.Player.Items.Bubble
 {
     [MetaSerializableDerived(2)]
+    [MetaSerializable]
     public class BracketedBubbleLogic : IBubbleLogic
     {
         [MetaMember(1, 0)]
@@ -22,6 +23,8 @@ namespace Metaplay.GameLogic.Player.Items.Bubble
         private F32 NormalizationQuot { get; set; }
         [MetaMember(5, 0)]
         private int MaxBubblesOnBoard { get; set; }
+
+        [MetaSerializable]
 
         public class Bracket
         {

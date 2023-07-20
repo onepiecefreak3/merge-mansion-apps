@@ -1,9 +1,10 @@
-﻿using Metaplay.Metaplay.Core;
+using Metaplay.Metaplay.Core;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Client.Messages
 {
     [MetaMessage(200001, MessageDirection.ClientInternal, false)]
+    [MetaSerializable]
     public class ConnectedToServer : MetaMessage
     {
         [MetaMember(1, 0)]

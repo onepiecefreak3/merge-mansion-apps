@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using Metaplay.Metaplay.Core.Model;
 
 namespace Metaplay.Metaplay.Core.Message
@@ -6,6 +6,7 @@ namespace Metaplay.Metaplay.Core.Message
     public static class Handshake
     {
         [MetaMessage(4, MessageDirection.ServerToClient, true)]
+        [MetaSerializable]
         public class ServerHello : MetaMessage
         {
             // Properties
@@ -30,6 +31,8 @@ namespace Metaplay.Metaplay.Core.Message
         }
 
         [MetaMessage(5, MessageDirection.ClientToServer, true)]
+
+        [MetaSerializable]
         public class ClientHello : MetaMessage
         {
             [MetaMember(1, 0)]
