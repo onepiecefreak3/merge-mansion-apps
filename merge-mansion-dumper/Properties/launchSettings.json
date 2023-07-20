@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "merge-mansion-dumper": {
+      "commandName": "Project",
+      "commandLineArgs": "-m 1"
+    }
+  }
+}

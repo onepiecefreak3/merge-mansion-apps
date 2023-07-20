@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "merge-mansion-dumper", "merge-mansion-dumper\merge-mansion-dumper.csproj", "{2A0148DD-BF1A-49F8-8E7A-5CE44AB18025}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "merge-mansion-api", "merge-mansion-api\merge-mansion-api.csproj", "{B98C8EC2-716A-4323-BF40-82DDB1019CB4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A0148DD-BF1A-49F8-8E7A-5CE44AB18025}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A0148DD-BF1A-49F8-8E7A-5CE44AB18025}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A0148DD-BF1A-49F8-8E7A-5CE44AB18025}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A0148DD-BF1A-49F8-8E7A-5CE44AB18025}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B98C8EC2-716A-4323-BF40-82DDB1019CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A90C9AB-073C-4F14-BCB5-10BAEDCBCD87}
+	EndGlobalSection
+EndGlobal
