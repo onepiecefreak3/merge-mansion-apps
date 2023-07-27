@@ -84,28 +84,30 @@ namespace merge_mansion_dumper
                 {
                     client.Update();
 
-                    if (MetaplaySDK.Connection.State.Status == ConnectionStatus.Error)
+                    if (MetaplaySDK.Connection.State.Status != ConnectionStatus.Error) 
+                        continue;
+
+                    if (MetaplaySDK.Connection.State is TerminalError.LogicVersionMismatch me)
                     {
-                        if (MetaplaySDK.Connection.State is TerminalError.LogicVersionMismatch me)
-                        {
-                            GlobalOptions.MinVersion = me.ServerAcceptedVersions.MinVersion;
-                            GlobalOptions.MaxVersion = me.ServerAcceptedVersions.MaxVersion;
-                            Application.Version = $"{me.ServerAcceptedVersions.MinVersion}";
+                        Console.WriteLine($"[!] There is a new game version available: {me.ServerAcceptedVersions.MinVersion}");
 
-                            MetaplayCore.Reset();
+                        GlobalOptions.MinVersion = me.ServerAcceptedVersions.MinVersion;
+                        GlobalOptions.MaxVersion = me.ServerAcceptedVersions.MaxVersion;
+                        Application.Version = $"{me.ServerAcceptedVersions.MinVersion}";
 
-                            goto Initialize;
-                        }
+                        MetaplayCore.Reset();
 
-                        if (MetaplaySDK.Connection.State is TerminalError.InMaintenance maintenance)
-                        {
-                            Console.WriteLine("Servers are in maintenance.");
-                            return false;
-                        }
+                        goto Initialize;
+                    }
 
-                        Console.WriteLine($"Connection Error ({MetaplaySDK.Connection.State.GetType().Name})");
+                    if (MetaplaySDK.Connection.State is TerminalError.InMaintenance maintenance)
+                    {
+                        Console.WriteLine("Servers are in maintenance.");
                         return false;
                     }
+
+                    Console.WriteLine($"Connection Error ({MetaplaySDK.Connection.State.GetType().Name})");
+                    return false;
                 }
             }
             catch (Exception e)

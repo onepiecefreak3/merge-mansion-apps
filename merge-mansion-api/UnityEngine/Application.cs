@@ -61,7 +61,7 @@ namespace Metaplay.UnityEngine
 
         private static void EnsureVersions()
         {
-            Versions[SystemLanguage.English] = "23.06.01";
+            Versions[SystemLanguage.English] = "23.06.02";
         }
 
         private static void EnsureIdentifiers()
