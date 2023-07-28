@@ -68,7 +68,7 @@ namespace merge_mansion_dumper.Dumper
                         var storyElement = config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId);
                         if (storyElement == null)
                         {
-                            Output.Warning("Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.DialogueId, dialogueAction.Item1, hotspot.KeyObject);
+                            Output.Warning("[Metacore] Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.DialogueId, dialogueAction.Item1, hotspot.KeyObject);
                             continue;
                         }
 

@@ -457,7 +457,7 @@ namespace merge_mansion_dumper.Dumper.Json
             private void SerializeItem(JsonWriter writer, ItemDefinition item, JsonSerializer serializer)
             {
                 if (!Enum.IsDefined(item.ConfigKey))
-                    _output.Warning("ItemType {0} unknown", item.ConfigKey);
+                    _output.Warning(Program.VersionBumped ? "ItemType {0} unknown" : "[Metacore] ItemType {0} unknown", item.ConfigKey);
 
                 if (item.ConfigKey == ItemTypeConstant.None)
                 {
@@ -625,7 +625,11 @@ namespace merge_mansion_dumper.Dumper.Json
                 if (areaName != null)
                     new JProperty("Name", areaName).WriteTo(writer);
 
-                new JProperty("TaskDependencies", GetTaskGraph(area)).WriteTo(writer);
+                var hotspots = area.HotspotsRefs.DistinctBy(x => x.Ref.ConfigKey).ToArray();
+                if (area.HotspotsRefs.Count != hotspots.Length)
+                    _output.Warning("[Metacore] Area {0} has {1} duplicated tasks.", area.ConfigKey, area.HotspotsRefs.Count - hotspots.Length);
+
+                new JProperty("TaskDependencies", GetTaskGraph(hotspots)).WriteTo(writer);
 
                 foreach (var prop in typeof(AreaInfo).GetProperties((BindingFlags)52))
                 {
@@ -633,7 +637,7 @@ namespace merge_mansion_dumper.Dumper.Json
                     if (value == null && serializer.NullValueHandling == NullValueHandling.Ignore)
                         continue;
 
-                    if (prop.Name == "UnlockingHotspotRef")
+                    if (prop.Name == nameof(AreaInfo.UnlockingHotspotRef))
                     {
                         writer.WritePropertyName(prop.Name);
                         serializer.Serialize(writer, (value as IMetaRef)?.KeyObject);
@@ -641,7 +645,15 @@ namespace merge_mansion_dumper.Dumper.Json
                         continue;
                     }
 
-                    if (value is IMetaRef mRef && !mRef.IsResolved)
+                    if (prop.Name == nameof(AreaInfo.HotspotsRefs))
+                    {
+                        writer.WritePropertyName(prop.Name);
+                        serializer.Serialize(writer, hotspots);
+
+                        continue;
+                    }
+
+                    if (value is IMetaRef { IsResolved: false })
                         continue;
 
                     writer.WritePropertyName(prop.Name);
@@ -654,7 +666,7 @@ namespace merge_mansion_dumper.Dumper.Json
             private void SerializeHotspot(JsonWriter writer, HotspotDefinition hotspot, JsonSerializer serializer)
             {
                 if (!Enum.IsDefined(hotspot.ConfigKey))
-                    _output.Warning("HotspotId {0} unknown", hotspot.ConfigKey);
+                    _output.Warning(Program.VersionBumped ? "HotspotId {0} unknown" : "[Metacore] HotspotId {0} unknown", hotspot.ConfigKey);
 
                 if (hotspot.ConfigKey == HotspotId.None)
                 {
@@ -694,7 +706,7 @@ namespace merge_mansion_dumper.Dumper.Json
                         continue;
                     }
 
-                    if (value is IMetaRef mRef && !mRef.IsResolved)
+                    if (value is IMetaRef { IsResolved: false })
                         continue;
 
                     writer.WritePropertyName(prop.Name);
@@ -706,16 +718,16 @@ namespace merge_mansion_dumper.Dumper.Json
 
             #region Task graphs
 
-            private string GetTaskGraph(AreaInfo area)
+            private string GetTaskGraph(IList<MetaRef<HotspotDefinition>> hotspots)
             {
-                var nodes = GetTaskNodes(area);
+                var nodes = GetTaskNodes(hotspots);
                 return GraphViz.GetGraph(nodes);
             }
 
-            private IList<Node> GetTaskNodes(AreaInfo area)
+            private IList<Node> GetTaskNodes(IList<MetaRef<HotspotDefinition>> hotspots)
             {
                 var hotspotDict = new Dictionary<HotspotId, Node>();
-                foreach (var hotspot in area.HotspotsRefs.DistinctBy(x => x.Ref.ConfigKey).Where(x => x.Ref.ConfigKey != HotspotId.None).OrderBy(x => x.Ref.ConfigKey))
+                foreach (var hotspot in hotspots.Where(x => x.Ref.ConfigKey != HotspotId.None).OrderBy(x => x.Ref.ConfigKey))
                 {
                     if (!hotspotDict.TryGetValue(hotspot.Ref.ConfigKey, out var node))
                         node = new Node { Text = GetNodeText(hotspot.Ref) };

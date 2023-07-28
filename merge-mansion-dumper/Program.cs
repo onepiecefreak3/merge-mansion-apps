@@ -32,6 +32,8 @@ namespace merge_mansion_dumper
 
     class Program
     {
+        public static bool VersionBumped { get; private set; }
+
         static async Task Main(string[] args)
         {
             var parser = new Parser(parserSettings => parserSettings.AutoHelp = true);
@@ -90,6 +92,8 @@ namespace merge_mansion_dumper
                     if (MetaplaySDK.Connection.State is TerminalError.LogicVersionMismatch me)
                     {
                         Console.WriteLine($"[!] There is a new game version available: {me.ServerAcceptedVersions.MinVersion}");
+
+                        VersionBumped = true;
 
                         GlobalOptions.MinVersion = me.ServerAcceptedVersions.MinVersion;
                         GlobalOptions.MaxVersion = me.ServerAcceptedVersions.MaxVersion;
