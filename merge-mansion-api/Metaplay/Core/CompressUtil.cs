@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public static class CompressUtil
     {

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core.Math;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.GameLogic.Config
+namespace GameLogic.Config
 {
     [MetaSerializableDerived(1027)]
     public class PlayerLastTransactionPrice : TypedPlayerPropertyId<F64>

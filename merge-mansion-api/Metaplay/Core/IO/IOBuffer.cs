@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.IO
+﻿namespace Metaplay.Core.IO
 {
     public interface IOBuffer
     {

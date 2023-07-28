@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Math;
+using Metaplay.Core;
+using Metaplay.Core.Math;
 
-namespace Metaplay.GameLogic.Random.ControlledRandom
+namespace GameLogic.Random.ControlledRandom
 {
     class WeightedDistribution
     {

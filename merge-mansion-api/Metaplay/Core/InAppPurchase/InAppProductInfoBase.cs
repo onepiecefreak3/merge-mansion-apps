@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Config;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.InAppPurchase
+namespace Metaplay.Core.InAppPurchase
 {
     [MetaSerializable]
     public abstract class InAppProductInfoBase : IGameConfigData<InAppProductId>

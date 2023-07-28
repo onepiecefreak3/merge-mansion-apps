@@ -1,5 +1,4 @@
-﻿using Metaplay;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace merge_mansion_dumper.Models.Item

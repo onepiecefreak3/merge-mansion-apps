@@ -1,9 +1,9 @@
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using GameLogic.Player.Items;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Rewards
+namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(6)]
     [MetaSerializable]

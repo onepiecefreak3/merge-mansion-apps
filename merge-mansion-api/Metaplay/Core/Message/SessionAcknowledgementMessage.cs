@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Session;
+﻿using Metaplay.Core.Session;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     [MetaMessage(30, MessageDirection.Bidirectional, false)]
     public class SessionAcknowledgementMessage : SessionControlMessage

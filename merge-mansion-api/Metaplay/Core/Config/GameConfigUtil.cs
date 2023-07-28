@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     internal static class GameConfigUtil
     {

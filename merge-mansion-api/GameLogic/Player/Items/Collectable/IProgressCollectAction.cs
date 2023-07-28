@@ -1,4 +1,4 @@
-﻿namespace Metaplay.GameLogic.Player.Items.Collectable
+﻿namespace GameLogic.Player.Items.Collectable
 {
     public interface IProgressCollectAction : ICollectAction
     {

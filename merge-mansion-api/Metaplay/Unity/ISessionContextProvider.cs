@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core.Client;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public interface ISessionContextProvider
     {

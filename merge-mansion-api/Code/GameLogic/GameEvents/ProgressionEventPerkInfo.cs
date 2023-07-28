@@ -1,7 +1,7 @@
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>

@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Localization;
+﻿using Metaplay.Core.Localization;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public interface ISharedGameConfig : IGameConfig
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class PatchedConfigArchive
     {

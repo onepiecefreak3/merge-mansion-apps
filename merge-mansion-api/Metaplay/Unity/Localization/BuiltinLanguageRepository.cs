@@ -1,14 +1,14 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.UnityEngine;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.IO;
+using Metaplay.Core.Localization;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity.Localization
+namespace Metaplay.Unity.Localization
 {
     public static class BuiltinLanguageRepository
     {

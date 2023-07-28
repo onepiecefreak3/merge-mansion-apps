@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public class CannotWriteCredentialsOnDiskError : Exception
     {

@@ -1,6 +1,6 @@
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Director.Config
+namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(11)]
     [MetaSerializable]

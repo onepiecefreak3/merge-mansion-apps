@@ -1,14 +1,10 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.ConfigPrefabs;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.ConfigPrefabs;
+using GameLogic.Player.Director.Config;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Decorations
+namespace GameLogic.Decorations
 {
     [MetaSerializable]
     public class DecorationInfo : IGameConfigData<DecorationId>

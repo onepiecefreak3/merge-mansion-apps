@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public enum ProtocolStatus
     {

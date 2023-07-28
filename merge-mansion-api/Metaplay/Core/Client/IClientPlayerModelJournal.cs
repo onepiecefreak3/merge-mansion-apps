@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Client
+namespace Metaplay.Core.Client
 {
     public interface IClientPlayerModelJournal
     {

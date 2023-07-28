@@ -1,9 +1,6 @@
-﻿using Metaplay.Metaplay.Unity.DefaultIntegration;
+﻿using Metaplay.Unity.DefaultIntegration;
 
-namespace Metaplay
+internal class GameLocalizationDelegate : DefaultMetaplayLocalizationDelegate
 {
-    internal class GameLocalizationDelegate : DefaultMetaplayLocalizationDelegate
-    {
-        public override bool AutoActivateLanguageUpdates => false;
-    }
+    public override bool AutoActivateLanguageUpdates => false;
 }

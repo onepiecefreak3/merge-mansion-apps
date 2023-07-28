@@ -1,11 +1,10 @@
 ﻿using System;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Debugging;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core.Session;
+using Metaplay.Core;
+using Metaplay.Core.Debugging;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public class PlayerIncidentTracker : IDisposable
     {

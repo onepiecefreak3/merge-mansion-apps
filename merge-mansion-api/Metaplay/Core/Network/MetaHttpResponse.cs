@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public class MetaHttpResponse : IDisposable // TypeDefIndex: 712
     {

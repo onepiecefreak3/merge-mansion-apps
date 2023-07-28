@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Random;
-using Metaplay.Metaplay.Core;
+﻿using GameLogic.Merge;
+using GameLogic.Random;
+using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Player.Items.Merging
+namespace GameLogic.Player.Items.Merging
 {
     public static class MergeExtensions
     {

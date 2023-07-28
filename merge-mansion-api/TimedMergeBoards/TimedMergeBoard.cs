@@ -1,17 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Events;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.GameLogic.Player.Requirements;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using Events;
+using GameLogic.Merge;
+using GameLogic.Player.Items;
+using GameLogic.Player.Requirements;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.TimedMergeBoards
+namespace TimedMergeBoards
 {
     [MetaSerializable]
     public class TimedMergeBoard : IGameConfigData<MergeBoardId>

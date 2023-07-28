@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.InAppPurchase;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Offers;
-using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core.InAppPurchase;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Offers;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class SharedGameConfigTemplate<TInAppProductInfo, TPlayerSegmentInfo, TMetaOfferInfo, TMetaOfferGroupInfo> : GameConfigBase, ISharedGameConfig
     {

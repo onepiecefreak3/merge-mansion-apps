@@ -1,7 +1,7 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.IO;
+using Metaplay.Core.IO;
 
-namespace Metaplay.Metaplay.Core.Serialization
+namespace Metaplay.Core.Serialization
 {
     public static class TaggedWireSerializer
     {

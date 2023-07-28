@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using Metaplay.Metaplay.Core.Config;
-using Newtonsoft.Json;
+using Metaplay.Core.Config;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class MetaRef<TItem> : IMetaRef where TItem : class, IGameConfigData
     {

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Message;
+using Metaplay.Core;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public struct MetaplaySDKConfig // TypeDefIndex: 13022
     {

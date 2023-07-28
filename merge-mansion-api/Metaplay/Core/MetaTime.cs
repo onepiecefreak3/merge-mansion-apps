@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Globalization;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public struct MetaTime : IEquatable<MetaTime>, IComparable<MetaTime>, IComparable
     {

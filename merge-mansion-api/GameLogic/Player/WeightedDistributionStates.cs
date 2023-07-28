@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using Metaplay.GameLogic.Player.Items.Production;
-using Metaplay.GameLogic.Random.ControlledRandom;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Items.Production;
+using GameLogic.Random.ControlledRandom;
+using Metaplay.Core;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player
+namespace GameLogic.Player
 {
     [MetaSerializable]
     public class WeightedDistributionStates

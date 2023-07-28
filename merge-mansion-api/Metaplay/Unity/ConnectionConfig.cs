@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Network;
+﻿using Metaplay.Core;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public class ConnectionConfig
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     [AttributeUsage(AttributeTargets.Property)]
     public class GameConfigEntryAttribute : Attribute

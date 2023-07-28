@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Message
+﻿namespace Metaplay.Core.Message
 {
 	[MetaMessage(41, MessageDirection.ServerToClient, false)]
     public class SessionPong : MetaMessage

@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using Metaplay.Code.GameLogic.GameEvents;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.GameLogic.Player.Items.Chest;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.IO;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Generated
+namespace Metaplay.Generated
 {
     public static class TypeSerializer
     {

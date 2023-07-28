@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Generated;
+using Metaplay.Core.Config;
+using Metaplay.Core.IO;
+using Metaplay.Generated;
 
-namespace Metaplay.Metaplay.Core.Serialization
+namespace Metaplay.Core.Serialization
 {
     public static class MetaSerialization
     {

@@ -1,8 +1,8 @@
 ﻿using System;
-using Metaplay.Metaplay.Core;
-using Metaplay.SCID;
+using Metaplay.Core;
+using SCID;
 
-namespace Metaplay.ThirdParty
+namespace ThirdParty
 {
     public class SupercellIntegration : ISupercellIdDelegate
     {

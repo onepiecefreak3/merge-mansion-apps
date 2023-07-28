@@ -1,23 +1,22 @@
 using System;
-using System.Diagnostics;
 using System.Reflection;
-using Metaplay.Code.GameLogic.GameEvents;
-using Metaplay.GameLogic.Area;
-using Metaplay.GameLogic.Codex;
-using Metaplay.GameLogic.Config.Map.Characters;
-using Metaplay.GameLogic.Decorations;
-using Metaplay.GameLogic.Hotspots;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.MergeChains;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.GameLogic.Player.Items.Bubble;
-using Metaplay.GameLogic.Player.Items.Merging;
-using Metaplay.GameLogic.Story;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.TimedMergeBoards;
+using Code.GameLogic.GameEvents;
+using GameLogic.Area;
+using GameLogic.Codex;
+using GameLogic.Config.Map.Characters;
+using GameLogic.Decorations;
+using GameLogic.Hotspots;
+using GameLogic.Merge;
+using GameLogic.MergeChains;
+using GameLogic.Player.Items;
+using GameLogic.Player.Items.Bubble;
+using GameLogic.Player.Items.Merging;
+using GameLogic.Story;
+using Metaplay.Core.Config;
+using Metaplay.Core.Player;
+using TimedMergeBoards;
 
-namespace Metaplay.GameLogic.Config
+namespace GameLogic.Config
 {
     public class SharedGameConfig : SharedGameConfigTemplate<InAppProductInfo, PlayerSegmentInfo, MergeMansionOfferInfo, MergeMansionOfferGroupInfo>
     {

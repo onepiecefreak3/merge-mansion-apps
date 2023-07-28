@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Area;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Area;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Requirements
+namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(10)]
     [MetaSerializable]

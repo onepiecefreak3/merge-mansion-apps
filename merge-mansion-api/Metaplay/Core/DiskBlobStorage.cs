@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class DiskBlobStorage : IBlobStorage
     {

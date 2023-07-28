@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Metaplay.GameLogic.Config.Map.Characters
+﻿namespace GameLogic.Config.Map.Characters
 {
     public enum MapCharacterType
     {

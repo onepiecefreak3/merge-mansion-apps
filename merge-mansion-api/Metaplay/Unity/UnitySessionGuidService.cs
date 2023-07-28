@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Network;
+﻿using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     internal class UnitySessionGuidService : ISessionDeviceGuidService
     {

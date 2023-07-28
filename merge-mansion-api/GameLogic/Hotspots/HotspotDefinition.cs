@@ -1,18 +1,14 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Area;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.GameLogic.Player.Requirements;
-using Metaplay.GameLogic.Player.Rewards;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Area;
+using GameLogic.Merge;
+using GameLogic.Player.Director.Config;
+using GameLogic.Player.Requirements;
+using GameLogic.Player.Rewards;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Hotspots
+namespace GameLogic.Hotspots
 {
     [MetaSerializable]
     public class HotspotDefinition : IGameConfigData<HotspotId>, IHasRequirements

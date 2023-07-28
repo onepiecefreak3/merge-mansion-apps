@@ -1,14 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Player.Items.Activation;
-using Metaplay.GameLogic.Player.Items.Decay;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Items.Activation;
+using GameLogic.Player.Items.Decay;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items
+namespace GameLogic.Player.Items
 {
     [MetaSerializable]
     public sealed class MergeItem

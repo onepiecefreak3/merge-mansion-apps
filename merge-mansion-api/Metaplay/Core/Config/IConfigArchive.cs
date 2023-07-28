@@ -1,6 +1,4 @@
-﻿using Metaplay.Metaplay.Core;
-
-namespace Metaplay.Metaplay.Core.Config
+﻿namespace Metaplay.Core.Config
 {
     public interface IConfigArchive
     {

@@ -1,11 +1,10 @@
-﻿using System;
-using Metaplay.GameLogic.Config;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Unity.DefaultIntegration;
-using Metaplay.ThirdParty;
+﻿using GameLogic.Config;
+using Metaplay.Core;
+using Metaplay.Core.Client;
+using Metaplay.Unity.DefaultIntegration;
+using ThirdParty;
 
-namespace Metaplay.MetaplayIntegration
+namespace MetaplayIntegration
 {
     public class GameConnectionDelegate : DefaultMetaplayConnectionDelegate
     {

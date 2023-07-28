@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core
+﻿namespace Metaplay.Core
 {
     public enum CompressionAlgorithm
     {

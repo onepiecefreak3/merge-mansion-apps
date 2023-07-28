@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Config.Costs;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Config.Costs;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Requirements
+namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(6)]
     [MetaSerializable]

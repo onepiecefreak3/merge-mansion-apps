@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public static class TypeScanner
     {

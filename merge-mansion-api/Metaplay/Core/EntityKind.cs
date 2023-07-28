@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public struct EntityKind : IEquatable<EntityKind>
     {

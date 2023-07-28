@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Message
+﻿namespace Metaplay.Core.Message
 {
     public abstract class MetaResponseMessage : MetaMessage
     {

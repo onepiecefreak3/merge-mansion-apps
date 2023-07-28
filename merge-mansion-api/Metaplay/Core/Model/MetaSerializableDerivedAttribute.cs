@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Model
+namespace Metaplay.Core.Model
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class MetaSerializableDerivedAttribute : Attribute

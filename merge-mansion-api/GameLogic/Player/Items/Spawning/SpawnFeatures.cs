@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Board.Placement;
-using Metaplay.GameLogic.Player.Items.Production;
-using Metaplay.GameLogic.Random;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using GameLogic.Player.Board.Placement;
+using GameLogic.Player.Items.Production;
+using GameLogic.Random;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Spawning
+namespace GameLogic.Player.Items.Spawning
 {
     [MetaSerializable]
     public sealed class SpawnFeatures

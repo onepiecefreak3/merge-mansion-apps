@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Impl;
+using Metaplay.Core.Impl;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public static class FileUtil
     {

@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public interface IMetaplayClientSocialAuthenticationDelegate
     {

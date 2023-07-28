@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Metaplay.GameLogic.Player.Requirements
+﻿namespace GameLogic.Player.Requirements
 {
     public interface IHasRequirements
     {

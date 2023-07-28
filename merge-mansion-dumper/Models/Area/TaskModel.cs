@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Metaplay;
 using Newtonsoft.Json.Converters;
 
 namespace merge_mansion_dumper.Models.Area

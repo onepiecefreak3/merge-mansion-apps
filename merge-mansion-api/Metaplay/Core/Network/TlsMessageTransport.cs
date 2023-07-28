@@ -5,7 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public class TlsMessageTransport : TcpMessageTransport
     {

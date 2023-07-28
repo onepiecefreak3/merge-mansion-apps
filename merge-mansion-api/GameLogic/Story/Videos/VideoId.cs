@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Story.Videos
+namespace GameLogic.Story.Videos
 {
     public class VideoId : StringId<VideoId>
     {

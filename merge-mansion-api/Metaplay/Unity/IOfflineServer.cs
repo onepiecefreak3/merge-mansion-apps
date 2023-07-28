@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Network;
+﻿using System.Threading.Tasks;
+using Metaplay.Core.Config;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public interface IOfflineServer : IMessageTransport
     {

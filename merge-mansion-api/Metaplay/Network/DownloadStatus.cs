@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Network
+namespace Metaplay.Network
 {
     public struct DownloadStatus
     {

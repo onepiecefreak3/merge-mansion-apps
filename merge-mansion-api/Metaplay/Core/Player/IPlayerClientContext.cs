@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Client;
+﻿using Metaplay.Core.Client;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     public interface IPlayerClientContext
     {

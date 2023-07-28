@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -8,24 +7,22 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Client.Messages;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Debugging;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Core.Serialization;
-using Metaplay.Metaplay.Core.Session;
-using Metaplay.Metaplay.Network;
-using Metaplay.Metaplay.Unity.ConnectionStates;
-using Metaplay.UnityEngine;
+using Metaplay.Client.Messages;
+using Metaplay.Core;
+using Metaplay.Core.Client;
+using Metaplay.Core.Config;
+using Metaplay.Core.Debugging;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
+using Metaplay.Core.Player;
+using Metaplay.Core.Serialization;
+using Metaplay.Network;
+using Metaplay.Unity.ConnectionStates;
 using Newtonsoft.Json;
-using static Metaplay.Metaplay.Unity.MetaplayConnection;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public sealed class MetaplayConnection
     {

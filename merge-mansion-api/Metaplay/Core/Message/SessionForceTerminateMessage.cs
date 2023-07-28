@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Message
+﻿namespace Metaplay.Core.Message
 {
 	[MetaMessage(105, MessageDirection.ServerToClient, false)]
     public class SessionForceTerminateMessage : MetaMessage // TypeDefIndex: 980

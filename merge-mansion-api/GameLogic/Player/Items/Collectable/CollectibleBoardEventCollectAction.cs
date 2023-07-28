@@ -1,8 +1,8 @@
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core;
-using Metaplay.Code.GameLogic.GameEvents;
+using Code.GameLogic.GameEvents;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Collectable
+namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(7)]
     [MetaSerializable]

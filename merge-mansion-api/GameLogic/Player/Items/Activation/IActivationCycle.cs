@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Player.Items.Activation
+namespace GameLogic.Player.Items.Activation
 {
     public interface IActivationCycle
     {

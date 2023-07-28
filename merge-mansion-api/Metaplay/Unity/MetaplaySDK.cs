@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Metaplay.Metaplay.Client.Messages;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Unity.Localization;
-using Metaplay.UnityEngine;
+using Metaplay.Client.Messages;
+using Metaplay.Core;
+using Metaplay.Core.IO;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
+using Metaplay.Core.Player;
+using Metaplay.Unity.Localization;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public static class MetaplaySDK
     {

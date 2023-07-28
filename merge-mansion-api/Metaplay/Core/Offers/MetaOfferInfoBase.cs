@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.InAppPurchase;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Core.Rewards;
+using Metaplay.Core.Config;
+using Metaplay.Core.InAppPurchase;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
+using Metaplay.Core.Rewards;
 
-namespace Metaplay.Metaplay.Core.Offers
+namespace Metaplay.Core.Offers
 {
     [MetaSerializable]
     public abstract class MetaOfferInfoBase : IGameConfigData<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers

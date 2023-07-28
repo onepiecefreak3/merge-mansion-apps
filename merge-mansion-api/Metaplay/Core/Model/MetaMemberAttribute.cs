@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Model
+namespace Metaplay.Core.Model
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class MetaMemberAttribute : Attribute

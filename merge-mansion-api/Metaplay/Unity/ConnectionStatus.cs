@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Unity
+﻿namespace Metaplay.Unity
 {
     public enum ConnectionStatus
     {

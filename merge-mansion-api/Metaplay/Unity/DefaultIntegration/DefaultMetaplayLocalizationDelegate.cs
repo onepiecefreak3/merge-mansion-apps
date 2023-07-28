@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Unity.DefaultIntegration
+﻿namespace Metaplay.Unity.DefaultIntegration
 {
     public class DefaultMetaplayLocalizationDelegate : IMetaplayLocalizationDelegate
     {

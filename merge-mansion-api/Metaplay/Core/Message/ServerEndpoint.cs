@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     [MetaSerializable]
     public class ServerEndpoint

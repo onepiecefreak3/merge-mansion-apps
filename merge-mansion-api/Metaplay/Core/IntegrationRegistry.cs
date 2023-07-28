@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class IntegrationRegistry
     {

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Config;
-
-namespace Metaplay.Metaplay.Core.Localization
+﻿namespace Metaplay.Core.Localization
 {
     //public class LocalizationLanguageProvider
     //{

@@ -1,7 +1,7 @@
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Client.Messages
+namespace Metaplay.Client.Messages
 {
     [MetaMessage(200001, MessageDirection.ClientInternal, false)]
     [MetaSerializable]

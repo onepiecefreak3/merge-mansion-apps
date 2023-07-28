@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Metaplay.Metaplay.Client.Messages;
+using Metaplay.Client.Messages;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public class TransportQosMonitor
     {

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metaplay.Metaplay.Client.Messages;
-using Metaplay.Metaplay.Core.Debugging;
-using Metaplay.Metaplay.Core.Message;
+using Metaplay.Client.Messages;
+using Metaplay.Core.Debugging;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public class PlayerIncidentUploader
     {

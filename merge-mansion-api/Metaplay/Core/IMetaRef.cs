@@ -1,7 +1,7 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Config;
+using Metaplay.Core.Config;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public interface IMetaRef
     {

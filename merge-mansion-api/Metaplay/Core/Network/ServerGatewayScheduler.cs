@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Metaplay.Metaplay.Core.Message;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public static class ServerGatewayScheduler
     {

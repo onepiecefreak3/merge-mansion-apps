@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class ConfigLexer
     {

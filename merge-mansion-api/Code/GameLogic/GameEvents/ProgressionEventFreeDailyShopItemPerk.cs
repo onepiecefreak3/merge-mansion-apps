@@ -1,8 +1,6 @@
-using Metaplay;
-using Metaplay.Code.GameLogic.GameEvents;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(3)]
     [MetaSerializable]

@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Model
+﻿namespace Metaplay.Core.Model
 {
 	public interface ISerializableFlagsProvider
     {

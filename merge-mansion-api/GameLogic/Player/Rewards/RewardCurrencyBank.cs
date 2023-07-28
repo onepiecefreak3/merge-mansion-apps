@@ -1,13 +1,7 @@
-using Metaplay.GameLogic.Player.Rewards;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Banks;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Banks;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Rewards
+namespace GameLogic.Player.Rewards
 {
     [MetaSerializable]
     public class RewardCurrencyBank : PlayerReward

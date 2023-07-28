@@ -1,7 +1,7 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class RequestResponseAttribute : Attribute, ISerializableFlagsProvider

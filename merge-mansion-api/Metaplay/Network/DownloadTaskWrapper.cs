@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Network
+namespace Metaplay.Network
 {
     public sealed class DownloadTaskWrapper<TResult> : IDownload
     {

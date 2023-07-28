@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Text.RegularExpressions;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public struct MetaDuration : IEquatable<MetaDuration>, IComparable<MetaDuration>, IComparable
     {

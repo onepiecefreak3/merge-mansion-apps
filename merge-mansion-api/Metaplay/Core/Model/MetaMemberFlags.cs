@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Model
+namespace Metaplay.Core.Model
 {
     [Flags]
     public enum MetaMemberFlags

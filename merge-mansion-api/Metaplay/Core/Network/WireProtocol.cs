@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Config;
+using Metaplay.Core.IO;
+using Metaplay.Core.Serialization;
 using Newtonsoft.Json;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public static class WireProtocol
     {

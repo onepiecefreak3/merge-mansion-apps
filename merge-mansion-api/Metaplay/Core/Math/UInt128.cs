@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Metaplay.Metaplay.Core.Math
+namespace Metaplay.Core.Math
 {
     public struct UInt128 : IEquatable<UInt128>, IComparable<UInt128>, IComparable
     {

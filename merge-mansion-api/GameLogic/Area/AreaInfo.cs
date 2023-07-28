@@ -1,16 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Hotspots;
-using Metaplay.GameLogic.Player.Requirements;
-using Metaplay.GameLogic.Player.Rewards;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Hotspots;
+using GameLogic.Player.Requirements;
+using GameLogic.Player.Rewards;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Area
+namespace GameLogic.Area
 {
     [MetaSerializable]
     public class AreaInfo : IGameConfigData<AreaId>

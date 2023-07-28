@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Message;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public abstract class StreamMessageTransport : WireMessageTransport
     {

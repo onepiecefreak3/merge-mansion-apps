@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
+﻿using Metaplay.Core.Message;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	internal interface IMetaplayConnectionSDKHook
     {

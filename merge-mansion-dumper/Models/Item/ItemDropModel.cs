@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Metaplay;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Player;
+using Metaplay.Core;
 
 namespace merge_mansion_dumper.Models.Item
 {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Debugging;
+﻿using System.Collections.Generic;
+using Metaplay.Core.Debugging;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public class PlayerIncidentRepository
     {

@@ -1,8 +1,7 @@
-using Metaplay.GameLogic.Cutscenes;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Cutscenes;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Director.Config
+namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(13)]
     [MetaSerializable]

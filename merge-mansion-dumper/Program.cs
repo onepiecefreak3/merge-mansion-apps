@@ -4,14 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
+using Game.Logic;
 using merge_mansion_dumper.Dumper;
-using Metaplay;
-using Metaplay.Game.Logic;
-using Metaplay.GameLogic.Story;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Unity;
-using Metaplay.Metaplay.Unity.ConnectionStates;
-using Metaplay.UnityEngine;
+using Metaplay.Core;
+using Metaplay.Unity;
+using Metaplay.Unity.ConnectionStates;
+using UnityEngine;
 
 namespace merge_mansion_dumper
 {

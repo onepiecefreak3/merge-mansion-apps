@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.MultiplayerEntity.Messages;
+﻿using Metaplay.Core.MultiplayerEntity.Messages;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     public readonly struct ExperimentMembershipStatus // TypeDefIndex: 466
     {

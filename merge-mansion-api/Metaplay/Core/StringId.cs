@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public abstract class StringId<TStringId> : IStringId, IEquatable<TStringId> where TStringId : new()
     {

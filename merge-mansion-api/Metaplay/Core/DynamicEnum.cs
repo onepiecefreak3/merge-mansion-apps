@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.Metaplay.Core.Client;
+using Metaplay.Core.Client;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class DynamicEnum<TEnum> : IDynamicEnum, IEquatable<DynamicEnum<TEnum>>/*, IComparable<DynamicEnum<TEnum>>, IComparable*/
         where TEnum : DynamicEnum<TEnum>

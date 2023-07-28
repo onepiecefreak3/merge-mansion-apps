@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Message;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Game.Logic.Message
+namespace Game.Logic.Message
 {
 	[MetaSerializableDerived(1)]
 	[MetaSerializable]

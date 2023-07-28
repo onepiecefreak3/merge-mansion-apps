@@ -1,7 +1,7 @@
-using Metaplay.GameLogic.Merge;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Merging
+namespace GameLogic.Player.Items.Merging
 {
     [MetaSerializableDerived(3)]
     [MetaSerializable]

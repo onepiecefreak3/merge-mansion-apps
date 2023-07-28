@@ -1,4 +1,4 @@
-﻿using Metaplay.GameLogic.Config;
+﻿using GameLogic.Config;
 using Serilog;
 
 namespace merge_mansion_dumper.Dumper.Base

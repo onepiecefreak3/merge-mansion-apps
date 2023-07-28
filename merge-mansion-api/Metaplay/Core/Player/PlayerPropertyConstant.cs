@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Game.Logic;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using Game.Logic;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     public abstract class PlayerPropertyConstant
     {

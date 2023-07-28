@@ -1,7 +1,7 @@
 using System;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     [MetaSerializable]
     public class PlayerTimeZoneInfo

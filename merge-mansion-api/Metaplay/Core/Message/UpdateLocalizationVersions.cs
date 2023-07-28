@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Localization;
+using Metaplay.Core.Localization;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     [MetaMessage(9, MessageDirection.ServerToClient, false)]
     public class UpdateLocalizationVersions : MetaMessage

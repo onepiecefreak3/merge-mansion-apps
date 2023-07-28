@@ -1,13 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Bubble
+namespace GameLogic.Player.Items.Bubble
 {
     [MetaSerializable]
     public class BubbleFeatures

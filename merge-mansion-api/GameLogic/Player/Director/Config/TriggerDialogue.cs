@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Story;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Story;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Director.Config
+namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(4)]
     [MetaSerializable]

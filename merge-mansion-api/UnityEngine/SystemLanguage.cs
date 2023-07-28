@@ -1,4 +1,4 @@
-﻿namespace Metaplay.UnityEngine
+﻿namespace UnityEngine
 {
     public enum SystemLanguage
     {

@@ -1,8 +1,8 @@
-using Metaplay.GameLogic.MergeChains;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.MergeChains;
+using GameLogic.Player.Director.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Hotspots.Actions
+namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(7)]
     [MetaSerializable]

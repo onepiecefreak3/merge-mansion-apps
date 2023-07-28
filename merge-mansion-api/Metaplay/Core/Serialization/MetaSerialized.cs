@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Model;
+﻿using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Serialization
+namespace Metaplay.Core.Serialization
 {
     public struct MetaSerialized<T>
     {

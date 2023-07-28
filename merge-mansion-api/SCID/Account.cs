@@ -1,4 +1,4 @@
-﻿namespace Metaplay.SCID
+﻿namespace SCID
 {
 	public class Account
     {

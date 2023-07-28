@@ -1,8 +1,8 @@
-﻿using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Core.Message;
+﻿using Metaplay.Core;
+using Metaplay.Core.Client;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public interface IMetaplayConnectionDelegate
     {

@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using Metaplay.GameLogic.Config;
+using GameLogic.Config;
 using Newtonsoft.Json;
 
 namespace merge_mansion_dumper.Dumper.Base

@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Localization;
+﻿using Metaplay.Core.Config;
+using Metaplay.Core.Localization;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     public interface IPlayerModelBase
     {

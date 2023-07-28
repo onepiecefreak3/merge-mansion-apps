@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Sink
+namespace GameLogic.Player.Items.Sink
 {
     [MetaSerializable]
     public class SinkFeatures

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Network;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class HttpBlobProvider : IBlobProvider
     {

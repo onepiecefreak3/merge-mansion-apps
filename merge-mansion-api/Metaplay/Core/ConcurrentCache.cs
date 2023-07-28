@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class ConcurrentCache<TKey, TValue>
     {

@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Network;
+﻿using Metaplay.Core;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Client.Messages
+namespace Metaplay.Client.Messages
 {
     [MetaMessage(200004, MessageDirection.ClientInternal, false)]
     public class MessageTransportInfoWrapperMessage : MetaMessage

@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using GameLogic.Player.Director.Config;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Hotspots.Actions
+namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(10)]
     [MetaSerializable]

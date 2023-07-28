@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.IAP;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.InAppPurchase;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.IAP;
+using Metaplay.Core;
+using Metaplay.Core.InAppPurchase;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Config
+namespace GameLogic.Config
 {
     [MetaSerializable]
     public class InAppProductInfo : InAppProductInfoBase

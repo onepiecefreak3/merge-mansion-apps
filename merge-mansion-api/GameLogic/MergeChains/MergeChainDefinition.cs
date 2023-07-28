@@ -1,12 +1,10 @@
-using System;
 using System.Collections.Generic;
-using Metaplay.GameLogic.Codex;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
-using Newtonsoft.Json;
+using GameLogic.Codex;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.MergeChains
+namespace GameLogic.MergeChains
 {
     [MetaSerializable]
     public class MergeChainDefinition : IGameConfigData<MergeChainId>

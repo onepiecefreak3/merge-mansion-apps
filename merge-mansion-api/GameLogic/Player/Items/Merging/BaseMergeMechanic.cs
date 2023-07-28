@@ -1,9 +1,9 @@
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Random;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using GameLogic.Random;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Merging
+namespace GameLogic.Player.Items.Merging
 {
     [MetaSerializable]
     public abstract class BaseMergeMechanic : IMergeMechanic

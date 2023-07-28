@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Cutscenes
+namespace GameLogic.Cutscenes
 {
     public class CutsceneId : StringId<CutsceneId>
     {

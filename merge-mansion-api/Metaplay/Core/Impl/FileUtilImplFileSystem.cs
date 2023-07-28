@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Core.Impl
+namespace Metaplay.Core.Impl
 {
     public class FileUtilImplFileSystem
     {

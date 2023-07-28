@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Player.Items.Consumption.Logic;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Items.Consumption.Logic;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Consumption
+namespace GameLogic.Player.Items.Consumption
 {
     [MetaSerializable]
     public sealed class ConsumableFeatures

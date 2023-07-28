@@ -2,9 +2,9 @@
 using System.Buffers.Binary;
 using System.IO;
 using System.Text;
-using Metaplay.Metaplay.Core.Math;
+using Metaplay.Core.Math;
 
-namespace Metaplay.Metaplay.Core.IO
+namespace Metaplay.Core.IO
 {
     public sealed class IOReader : IDisposable
     {

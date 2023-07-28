@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Activables
+namespace Metaplay.Core.Activables
 {
     [MetaSerializable]
     public abstract class MetaActivablePrecursorCondition<TId> : PlayerCondition

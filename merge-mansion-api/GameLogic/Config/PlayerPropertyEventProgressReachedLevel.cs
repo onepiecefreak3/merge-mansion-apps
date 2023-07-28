@@ -1,8 +1,8 @@
-using Metaplay.GameLogic.Merge;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+using GameLogic.Merge;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.GameLogic.Config
+namespace GameLogic.Config
 {
     [MetaSerializableDerived(1006)]
     [MetaSerializable]

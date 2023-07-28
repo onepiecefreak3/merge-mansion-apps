@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core;
-using System.Threading.Tasks;
 using System.Threading;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.UnityEngine;
+using System.Threading.Tasks;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity.Localization
+namespace Metaplay.Unity.Localization
 {
     public class LocalizationDownloadCache
     {

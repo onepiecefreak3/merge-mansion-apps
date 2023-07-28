@@ -1,7 +1,7 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class MetaMessageAttribute : Attribute

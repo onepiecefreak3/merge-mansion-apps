@@ -1,7 +1,6 @@
-using System.Runtime.CompilerServices;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     public static class Handshake
     {

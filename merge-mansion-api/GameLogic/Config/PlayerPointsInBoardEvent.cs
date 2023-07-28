@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Code.GameLogic.GameEvents;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+using Code.GameLogic.GameEvents;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.GameLogic.Config
+namespace GameLogic.Config
 {
     [MetaSerializableDerived(1030)]
     [MetaSerializable]

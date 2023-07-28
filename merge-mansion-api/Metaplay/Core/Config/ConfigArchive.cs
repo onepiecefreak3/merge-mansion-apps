@@ -5,11 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Core.Math;
+using Metaplay.Core.IO;
+using Metaplay.Core.Math;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class ConfigArchive : IConfigArchive
     {

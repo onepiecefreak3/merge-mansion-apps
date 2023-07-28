@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.MultiplayerEntity
+﻿namespace Metaplay.Core.MultiplayerEntity
 {
     public interface IMultiplayerModel
     {

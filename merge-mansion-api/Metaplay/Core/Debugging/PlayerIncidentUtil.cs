@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Buffers.Binary;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Debugging
+namespace Metaplay.Core.Debugging
 {
     public static class PlayerIncidentUtil
     {

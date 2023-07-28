@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.MultiplayerEntity.Messages;
-using Metaplay.Metaplay.Core.Player;
+using Metaplay.Core.Config;
+using Metaplay.Core.Message;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Client
+namespace Metaplay.Core.Client
 {
     public class ClientSessionStartResources
     {

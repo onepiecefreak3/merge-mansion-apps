@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Client.Messages;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Core.Serialization;
-using Metaplay.Metaplay.Core.Session;
+using Metaplay.Client.Messages;
+using Metaplay.Core.Message;
+using Metaplay.Core.Player;
+using Metaplay.Core.Serialization;
+using Metaplay.Core.Session;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public class ServerConnection
     {

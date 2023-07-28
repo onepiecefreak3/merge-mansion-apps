@@ -1,14 +1,14 @@
-using Metaplay.Metaplay.Core.Config;
 using System.Collections.Generic;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.GameLogic.Player.Requirements;
-using Metaplay.GameLogic.Story;
-using Metaplay.Metaplay.Core.Activables;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Offers;
-using Metaplay.Metaplay.Core;
+using GameLogic.Player.Items;
+using GameLogic.Player.Requirements;
+using GameLogic.Story;
+using Metaplay.Core;
+using Metaplay.Core.Activables;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
+using Metaplay.Core.Offers;
 
-namespace Metaplay.Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     public class CollectibleBoardEventInfo : IGameConfigData<CollectibleBoardEventId>

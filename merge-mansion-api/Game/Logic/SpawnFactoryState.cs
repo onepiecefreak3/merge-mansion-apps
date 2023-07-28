@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Game.Logic
+namespace Game.Logic
 {
     [MetaSerializable]
     public class SpawnFactoryState

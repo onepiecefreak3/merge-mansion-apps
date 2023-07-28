@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public interface IBlobStorage : IDisposable
     {

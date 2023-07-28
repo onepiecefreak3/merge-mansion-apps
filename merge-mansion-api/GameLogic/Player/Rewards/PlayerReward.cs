@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Rewards;
+using Metaplay.Core.Model;
+using Metaplay.Core.Rewards;
 
-namespace Metaplay.GameLogic.Player.Rewards
+namespace GameLogic.Player.Rewards
 {
     [MetaSerializable]
     public abstract class PlayerReward:MetaPlayerRewardBase

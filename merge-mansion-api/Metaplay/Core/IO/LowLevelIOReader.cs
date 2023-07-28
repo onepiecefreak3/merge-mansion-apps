@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.IO
+namespace Metaplay.Core.IO
 {
     internal struct LowLevelIOReader
     {

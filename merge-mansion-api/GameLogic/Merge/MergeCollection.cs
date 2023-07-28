@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Metaplay.GameLogic.Player.Items.Production;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Items.Production;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Merge
+namespace GameLogic.Merge
 {
     [MetaSerializable]
     public class MergeCollection

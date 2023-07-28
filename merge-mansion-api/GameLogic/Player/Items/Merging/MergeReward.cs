@@ -1,13 +1,9 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Player.Rewards;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Rewards;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Merging
+namespace GameLogic.Player.Items.Merging
 {
     [MetaSerializable]
     public class MergeReward : IGameConfigData<MergeRewardId>

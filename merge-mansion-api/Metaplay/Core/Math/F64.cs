@@ -1,6 +1,6 @@
 ﻿using FixPointCS;
 
-namespace Metaplay.Metaplay.Core.Math
+namespace Metaplay.Core.Math
 {
     public struct F64
     {

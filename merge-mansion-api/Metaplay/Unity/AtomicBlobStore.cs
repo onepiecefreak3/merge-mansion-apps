@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Buffers.Binary;
 using System.IO;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.IO;
+using Metaplay.Core;
+using Metaplay.Core.IO;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public static class AtomicBlobStore
     {

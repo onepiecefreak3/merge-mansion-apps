@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core.Message;
+﻿using Metaplay.Core.Message;
 
-namespace Metaplay.MetaplayIntegration.Deployment
+namespace MetaplayIntegration.Deployment
 {
     public class ServerGatewaySpec
     {

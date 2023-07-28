@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GameLogic.Config;
+using GameLogic.MergeChains;
 using merge_mansion_dumper.Dumper.Base;
 using merge_mansion_dumper.Dumper.Json;
-using Metaplay.GameLogic.Config;
-using Metaplay.GameLogic.MergeChains;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

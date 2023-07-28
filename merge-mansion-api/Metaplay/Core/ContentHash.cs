@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Security.Cryptography;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public struct ContentHash : IEquatable<ContentHash>
     {

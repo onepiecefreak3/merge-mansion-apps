@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Player
+﻿namespace Metaplay.Core.Player
 {
     public class SocialAuthenticateResult
     {

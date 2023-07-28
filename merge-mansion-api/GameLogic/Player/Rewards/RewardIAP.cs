@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.IAP;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.IAP;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Rewards
+namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(7)]
     [MetaSerializable]

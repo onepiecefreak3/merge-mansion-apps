@@ -1,7 +1,7 @@
-using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Client;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.MultiplayerEntity.Messages
+namespace Metaplay.Core.MultiplayerEntity.Messages
 {
     [MetaSerializable]
     public abstract class ChannelContextDataBase

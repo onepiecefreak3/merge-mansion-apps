@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core
+﻿namespace Metaplay.Core
 {
     [EntityKindRegistry(1, 10)]
     public static class EntityKindCore

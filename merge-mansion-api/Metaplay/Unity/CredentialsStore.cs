@@ -1,9 +1,9 @@
 ﻿using System.IO;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Serialization;
-using Metaplay.UnityEngine;
+using Metaplay.Core;
+using Metaplay.Core.Serialization;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public static class CredentialsStore // TypeDefIndex: 12939
     {

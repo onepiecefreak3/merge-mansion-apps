@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using merge_mansion_dumper.Models.Area;
-using Metaplay;
-using Metaplay.Metaplay.Core.Schedule;
+using Metaplay.Core.Schedule;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 

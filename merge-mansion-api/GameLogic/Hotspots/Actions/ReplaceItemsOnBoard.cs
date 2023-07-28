@@ -1,10 +1,10 @@
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Merge;
+using GameLogic.Player.Director.Config;
+using GameLogic.Player.Items;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Hotspots.Actions
+namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(2)]
     [MetaSerializable]

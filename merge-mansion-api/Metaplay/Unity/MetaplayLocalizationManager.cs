@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Client.Messages;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Unity.Localization;
+using Metaplay.Client.Messages;
+using Metaplay.Core;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
+using Metaplay.Core.Player;
+using Metaplay.Unity.Localization;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public sealed class MetaplayLocalizationManager
     {

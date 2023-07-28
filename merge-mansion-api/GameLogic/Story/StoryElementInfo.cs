@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Director.Config;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Story
+namespace GameLogic.Story
 {
     [MetaSerializable]
     public class StoryElementInfo : IGameConfigData<StoryDefinitionId>

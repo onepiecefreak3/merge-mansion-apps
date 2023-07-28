@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Core.Config
+﻿namespace Metaplay.Core.Config
 {
     public interface IGameConfigData<TKey> : IGameConfigData
     {

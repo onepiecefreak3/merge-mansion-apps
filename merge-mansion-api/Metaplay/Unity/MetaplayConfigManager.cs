@@ -1,10 +1,9 @@
-﻿using Metaplay.Metaplay.Core;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Metaplay.Core;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public static class MetaplayConfigManager
     {

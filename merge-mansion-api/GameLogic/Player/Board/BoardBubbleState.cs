@@ -1,13 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Board
+namespace GameLogic.Player.Board
 {
     [MetaSerializable]
     public class BoardBubbleState

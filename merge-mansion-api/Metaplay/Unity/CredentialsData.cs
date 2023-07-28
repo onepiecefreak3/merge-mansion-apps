@@ -1,7 +1,7 @@
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     [MetaSerializable]
     public class CredentialsData

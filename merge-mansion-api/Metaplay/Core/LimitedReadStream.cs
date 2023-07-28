@@ -1,8 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Reflection.Metadata;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class LimitedReadStream : Stream
     {

@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Metaplay.Unity.ConnectionStates
+﻿namespace Metaplay.Unity.ConnectionStates
 {
 	public class NotConnected : ConnectionState
     {

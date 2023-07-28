@@ -1,8 +1,8 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public struct GameConfigSpecializationKey : IEquatable<GameConfigSpecializationKey>
     {

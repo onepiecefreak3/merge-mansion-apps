@@ -1,14 +1,13 @@
-using System;
 using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Client;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.MultiplayerEntity.Messages;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Core.Serialization;
-using Metaplay.Metaplay.Core.Session;
+using Metaplay.Core.Client;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Model;
+using Metaplay.Core.MultiplayerEntity.Messages;
+using Metaplay.Core.Player;
+using Metaplay.Core.Serialization;
+using Metaplay.Core.Session;
 
-namespace Metaplay.Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     public static class SessionProtocol
     {

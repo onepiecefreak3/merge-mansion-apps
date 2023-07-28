@@ -1,7 +1,7 @@
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items.Activation
+namespace GameLogic.Player.Items.Activation
 {
     [MetaSerializable]
     public sealed class ActivationState

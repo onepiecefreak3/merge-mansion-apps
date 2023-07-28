@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Model;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     [MetaMessage(200, MessageDirection.ClientToServer, false)]
     public class PlayerFlushActions : MetaMessage

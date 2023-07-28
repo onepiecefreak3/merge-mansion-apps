@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.Metaplay.Core;
+using GameLogic.Merge;
+using GameLogic.Player.Items;
 
-namespace Metaplay.GameLogic.Player.Board
+namespace GameLogic.Player.Board
 {
     public sealed class MergeBoard : IBoard
     {

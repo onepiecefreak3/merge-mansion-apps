@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     [MetaSerializable]
     public class GameConfigSpecializationPatches

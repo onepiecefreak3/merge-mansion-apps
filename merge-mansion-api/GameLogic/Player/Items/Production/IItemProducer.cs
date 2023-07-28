@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metaplay.GameLogic.Random;
+using GameLogic.Random;
 
-namespace Metaplay.GameLogic.Player.Items.Production
+namespace GameLogic.Player.Items.Production
 {
     public interface IItemProducer
     {

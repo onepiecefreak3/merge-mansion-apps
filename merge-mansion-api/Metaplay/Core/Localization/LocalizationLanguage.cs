@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Metaplay.Metaplay.Core.IO;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.IO;
+using Metaplay.Core.Model;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Localization
+namespace Metaplay.Core.Localization
 {
     public class LocalizationLanguage
     {

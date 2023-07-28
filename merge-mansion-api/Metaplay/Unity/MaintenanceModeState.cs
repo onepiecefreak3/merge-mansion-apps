@@ -1,7 +1,6 @@
-﻿using System;
-using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public readonly struct MaintenanceModeState
     {

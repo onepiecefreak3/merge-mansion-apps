@@ -1,25 +1,24 @@
 using System.Collections.Generic;
-using Metaplay.GameLogic.MergeChains;
-using Metaplay.GameLogic.Player.Director.Config;
-using Metaplay.GameLogic.Player.Items.Activation;
-using Metaplay.GameLogic.Player.Items.Boosting;
-using Metaplay.GameLogic.Player.Items.Bubble;
-using Metaplay.GameLogic.Player.Items.Charges;
-using Metaplay.GameLogic.Player.Items.Chest;
-using Metaplay.GameLogic.Player.Items.Collectable;
-using Metaplay.GameLogic.Player.Items.Consumption;
-using Metaplay.GameLogic.Player.Items.Decay;
-using Metaplay.GameLogic.Player.Items.Merging;
-using Metaplay.GameLogic.Player.Items.Sink;
-using Metaplay.GameLogic.Player.Items.Spawning;
-using Metaplay.GameLogic.Player.Items.TimeContainer;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Math;
-using Metaplay.Metaplay.Core.Model;
-using Newtonsoft.Json;
+using GameLogic.MergeChains;
+using GameLogic.Player.Director.Config;
+using GameLogic.Player.Items.Activation;
+using GameLogic.Player.Items.Boosting;
+using GameLogic.Player.Items.Bubble;
+using GameLogic.Player.Items.Charges;
+using GameLogic.Player.Items.Chest;
+using GameLogic.Player.Items.Collectable;
+using GameLogic.Player.Items.Consumption;
+using GameLogic.Player.Items.Decay;
+using GameLogic.Player.Items.Merging;
+using GameLogic.Player.Items.Sink;
+using GameLogic.Player.Items.Spawning;
+using GameLogic.Player.Items.TimeContainer;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Items
+namespace GameLogic.Player.Items
 {
     [MetaSerializable]
     public class ItemDefinition: IGameConfigData<ItemTypeConstant>

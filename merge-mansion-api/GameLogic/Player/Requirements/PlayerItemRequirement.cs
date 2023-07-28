@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.GameLogic.Player.Items;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Player.Items;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Requirements
+namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(1)]
     [MetaSerializable]

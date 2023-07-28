@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.Offers
+namespace Metaplay.Core.Offers
 {
     [MetaSerializableDerived(1100)]
     [MetaSerializable]

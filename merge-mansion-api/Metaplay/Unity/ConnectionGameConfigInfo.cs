@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Player;
+﻿using System.Collections.Generic;
+using Metaplay.Core;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
 	public class ConnectionGameConfigInfo // TypeDefIndex: 13030
     {

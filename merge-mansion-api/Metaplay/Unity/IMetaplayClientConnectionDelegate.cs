@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Metaplay.Metaplay.Unity
+﻿namespace Metaplay.Unity
 {
     public interface IMetaplayClientConnectionDelegate : IMetaplayConnectionDelegate
     {

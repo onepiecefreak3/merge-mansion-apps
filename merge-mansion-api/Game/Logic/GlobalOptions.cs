@@ -1,8 +1,8 @@
 ﻿using System;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Localization;
+using Metaplay.Core;
+using Metaplay.Core.Localization;
 
-namespace Metaplay.Game.Logic
+namespace Game.Logic
 {
     public class GlobalOptions : IMetaplayCoreOptionsProvider
     {

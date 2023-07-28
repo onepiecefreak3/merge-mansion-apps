@@ -1,8 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core;
-using Metaplay.UnityEngine;
+﻿using Metaplay.Core;
+using Metaplay.Core.Localization;
+using UnityEngine;
 
-namespace Metaplay.Metaplay.Unity.Localization
+namespace Metaplay.Unity.Localization
 {
     public class LanguageIdMapping : IMetaIntegrationSingleton<LanguageIdMapping>
     {

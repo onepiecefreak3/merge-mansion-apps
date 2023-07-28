@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.Game.Logic
+namespace Game.Logic
 {
     [EntityKindRegistry(40, 50)]
     public static class EntityKindGame

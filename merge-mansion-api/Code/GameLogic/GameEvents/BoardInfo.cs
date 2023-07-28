@@ -1,17 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.GameLogic.Config.Costs;
-using Metaplay.GameLogic.ConfigPrefabs;
-using Metaplay.GameLogic.Merge;
-using Metaplay.GameLogic.Player.Items.Bubble;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Config.Costs;
+using GameLogic.ConfigPrefabs;
+using GameLogic.Merge;
+using GameLogic.Player.Items.Bubble;
+using Metaplay.Core;
+using Metaplay.Core.Config;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     public class BoardInfo : IGameConfigData<MergeBoardId>

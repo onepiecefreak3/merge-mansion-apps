@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Metaplay.Metaplay.Core.Config;
-using Metaplay.Metaplay.Core.Localization;
-using Metaplay.Metaplay.Core.Message;
+using Metaplay.Core.Config;
+using Metaplay.Core.Localization;
+using Metaplay.Core.Message;
 
-namespace Metaplay.Metaplay.Core.Client
+namespace Metaplay.Core.Client
 {
     public class ClientSessionNegotiationResources
     {

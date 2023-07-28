@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.Metaplay.Unity.ConnectionStates
+namespace Metaplay.Unity.ConnectionStates
 {
 	public class Connected : ConnectionState // TypeDefIndex: 13123
     {

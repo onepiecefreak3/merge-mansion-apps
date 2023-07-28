@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Linq;
-using Metaplay.GameLogic.MergeChains;
-using Metaplay.GameLogic.Player.Items.Activation;
-using Metaplay.GameLogic.Player.Items.Decay;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Localization;
+using GameLogic.Player.Items.Activation;
+using GameLogic.Player.Items.Decay;
+using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Player.Items
+namespace GameLogic.Player.Items
 {
     public static class ItemsExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Metaplay.Metaplay.Core.Session
+namespace Metaplay.Core.Session
 {
     public class SessionParticipantState
     {

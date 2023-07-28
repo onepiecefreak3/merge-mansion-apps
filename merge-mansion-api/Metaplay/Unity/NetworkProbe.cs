@@ -1,14 +1,12 @@
-﻿using Metaplay.Metaplay.Core.Message;
-using System;
+﻿using System;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Network;
-using System.Net;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity
+namespace Metaplay.Unity
 {
     public class NetworkProbe : IDisposable
     {

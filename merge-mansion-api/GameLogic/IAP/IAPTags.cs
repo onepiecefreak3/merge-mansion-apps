@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Metaplay.GameLogic.IAP
+﻿namespace GameLogic.IAP
 {
     public enum IAPTags // TypeDefIndex: 1876
     {

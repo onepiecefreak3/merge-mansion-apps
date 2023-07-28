@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class GameConfigFactory : IMetaIntegrationSingleton<GameConfigFactory>
     {

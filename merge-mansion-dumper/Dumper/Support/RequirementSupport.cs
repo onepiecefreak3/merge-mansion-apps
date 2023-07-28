@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameLogic.Config.Costs;
+using GameLogic.Player.Requirements;
 using merge_mansion_dumper.Models.Area;
-using Metaplay;
-using Metaplay.GameLogic.Config.Costs;
-using Metaplay.GameLogic.Player.Requirements;
 using Serilog;
 using Serilog.Formatting.Display;
 

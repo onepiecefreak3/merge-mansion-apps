@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Game.Logic;
-using Metaplay.GameLogic.Player.Board;
-using Metaplay.GameLogic.Random;
+﻿using System.Collections.Generic;
+using Game.Logic;
+using GameLogic.Player.Board;
+using GameLogic.Random;
 
-namespace Metaplay.GameLogic.Player
+namespace GameLogic.Player
 {
     public interface IPlayer : IGenerationContext
     {

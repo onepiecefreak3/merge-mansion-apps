@@ -1,7 +1,7 @@
-﻿using Metaplay.Metaplay.Core.Model;
-using Metaplay.Metaplay.Core.Player;
+﻿using Metaplay.Core.Model;
+using Metaplay.Core.Player;
 
-namespace Metaplay.Metaplay.Core.MultiplayerEntity.Messages
+namespace Metaplay.Core.MultiplayerEntity.Messages
 {
 	public struct EntityActiveExperiment
     {

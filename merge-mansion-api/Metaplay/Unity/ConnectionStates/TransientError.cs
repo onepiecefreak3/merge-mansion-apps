@@ -1,8 +1,8 @@
 ﻿using System;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Network;
+using Metaplay.Core.Message;
+using Metaplay.Core.Network;
 
-namespace Metaplay.Metaplay.Unity.ConnectionStates
+namespace Metaplay.Unity.ConnectionStates
 {
     public abstract class TransientError : ConnectionState
     {

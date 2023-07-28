@@ -1,8 +1,8 @@
-﻿using Metaplay.Metaplay.Core.Localization;
-using System;
+﻿using System;
 using System.Text.RegularExpressions;
+using Metaplay.Core.Localization;
 
-namespace Metaplay.Metaplay.Core
+namespace Metaplay.Core
 {
     public class MetaplayCoreOptions
     {

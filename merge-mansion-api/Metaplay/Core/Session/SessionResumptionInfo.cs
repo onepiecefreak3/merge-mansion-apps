@@ -1,6 +1,6 @@
-using Metaplay.Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
-namespace Metaplay.Metaplay.Core.Session
+namespace Metaplay.Core.Session
 {
     [MetaSerializable]
     public class SessionResumptionInfo

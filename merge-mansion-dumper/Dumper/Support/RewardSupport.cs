@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameLogic.Player.Rewards;
 using merge_mansion_dumper.Models.Area;
-using Metaplay.GameLogic.Player.Rewards;
 
 namespace merge_mansion_dumper.Dumper.Support
 {

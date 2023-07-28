@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Metaplay;
-using Metaplay.GameLogic.Area;
-using Metaplay.GameLogic.MergeChains;
+using GameLogic.Area;
+using GameLogic.MergeChains;
 
 namespace merge_mansion_dumper.Dumper
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Serialization;
 using Newtonsoft.Json;
 
-namespace Metaplay.Metaplay.Core.Network
+namespace Metaplay.Core.Network
 {
     public abstract class WireMessageTransport : MessageTransport
     {

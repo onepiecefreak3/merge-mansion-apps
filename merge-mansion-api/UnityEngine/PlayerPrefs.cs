@@ -4,7 +4,7 @@ using System.IO;
 using System.Web;
 using System.Xml;
 
-namespace Metaplay.UnityEngine
+namespace UnityEngine
 {
     /// <summary>
     /// Class reimplementing shared player preferences structure, as specified here: https://docs.unity3d.com/ScriptReference/PlayerPrefs.html

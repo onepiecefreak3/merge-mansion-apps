@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Metaplay.Metaplay.Generated;
+using Metaplay.Generated;
 
-namespace Metaplay.Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary
     {

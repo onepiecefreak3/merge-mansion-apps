@@ -1,9 +1,8 @@
-using Metaplay.GameLogic.Decorations;
-using Metaplay.GameLogic.Player.Rewards;
-using Metaplay.Metaplay.Core;
-using Metaplay.Metaplay.Core.Model;
+using GameLogic.Decorations;
+using Metaplay.Core;
+using Metaplay.Core.Model;
 
-namespace Metaplay.GameLogic.Player.Rewards
+namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(21)]
     [MetaSerializable]

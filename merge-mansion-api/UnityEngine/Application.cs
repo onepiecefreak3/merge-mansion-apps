@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace Metaplay.UnityEngine
+namespace UnityEngine
 {
     // UnityEngine.Application
     public static class Application

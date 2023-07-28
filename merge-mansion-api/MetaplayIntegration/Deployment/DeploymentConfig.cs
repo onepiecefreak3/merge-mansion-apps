@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Metaplay.MetaplayIntegration.Deployment
+namespace MetaplayIntegration.Deployment
 {
     public class DeploymentConfig
     {

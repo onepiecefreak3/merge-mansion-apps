@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
-using Metaplay.Metaplay.Core.Message;
-using Metaplay.Metaplay.Core.Serialization;
+using Metaplay.Core.Message;
+using Metaplay.Core.Serialization;
 
-namespace Metaplay.Metaplay.Core.Session
+namespace Metaplay.Core.Session
 {
     public static class SessionUtil
     {

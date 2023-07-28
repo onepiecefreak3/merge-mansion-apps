@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Metaplay.Code.GameLogic.GameEvents;
-using Metaplay.Game.Logic;
-using Metaplay.GameLogic.Config;
-using Metaplay.GameLogic.Player;
-using Metaplay.Metaplay.Core;
+﻿using Code.GameLogic.GameEvents;
+using Game.Logic;
+using GameLogic.Config;
+using GameLogic.Player;
+using Metaplay.Core;
 
-namespace Metaplay.GameLogic.Random
+namespace GameLogic.Random
 {
     public interface IGenerationContext
     {

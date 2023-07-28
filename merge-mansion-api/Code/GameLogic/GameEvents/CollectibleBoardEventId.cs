@@ -1,6 +1,6 @@
-﻿using Metaplay.Metaplay.Core;
+﻿using Metaplay.Core;
 
-namespace Metaplay.Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     public class CollectibleBoardEventId : StringId<CollectibleBoardEventId>
     {
