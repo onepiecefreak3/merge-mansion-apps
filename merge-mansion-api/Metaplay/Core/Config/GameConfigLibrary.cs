@@ -1,25 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Metaplay.Core.Serialization;
 using Metaplay.Generated;
 
 namespace Metaplay.Core.Config
 {
-    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary
+    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary<TKey, TInfo>, IGameConfigLibrary, IGameConfigEntry
     {
         private Dictionary<TKey, TInfo> _infos; // 0x10
         private Dictionary<TKey, TInfo> _aliases; // 0x18
-
         protected GameConfigLibrary(Dictionary<TKey, TInfo> infos, IGameConfigDataRegistry registry)
         {
             _infos = infos;
-
             RegisterReferenceResolversTo(registry);
         }
 
         public void ResolveMetaRefs(IGameConfigDataResolver resolver)
         {
-            TypeSerializer.ResolveMetaRefs_List(_infos.Values.ToList(), resolver);
+            MetaSerialization.ResolveMetaRefsInTable(_infos.Values.ToList(), resolver);
         }
 
         public void PostLoad()
@@ -41,16 +40,14 @@ namespace Metaplay.Core.Config
         {
             if (_infos.ContainsKey((TKey)key))
                 return _infos[(TKey)key];
-
             return null;
         }
 
         public bool TryGetValue(TKey key, out TInfo info)
         {
             info = default;
-            if (!_infos.ContainsKey(key)) 
+            if (!_infos.ContainsKey(key))
                 return false;
-
             info = _infos[key];
             return true;
         }
@@ -69,9 +66,22 @@ namespace Metaplay.Core.Config
         internal void RegisterReferenceResolversTo(IGameConfigDataRegistry registry)
         {
             registry.RegisterReferenceResolver(typeof(TInfo), GetInfoByKey);
-
             if (typeof(TInfo).BaseType != null)
                 registry.RegisterReferenceResolver(typeof(TInfo).BaseType, GetInfoByKey);
+        }
+
+        public int Count { get; }
+        public Dictionary<TKey, TInfo>.KeyCollection Keys { get; }
+        public Dictionary<TKey, TInfo>.ValueCollection Values { get; }
+        public IReadOnlyDictionary<TKey, TInfo> Infos { get; }
+
+        IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey,TInfo>.Keys { get; }
+
+        IEnumerable<TInfo> Metaplay.Core.Config.IGameConfigLibrary<TKey,TInfo>.Values { get; }
+        public TInfo Item { get; }
+
+        GameConfigLibrary()
+        {
         }
     }
 }

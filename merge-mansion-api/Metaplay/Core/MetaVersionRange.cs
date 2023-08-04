@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace Metaplay.Core
 {
@@ -7,10 +8,13 @@ namespace Metaplay.Core
     {
         [MetaMember(1, 0)]
         public int MinVersion { get; set; } // 0x0
+
         [MetaMember(2, 0)]
         public int MaxVersion { get; set; } // 0x4
 
-        public MetaVersionRange() { }
+        public MetaVersionRange()
+        {
+        }
 
         public MetaVersionRange(int minVersion, int maxVersion)
         {

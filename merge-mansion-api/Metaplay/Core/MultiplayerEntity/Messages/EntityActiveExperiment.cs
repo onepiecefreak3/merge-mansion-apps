@@ -1,9 +1,9 @@
-﻿using Metaplay.Core.Model;
+using Metaplay.Core.Model;
 using Metaplay.Core.Player;
 
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
-	public struct EntityActiveExperiment
+    public struct EntityActiveExperiment
     {
         [MetaMember(1, 0)]
         public PlayerExperimentId ExperimentId; // 0x0
@@ -13,7 +13,6 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
         public string ExperimentAnalyticsId; // 0x10
         [MetaMember(4, 0)]
         public string VariantAnalyticsId; // 0x18
-
         public EntityActiveExperiment(PlayerExperimentId experimentId, ExperimentVariantId variantId, string experimentAnalyticsId, string variantAnalyticsId)
         {
             ExperimentId = experimentId;

@@ -161,39 +161,31 @@ namespace Metaplay.Core.IO
 
             throw new InvalidOperationException($"Invalid VarUInt128 found in IOBuffer (at offset {Offset})");
         }
-
-        // RVA: 0x235D6EC Offset: 0x235D6EC VA: 0x235D6EC
+        
         public int ReadVarInt()
         {
             var v = ReadVarUInt();
             return (int)(-(v & 1) ^ v >> 1);
         }
-
-        // RVA: 0x23664A0 Offset: 0x23664A0 VA: 0x23664A0
+        
         public long ReadVarLong()
         {
-            // (ulong)(value >> 0x3F ^ value << 1)
-
             var value = (long)ReadVarULong();
             return (value & 1) << 0x3F ^ value >> 1;
         }
-
-        // RVA: 0x23666CC Offset: 0x23666CC VA: 0x23666CC
+        
         public F32 ReadF32()
         {
             return new F32(ReadInt32());
         }
-
-        // RVA: 0x2366788 Offset: 0x2366788 VA: 0x2366788
+        
         public F64 ReadF64()
         {
             return new F64(ReadInt64());
         }
-
-        // RVA: 0x23664BC Offset: 0x23664BC VA: 0x23664BC
+        
         public int ReadInt32()
         {
-            // TODO: Implement _reader.ReadAll
             var buffer = _bReader.ReadBytes(4);
             return BinaryPrimitives.ReadInt32BigEndian(buffer);
         }
@@ -203,38 +195,34 @@ namespace Metaplay.Core.IO
         {
             throw new NotSupportedException();
         }
-
-        // RVA: 0x236658C Offset: 0x236658C VA: 0x236658C
+        
         public long ReadInt64()
         {
-            // TODO: Implement _reader.ReadAll
             var buffer = _bReader.ReadBytes(8);
             return BinaryPrimitives.ReadInt64BigEndian(buffer);
         }
-
-        // RVA: 0x2366698 Offset: 0x2366698 VA: 0x2366698
+        
         public ulong ReadUInt64()
         {
             var buffer = _bReader.ReadBytes(8);
             return BinaryPrimitives.ReadUInt64BigEndian(buffer);
         }
-
-        // RVA: 0x236669C Offset: 0x236669C VA: 0x236669C
+        
         public UInt128 ReadUInt128()
         {
             return new UInt128(ReadUInt64(), ReadUInt64());
         }
-
-        // RVA: 0x2366820 Offset: 0x2366820 VA: 0x2366820
+        
         public float ReadFloat()
         {
-            throw new NotSupportedException();
+            var buffer = _bReader.ReadBytes(4);
+            return BitConverter.ToSingle(buffer);
         }
-
-        // RVA: 0x2366914 Offset: 0x2366914 VA: 0x2366914
+        
         public double ReadDouble()
         {
-            throw new NotSupportedException();
+            var buffer = _bReader.ReadBytes(8);
+            return BitConverter.ToDouble(buffer);
         }
 
         // RVA: 0x2366A08 Offset: 0x2366A08 VA: 0x2366A08

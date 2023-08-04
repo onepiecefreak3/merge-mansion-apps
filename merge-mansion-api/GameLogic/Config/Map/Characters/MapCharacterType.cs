@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Config.Map.Characters
+namespace GameLogic.Config.Map.Characters
 {
     public enum MapCharacterType
     {

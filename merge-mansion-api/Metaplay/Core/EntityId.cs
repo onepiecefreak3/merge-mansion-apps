@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
-    public struct EntityId : IComparable<EntityId>, IEquatable<EntityId>, IComparable
+    public struct EntityId
     {
         // Fields
         public const int KindShift = 0x3a;
@@ -11,12 +11,10 @@ namespace Metaplay.Core
         public const string ValidIdCharacters = "023456789ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
         public const int NumValidIdCharacters = 59;
         public const int IdLength = 10;
-
         public static EntityId None => Create(EntityKind.None, 0);
 
         [MetaMember(1, 0)]
         public ulong Raw { get; set; } // 0x0
-
         public EntityKind Kind => new EntityKind((int)(Raw >> KindShift));
         public ulong Value => Raw & ValueMask;
         public bool IsValid => EntityKindRegistry.IsValid(Kind) && EntityKind.None != Kind;
@@ -45,7 +43,6 @@ namespace Metaplay.Core
         {
             if (!(obj is EntityId idObj))
                 return false;
-
             return Raw == idObj.Raw;
         }
 
@@ -68,10 +65,8 @@ namespace Metaplay.Core
         {
             if (Kind != EntityKind.None)
                 return $"{Kind}:{ValueToString(Value)}";
-
             if (Value != 0)
                 return "None";
-
             return string.Concat("InvalidNone:", ValueToString(Value));
         }
 
@@ -79,12 +74,10 @@ namespace Metaplay.Core
         {
             if (value != 0 && kind == EntityKind.None)
                 throw new ArgumentException("Value must be zero for EntityKind.None");
-
             if (kind.Value < EntityKind.MaxValue)
             {
                 if (value >> KindShift == 0)
                     return new EntityId(value & ValueMask | (ulong)kind.Value << KindShift);
-
                 throw new ArgumentException($"Invalid EntityId value {kind.Value}:{value}");
             }
 
@@ -100,7 +93,6 @@ namespace Metaplay.Core
         {
             var part1 = (ulong)Guid.NewGuid().GetHashCode();
             var part2 = (ulong)Guid.NewGuid().GetHashCode() & ValueMask | (ulong)kind.Value << KindShift;
-
             return new EntityId((part1 << 0x20) + part2);
         }
 
@@ -108,24 +100,18 @@ namespace Metaplay.Core
         {
             if (str == null)
                 throw new ArgumentNullException(nameof(str));
-
             if (str == "None")
                 return None;
-
             var parts = str.Split(':');
             if (parts.Length != 2)
                 throw new FormatException($"Invalid EntityId format '{str}'");
-
             if (parts[0] == "None")
                 throw new FormatException($"EntityId None must not have value '{str}'");
-
             if (!EntityKindRegistry.TryFromName(parts[0], out var name))
                 throw new FormatException($"Invalid EntityKind in {str}");
-
             var parsedValue = ParseValue(parts[1]);
             if (parsedValue >> KindShift != 0)
                 throw new FormatException($"Invalid value in {str}");
-
             return Create(name, parsedValue);
         }
 
@@ -134,7 +120,6 @@ namespace Metaplay.Core
             var parsed = ParseFromString(str);
             if (parsed.Kind != expectedKind)
                 throw new FormatException($"Illegal EntityKind in {str}");
-
             return parsed;
         }
 
@@ -147,14 +132,13 @@ namespace Metaplay.Core
                 val /= NumValidIdCharacters;
             }
 
-            return new string(res);
+            return new string (res);
         }
 
         private static ulong ParseValue(string str)
         {
             if (str.Length != IdLength)
                 throw new FormatException($"EntityId values are required to be exactly 10 characters, got {str.Length} in '{str}'");
-
             var res = 0ul;
             for (var i = 0; i < IdLength; i++)
             {
@@ -162,13 +146,11 @@ namespace Metaplay.Core
                 var ci = ValidIdCharacters.IndexOf(c);
                 if (ci == -1)
                     throw new FormatException($"Invalid EntityId character '{str[i]}'");
-
                 res = res * NumValidIdCharacters + (ulong)ci;
             }
 
             if (res >> KindShift != 0)
                 throw new FormatException($"Invalid EntityId value '{str}'");
-
             return res;
         }
 

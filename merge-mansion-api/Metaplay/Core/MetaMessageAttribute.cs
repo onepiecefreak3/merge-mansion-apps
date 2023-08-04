@@ -1,14 +1,13 @@
-﻿using System;
+using System;
 using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class MetaMessageAttribute : Attribute
+    public class MetaMessageAttribute : Attribute, ISerializableTypeCodeProvider, ISerializableFlagsProvider
     {
         public readonly int MessageTypeCode; // 0x10
         public readonly MessageDirection Direction; // 0x14
-
         public int TypeCode => MessageTypeCode;
         public MetaSerializableFlags ExtraFlags { get; set; } // 0x18
 
@@ -16,7 +15,6 @@ namespace Metaplay.Core
         {
             MessageTypeCode = typeCode;
             Direction = direction;
-
             ExtraFlags = MetaSerializableFlags.ImplicitMembers;
             if (hasExplicitMembers)
                 ExtraFlags = MetaSerializableFlags.None;

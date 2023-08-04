@@ -1,5 +1,6 @@
 using GameLogic.Merge;
 using Metaplay.Core.Model;
+using Merge;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -9,5 +10,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private MergeBoardId BoardId { get; set; }
+
+        private DelayFinalizationToBoard()
+        {
+        }
+
+        public DelayFinalizationToBoard(MergeBoardId boardId)
+        {
+        }
     }
 }

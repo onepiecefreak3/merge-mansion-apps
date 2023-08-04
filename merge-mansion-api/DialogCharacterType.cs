@@ -1,8 +1,7 @@
-﻿public enum DialogCharacterType
+public enum DialogCharacterType
 {
     NoChange = 0,
     None = 1,
-
     Grandma = 2,
     Maddie = 3,
     Roddy = 4,
@@ -20,7 +19,6 @@
     Heikki = 16,
     Victoria = 17,
     Mason = 18,
-
     NewGrandma = 19,
     NewMaddie = 20,
     NewRoddy = 21,

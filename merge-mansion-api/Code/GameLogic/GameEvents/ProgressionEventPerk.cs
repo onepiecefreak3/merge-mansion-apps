@@ -1,6 +1,9 @@
-﻿namespace Code.GameLogic.GameEvents
+namespace Code.GameLogic.GameEvents
 {
     public abstract class ProgressionEventPerk
     {
+        protected ProgressionEventPerk()
+        {
+        }
     }
 }

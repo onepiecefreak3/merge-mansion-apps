@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
@@ -10,7 +11,16 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1, 0)]
         public int Factor { get; set; }
+
         [MetaMember(2, 0)]
         public Currencies Currency { get; set; }
+
+        private LevelBasedCollectValue()
+        {
+        }
+
+        public LevelBasedCollectValue(Currencies currency, int multiplyFactor)
+        {
+        }
     }
 }

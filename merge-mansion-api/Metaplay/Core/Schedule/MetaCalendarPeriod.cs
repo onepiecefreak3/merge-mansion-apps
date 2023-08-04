@@ -1,4 +1,6 @@
-﻿using Metaplay.Core.Model;
+using Metaplay.Core.Model;
+using System.Text.RegularExpressions;
+using System;
 
 namespace Metaplay.Core.Schedule
 {
@@ -16,5 +18,7 @@ namespace Metaplay.Core.Schedule
         public int Minutes; // 0x10
         [MetaMember(6, 0)]
         public int Seconds; // 0x14
+        private static Regex s_timePeriodRegex;
+        public bool IsNone { get; }
     }
 }

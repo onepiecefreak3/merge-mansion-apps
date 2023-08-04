@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Metaplay.Unity.Localization
 {
-    public class LanguageIdMapping : IMetaIntegrationSingleton<LanguageIdMapping>
+    public class LanguageIdMapping : IMetaIntegrationSingleton<LanguageIdMapping>, IMetaIntegration<LanguageIdMapping>, IMetaIntegrationSingleton, IRequireSingleConcreteType
     {
         private readonly LanguageToIdMapping[] _languageMappings; // 0x10
 

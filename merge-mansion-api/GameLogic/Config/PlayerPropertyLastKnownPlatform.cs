@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +11,10 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1029)]
     public class PlayerPropertyLastKnownPlatform : PlayerPropertyMatcher<ClientPlatform>
     {
+        public override string DisplayName { get; }
+
+        public PlayerPropertyLastKnownPlatform()
+        {
+        }
     }
 }

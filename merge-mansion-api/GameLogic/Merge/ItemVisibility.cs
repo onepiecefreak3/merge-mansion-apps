@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Merge
+namespace GameLogic.Merge
 {
     public enum ItemVisibility
     {

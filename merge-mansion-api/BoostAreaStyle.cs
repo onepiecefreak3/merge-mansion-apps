@@ -1,4 +1,4 @@
-﻿public enum BoostAreaStyle // TypeDefIndex: 61
+public enum BoostAreaStyle // TypeDefIndex: 61
 {
     NoBoost = 0,
     NearHorizontalAndVertical = 1,

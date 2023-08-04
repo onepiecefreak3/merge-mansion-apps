@@ -1,16 +1,15 @@
-﻿using System;
+using System;
 
 namespace Metaplay.Core.Model
 {
     [AttributeUsage(AttributeTargets.Class)]
-    public class MetaSerializableDerivedAttribute : Attribute
+    public class MetaSerializableDerivedAttribute : Attribute, ISerializableTypeCodeProvider
     {
-        // 0x10
-        public readonly int DeriveId;
-
         public MetaSerializableDerivedAttribute(int deriveDeriveId)
         {
-            DeriveId = deriveDeriveId;
+            TypeCode = deriveDeriveId;
         }
+
+        public int TypeCode { get; set; }
     }
 }

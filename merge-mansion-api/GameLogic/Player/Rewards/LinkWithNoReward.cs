@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Rewards
 {
@@ -8,5 +9,13 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, 0)]
         public string Link { get; set; }
+
+        public LinkWithNoReward()
+        {
+        }
+
+        public LinkWithNoReward(string link)
+        {
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Sink
 {
@@ -10,9 +11,20 @@ namespace GameLogic.Player.Items.Sink
     {
         [MetaMember(1, 0)]
         public Dictionary<ItemTypeConstant, int> Scores { get; set; }
+
         [MetaMember(2, 0)]
         public int ScoreTarget { get; set; }
+
         [MetaMember(3, 0)]
         public MetaRef<ItemDefinition> Reward { get; set; }
+        public ItemDefinition SinkProduct { get; }
+
+        private SimpleSinkStateFactory()
+        {
+        }
+
+        public SimpleSinkStateFactory(Dictionary<int, int> scores, int scoreTarget, int reward)
+        {
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Charges
+namespace GameLogic.Player.Items.Charges
 {
     public enum ChargeMergeBehavior
     {

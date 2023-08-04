@@ -1,4 +1,4 @@
-﻿using GameLogic.Random;
+using GameLogic.Random;
 using Metaplay.Core.Math;
 
 namespace GameLogic.Player.Items.Production

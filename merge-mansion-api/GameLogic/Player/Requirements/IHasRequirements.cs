@@ -1,7 +1,10 @@
-﻿namespace GameLogic.Player.Requirements
+using System.Collections.Generic;
+
+namespace GameLogic.Player.Requirements
 {
     public interface IHasRequirements
     {
-        // STUB
+        List<PlayerRequirement> Requirements { get; }
+    // STUB
     }
 }

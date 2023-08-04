@@ -9,5 +9,13 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1)]
         public MetaDuration Duration { get; set; }
+
+        private InfiniteEnergyCollectAction()
+        {
+        }
+
+        public InfiniteEnergyCollectAction(MetaDuration duration)
+        {
+        }
     }
 }

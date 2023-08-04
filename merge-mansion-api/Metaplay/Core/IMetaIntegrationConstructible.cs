@@ -1,8 +1,10 @@
-﻿namespace Metaplay.Core
+namespace Metaplay.Core
 {
-    public interface IMetaIntegrationConstructible<T> : IMetaIntegration<T>, IMetaIntegrationConstructible // TypeDefIndex: 211
-    { }
+    public interface IMetaIntegrationConstructible<T> : IMetaIntegration<T>, IMetaIntegrationConstructible, IRequireSingleConcreteType
+    {
+    }
 
-    public interface IMetaIntegrationConstructible // TypeDefIndex: 210
-    { }
+    public interface IMetaIntegrationConstructible : IRequireSingleConcreteType
+    {
+    }
 }

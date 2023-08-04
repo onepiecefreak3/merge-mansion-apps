@@ -78,6 +78,12 @@ namespace Metaplay.Core.Config
             return _entryByName.ContainsKey(name);
         }
 
+        public ArraySegment<byte> GetEntryBytes(string name)
+        {
+            var entry = GetEntryByName(name);
+            return entry.Uncompress();
+        }
+
         public static ConfigArchive FromBytes(byte[] bytes)
         {
             if (bytes == null)
@@ -165,6 +171,23 @@ namespace Metaplay.Core.Config
 
         public static class FolderEncoding
         {
+            public static ConfigArchive FromDirectory(string dirName)
+            {
+                var dirIndex = ReadDirectoryIndex(dirName);
+
+                var archiveEntries = new List<ConfigArchiveEntry>();
+                foreach (var entry in dirIndex.FileEntries)
+                {
+                    var name = Path.GetFileName(entry.Path);
+                    var bytes = FileUtil.ReadAllBytes(entry.Path);
+
+                    var archiveEntry = new ConfigArchiveEntry(name, entry.Version, CompressionAlgorithm.None, bytes);
+                    archiveEntries.Add(archiveEntry);
+                }
+
+                return new ConfigArchive(dirIndex.Version, dirIndex.Timestamp, archiveEntries);
+            }
+
             public static DirectoryIndex ReadDirectoryIndex(string directoryPath)
             {
                 var indexPath = Path.Combine(directoryPath, "Index.txt");
@@ -174,28 +197,33 @@ namespace Metaplay.Core.Config
             private static DirectoryIndex ReadDirectoryIndexFile(string indexFilePath)
             {
                 var dirPath = Path.GetDirectoryName(indexFilePath);
-                var dirName = Path.GetFileName(dirPath);
-                var lines = FileUtil.ReadAllLines(indexFilePath);
+                var archiveName = Path.GetFileName(dirPath);
+                var indexFile = FileUtil.ReadAllLines(indexFilePath);
 
-                if (lines.Length == 0)
-                    throw new ParseError($"Archive index file is empty {dirName}/Index.txt");
+                return ParseDirectoryIndexFile(dirPath, archiveName, indexFile);
+            }
 
-                var split = lines[0].Split(' ');
+            private static DirectoryIndex ParseDirectoryIndexFile(string dirPath, string archiveName, string[] indexFile)
+            {
+                if (indexFile.Length == 0)
+                    throw new ParseError($"Archive index file is empty {archiveName}/Index.txt");
+
+                var split = indexFile[0].Split(' ');
                 if (split.Length != 3 || split[0] != "MetaplayArchive")
-                    throw new ParseError($"Invalid archive {dirName}/Index.txt header prefix");
+                    throw new ParseError($"Invalid archive {archiveName}/Index.txt header prefix");
 
                 var hash = ContentHash.ParseString(split[1]);
                 var timeMs = MetaTime.FromMillisecondsSinceEpoch(long.Parse(split[2], CultureInfo.InvariantCulture));
 
                 var res = new List<DirectoryIndex.Entry>();
-                foreach (var line in lines.Skip(1))
+                foreach (var line in indexFile.Skip(1))
                 {
                     if (string.IsNullOrEmpty(line.Trim()))
                         continue;
 
                     var lineSplits = line.Split(' ');
                     if (lineSplits.Length != 2)
-                        throw new ParseError($"Invalid row in archive {dirName}/Index.txt: '{line}'");
+                        throw new ParseError($"Invalid row in archive {archiveName}/Index.txt: '{line}'");
 
                     var lineHash = ContentHash.ParseString(lineSplits[1]);
                     res.Add(new DirectoryIndex.Entry(Path.Combine(dirPath, lineSplits[0]), lineHash));

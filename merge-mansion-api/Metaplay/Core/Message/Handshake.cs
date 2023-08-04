@@ -1,4 +1,6 @@
 using Metaplay.Core.Model;
+using System;
+using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Message
 {
@@ -11,14 +13,19 @@ namespace Metaplay.Core.Message
             // Properties
             [MetaMember(1, 0)]
             public string ServerVersion { get; set; } // 0x10
+
             [MetaMember(2, 0)]
             public string BuildNumber { get; set; } // 0x18
+
             [MetaMember(3, 0)]
             public uint FullProtocolHash { get; set; } // 0x20
+
             [MetaMember(4, 0)]
             public string CommitId { get; set; } // 0x28
 
-            private ServerHello() { }
+            private ServerHello()
+            {
+            }
 
             public ServerHello(string serverVersion, string buildNumber, uint fullProtocolHash, string commitId)
             {
@@ -30,38 +37,47 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(5, MessageDirection.ClientToServer, true)]
-
         [MetaSerializable]
         public class ClientHello : MetaMessage
         {
             [MetaMember(1, 0)]
             public string ClientVersion { get; set; }
+
             [MetaMember(2, 0)]
             public string BuildNumber { get; set; }
+
             [MetaMember(3, 0)]
             public MetaVersionRange SupportedLogicVersions { get; set; }
+
             [MetaMember(4, 0)]
             public uint FullProtocolHash { get; set; }
+
             [MetaMember(5, 0)]
             public string CommitId { get; set; }
+
             [MetaMember(6, 0)]
             public MetaTime Timestamp { get; set; }
+
             [MetaMember(7, 0)]
             public uint AppLaunchId { get; set; }
+
             [MetaMember(8, 0)]
             public uint ClientSessionNonce { get; set; }
+
             [MetaMember(9, 0)]
             public uint ClientSessionConnectionNdx { get; set; }
+
             [MetaMember(10, 0)]
             public ClientPlatform Platform { get; set; }
+
             [MetaMember(11, 0)]
             public int LoginProtocolVersion { get; set; }
 
-            private ClientHello() { }
+            private ClientHello()
+            {
+            }
 
-            public ClientHello(string clientVersion, string buildNumber, MetaVersionRange supportedLogicVersions,
-                uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce,
-                uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
+            public ClientHello(string clientVersion, string buildNumber, MetaVersionRange supportedLogicVersions, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
             {
                 ClientVersion = clientVersion;
                 BuildNumber = buildNumber;
@@ -82,10 +98,13 @@ namespace Metaplay.Core.Message
         {
             [MetaMember(1, 0)]
             public MetaTime ConnectionStartedAt { get; set; }
+
             [MetaMember(2, 0)]
             public MetaTime ConnectionAbandonedAt { get; set; }
+
             [MetaMember(3, 0)]
             public MetaTime AbandonedCompletedAt { get; set; }
+
             [MetaMember(4, 0)]
             public AbandonSource Source { get; set; }
 
@@ -102,26 +121,34 @@ namespace Metaplay.Core.Message
                 PrimaryConnection = 0,
                 NetworkProbe = 1
             }
+
+            private ClientAbandon()
+            {
+            }
         }
 
         [MetaMessage(7, MessageDirection.ClientToServer, true)]
-        public sealed class DeviceLoginRequest : LoginRequest
+        public sealed class DeviceLoginRequest : Handshake.LoginRequest
         {
             // Properties
             [MetaMember(1, 0)]
             public string DeviceId { get; set; } // 0x30
+
             [MetaMember(2, 0)]
             public string AuthToken { get; set; } // 0x38
             public override bool IsCreateAccountRequest => string.IsNullOrEmpty(DeviceId) && string.IsNullOrEmpty(AuthToken);
 
-            private DeviceLoginRequest() { }
+            private DeviceLoginRequest()
+            {
+            }
 
-            public DeviceLoginRequest(string deviceId, string authToken, EntityId playerId, bool isBot,
-                LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
+            public DeviceLoginRequest(string deviceId, string authToken, EntityId playerId, bool isBot, LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
             {
                 DeviceId = deviceId;
                 AuthToken = authToken;
             }
+
+            public override string Description { get; }
         }
 
         [MetaMessage(8, MessageDirection.ServerToClient, true)]
@@ -129,21 +156,22 @@ namespace Metaplay.Core.Message
         {
             [MetaMember(1, 0)]
             public EntityId PlayerId { get; set; } // 0x10
+
             [MetaMember(2, 0)]
             public string DeviceId { get; set; } // 0x18
+
             [MetaMember(3, 0)]
             public string AuthToken { get; set; } // 0x20
-            [MetaMember(4, 0)]
-            public ConnectionOptions Options { get; set; } // 0x28
 
-            private LoginResponse() { }
+            private LoginResponse()
+            {
+            }
 
-            public LoginResponse(EntityId playerId, string deviceId, string authToken, ConnectionOptions options)
+            public LoginResponse(EntityId playerId, string deviceId, string authToken)
             {
                 PlayerId = playerId;
                 DeviceId = deviceId;
                 AuthToken = authToken;
-                Options = options;
             }
         }
 
@@ -153,7 +181,9 @@ namespace Metaplay.Core.Message
             [MetaMember(1, 0)]
             public MetaVersionRange ServerAcceptedLogicVersions { get; set; } // 0x10
 
-            private LogicVersionMismatch() { }
+            private LogicVersionMismatch()
+            {
+            }
 
             public LogicVersionMismatch(MetaVersionRange serverAcceptedLogicVersions)
             {
@@ -167,7 +197,9 @@ namespace Metaplay.Core.Message
             [MetaMember(1, 0)]
             public ServerEndpoint RedirectToEndpoint { get; set; } // 0x10
 
-            private RedirectToServer() { }
+            private RedirectToServer()
+            {
+            }
 
             public RedirectToServer(ServerEndpoint redirectToEndpoint)
             {
@@ -176,20 +208,22 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(31, MessageDirection.ClientToServer, true)]
-        public sealed class SocialAuthenticationLoginRequest : LoginRequest
+        public sealed class SocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, 0)]
             public SocialAuthenticationClaimBase Claim { get; set; } // 0x38
             public override bool IsCreateAccountRequest => false;
 
-            private SocialAuthenticationLoginRequest() { }
+            private SocialAuthenticationLoginRequest()
+            {
+            }
 
-            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, EntityId playerId,
-                bool isBot, LoginDebugDiagnostics debugDiagnostics,
-                ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
+            public SocialAuthenticationLoginRequest(SocialAuthenticationClaimBase claim, EntityId playerId, bool isBot, LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload) : base(playerId, isBot, debugDiagnostics, gamePayload)
             {
                 Claim = claim;
             }
+
+            public override string Description { get; }
         }
 
         [MetaMessage(32, MessageDirection.ClientToServer, true)]
@@ -216,6 +250,14 @@ namespace Metaplay.Core.Message
             // Properties
             [MetaMember(1, 0)]
             public ServerOptions ServerOptions { get; set; }
+
+            private ClientHelloAccepted()
+            {
+            }
+
+            public ClientHelloAccepted(Handshake.ServerOptions serverOptions)
+            {
+            }
         }
 
         [MetaMessage(91, MessageDirection.ServerToClient, true)]
@@ -224,6 +266,14 @@ namespace Metaplay.Core.Message
             // Properties
             [MetaMember(1, 0)]
             public int ServerAcceptedProtocolVersion { get; set; }
+
+            private LoginProtocolVersionMismatch()
+            {
+            }
+
+            public LoginProtocolVersionMismatch(int serverAcceptedProtocolVersion)
+            {
+            }
         }
 
         public abstract class LoginRequest : MetaMessage
@@ -231,25 +281,31 @@ namespace Metaplay.Core.Message
             // Properties
             [MetaMember(3, 0)]
             public EntityId PlayerIdHint { get; set; } // 0x10
+
             [MetaMember(4, 0)]
             public bool IsBot { get; set; } // 0x18
+
             [MetaMember(5, 0)]
             public LoginDebugDiagnostics DebugDiagnostics { get; set; } // 0x20
+
             [MetaMember(6, 0)]
             public ILoginRequestGamePayload GamePayload { get; set; } // 0x28
-
             public abstract bool IsCreateAccountRequest { get; }
 
-            protected LoginRequest() { }
+            protected LoginRequest()
+            {
+            }
 
-            public LoginRequest(EntityId playerIdHint, bool isBot, LoginDebugDiagnostics debugDiagnostics,
-                ILoginRequestGamePayload gamePayload)
+            public LoginRequest(EntityId playerIdHint, bool isBot, LoginDebugDiagnostics debugDiagnostics, ILoginRequestGamePayload gamePayload)
             {
                 PlayerIdHint = playerIdHint;
                 IsBot = isBot;
                 DebugDiagnostics = debugDiagnostics;
                 GamePayload = gamePayload;
             }
+
+            [IgnoreDataMember]
+            public abstract string Description { get; }
         }
 
         public struct ConnectionOptions
@@ -258,12 +314,9 @@ namespace Metaplay.Core.Message
             public int PushUploadPercentageSessionStartFailedIncidentReport; // 0x0
             [MetaMember(2, 0)]
             public bool EnableWireCompression; // 0x4
-
-            public ConnectionOptions(int pushUploadPercentageSessionStartFailedIncidentReport,
-                bool enableWireCompression)
+            public ConnectionOptions(int pushUploadPercentageSessionStartFailedIncidentReport, bool enableWireCompression)
             {
-                PushUploadPercentageSessionStartFailedIncidentReport =
-                    pushUploadPercentageSessionStartFailedIncidentReport;
+                PushUploadPercentageSessionStartFailedIncidentReport = pushUploadPercentageSessionStartFailedIncidentReport;
                 EnableWireCompression = enableWireCompression;
             }
         }
@@ -285,6 +338,7 @@ namespace Metaplay.Core.Message
         }
 
         public interface ILoginRequestGamePayload
-        { }
+        {
+        }
     }
 }

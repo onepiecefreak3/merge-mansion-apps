@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Config.Costs
 {
@@ -8,5 +9,15 @@ namespace GameLogic.Config.Costs
     {
         [MetaMember(2, 0)]
         public Currencies Type { get; set; }
+
+        public override Currencies Currency => Type;
+
+        private GameCurrencyCost()
+        {
+        }
+
+        public GameCurrencyCost(Currencies currencies, long currencyAmount)
+        {
+        }
     }
 }

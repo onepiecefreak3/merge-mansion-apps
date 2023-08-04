@@ -10,12 +10,14 @@ namespace Metaplay.Core.Config
     public class GameConfigSpecializationPatches
     {
         [MetaMember(1, 0)]
-        public ContentHash Version { get; set; }  // 0x10
+        public ContentHash Version { get; set; } // 0x10
+
         [MetaMember(2, 0)]
         public Dictionary<PlayerExperimentId, Dictionary<ExperimentVariantId, byte[]>> Patches { get; set; } // 0x20
 
         private GameConfigSpecializationPatches()
-        { }
+        {
+        }
 
         private GameConfigSpecializationPatches(ContentHash version, Dictionary<PlayerExperimentId, Dictionary<ExperimentVariantId, byte[]>> patches)
         {
@@ -43,18 +45,19 @@ namespace Metaplay.Core.Config
                 varIds[index++] = expVarId;
             }
 
-            return new GameConfigSpecializationKey { VariantIds = varIds };
+            return new GameConfigSpecializationKey
+            {
+                VariantIds = varIds
+            };
         }
 
         public List<GameConfigPatchEnvelope> GetPatchesForSpecialization(GameConfigSpecializationKey specializationKey)
         {
             var envelopes = new List<GameConfigPatchEnvelope>();
-
             var i = 0;
             foreach (var patch in Patches.Values)
             {
                 var variantId = specializationKey.VariantIds[i++];
-
                 if (variantId != null)
                     envelopes.Add(GameConfigPatchEnvelope.Deserialize(patch[variantId]));
             }
@@ -64,13 +67,11 @@ namespace Metaplay.Core.Config
 
         // RVA: 0xF19A60 Offset: 0xF19A60 VA: 0xF19A60
         //public byte[] ToBytes() { }
-
         public static GameConfigSpecializationPatches FromBytes(byte[] bytes)
         {
             return MetaSerialization.DeserializeTagged<GameConfigSpecializationPatches>(bytes, MetaSerializationFlags.IncludeAll, null, null, null);
         }
-
-        // RVA: 0xF19B20 Offset: 0xF19B20 VA: 0xF19B20
-        //public static GameConfigSpecializationPatches FromContents(ContentHash version, Dictionary<PlayerExperimentId, Dictionary<ExperimentVariantId, byte[]>> patches) { }
+    // RVA: 0xF19B20 Offset: 0xF19B20 VA: 0xF19B20
+    //public static GameConfigSpecializationPatches FromContents(ContentHash version, Dictionary<PlayerExperimentId, Dictionary<ExperimentVariantId, byte[]>> patches) { }
     }
 }

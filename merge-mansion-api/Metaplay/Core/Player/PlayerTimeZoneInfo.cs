@@ -9,7 +9,9 @@ namespace Metaplay.Core.Player
         [MetaMember(1, 0)]
         public MetaDuration CurrentUtcOffset { get; set; } // 0x10
 
-        public PlayerTimeZoneInfo() { }
+        public PlayerTimeZoneInfo()
+        {
+        }
 
         public PlayerTimeZoneInfo(MetaDuration currentUtcOffset)
         {
@@ -25,7 +27,6 @@ namespace Metaplay.Core.Player
         {
             var offset = TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow);
             var metaOffset = MetaDuration.FromMilliseconds((long)offset.TotalMilliseconds);
-
             return new PlayerTimeZoneInfo(metaOffset);
         }
     }

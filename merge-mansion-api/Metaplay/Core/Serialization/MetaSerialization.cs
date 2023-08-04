@@ -27,11 +27,16 @@ namespace Metaplay.Core.Serialization
 
         public static List<T> DeserializeTableTagged<T>(byte[] serialized, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
         {
+            using var reader = new IOReader(serialized);
+
+            return DeserializeTableTagged<T>(reader, flags, resolver, logicVersion, debugStream);
+        }
+
+        public static List<T> DeserializeTableTagged<T>(IOReader reader, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
+        {
             CheckInitialized();
 
             var context = CreateContext(flags, resolver, logicVersion, debugStream);
-            using var reader = new IOReader(serialized);
-
             return (List<T>)TypeSerializer.DeserializeTable(ref context, reader, typeof(T));
         }
 
@@ -59,6 +64,27 @@ namespace Metaplay.Core.Serialization
             TypeSerializer.Serialize(ref context, writer, value);
 
             return writer.ConvertToStream().ToArray();
+        }
+
+        public static void ResolveMetaRefs(Type type, ref object obj, IGameConfigDataResolver resolver)
+        {
+            CheckInitialized();
+
+            TypeSerializer.ResolveMetaRefs_Type(type, obj, resolver);
+        }
+
+        public static void ResolveMetaRefs<T>(ref T value, IGameConfigDataResolver resolver)
+        {
+            CheckInitialized();
+
+            TypeSerializer.ResolveMetaRefs_Type(typeof(T), value, resolver);
+        }
+
+        public static void ResolveMetaRefsInTable<T>(List<T> items, IGameConfigDataResolver resolver)
+        {
+            CheckInitialized();
+
+            TypeSerializer.ResolveMetaRefs_List(items, resolver);
         }
     }
 }

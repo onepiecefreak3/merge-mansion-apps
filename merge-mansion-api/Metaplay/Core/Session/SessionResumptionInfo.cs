@@ -7,10 +7,13 @@ namespace Metaplay.Core.Session
     {
         [MetaMember(1, 0)]
         public SessionToken Token { get; set; } // 0x10
+
         [MetaMember(2, 0)]
         public SessionAcknowledgement Acknowledgement { get; set; } // 0x18
 
-        public SessionResumptionInfo() { }
+        public SessionResumptionInfo()
+        {
+        }
 
         public SessionResumptionInfo(SessionToken token, SessionAcknowledgement acknowledgement)
         {

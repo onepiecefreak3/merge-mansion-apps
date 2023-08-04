@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Consumption.Logic
+namespace GameLogic.Player.Items.Consumption.Logic
 {
     public interface IConsumptionLogic
     {

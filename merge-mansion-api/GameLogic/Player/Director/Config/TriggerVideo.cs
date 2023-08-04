@@ -9,5 +9,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private VideoId VideoId { get; set; }
+
+        private TriggerVideo()
+        {
+        }
+
+        public TriggerVideo(VideoId videoId)
+        {
+        }
     }
 }

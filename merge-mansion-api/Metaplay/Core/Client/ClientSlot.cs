@@ -1,4 +1,6 @@
-﻿namespace Metaplay.Core.Client
+using System;
+
+namespace Metaplay.Core.Client
 {
     public class ClientSlot : DynamicEnum<ClientSlot>
     {

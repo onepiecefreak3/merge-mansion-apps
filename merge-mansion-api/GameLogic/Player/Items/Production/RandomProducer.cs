@@ -3,18 +3,17 @@ using System.Linq;
 using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(2)]
     [MetaSerializable]
-    public class RandomProducer : IItemSpawner
+    public class RandomProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]
         public List<ItemOdds> OddsList { get; set; }
-
         public IEnumerable<(ItemDefinition, int)> Odds => OddsList.Select(x => (x.Type.Ref, x.Weight));
-
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)
@@ -26,6 +25,16 @@ namespace GameLogic.Player.Items.Production
         {
             // STUB
             yield break;
+        }
+
+        private int TotalOdds { get; }
+
+        private RandomProducer()
+        {
+        }
+
+        public RandomProducer(List<ValueTuple<int, int>> oddsList)
+        {
         }
     }
 }

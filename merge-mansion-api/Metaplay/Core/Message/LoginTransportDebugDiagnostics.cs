@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Message
 {
-	[MetaSerializable]
-	public class LoginTransportDebugDiagnostics // TypeDefIndex: 1014
+    [MetaSerializable]
+    public class LoginTransportDebugDiagnostics // TypeDefIndex: 1014
     {
         // Fields
         [MetaMember(1, 0)]
@@ -46,10 +46,13 @@ namespace Metaplay.Core.Message
         public int MetaMessagesRead; // 0x58
         [MetaMember(20, 0)]
         public int MetaMessagesReceived; // 0x5C
-
         public LoginTransportDebugDiagnostics Clone()
         {
             return (LoginTransportDebugDiagnostics)MemberwiseClone();
+        }
+
+        public LoginTransportDebugDiagnostics()
+        {
         }
     }
 }

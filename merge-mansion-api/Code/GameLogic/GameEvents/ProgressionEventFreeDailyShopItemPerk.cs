@@ -8,5 +8,13 @@ namespace Code.GameLogic.GameEvents
     {
         [MetaMember(1, 0)]
         public ShopItemId ShopItemId { get; set; }
+
+        public ProgressionEventFreeDailyShopItemPerk()
+        {
+        }
+
+        public ProgressionEventFreeDailyShopItemPerk(ShopItemId shopItemId)
+        {
+        }
     }
 }

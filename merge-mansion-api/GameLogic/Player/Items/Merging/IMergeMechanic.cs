@@ -1,13 +1,16 @@
-﻿using Metaplay.Core;
+using Metaplay.Core;
+using System.Runtime.Serialization;
+using System.Collections.Generic;
+using System;
+using Metaplay.Core.Math;
 
 namespace GameLogic.Player.Items.Merging
 {
     public interface IMergeMechanic
     {
-        //IEnumerable<ValueTuple<ItemDefinition, F32>> PossibleMergeResults { get; }
-
         bool CanMerge(MergeItem sourceItem, MergeItem targetItem);
         MergeItem Merge(IPlayer player, MergeItem sourceItem, MergeItem targetItem, MetaTime timestamp);
-        //IEnumerable<ValueTuple<ItemDefinition, F32>> get_PossibleMergeResults();
+        [IgnoreDataMember]
+        IEnumerable<ValueTuple<ItemDefinition, F32>> PossibleMergeResults { get; }
     }
 }

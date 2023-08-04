@@ -10,5 +10,13 @@ namespace GameLogic.Player.Requirements
     {
         [MetaMember(1, 0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
+
+        private ItemNeededRequirement()
+        {
+        }
+
+        public ItemNeededRequirement(MetaRef<ItemDefinition> itemRef)
+        {
+        }
     }
 }

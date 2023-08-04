@@ -1,8 +1,9 @@
-﻿using System;
+using System;
+using System.Collections.Concurrent;
 
 namespace Metaplay.Core
 {
-    public abstract class StringId<TStringId> : IStringId, IEquatable<TStringId> where TStringId : new()
+    public abstract class StringId<TStringId> : IStringId where TStringId : new()
     {
         public string Value { get; set; }
 
@@ -10,20 +11,18 @@ namespace Metaplay.Core
         {
             var v = new TStringId();
             typeof(StringId<TStringId>).GetProperty(nameof(IStringId.Value))?.SetValue(v, value);
-
             return v;
         }
 
         public bool Equals(TStringId other)
         {
-            return Value == ((IStringId) other).Value;
+            return Value == ((IStringId)other).Value;
         }
 
         public override bool Equals(object obj)
         {
             if (!(obj is StringId<TStringId> idObj))
                 return false;
-
             return Value == idObj.Value;
         }
 
@@ -39,5 +38,10 @@ namespace Metaplay.Core
 
         public static bool operator ==(StringId<TStringId> a, StringId<TStringId> b) => a?.Value == b?.Value;
         public static bool operator !=(StringId<TStringId> a, StringId<TStringId> b) => a?.Value != b?.Value;
+        public static int MaxLength;
+        private static ConcurrentDictionary<string, TStringId> s_interned;
+        protected StringId()
+        {
+        }
     }
 }

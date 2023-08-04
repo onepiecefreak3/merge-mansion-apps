@@ -29,5 +29,8 @@ namespace Metaplay.Core.Message
         public bool ExpectSessionResumptionPing; // 0x80
         [MetaMember(10, 0)]
         public string DiagnosticsError; // 0x88
-	}
+        public LoginDebugDiagnostics()
+        {
+        }
+    }
 }

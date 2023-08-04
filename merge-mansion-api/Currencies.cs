@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 public enum Currencies
 {
@@ -9,5 +9,6 @@ public enum Currencies
     [Obsolete]
     Screws = 4,
     Energy = 5,
-    EventCurrency = 6
+    EventCurrency = 6,
+    SecondaryEnergy = 7
 }

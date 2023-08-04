@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using static Metaplay.Core.Network.MessageTransport;
 
 namespace Metaplay.Core.Config
 {
@@ -22,13 +23,13 @@ namespace Metaplay.Core.Config
             return new PatchedConfigArchive(archive, Enumerable.Empty<GameConfigPatchEnvelope>());
         }
 
-        internal GameConfigLibrary<TKey, TInfo> LoadBinaryLibrary<TKey, TInfo>(IGameConfigDataResolver resolver, IGameConfigDataRegistry registry, string fileName)
+        internal GameConfigLibrary<TKey, TInfo> LoadBinaryLibrary<TKey, TInfo>(IGameConfigDataRegistry registry, string fileName)
             where TInfo : IGameConfigData<TKey>
         {
             var entryName = MpcFileNameToEntryName(fileName);
 
-            var items = GameConfigUtil.ImportBinaryLibraryItems<TKey, TInfo>(resolver, _archive, fileName);
-            PatchEntryContentInPlace(items, resolver, entryName, typeof(TInfo));
+            var items = GameConfigUtil.ImportBinaryLibraryItems<TKey, TInfo>(_archive, fileName);
+            PatchEntryContentInPlace(items, entryName, typeof(TInfo));
 
             var lib = GameConfigLibrary<TKey, TInfo>.FromItems(items, registry);
 
@@ -39,12 +40,17 @@ namespace Metaplay.Core.Config
             return lib;
         }
 
-        //internal TStructure LoadBinaryKeyValueStructure<TStructure>(IGameConfigDataResolver resolver, string fileName)
-        //{
+        internal TStructure LoadBinaryKeyValueStructure<TStructure>(string fileName)
+        {
+            var entryName = MpcFileNameToEntryName(fileName);
 
-        //}
+            var item = GameConfigUtil.ImportBinaryKeyValueStructure<TStructure>(_archive, fileName);
+            PatchEntryContentInPlace(item, entryName, typeof(TStructure));
 
-        internal void PatchEntryContentInPlace(object entryContent, IGameConfigDataResolver resolver, string entryName, Type entryPatchType)
+            return item;
+        }
+
+        internal void PatchEntryContentInPlace(object entryContent, string entryName, Type entryPatchType) 
         {
             // TODO: Implement
         }

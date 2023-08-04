@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using GameLogic.Config;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -8,5 +9,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private DCGroupId DirectorGroupId { get; set; }
+
+        private MarkDirectorGroupComplete()
+        {
+        }
+
+        public MarkDirectorGroupComplete(DirectorGroupId directorGroupId)
+        {
+        }
     }
 }

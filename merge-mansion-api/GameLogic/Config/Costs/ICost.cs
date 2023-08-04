@@ -1,7 +1,7 @@
-﻿namespace GameLogic.Config.Costs
+namespace GameLogic.Config.Costs
 {
     public interface ICost
     {
-        // STUB
+    // STUB
     }
 }

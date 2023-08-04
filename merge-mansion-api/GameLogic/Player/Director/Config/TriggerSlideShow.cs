@@ -9,5 +9,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private SlideShowId SlideShowId { get; set; }
+
+        private TriggerSlideShow()
+        {
+        }
+
+        public TriggerSlideShow(SlideShowId slideShowId)
+        {
+        }
     }
 }

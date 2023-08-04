@@ -1,4 +1,4 @@
-﻿using Metaplay.Core;
+using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {

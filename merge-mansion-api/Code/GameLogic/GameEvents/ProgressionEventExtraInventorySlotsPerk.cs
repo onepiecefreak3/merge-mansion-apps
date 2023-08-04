@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -8,5 +9,13 @@ namespace Code.GameLogic.GameEvents
     {
         [MetaMember(1, 0)]
         public int SlotCount { get; set; }
+
+        public ProgressionEventExtraInventorySlotsPerk()
+        {
+        }
+
+        public ProgressionEventExtraInventorySlotsPerk(int slotCount)
+        {
+        }
     }
 }

@@ -11,16 +11,14 @@ namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(1)]
     [MetaSerializable]
-    public class ConstantProducer : IItemSpawner
+    public class ConstantProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]
         public List<MetaRef<ItemDefinition>> Products { get; set; } // 0x10
 
         [MetaMember(2)]
-        public List<int> Quantities { get; set; }  // 0x18
-
+        public List<int> Quantities { get; set; } // 0x18
         public IEnumerable<(ItemDefinition, int)> Odds => Products.Select(x => (x.Ref, 1));
-
         public int SpawnQuantity => Quantities.Sum();
 
         public F64 TimeSkipPriceGems(IGenerationContext context)
@@ -35,14 +33,28 @@ namespace GameLogic.Player.Items.Production
             {
                 var localQuantity = Quantities[product.Item2];
                 var itemQuantity = Math.Min(quantity, localQuantity);
-
                 quantity -= itemQuantity;
                 for (var i = 0; i < itemQuantity; i++)
                     yield return product.Item1.Deref();
-
                 if (quantity < 1)
                     yield break;
             }
+        }
+
+        private ConstantProducer()
+        {
+        }
+
+        public ConstantProducer(int products, int spawnQuantity)
+        {
+        }
+
+        public ConstantProducer(IEnumerable<int> products)
+        {
+        }
+
+        public ConstantProducer(IEnumerable<ValueTuple<int, int>> pairs)
+        {
         }
     }
 }

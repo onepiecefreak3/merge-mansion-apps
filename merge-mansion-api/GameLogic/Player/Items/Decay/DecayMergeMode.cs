@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Decay
+namespace GameLogic.Player.Items.Decay
 {
     public enum DecayMergeMode
     {

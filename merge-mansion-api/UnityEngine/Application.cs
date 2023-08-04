@@ -13,7 +13,6 @@ namespace UnityEngine
         #region Paths
 
         // CUSTOM: The root for all relative path properties
-        // By default set to the test user resource root
         private static string Root { get; set; } = ".\\resources";
 
         // CUSTOM: To access downloaded assets and resources

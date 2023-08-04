@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GameLogic.Player.Items.Production;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Merge
 {
@@ -10,22 +11,37 @@ namespace GameLogic.Merge
         [MetaMember(1)]
         public Dictionary<ItemPair, IItemProducer> Collection { get; set; }
 
-        public bool ContainsPair((ItemTypeConstant, ItemTypeConstant) pair)
+        public bool ContainsPair((int, int) pair)
         {
-            var search=new ItemPair{First = pair.Item1,Second = pair.Item2};
-
+            var search = new ItemPair
+            {
+                First = pair.Item1,
+                Second = pair.Item2
+            };
             // TODO: Implement Equals and GetHashCode for ItemPair
             return Collection.ContainsKey(search);
         }
 
         [MetaSerializable]
-
         public class ItemPair
         {
             [MetaMember(1)]
-            public ItemTypeConstant First { get; set; }
+            public int First { get; set; }
+
             [MetaMember(2)]
-            public ItemTypeConstant Second { get; set; }
+            public int Second { get; set; }
+        }
+
+        public MergeCollection()
+        {
+        }
+
+        public MergeCollection(IEnumerable<ValueTuple<int, int, IItemProducer>> list)
+        {
+        }
+
+        public MergeCollection(ValueTuple<int, int, IItemProducer>[] list)
+        {
         }
     }
 }

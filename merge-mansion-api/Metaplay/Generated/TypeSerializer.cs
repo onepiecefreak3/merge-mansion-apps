@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Metaplay.Core;
@@ -29,7 +30,7 @@ namespace Metaplay.Generated
                     continue;
                 }
 
-                ResolveMetaRefs_Type(item, resolver);
+                ResolveMetaRefs_Type(item.GetType(), item, resolver);
             }
         }
 
@@ -53,10 +54,10 @@ namespace Metaplay.Generated
             }
         }
 
-        private static void ResolveMetaRefs_Type(object item, IGameConfigDataResolver resolver)
+        public static void ResolveMetaRefs_Type(Type type, object item, IGameConfigDataResolver resolver)
         {
-            var taggedProperties = GetTaggedProperties(item.GetType()).Values;
-            var taggedFields = GetTaggedFields(item.GetType()).Values;
+            var taggedProperties = GetTaggedProperties(type).Values;
+            var taggedFields = GetTaggedFields(type).Values;
             var taggedMembers = taggedProperties.Concat<MemberInfo>(taggedFields);
 
             foreach (var member in taggedMembers)
@@ -73,14 +74,14 @@ namespace Metaplay.Generated
                             if (!(memberValue?.GetType().IsClass ?? false) || memberType == typeof(string))
                                 continue;
 
-                            ResolveMetaRefs_Type(memberValue, resolver);
+                            ResolveMetaRefs_Type(memberValue.GetType(), memberValue, resolver);
                             continue;
                         }
 
                         ResolveMetaRefs_Dictionary((IDictionary)memberValue, resolver);
                         continue;
                     }
-
+                    
                     ResolveMetaRefs_List((IList)memberValue, resolver);
                     continue;
                 }
@@ -319,7 +320,7 @@ namespace Metaplay.Generated
 
                     var messageAttribute = type.GetCustomAttribute<MetaMessageAttribute>();
                     var serializeAttribute = type.GetCustomAttribute<MetaSerializableDerivedAttribute>();
-                    var deriveId = messageAttribute?.TypeCode ?? (serializeAttribute?.DeriveId ?? -1);
+                    var deriveId = messageAttribute?.TypeCode ?? (serializeAttribute?.TypeCode ?? -1);
 
                     writer.WriteVarInt(deriveId);
 
@@ -498,6 +499,11 @@ namespace Metaplay.Generated
                     value = v3;
                     break;
 
+                case WireDataType.Float32:
+                    Deserialize_Float32(ref context, reader, out var v7);
+                    value = v7;
+                    break;
+
                 case WireDataType.Struct:
                     value = Activator.CreateInstance(memberType, true);
                     Deserialize_Members(ref context, reader, value);
@@ -529,7 +535,7 @@ namespace Metaplay.Generated
 
                     var targetType = memberType == typeof(MetaMessage) ?
                         targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaMessageAttribute>().TypeCode == deriveId) :
-                        targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>().DeriveId == deriveId);
+                        targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>().TypeCode == deriveId);
                     if (targetType == null)
                         throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}");
 
@@ -578,16 +584,32 @@ namespace Metaplay.Generated
             if (collectionSize == -1)
                 return;
 
-            var listType = collectionType.GetGenericArguments().FirstOrDefault();
-            var addMethod = collectionType.GetMethod(nameof(IList.Add));
-
             var listWireType = TaggedWireSerializer.ReadWireType(reader);
 
-            outValue = Activator.CreateInstance(collectionType);
-            for (var i = 0; i < collectionSize; i++)
+            if (collectionType.IsArray)
             {
-                Deserialize_WireType(ref context, reader, listWireType, listType, out var item);
-                addMethod.Invoke(outValue, new[] { item });
+                var arrayType = collectionType.GetElementType();
+                var arrayValue = Array.CreateInstance(arrayType, collectionSize);
+
+                for (var i = 0; i < collectionSize; i++)
+                {
+                    Deserialize_WireType(ref context, reader, listWireType, arrayType, out var item);
+                    arrayValue.SetValue(item, i);
+                }
+
+                outValue = arrayValue;
+            }
+            else
+            {
+                var listType = collectionType.GetGenericArguments().FirstOrDefault() ?? collectionType.GetElementType();
+                var addMethod = collectionType.GetMethod(nameof(IList.Add));
+
+                outValue = Activator.CreateInstance(collectionType);
+                for (var i = 0; i < collectionSize; i++)
+                {
+                    Deserialize_WireType(ref context, reader, listWireType, listType, out var item);
+                    addMethod.Invoke(outValue, new[] { item });
+                }
             }
         }
 
@@ -678,6 +700,11 @@ namespace Metaplay.Generated
         private static void Deserialize_F32(ref MetaSerializationContext context, IOReader reader, out F32 outValue)
         {
             outValue = reader.ReadF32();
+        }
+
+        private static void Deserialize_Float32(ref MetaSerializationContext context, IOReader reader, out float outValue)
+        {
+            outValue = reader.ReadFloat();
         }
 
         private static IDictionary<int, PropertyInfo> GetTaggedProperties(Type type)

@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace Metaplay.Core.Schedule
 {
@@ -7,5 +8,14 @@ namespace Metaplay.Core.Schedule
     {
         [MetaMember(100)]
         public MetaScheduleTimeMode TimeMode { get; set; }
+
+        static DateTime DateTimeEpoch;
+        public MetaScheduleBase()
+        {
+        }
+
+        public MetaScheduleBase(MetaScheduleTimeMode timeMode)
+        {
+        }
     }
 }

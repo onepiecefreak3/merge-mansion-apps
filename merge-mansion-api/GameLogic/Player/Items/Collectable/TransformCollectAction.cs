@@ -1,5 +1,6 @@
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
@@ -9,5 +10,17 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1, 0)]
         public MetaRef<ItemDefinition> TransformsInto { get; set; }
+
+        private TransformCollectAction()
+        {
+        }
+
+        public TransformCollectAction(MetaRef<ItemDefinition> transformsInto)
+        {
+        }
+
+        public TransformCollectAction(int itemId)
+        {
+        }
     }
 }

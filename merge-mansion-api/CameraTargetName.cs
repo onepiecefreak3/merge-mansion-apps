@@ -1,4 +1,4 @@
-﻿public enum CameraTargetName
+public enum CameraTargetName
 {
     None = 0,
     GrandmasHouse = 1,

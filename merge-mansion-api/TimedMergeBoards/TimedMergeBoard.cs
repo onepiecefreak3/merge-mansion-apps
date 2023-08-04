@@ -3,6 +3,7 @@ using Events;
 using GameLogic.Merge;
 using GameLogic.Player.Items;
 using GameLogic.Player.Requirements;
+using Merge;
 using Metaplay.Core;
 using Metaplay.Core.Config;
 using Metaplay.Core.Model;

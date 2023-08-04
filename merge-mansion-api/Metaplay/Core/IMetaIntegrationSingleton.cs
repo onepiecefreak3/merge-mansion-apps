@@ -4,7 +4,7 @@
     {
     }
 
-    public interface IMetaIntegrationSingleton
+    public interface IMetaIntegrationSingleton: IRequireSingleConcreteType
     {
     }
 }

@@ -1,6 +1,11 @@
-﻿namespace GameLogic.Player.Requirements
+using Code.GameLogic.Config;
+
+namespace GameLogic.Player.Requirements
 {
-    public abstract class PlayerRequirement : IPlayerRequirement
+    public abstract class PlayerRequirement : IValidatable, IPlayerRequirement
     {
+        protected PlayerRequirement()
+        {
+        }
     }
 }

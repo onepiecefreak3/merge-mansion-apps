@@ -1,6 +1,9 @@
-﻿using System;
+using System;
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
+using System.Collections.Generic;
+using Metaplay.Core.Math;
 
 namespace GameLogic.Player.Items.Merging
 {
@@ -15,6 +18,13 @@ namespace GameLogic.Player.Items.Merging
         public MergeItem Merge(IPlayer player, MergeItem sourceItem, MergeItem targetItem, MetaTime timestamp)
         {
             throw new InvalidOperationException("Attempt to merge item that has no merge mechanics.");
+        }
+
+        [IgnoreDataMember]
+        public IEnumerable<ValueTuple<ItemDefinition, F32>> PossibleMergeResults { get; }
+
+        public NoMergeMechanic()
+        {
         }
     }
 }

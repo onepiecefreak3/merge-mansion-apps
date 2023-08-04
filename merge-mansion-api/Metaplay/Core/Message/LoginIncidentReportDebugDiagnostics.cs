@@ -25,10 +25,13 @@ namespace Metaplay.Core.Message
         public int UploadTooLarge; // 0x30
         [MetaMember(10, 0)]
         public int UploadsSent; // 0x34
-
         public LoginIncidentReportDebugDiagnostics Clone()
         {
-            return (LoginIncidentReportDebugDiagnostics) MemberwiseClone();
+            return (LoginIncidentReportDebugDiagnostics)MemberwiseClone();
+        }
+
+        public LoginIncidentReportDebugDiagnostics()
+        {
         }
     }
 }

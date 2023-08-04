@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Globalization;
 using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
-    public struct MetaTime : IEquatable<MetaTime>, IComparable<MetaTime>, IComparable
+    public struct MetaTime
     {
         // 0x0
         public static MetaDuration DebugTimeOffset = MetaDuration.Zero;
@@ -19,12 +19,14 @@ namespace Metaplay.Core
         // 0x28
         private static readonly string s_dateFormat = "yyyy-M-d";
         // 0x30
-        private static readonly string[] s_timeOfDayFormats = { "H:m", "H:m:s.FFF" };
-
+        private static readonly string[] s_timeOfDayFormats =
+        {
+            "H:m",
+            "H:m:s.FFF"
+        };
         // 0x0
         [MetaMember(1)]
         public long MillisecondsSinceEpoch { get; set; }
-
         public static MetaTime Now => FromDateTime(DateTime.UtcNow);
 
         private MetaTime(long millisecondsSinceEpoch)
@@ -54,24 +56,16 @@ namespace Metaplay.Core
 
         public static bool operator ==(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch == b.MillisecondsSinceEpoch;
         public static bool operator !=(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch != b.MillisecondsSinceEpoch;
-
         public static bool operator <(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch < b.MillisecondsSinceEpoch;
         public static bool operator <=(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch <= b.MillisecondsSinceEpoch;
-
-        public static bool operator >(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch > b.MillisecondsSinceEpoch;
+        public static bool operator>(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch > b.MillisecondsSinceEpoch;
         public static bool operator >=(MetaTime a, MetaTime b) => a.MillisecondsSinceEpoch >= b.MillisecondsSinceEpoch;
-
         public static MetaTime operator +(MetaTime a, MetaDuration b) => new MetaTime(b.Milliseconds + a.MillisecondsSinceEpoch);
         public static MetaTime operator +(MetaDuration a, MetaTime b) => new MetaTime(a.Milliseconds + b.MillisecondsSinceEpoch);
         public static MetaTime operator -(MetaTime a, MetaDuration b) => new MetaTime(a.MillisecondsSinceEpoch - b.Milliseconds);
         public static MetaDuration operator -(MetaTime a, MetaTime b) => new MetaDuration(a.MillisecondsSinceEpoch - b.MillisecondsSinceEpoch);
-
-        public static MetaTime Min(MetaTime a, MetaTime b) =>
-            new MetaTime(System.Math.Min(a.MillisecondsSinceEpoch, b.MillisecondsSinceEpoch));
-
-        public static MetaTime Max(MetaTime a, MetaTime b) =>
-            new MetaTime(System.Math.Max(a.MillisecondsSinceEpoch, b.MillisecondsSinceEpoch));
-
+        public static MetaTime Min(MetaTime a, MetaTime b) => new MetaTime(System.Math.Min(a.MillisecondsSinceEpoch, b.MillisecondsSinceEpoch));
+        public static MetaTime Max(MetaTime a, MetaTime b) => new MetaTime(System.Math.Max(a.MillisecondsSinceEpoch, b.MillisecondsSinceEpoch));
         public bool Equals(MetaTime other)
         {
             return MillisecondsSinceEpoch == other.MillisecondsSinceEpoch;
@@ -81,7 +75,6 @@ namespace Metaplay.Core
         {
             if (!(obj is MetaTime v))
                 return false;
-
             return MillisecondsSinceEpoch == v.MillisecondsSinceEpoch;
         }
 
@@ -106,32 +99,25 @@ namespace Metaplay.Core
         {
             // TODO: Activate with ConfigLexer
             throw new NotImplementedException();
-            //var lexer1 = new ConfigLexer(lexer);
-
-            //var canRead = lexer1.TryParseToken(ConfigLexer.TokenType.IntegerLiteral);
-            //if (canRead && !lexer1.IsAtEnd)
-            //    return new MetaTime(lexer.ParseLongLiteral() * 1000);
-
-            //var canReadDate = lexer.TryParseCustomToken(s_dateConfigToken);
-            //if (canReadDate == null)
-            //    throw new ParseError("Failed to parse MetaTime. Expected either date-time format (e.g. 2022-6-20 12:34:56) or non-negative integer seconds since Unix epoch (legacy syntax). Input: " + lexer.GetRemainingInputInfo());
-
-            //var isParsed = DateTime.TryParseExact(canReadDate, s_dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var parsedDate);
-            //if (!isParsed)
-            //    throw new ParseError("MetaTime: Failed to parse a date from string \"" + canReadDate + "\".Expected format " + s_dateFormat + ", with a 4-digit year, and 1 or 2-digit month and day.");
-
-            //var canReadTime = lexer.TryParseCustomToken(s_timeOfDayConfigToken);
-            //if (canReadTime == null)
-            //    throw new ParseError("MetaTime: Time-of-day missing after date \"" + canReadDate + "\". Expected a time-of-day such as 12:34:56 . Input: " + lexer.GetRemainingInputInfo());
-
-            //var isParsed1 = DateTime.TryParseExact(canReadTime, s_timeOfDayFormats, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var parsedTime);
-            //if (!isParsed1)
-            //    throw new ParseError("MetaTime: Failed to parse a time-of-day from string \"" + canReadTime + "\".Expected one of these formats: " + s_timeOfDayFormats[0] + " or " + s_timeOfDayFormats[1] + " . The fractional seconds part is optional and has up to 3 digits if present. The other parts should have 1 or 2 digits each.");
-
-            //if (canReadTime.EndsWith('.'))
-            //    throw new ParseError("MetaTime: In time-of-day \"" + canReadTime + "\", the period after the seconds should be omitted if no digits come after it.");
-
-            //return FromDateTime(new DateTime(parsedDate.Year, parsedDate.Month, parsedDate.Day, parsedTime.Hour, parsedTime.Minute, parsedTime.Second, parsedTime.Millisecond));
+        //var lexer1 = new ConfigLexer(lexer);
+        //var canRead = lexer1.TryParseToken(ConfigLexer.TokenType.IntegerLiteral);
+        //if (canRead && !lexer1.IsAtEnd)
+        //    return new MetaTime(lexer.ParseLongLiteral() * 1000);
+        //var canReadDate = lexer.TryParseCustomToken(s_dateConfigToken);
+        //if (canReadDate == null)
+        //    throw new ParseError("Failed to parse MetaTime. Expected either date-time format (e.g. 2022-6-20 12:34:56) or non-negative integer seconds since Unix epoch (legacy syntax). Input: " + lexer.GetRemainingInputInfo());
+        //var isParsed = DateTime.TryParseExact(canReadDate, s_dateFormat, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var parsedDate);
+        //if (!isParsed)
+        //    throw new ParseError("MetaTime: Failed to parse a date from string \"" + canReadDate + "\".Expected format " + s_dateFormat + ", with a 4-digit year, and 1 or 2-digit month and day.");
+        //var canReadTime = lexer.TryParseCustomToken(s_timeOfDayConfigToken);
+        //if (canReadTime == null)
+        //    throw new ParseError("MetaTime: Time-of-day missing after date \"" + canReadDate + "\". Expected a time-of-day such as 12:34:56 . Input: " + lexer.GetRemainingInputInfo());
+        //var isParsed1 = DateTime.TryParseExact(canReadTime, s_timeOfDayFormats, CultureInfo.InvariantCulture, DateTimeStyles.RoundtripKind, out var parsedTime);
+        //if (!isParsed1)
+        //    throw new ParseError("MetaTime: Failed to parse a time-of-day from string \"" + canReadTime + "\".Expected one of these formats: " + s_timeOfDayFormats[0] + " or " + s_timeOfDayFormats[1] + " . The fractional seconds part is optional and has up to 3 digits if present. The other parts should have 1 or 2 digits each.");
+        //if (canReadTime.EndsWith('.'))
+        //    throw new ParseError("MetaTime: In time-of-day \"" + canReadTime + "\", the period after the seconds should be omitted if no digits come after it.");
+        //return FromDateTime(new DateTime(parsedDate.Year, parsedDate.Month, parsedDate.Day, parsedTime.Hour, parsedTime.Minute, parsedTime.Second, parsedTime.Millisecond));
         }
 
         public int CompareTo(MetaTime other)
@@ -143,10 +129,8 @@ namespace Metaplay.Core
         {
             if (obj == null)
                 return 1;
-
             if (!(obj is MetaTime v))
                 throw new ArgumentException();
-
             return MillisecondsSinceEpoch.CompareTo(v.MillisecondsSinceEpoch);
         }
     }

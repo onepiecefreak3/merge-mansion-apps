@@ -1,5 +1,6 @@
 using Code.GameLogic.GameEvents;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Rewards
 {
@@ -9,9 +10,23 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, 0)]
         public Currencies Currency { get; set; }
+
         [MetaMember(2, 0)]
         public long RemoveAmount { get; set; }
+
         [MetaMember(3, 0)]
         public EventCurrencyId EventCurrencyId { get; set; }
+
+        public NegativeReward()
+        {
+        }
+
+        public NegativeReward(Currencies currency, long maxRemoveAmount)
+        {
+        }
+
+        public NegativeReward(EventCurrencyId eventCurrencyId, long maxRemoveAmount)
+        {
+        }
     }
 }

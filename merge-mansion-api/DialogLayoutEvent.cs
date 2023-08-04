@@ -1,4 +1,4 @@
-﻿public enum DialogLayoutEvent
+public enum DialogLayoutEvent
 {
     None = 0,
     LeftCharacterAppear = 1,

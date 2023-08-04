@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
@@ -8,5 +9,13 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1, 0)]
         public int ProgressGiven { get; set; }
+
+        private CollectEventProgressAction()
+        {
+        }
+
+        public CollectEventProgressAction(int progressGiven)
+        {
+        }
     }
 }

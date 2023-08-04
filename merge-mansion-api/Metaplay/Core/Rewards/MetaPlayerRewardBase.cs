@@ -1,6 +1,9 @@
-﻿namespace Metaplay.Core.Rewards
+namespace Metaplay.Core.Rewards
 {
     public abstract class MetaPlayerRewardBase : MetaReward
     {
+        protected MetaPlayerRewardBase()
+        {
+        }
     }
 }

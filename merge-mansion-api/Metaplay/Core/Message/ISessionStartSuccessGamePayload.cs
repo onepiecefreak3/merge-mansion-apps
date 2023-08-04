@@ -1,5 +1,6 @@
-﻿namespace Metaplay.Core.Message
+namespace Metaplay.Core.Message
 {
     public interface ISessionStartSuccessGamePayload
-    { }
+    {
+    }
 }

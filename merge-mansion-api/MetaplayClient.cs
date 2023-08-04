@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameLogic.Player;
 using Metaplay.Core;
 using Metaplay.Core.Client;
 using Metaplay.Core.Message;
@@ -16,6 +17,7 @@ public class MetaplayClient : ISessionContextProvider
     private static IMetaplayClientConnectionDelegate _connectionDelegate; // 0x28
 
     //public static PlayerClientContext PlayerContext { get; set; }
+    public static PlayerModel PlayerModel { get; }
 
     private SessionProtocol.SessionStartSuccess _initialState; // 0x10
     private List<Action> _pendingSessionFuncs; // 0x18

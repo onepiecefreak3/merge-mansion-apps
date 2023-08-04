@@ -1,5 +1,6 @@
 using Code.GameLogic.GameEvents;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Rewards
 {
@@ -9,5 +10,13 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, 0)]
         public EventId EventId { get; set; }
+
+        public RewardExtendGameEvents()
+        {
+        }
+
+        public RewardExtendGameEvents(string eventId)
+        {
+        }
     }
 }

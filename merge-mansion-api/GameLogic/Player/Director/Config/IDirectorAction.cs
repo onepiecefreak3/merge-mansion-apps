@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Director.Config
+namespace GameLogic.Player.Director.Config
 {
     public interface IDirectorAction
     {

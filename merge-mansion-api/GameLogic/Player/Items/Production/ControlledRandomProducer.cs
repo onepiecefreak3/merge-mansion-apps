@@ -3,22 +3,23 @@ using System.Linq;
 using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(4)]
     [MetaSerializable]
-    public class ControlledRandomProducer : IItemSpawner
+    public class ControlledRandomProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]
-        public RollHistoryType RollType { get; set; }   // 0x10
+        public RollHistoryType RollType { get; set; } // 0x10
+
         [MetaMember(2)]
-        public ItemTypeConstant ItemType { get; set; }  // 0x14
+        public int ItemType { get; set; } // 0x14
+
         [MetaMember(3)]
-        public List<ItemOdds> GenerationOdds { get; set; }  // 0x18
-
+        public List<ItemOdds> GenerationOdds { get; set; } // 0x18
         public IEnumerable<(ItemDefinition, int)> Odds => GenerationOdds.Select(x => (x.Type.Ref, x.Weight));
-
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)
@@ -31,13 +32,21 @@ namespace GameLogic.Player.Items.Production
             return Enumerable.Range(0, quantity).Select(_ =>
             {
                 var itemWeights = GenerationOdds.Select(y => (y.Type.Deref().ConfigKey, y.Weight)).ToList();
-
                 var distribution = context.DistributionStates;
                 var random = context.Random;
-
                 var itemIndex = distribution.Roll(RollType, ItemType, itemWeights, random);
                 return GenerationOdds[itemIndex].Type.Deref();
             });
+        }
+
+        private int TotalOdds { get; }
+
+        private ControlledRandomProducer()
+        {
+        }
+
+        public ControlledRandomProducer(RollHistoryType rollType, int itemId, List<ValueTuple<int, int>> oddsList)
+        {
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿public enum DialogMode
+public enum DialogMode
 {
     None = 0,
     GenericDialog = 1,

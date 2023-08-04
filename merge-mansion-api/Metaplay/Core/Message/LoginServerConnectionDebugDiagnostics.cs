@@ -51,13 +51,16 @@ namespace Metaplay.Core.Message
         public int SessionMessagesReceived; // 0x70
         [MetaMember(23, 0)]
         public int SessionPayloadMessagesReceived; // 0x74
-
         public MetaTime FirstSessionMessageSentAt => MetaTime.FromMillisecondsSinceEpoch(FirstSessionMessageSentAtMS);
         public MetaTime LastLoginSuccessReceivedAt => MetaTime.FromMillisecondsSinceEpoch(LastLoginSuccessReceivedAtMS);
 
         public LoginServerConnectionDebugDiagnostics Clone()
         {
             return (LoginServerConnectionDebugDiagnostics)MemberwiseClone();
+        }
+
+        public LoginServerConnectionDebugDiagnostics()
+        {
         }
     }
 }

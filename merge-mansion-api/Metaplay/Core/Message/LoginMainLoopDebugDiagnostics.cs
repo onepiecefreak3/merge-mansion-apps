@@ -11,5 +11,8 @@ namespace Metaplay.Core.Message
         public int UpdatesEndedPrematurely; // 0x14
         [MetaMember(3, 0)]
         public int UpdatesEndedNormally; // 0x18
-	}
+        public LoginMainLoopDebugDiagnostics()
+        {
+        }
+    }
 }

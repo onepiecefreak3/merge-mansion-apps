@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Spawning
+namespace GameLogic.Player.Items.Spawning
 {
     public interface ISpawnCycle
     {

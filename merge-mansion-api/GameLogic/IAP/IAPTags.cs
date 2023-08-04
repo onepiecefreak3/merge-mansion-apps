@@ -1,4 +1,4 @@
-﻿namespace GameLogic.IAP
+namespace GameLogic.IAP
 {
     public enum IAPTags // TypeDefIndex: 1876
     {

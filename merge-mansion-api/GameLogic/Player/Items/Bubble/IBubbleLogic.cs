@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Bubble
+namespace GameLogic.Player.Items.Bubble
 {
     public interface IBubbleLogic
     {

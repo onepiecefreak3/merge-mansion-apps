@@ -8,5 +8,13 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1, 0)]
         public ICalculateCollectValue ValueCalculator { get; set; }
+
+        private CollectCurrencyAction()
+        {
+        }
+
+        public CollectCurrencyAction(ICalculateCollectValue valueCalculator)
+        {
+        }
     }
 }

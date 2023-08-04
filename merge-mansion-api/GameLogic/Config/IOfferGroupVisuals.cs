@@ -1,7 +1,18 @@
-﻿namespace GameLogic.Config
+using System;
+
+namespace GameLogic.Config
 {
     public interface IOfferGroupVisuals
     {
-        // STUB
+        string OfferTitleId { get; }
+
+        string BackgroundId { get; }
+
+        string GroupTitleLocId { get; }
+
+        string ButtonId { get; }
+
+        string ContainerId { get; }
+    // STUB
     }
 }

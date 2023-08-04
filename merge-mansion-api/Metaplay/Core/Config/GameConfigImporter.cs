@@ -20,7 +20,12 @@
         public GameConfigLibrary<TKey, TValue> ImportBinaryLibrary<TKey, TValue>(string fileName)
             where TValue : IGameConfigData<TKey>
         {
-            return _archive.LoadBinaryLibrary<TKey, TValue>(null, _config, fileName);
+            return _archive.LoadBinaryLibrary<TKey, TValue>(_config, fileName);
+        }
+
+        public T ImportBinaryKeyValueStructure<T>(string fileName, bool allowPartial = false)
+        {
+            return _archive.LoadBinaryKeyValueStructure<T>(fileName);
         }
     }
 }

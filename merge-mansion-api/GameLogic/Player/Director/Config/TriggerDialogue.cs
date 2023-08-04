@@ -9,5 +9,14 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         public StoryDefinitionId DialogueId { get; set; }
+        public StoryDefinitionId StoryDefinitionId { get; }
+
+        private TriggerDialogue()
+        {
+        }
+
+        public TriggerDialogue(StoryDefinitionId dialogueId)
+        {
+        }
     }
 }

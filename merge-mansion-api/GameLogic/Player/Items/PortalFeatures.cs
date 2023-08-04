@@ -1,5 +1,6 @@
 using GameLogic.Merge;
 using Metaplay.Core.Model;
+using Merge;
 
 namespace GameLogic.Player.Items
 {
@@ -8,7 +9,17 @@ namespace GameLogic.Player.Items
     {
         [MetaMember(1, 0)]
         public bool IsPortal { get; set; }
+
         [MetaMember(2, 0)]
         public MergeBoardId TargetBoardId { get; set; }
+
+        public static PortalFeatures NoPortal;
+        public PortalFeatures(MergeBoardId id)
+        {
+        }
+
+        private PortalFeatures()
+        {
+        }
     }
 }

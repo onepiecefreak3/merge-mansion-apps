@@ -29,8 +29,11 @@ namespace Metaplay.Core
                 var intTypes = integrationType.GetGenericInterfaceTypeArguments(typeof(IMetaIntegration<>));
                 foreach (var intType in intTypes.Where(typeFilter))
                 {
-                    if (intType.ImplementsInterface(typeof(IMetaIntegrationSingleton)) ||
-                        intType.ImplementsInterface(typeof(IMetaIntegrationConstructible)))
+                    // CUSTOM: To not include base classes which are their own integration
+                    if (/*integrationType == intType && */integrationType.IsAbstract)
+                        continue;
+
+                    if (intType.ImplementsInterface(typeof(IRequireSingleConcreteType)))
                         _mandatoryIntegrations.Add(intType);
 
                     if (integrationType.IsClass && !integrationType.IsAbstract && !IsTestImplementation(intType, integrationType))

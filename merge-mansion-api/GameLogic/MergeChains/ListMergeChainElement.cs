@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using GameLogic.Player.Items;
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using System;
+using System.Linq;
 
 namespace GameLogic.MergeChains
 {
@@ -11,5 +13,22 @@ namespace GameLogic.MergeChains
     {
         [MetaMember(1, 0)]
         public List<MetaRef<ItemDefinition>> Items { get; set; }
+
+        private ListMergeChainElement()
+        {
+        }
+
+        public ListMergeChainElement(IEnumerable<int> types)
+        {
+        }
+
+        public ListMergeChainElement(IEnumerable<MetaRef<ItemDefinition>> items)
+        {
+        }
+
+        public ItemDefinition First()
+        {
+            return Items.FirstOrDefault()?.Ref;
+        }
     }
 }

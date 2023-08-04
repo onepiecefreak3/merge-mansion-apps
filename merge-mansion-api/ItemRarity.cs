@@ -1,4 +1,4 @@
-﻿public enum ItemRarity
+public enum ItemRarity
 {
     Undefined = 0,
     Common = 1,

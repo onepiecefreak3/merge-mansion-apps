@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
 using Metaplay.Core.Schedule;
+using System;
 
 namespace Metaplay.Core.Activables
 {
@@ -30,5 +31,12 @@ namespace Metaplay.Core.Activables
         public MetaActivableCooldownSpec Cooldown; // 0x58
         [MetaMember(11)]
         public bool AllowActivationAdjustment; // 0x60
-	}
+        public MetaActivableParams()
+        {
+        }
+
+        public MetaActivableParams(bool isEnabled, List<MetaRef<PlayerSegmentInfoBase>> segments, List<PlayerCondition> additionalConditions, MetaActivableLifetimeSpec lifetime, bool isTransient, MetaScheduleBase schedule, int? maxActivations, int? maxTotalConsumes, int? maxConsumesPerActivation, MetaActivableCooldownSpec cooldown, bool allowActivationAdjustment)
+        {
+        }
+    }
 }

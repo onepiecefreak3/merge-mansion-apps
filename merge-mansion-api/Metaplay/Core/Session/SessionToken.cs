@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Session
@@ -17,18 +17,15 @@ namespace Metaplay.Core.Session
         {
             var part1 = Guid.NewGuid().GetHashCode();
             var part2 = Guid.NewGuid().GetHashCode();
-
             return new SessionToken((ulong)part1 << 0x20 + part2);
         }
 
         public static bool operator ==(SessionToken a, SessionToken b) => a.Value == b.Value;
         public static bool operator !=(SessionToken a, SessionToken b) => a.Value != b.Value;
-
         public override bool Equals(object obj)
         {
             if (!(obj is SessionToken stObj))
                 return false;
-
             return Value == stObj.Value;
         }
 

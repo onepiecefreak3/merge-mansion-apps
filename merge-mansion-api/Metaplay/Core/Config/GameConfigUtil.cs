@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Metaplay.Core.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace Metaplay.Core.Config
 {
@@ -32,36 +33,41 @@ namespace Metaplay.Core.Config
             return result;
         }
 
-        public static Dictionary<TKey, TValue> ImportBinaryLibraryItems<TKey, TValue>(IGameConfigDataResolver resolver, ConfigArchive archive, string fileName)
+        public static Dictionary<TKey, TValue> ImportBinaryLibraryItems<TKey, TValue>(IConfigArchive archive, string fileName)
             where TValue : IGameConfigData<TKey>
         {
-            var entry = archive.GetEntryByName(fileName);
-            var entryData = entry.Uncompress();
+            var entryData = archive.ReadEntry(fileName);
 
             try
             {
-                var tableEntries = MetaSerialization.DeserializeTableTagged<TValue>(entryData, MetaSerializationFlags.IncludeAll, resolver, 0, null);
+                var tableEntries = MetaSerialization.DeserializeTableTagged<TValue>(entryData, MetaSerializationFlags.IncludeAll, null, 0, null);
                 return ConvertToOrderedDictionary<TKey, TValue>(tableEntries);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                throw e;
+                Console.WriteLine($"[!] Error deserializing table of type {typeof(TValue).Name}.");
+                return default;
             }
         }
 
         public static void ImportBinaryLibraryAliases<TKey, TValue>(GameConfigLibrary<TKey, TValue> library, ConfigArchive archive, string fileName)
             where TValue : IGameConfigData<TKey>
         {
-            // TODO: Set aliases in GameConfigLibrary
-            //var entry = archive.GetEntryByName(fileName);
-            //var entryData = entry.Uncompress();
+        }
 
-            //var tableEntries = MetaSerialization.DeserializeTableTagged<TValue>(entryData, MetaSerializationFlags.IncludeAll, resolver, 0, null);
-            //var dict=ConvertToOrderedDictionary<TKey, TValue>(tableEntries);
-            //foreach (var pair in dict)
-            //{
+        public static T ImportBinaryKeyValueStructure<T>(IConfigArchive archive, string fileName)
+        {
+            var entryData = archive.ReadEntry(fileName);
 
-            //}
+            try
+            {
+                return MetaSerialization.DeserializeTagged<T>(entryData, MetaSerializationFlags.IncludeAll, null, 0, null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"[!] Error deserializing type {typeof(T).Name}.");
+                return default;
+            }
         }
     }
 }

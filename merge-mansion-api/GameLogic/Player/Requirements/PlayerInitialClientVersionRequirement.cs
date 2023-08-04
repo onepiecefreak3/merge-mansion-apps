@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Requirements
 {
@@ -10,5 +11,12 @@ namespace GameLogic.Player.Requirements
         public string Min; // 0x10
         [MetaMember(2, 0)]
         public string Max; // 0x18
+        public PlayerInitialClientVersionRequirement()
+        {
+        }
+
+        public PlayerInitialClientVersionRequirement(string min, string max)
+        {
+        }
     }
 }

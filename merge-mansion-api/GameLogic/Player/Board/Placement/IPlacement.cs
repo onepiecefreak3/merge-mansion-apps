@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Board.Placement
+namespace GameLogic.Player.Board.Placement
 {
     public interface IPlacement
     {

@@ -1,7 +1,7 @@
-﻿namespace Metaplay.Core.Config
+namespace Metaplay.Core.Config
 {
     public interface IGameConfigPostLoad
     {
-        void PostLoad();
+        // STUB
     }
 }

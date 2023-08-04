@@ -8,7 +8,20 @@ namespace GameLogic.Player.Requirements
     [MetaSerializable]
     public class HotspotVisibleRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
-        public MetaRef<HotspotDefinition> hotspot { get; set; } // 0x10
+        [MetaMember(1, (MetaMemberFlags)0)]
+        private MetaRef<HotspotDefinition> hotspot;
+        public HotspotVisibleRequirement()
+        {
+        }
+
+        public HotspotVisibleRequirement(HotspotDefinition hotspot)
+        {
+        }
+
+        // CUSTOM: Copied from HotspotCompletedRequirement
+        public MetaRef<HotspotDefinition> GetRequiredHotspot()
+        {
+            return hotspot;
+        }
     }
 }

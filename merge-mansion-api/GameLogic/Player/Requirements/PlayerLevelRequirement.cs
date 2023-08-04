@@ -7,9 +7,16 @@ namespace GameLogic.Player.Requirements
     [MetaSerializable]
     public class PlayerLevelRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
-        public Nullable<int> Min { get; set; } // 0x10
-        [MetaMember(2, 0)]
-        public Nullable<int> Max { get; set; } // 0x18
+        [MetaMember(1, (MetaMemberFlags)0)]
+        public int? Min;
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public int? Max;
+        public PlayerLevelRequirement()
+        {
+        }
+
+        public PlayerLevelRequirement(int? min, int? max)
+        {
+        }
     }
 }

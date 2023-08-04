@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Core.InAppPurchase
+namespace Metaplay.Core.InAppPurchase
 {
     public enum InAppProductType // TypeDefIndex: 1068
     {

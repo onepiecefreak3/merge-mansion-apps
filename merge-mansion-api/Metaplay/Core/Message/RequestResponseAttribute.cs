@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Message
@@ -7,5 +7,9 @@ namespace Metaplay.Core.Message
     public class RequestResponseAttribute : Attribute, ISerializableFlagsProvider
     {
         public MetaSerializableFlags ExtraFlags => MetaSerializableFlags.ImplicitMembers;
+
+        public RequestResponseAttribute()
+        {
+        }
     }
 }

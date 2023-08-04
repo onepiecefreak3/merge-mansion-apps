@@ -10,5 +10,13 @@ namespace GameLogic.Hotspots.Actions
     {
         [MetaMember(1, 0)]
         private MergeChainId MergeChainId { get; set; }
+
+        private DiscoverMergeChain()
+        {
+        }
+
+        public DiscoverMergeChain(MergeChainId mergeChainId)
+        {
+        }
     }
 }

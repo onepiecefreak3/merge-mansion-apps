@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Hotspots
+namespace GameLogic.Hotspots
 {
     public enum HotspotType
     {

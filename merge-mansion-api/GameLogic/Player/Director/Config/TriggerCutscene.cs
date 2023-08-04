@@ -9,5 +9,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private CutsceneId CutsceneId { get; set; }
+
+        private TriggerCutscene()
+        {
+        }
+
+        public TriggerCutscene(CutsceneId cutsceneId)
+        {
+        }
     }
 }

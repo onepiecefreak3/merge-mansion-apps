@@ -1,6 +1,8 @@
 using GameLogic.Merge;
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
+using System;
+using Merge;
 
 namespace GameLogic.Config
 {
@@ -10,5 +12,14 @@ namespace GameLogic.Config
     {
         [MetaMember(1, 0)]
         public MergeBoardId MergeBoardId; // 0x10
+        public override string DisplayName { get; }
+
+        public PlayerPropertyEventProgressReachedLevel()
+        {
+        }
+
+        public PlayerPropertyEventProgressReachedLevel(MergeBoardId mergeBoardId)
+        {
+        }
     }
 }

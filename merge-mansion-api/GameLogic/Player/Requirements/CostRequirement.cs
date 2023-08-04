@@ -9,5 +9,13 @@ namespace GameLogic.Player.Requirements
     {
         [MetaMember(1, 0)]
         public ICost RequiredCost { get; set; }
+
+        public CostRequirement()
+        {
+        }
+
+        public CostRequirement(ICost cost)
+        {
+        }
     }
 }

@@ -9,5 +9,13 @@ namespace GameLogic.Player.Items.Collectable
     {
         [MetaMember(1, 0)]
         public MetaDuration DurationToSkip { get; set; }
+
+        private TimeSkipCollectAction()
+        {
+        }
+
+        public TimeSkipCollectAction(MetaDuration durationToSkip)
+        {
+        }
     }
 }

@@ -1,8 +1,11 @@
-﻿using Metaplay.Core;
+using Metaplay.Core;
 
 namespace GameLogic.Story
 {
     public class DialogItemId : StringId<DialogItemId>
     {
+        public DialogItemId()
+        {
+        }
     }
 }

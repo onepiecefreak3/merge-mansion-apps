@@ -1,4 +1,4 @@
-﻿public enum HotspotId // TypeDefIndex: 4425
+public enum HotspotId // TypeDefIndex: 4425
 {
     None = 0,
     DrivewayGateFirstHotspot = 199,

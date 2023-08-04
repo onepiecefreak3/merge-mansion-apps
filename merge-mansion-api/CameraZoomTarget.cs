@@ -1,4 +1,4 @@
-﻿public enum CameraZoomTarget
+public enum CameraZoomTarget
 {
     None = 0,
     Default = 1,

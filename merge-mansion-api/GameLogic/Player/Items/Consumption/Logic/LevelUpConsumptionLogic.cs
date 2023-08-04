@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Player.Items.Consumption.Logic
 {
@@ -9,5 +11,16 @@ namespace GameLogic.Player.Items.Consumption.Logic
     {
         [MetaMember(1, 0)]
         public List<string> ApplicableTags { get; set; }
+
+        [IgnoreDataMember]
+        private IConsumptionCheckResult MismatchedTags { get; set; }
+
+        public LevelUpConsumptionLogic()
+        {
+        }
+
+        public LevelUpConsumptionLogic(List<string> applicableTags)
+        {
+        }
     }
 }

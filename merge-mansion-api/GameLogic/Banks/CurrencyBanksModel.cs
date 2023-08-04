@@ -1,0 +1,37 @@
+using Metaplay.Core.Model;
+using Metaplay.Core.Activables;
+using System;
+using System.Runtime.Serialization;
+
+namespace GameLogic.Banks
+{
+    [MetaSerializableDerived(6)]
+    [MetaActivableSet("CurrencyBankEvent", false)]
+    [MetaBlockedMembers(new int[] { 2 })]
+    public class CurrencyBanksModel : MetaActivableSet<CurrencyBankId, CurrencyBankInfo, CurrencyBankModel>
+    {
+        private static string ActivableKindId;
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [ServerOnly]
+        public string AnalyticsId { get; set; }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public CurrencyBankId LastNotedCurrencyBankId { get; set; }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public CurrencyBankState LastNotedCurrencyBankState { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public int LastNotedCurrencyBankNumActivated { get; set; }
+
+        [IgnoreDataMember]
+        private int NumOfActivatedCurrencyBanks { get; }
+
+        [IgnoreDataMember]
+        private int NumOfConsumedCurrencyBanks { get; }
+
+        public CurrencyBanksModel()
+        {
+        }
+    }
+}

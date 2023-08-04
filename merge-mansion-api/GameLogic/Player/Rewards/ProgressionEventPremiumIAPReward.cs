@@ -9,5 +9,13 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, 0)]
         public ProgressionEventId EventId { get; set; }
+
+        public ProgressionEventPremiumIAPReward()
+        {
+        }
+
+        public ProgressionEventPremiumIAPReward(ProgressionEventId eventId)
+        {
+        }
     }
 }

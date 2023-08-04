@@ -44,19 +44,13 @@ namespace GameLogic.Player.Items
             return false;
         }
 
-        // CUSTOM: Get sell value of item definition
-        public static int SellValue(this ItemDefinition itemDefinition)
-        {
-            return MergeItem.SellValue(itemDefinition);
-        }
-
         public static ItemDefinition Deref(this MetaRef<ItemDefinition> definition)
         {
             var refer = definition.Ref;
             if (refer == null)
                 throw new ArgumentNullException(nameof(definition.Ref));
 
-            if (refer.ConfigKey == ItemTypeConstant.None)
+            if (refer.ConfigKey == (int)ItemTypeConstant.None)
                 return null;
 
             return refer;

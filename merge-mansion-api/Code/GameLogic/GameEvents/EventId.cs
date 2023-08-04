@@ -1,8 +1,11 @@
-﻿using Metaplay.Core;
+using Metaplay.Core;
 
 namespace Code.GameLogic.GameEvents
 {
     public class EventId : StringId<EventId>
     {
+        public EventId()
+        {
+        }
     }
 }

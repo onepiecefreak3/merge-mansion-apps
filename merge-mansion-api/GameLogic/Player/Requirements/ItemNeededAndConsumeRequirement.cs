@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using GameLogic.Player.Items;
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Requirements
 {
@@ -11,7 +12,21 @@ namespace GameLogic.Player.Requirements
     {
         [MetaMember(1, 0)]
         private List<ItemTypeConstant> ItemTypes { get; set; }
+
         [MetaMember(2, 0)]
         public List<MetaRef<ItemDefinition>> ItemRefs { get; set; }
+        public ItemDefinition Item { get; }
+
+        public ItemNeededAndConsumeRequirement()
+        {
+        }
+
+        public ItemNeededAndConsumeRequirement(int itemType)
+        {
+        }
+
+        public ItemNeededAndConsumeRequirement(IEnumerable<int> itemTypes)
+        {
+        }
     }
 }

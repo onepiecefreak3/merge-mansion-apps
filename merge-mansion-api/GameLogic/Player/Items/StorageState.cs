@@ -1,13 +1,13 @@
 using Metaplay.Core.Model;
+using System;
+using GameLogic.Player.Items.Activation;
+using GameLogic.Player.Items.Merging;
 
 namespace GameLogic.Player.Items
 {
     [MetaSerializable]
     public sealed class StorageState
     {
-        [MetaMember(1, 0)]
-        internal int currentAmount { get; set; } // 0x10
-
         public StorageState(StorageState container1, StorageState container2)
         {
             currentAmount = (container1?.currentAmount ?? 0) + (container2?.currentAmount ?? 0);
@@ -16,6 +16,25 @@ namespace GameLogic.Player.Items
         public bool IsFull(int maxLimit)
         {
             return maxLimit <= currentAmount;
+        }
+
+        [MetaMember(1, (MetaMemberFlags)0)]
+        private int currentAmount;
+        public StorageState()
+        {
+        }
+
+        public StorageState(int amountInContainer)
+        {
+        }
+
+        public StorageState(ActivationFeatures mergedFeatures, ActivationFeatures featuresA, StorageState stateA, ActivationFeatures featuresB, StorageState stateB, StorageActionType storageAction)
+        {
+        }
+
+        public int GetCurrentAmount()
+        {
+            return currentAmount;
         }
     }
 }

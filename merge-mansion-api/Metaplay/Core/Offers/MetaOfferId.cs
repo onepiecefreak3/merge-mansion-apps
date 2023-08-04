@@ -1,6 +1,9 @@
-﻿namespace Metaplay.Core.Offers
+namespace Metaplay.Core.Offers
 {
     public class MetaOfferId : StringId<MetaOfferId>
     {
+        public MetaOfferId()
+        {
+        }
     }
 }

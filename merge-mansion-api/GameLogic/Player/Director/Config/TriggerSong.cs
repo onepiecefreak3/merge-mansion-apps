@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -8,5 +9,13 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private string SongAlias { get; set; }
+
+        private TriggerSong()
+        {
+        }
+
+        public TriggerSong(string songAlias)
+        {
+        }
     }
 }

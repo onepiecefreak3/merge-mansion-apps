@@ -1,6 +1,7 @@
 using Code.GameLogic.GameEvents;
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
+using System;
 
 namespace GameLogic.Config
 {
@@ -10,5 +11,16 @@ namespace GameLogic.Config
     {
         [MetaMember(1, 0)]
         private CollectibleBoardEventId EventId { get; set; }
+
+        private static int InvalidResult;
+        public override string DisplayName { get; }
+
+        public PlayerPointsInCollectibleBoardEvent()
+        {
+        }
+
+        public PlayerPointsInCollectibleBoardEvent(CollectibleBoardEventId eventId)
+        {
+        }
     }
 }

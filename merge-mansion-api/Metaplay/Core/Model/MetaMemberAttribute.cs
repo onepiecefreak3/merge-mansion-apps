@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Metaplay.Core.Model
 {
@@ -9,12 +9,10 @@ namespace Metaplay.Core.Model
         public readonly int TagId;
         // 0x14
         public readonly MetaMemberFlags Flags;
-
         public MetaMemberAttribute(int tagId, MetaMemberFlags flags = 0)
         {
             if (tagId <= 0)
                 throw new ArgumentException($"MetaMemberAttribute's tagId must be positive (is {tagId})");
-
             TagId = tagId;
             Flags = flags;
         }

@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
 
 namespace Metaplay.Core.Config
 {
-    public struct GameConfigSpecializationKey : IEquatable<GameConfigSpecializationKey>
+    public struct GameConfigSpecializationKey
     {
         [MetaMember(1, 0)]
         public ExperimentVariantId[] VariantIds { get; set; }
@@ -24,7 +24,6 @@ namespace Metaplay.Core.Config
             var res = false;
             for (var i = 0; i < System.Math.Min(other.VariantIds.Length, VariantIds.Length); i++)
                 res |= other.VariantIds[i].Value == VariantIds[i].Value;
-
             return res;
         }
 
@@ -32,7 +31,6 @@ namespace Metaplay.Core.Config
         {
             if (!(obj is GameConfigSpecializationKey key))
                 return false;
-
             return Equals(key);
         }
 
@@ -41,7 +39,6 @@ namespace Metaplay.Core.Config
             var res = 0;
             foreach (var varId in VariantIds)
                 res = varId.GetHashCode() + res * 0x9F7;
-
             return res;
         }
 

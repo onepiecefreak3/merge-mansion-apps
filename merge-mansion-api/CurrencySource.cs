@@ -1,4 +1,4 @@
-﻿public enum CurrencySource
+public enum CurrencySource
 {
     Unknown = 0,
     TestCase = 1,

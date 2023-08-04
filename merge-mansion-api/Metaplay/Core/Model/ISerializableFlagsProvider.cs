@@ -1,6 +1,6 @@
-﻿namespace Metaplay.Core.Model
+namespace Metaplay.Core.Model
 {
-	public interface ISerializableFlagsProvider
+    public interface ISerializableFlagsProvider
     {
         MetaSerializableFlags ExtraFlags { get; }
     }

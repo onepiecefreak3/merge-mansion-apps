@@ -9,5 +9,13 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, 0)]
         public IAPTags IAPTag { get; set; }
+
+        public RewardIAP()
+        {
+        }
+
+        public RewardIAP(IAPTags tag)
+        {
+        }
     }
 }

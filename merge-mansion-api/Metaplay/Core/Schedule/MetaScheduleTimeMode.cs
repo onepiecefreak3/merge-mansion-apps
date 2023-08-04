@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Core.Schedule
+namespace Metaplay.Core.Schedule
 {
     public enum MetaScheduleTimeMode
     {

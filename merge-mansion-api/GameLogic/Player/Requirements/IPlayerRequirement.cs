@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Requirements
+namespace GameLogic.Player.Requirements
 {
     public interface IPlayerRequirement
     {

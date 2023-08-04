@@ -1,8 +1,11 @@
-﻿using Metaplay.Core;
+using Metaplay.Core;
 
 namespace GameLogic.Story.SlideShows
 {
     public class SlideShowId : StringId<SlideShowId>
     {
+        public SlideShowId()
+        {
+        }
     }
 }

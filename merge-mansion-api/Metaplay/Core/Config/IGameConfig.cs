@@ -1,10 +1,13 @@
-﻿namespace Metaplay.Core.Config
+using System;
+
+namespace Metaplay.Core.Config
 {
-    public interface IGameConfig : IGameConfigDataResolver
+    public interface IGameConfig : IGameConfigDataResolver, IGameConfigDataRegistry
     {
         ContentHash ArchiveVersion { get; }
 
         void Import(PatchedConfigArchive archive, IGameConfigDataResolver baseResolver);
-        //void BuildTimeValidate(GameConfigBuildWarnings.VariantWarnings variantWarnings);
+        bool AllowReferenceResolverUpdate { get; set; }
+    //void BuildTimeValidate(GameConfigBuildWarnings.VariantWarnings variantWarnings);
     }
 }

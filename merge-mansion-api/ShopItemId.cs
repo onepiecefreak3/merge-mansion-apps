@@ -1,4 +1,4 @@
-﻿public enum ShopItemId
+public enum ShopItemId
 {
     None = 0,
     DailyDeal_PiggyBank = 1,

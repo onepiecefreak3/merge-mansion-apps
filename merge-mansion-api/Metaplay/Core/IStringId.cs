@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Core
+namespace Metaplay.Core
 {
     public interface IStringId
     {

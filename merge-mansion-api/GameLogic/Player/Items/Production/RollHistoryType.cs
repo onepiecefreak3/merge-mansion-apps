@@ -1,4 +1,4 @@
-﻿namespace GameLogic.Player.Items.Production
+namespace GameLogic.Player.Items.Production
 {
     public enum RollHistoryType
     {

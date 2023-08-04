@@ -1,4 +1,4 @@
-﻿public enum DialogCharacterState
+public enum DialogCharacterState
 {
     NoChange = 0,
     Default = 1,

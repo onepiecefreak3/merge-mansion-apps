@@ -1,6 +1,7 @@
 using Code.GameLogic.GameEvents;
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
+using System;
 
 namespace GameLogic.Config
 {
@@ -10,5 +11,14 @@ namespace GameLogic.Config
     {
         [MetaMember(1, 0)]
         private EventCurrencyId CurrencyId { get; set; }
+        public override string DisplayName { get; }
+
+        public PlayerEventCurrencyAmount()
+        {
+        }
+
+        public PlayerEventCurrencyAmount(EventCurrencyId currencyId)
+        {
+        }
     }
 }

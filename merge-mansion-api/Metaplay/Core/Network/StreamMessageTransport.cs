@@ -568,8 +568,8 @@ namespace Metaplay.Core.Network
 
                 if (_receivedServerHello)
                 {
-                    if (msg != null && msg is Handshake.LoginResponse loginRes)
-                        _enableCompression = loginRes.Options.EnableWireCompression;
+                    if (msg != null && msg is Handshake.ClientHelloAccepted cha)
+                        _enableCompression = cha.ServerOptions.EnableWireCompression;
 
                     InvokeOnReceive(msg);
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Metaplay.Core.Model
 {
@@ -6,8 +6,9 @@ namespace Metaplay.Core.Model
     public sealed class MetaSerializableAttribute : Attribute
     {
         public readonly MetaSerializableFlags Flags; // 0x10
-
-        public MetaSerializableAttribute() { }
+        public MetaSerializableAttribute()
+        {
+        }
 
         public MetaSerializableAttribute(MetaSerializableFlags flags)
         {
