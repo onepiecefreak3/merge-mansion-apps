@@ -48,21 +48,6 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(13, 0)]
         public int PremiumIAPOfferMinLevel { get; set; }
 
-        [MetaMember(14, 0)]
-        public ConfigPrefabId HudButtonId { get; set; }
-
-        [MetaMember(15, 0)]
-        public ConfigPrefabId StartPopupId { get; set; }
-
-        [MetaMember(16, 0)]
-        public ConfigPrefabId InfoPopupId { get; set; }
-
-        [MetaMember(17, 0)]
-        public ConfigPrefabId ProgressionPopupId { get; set; }
-
-        [MetaMember(18, 0)]
-        public ConfigPrefabId EndPopupId { get; set; }
-
         [MetaMember(19, 0)]
         public StoryDefinitionId IntroDialogue { get; set; }
         public ProgressionEventId ConfigKey => ProgressionEventId;
