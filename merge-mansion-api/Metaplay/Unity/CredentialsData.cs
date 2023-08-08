@@ -12,5 +12,8 @@ namespace Metaplay.Unity
         public string AuthToken; // 0x18
         [MetaMember(3, 0)]
         public EntityId PlayerId; // 0x20
+        public CredentialsData()
+        {
+        }
     }
 }

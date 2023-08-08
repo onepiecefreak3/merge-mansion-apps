@@ -18,7 +18,6 @@ namespace GameLogic.Config
 
         [MetaMember(4, (MetaMemberFlags)0)]
         private int[] ForcedPromptLevels { get; set; }
-
         public LevelUpTutorialConfigId ConfigKey => ConfigId;
 
         public LevelUpTutorialConfig()

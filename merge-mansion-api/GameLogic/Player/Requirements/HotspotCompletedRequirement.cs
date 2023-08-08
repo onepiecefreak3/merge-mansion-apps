@@ -17,7 +17,7 @@ namespace GameLogic.Player.Requirements
         public HotspotCompletedRequirement(HotspotDefinition hotspot)
         {
         }
-        
+
         public MetaRef<HotspotDefinition> GetRequiredHotspot()
         {
             return hotspot;

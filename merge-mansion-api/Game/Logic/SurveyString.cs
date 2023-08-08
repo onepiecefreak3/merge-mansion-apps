@@ -1,4 +1,4 @@
-﻿using Metaplay.Core.Model;
+using Metaplay.Core.Model;
 
 namespace Game.Logic
 {

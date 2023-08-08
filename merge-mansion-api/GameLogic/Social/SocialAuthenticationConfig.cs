@@ -17,7 +17,6 @@ namespace GameLogic.Social
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public SocialAuthRewardId SocialAuthRewardId { get; set; }
-
         public AuthenticationPlatform ConfigKey => AuthenticationPlatformId;
 
         public SocialAuthenticationConfig()

@@ -38,7 +38,6 @@ namespace Metaplay.Core
             if (_key is IStringId sid)
                 if (sid.Value == null)
                     return this;
-
             return new MetaRef<TItem>(_key, (TItem)resolver.ResolveReference(typeof(TItem), _key));
         }
 

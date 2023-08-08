@@ -57,7 +57,6 @@ namespace GameLogic.Player.Items
         private TimeContainerFeatures _TimeContainer;
         [MetaMember(34, (MetaMemberFlags)0)]
         private LeaderboardFeatures _LeaderboardFeatures;
-
         [MetaMember(1)]
         public int ConfigKey { get; set; } // 0x10
 
@@ -91,19 +90,44 @@ namespace GameLogic.Player.Items
         [MetaMember(11)]
         public int ExperienceValue { get; set; }
 
-        [IgnoreDataMember] public MergeFeatures MergeFeatures => _MergeFeatures;
-        [IgnoreDataMember] public ActivationFeatures ActivationFeatures => _ActivationFeatures;
-        [IgnoreDataMember] public SpawnFeatures SpawnFeatures => _SpawnFeatures;
-        [IgnoreDataMember] public DecayFeatures DecayFeatures => _DecayFeatures;
-        [IgnoreDataMember] public ChestFeatures ChestFeatures => _ChestFeatures;
-        [IgnoreDataMember] public CollectableFeatures CollectableFeatures => _CollectableFeatures;
-        [IgnoreDataMember] public BoosterFeatures BoosterFeatures => _BoosterFeatures;
-        [IgnoreDataMember] public BubbleFeatures BubbleFeatures => _BubbleFeatures;
-        [IgnoreDataMember] public SinkFeatures SinkFeatures => _SinkFeatures;
-        [IgnoreDataMember] public ConsumableFeatures ConsumableFeatures => _ConsumableFeatures;
-        [IgnoreDataMember] public PortalFeatures PortalFeatures => _PortalFeatures;
-        [IgnoreDataMember] public ChargesFeatures ChargesFeatures => _ChargesFeatures;
-        [IgnoreDataMember] public TimeContainerFeatures TimeContainer => _TimeContainer;
+        [IgnoreDataMember]
+        public MergeFeatures MergeFeatures => _MergeFeatures;
+
+        [IgnoreDataMember]
+        public ActivationFeatures ActivationFeatures => _ActivationFeatures;
+
+        [IgnoreDataMember]
+        public SpawnFeatures SpawnFeatures => _SpawnFeatures;
+
+        [IgnoreDataMember]
+        public DecayFeatures DecayFeatures => _DecayFeatures;
+
+        [IgnoreDataMember]
+        public ChestFeatures ChestFeatures => _ChestFeatures;
+
+        [IgnoreDataMember]
+        public CollectableFeatures CollectableFeatures => _CollectableFeatures;
+
+        [IgnoreDataMember]
+        public BoosterFeatures BoosterFeatures => _BoosterFeatures;
+
+        [IgnoreDataMember]
+        public BubbleFeatures BubbleFeatures => _BubbleFeatures;
+
+        [IgnoreDataMember]
+        public SinkFeatures SinkFeatures => _SinkFeatures;
+
+        [IgnoreDataMember]
+        public ConsumableFeatures ConsumableFeatures => _ConsumableFeatures;
+
+        [IgnoreDataMember]
+        public PortalFeatures PortalFeatures => _PortalFeatures;
+
+        [IgnoreDataMember]
+        public ChargesFeatures ChargesFeatures => _ChargesFeatures;
+
+        [IgnoreDataMember]
+        public TimeContainerFeatures TimeContainer => _TimeContainer;
 
         [MetaMember(25)]
         public List<string> Tags { get; set; }
@@ -138,12 +162,14 @@ namespace GameLogic.Player.Items
         [MetaMember(36, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
 
-        [IgnoreDataMember] public LeaderboardFeatures LeaderboardFeatures => _LeaderboardFeatures;
-        [IgnoreDataMember] public MergeChainDefinition MergeChain => MergeChainRef.Ref;
+        [IgnoreDataMember]
+        public LeaderboardFeatures LeaderboardFeatures => _LeaderboardFeatures;
+
+        [IgnoreDataMember]
+        public MergeChainDefinition MergeChain => MergeChainRef.Ref;
 
         [IgnoreDataMember]
         public IReadOnlyList<(ItemDefinition, F32)> ProducingParents { get; set; }
-
         public IEnumerable<IDirectorAction> OnDiscovered => OnDiscoveredActions;
         public bool IsMaxLevel => MergeChain?.Last() == ConfigKey;
 
@@ -156,7 +182,6 @@ namespace GameLogic.Player.Items
         }
 
         public Currencies SellCurrency() => Currencies.Coins;
-
         public int GetItemSellPrice(SharedGlobals sharedGlobals)
         {
             var sellIndex = Math.Clamp(LevelNumber - 1, 0, sharedGlobals.ItemSellPrices.Count - 1);
@@ -173,19 +198,16 @@ namespace GameLogic.Player.Items
         {
             if (currency == Currencies.Diamonds)
                 return AnchorPriceGems;
-
             if (currency == Currencies.Coins)
                 return AnchorPriceCoins;
-
             throw new InvalidOperationException($"Anchor price is not defined for [currency={currency}]");
         }
-        
+
         public F64 BubbleDiscount()
         {
             var price = AnchorPrice(BubbleFeatures.OpenCost.Item1);
             if (price > 0)
                 return (price - BubbleFeatures.OpenCost.Item2) / price;
-
             return F64.Zero;
         }
     }

@@ -28,7 +28,6 @@ namespace GameLogic.GameFeatures
 
         [MetaMember(8, (MetaMemberFlags)0)]
         public IScheduledAction PersistedAction { get; set; }
-
         public GameFeatureId ConfigKey => GameFeatureId;
 
         public GameFeatureSetting()

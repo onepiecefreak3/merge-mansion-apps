@@ -9,7 +9,6 @@ namespace GameLogic.Config.Costs
     {
         [MetaMember(2, 0)]
         public Currencies Type { get; set; }
-
         public override Currencies Currency => Type;
 
         private GameCurrencyCost()

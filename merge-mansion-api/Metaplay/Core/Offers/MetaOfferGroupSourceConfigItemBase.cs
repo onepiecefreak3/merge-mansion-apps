@@ -28,6 +28,5 @@ namespace Metaplay.Core.Offers
 
     public abstract class MetaOfferGroupSourceConfigItemBase<TMetaOfferGroupInfo> : MetaOfferGroupSourceConfigItemBase, IGameConfigSourceItem<TMetaOfferGroupInfo>, IMetaIntegrationConstructible<MetaOfferGroupSourceConfigItemBase<TMetaOfferGroupInfo>>, IMetaIntegration<MetaOfferGroupSourceConfigItemBase<TMetaOfferGroupInfo>>, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
-
     }
 }

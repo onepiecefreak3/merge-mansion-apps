@@ -17,7 +17,6 @@ namespace GameLogic.Dialogue
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<DirectorGroupId> DirectorGroupIdsToForceDiscover { get; set; }
-
         public DialogCharacterType ConfigKey => DialogCharacterType;
 
         public DialogueCharacterInfo()

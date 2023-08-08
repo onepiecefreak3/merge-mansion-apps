@@ -6,11 +6,20 @@ using Metaplay.Core.Model;
 namespace GameLogic.Codex
 {
     [MetaSerializable]
-    public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>
+    public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>, IGameConfigData
     {
         [MetaMember(1, 0)]
         public CodexCategoryId ConfigKey { get; set; }
+
         [MetaMember(2, 0)]
         public MetaRef<ItemDefinition> IconItem { get; set; }
+
+        public CodexCategoryInfo()
+        {
+        }
+
+        public CodexCategoryInfo(CodexCategoryId configKey, MetaRef<ItemDefinition> iconItem)
+        {
+        }
     }
 }

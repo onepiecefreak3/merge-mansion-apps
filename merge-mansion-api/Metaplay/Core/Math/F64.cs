@@ -49,9 +49,9 @@ namespace Metaplay.Core.Math
         public static F64 operator /(F64 v1, F64 v2) => new F64(Fixed64.DivPrecise(v1.Raw, v2.Raw));
         public static F64 operator /(F64 v1, int v2) => new F64(v1.Raw / v2);
         public static F64 operator /(int v1, F64 v2) => new F64(Fixed64.DivPrecise((long)v1 << 32, v2.Raw));
-        public static bool operator >(F64 v1, F64 v2) => v1.Raw > v2.Raw;
-        public static bool operator >(int v1, F64 v2) => (long)v1 << 32 > v2.Raw;
-        public static bool operator >(F64 v1, int v2) => v1.Raw > (long)v2 << 32;
+        public static bool operator>(F64 v1, F64 v2) => v1.Raw > v2.Raw;
+        public static bool operator>(int v1, F64 v2) => (long)v1 << 32 > v2.Raw;
+        public static bool operator>(F64 v1, int v2) => v1.Raw > (long)v2 << 32;
         public static bool operator <(F64 v1, F64 v2) => v1.Raw < v2.Raw;
         public static bool operator <(int v1, F64 v2) => (long)v1 << 32 < v2.Raw;
         public static bool operator <(F64 v1, int v2) => v1.Raw < (long)v2 << 32;

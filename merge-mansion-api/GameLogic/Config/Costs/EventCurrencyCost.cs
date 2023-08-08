@@ -10,7 +10,6 @@ namespace GameLogic.Config.Costs
     {
         [MetaMember(2, 0)]
         public EventCurrencyId EventCurrencyId { get; set; }
-
         public override Currencies Currency => Currencies.EventCurrency;
 
         private EventCurrencyCost()

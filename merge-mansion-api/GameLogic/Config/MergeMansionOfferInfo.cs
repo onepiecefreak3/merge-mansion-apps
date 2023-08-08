@@ -53,9 +53,8 @@ namespace GameLogic.Config
         [MetaMember(13, 0)]
         public string RightCharacterId { get; set; }
 
-        [IgnoreDataMember] 
+        [IgnoreDataMember]
         public CurrencyCost Cost => OfferCost as CurrencyCost;
-
         public string TitleLocalizationId => TitleLocId;
         public string SaleBadgeLocalizationId => SaleBadgeLocId;
         public string OfferPaneId => OfferPanePrefabId;

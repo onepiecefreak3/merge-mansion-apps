@@ -1,4 +1,4 @@
-﻿using Metaplay.Core.Math;
+using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 
 namespace GameLogic.Random.ControlledRandom
@@ -7,8 +7,10 @@ namespace GameLogic.Random.ControlledRandom
     {
         [MetaMember(1, 0)]
         public F32 NextEventTime { get; set; }
+
         [MetaMember(2, 0)]
         public F32 AverageTimeBetweenEvents { get; set; }
+
         [MetaMember(3, 0)]
         public int OriginalIndex { get; set; }
 
@@ -28,7 +30,6 @@ namespace GameLogic.Random.ControlledRandom
         public class CompareByNextTime
         {
             private readonly F32 referencePoint; // 0x10
-
             public CompareByNextTime(F32 referencePoint)
             {
                 this.referencePoint = referencePoint;

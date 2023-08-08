@@ -75,9 +75,9 @@ namespace Metaplay.Core.Config
         public Dictionary<TKey, TInfo>.ValueCollection Values { get; }
         public IReadOnlyDictionary<TKey, TInfo> Infos { get; }
 
-        IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey,TInfo>.Keys { get; }
+        IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Keys { get; }
 
-        IEnumerable<TInfo> Metaplay.Core.Config.IGameConfigLibrary<TKey,TInfo>.Values { get; }
+        IEnumerable<TInfo> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Values { get; }
         public TInfo Item { get; }
 
         GameConfigLibrary()

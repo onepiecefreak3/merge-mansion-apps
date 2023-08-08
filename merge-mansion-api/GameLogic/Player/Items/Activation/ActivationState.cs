@@ -21,7 +21,6 @@ namespace GameLogic.Player.Items.Activation
         private int tempFillForActivationStorage;
         [MetaMember(8, (MetaMemberFlags)0)]
         private MetaTime lastTimeAddTime;
-
         // Properties
         [MetaMember(7, 0)]
         public bool Paused { get; set; } // 0x3C

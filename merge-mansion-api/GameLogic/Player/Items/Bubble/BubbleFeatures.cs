@@ -10,7 +10,6 @@ namespace GameLogic.Player.Items.Bubble
     {
         private static MetaDuration defaultBubbleDuration = MetaDuration.FromMinutes(1);
         public static BubbleFeatures Placeholder = new(MetaDuration.FromMinutes(1), Currencies.Diamonds, 1000, null, 0);
-
         [MetaMember(1, 0)]
         public MetaDuration BubbleDuration { get; set; }
 
@@ -26,8 +25,11 @@ namespace GameLogic.Player.Items.Bubble
         [MetaMember(5, 0)]
         public int SpawnOdds { get; set; }
 
-        [IgnoreDataMember] public ItemDefinition Replacement => ReplacementItem?.Deref();
-        [IgnoreDataMember] public (Currencies, int) OpenCost => (OpenCurrency, OpenQuantity);
+        [IgnoreDataMember]
+        public ItemDefinition Replacement => ReplacementItem?.Deref();
+
+        [IgnoreDataMember]
+        public (Currencies, int) OpenCost => (OpenCurrency, OpenQuantity);
 
         private BubbleFeatures()
         {

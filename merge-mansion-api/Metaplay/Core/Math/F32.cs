@@ -20,7 +20,7 @@ namespace Metaplay.Core.Math
 
         public static F32 FromFloat(float v)
         {
-            return new F32((int)(v * 65536));   // Shift left by 16
+            return new F32((int)(v * 65536)); // Shift left by 16
         }
 
         public static F32 Ratio(int a, int b)

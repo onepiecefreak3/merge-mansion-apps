@@ -14,8 +14,7 @@ namespace GameLogic.Player.Leaderboard
         [MetaMember(2, (MetaMemberFlags)0)]
         public int LeaderboardPlacementIndex { get; set; }
 
-        public PlayerDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex) :
-            base(divisionId, divisionIndex, rewards)
+        public PlayerDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex) : base(divisionId, divisionIndex, rewards)
         {
         }
 

@@ -30,6 +30,14 @@ namespace GameLogic.Merge
 
             [MetaMember(2)]
             public int Second { get; set; }
+
+            public ItemPair()
+            {
+            }
+
+            public ItemPair(int first, int second)
+            {
+            }
         }
 
         public MergeCollection()

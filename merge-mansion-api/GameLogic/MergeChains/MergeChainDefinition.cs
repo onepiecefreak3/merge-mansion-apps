@@ -19,7 +19,6 @@ namespace GameLogic.MergeChains
             typeof(int),
             typeof(int[])
         };
-
         [MetaMember(1, 0)]
         public MergeChainId ConfigKey { get; set; }
 
@@ -46,7 +45,6 @@ namespace GameLogic.MergeChains
 
         [MetaMember(9, 0)]
         public int? ShowSellConfirmationUntilPlayerLevel { get; set; }
-
         public int Length => PrimaryChain.Count;
         public int FallbackLength => FallbackChain?.Count ?? 0;
 

@@ -33,9 +33,6 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(6)]
         public List<EventLevelId> PremiumEventLevels { get; set; }
 
-        [MetaMember(8)]
-        public EventLevelId RecurringPremiumEventLevel { get; set; }
-
         [MetaMember(9)]
         public List<int> ChancesToSpawnEventItemPerLevel { get; set; }
 

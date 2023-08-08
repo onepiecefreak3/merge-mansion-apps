@@ -47,7 +47,6 @@ namespace Metaplay.Core.Offers
         [MetaMember(111, 0)]
         public bool IsSticky { get; set; }
         public MetaOfferId ConfigKey => OfferId;
-
         public virtual bool RequireInAppProduct => true;
 
         protected MetaOfferInfoBase()

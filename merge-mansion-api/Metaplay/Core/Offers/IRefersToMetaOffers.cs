@@ -4,6 +4,6 @@ namespace Metaplay.Core.Offers
 {
     public interface IRefersToMetaOffers
     {
-        // STUB
+    // STUB
     }
 }

@@ -38,6 +38,14 @@ namespace GameLogic.Player.Items.Bubble
 
             [MetaMember(3, 0)]
             public F32 Quotient { get; set; }
+
+            private Bracket()
+            {
+            }
+
+            public Bracket(MetaDuration? min, MetaDuration? max, F32 quotient)
+            {
+            }
         }
 
         [MetaMember(6, (MetaMemberFlags)0)]

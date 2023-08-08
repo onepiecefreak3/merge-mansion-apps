@@ -26,7 +26,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
-
         public EventOfferSetId ConfigKey => EventOfferSetId;
 
         [IgnoreDataMember]
