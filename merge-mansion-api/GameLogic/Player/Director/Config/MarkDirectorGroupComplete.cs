@@ -8,7 +8,7 @@ namespace GameLogic.Player.Director.Config
     public class MarkDirectorGroupComplete : IDirectorAction
     {
         [MetaMember(1, 0)]
-        private DCGroupId DirectorGroupId { get; set; }
+        private DirectorGroupId DirectorGroupId { get; set; }
 
         private MarkDirectorGroupComplete()
         {

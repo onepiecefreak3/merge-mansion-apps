@@ -14,6 +14,7 @@ using GameLogic.Player.Requirements;
 using GameLogic.Decorations;
 using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
+using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {

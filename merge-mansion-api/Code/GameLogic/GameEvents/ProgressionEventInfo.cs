@@ -9,6 +9,7 @@ using Metaplay.Core.Model;
 using System;
 using GameLogic.Player.Requirements;
 using System.Runtime.Serialization;
+using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {

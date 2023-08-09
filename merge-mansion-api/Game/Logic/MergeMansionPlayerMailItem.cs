@@ -4,6 +4,7 @@ using Game.Logic.Mail;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using GameLogic;
 using GameLogic.Player.Rewards;
 using Metaplay.Core;
 

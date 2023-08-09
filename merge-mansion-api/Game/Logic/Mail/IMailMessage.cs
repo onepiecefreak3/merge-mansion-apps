@@ -1,6 +1,7 @@
 using Metaplay.Core;
 using System;
 using System.Collections.Generic;
+using GameLogic;
 using GameLogic.Player.Rewards;
 
 namespace Game.Logic.Mail

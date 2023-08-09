@@ -3,6 +3,7 @@ using Metaplay.Core.Forms;
 using Metaplay.Core.InGameMail;
 using System;
 using System.Collections.Generic;
+using GameLogic;
 using Metaplay.Core.Rewards;
 using GameLogic.Player.Rewards;
 

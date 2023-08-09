@@ -9,7 +9,7 @@ using Metaplay.Core.Player;
 using Metaplay.Unity;
 using Metaplay.Unity.DefaultIntegration;
 using MetaplayIntegration;
-using MetaplayIntegration.Deployment;
+using MetaplayIntegration.Deployment;using Microsoft.CSharp.RuntimeBinder;
 using UnityEngine;
 
 public class MetaplayClient : ISessionContextProvider

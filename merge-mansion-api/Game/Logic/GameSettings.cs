@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using System;
 using System.Collections.Generic;
+using GameLogic;
 
 namespace Game.Logic
 {
