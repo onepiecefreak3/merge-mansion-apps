@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Newtonsoft.Json;
 using System;
 using GameLogic.Config.Costs;
+using GameLogic;
 
 namespace Analytics
 {

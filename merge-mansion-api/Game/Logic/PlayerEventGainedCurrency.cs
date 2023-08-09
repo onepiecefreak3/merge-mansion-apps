@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Player;
 using System;
 using GameLogic.Player;
+using GameLogic;
 
 namespace Game.Logic
 {

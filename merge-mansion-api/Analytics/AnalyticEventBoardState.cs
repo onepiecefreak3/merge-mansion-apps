@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Merge;
 using System;
 using Code.GameLogic.GameEvents;
+using GameLogic;
 using GameLogic.Player;
 
 namespace Analytics

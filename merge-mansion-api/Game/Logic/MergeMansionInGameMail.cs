@@ -4,6 +4,7 @@ using System;
 using Metaplay.Core.Forms;
 using Metaplay.Core.Localization;
 using System.Collections.Generic;
+using GameLogic;
 using GameLogic.Player.Rewards;
 using Metaplay.Core;
 

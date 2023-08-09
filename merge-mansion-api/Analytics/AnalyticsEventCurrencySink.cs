@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System;
 using System.Collections.Generic;
 using GameLogic.Player;
+using GameLogic;
 
 namespace Analytics
 {

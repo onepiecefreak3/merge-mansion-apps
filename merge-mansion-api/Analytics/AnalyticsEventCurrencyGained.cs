@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using Code.GameLogic.GameEvents;
 using GameLogic.Player;
+using GameLogic;
 
 namespace Analytics
 {

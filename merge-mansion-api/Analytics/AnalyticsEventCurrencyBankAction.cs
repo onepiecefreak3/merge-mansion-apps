@@ -7,6 +7,7 @@ using System;
 using Metaplay.Core.Math;
 using System.Collections.Generic;
 using Metaplay.Core.Player;
+using GameLogic;
 
 namespace Analytics
 {

@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System;
+using GameLogic;
 
 namespace Analytics
 {

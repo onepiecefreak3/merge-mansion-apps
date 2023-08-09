@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Metaplay.Core.Model;
 using System;
 using Code.GameLogic.GameEvents;
+using GameLogic;
 
 namespace Analytics
 {

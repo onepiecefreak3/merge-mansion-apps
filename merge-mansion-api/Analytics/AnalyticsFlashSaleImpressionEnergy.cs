@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using GameLogic.Player;
 using System;
 using GameLogic.Config.Costs;
+using GameLogic;
 
 namespace Analytics
 {

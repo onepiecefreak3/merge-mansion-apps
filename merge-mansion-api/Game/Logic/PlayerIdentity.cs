@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using System;
 using Metaplay.Core;
 using System.Collections.Generic;
+using GameLogic;
 using Newtonsoft.Json;
 
 namespace Game.Logic

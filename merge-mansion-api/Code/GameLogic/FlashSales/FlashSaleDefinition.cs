@@ -7,6 +7,7 @@ using System;
 using GameLogic.Config.Costs;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using GameLogic;
 
 namespace Code.GameLogic.FlashSales
 {

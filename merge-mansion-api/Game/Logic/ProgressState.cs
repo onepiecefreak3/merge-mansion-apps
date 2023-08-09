@@ -11,6 +11,7 @@ using GameLogic.Area;
 using GameLogic.Player.Items.Merging;
 using Code.GameLogic.GameEvents;
 using System.Runtime.Serialization;
+using GameLogic;
 
 namespace Game.Logic
 {

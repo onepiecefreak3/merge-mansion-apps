@@ -1,3 +1,4 @@
+using GameLogic;
 using Metaplay.Core;
 
 namespace Game.Logic

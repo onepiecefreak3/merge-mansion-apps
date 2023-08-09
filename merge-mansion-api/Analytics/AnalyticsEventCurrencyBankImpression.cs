@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using GameLogic.Banks;
 using System;
+using GameLogic;
 
 namespace Analytics
 {

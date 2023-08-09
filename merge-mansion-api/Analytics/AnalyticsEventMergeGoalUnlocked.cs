@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Metaplay.Core.Model;
 using System.ComponentModel;
 using System;
+using GameLogic;
 using GameLogic.Player;
 using GameLogic.Hotspots;
 

@@ -4,6 +4,7 @@ using Metaplay.Core.Model;
 using System.ComponentModel;
 using System;
 using Code.GameLogic.GameEvents;
+using GameLogic;
 
 namespace Analytics
 {

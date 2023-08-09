@@ -3,6 +3,7 @@ using System;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using Code.GameLogic.GameEvents;
+using GameLogic;
 
 namespace Analytics
 {

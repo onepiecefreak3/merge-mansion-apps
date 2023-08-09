@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {
