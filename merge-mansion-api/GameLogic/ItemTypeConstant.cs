@@ -1,4 +1,6 @@
-﻿namespace GameLogic
+using GameLogic.Config;
+
+namespace GameLogic
 {
     public enum ItemTypeConstant
     {
@@ -18,39 +20,39 @@
         Drawer_05 = 64,
         Drawer_06 = 65,
         Drawer_07 = 66,
-
+        [IgnoreMissingItemDefinition]
         Drawer_08 = 67,
-
+        [IgnoreMissingItemDefinition]
         Drawer_09 = 68,
-
+        [IgnoreMissingItemDefinition]
         Drawer_10 = 69,
-
+        [IgnoreMissingItemDefinition]
         Drawer_11 = 70,
-
+        [IgnoreMissingItemDefinition]
         Drawer_12 = 71,
-
+        [IgnoreMissingItemDefinition]
         Drawer_13 = 72,
-
+        [IgnoreMissingItemDefinition]
         Drawer_14 = 73,
-
+        [IgnoreMissingItemDefinition]
         Drawer_15 = 74,
-
+        [IgnoreMissingItemDefinition]
         Drawer_16 = 75,
-
+        [IgnoreMissingItemDefinition]
         Drawer_17 = 76,
-
+        [IgnoreMissingItemDefinition]
         Drawer_18 = 77,
-
+        [IgnoreMissingItemDefinition]
         Drawer_19 = 78,
-
+        [IgnoreMissingItemDefinition]
         Drawer_20 = 79,
-
+        [IgnoreMissingItemDefinition]
         Drawer_21 = 80,
-
+        [IgnoreMissingItemDefinition]
         Drawer_22 = 81,
-
+        [IgnoreMissingItemDefinition]
         Drawer_23 = 82,
-
+        [IgnoreMissingItemDefinition]
         Drawer_24 = 83,
         Flower_01 = 90,
         Flower_02 = 91,
@@ -68,37 +70,37 @@
         Flowerpot_08 = 127,
         Flowerpot_09 = 128,
         Flowerpot_10 = 129,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_11 = 130,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_12 = 131,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_13 = 132,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_14 = 133,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_15 = 134,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_16 = 135,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_17 = 136,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_18 = 137,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_19 = 138,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_20 = 139,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_21 = 140,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_22 = 141,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_23 = 142,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_24 = 143,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_25 = 144,
-
+        [IgnoreMissingItemDefinition]
         Flowerpot_26 = 145,
         GardenGloves_01 = 150,
         GardenGloves_02 = 151,
@@ -114,35 +116,35 @@
         GardenToolBarrel_09 = 188,
         GardenToolBarrel_10 = 189,
         GardenToolBarrel_11 = 190,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_12 = 191,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_13 = 192,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_14 = 193,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_15 = 194,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_16 = 195,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_17 = 196,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_18 = 197,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_19 = 198,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_20 = 199,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_21 = 200,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_22 = 201,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_23 = 202,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_24 = 203,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_25 = 204,
-
+        [IgnoreMissingItemDefinition]
         GardenToolBarrel_26 = 205,
         GardenTools_01 = 210,
         GardenTools_02 = 211,
@@ -225,35 +227,35 @@
         Toolbox_07 = 546,
         Toolbox_08 = 547,
         Toolbox_09 = 548,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_10 = 549,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_11 = 550,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_12 = 551,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_13 = 552,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_14 = 553,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_15 = 554,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_16 = 555,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_17 = 556,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_18 = 557,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_19 = 558,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_20 = 559,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_21 = 560,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_22 = 561,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_23 = 562,
-
+        [IgnoreMissingItemDefinition]
         Toolbox_24 = 563,
         ToyCar_01 = 570,
         ToyCar_02 = 571,
@@ -265,35 +267,35 @@
         ToyCar_08 = 577,
         ToyCar_09 = 578,
         ToyCar_10 = 579,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_11 = 580,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_12 = 581,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_13 = 582,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_14 = 583,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_15 = 584,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_16 = 585,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_17 = 586,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_18 = 587,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_19 = 588,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_20 = 589,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_21 = 590,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_22 = 591,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_23 = 592,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_24 = 593,
-
+        [IgnoreMissingItemDefinition]
         ToyCar_25 = 594,
         Vase_01 = 600,
         Vase_02 = 601,
@@ -438,31 +440,31 @@
         BroomCabinet_09 = 1178,
         BroomCabinet_10 = 1179,
         BroomCabinet_11 = 1180,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_12 = 1181,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_13 = 1182,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_14 = 1183,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_15 = 1184,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_16 = 1185,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_17 = 1186,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_18 = 1187,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_19 = 1188,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_20 = 1189,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_21 = 1190,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_22 = 1191,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_23 = 1192,
-
+        [IgnoreMissingItemDefinition]
         BroomCabinet_24 = 1193,
         PaintCan_01 = 1200,
         PaintCan_02 = 1201,
@@ -499,37 +501,37 @@
         PlantedBush_07 = 1356,
         PlantedBush_08 = 1357,
         PlantedBush_09 = 1358,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_10 = 1359,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_11 = 1360,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_12 = 1361,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_13 = 1362,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_14 = 1363,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_15 = 1364,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_16 = 1365,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_17 = 1366,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_18 = 1367,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_19 = 1368,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_20 = 1369,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_21 = 1370,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_22 = 1371,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_23 = 1372,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_24 = 1373,
-
+        [IgnoreMissingItemDefinition]
         PlantedBush_25 = 1374,
         SimpleBrownBox_01 = 1380,
         ClothCoveredBrownBox_01 = 1410,
@@ -2203,31 +2205,31 @@
         Fabric_04 = 14150,
         Fabric_05 = 14151,
         Fabric_06 = 14152,
-
+        [IgnoreMissingItemDefinition]
         Vase_12 = 14153,
-
+        [IgnoreMissingItemDefinition]
         Vase_13 = 14154,
-
+        [IgnoreMissingItemDefinition]
         Vase_14 = 14155,
-
+        [IgnoreMissingItemDefinition]
         Vase_15 = 14156,
-
+        [IgnoreMissingItemDefinition]
         Vase_16 = 14157,
-
+        [IgnoreMissingItemDefinition]
         Vase_17 = 14158,
-
+        [IgnoreMissingItemDefinition]
         Vase_18 = 14159,
-
+        [IgnoreMissingItemDefinition]
         Vase_19 = 14160,
-
+        [IgnoreMissingItemDefinition]
         Vase_20 = 14161,
-
+        [IgnoreMissingItemDefinition]
         Vase_21 = 14162,
-
+        [IgnoreMissingItemDefinition]
         Vase_22 = 14163,
-
+        [IgnoreMissingItemDefinition]
         Vase_23 = 14164,
-
+        [IgnoreMissingItemDefinition]
         Vase_24 = 14165,
         Nails_01 = 14166,
         Nails_02 = 14167,
@@ -2242,13 +2244,13 @@
         MansionKey_01 = 14176,
         CorridorKey_01 = 14177,
         StudyKey_01 = 14178,
-
+        [IgnoreMissingItemDefinition]
         DiningKey_01 = 14179,
-
+        [IgnoreMissingItemDefinition]
         BathroomKey_01 = 14180,
-
+        [IgnoreMissingItemDefinition]
         GalleryKey_01 = 14181,
-
+        [IgnoreMissingItemDefinition]
         SecretRoomLockpick_01 = 14182,
         MaintenanceToolsLightOn_01 = 14183,
         MaintenanceToolsDrillOn_01 = 14184,
@@ -2382,7 +2384,7 @@
         LBEMay2023EntranceEnter_01 = 14312,
         LBEMay2023EntranceExit_01 = 14313,
         LBERewardBox_01 = 14314,
-
+        [IgnoreMissingItemDefinition]
         LBEAlarmClock_01 = 14315,
         SE_HopeberryFestival2023_BlueberrySmoothie_05 = 14316,
         SE_HopeberryFestival2023_HopeberrySmoothie_05 = 14317,
@@ -2547,7 +2549,7 @@
         LBE_May2023_Cakes_09 = 300630,
         LBE_May2023_Cakes_10 = 300631,
         LBE_May2023_Rooster_01 = 300632,
-
+        [IgnoreMissingItemDefinition]
         LBE_May2023_RoosterActivated_01 = 300633,
         LDE_PicnicConfusion2023_PicnicBasket_01 = 300634,
         LDE_PicnicConfusion2023_PicnicBasket_02 = 300635,
@@ -2961,6 +2963,6 @@
         ArtifactFlowerpot_23 = 251658454,
         ArtifactFlowerpot_24 = 251658455,
         ArtifactFlowerpot_25 = 251658456,
-        ArtifactFlowerpot_26 = 251658457,
+        ArtifactFlowerpot_26 = 251658457
     }
 }

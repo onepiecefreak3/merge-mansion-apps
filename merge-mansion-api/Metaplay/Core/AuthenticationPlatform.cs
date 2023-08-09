@@ -12,6 +12,8 @@ namespace Metaplay.Core
         SignInWithAppleTransfer = 7,
         GameCenter2020 = 8,
         GameCenter2020UAGT = 9,
-        SupercellId = 10
+        SupercellId = 10,
+        Ethereum = 11,
+        ImmutableX = 12
     }
 }

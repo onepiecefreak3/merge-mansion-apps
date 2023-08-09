@@ -6,6 +6,7 @@ namespace GameLogic.Hotspots
         MergeGoal = 1,
         MergeGrid = 2,
         UnlockArea = 3,
-        EndOfContent = 4
+        EndOfContent = 4,
+        Event = 5
     }
 }

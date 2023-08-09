@@ -57,6 +57,16 @@ namespace GameLogic.IAP
         ShopPackOffer_26 = 52,
         GameEventExtension_01 = 53,
         FlashSale = 54,
-        ProgressionEventPremium = 55
+        ProgressionEventPremium = 55,
+        SeasonPassPremium = 56,
+        CurrencyBank_01 = 57,
+        CurrencyBank_02 = 58,
+        CurrencyBank_03 = 59,
+        currencybank_299 = 60,
+        currencybank_499 = 61,
+        currencybank_999 = 62,
+        currencybank_1999 = 63,
+        currencybank_2399 = 64,
+        currencybank_2999 = 65
     }
 }
