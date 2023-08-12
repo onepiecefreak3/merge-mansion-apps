@@ -36,5 +36,19 @@ namespace Analytics
         public AnalyticsEventMergeGoalsCompleted(PlayerModel player, HotspotId hotspotId, string areaName, int completedHotSpots)
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("MapSpot where the hotspot is located")]
+        [JsonProperty("map_spot_id")]
+        public string MapSpot { get; set; }
+
+        [Description("Task Group of the hotspot task (may be empty)")]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("task_group_id")]
+        public string TaskGroup { get; set; }
+
+        public AnalyticsEventMergeGoalsCompleted(PlayerModel player, HotspotId hotspotId, string areaName, int completedHotSpots, string mapSpot, string taskGroup)
+        {
+        }
     }
 }

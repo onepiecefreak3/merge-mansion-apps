@@ -107,5 +107,20 @@ namespace GameLogic.Config
         public SharedGlobals()
         {
         }
+
+        [MetaMember(34, (MetaMemberFlags)0)]
+        public long MergeHintWaitTimeMilliseconds { get; set; }
+
+        [MetaMember(35, (MetaMemberFlags)0)]
+        public List<int> DailyTasksRefreshPricesInDiamonds { get; set; }
+
+        [MetaMember(36, (MetaMemberFlags)0)]
+        public int DailyTasksRefreshTasksCount { get; set; }
+
+        [MetaMember(37, (MetaMemberFlags)0)]
+        public bool DailyTasksRefreshAlsoOnFinalReward { get; set; }
+
+        [MetaMember(38, (MetaMemberFlags)0)]
+        public int ItemsNeededCountDisplayMax { get; set; }
     }
 }

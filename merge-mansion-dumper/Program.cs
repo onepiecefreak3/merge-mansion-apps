@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
 using Game.Logic;
+using GameLogic;
+using GameLogic.Area;
 using merge_mansion_dumper.Dumper;
 using Metaplay.Core;
+using Metaplay.Generated;
 using Metaplay.Unity;
 using Metaplay.Unity.ConnectionStates;
 using UnityEngine;
@@ -70,6 +73,8 @@ namespace merge_mansion_dumper
         private static bool SetupSystem()
         {
             Console.WriteLine("Setup game session...");
+
+            TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
 
             try
             {

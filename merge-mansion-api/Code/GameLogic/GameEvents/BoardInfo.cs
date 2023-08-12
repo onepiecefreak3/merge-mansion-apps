@@ -8,6 +8,7 @@ using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using Merge;
 using System;
+using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -57,6 +58,13 @@ namespace Code.GameLogic.GameEvents
         }
 
         public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns)
+        {
+        }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public EnergyType EnergyType { get; set; }
+
+        public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string energyType)
         {
         }
     }

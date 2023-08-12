@@ -18,7 +18,6 @@ namespace GameLogic
         ItemCollected = 9,
         ItemSold = 10,
         HotspotCompleted = 11,
-        Questionnaire12Traits = 12,
         SocialLoginReward = 13,
         SocialMediaReward = 14,
         IAPShopOfferPurchase = 15,
@@ -42,6 +41,9 @@ namespace GameLogic
         FlashSalePurchase = 33,
         BotDailyGain = 34,
         StoryEvent = 35,
-        EventExtended = 36
+        EventExtended = 36,
+        ThirdPartySurveyReward = 12,
+        WorldRecordWeight = 37,
+        ResetBetweenEvents = 38
     }
 }

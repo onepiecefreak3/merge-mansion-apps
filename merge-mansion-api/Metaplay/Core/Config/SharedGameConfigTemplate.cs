@@ -45,9 +45,7 @@ namespace Metaplay.Core.Config
         IGameConfigLibrary<MetaOfferId, MetaOfferInfoBase> Metaplay.Core.Config.ISharedGameConfig.MetaOffersTiered { get; }
 
         IGameConfigLibrary<MetaOfferGroupId, MetaOfferGroupInfoBase> Metaplay.Core.Config.ISharedGameConfig.MetaOfferGroups { get; }
-
         public Dictionary<OfferPlacementId, List<MetaOfferGroupInfoBase>> MetaOfferGroupsPerPlacementInMostImportantFirstOrder { get; set; }
-
         public Dictionary<MetaOfferId, List<MetaOfferGroupInfoBase>> MetaOfferContainingGroups { get; set; }
 
         public SharedGameConfigTemplate()

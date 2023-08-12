@@ -23,6 +23,8 @@ using GameLogic.Player.Items.Leaderboard;
 using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
 using GameLogic.Config;
+using GameLogic.Player.Items.Fishing;
+using GameLogic.Player.Items.Sinkable;
 
 namespace GameLogic.Player.Items
 {
@@ -209,6 +211,35 @@ namespace GameLogic.Player.Items
             if (price > 0)
                 return (price - BubbleFeatures.OpenCost.Item2) / price;
             return F64.Zero;
+        }
+
+        [MetaMember(37, (MetaMemberFlags)0)]
+        private FishingRodFeatures _FishingRodFeatures;
+        [MetaMember(38, (MetaMemberFlags)0)]
+        private WeightFeatures _WeightFeatures;
+        [MetaMember(39, (MetaMemberFlags)0)]
+        private CameraFeatures _CameraFeatures;
+        [MetaMember(40, (MetaMemberFlags)0)]
+        private SinkableFeatures _SinkableFeatures;
+        [MetaMember(41, (MetaMemberFlags)0)]
+        private FramesFeatures _FramesFeatures;
+        [IgnoreDataMember]
+        public FishingRodFeatures FishingRodFeatures { get; }
+
+        [IgnoreDataMember]
+        public WeightFeatures WeightFeatures { get; }
+
+        [IgnoreDataMember]
+        public CameraFeatures CameraFeatures { get; }
+
+        [IgnoreDataMember]
+        public SinkableFeatures SinkableFeatures { get; }
+
+        [IgnoreDataMember]
+        public FramesFeatures FramesFeatures { get; }
+
+        public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards)
+        {
         }
     }
 }

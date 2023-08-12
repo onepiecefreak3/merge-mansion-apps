@@ -82,5 +82,10 @@ namespace GameLogic.Player.DailyTasks
         public DailyTaskStatus()
         {
         }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public int RefreshPurchasesCount { get; set; }
+        public bool AllTasksComplete { get; }
     }
 }

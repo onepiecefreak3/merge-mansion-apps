@@ -135,9 +135,6 @@ namespace GameLogic.Player
         [MetaMember(207, (MetaMemberFlags)0)]
         private List<ScriptedEvent> RegisteredScriptedEvents { get; set; }
 
-        [MetaMember(209, (MetaMemberFlags)0)]
-        public Dictionary<int, Traits12SurveyStatus> Completed12TraitsSurveys { get; set; }
-
         [MetaMember(210, (MetaMemberFlags)0)]
         public PlayerGarageCleanupEventsModel GarageCleanupEvents { get; set; }
 
@@ -238,5 +235,8 @@ namespace GameLogic.Player
         public PlayerModel()
         {
         }
+
+        [MetaMember(209, (MetaMemberFlags)0)]
+        public Dictionary<int, ThirdPartySurveyStatus> CompletedThirdPartySurveys { get; set; }
     }
 }

@@ -13,7 +13,7 @@ namespace GameLogic
 
         [MetaMember(2, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
-        public ShopItemId ConfigKey { get; }
+        public ShopItemId ConfigKey => ItemId;
 
         public DynamicPurchaseDefinition()
         {

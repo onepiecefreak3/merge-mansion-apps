@@ -11,6 +11,8 @@ namespace GameLogic.Config.Map.Characters
         Winston = 6,
         Jackie = 7,
         Holden = 8,
-        Heikki = 9
+        Heikki = 9,
+        Hank = 10,
+        Deb = 11
     }
 }

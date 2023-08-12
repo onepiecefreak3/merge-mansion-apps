@@ -29,5 +29,8 @@ namespace Game.Logic
         public GameSettings()
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        private bool mergeHints { get; set; }
     }
 }

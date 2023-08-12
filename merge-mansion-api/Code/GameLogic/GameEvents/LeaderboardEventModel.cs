@@ -71,5 +71,8 @@ namespace Code.GameLogic.GameEvents
         public LeaderboardEventModel(LeaderboardEventInfo info)
         {
         }
+
+        [IgnoreDataMember]
+        public bool Joined { get; }
     }
 }

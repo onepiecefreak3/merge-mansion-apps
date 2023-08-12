@@ -21,6 +21,21 @@ namespace GameLogic.Decorations
         LDEPC2023PlaceTrailerTB5 = 12,
         LDEPC2023PlaceHangingLightsTC1 = 13,
         LDEPC2023PlacePaintDecalsTC2 = 14,
-        LDEPC2023PlaceRooftopOrnamentsTC3 = 15
+        LDEPC2023PlaceRooftopOrnamentsTC3 = 15,
+        LDEGB2023PlaceBushesTA1 = 16,
+        LDEGB2023RemoveLumberLeftTA2 = 17,
+        LDEGB2023PlaceTowerTA3 = 18,
+        LDEGB2023PlaceBarTA4 = 19,
+        LDEGB2023PlacePoolLadderTA5 = 20,
+        LDEGB2023PlaceBambooFenceTA6 = 21,
+        LDEGB2023PlaceWaterSlideWaterTA7 = 22,
+        LDEGB2023PlaceWelcomeRugTB1 = 23,
+        LDEGB2023PlaceWaterSlideTopTB2 = 24,
+        LDEGB2023PlacePlantsTB3 = 25,
+        LDEGB2023PlaceCurtainsTB4 = 26,
+        LDEGB2023PlaceBalloonsTB5 = 27,
+        LDEGB2023PlaceParasolsTC1 = 28,
+        LDEGB2023PlaceLightsTC2 = 29,
+        LDEGB2023PlaceFlamingoTC3 = 30
     }
 }

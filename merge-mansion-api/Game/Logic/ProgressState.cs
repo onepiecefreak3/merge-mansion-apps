@@ -12,6 +12,7 @@ using GameLogic.Player.Items.Merging;
 using Code.GameLogic.GameEvents;
 using System.Runtime.Serialization;
 using GameLogic;
+using Metaplay.Core.Math;
 
 namespace Game.Logic
 {
@@ -186,5 +187,17 @@ namespace Game.Logic
         public ProgressState()
         {
         }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(56, (MetaMemberFlags)0)]
+        private Dictionary<int, F32> itemWeightRecords { get; set; }
+
+        [MetaMember(57, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private HashSet<int> photoTakenItems { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(58, (MetaMemberFlags)0)]
+        private Dictionary<int, int> itemCaughtCount { get; set; }
     }
 }

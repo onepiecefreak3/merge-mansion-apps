@@ -41,6 +41,7 @@ namespace GameLogic.GameFeatures
         SCIDRewardingFlow = 27,
         PlayerName = 28,
         SCIDIncentivicedFlow = 29,
-        TieredOffers = 30
+        TieredOffers = 30,
+        ItemNeededBadgeEnabled = 31
     }
 }

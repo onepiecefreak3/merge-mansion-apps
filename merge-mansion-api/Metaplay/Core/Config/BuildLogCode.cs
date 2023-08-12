@@ -28,6 +28,7 @@ namespace Metaplay.Core.Config
         SeasonalEventUnlockRequirementMismatch = 1018,
         ActivableScheduleExpired = 1019,
         OrphanedOffer = 1020,
-        BoardEventPortalItemTaskMismatch = 1021
+        BoardEventPortalItemTaskMismatch = 1021,
+        MissingLeaderboardEventRankingRewardTag = 1022
     }
 }

@@ -63,8 +63,6 @@ namespace Analytics
         BoosterUsed = 52,
         ChainCompletionRewardClaimed = 53,
         ConnectionFailed = 54,
-        Traits12SurveyCompleted = 55,
-        Traits12SurveyStarted = 56,
         PlayersSegments = 57,
         GarageCleanupSlotFilled = 58,
         GarageCleanupEventVisited = 59,
@@ -95,6 +93,9 @@ namespace Analytics
         BoardImpression = 84,
         DailyTaskFirstImpression = 85,
         BotSessionStart = 86,
-        BotSessionEnd = 87
+        BotSessionEnd = 87,
+        ThirdPartySurveyCompleted = 55,
+        ThirdPartySurveyStarted = 56,
+        DailyTasksRefreshPurchase = 88
     }
 }

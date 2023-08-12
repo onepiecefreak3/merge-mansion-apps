@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Offers;
 using System;
+using System.Collections.Generic;
 
 namespace GameLogic.Config
 {
@@ -41,6 +42,14 @@ namespace GameLogic.Config
         }
 
         public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        private OfferPlacementId[] AdditionalPlacements { get; set; }
+        public IEnumerable<OfferPlacementId> AdditionalPlacementsForOffer { get; }
+
+        public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements)
         {
         }
     }

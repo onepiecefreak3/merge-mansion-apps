@@ -9,6 +9,7 @@ using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameLogic;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {

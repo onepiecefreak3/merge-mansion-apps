@@ -5,6 +5,7 @@ using System.ComponentModel;
 using Metaplay.Core;
 using System.Collections.Generic;
 using System;
+using Code.GameLogic.GameEvents;
 
 namespace Analytics
 {
@@ -39,6 +40,19 @@ namespace Analytics
         }
 
         public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, string newPlayerId)
+        {
+        }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Division rank")]
+        public int Rank { get; set; }
+
+        [Description("Event Id")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
+        public LeaderboardEventId EventId { get; set; }
+
+        public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, int rank, LeaderboardEventId eventId, string newPlayerId)
         {
         }
     }

@@ -44,5 +44,13 @@ namespace GameLogic.Player.DailyTasks
         public DailyTaskState(DailyTaskDefinition definition)
         {
         }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public MetaTime? TimeTaskWasPurchased { get; set; }
+        public bool IsPurchasedTask { get; }
+
+        public DailyTaskState(DailyTaskDefinition definition, MetaTime timeTaskWasPurchased)
+        {
+        }
     }
 }

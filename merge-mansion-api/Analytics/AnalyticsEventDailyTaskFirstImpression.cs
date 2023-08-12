@@ -67,5 +67,14 @@ namespace Analytics
         public AnalyticsEventDailyTaskFirstImpression(string taskId, int taskIndex, string requiredItem, int requiredItemCount, string rewardItem, int rewardItemCount, string localDateTime, string dailyTasksSetId, string dailyTasksFinalRewardsId)
         {
         }
+
+        [JsonProperty("is_purchased_task")]
+        [Description("Is Purchased Task")]
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public bool IsPurchasedTask { get; set; }
+
+        public AnalyticsEventDailyTaskFirstImpression(string taskId, int taskIndex, string requiredItem, int requiredItemCount, string rewardItem, int rewardItemCount, string localDateTime, string dailyTasksSetId, string dailyTasksFinalRewardsId, bool isPurchasedTask)
+        {
+        }
     }
 }

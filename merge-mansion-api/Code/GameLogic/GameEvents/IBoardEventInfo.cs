@@ -7,6 +7,7 @@ using Metaplay.Core.Activables;
 using GameLogic.Config;
 using System.Collections.Generic;
 using GameLogic.Player.Rewards;
+using System;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -31,5 +32,7 @@ namespace Code.GameLogic.GameEvents
         MetaDuration ExtensionPurchaseSafetyMargin { get; }
 
         List<PlayerReward> ExtensionRewards { get; }
+
+        int SecondaryEnergyAttachmentChance { get; }
     }
 }

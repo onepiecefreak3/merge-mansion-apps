@@ -82,5 +82,13 @@ namespace Code.GameLogic.GameEvents
         public CollectibleBoardEventModel(CollectibleBoardEventInfo info)
         {
         }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        protected HashSet<int> PhotoTakenItems { get; set; }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        protected HashSet<int> CaughtFishes { get; set; }
+        public bool FishCaught { get; set; }
+        public bool CameraNoted { get; set; }
     }
 }

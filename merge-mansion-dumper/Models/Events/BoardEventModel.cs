@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameLogic;
 using merge_mansion_dumper.Models.Area;
 using Metaplay.Core.Schedule;
 using Newtonsoft.Json;

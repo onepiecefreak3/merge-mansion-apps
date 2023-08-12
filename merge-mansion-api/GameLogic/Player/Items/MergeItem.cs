@@ -17,6 +17,7 @@ using GameLogic.Player.Items.Attachments;
 using GameLogic.MergeChains;
 using GameLogic.Player.Board.Placement;
 using Metaplay.Core.Math;
+using GameLogic.Player.Items.Fishing;
 
 namespace GameLogic.Player.Items
 {
@@ -95,6 +96,11 @@ namespace GameLogic.Player.Items
             public MergeItemExtra()
             {
             }
+
+            [MetaMember(18, (MetaMemberFlags)0)]
+            public FishingRodState FishingRodState;
+            [MetaMember(19, (MetaMemberFlags)0)]
+            public WeightState WeightState;
         }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -269,5 +275,26 @@ namespace GameLogic.Player.Items
         public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState)
         {
         }
+
+        [IgnoreDataMember]
+        public FishingRodState FishingRodState { get; }
+
+        [IgnoreDataMember]
+        public FishingRodState FishingRodStateMaybe { get; }
+
+        [IgnoreDataMember]
+        public WeightState WeightState { get; }
+
+        [IgnoreDataMember]
+        public WeightState WeightStateMaybe { get; }
+
+        [IgnoreDataMember]
+        public bool CanSpawn { get; }
+
+        [IgnoreDataMember]
+        public bool SupportsFishingRodTap { get; }
+
+        [IgnoreDataMember]
+        public bool HasFishingRodState { get; }
     }
 }

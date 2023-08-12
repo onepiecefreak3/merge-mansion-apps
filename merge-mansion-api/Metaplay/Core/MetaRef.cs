@@ -26,10 +26,10 @@ namespace Metaplay.Core
         public static MetaRef<TItem> FromKey(object key)
         {
             var key1 = key;
-            if (KeyType.IsEnum)
-                key1 = Enum.ToObject(KeyType, key);
-            if (typeof(IStringId).IsAssignableFrom(KeyType))
-                key1 = KeyType.BaseType.GetMethod("FromString").Invoke(null, new[] { key });
+            //if (KeyType.IsEnum)
+            //    key1 = Enum.ToObject(KeyType, key);
+            //if (typeof(IStringId).IsAssignableFrom(KeyType))
+            //    key1 = KeyType.BaseType.GetMethod("FromString").Invoke(null, new[] { key });
             return new MetaRef<TItem>(key1, null);
         }
 

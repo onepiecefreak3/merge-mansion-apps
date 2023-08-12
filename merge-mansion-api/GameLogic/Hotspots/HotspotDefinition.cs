@@ -71,5 +71,24 @@ namespace GameLogic.Hotspots
         public HotspotDefinition(HotspotId id, HotspotType type, AreaId area, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions)
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        private MetaRef<MapSpotInfo> MapSpotRef { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public TaskGroupId TaskGroupId { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsMergeGoalHotspot { get; }
+
+        [IgnoreDataMember]
+        public MapSpotInfo MapSpot { get; }
+
+        [IgnoreDataMember]
+        public bool BelongsToTaskGroup { get; }
+
+        public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId)
+        {
+        }
     }
 }

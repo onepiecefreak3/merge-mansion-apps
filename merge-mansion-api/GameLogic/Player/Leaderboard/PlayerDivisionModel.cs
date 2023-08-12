@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.League.Player;
 using System;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Leaderboard
 {
@@ -13,5 +14,8 @@ namespace GameLogic.Player.Leaderboard
         public PlayerDivisionModel()
         {
         }
+
+        [MetaMember(1, (MetaMemberFlags)0)]
+        public LeaderboardEventId EventId { get; set; }
     }
 }

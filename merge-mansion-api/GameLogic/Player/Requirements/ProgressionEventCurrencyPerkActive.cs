@@ -6,14 +6,18 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(20)]
     public class ProgressionEventCurrencyPerkActive : PlayerRequirement
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
-        private ProgressionEventId EventId { get; set; }
-
         private ProgressionEventCurrencyPerkActive()
         {
         }
 
         public ProgressionEventCurrencyPerkActive(ProgressionEventId eventId)
+        {
+        }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        private ProgressionEventPerkId ProgressionEventPerkId { get; set; }
+
+        public ProgressionEventCurrencyPerkActive(ProgressionEventPerkId progressionEventPerkId)
         {
         }
     }

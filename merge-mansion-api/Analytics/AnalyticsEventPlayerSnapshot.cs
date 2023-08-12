@@ -147,5 +147,10 @@ namespace Analytics
         public AnalyticsEventPlayerSnapshot(PlayerModel player, AnalyticsSnapshotType snapshotType)
         {
         }
+
+        [Description("Are merge hints enabled or not")]
+        [MetaMember(31, (MetaMemberFlags)0)]
+        [JsonProperty("merge_hints_are_on")]
+        public bool MergeHintsAreOn { get; set; }
     }
 }

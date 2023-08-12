@@ -29,6 +29,8 @@ namespace GameLogic
         Victoria = 17,
         Mason = 18,
         Amy = 19,
-        Emilio = 20
+        Emilio = 20,
+        Hank = 21,
+        Bruno = 22
     }
 }
