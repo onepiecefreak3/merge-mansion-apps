@@ -1,10 +1,11 @@
 using Metaplay.Core;
 using Metaplay.Core.Model;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(10)]
-    [MetaSerializable]
+    [MetaFormDeprecated]
     public class LinkWithTimed12TraitVerificationReward : PlayerReward
     {
         [MetaMember(1, 0)]

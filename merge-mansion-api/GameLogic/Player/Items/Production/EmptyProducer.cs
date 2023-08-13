@@ -8,6 +8,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(10)]
+    [MetaAllowNoSerializedMembers]
     public class EmptyProducer : IItemSpawner, IItemProducer
     {
         public IEnumerable<(ItemDefinition, int)> Odds => Array.Empty<(ItemDefinition, int)>();

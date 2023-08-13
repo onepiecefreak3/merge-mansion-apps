@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace Game.Logic.Message
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class SessionStartInfo : ISessionStartSuccessGamePayload
     {
         // Fields

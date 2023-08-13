@@ -7,7 +7,6 @@ using System;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(21)]
-    [MetaSerializable]
     public class RewardLayeredDecoration : PlayerReward
     {
         [MetaMember(1, 0)]

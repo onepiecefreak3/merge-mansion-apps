@@ -25,6 +25,7 @@ namespace Code.GameLogic.GameEvents
         public RewardingType Rewarding { get; set; }
         public EventLevelSetId ConfigKey => SetId;
 
+        [MetaSerializable]
         public enum LevelProgression
         {
             Linear = 0,

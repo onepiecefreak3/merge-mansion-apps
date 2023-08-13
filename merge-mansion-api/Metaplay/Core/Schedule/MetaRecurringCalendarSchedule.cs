@@ -4,7 +4,6 @@ using System;
 namespace Metaplay.Core.Schedule
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class MetaRecurringCalendarSchedule : MetaScheduleBase
     {
         [MetaMember(1)]

@@ -9,10 +9,14 @@ using Metaplay.Core.Model;
 using GameLogic.Player.Board.Placement;
 using Merge;
 using GameLogic.Random;
+using System.Reflection;
 
 namespace GameLogic.Player.Board
 {
-    public sealed class MergeBoard : IBoard, IBoardQuery
+    [DefaultMember("Item")]
+    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 4 })]
+    public class MergeBoard : IBoard, IBoardQuery
     {
         public (int, int) BoardDimensions { get; }
         public MergeBoardId BoardIdentifier { get; }

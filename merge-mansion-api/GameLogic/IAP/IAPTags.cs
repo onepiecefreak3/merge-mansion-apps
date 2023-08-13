@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.IAP
 {
+    [MetaSerializable]
     public enum IAPTags // TypeDefIndex: 1876
     {
         None = 0,

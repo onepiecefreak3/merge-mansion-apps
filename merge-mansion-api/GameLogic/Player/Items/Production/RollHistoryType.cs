@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.Player.Items.Production
 {
+    [MetaSerializable]
     public enum RollHistoryType
     {
         None = 0,

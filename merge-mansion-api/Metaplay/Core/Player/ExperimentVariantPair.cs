@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
+    [MetaSerializable]
     public struct ExperimentVariantPair
     {
         [MetaMember(1, 0)]

@@ -4,6 +4,7 @@ using Metaplay.Core.Model;
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class ChannelContextDataBase
     {
         [MetaMember(101, 0)]

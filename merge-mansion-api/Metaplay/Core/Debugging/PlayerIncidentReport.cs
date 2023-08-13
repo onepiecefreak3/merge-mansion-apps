@@ -7,10 +7,11 @@ using Metaplay.Core.Session;
 
 namespace Metaplay.Core.Debugging
 {
+    [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class PlayerIncidentReport
     {
         [MetaSerializableDerived(4)]
-        [MetaSerializable]
         public class SessionStartFailed : PlayerIncidentReport
         {
             [MetaMember(4, 0)]

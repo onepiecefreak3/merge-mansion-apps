@@ -4,7 +4,6 @@ using System;
 namespace Metaplay.Core
 {
     [MetaSerializableDerived(100)]
-    [MetaSerializable]
     public class SocialAuthenticationClaimSupercellId : SocialAuthenticationClaimBase
     {
         [MetaMember(2, 0)]

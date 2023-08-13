@@ -5,7 +5,6 @@ using System;
 namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(9)]
-    [MetaSerializable]
     public class TriggerPopup : IDirectorAction
     {
         [MetaMember(1, 0)]

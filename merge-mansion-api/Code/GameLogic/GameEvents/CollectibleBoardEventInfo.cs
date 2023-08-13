@@ -12,10 +12,13 @@ using System;
 using GameLogic.Config;
 using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
+using System.Reflection;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [DefaultMember("Item")]
+    [MetaActivableConfigData("CollectibleBoardEvent", false)]
     public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, IBoardEventInfo
     {
         [MetaMember(1, 0)]

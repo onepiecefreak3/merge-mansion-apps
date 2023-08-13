@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1033)]
-    [MetaSerializable]
     public class PlayerPointsInLeaderboardEvent : TypedPlayerPropertyId<int>
     {
         [MetaMember(1, 0)]

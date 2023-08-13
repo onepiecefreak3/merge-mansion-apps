@@ -1,9 +1,12 @@
 using Metaplay.Core.Model;
 using System.Text.RegularExpressions;
 using System;
+using System.ComponentModel;
 
 namespace Metaplay.Core.Schedule
 {
+    [MetaSerializable]
+    [TypeConverter(typeof(MetaCalendarPeriodTypeConverter))]
     public struct MetaCalendarPeriod
     {
         [MetaMember(1, 0)]

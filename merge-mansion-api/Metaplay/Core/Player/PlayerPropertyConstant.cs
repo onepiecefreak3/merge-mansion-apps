@@ -6,6 +6,7 @@ using GameLogic;
 
 namespace Metaplay.Core.Player
 {
+    [MetaSerializable]
     public abstract class PlayerPropertyConstant
     {
         [MetaSerializable]

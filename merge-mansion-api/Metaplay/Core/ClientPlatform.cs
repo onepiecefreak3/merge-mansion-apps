@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace Metaplay.Core
 {
+    [MetaSerializable]
     public enum ClientPlatform
     {
         Unknown = 0,

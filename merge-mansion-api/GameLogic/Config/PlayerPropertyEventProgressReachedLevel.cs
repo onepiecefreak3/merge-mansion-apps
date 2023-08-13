@@ -7,7 +7,6 @@ using Merge;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1006)]
-    [MetaSerializable]
     public class PlayerPropertyEventProgressReachedLevel : TypedPlayerPropertyId<int>
     {
         [MetaMember(1, 0)]

@@ -4,7 +4,6 @@ using System;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class ProgressionEventExtraInventorySlotsPerk : ProgressionEventPerk
     {
         [MetaMember(1, 0)]

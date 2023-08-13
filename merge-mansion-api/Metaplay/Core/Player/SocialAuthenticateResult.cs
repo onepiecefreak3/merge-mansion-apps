@@ -1,11 +1,14 @@
 using Metaplay.Core.Message;
 using Metaplay.Core.Serialization;
 using System;
+using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
+    [MetaSerializableDerived(2)]
     public class SocialAuthenticateResult : MetaResponse
     {
+        [MetaSerializable]
         public enum ResultCode
         {
             Success = 0,

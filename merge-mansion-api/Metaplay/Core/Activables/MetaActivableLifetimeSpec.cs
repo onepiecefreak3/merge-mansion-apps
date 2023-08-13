@@ -2,10 +2,10 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Activables
 {
+    [MetaSerializable]
     public abstract class MetaActivableLifetimeSpec
     {
         [MetaSerializableDerived(1)]
-        [MetaSerializable]
         public class Fixed : MetaActivableLifetimeSpec
         {
             [MetaMember(1)]

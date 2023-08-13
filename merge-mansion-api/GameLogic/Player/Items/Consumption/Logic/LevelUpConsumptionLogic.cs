@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Player.Items.Consumption.Logic
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class LevelUpConsumptionLogic : IConsumptionLogic
     {
         [MetaMember(1, 0)]

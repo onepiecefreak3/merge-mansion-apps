@@ -4,6 +4,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
+    [MetaSerializable]
     public struct MetaTime
     {
         // 0x0

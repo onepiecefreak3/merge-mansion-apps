@@ -5,7 +5,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(4)]
-    [MetaSerializable]
     public class HotspotVisibleOrCompletedRequirement : PlayerRequirement
     {
         [MetaMember(1, (MetaMemberFlags)0)]

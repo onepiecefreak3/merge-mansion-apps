@@ -4,7 +4,6 @@ using System;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class MergeMathBasedCollectValue : ICalculateCollectValue
     {
         [MetaMember(1, 0)]

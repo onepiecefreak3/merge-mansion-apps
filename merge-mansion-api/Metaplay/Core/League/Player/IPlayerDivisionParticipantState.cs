@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.League.Player
 {
-    [PlayerLeaguesEnabledCondition]
     [MetaSerializable]
+    [PlayerLeaguesEnabledCondition]
     public interface IPlayerDivisionParticipantState : IDivisionParticipantState
     {
         EntityId PlayerId { get; }

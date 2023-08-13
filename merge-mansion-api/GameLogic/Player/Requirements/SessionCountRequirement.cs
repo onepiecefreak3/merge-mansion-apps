@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(15)]
-    [MetaSerializable]
     public class SessionCountRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

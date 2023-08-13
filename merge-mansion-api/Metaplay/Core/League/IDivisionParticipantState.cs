@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [MetaSerializable]
+    [LeaguesEnabledCondition]
     public interface IDivisionParticipantState
     {
         EntityId ParticipantId { get; set; }

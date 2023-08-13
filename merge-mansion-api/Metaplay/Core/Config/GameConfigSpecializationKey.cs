@@ -4,6 +4,7 @@ using Metaplay.Core.Player;
 
 namespace Metaplay.Core.Config
 {
+    [MetaSerializable]
     public struct GameConfigSpecializationKey
     {
         [MetaMember(1, 0)]

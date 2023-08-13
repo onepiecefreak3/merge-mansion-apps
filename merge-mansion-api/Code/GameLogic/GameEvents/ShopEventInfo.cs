@@ -13,6 +13,8 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [MetaActivableConfigData("ShopEvent", false)]
+    [MetaBlockedMembers(new int[] { 6, 7, 8, 9, 12, 13, 14, 15, 21, 24, 25, 26, 27 })]
     public class ShopEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IMetaActivableInfo<EventId>, IValidatable
     {
         [MetaMember(1, 0)]

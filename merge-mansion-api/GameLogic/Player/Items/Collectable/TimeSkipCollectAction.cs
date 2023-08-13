@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class TimeSkipCollectAction : ICollectAction
     {
         [MetaMember(1, 0)]

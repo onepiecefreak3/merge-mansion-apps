@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(6)]
-    [MetaSerializable]
     public class ProgressionEventCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(1)]

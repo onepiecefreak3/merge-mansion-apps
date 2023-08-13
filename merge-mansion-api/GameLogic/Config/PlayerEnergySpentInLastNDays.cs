@@ -5,7 +5,6 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1036)]
-    [MetaSerializable]
     public class PlayerEnergySpentInLastNDays : TypedPlayerPropertyId<long>
     {
         [MetaMember(1, 0)]

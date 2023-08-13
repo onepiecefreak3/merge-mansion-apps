@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.Merge
 {
+    [MetaSerializable]
     public enum ItemVisibility
     {
         HiddenWithPartiallyVisibleInside = 0,

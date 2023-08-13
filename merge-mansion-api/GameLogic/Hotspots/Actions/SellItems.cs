@@ -8,7 +8,6 @@ using System;
 namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(10)]
-    [MetaSerializable]
     public class SellItems : IDirectorAction
     {
         [MetaMember(1, 0)]

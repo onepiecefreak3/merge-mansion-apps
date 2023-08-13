@@ -7,6 +7,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(12)]
+    [MetaAllowNoSerializedMembers]
     public class GarageCleanupEventProducer : IItemSpawner, IItemProducer
     {
         public IEnumerable<(ItemDefinition, int)> Odds => Array.Empty<(ItemDefinition, int)>();

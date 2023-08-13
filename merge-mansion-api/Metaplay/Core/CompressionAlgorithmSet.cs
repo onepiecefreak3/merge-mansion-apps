@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
+    [MetaSerializable]
     public struct CompressionAlgorithmSet
     {
         [MetaMember(1, 0)]

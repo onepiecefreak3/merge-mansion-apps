@@ -2,11 +2,12 @@ using GameLogic.MergeChains;
 using Metaplay.Core;
 using Metaplay.Core.Model;
 using System.Runtime.Serialization;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(20)]
-    [MetaSerializable]
+    [MetaFormDeprecated]
     public class RewardLevelUpMergeChain : PlayerReward
     {
         [MetaMember(1, 0)]

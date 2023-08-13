@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1035)]
-    [MetaSerializable]
     public class PlayerMoneySpentInLastNDays : TypedPlayerPropertyId<F64>
     {
         [MetaMember(1, 0)]

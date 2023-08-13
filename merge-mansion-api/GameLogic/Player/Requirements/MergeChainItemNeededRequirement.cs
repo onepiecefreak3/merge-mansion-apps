@@ -6,7 +6,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(12)]
-    [MetaSerializable]
     public class MergeChainItemNeededRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

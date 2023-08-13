@@ -5,7 +5,6 @@ using System;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(14)]
-    [MetaSerializable]
     public class RewardEventPoints : PlayerReward
     {
         [MetaMember(1, 0)]

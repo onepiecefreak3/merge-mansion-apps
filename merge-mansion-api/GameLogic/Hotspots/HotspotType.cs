@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.Hotspots
 {
+    [MetaSerializable]
     public enum HotspotType
     {
         Undefined = 0,

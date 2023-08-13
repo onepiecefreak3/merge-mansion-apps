@@ -6,7 +6,6 @@ using System.Runtime.Serialization;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(10)]
-    [MetaSerializable]
     public class AreaCompletedRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

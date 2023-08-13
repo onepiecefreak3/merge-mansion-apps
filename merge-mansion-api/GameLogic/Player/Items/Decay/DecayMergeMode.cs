@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.Player.Items.Decay
 {
+    [MetaSerializable]
     public enum DecayMergeMode
     {
         Reset = 0,

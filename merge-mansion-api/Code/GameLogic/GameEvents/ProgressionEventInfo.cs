@@ -14,6 +14,10 @@ using GameLogic;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
+    [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
+    [MetaBlockedMembers(new int[] { 5, 6 })]
+    [MetaActivableConfigData("ProgressionEvent", false)]
     public class ProgressionEventInfo : IMetaActivableConfigData<ProgressionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ProgressionEventId>, IMetaActivableInfo<ProgressionEventId>
     {
         [MetaMember(1)]

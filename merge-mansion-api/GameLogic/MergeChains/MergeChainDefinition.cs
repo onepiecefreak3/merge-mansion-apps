@@ -8,10 +8,12 @@ using System;
 using System.Linq;
 using System.Runtime.Serialization;
 using GameLogic.Player.Items;
+using System.Reflection;
 
 namespace GameLogic.MergeChains
 {
     [MetaSerializable]
+    [DefaultMember("Item")]
     public class MergeChainDefinition : IGameConfigData<MergeChainId>, IGameConfigData, IValidatable
     {
         private static HashSet<Type> allowedTypes = new()

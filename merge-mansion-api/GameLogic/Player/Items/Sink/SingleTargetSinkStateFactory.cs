@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Player.Items.Sink
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class SingleTargetSinkStateFactory : ISinkStateFactory
     {
         [MetaMember(1, 0)]

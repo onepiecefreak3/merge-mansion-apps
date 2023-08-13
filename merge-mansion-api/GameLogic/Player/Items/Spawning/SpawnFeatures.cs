@@ -9,7 +9,7 @@ using System;
 namespace GameLogic.Player.Items.Spawning
 {
     [MetaSerializable]
-    public sealed class SpawnFeatures
+    public class SpawnFeatures
     {
         [MetaMember(1)]
         public IItemSpawner Spawn { get; set; }

@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Schedule
 {
+    [MetaSerializable]
     public struct MetaCalendarDateTime
     {
         [MetaMember(1, 0)]

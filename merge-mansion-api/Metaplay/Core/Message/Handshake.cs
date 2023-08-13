@@ -7,7 +7,6 @@ namespace Metaplay.Core.Message
     public static class Handshake
     {
         [MetaMessage(4, MessageDirection.ServerToClient, true)]
-        [MetaSerializable]
         public class ServerHello : MetaMessage
         {
             // Properties
@@ -37,7 +36,7 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(5, MessageDirection.ClientToServer, true)]
-        [MetaSerializable]
+        [MessageRoutingRuleProtocol]
         public class ClientHello : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -94,6 +93,7 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(6, MessageDirection.ClientToServer, true)]
+        [MessageRoutingRuleProtocol]
         public class ClientAbandon : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -116,6 +116,7 @@ namespace Metaplay.Core.Message
                 Source = source;
             }
 
+            [MetaSerializable]
             public enum AbandonSource
             {
                 PrimaryConnection = 0,
@@ -128,7 +129,8 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(7, MessageDirection.ClientToServer, true)]
-        public sealed class DeviceLoginRequest : Handshake.LoginRequest
+        [MessageRoutingRuleProtocol]
+        public class DeviceLoginRequest : Handshake.LoginRequest
         {
             // Properties
             [MetaMember(1, 0)]
@@ -208,7 +210,8 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(31, MessageDirection.ClientToServer, true)]
-        public sealed class SocialAuthenticationLoginRequest : Handshake.LoginRequest
+        [MessageRoutingRuleProtocol]
+        public class SocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, 0)]
             public SocialAuthenticationClaimBase Claim { get; set; } // 0x38
@@ -321,6 +324,7 @@ namespace Metaplay.Core.Message
             }
         }
 
+        [MetaSerializable]
         public struct ServerOptions
         {
             [MetaMember(1, 0)]
@@ -337,6 +341,7 @@ namespace Metaplay.Core.Message
             public string GameEnvironment; // 0x20
         }
 
+        [MetaSerializable]
         public interface ILoginRequestGamePayload
         {
         }

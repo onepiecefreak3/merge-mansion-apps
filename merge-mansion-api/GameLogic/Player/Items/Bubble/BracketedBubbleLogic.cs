@@ -9,7 +9,6 @@ using System;
 namespace GameLogic.Player.Items.Bubble
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class BracketedBubbleLogic : IBubbleLogic, IProvidesDebugOutput
     {
         [MetaMember(1, 0)]

@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Player.Items.Consumption
 {
     [MetaSerializable]
-    public sealed class ConsumableFeatures
+    public class ConsumableFeatures
     {
         [MetaMember(1, 0)]
         public bool IsConsumable { get; set; }

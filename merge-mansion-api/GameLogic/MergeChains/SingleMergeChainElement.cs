@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.MergeChains
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class SingleMergeChainElement : IMergeChainElement
     {
         [MetaMember(1, 0)]

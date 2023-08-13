@@ -4,6 +4,7 @@ using System;
 namespace Metaplay.Core.Schedule
 {
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class MetaScheduleBase
     {
         [MetaMember(100)]

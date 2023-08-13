@@ -1,10 +1,12 @@
 using GameLogic.Banks;
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializable]
+    [MetaFormHidden]
+    [MetaSerializableDerived(19)]
     public class RewardCurrencyBank : PlayerReward
     {
         [MetaMember(1, 0)]

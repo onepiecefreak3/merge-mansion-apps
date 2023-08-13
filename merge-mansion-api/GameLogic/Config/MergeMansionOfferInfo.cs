@@ -11,7 +11,6 @@ using GameLogic.Player.Rewards;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class MergeMansionOfferInfo : MetaOfferInfoBase, IOfferVisuals
     {
         [MetaMember(1, 0)]

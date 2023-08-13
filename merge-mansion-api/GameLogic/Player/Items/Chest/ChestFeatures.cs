@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace GameLogic.Player.Items.Chest
 {
     [MetaSerializable]
-    public sealed class ChestFeatures
+    public class ChestFeatures
     {
         [MetaMember(1)]
         public bool IsChest { get; set; }

@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Player.Items.Bubble
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class DefaultBubbleLogic : IBubbleLogic, IProvidesDebugOutput
     {
         [MetaMember(1, 0)]

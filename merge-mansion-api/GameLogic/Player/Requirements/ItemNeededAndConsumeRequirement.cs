@@ -7,7 +7,6 @@ using System;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(16)]
-    [MetaSerializable]
     public class ItemNeededAndConsumeRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

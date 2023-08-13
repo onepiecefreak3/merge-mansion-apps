@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(11)]
-    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 3 })]
     public class PlayerCurrentTimeRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

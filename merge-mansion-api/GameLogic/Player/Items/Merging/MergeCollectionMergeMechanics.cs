@@ -7,7 +7,6 @@ using Metaplay.Core.Math;
 namespace GameLogic.Player.Items.Merging
 {
     [MetaSerializableDerived(3)]
-    [MetaSerializable]
     public class MergeCollectionMergeMechanics : BaseMergeMechanic
     {
         [MetaMember(4)]

@@ -24,7 +24,6 @@ namespace Metaplay.Core
         }
 
         public static Type GetKeyType() => KeyType;
-
         public static MetaRef<TItem> FromKey(object key)
         {
             return new MetaRef<TItem>(key, null);

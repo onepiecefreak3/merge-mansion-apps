@@ -5,6 +5,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
+    [MetaSerializable]
     public struct ContentHash
     {
         // 0x0

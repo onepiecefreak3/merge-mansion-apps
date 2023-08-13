@@ -3,9 +3,11 @@ using System.Runtime.Serialization;
 using System.Collections.Generic;
 using System;
 using Metaplay.Core.Math;
+using Metaplay.Core.Model;
 
 namespace GameLogic.Player.Items.Merging
 {
+    [MetaSerializable]
     public interface IMergeMechanic
     {
         bool CanMerge(MergeItem sourceItem, MergeItem targetItem);

@@ -1,5 +1,8 @@
+using Metaplay.Core.Model;
+
 namespace GameLogic.Config.Map.Characters
 {
+    [MetaSerializable]
     public enum MapCharacterType
     {
         Undefined = 0,

@@ -4,7 +4,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Decay
 {
     [MetaSerializable]
-    public sealed class DecayState
+    public class DecayState
     {
         [MetaMember(3, (MetaMemberFlags)0)]
         private MetaDuration relativeTimeSpendOnDecay;

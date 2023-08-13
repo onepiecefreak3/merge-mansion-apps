@@ -7,7 +7,6 @@ using System;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(22)]
-    [MetaSerializable]
     public class RewardCollectibleBoardEventProgress : PlayerReward
     {
         [MetaMember(1, 0)]

@@ -16,6 +16,7 @@ using GameLogic.Player.Rewards;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [MetaActivableConfigData("LeaderboardEvent", false)]
     public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo
     {
         [MetaMember(1, 0)]

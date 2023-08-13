@@ -5,7 +5,6 @@ using Merge;
 namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(3)]
-    [MetaSerializable]
     public class DelayFinalizationToBoard : IDirectorAction
     {
         [MetaMember(1, 0)]

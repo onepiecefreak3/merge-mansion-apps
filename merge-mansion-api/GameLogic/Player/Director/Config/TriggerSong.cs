@@ -4,7 +4,6 @@ using System;
 namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(11)]
-    [MetaSerializable]
     public class TriggerSong : IDirectorAction
     {
         [MetaMember(1, 0)]

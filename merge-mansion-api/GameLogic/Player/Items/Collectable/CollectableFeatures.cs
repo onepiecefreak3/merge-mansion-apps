@@ -4,7 +4,7 @@ using System;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializable]
-    public sealed class CollectableFeatures
+    public class CollectableFeatures
     {
         [MetaMember(1)]
         public bool Collectable { get; set; }

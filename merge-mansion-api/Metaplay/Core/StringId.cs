@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 
 namespace Metaplay.Core
 {
+    [TypeConverter(typeof(StringIdTypeConverter))]
     public abstract class StringId<TStringId> : IStringId where TStringId : new()
     {
         public string Value { get; set; }

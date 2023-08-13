@@ -9,7 +9,6 @@ using System;
 namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class ReplaceItemsOnBoard : IDirectorAction
     {
         [MetaMember(1, 0)]

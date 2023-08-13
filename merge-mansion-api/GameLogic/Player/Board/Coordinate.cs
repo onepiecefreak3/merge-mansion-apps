@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 namespace GameLogic.Player.Board
 {
+    [MetaSerializable]
     public struct Coordinate
     {
         [MetaMember(1, 0)]

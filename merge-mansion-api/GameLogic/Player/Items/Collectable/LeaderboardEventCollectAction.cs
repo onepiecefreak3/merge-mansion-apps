@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializableDerived(8)]
-    [MetaSerializable]
     public class LeaderboardEventCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(1, 0)]

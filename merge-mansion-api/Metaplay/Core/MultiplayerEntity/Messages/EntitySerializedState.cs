@@ -5,6 +5,7 @@ using Metaplay.Core.Serialization;
 
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
+    [MetaSerializable]
     public struct EntitySerializedState
     {
         [MetaMember(1, 0)]

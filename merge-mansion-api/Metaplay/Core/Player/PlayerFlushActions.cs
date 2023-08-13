@@ -21,6 +21,7 @@ namespace Metaplay.Core.Player
             Checksums = checksums;
         }
 
+        [MetaSerializable]
         public struct Operation
         {
             [MetaMember(1, 0)]

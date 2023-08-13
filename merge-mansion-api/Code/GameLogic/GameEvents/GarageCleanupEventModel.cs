@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 
 namespace Code.GameLogic.GameEvents
 {
+    [MetaSerializableDerived(5)]
     public class GarageCleanupEventModel : MetaActivableState<GarageCleanupEventId, GarageCleanupEventInfo>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -3,6 +3,7 @@ using System;
 
 namespace Metaplay.Core.Serialization
 {
+    [MetaSerializable]
     public struct MetaSerialized<T>
     {
         [MetaMember(1, 0)]

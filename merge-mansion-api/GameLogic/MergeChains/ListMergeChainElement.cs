@@ -8,7 +8,6 @@ using System.Linq;
 namespace GameLogic.MergeChains
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class ListMergeChainElement : IMergeChainElement
     {
         [MetaMember(1, 0)]

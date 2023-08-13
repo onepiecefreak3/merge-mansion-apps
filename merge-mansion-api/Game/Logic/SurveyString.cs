@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 
 namespace Game.Logic
 {
+    [MetaSerializable]
     public struct SurveyString
     {
         // Fields

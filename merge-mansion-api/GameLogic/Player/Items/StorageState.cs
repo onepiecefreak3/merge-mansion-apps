@@ -6,7 +6,7 @@ using GameLogic.Player.Items.Merging;
 namespace GameLogic.Player.Items
 {
     [MetaSerializable]
-    public sealed class StorageState
+    public class StorageState
     {
         public StorageState(StorageState container1, StorageState container2)
         {

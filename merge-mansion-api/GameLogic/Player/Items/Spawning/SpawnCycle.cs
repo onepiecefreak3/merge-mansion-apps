@@ -5,7 +5,6 @@ using System;
 namespace GameLogic.Player.Items.Spawning
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class SpawnCycle : ISpawnCycle
     {
         [MetaMember(1)]

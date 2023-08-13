@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(12)]
-    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 3 })]
     public class RewardEventCurrency : PlayerReward
     {
         [MetaMember(1, 0)]

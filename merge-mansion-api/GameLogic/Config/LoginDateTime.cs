@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Config
 {
+    [MetaSerializable]
     public struct LoginDateTime
     {
         [MetaMember(1, 0)]

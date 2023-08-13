@@ -9,6 +9,7 @@ using Metaplay.Core.Rewards;
 namespace Metaplay.Core.Offers
 {
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class MetaOfferInfoBase : IGameConfigData<MetaOfferId>, IGameConfigData, IGameConfigPostLoad, IRefersToMetaOffers
     {
         [MetaMember(100, 0)]

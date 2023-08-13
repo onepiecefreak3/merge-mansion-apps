@@ -9,7 +9,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(11)]
-    [MetaSerializable]
     public class PrefixProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]

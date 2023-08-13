@@ -6,7 +6,6 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1034)]
-    [MetaSerializable]
     public class PlayerEventCurrencyAmount : TypedPlayerPropertyId<long>
     {
         [MetaMember(1, 0)]

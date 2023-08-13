@@ -12,8 +12,8 @@ namespace Metaplay.Core.League.Player
         {
         }
 
-        [PlayerLeaguesEnabledCondition]
         [MetaSerializableDerived(101)]
+        [PlayerLeaguesEnabledCondition]
         public class Default : PlayerDivisionAvatarBase
         {
             [MetaMember(1, (MetaMemberFlags)0)]

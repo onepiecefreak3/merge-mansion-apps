@@ -2,10 +2,10 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Activables
 {
+    [MetaSerializable]
     public abstract class MetaActivableCooldownSpec
     {
         [MetaSerializableDerived(1)]
-        [MetaSerializable]
         public class Fixed : MetaActivableCooldownSpec
         {
             [MetaMember(1, 0)]

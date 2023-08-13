@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace Metaplay.Core.Player
 {
     [MetaSerializableDerived(1000)]
-    [MetaSerializable]
     public class PlayerSegmentBasicCondition : PlayerCondition
     {
         [MetaMember(1)]

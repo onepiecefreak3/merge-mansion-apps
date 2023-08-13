@@ -10,7 +10,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class ConstantProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]

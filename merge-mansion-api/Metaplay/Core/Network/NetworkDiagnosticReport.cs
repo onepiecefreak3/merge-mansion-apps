@@ -4,6 +4,7 @@ using System;
 
 namespace Metaplay.Core.Network
 {
+    [MetaSerializable]
     public class NetworkDiagnosticReport
     {
         // STUB

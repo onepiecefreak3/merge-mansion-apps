@@ -5,7 +5,6 @@ using GameLogic;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class ProgressionEventFreeShopItemPerk : ProgressionEventPerk
     {
         [MetaMember(1, 0)]

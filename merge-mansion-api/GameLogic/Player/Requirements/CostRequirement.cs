@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(6)]
-    [MetaSerializable]
     public class CostRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

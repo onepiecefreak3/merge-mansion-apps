@@ -5,7 +5,6 @@ using System;
 namespace Metaplay.Core.Offers
 {
     [MetaSerializableDerived(1100)]
-    [MetaSerializable]
     public class MetaOfferPrecursorCondition : PlayerCondition, IRefersToMetaOffers
     {
         [MetaMember(1, 0)]

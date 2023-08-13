@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
+    [MetaSerializable]
     public struct EntityId
     {
         // Fields

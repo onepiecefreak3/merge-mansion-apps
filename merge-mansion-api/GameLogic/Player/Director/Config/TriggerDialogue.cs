@@ -4,7 +4,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Director.Config
 {
     [MetaSerializableDerived(4)]
-    [MetaSerializable]
     public class TriggerDialogue : IDirectorAction
     {
         [MetaMember(1, 0)]

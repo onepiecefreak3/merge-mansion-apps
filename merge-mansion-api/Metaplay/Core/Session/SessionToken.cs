@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Session
 {
+    [MetaSerializable]
     public struct SessionToken
     {
         [MetaMember(1, 0)]

@@ -4,7 +4,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
-    public struct MetaDuration : IEquatable<MetaDuration>, IComparable<MetaDuration>
+    [MetaSerializable]
+    public struct MetaDuration : IComparable<MetaDuration>
     {
         // 0x0
         public static readonly MetaDuration Zero = default;
@@ -68,7 +69,7 @@ namespace Metaplay.Core
         public static bool operator !=(MetaDuration a, MetaDuration b) => a.Milliseconds != b.Milliseconds;
         public static bool operator <(MetaDuration a, MetaDuration b) => a.Milliseconds < b.Milliseconds;
         public static bool operator <=(MetaDuration a, MetaDuration b) => a.Milliseconds <= b.Milliseconds;
-        public static bool operator >(MetaDuration a, MetaDuration b) => a.Milliseconds > b.Milliseconds;
+        public static bool operator>(MetaDuration a, MetaDuration b) => a.Milliseconds > b.Milliseconds;
         public static bool operator >=(MetaDuration a, MetaDuration b) => a.Milliseconds >= b.Milliseconds;
         public static MetaDuration operator +(MetaDuration a, MetaDuration b) => new MetaDuration(b.Milliseconds + a.Milliseconds);
         public static MetaDuration operator -(MetaDuration a, MetaDuration b) => new MetaDuration(a.Milliseconds - b.Milliseconds);
@@ -100,6 +101,6 @@ namespace Metaplay.Core
                 throw new ArgumentException();
             return Milliseconds.CompareTo(v.Milliseconds);
         }
-        //public override string ToString() { }
+    //public override string ToString() { }
     }
 }

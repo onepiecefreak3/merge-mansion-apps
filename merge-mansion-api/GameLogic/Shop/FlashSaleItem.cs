@@ -5,8 +5,8 @@ using GameLogic.Player;
 
 namespace GameLogic.Shop
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializableDerived(4)]
+    [MetaAllowNoSerializedMembers]
     public class FlashSaleItem : IShopItem
     {
         private int ItemType { get; set; }

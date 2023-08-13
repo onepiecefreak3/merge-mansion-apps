@@ -6,7 +6,6 @@ using Metaplay.Core;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(2)]
-    [MetaSerializable]
     public class EventShopOfferPrecursorCondition : MetaActivablePrecursorCondition<EventOfferId>
     {
         [MetaMember(4, 0)]

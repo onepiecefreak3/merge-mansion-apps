@@ -3,7 +3,6 @@ using System;
 
 namespace GameLogic.Config.Costs
 {
-    [MetaSerializable]
     public abstract class CurrencyCost : ICost
     {
         [MetaMember(1, 0)]

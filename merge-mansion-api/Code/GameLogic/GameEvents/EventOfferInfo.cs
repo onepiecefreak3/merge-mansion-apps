@@ -10,6 +10,7 @@ using System;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
     public class EventOfferInfo : IMetaActivableConfigData<EventOfferId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventOfferId>, IMetaActivableInfo<EventOfferId>, IValidatable
     {
         [MetaMember(1, 0)]

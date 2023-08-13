@@ -2,11 +2,12 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Offers;
 using System;
 using System.Collections.Generic;
+using Metaplay.Core.Activables;
 
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
+    [MetaActivableConfigData("OfferGroup", false)]
     public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals
     {
         [MetaMember(1, 0)]

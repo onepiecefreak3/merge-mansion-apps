@@ -3,6 +3,7 @@ using Metaplay.Core.Player;
 
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
+    [MetaSerializable]
     public struct EntityActiveExperiment
     {
         [MetaMember(1, 0)]

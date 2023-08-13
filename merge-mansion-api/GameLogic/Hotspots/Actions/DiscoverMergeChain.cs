@@ -5,7 +5,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Hotspots.Actions
 {
     [MetaSerializableDerived(7)]
-    [MetaSerializable]
     public class DiscoverMergeChain : IDirectorAction
     {
         [MetaMember(1, 0)]

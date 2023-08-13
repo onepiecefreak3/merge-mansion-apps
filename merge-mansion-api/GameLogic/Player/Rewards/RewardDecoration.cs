@@ -5,7 +5,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(11)]
-    [MetaSerializable]
     public class RewardDecoration : PlayerReward
     {
         [MetaMember(1, 0)]

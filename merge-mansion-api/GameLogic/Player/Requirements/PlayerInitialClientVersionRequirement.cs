@@ -4,7 +4,6 @@ using System;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(14)]
-    [MetaSerializable]
     public class PlayerInitialClientVersionRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

@@ -15,10 +15,14 @@ using GameLogic.Decorations;
 using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
 using GameLogic;
+using System.Reflection;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [DefaultMember("Item")]
+    [MetaActivableConfigData("BoardEvent", false)]
+    [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16 })]
     public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo
     {
         [MetaMember(1, 0)]

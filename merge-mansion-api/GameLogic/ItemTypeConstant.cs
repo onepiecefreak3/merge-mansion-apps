@@ -1,7 +1,14 @@
 using GameLogic.Config;
+using Metaplay.Core.Model;
+using Metaplay.Core.Json;
+using System;
+using System.ComponentModel;
 
 namespace GameLogic
 {
+    [ForceExplicitEnumValues]
+    [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
     public enum ItemTypeConstant
     {
         None = 0,

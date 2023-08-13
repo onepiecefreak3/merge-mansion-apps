@@ -3,6 +3,7 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Random.ControlledRandom
 {
+    [MetaSerializable]
     public struct Weight
     {
         [MetaMember(1, 0)]

@@ -8,7 +8,6 @@ using System;
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(4)]
-    [MetaSerializable]
     public class ControlledRandomProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]

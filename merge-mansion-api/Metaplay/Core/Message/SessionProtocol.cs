@@ -52,6 +52,7 @@ namespace Metaplay.Core.Message
                 return correction;
             }
 
+            [MetaSerializable]
             public struct ConfigArchiveUpdateInfo
             {
                 // Fields
@@ -66,6 +67,7 @@ namespace Metaplay.Core.Message
                 }
             }
 
+            [MetaSerializable]
             public struct ConfigPatchesUpdateInfo
             {
                 // Fields
@@ -112,6 +114,7 @@ namespace Metaplay.Core.Message
             }
         }
 
+        [MetaSerializable]
         public struct SessionResourceProposal
         {
             [MetaMember(1, 0)]
@@ -161,6 +164,7 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(16, MessageDirection.ClientToServer, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionStartRequest : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -295,6 +299,7 @@ namespace Metaplay.Core.Message
                 DebugOnlyErrorMessage = debugOnlyErrorMessage;
             }
 
+            [MetaSerializable]
             public enum ReasonCode
             {
                 InternalError = 0,
@@ -307,6 +312,7 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(19, MessageDirection.ClientToServer, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionResumeRequest : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -352,6 +358,7 @@ namespace Metaplay.Core.Message
         }
 
         [MetaMessage(43, MessageDirection.ClientToServer, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionStartAbortReasonTrailer : MetaMessage
         {
             [MetaMember(1, 0)]
@@ -371,6 +378,7 @@ namespace Metaplay.Core.Message
             }
         }
 
+        [MetaSerializable]
         public interface ISessionStartRequestGamePayload
         {
         }

@@ -21,8 +21,9 @@ using GameLogic.Player.Items.Fishing;
 
 namespace GameLogic.Player.Items
 {
-    [MetaSerializable]
-    public sealed class MergeItem : IBoardItem
+    [MetaBlockedMembers(new int[] { 2 })]
+    [MetaSerializableDerived(2)]
+    public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
         private MergeItemExtra Extra => extra ??= new MergeItemExtra();
@@ -59,7 +60,7 @@ namespace GameLogic.Player.Items
         }
 
         [MetaSerializable]
-        class MergeItemExtra
+        public class MergeItemExtra
         {
             [MetaMember(1, 0)]
             public DecayState DecayState; // 0x10

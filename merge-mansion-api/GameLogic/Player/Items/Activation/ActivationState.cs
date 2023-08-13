@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Player.Items.Activation
 {
     [MetaSerializable]
-    public sealed class ActivationState
+    public class ActivationState
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private int currentCycleNumber;

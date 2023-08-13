@@ -1,10 +1,11 @@
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(9)]
-    [MetaSerializable]
+    [MetaFormHidden]
     public class LinkWithNoReward : PlayerReward
     {
         [MetaMember(1, 0)]

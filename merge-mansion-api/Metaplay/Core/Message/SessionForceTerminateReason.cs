@@ -2,8 +2,10 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Message
 {
+    [MetaSerializable]
     public abstract class SessionForceTerminateReason
     {
+        [MetaSerializableDerived(9)]
         public class MaintenanceModeStarted : SessionForceTerminateReason
         {
             public MaintenanceModeStarted()
@@ -11,6 +13,7 @@ namespace Metaplay.Core.Message
             }
         }
 
+        [MetaSerializableDerived(10)]
         public class PauseDeadlineExceeded : SessionForceTerminateReason
         {
             public PauseDeadlineExceeded()

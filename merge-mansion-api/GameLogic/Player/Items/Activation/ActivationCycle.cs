@@ -5,7 +5,6 @@ using System;
 namespace GameLogic.Player.Items.Activation
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class ActivationCycle : IActivationCycle
     {
         [MetaMember(1)]

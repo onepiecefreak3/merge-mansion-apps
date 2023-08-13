@@ -5,7 +5,6 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(13)]
-    [MetaSerializable]
     public class ItemNeededRequirement : PlayerRequirement
     {
         [MetaMember(1, 0)]

@@ -8,7 +8,6 @@ using System;
 namespace GameLogic.Player.Requirements
 {
     [MetaSerializableDerived(1)]
-    [MetaSerializable]
     public class PlayerItemRequirement : PlayerRequirement
     {
         [MetaMember(3, 0)]

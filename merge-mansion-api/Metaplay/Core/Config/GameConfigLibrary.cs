@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Metaplay.Core.Serialization;
 using Metaplay.Generated;
+using System.Reflection;
 
 namespace Metaplay.Core.Config
 {
+    [DefaultMember("Item")]
     public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary<TKey, TInfo>, IGameConfigLibrary, IGameConfigEntry
     {
         private Dictionary<TKey, TInfo> _infos; // 0x10

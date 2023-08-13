@@ -1,10 +1,11 @@
 using Code.GameLogic.GameEvents;
 using Metaplay.Core.Model;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(18)]
-    [MetaSerializable]
+    [MetaFormHidden]
     public class ProgressionEventPerkReward : PlayerReward
     {
         [MetaMember(1, 0)]
