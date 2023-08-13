@@ -31,7 +31,7 @@ public class MetaplayClient : ISessionContextProvider
 
         MetaplaySDK.Start(new MetaplaySDKConfig
         {
-            BuildVersion = new BuildVersion(Application.Version, "local", "aa48939ad4e4f32ed0619042be5da8137afa16c0"),
+            BuildVersion = new BuildVersion(Application.Version, "local", "b0e28a097c26fd4d461fe6764533244176df313a"),
             AutoCreateMetaplaySDKBehavior = false,
             ServerEndpoint = GetServerEndpoint(),
             ConnectionConfig = null,

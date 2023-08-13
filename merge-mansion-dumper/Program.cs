@@ -74,7 +74,7 @@ namespace merge_mansion_dumper
         {
             Console.WriteLine("Setup game session...");
 
-            TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
+            //TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
 
             try
             {

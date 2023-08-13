@@ -66,8 +66,9 @@ namespace Metaplay.Core.Config
         }
 
         public ContentHash ArchiveVersion;
-        public MetaTime ArchiveCreatedAt;
         protected virtual CsvParseOptions DefaultParseOptions { get; }
         public bool AllowReferenceResolverUpdate { get; set; }
+
+        public MetaTime ArchiveCreatedAt;
     }
 }

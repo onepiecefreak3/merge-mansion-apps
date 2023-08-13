@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using merge_mansion_api;
 using Metaplay.Core.Serialization;
 using Newtonsoft.Json;
 
@@ -9,10 +10,7 @@ namespace Metaplay.Core.Network
     {
         protected byte[] EncodeMessage(MetaMessage message, bool enableCompression)
         {
-#if DEBUG
-            Console.WriteLine("Send: " + message.GetType().Name);
-            Console.WriteLine(JsonConvert.SerializeObject(message, Formatting.Indented));
-#endif
+            DebugTools.WriteSendMessage(message);
 
             var serialized = MetaSerialization.SerializeTagged(message, MetaSerializationFlags.IncludeAll, null, null);
 

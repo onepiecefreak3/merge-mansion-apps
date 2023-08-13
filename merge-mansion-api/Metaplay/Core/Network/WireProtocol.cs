@@ -1,4 +1,5 @@
 ﻿using System;
+using merge_mansion_api;
 using Metaplay.Core.Config;
 using Metaplay.Core.IO;
 using Metaplay.Core.Serialization;
@@ -60,10 +61,7 @@ namespace Metaplay.Core.Network
 
             var message = MetaSerialization.DeserializeTagged<MetaMessage>(reader, MetaSerializationFlags.SendOverNetwork, resolver, null, null);
 
-#if DEBUG
-            Console.WriteLine("Receive: " + message.GetType().Name);
-            Console.WriteLine(JsonConvert.SerializeObject(message, Formatting.Indented));
-#endif
+            DebugTools.WriteReceivedMessage(message);
 
             return message;
         }

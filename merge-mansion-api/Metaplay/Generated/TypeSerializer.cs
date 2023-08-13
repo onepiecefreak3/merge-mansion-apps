@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using merge_mansion_api;
 using Metaplay.Core;
 using Metaplay.Core.Config;
 using Metaplay.Core.IO;
@@ -15,6 +16,32 @@ namespace Metaplay.Generated
 {
     public static class TypeSerializer
     {
+        #region Cache
+
+        private static readonly Type ListType = typeof(List<>);
+
+        private static readonly IDictionary<Type, IDictionary<int, PropertyInfo>> _properties;
+        private static readonly IDictionary<Type, IDictionary<int, FieldInfo>> _fields;
+
+        static TypeSerializer()
+        {
+            var assembly = typeof(TypeSerializer).Assembly;
+            var serializableTypes = assembly.GetTypes().Where(t => t.GetCustomAttribute<MetaSerializableAttribute>() != null);
+
+            _properties = new Dictionary<Type, IDictionary<int, PropertyInfo>>();
+            _fields = new Dictionary<Type, IDictionary<int, FieldInfo>>();
+
+            foreach (var serializableType in serializableTypes)
+            {
+                _properties[serializableType] = GetTaggedProperties(serializableType);
+                _fields[serializableType] = GetTaggedFields(serializableType);
+            }
+        }
+
+        #endregion
+
+        #region MetaRefs
+
         public static void ResolveMetaRefs_List(IList list, IGameConfigDataResolver resolver)
         {
             if (list == null)
@@ -81,7 +108,7 @@ namespace Metaplay.Generated
                         ResolveMetaRefs_Dictionary((IDictionary)memberValue, resolver);
                         continue;
                     }
-                    
+
                     ResolveMetaRefs_List((IList)memberValue, resolver);
                     continue;
                 }
@@ -100,17 +127,21 @@ namespace Metaplay.Generated
             return (IMetaRef)createResolveMethod?.Invoke(metaRef, new object[] { resolver });
         }
 
-        public static object DeserializeTable(ref MetaSerializationContext context, IOReader reader, Type itemType)
+        #endregion
+
+        #region Deserialize
+
+        public static object DeserializeTable(ref MetaSerializationContext context, IOReader reader, Type elementType)
         {
             var wireType = TaggedWireSerializer.ReadWireType(reader);
-            TaggedWireSerializer.ExpectWireType(reader, itemType, wireType, WireDataType.ObjectTable);
+            TaggedWireSerializer.ExpectWireType(reader, elementType, wireType, WireDataType.ObjectTable);
 
             // Create dict type
-            var listType = typeof(List<>);
-            var result = Activator.CreateInstance(listType.MakeGenericType(itemType));
+            var genericListType = ListType.MakeGenericType(elementType);
+            var result = (IList)Activator.CreateInstance(genericListType);
 
             // Deserialize table type
-            DeserializeTable_Typed(ref context, reader, result);
+            DeserializeTable_Typed(ref context, reader, result, elementType);
 
             return result;
         }
@@ -126,15 +157,7 @@ namespace Metaplay.Generated
             return value;
         }
 
-        public static void Serialize(ref MetaSerializationContext context, IOWriter writer, object item)
-        {
-            var wireType = DetermineWireDataType(item, item.GetType());
-
-            TaggedWireSerializer.WriteWireType(writer, wireType);
-            Serialize_WireType(ref context, writer, wireType, item);
-        }
-
-        private static void DeserializeTable_Typed(ref MetaSerializationContext context, IOReader reader, object items)
+        private static void DeserializeTable_Typed(ref MetaSerializationContext context, IOReader reader, IList items, Type elementType)
         {
             var collectionSize = reader.ReadVarInt();
             if (collectionSize > context.MaxCollectionSize)
@@ -143,26 +166,23 @@ namespace Metaplay.Generated
             if (collectionSize == -1)
                 return;
 
-            var listType = items.GetType().GetGenericArguments().FirstOrDefault();
-            var addMethod = items.GetType().GetMethod(nameof(IList.Add));
-
             for (var i = 0; i < collectionSize; i++)
             {
-#if DEBUG
-                Console.Write($"\r{i:00000}");
-#endif
+                DebugTools.WriteIndex(elementType.Name, i);
 
-                var item = Activator.CreateInstance(listType);
-                Deserialize_Members(ref context, reader, item);
+                var item = Activator.CreateInstance(elementType);
+                Deserialize_Members(ref context, reader, item, elementType);
 
-                addMethod.Invoke(items, new[] { item });
+                items.Add(item);
             }
         }
 
-        private static void Deserialize_Members(ref MetaSerializationContext context, IOReader reader, object outValue)
+        private static void Deserialize_Members(ref MetaSerializationContext context, IOReader reader, object outValue, Type valueType)
         {
-            var taggedProperties = GetTaggedProperties(outValue.GetType());
-            var taggedFields = GetTaggedFields(outValue.GetType());
+            if (!_properties.TryGetValue(valueType, out var taggedProperties))
+                throw new InvalidOperationException($"No properties found for type {valueType.Name}.");
+            if (!_fields.TryGetValue(valueType, out var taggedFields))
+                throw new InvalidOperationException($"No fields found for type {valueType.Name}.");
 
             do
             {
@@ -200,214 +220,6 @@ namespace Metaplay.Generated
                     field.SetValue(outValue, value1);
                 }
             } while (true);
-        }
-
-        private static void Serialize_Members(ref MetaSerializationContext context, IOWriter writer, object item)
-        {
-            var taggedProperties = GetTaggedProperties(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.PropertyType));
-            var taggedFields = GetTaggedFields(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.FieldType));
-            var values = taggedProperties.Concat(taggedFields).OrderBy(x => x.Key);
-
-            foreach (var value in values)
-            {
-                var wireType = DetermineWireDataType(value.Item2, value.Item3);
-
-                TaggedWireSerializer.WriteWireType(writer, wireType);
-                TaggedWireSerializer.WriteTagId(writer, value.Key);
-                Serialize_WireType(ref context, writer, wireType, value.Item2);
-            }
-
-            TaggedWireSerializer.WriteWireType(writer, WireDataType.EndStruct);
-        }
-
-        // CUSTOM: Determines the wire data type from a given object
-        private static WireDataType DetermineWireDataType(object item, Type itemType)
-        {
-            if (itemType.IsAssignableTo(typeof(UInt128)))
-                return WireDataType.VarInt128;
-
-            if (itemType.IsAssignableTo(typeof(string)) ||
-                itemType.IsAssignableTo(typeof(IStringId)))
-                return WireDataType.String;
-
-            if (itemType.IsAssignableTo(typeof(IDictionary)))
-                return WireDataType.KeyValueCollection;
-
-            if (itemType.IsAssignableTo(typeof(IDynamicEnum)))
-                return WireDataType.VarInt;
-
-            if (itemType.GetCustomAttribute<MetaSerializableDerivedAttribute>() != null ||
-                itemType.GetCustomAttribute<MetaMessageAttribute>() != null ||
-                itemType.IsInterface || itemType.IsAbstract)
-                return WireDataType.AbstractStruct;
-
-            if (!itemType.IsValueType || Nullable.GetUnderlyingType(itemType) != null)
-                return WireDataType.NullableStruct;
-
-            if (itemType.IsAssignableTo(typeof(bool)) ||
-                itemType.IsAssignableTo(typeof(int)) ||
-                itemType.IsAssignableTo(typeof(uint)) ||
-                itemType.IsAssignableTo(typeof(long)) ||
-                itemType.IsAssignableTo(typeof(ulong)) ||
-                itemType.IsEnum)
-                return WireDataType.VarInt;
-
-            if (itemType.IsValueType)
-                return WireDataType.Struct;
-
-            throw new InvalidOperationException($"Unknown type {item.GetType().Name} to determine wire data type.");
-        }
-
-        // CUSTOM: Write values as wire type
-        private static void Serialize_WireType(ref MetaSerializationContext context, IOWriter writer, WireDataType wireType, object item)
-        {
-            //if (item is IMetaRef metaRef)
-            //{
-            //    Serialize_MetaRef(ref context, writer, metaRef);
-            //    return;
-            //}
-
-            switch (wireType)
-            {
-                case WireDataType.VarInt:
-                    if (item.GetType().IsEnum)
-                        item = Convert.ChangeType(item, Enum.GetUnderlyingType(item.GetType()));
-
-                    if (item is IDynamicEnum)
-                        Serialize_DynamicEnum(ref context, writer, (IDynamicEnum)item);
-                    if (item is bool)
-                        Serialize_Boolean(ref context, writer, (bool)item);
-                    else if (item is long)
-                        Serialize_Int64(ref context, writer, (long)item);
-                    else if (item is ulong)
-                        Serialize_UInt64(ref context, writer, (ulong)item);
-                    else if (item is int)
-                        Serialize_Int32(ref context, writer, (int)item);
-                    else if (item is uint)
-                        Serialize_UInt32(ref context, writer, (uint)item);
-                    break;
-
-                case WireDataType.VarInt128:
-                    Serialize_UInt128(ref context, writer, (UInt128)item);
-                    break;
-
-                case WireDataType.String:
-                    var value = item;
-                    if (item is IStringId sId)
-                        value = sId.Value;
-
-                    Serialize_String(ref context, writer, (string)value);
-                    break;
-
-                case WireDataType.NullableStruct:
-                    if (item is null)
-                        writer.WriteVarInt(0);
-                    else
-                    {
-                        writer.WriteVarInt(1);
-                        Serialize_Members(ref context, writer, item);
-                    }
-                    break;
-
-                case WireDataType.AbstractStruct:
-                    if (item == null)
-                    {
-                        writer.WriteVarInt(0);
-                        return;
-                    }
-
-                    var type = item.GetType();
-
-                    var messageAttribute = type.GetCustomAttribute<MetaMessageAttribute>();
-                    var serializeAttribute = type.GetCustomAttribute<MetaSerializableDerivedAttribute>();
-                    var deriveId = messageAttribute?.TypeCode ?? (serializeAttribute?.TypeCode ?? -1);
-
-                    writer.WriteVarInt(deriveId);
-
-                    Serialize_Members(ref context, writer, item);
-                    break;
-
-                case WireDataType.Struct:
-                    Serialize_Members(ref context, writer, item);
-                    break;
-
-                case WireDataType.KeyValueCollection:
-                    Serialize_KeyValueCollection(ref context, writer, (IDictionary)item);
-                    break;
-
-                default:
-                    throw new InvalidOperationException($"Invalid wire type {wireType} to write.");
-            }
-        }
-
-        private static void Serialize_Boolean(ref MetaSerializationContext context, IOWriter writer, bool value)
-        {
-            writer.WriteByte((byte)(value ? 1 : 0));
-        }
-
-        private static void Serialize_DynamicEnum(ref MetaSerializationContext context, IOWriter writer, IDynamicEnum value)
-        {
-            writer.WriteVarInt(value.Id);
-        }
-
-        private static void Serialize_Int32(ref MetaSerializationContext context, IOWriter writer, int value)
-        {
-            writer.WriteVarInt(value);
-        }
-
-        private static void Serialize_UInt32(ref MetaSerializationContext context, IOWriter writer, uint value)
-        {
-            writer.WriteVarUInt(value);
-        }
-
-        private static void Serialize_Int64(ref MetaSerializationContext context, IOWriter writer, long value)
-        {
-            writer.WriteVarLong(value);
-        }
-
-        private static void Serialize_UInt64(ref MetaSerializationContext context, IOWriter writer, ulong value)
-        {
-            writer.WriteVarULong(value);
-        }
-
-        private static void Serialize_UInt128(ref MetaSerializationContext context, IOWriter writer, UInt128 inValue)
-        {
-            writer.WriteVarUInt128(inValue);
-        }
-
-        private static void Serialize_String(ref MetaSerializationContext context, IOWriter writer, string inValue)
-        {
-            writer.WriteString(inValue);
-        }
-
-        // CUSTOM: Serialize dictionaries
-        private static void Serialize_KeyValueCollection(ref MetaSerializationContext context, IOWriter writer, IDictionary collection)
-        {
-            // Write count
-            var count = collection.Count;
-            if (count > context.MaxCollectionSize)
-                throw new InvalidOperationException($"Invalid key value collection size {count} (maximum allowed is {context.MaxCollectionSize})");
-
-            writer.WriteVarInt(count);
-
-            // Collect meta data
-            var dictTypes = collection.GetType().GetGenericArguments().Take(2).ToArray();
-
-            var keyWireType = DetermineWireDataType(null, dictTypes[0]);
-            var valueWireType = DetermineWireDataType(null, dictTypes[1]);
-
-            // Write dictionary types
-            TaggedWireSerializer.WriteWireType(writer, keyWireType);
-            TaggedWireSerializer.WriteWireType(writer, valueWireType);
-
-            // Write dictionary
-            foreach (var key in collection.Keys)
-            {
-                var value = collection[key];
-
-                Serialize_WireType(ref context, writer, keyWireType, key);
-                Serialize_WireType(ref context, writer, valueWireType, value);
-            }
         }
 
         // CUSTOM: Read value by wire type
@@ -506,7 +318,7 @@ namespace Metaplay.Generated
 
                 case WireDataType.Struct:
                     value = Activator.CreateInstance(memberType, true);
-                    Deserialize_Members(ref context, reader, value);
+                    Deserialize_Members(ref context, reader, value, memberType);
                     break;
 
                 // Classes and Nullable<T> where T : struct
@@ -520,7 +332,7 @@ namespace Metaplay.Generated
                     else
                         value = Activator.CreateInstance(memberType, true);
 
-                    Deserialize_Members(ref context, reader, value);
+                    Deserialize_Members(ref context, reader, value, memberType);
                     break;
 
                 case WireDataType.AbstractStruct:
@@ -540,7 +352,7 @@ namespace Metaplay.Generated
                         throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}");
 
                     value = Activator.CreateInstance(targetType, true);
-                    Deserialize_Members(ref context, reader, value);
+                    Deserialize_Members(ref context, reader, value, targetType);
                     break;
 
                 case WireDataType.ValueCollection:
@@ -707,6 +519,224 @@ namespace Metaplay.Generated
             outValue = reader.ReadFloat();
         }
 
+        #endregion
+
+        #region Serialize
+
+        public static void Serialize(ref MetaSerializationContext context, IOWriter writer, object item)
+        {
+            var wireType = DetermineWireDataType(item, item.GetType());
+
+            TaggedWireSerializer.WriteWireType(writer, wireType);
+            Serialize_WireType(ref context, writer, wireType, item);
+        }
+
+        private static void Serialize_Members(ref MetaSerializationContext context, IOWriter writer, object item)
+        {
+            var taggedProperties = GetTaggedProperties(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.PropertyType));
+            var taggedFields = GetTaggedFields(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.FieldType));
+            var values = taggedProperties.Concat(taggedFields).OrderBy(x => x.Key);
+
+            foreach (var value in values)
+            {
+                var wireType = DetermineWireDataType(value.Item2, value.Item3);
+
+                TaggedWireSerializer.WriteWireType(writer, wireType);
+                TaggedWireSerializer.WriteTagId(writer, value.Key);
+                Serialize_WireType(ref context, writer, wireType, value.Item2);
+            }
+
+            TaggedWireSerializer.WriteWireType(writer, WireDataType.EndStruct);
+        }
+
+        // CUSTOM: Determines the wire data type from a given object
+        private static WireDataType DetermineWireDataType(object item, Type itemType)
+        {
+            if (itemType.IsAssignableTo(typeof(UInt128)))
+                return WireDataType.VarInt128;
+
+            if (itemType.IsAssignableTo(typeof(string)) ||
+                itemType.IsAssignableTo(typeof(IStringId)))
+                return WireDataType.String;
+
+            if (itemType.IsAssignableTo(typeof(IDictionary)))
+                return WireDataType.KeyValueCollection;
+
+            if (itemType.IsAssignableTo(typeof(IDynamicEnum)))
+                return WireDataType.VarInt;
+
+            if (itemType.GetCustomAttribute<MetaSerializableDerivedAttribute>() != null ||
+                itemType.GetCustomAttribute<MetaMessageAttribute>() != null ||
+                itemType.IsInterface || itemType.IsAbstract)
+                return WireDataType.AbstractStruct;
+
+            if (!itemType.IsValueType || Nullable.GetUnderlyingType(itemType) != null)
+                return WireDataType.NullableStruct;
+
+            if (itemType.IsAssignableTo(typeof(bool)) ||
+                itemType.IsAssignableTo(typeof(int)) ||
+                itemType.IsAssignableTo(typeof(uint)) ||
+                itemType.IsAssignableTo(typeof(long)) ||
+                itemType.IsAssignableTo(typeof(ulong)) ||
+                itemType.IsEnum)
+                return WireDataType.VarInt;
+
+            if (itemType.IsValueType)
+                return WireDataType.Struct;
+
+            throw new InvalidOperationException($"Unknown type {item.GetType().Name} to determine wire data type.");
+        }
+
+        // CUSTOM: Write values as wire type
+        private static void Serialize_WireType(ref MetaSerializationContext context, IOWriter writer, WireDataType wireType, object item)
+        {
+            switch (wireType)
+            {
+                case WireDataType.VarInt:
+                    if (item.GetType().IsEnum)
+                        item = Convert.ChangeType(item, Enum.GetUnderlyingType(item.GetType()));
+
+                    if (item is IDynamicEnum)
+                        Serialize_DynamicEnum(ref context, writer, (IDynamicEnum)item);
+                    if (item is bool)
+                        Serialize_Boolean(ref context, writer, (bool)item);
+                    else if (item is long)
+                        Serialize_Int64(ref context, writer, (long)item);
+                    else if (item is ulong)
+                        Serialize_UInt64(ref context, writer, (ulong)item);
+                    else if (item is int)
+                        Serialize_Int32(ref context, writer, (int)item);
+                    else if (item is uint)
+                        Serialize_UInt32(ref context, writer, (uint)item);
+                    break;
+
+                case WireDataType.VarInt128:
+                    Serialize_UInt128(ref context, writer, (UInt128)item);
+                    break;
+
+                case WireDataType.String:
+                    var value = item;
+                    if (item is IStringId sId)
+                        value = sId.Value;
+
+                    Serialize_String(ref context, writer, (string)value);
+                    break;
+
+                case WireDataType.NullableStruct:
+                    if (item is null)
+                        writer.WriteVarInt(0);
+                    else
+                    {
+                        writer.WriteVarInt(1);
+                        Serialize_Members(ref context, writer, item);
+                    }
+                    break;
+
+                case WireDataType.AbstractStruct:
+                    if (item == null)
+                    {
+                        writer.WriteVarInt(0);
+                        return;
+                    }
+
+                    var type = item.GetType();
+
+                    var messageAttribute = type.GetCustomAttribute<MetaMessageAttribute>();
+                    var serializeAttribute = type.GetCustomAttribute<MetaSerializableDerivedAttribute>();
+                    var deriveId = messageAttribute?.TypeCode ?? (serializeAttribute?.TypeCode ?? -1);
+
+                    writer.WriteVarInt(deriveId);
+
+                    Serialize_Members(ref context, writer, item);
+                    break;
+
+                case WireDataType.Struct:
+                    Serialize_Members(ref context, writer, item);
+                    break;
+
+                case WireDataType.KeyValueCollection:
+                    Serialize_KeyValueCollection(ref context, writer, (IDictionary)item);
+                    break;
+
+                default:
+                    throw new InvalidOperationException($"Invalid wire type {wireType} to write.");
+            }
+        }
+
+        private static void Serialize_Boolean(ref MetaSerializationContext context, IOWriter writer, bool value)
+        {
+            writer.WriteByte((byte)(value ? 1 : 0));
+        }
+
+        private static void Serialize_DynamicEnum(ref MetaSerializationContext context, IOWriter writer, IDynamicEnum value)
+        {
+            writer.WriteVarInt(value.Id);
+        }
+
+        private static void Serialize_Int32(ref MetaSerializationContext context, IOWriter writer, int value)
+        {
+            writer.WriteVarInt(value);
+        }
+
+        private static void Serialize_UInt32(ref MetaSerializationContext context, IOWriter writer, uint value)
+        {
+            writer.WriteVarUInt(value);
+        }
+
+        private static void Serialize_Int64(ref MetaSerializationContext context, IOWriter writer, long value)
+        {
+            writer.WriteVarLong(value);
+        }
+
+        private static void Serialize_UInt64(ref MetaSerializationContext context, IOWriter writer, ulong value)
+        {
+            writer.WriteVarULong(value);
+        }
+
+        private static void Serialize_UInt128(ref MetaSerializationContext context, IOWriter writer, UInt128 inValue)
+        {
+            writer.WriteVarUInt128(inValue);
+        }
+
+        private static void Serialize_String(ref MetaSerializationContext context, IOWriter writer, string inValue)
+        {
+            writer.WriteString(inValue);
+        }
+
+        // CUSTOM: Serialize dictionaries
+        private static void Serialize_KeyValueCollection(ref MetaSerializationContext context, IOWriter writer, IDictionary collection)
+        {
+            // Write count
+            var count = collection.Count;
+            if (count > context.MaxCollectionSize)
+                throw new InvalidOperationException($"Invalid key value collection size {count} (maximum allowed is {context.MaxCollectionSize})");
+
+            writer.WriteVarInt(count);
+
+            // Collect meta data
+            var dictTypes = collection.GetType().GetGenericArguments().Take(2).ToArray();
+
+            var keyWireType = DetermineWireDataType(null, dictTypes[0]);
+            var valueWireType = DetermineWireDataType(null, dictTypes[1]);
+
+            // Write dictionary types
+            TaggedWireSerializer.WriteWireType(writer, keyWireType);
+            TaggedWireSerializer.WriteWireType(writer, valueWireType);
+
+            // Write dictionary
+            foreach (var key in collection.Keys)
+            {
+                var value = collection[key];
+
+                Serialize_WireType(ref context, writer, keyWireType, key);
+                Serialize_WireType(ref context, writer, valueWireType, value);
+            }
+        }
+
+        #endregion
+
+        #region Support
+
         private static IDictionary<int, PropertyInfo> GetTaggedProperties(Type type)
         {
             var result = new Dictionary<int, PropertyInfo>();
@@ -740,5 +770,7 @@ namespace Metaplay.Generated
 
             return result;
         }
+
+        #endregion
     }
 }
