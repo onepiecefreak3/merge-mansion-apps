@@ -179,10 +179,13 @@ namespace Metaplay.Generated
 
         private static void Deserialize_Members(ref MetaSerializationContext context, IOReader reader, object outValue, Type valueType)
         {
-            if (!_properties.TryGetValue(valueType, out var taggedProperties))
-                throw new InvalidOperationException($"No properties found for type {valueType.Name}.");
-            if (!_fields.TryGetValue(valueType, out var taggedFields))
-                throw new InvalidOperationException($"No fields found for type {valueType.Name}.");
+            //if (!_properties.TryGetValue(valueType, out var taggedProperties))
+            //    throw new InvalidOperationException($"No properties found for type {valueType.Name}.");
+            //if (!_fields.TryGetValue(valueType, out var taggedFields))
+            //    throw new InvalidOperationException($"No fields found for type {valueType.Name}.");
+
+            var taggedProperties = GetTaggedProperties(outValue.GetType());
+            var taggedFields = GetTaggedFields(outValue.GetType());
 
             do
             {
