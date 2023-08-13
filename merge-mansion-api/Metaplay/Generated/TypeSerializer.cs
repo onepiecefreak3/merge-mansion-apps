@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using merge_mansion_api;
@@ -379,9 +378,9 @@ namespace Metaplay.Generated
         // CUSTOM: Deserialize MetaRef<TItem>
         private static void Deserialize_MetaRef(ref MetaSerializationContext context, IOReader reader, WireDataType wireType, Type type, out object value)
         {
-            var metaRefType = type.GetGenericArguments().FirstOrDefault();
+            var keyType = (Type)type.GetMethod("GetKeyType").Invoke(null, new object[] { });
 
-            Deserialize_WireType(ref context, reader, wireType, metaRefType, out var metaRefKey);
+            Deserialize_WireType(ref context, reader, wireType, keyType, out var metaRefKey);
 
             var fromMethod = type.GetMethod("FromKey");
             value = fromMethod.Invoke(null, new[] { metaRefKey });

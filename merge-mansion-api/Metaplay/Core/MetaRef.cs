@@ -23,14 +23,11 @@ namespace Metaplay.Core
             _item = item;
         }
 
+        public static Type GetKeyType() => KeyType;
+
         public static MetaRef<TItem> FromKey(object key)
         {
-            var key1 = key;
-            //if (KeyType.IsEnum)
-            //    key1 = Enum.ToObject(KeyType, key);
-            //if (typeof(IStringId).IsAssignableFrom(KeyType))
-            //    key1 = KeyType.BaseType.GetMethod("FromString").Invoke(null, new[] { key });
-            return new MetaRef<TItem>(key1, null);
+            return new MetaRef<TItem>(key, null);
         }
 
         public IMetaRef CreateResolved(IGameConfigDataResolver resolver)
