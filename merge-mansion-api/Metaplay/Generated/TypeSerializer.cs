@@ -330,10 +330,9 @@ namespace Metaplay.Generated
                         break;
 
                     if (memberType.IsGenericType && memberType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                        value = Activator.CreateInstance(memberType.GenericTypeArguments[0], true);
-                    else
-                        value = Activator.CreateInstance(memberType, true);
+                        memberType = memberType.GenericTypeArguments[0];
 
+                    value = Activator.CreateInstance(memberType, true);
                     Deserialize_Members(ref context, reader, value, memberType);
                     break;
 
