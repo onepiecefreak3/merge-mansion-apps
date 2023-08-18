@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using merge_mansion_api;
@@ -32,8 +33,10 @@ namespace Metaplay.Generated
 
             foreach (var serializableType in serializableTypes)
             {
-                _properties[serializableType] = GetTaggedProperties(serializableType);
-                _fields[serializableType] = GetTaggedFields(serializableType);
+                GetTaggedMembers(serializableType,out var taggedFields, out var taggedProperties);
+
+                _fields[serializableType] = taggedFields;
+                _properties[serializableType] = taggedProperties;
             }
         }
 
@@ -82,9 +85,8 @@ namespace Metaplay.Generated
 
         public static void ResolveMetaRefs_Type(Type type, object item, IGameConfigDataResolver resolver)
         {
-            var taggedProperties = GetTaggedProperties(type).Values;
-            var taggedFields = GetTaggedFields(type).Values;
-            var taggedMembers = taggedProperties.Concat<MemberInfo>(taggedFields);
+            GetTaggedMembers(type, out var taggedFields, out var taggedProperties);
+            var taggedMembers = taggedProperties.Values.Concat<MemberInfo>(taggedFields.Values);
 
             foreach (var member in taggedMembers)
             {
@@ -183,8 +185,7 @@ namespace Metaplay.Generated
             //if (!_fields.TryGetValue(valueType, out var taggedFields))
             //    throw new InvalidOperationException($"No fields found for type {valueType.Name}.");
 
-            var taggedProperties = GetTaggedProperties(outValue.GetType());
-            var taggedFields = GetTaggedFields(outValue.GetType());
+            GetTaggedMembers(outValue.GetType(), out var taggedFields, out var taggedProperties);
 
             do
             {
@@ -534,8 +535,11 @@ namespace Metaplay.Generated
 
         private static void Serialize_Members(ref MetaSerializationContext context, IOWriter writer, object item)
         {
-            var taggedProperties = GetTaggedProperties(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.PropertyType));
-            var taggedFields = GetTaggedFields(item.GetType()).Select(x => (x.Key, x.Value.GetValue(item), x.Value.FieldType));
+            GetTaggedMembers(item.GetType(), out var fields, out var properties);
+
+            var taggedFields = fields.Select(x => (x.Key, x.Value.GetValue(item), x.Value.FieldType));
+            var taggedProperties = properties.Select(x => (x.Key, x.Value.GetValue(item), x.Value.PropertyType));
+
             var values = taggedProperties.Concat(taggedFields).OrderBy(x => x.Key);
 
             foreach (var value in values)
@@ -738,35 +742,56 @@ namespace Metaplay.Generated
 
         #region Support
 
-        private static IDictionary<int, PropertyInfo> GetTaggedProperties(Type type)
+        private static void GetTaggedMembers(Type type, out IDictionary<int, FieldInfo> taggedFields, out IDictionary<int, PropertyInfo> taggedProperties)
         {
-            var result = new Dictionary<int, PropertyInfo>();
+            var implicitMembers = type.GetCustomAttribute<MetaImplicitMembersRangeAttribute>();
+            var startIndex = implicitMembers?.StartIndex ?? 0;
 
-            var flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
-            foreach (var property in type.GetProperties(flags))
-            {
-                var customAttribute = property.GetCustomAttribute<MetaMemberAttribute>();
-                if (customAttribute == null)
-                    continue;
-
-                result[customAttribute.TagId] = property;
-            }
-
-            return result;
+            taggedFields = GetTaggedFields(type, implicitMembers != null, ref startIndex);
+            taggedProperties = GetTaggedProperties(type, implicitMembers != null, ref startIndex);
         }
 
-        private static IDictionary<int, FieldInfo> GetTaggedFields(Type type)
+        private static IDictionary<int, FieldInfo> GetTaggedFields(Type type, bool isImplicit, ref int startIndex)
         {
             var result = new Dictionary<int, FieldInfo>();
 
             var flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
             foreach (var field in type.GetFields(flags))
             {
+                if (isImplicit)
+                {
+                    result[startIndex++] = field;
+                    continue;
+                }
+
                 var customAttribute = field.GetCustomAttribute<MetaMemberAttribute>();
                 if (customAttribute == null)
                     continue;
 
                 result[customAttribute.TagId] = field;
+            }
+
+            return result;
+        }
+
+        private static IDictionary<int, PropertyInfo> GetTaggedProperties(Type type, bool isImplicit, ref int startIndex)
+        {
+            var result = new Dictionary<int, PropertyInfo>();
+
+            var flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
+            foreach (var property in type.GetProperties(flags))
+            {
+                if (isImplicit)
+                {
+                    result[startIndex++] = property;
+                    continue;
+                }
+
+                var customAttribute = property.GetCustomAttribute<MetaMemberAttribute>();
+                if (customAttribute == null)
+                    continue;
+
+                result[customAttribute.TagId] = property;
             }
 
             return result;
