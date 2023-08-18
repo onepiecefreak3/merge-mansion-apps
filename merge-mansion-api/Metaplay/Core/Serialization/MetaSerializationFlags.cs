@@ -1,5 +1,8 @@
-﻿namespace Metaplay.Core.Serialization
+using Metaplay.Core.Model;
+
+namespace Metaplay.Core.Serialization
 {
+    [MetaSerializable]
     public enum MetaSerializationFlags
     {
         IncludeAll = 0,

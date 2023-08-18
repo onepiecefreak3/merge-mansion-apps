@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System.Collections.Generic;
 
 namespace Metaplay.Core.Web3
 {
@@ -12,6 +13,12 @@ namespace Metaplay.Core.Web3
             protected ContextBase()
             {
             }
+        }
+
+        public abstract IEnumerable<NftKey> TargetNfts { get; }
+
+        protected PlayerNftTransaction()
+        {
         }
     }
 }

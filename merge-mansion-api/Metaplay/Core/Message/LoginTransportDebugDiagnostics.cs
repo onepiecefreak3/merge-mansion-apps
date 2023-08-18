@@ -5,7 +5,6 @@ namespace Metaplay.Core.Message
     [MetaSerializable]
     public class LoginTransportDebugDiagnostics // TypeDefIndex: 1014
     {
-        // Fields
         [MetaMember(1, 0)]
         public int WritesStarted; // 0x10
         [MetaMember(2, 0)]

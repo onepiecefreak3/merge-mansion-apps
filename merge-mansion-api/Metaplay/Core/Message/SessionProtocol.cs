@@ -55,7 +55,6 @@ namespace Metaplay.Core.Message
             [MetaSerializable]
             public struct ConfigArchiveUpdateInfo
             {
-                // Fields
                 [MetaMember(1, 0)]
                 public ContentHash SharedGameConfigVersion; // 0x0
                 [MetaMember(2, 0)]
@@ -70,7 +69,6 @@ namespace Metaplay.Core.Message
             [MetaSerializable]
             public struct ConfigPatchesUpdateInfo
             {
-                // Fields
                 [MetaMember(1, 0)]
                 public ContentHash PatchesVersion; // 0x0
                 public ConfigPatchesUpdateInfo(ContentHash patchesVersion)
@@ -79,12 +77,11 @@ namespace Metaplay.Core.Message
                 }
             }
 
+            [MetaSerializable((MetaSerializableFlags)1)]
+            [MetaImplicitMembersRange(1, 100)]
             public struct LanguageUpdateInfo
             {
-                // HINT: MetaMembers do not exist in original code. It's possible that [MetaImplicitMembersRange(1, 100)] implicitly denotes members a tagId to deserialize to
-                [MetaMember(1, 0)]
                 public LanguageId ActiveLanguage; // 0x0
-                [MetaMember(2, 0)]
                 public ContentHash LocalizationVersion; // 0x8
                 public LanguageUpdateInfo(LanguageId activeLanguage, ContentHash localizationVersion)
                 {

@@ -1,5 +1,8 @@
-﻿namespace GameLogic.Config.Map.Characters
+using Metaplay.Core.Model;
+
+namespace GameLogic.Config.Map.Characters
 {
+    [MetaSerializable]
     public enum MapCharacterPositionId
     {
         None = 0,
@@ -140,5 +143,42 @@
         AreaMazeSmallGateMaddie = 3603,
         AreaMazeCenterMaddie = 3604,
         AreaMazeFountainMaddie = 3605,
+        AreaLighthouseFirstMapCharacterPosition = 3799,
+        AreaLighthouseEntryMaddie = 3800,
+        AreaLighthousePathMaddie = 3801,
+        AreaLighthouseLighthouseTopMaddie = 3802,
+        AreaMansionGrandHallFirstMapCharacterPositionMap = 3999,
+        AreaMansionGrandHallOutdoorMaddieDialogue = 4000,
+        AreaMansionGrandHallOutdoorGrandmaDialogue = 4001,
+        AreaMansionGrandHallFirstMapCharacterPositionDialogue = 4002,
+        AreaMansionGrandHallIndoorCenterMaddieDialogue = 4003,
+        AreaMansionGrandHallIndoorCenterGrandmaDialogue = 4004,
+        AreaMansionGrandHallIndoorEntryVictoriaDialogue = 4005,
+        AreaMansionGrandHallIndoorEntryVictoriaMap = 4006,
+        AreaMansionGrandHallIndoorCenterMaddieMap = 4007,
+        AreaMansionGrandHallLeftPathMaddieMap = 4008,
+        AreaMansionGrandHallRightPathMaddieMap = 4009,
+        AreaMansionGrandHallTopPathMaddieMap = 4010,
+        AreaMansionGrandHallClockPathMaddieMap = 4011,
+        AreaMansionHallwayFirstMapCharacterPositionMap = 4199,
+        AreaMansionHallwayEntryMaddieDialogue = 4200,
+        AreaMansionHallwayEntryGrandmaDialogue = 4201,
+        AreaMansionHallwayEntryWinstonDialogue = 4202,
+        AreaMansionHallwayEntryJackieDialogue = 4203,
+        AreaMansionHallwayStatueMaddieDialogue = 4204,
+        AreaMansionHallwayCenterMaddieDialogue = 4205,
+        AreaMansionHallwayCenterGrandmaDialogue = 4206,
+        AreaMansionHallwayCenterJackieDialogue = 4207,
+        AreaStudyFirstMapCharacterPositionMap = 4399,
+        AreaStudyEntryMaddieDialogue = 4400,
+        AreaStudyEntryGrandmaDialogue = 4401,
+        AreaStudyEntryHoldenDialogue = 4402,
+        AreaStudyCenterMaddieDialogue = 4403,
+        AreaLighthouseTopFirstMapCharacterPositionMap = 4599,
+        AreaLighthouseTopEntryMaddieMap = 4600,
+        AreaSaunaBurnFirstMapCharacterPositionMap = 4799,
+        AreaSaunaBurnEntryMaddieMap = 4800,
+        AreaStudySrFirstMapCharacterPositionMap = 4999,
+        AreaStudySrEntryMaddieMap = 5000
     }
 }

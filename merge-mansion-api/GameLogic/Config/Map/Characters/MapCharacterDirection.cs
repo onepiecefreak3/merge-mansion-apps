@@ -1,5 +1,8 @@
-﻿namespace GameLogic.Config.Map.Characters
+using Metaplay.Core.Model;
+
+namespace GameLogic.Config.Map.Characters
 {
+    [MetaSerializable]
     public enum MapCharacterDirection
     {
         Undefined = 0,

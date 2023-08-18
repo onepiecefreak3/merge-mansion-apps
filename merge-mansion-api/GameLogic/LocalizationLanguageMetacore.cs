@@ -1,5 +1,12 @@
-﻿namespace GameLogic
+using Metaplay.Core.Model;
+using Metaplay.Core.Json;
+using System;
+using System.ComponentModel;
+
+namespace GameLogic
 {
+    [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<LocalizationLanguageMetacore>))]
     public enum LocalizationLanguageMetacore
     {
         English = 0,

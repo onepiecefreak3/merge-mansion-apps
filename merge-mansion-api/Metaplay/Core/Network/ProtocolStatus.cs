@@ -1,7 +1,9 @@
-﻿using System;
+using System;
+using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Network
 {
+    [MetaSerializable]
     public enum ProtocolStatus
     {
         Pending = 0,
