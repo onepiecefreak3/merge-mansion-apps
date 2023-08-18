@@ -9,6 +9,8 @@ namespace Metaplay.Core.Model
         public int EndIndex;
         public MetaImplicitMembersRangeAttribute(int startIndex, int endIndex)
         {
+            StartIndex = startIndex;
+            EndIndex = endIndex;
         }
     }
 }
