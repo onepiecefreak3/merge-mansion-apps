@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using merge_mansion_api;
@@ -18,25 +19,16 @@ namespace Metaplay.Generated
         #region Cache
 
         private static readonly Type ListType = typeof(List<>);
+        private static readonly Type MetaRefInterface = typeof(IMetaRef);
+        private static readonly Type DynamicEnumInterface = typeof(IDynamicEnum);
 
         private static readonly IDictionary<Type, IDictionary<int, PropertyInfo>> _properties;
         private static readonly IDictionary<Type, IDictionary<int, FieldInfo>> _fields;
 
         static TypeSerializer()
         {
-            var assembly = typeof(TypeSerializer).Assembly;
-            var serializableTypes = assembly.GetTypes().Where(t => t.GetCustomAttribute<MetaSerializableAttribute>() != null);
-
             _properties = new Dictionary<Type, IDictionary<int, PropertyInfo>>();
             _fields = new Dictionary<Type, IDictionary<int, FieldInfo>>();
-
-            foreach (var serializableType in serializableTypes)
-            {
-                GetTaggedMembers(serializableType,out var taggedFields, out var taggedProperties);
-
-                _fields[serializableType] = taggedFields;
-                _properties[serializableType] = taggedProperties;
-            }
         }
 
         #endregion
@@ -131,19 +123,13 @@ namespace Metaplay.Generated
 
         #region Deserialize
 
-        public static object DeserializeTable(ref MetaSerializationContext context, IOReader reader, Type elementType)
+        public static IList DeserializeTable(ref MetaSerializationContext context, IOReader reader, Type elementType)
         {
             var wireType = TaggedWireSerializer.ReadWireType(reader);
             TaggedWireSerializer.ExpectWireType(reader, elementType, wireType, WireDataType.ObjectTable);
 
-            // Create dict type
-            var genericListType = ListType.MakeGenericType(elementType);
-            var result = (IList)Activator.CreateInstance(genericListType);
-
             // Deserialize table type
-            DeserializeTable_Typed(ref context, reader, result, elementType);
-
-            return result;
+            return DeserializeTable_Typed(ref context, reader, elementType);
         }
 
         public static object Deserialize(ref MetaSerializationContext context, IOReader reader, Type itemType)
@@ -157,15 +143,17 @@ namespace Metaplay.Generated
             return value;
         }
 
-        private static void DeserializeTable_Typed(ref MetaSerializationContext context, IOReader reader, IList items, Type elementType)
+        private static IList DeserializeTable_Typed(ref MetaSerializationContext context, IOReader reader, Type elementType)
         {
             var collectionSize = reader.ReadVarInt();
             if (collectionSize > context.MaxCollectionSize)
                 throw new InvalidOperationException($"Invalid value collection size {collectionSize} (maximum allowed is {context.MaxCollectionSize})");
 
+            var listType = ListType.MakeGenericType(elementType);
             if (collectionSize == -1)
-                return;
+                return (IList)Activator.CreateInstance(listType);
 
+            var items = (IList)Activator.CreateInstance(listType, collectionSize);
             for (var i = 0; i < collectionSize; i++)
             {
                 DebugTools.WriteIndex(elementType.Name, i);
@@ -173,18 +161,15 @@ namespace Metaplay.Generated
                 var item = Activator.CreateInstance(elementType);
                 Deserialize_Members(ref context, reader, item, elementType);
 
-                items.Add(item);
+                items?.Add(item);
             }
+
+            return items;
         }
 
         private static void Deserialize_Members(ref MetaSerializationContext context, IOReader reader, object outValue, Type valueType)
         {
-            //if (!_properties.TryGetValue(valueType, out var taggedProperties))
-            //    throw new InvalidOperationException($"No properties found for type {valueType.Name}.");
-            //if (!_fields.TryGetValue(valueType, out var taggedFields))
-            //    throw new InvalidOperationException($"No fields found for type {valueType.Name}.");
-
-            GetTaggedMembers(outValue.GetType(), out var taggedFields, out var taggedProperties);
+            GetTaggedMembers(valueType, out var taggedFields, out var taggedProperties);
 
             do
             {
@@ -201,25 +186,24 @@ namespace Metaplay.Generated
 
                 if (!taggedProperties.ContainsKey(tagId) && !taggedFields.ContainsKey(tagId))
                 {
-                    //throw new InvalidOperationException($"Read tagId {tagId} is not part of type {outValue.GetType().Name}");
-
                     TaggedWireSerializer.SkipWireType(reader, wireType);
                     continue;
                 }
 
+                object value;
                 if (taggedProperties.ContainsKey(tagId))
                 {
                     var property = taggedProperties[tagId];
 
-                    Deserialize_WireType(ref context, reader, wireType, property.PropertyType, out var value);
+                    Deserialize_WireType(ref context, reader, wireType, property.PropertyType, out value);
                     property.SetValue(outValue, value);
                 }
                 else
                 {
                     var field = taggedFields[tagId];
 
-                    Deserialize_WireType(ref context, reader, wireType, field.FieldType, out var value1);
-                    field.SetValue(outValue, value1);
+                    Deserialize_WireType(ref context, reader, wireType, field.FieldType, out value);
+                    field.SetValue(outValue, value);
                 }
             } while (true);
         }
@@ -229,7 +213,7 @@ namespace Metaplay.Generated
         {
             value = null;
 
-            if (typeof(IMetaRef).IsAssignableFrom(memberType))
+            if (MetaRefInterface.IsAssignableFrom(memberType))
             {
                 Deserialize_MetaRef(ref context, reader, wireType, memberType, out value);
                 return;
@@ -240,12 +224,12 @@ namespace Metaplay.Generated
                 case WireDataType.Invalid:
                 case WireDataType.EndStruct:
                 case WireDataType.ObjectTable:
-                    throw new InvalidOperationException($"Tried to read invalid type {wireType} at position {reader.Offset}");
+                    throw new InvalidOperationException($"Tried to read invalid type {wireType} at position {reader.Offset}.");
 
                 case WireDataType.VarInt:
                     var baseType = memberType.IsEnum ? Enum.GetUnderlyingType(memberType) : memberType;
 
-                    if (baseType.IsAssignableTo(typeof(IDynamicEnum)))
+                    if (DynamicEnumInterface.IsAssignableFrom(baseType))
                     {
                         Deserialize_DynamicEnum(ref context, reader, out var v);
                         value = baseType.BaseType.GetMethod("FromId").Invoke(null, new object[] { v });
@@ -739,19 +723,30 @@ namespace Metaplay.Generated
 
         #endregion
 
-        #region Support
+        #region Tagged members
 
         private static void GetTaggedMembers(Type type, out IDictionary<int, FieldInfo> taggedFields, out IDictionary<int, PropertyInfo> taggedProperties)
         {
+            var hasFields = _fields.TryGetValue(type, out taggedFields);
+            var hasProperties = _properties.TryGetValue(type, out taggedProperties);
+
+            if (hasFields && hasProperties)
+                return;
+
             var implicitMembers = type.GetCustomAttribute<MetaImplicitMembersRangeAttribute>();
             var startIndex = implicitMembers?.StartIndex ?? 0;
 
-            taggedFields = GetTaggedFields(type, implicitMembers != null, ref startIndex);
-            taggedProperties = GetTaggedProperties(type, implicitMembers != null, ref startIndex);
+            if (!hasFields)
+                taggedFields = GetTaggedFields(type, implicitMembers != null, ref startIndex);
+            if (!hasProperties)
+                taggedProperties = GetTaggedProperties(type, implicitMembers != null, ref startIndex);
         }
 
         private static IDictionary<int, FieldInfo> GetTaggedFields(Type type, bool isImplicit, ref int startIndex)
         {
+            if (_fields.TryGetValue(type, out var taggedFields))
+                return taggedFields;
+
             var result = new Dictionary<int, FieldInfo>();
 
             var flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
@@ -770,11 +765,14 @@ namespace Metaplay.Generated
                 result[customAttribute.TagId] = field;
             }
 
-            return result;
+            return _fields[type] = result;
         }
 
         private static IDictionary<int, PropertyInfo> GetTaggedProperties(Type type, bool isImplicit, ref int startIndex)
         {
+            if (_properties.TryGetValue(type, out var taggedProperties))
+                return taggedProperties;
+
             var result = new Dictionary<int, PropertyInfo>();
 
             var flags = BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance;
@@ -793,7 +791,7 @@ namespace Metaplay.Generated
                 result[customAttribute.TagId] = property;
             }
 
-            return result;
+            return _properties[type] = result;
         }
 
         #endregion
