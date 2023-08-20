@@ -21,14 +21,21 @@ namespace Metaplay.Generated
         private static readonly Type ListType = typeof(List<>);
         private static readonly Type MetaRefInterface = typeof(IMetaRef);
         private static readonly Type DynamicEnumInterface = typeof(IDynamicEnum);
+        private static readonly Type MetaMessageType = typeof(MetaMessage);
 
         private static readonly IDictionary<Type, IDictionary<int, PropertyInfo>> _properties;
         private static readonly IDictionary<Type, IDictionary<int, FieldInfo>> _fields;
+
+        private static readonly IDictionary<Type, IDictionary<int, Type>> _derivableTypes;
+        private static readonly IDictionary<Type, IDictionary<int, Type>> _messageTypes;
 
         static TypeSerializer()
         {
             _properties = new Dictionary<Type, IDictionary<int, PropertyInfo>>();
             _fields = new Dictionary<Type, IDictionary<int, FieldInfo>>();
+
+            _derivableTypes = new Dictionary<Type, IDictionary<int, Type>>();
+            _messageTypes = new Dictionary<Type, IDictionary<int, Type>>();
         }
 
         #endregion
@@ -321,20 +328,11 @@ namespace Metaplay.Generated
                     break;
 
                 case WireDataType.AbstractStruct:
-                    var targetTypes = Assembly.GetExecutingAssembly().GetExportedTypes().Where(memberType.IsAssignableFrom);
-                    targetTypes = memberType == typeof(MetaMessage) ?
-                        targetTypes.Where(x => x.GetCustomAttribute<MetaMessageAttribute>() != null) :
-                        targetTypes.Where(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>() != null);
-
                     var deriveId = reader.ReadVarInt();
                     if (deriveId == 0)
                         break;
 
-                    var targetType = memberType == typeof(MetaMessage) ?
-                        targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaMessageAttribute>().TypeCode == deriveId) :
-                        targetTypes.FirstOrDefault(x => x.GetCustomAttribute<MetaSerializableDerivedAttribute>().TypeCode == deriveId);
-                    if (targetType == null)
-                        throw new InvalidOperationException($"Unknown derivative {deriveId} for type {memberType.FullName}");
+                    var targetType = GetDerivableType(memberType, deriveId);
 
                     value = Activator.CreateInstance(targetType, true);
                     Deserialize_Members(ref context, reader, value, targetType);
@@ -792,6 +790,71 @@ namespace Metaplay.Generated
             }
 
             return _properties[type] = result;
+        }
+
+        #endregion
+
+        #region Derivable types
+
+        private static Type GetDerivableType(Type baseType, int targetId)
+        {
+            return baseType == MetaMessageType ?
+                GetMetaMessageType(baseType, targetId) :
+                GetSerializableDerivedType(baseType, targetId);
+        }
+
+        private static Type GetSerializableDerivedType(Type baseType, int targetId)
+        {
+            // Get derived type from cache
+            if (!_derivableTypes.TryGetValue(baseType, out var derivableTypes))
+            {
+                // Determine derivable types for base type
+                var targetTypes = Assembly.GetExecutingAssembly().GetExportedTypes()
+                    .Where(baseType.IsAssignableFrom)
+                    .Select(x => (x, x.GetCustomAttribute<MetaSerializableDerivedAttribute>()))
+                    .Where(x => x.Item2 != null);
+
+                var distinctTypes = new Dictionary<int, Type>();
+                foreach (var targetType in targetTypes)
+                {
+                    if (!distinctTypes.ContainsKey(targetType.Item2.TypeCode))
+                        distinctTypes[targetType.Item2.TypeCode] = targetType.x;
+                }
+
+                _derivableTypes[baseType] = derivableTypes = distinctTypes;
+            }
+
+            if (!derivableTypes.TryGetValue(targetId, out var derivableType))
+                throw new InvalidOperationException($"Unknown derivative {targetId} for type {baseType.FullName}");
+
+            return derivableType;
+        }
+
+        private static Type GetMetaMessageType(Type baseType, int targetId)
+        {
+            // Get derived type from cache
+            if (!_messageTypes.TryGetValue(baseType, out var derivableTypes))
+            {
+                // Determine derivable types for base type
+                var targetTypes = Assembly.GetExecutingAssembly().GetExportedTypes()
+                    .Where(baseType.IsAssignableFrom)
+                    .Select(x => (x, x.GetCustomAttribute<MetaMessageAttribute>()))
+                    .Where(x => x.Item2 != null);
+
+                var distinctTypes = new Dictionary<int, Type>();
+                foreach (var targetType in targetTypes)
+                {
+                    if (!distinctTypes.ContainsKey(targetType.Item2.TypeCode))
+                        distinctTypes[targetType.Item2.TypeCode] = targetType.x;
+                }
+
+                _messageTypes[baseType] = derivableTypes = distinctTypes;
+            }
+
+            if (!derivableTypes.TryGetValue(targetId, out var derivableType))
+                throw new InvalidOperationException($"Unknown derivative {targetId} for type {baseType.FullName}");
+
+            return derivableType;
         }
 
         #endregion

@@ -10,8 +10,10 @@ namespace Metaplay.Core
     {
         private static readonly Type KeyType = typeof(TItem).GetInterfaces().FirstOrDefault(x => typeof(IGameConfigData).IsAssignableFrom(x))?.GetGenericArguments().FirstOrDefault(); // 0x0
         private static readonly PropertyInfo KeyProperty = typeof(TItem).GetProperty("ConfigKey"); // 0x8
+
         private readonly object _key; // 0x10
         private readonly TItem _item; // 0x18
+
         public Type ItemType => typeof(TItem);
         public object KeyObject => _key;
         public bool IsResolved => _item != null;
@@ -31,13 +33,13 @@ namespace Metaplay.Core
 
         public IMetaRef CreateResolved(IGameConfigDataResolver resolver)
         {
-            if (_key is IStringId sid)
-                if (sid.Value == null)
-                    return this;
+            if (_key is IStringId { Value: null }) 
+                return this;
+
             return new MetaRef<TItem>(_key, (TItem)resolver.ResolveReference(typeof(TItem), _key));
         }
 
-        public TItem MaybeRef { get; }
+        public TItem MaybeRef => _item;
 
         object Metaplay.Core.IMetaRef.MaybeRefObject { get; }
     }
