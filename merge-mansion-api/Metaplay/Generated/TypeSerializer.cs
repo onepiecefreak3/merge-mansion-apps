@@ -46,18 +46,19 @@ namespace Metaplay.Generated
         {
             if (list == null)
                 return;
-
+            
             for (var i = 0; i < list.Count; i++)
             {
                 var item = list[i];
 
                 if (item is IMetaRef metaRef)
                 {
-                    list[i] = ResolveMetaRef(metaRef, resolver);
+                    list[i] = metaRef.CreateResolved(resolver);
                     continue;
                 }
 
-                ResolveMetaRefs_Type(item.GetType(), item, resolver);
+                var itemType = item.GetType();
+                ResolveMetaRefs_Type(itemType, item, resolver);
             }
         }
 
@@ -66,17 +67,12 @@ namespace Metaplay.Generated
             if (dict == null)
                 return;
 
-            var setItemMethod = dict.GetType().GetProperty("Item");
-
-            foreach (var pair in dict)
+            foreach (var key in dict.Keys)
             {
-                var key = pair.GetType().GetProperty("Key").GetValue(pair);
-                var value = pair.GetType().GetProperty("Value").GetValue(pair);
-
-                if (value is IMetaRef metaRef)
+                if (dict[key] is IMetaRef metaRef)
                 {
-                    var resolved = ResolveMetaRef(metaRef, resolver);
-                    setItemMethod.SetValue(dict, resolved, new[] { key });
+                    var resolved = metaRef.CreateResolved(resolver);
+                    dict[key] = resolved;
                 }
             }
         }
