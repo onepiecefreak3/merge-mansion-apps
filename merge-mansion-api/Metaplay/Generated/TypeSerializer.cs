@@ -11,6 +11,7 @@ using Metaplay.Core.IO;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using Metaplay.Core.Serialization;
+using Newtonsoft.Json.Linq;
 
 namespace Metaplay.Generated
 {
@@ -84,42 +85,38 @@ namespace Metaplay.Generated
 
             foreach (var member in taggedMembers)
             {
-                var memberType = member is PropertyInfo pi ? pi.PropertyType : (member as FieldInfo).FieldType;
-                var memberValue = member is PropertyInfo pi1 ? pi1.GetValue(item) : (member as FieldInfo).GetValue(item);
+                var memberValue = member is PropertyInfo pi1 ? pi1.GetValue(item) : (member as FieldInfo)!.GetValue(item);
+                if (memberValue == null)
+                    continue;
 
-                if (!typeof(IMetaRef).IsAssignableFrom(memberType))
+                var memberType = memberValue.GetType();
+                if (memberValue is not IMetaRef metaRef)
                 {
-                    if (!typeof(IList).IsAssignableFrom(memberType))
+                    if (memberValue is not IList list)
                     {
-                        if (!typeof(IDictionary).IsAssignableFrom(memberType))
+                        if (memberValue is not IDictionary dictionary)
                         {
-                            if (!(memberValue?.GetType().IsClass ?? false) || memberType == typeof(string))
+                            if (!memberType.IsClass || memberValue is not string)
                                 continue;
 
-                            ResolveMetaRefs_Type(memberValue.GetType(), memberValue, resolver);
+                            ResolveMetaRefs_Type(memberType, memberValue, resolver);
                             continue;
                         }
 
-                        ResolveMetaRefs_Dictionary((IDictionary)memberValue, resolver);
+                        ResolveMetaRefs_Dictionary(dictionary, resolver);
                         continue;
                     }
 
-                    ResolveMetaRefs_List((IList)memberValue, resolver);
+                    ResolveMetaRefs_List(list, resolver);
                     continue;
                 }
 
-                var resolvedValue = ResolveMetaRef((IMetaRef)memberValue, resolver);
+                var resolvedValue = metaRef.CreateResolved(resolver);
                 if (member is PropertyInfo pi2)
                     pi2.SetValue(item, resolvedValue);
                 else
-                    (member as FieldInfo).SetValue(item, resolvedValue);
+                    (member as FieldInfo)!.SetValue(item, resolvedValue);
             }
-        }
-
-        private static IMetaRef ResolveMetaRef(IMetaRef metaRef, IGameConfigDataResolver resolver)
-        {
-            var createResolveMethod = metaRef.GetType().GetMethod("CreateResolved");
-            return (IMetaRef)createResolveMethod?.Invoke(metaRef, new object[] { resolver });
         }
 
         #endregion
