@@ -24,6 +24,11 @@ namespace Metaplay.Generated
         private static readonly Type DynamicEnumInterface = typeof(IDynamicEnum);
         private static readonly Type MetaMessageType = typeof(MetaMessage);
 
+        private static readonly string DynamicEnumFromId = "FromId";
+        private static readonly string StringIdFromString = "FromString";
+        private static readonly string MetaRefGetKeyType = "GetKeyType";
+        private static readonly string MetaRefFromKey = "FromKey";
+
         private static readonly IDictionary<Type, IDictionary<int, PropertyInfo>> _properties;
         private static readonly IDictionary<Type, IDictionary<int, FieldInfo>> _fields;
 
@@ -128,7 +133,6 @@ namespace Metaplay.Generated
             var wireType = TaggedWireSerializer.ReadWireType(reader);
             TaggedWireSerializer.ExpectWireType(reader, elementType, wireType, WireDataType.ObjectTable);
 
-            // Deserialize table type
             return DeserializeTable_Typed(ref context, reader, elementType);
         }
 
@@ -232,7 +236,7 @@ namespace Metaplay.Generated
                     if (DynamicEnumInterface.IsAssignableFrom(baseType))
                     {
                         Deserialize_DynamicEnum(ref context, reader, out var v);
-                        value = baseType.BaseType.GetMethod("FromId").Invoke(null, new object[] { v });
+                        value = baseType.BaseType.GetMethod(DynamicEnumFromId).Invoke(null, new object[] { v });
                     }
                     else if (baseType == typeof(bool))
                     {
@@ -283,7 +287,7 @@ namespace Metaplay.Generated
 
                     value = v1;
                     if (typeof(IStringId).IsAssignableFrom(memberType))
-                        value = memberType.BaseType.GetMethod("FromString").Invoke(null, new[] { v1 });
+                        value = memberType.BaseType.GetMethod(StringIdFromString).Invoke(null, new[] { v1 });
 
                     break;
 
@@ -352,11 +356,11 @@ namespace Metaplay.Generated
         // CUSTOM: Deserialize MetaRef<TItem>
         private static void Deserialize_MetaRef(ref MetaSerializationContext context, IOReader reader, WireDataType wireType, Type type, out object value)
         {
-            var keyType = (Type)type.GetMethod("GetKeyType").Invoke(null, new object[] { });
+            var keyType = (Type)type.GetMethod(MetaRefGetKeyType).Invoke(null, Array.Empty<object>());
 
             Deserialize_WireType(ref context, reader, wireType, keyType, out var metaRefKey);
 
-            var fromMethod = type.GetMethod("FromKey");
+            var fromMethod = type.GetMethod(MetaRefFromKey);
             value = fromMethod.Invoke(null, new[] { metaRefKey });
         }
 
@@ -373,15 +377,15 @@ namespace Metaplay.Generated
                 return;
 
             var listWireType = TaggedWireSerializer.ReadWireType(reader);
+            var elementType = collectionType.GetGenericArguments().FirstOrDefault() ?? collectionType.GetElementType();
 
             if (collectionType.IsArray)
             {
-                var arrayType = collectionType.GetElementType();
-                var arrayValue = Array.CreateInstance(arrayType, collectionSize);
+                var arrayValue = Array.CreateInstance(elementType!, collectionSize);
 
                 for (var i = 0; i < collectionSize; i++)
                 {
-                    Deserialize_WireType(ref context, reader, listWireType, arrayType, out var item);
+                    Deserialize_WireType(ref context, reader, listWireType, elementType, out var item);
                     arrayValue.SetValue(item, i);
                 }
 
@@ -389,15 +393,15 @@ namespace Metaplay.Generated
             }
             else
             {
-                var listType = collectionType.GetGenericArguments().FirstOrDefault() ?? collectionType.GetElementType();
-                var addMethod = collectionType.GetMethod(nameof(IList.Add));
+                var listValue = (IList)Activator.CreateInstance(ListType.MakeGenericType(elementType!), collectionSize);
 
-                outValue = Activator.CreateInstance(collectionType);
                 for (var i = 0; i < collectionSize; i++)
                 {
-                    Deserialize_WireType(ref context, reader, listWireType, listType, out var item);
-                    addMethod.Invoke(outValue, new[] { item });
+                    Deserialize_WireType(ref context, reader, listWireType, elementType, out var item);
+                    listValue?.Add(item);
                 }
+
+                outValue = listValue;
             }
         }
 
@@ -413,20 +417,21 @@ namespace Metaplay.Generated
             if (dictCount == -1)
                 return;
 
-            var addMethod = collectionType.GetMethod(nameof(IList.Add));
             var dictTypes = collectionType.GetGenericArguments().Take(2).ToArray();
 
             var keyWireType = TaggedWireSerializer.ReadWireType(reader);
             var valueWireType = TaggedWireSerializer.ReadWireType(reader);
 
-            outValue = Activator.CreateInstance(collectionType);
+            var dictValue = (IDictionary)Activator.CreateInstance(collectionType);
             for (var i = 0; i < dictCount; i++)
             {
                 Deserialize_WireType(ref context, reader, keyWireType, dictTypes[0], out var key);
-                Deserialize_WireType(ref context, reader, valueWireType, dictTypes[1], out var v4);
+                Deserialize_WireType(ref context, reader, valueWireType, dictTypes[1], out var value);
 
-                addMethod.Invoke(outValue, new[] { key, v4 });
+                dictValue[key] = value;
             }
+
+            outValue = dictValue;
         }
 
         private static void Deserialize_ByteArray(ref MetaSerializationContext context, IOReader reader, out byte[] value)
