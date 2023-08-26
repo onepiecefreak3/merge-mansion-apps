@@ -316,6 +316,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                     return;
                 }
+
+                if (name == nameof(EventTaskInfo.Description))
+                {
+                    WriteProperty(writer, name, LocMan.GetEventDescription((string)value), serializer);
+
+                    return;
+                }
             }
             else if (type.IsAssignableTo(typeof(GarageCleanupEventInfo)))
             {

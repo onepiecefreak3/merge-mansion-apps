@@ -305,6 +305,15 @@ public static class LocMan
 
     #endregion
 
+    #region Events
+    
+    public static string GetEventDescription(string id)
+    {
+        return Get($"Generic_Event_Task_Goal_Description_{id}");
+    }
+
+    #endregion
+
     #region Get
 
     public static string Get(string characterName, bool isDiscovered)

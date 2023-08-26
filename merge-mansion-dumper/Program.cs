@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using CommandLine;
@@ -63,6 +64,11 @@ namespace merge_mansion_dumper
             var isSetup = SetupSystem();
             if (!isSetup)
                 return;
+
+            var trans = MetaplaySDK.ActiveLanguage.Translations.Values.Where(x => x.Contains("Decorations", StringComparison.OrdinalIgnoreCase)).ToArray();
+            var trans1 = MetaplaySDK.ActiveLanguage.Translations.Keys.Where(x => x.Value.Contains("Knitting_01", StringComparison.OrdinalIgnoreCase)).ToArray();
+            if (trans.Length > 0 || trans1.Length > 0)
+                Debugger.Break();
 
             // Dump data to files
             Dump(o);
