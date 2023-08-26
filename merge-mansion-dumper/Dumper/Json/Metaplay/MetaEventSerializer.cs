@@ -26,7 +26,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(GarageCleanupRewardInfo),
                 typeof(GarageCleanupBoardInfo),
                 typeof(GarageCleanupBoardRowInfo),
-                typeof(GarageCleanupPatternInfo)
+                typeof(GarageCleanupPatternInfo),
+
+                typeof(BoardCell)
             };
 
         protected override Type[] GetTypes() => _supportedTypes;
@@ -56,6 +58,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 SerializeGarageCleanupBoardRowInfo(writer, rowInfo, serializer);
             else if (value is GarageCleanupPatternInfo patternInfo)
                 SerializeGarageCleanupPatternInfo(writer, patternInfo, serializer);
+
+            else if (value is BoardCell boardCell)
+                SerializeBoardCell(writer, boardCell, serializer);
         }
 
         private void SerializeBoardEvent(JsonWriter writer, BoardEventInfo boardEvent, JsonSerializer serializer)
@@ -177,6 +182,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             }
 
             WriteObject(writer, patternInfo.GetType(), patternInfo, serializer);
+        }
+
+        private void SerializeBoardCell(JsonWriter writer, BoardCell boardCell, JsonSerializer serializer)
+        {
+            if (boardCell.ItemId == 0)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, boardCell.GetType(), boardCell, serializer);
         }
 
         #region Task graph
@@ -379,6 +395,16 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     }
 
                     writer.WriteEndArray();
+
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(BoardCell)))
+            {
+                if (name == nameof(BoardCell.ItemId))
+                {
+                    writer.WritePropertyName(name);
+                    WriteValue(writer, ((ItemTypeConstant)value).ToString(), serializer);
 
                     return;
                 }
