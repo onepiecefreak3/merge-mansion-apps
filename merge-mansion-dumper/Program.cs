@@ -65,8 +65,8 @@ namespace merge_mansion_dumper
             if (!isSetup)
                 return;
 
-            var trans = MetaplaySDK.ActiveLanguage.Translations.Values.Where(x => x.Contains("Decorations", StringComparison.OrdinalIgnoreCase)).ToArray();
-            var trans1 = MetaplaySDK.ActiveLanguage.Translations.Keys.Where(x => x.Value.Contains("Knitting_01", StringComparison.OrdinalIgnoreCase)).ToArray();
+            var trans = MetaplaySDK.ActiveLanguage.Translations.Values.Where(x => x.Contains("Sea Life!", StringComparison.OrdinalIgnoreCase)).ToArray();
+            var trans1 = MetaplaySDK.ActiveLanguage.Translations.Keys.Where(x => x.Value.Contains("CBE_JoysOfTheSea2023_Fish", StringComparison.OrdinalIgnoreCase)).ToArray();
             if (trans.Length > 0 || trans1.Length > 0)
                 Debugger.Break();
 

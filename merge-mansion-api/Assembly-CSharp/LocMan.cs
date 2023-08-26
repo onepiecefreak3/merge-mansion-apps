@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Buffers;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -215,9 +216,13 @@ public static class LocMan
     }
 
     // CUSTOM: Get localization id for item categories
-    public static string GetItemCategoryNameLocId(MergeChainId id)
+    public static string GetItemCategoryNameLocId(MergeChainId mergeChainId)
     {
-        return GetItemCategoryNameLocId($"{id.Value}Item");
+        var poolLocId = GetItemCategoryNameLocId(mergeChainId.Value);
+        if (HasString(poolLocId))
+            return poolLocId;
+
+        return GetItemCategoryNameLocId($"{mergeChainId.Value}Item");
     }
 
     // CUSTOM: Get localization id for item categories
@@ -306,7 +311,7 @@ public static class LocMan
     #endregion
 
     #region Events
-    
+
     public static string GetEventDescription(string id)
     {
         return Get($"Generic_Event_Task_Goal_Description_{id}");
