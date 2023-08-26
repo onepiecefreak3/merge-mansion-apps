@@ -16,7 +16,8 @@ namespace GameLogic.Cutscenes
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public F32 StartDelay { get; set; }
-        public CutsceneId ConfigKey { get; }
+
+        public CutsceneId ConfigKey => CutsceneId;
         public CutsceneGroupId GroupId { get; }
 
         public CutsceneInfo()

@@ -5,6 +5,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameLogic;
+using GameLogic.Player.Items;
+using System.Threading.Tasks;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -17,7 +20,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(CollectibleBoardEventInfo),
                 typeof(LeaderboardEventInfo),
                 typeof(EventTaskInfo),
-                typeof(ShopEventInfo)
+                typeof(ShopEventInfo),
+
+                typeof(GarageCleanupEventInfo),
+                typeof(GarageCleanupRewardInfo),
+                typeof(GarageCleanupBoardInfo),
+                typeof(GarageCleanupBoardRowInfo),
+                typeof(GarageCleanupPatternInfo)
             };
 
         protected override Type[] GetTypes() => _supportedTypes;
@@ -36,6 +45,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 SerializeEventTask(writer, eti, serializer);
             else if (value is ShopEventInfo sei)
                 SerializeShopEvent(writer, sei, serializer);
+
+            else if (value is GarageCleanupEventInfo gcei)
+                SerializeGarageCleanupEvent(writer, gcei, serializer);
+            else if (value is GarageCleanupRewardInfo rewardInfo)
+                SerializeGarageCleanupRewardInfo(writer, rewardInfo, serializer);
+            else if (value is GarageCleanupBoardInfo boardInfo)
+                SerializeGarageCleanupBoardInfo(writer, boardInfo, serializer);
+            else if (value is GarageCleanupBoardRowInfo rowInfo)
+                SerializeGarageCleanupBoardRowInfo(writer, rowInfo, serializer);
+            else if (value is GarageCleanupPatternInfo patternInfo)
+                SerializeGarageCleanupPatternInfo(writer, patternInfo, serializer);
         }
 
         private void SerializeBoardEvent(JsonWriter writer, BoardEventInfo boardEvent, JsonSerializer serializer)
@@ -93,6 +113,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             WriteObject(writer, shopEvent.GetType(), shopEvent, serializer);
         }
 
+        private void SerializeGarageCleanupEvent(JsonWriter writer, GarageCleanupEventInfo garageEvent, JsonSerializer serializer)
+        {
+            if (garageEvent.ConfigKey.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, garageEvent.GetType(), garageEvent, serializer);
+        }
+
         private void SerializeEventTask(JsonWriter writer, EventTaskInfo eventTask, JsonSerializer serializer)
         {
             if (eventTask.ConfigKey.Value == null)
@@ -104,11 +135,55 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             WriteObject(writer, eventTask.GetType(), eventTask, serializer);
         }
 
+        private void SerializeGarageCleanupRewardInfo(JsonWriter writer, GarageCleanupRewardInfo rewardInfo, JsonSerializer serializer)
+        {
+            if (rewardInfo.ConfigKey.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, rewardInfo.GetType(), rewardInfo, serializer);
+        }
+
+        private void SerializeGarageCleanupBoardInfo(JsonWriter writer, GarageCleanupBoardInfo boardInfo, JsonSerializer serializer)
+        {
+            if (boardInfo.ConfigKey.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, boardInfo.GetType(), boardInfo, serializer);
+        }
+
+        private void SerializeGarageCleanupBoardRowInfo(JsonWriter writer, GarageCleanupBoardRowInfo rowInfo, JsonSerializer serializer)
+        {
+            if (rowInfo.ConfigKey.BoardId.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, rowInfo.GetType(), rowInfo, serializer);
+        }
+
+        private void SerializeGarageCleanupPatternInfo(JsonWriter writer, GarageCleanupPatternInfo patternInfo, JsonSerializer serializer)
+        {
+            if (patternInfo.ConfigKey.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, patternInfo.GetType(), patternInfo, serializer);
+        }
+
         #region Task graph
 
-        private string GetTaskGraph(BoardEventInfo area)
+        private string GetTaskGraph(BoardEventInfo board)
         {
-            var nodes = GetTaskNodes(area);
+            var nodes = GetTaskNodes(board);
             return GraphViz.GetGraph(nodes);
         }
 
@@ -161,8 +236,15 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
         protected override void WriteCustomObjectMembers(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value is BoardEventInfo boardEvent)
-            {
                 WriteProperty(writer, "TaskDependencies", GetTaskGraph(boardEvent), serializer);
+
+            if (value is GarageCleanupPatternInfo pattern)
+            {
+                var rewards = ClientGlobal.SharedGameConfig.GarageCleanupRewards;
+                if (!rewards.TryGetValue(pattern.RewardId, out var reward))
+                    return;
+
+                WriteProperty(writer, "Reward", reward, serializer);
             }
         }
 
@@ -197,7 +279,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WriteStartArray();
 
                     foreach (var task in (List<MetaRef<BoardEventInfo>>)value)
-                        serializer.Serialize(writer, task.KeyObject);
+                        WriteValue(writer, task.KeyObject, serializer);
 
                     writer.WriteEndArray();
 
@@ -212,7 +294,89 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WriteStartArray();
 
                     foreach (var task in (List<MetaRef<EventTaskInfo>>)value)
-                        serializer.Serialize(writer, task.KeyObject);
+                        WriteValue(writer, task.KeyObject, serializer);
+
+                    writer.WriteEndArray();
+
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(GarageCleanupEventInfo)))
+            {
+                if (name == nameof(GarageCleanupEventInfo.SpawnerItems))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartArray();
+
+                    foreach (var item in (IList<int>)value)
+                        WriteValue(writer, ((ItemTypeConstant)item).ToString(), serializer);
+
+                    writer.WriteEndArray();
+
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(GarageCleanupRewardInfo)))
+            {
+                if (name == nameof(GarageCleanupRewardInfo.VisualItem))
+                {
+                    WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(GarageCleanupBoardInfo)))
+            {
+                if (name == nameof(GarageCleanupBoardInfo.Rows))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartArray();
+
+                    var boardRows = ClientGlobal.SharedGameConfig.GarageCleanupBoardRows;
+
+                    foreach (var rowId in (IList<GarageCleanupBoardRowId>)value)
+                    {
+                        if (!boardRows.TryGetValue(rowId, out var rowInfo))
+                            continue;
+
+                        WriteObject(writer, rowInfo.GetType(), rowInfo, serializer);
+                    }
+
+                    writer.WriteEndArray();
+
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(GarageCleanupBoardRowInfo)))
+            {
+                if (name == nameof(GarageCleanupBoardRowInfo.Items))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartArray();
+
+                    foreach (var item in (IList<MetaRef<ItemDefinition>>)value)
+                        WriteValue(writer, ((ItemTypeConstant)(item.KeyObject ?? 0)).ToString(), serializer);
+
+                    writer.WriteEndArray();
+
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(GarageCleanupPatternInfo)))
+            {
+                if (name == nameof(GarageCleanupPatternInfo.Rows))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartArray();
+
+                    var patternRows = ClientGlobal.SharedGameConfig.GarageCleanupPatternRows;
+
+                    foreach (var rowId in (IList<GarageCleanupPatternRowId>)value)
+                    {
+                        if (!patternRows.TryGetValue(rowId, out var rowInfo))
+                            continue;
+
+                        WriteObject(writer, rowInfo.GetType(), rowInfo, serializer);
+                    }
 
                     writer.WriteEndArray();
 

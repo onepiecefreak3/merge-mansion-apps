@@ -72,15 +72,15 @@ namespace Metaplay.Core.Config
                 registry.RegisterReferenceResolver(typeof(TInfo).BaseType, GetInfoByKey);
         }
 
-        public int Count { get; }
-        public Dictionary<TKey, TInfo>.KeyCollection Keys { get; }
-        public Dictionary<TKey, TInfo>.ValueCollection Values { get; }
-        public IReadOnlyDictionary<TKey, TInfo> Infos { get; }
+        public int Count => _infos.Count;
+        public Dictionary<TKey, TInfo>.KeyCollection Keys => _infos.Keys;
+        public Dictionary<TKey, TInfo>.ValueCollection Values => _infos.Values;
+        public IReadOnlyDictionary<TKey, TInfo> Infos => _infos;
 
-        IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Keys { get; }
+        IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Keys => Keys;
 
-        IEnumerable<TInfo> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Values { get; }
-        public TInfo Item { get; }
+        IEnumerable<TInfo> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Values => Values;
+        public TInfo Item => Values.FirstOrDefault();
 
         GameConfigLibrary()
         {

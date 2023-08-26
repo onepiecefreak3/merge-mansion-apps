@@ -56,7 +56,7 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(19, (MetaMemberFlags)0)]
         public bool AlwaysShowPatternsAndRewards { get; set; }
         public GarageCleanupEventId ActivableId { get; }
-        public GarageCleanupEventId ConfigKey { get; }
+        public GarageCleanupEventId ConfigKey => GarageCleanupEventId;
         public string DisplayShortInfo { get; }
 
         [IgnoreDataMember]

@@ -27,7 +27,8 @@ namespace GameLogic.Config
 
         [MetaMember(6, (MetaMemberFlags)0)]
         public MetaDuration MaxWaitTimerToPrompt { get; set; }
-        public AutoOfferSettingsId ConfigKey { get; }
+
+        public AutoOfferSettingsId ConfigKey => Id;
 
         public AutoOfferSettingsInfo()
         {

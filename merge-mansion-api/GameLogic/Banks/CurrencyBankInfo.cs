@@ -92,7 +92,7 @@ namespace GameLogic.Banks
         [Description("Max number of currency banks activated to allow this one to be activated")]
         public int? MaxActivationsGlobal { get; set; }
         public CurrencyBankId ActivableId { get; }
-        public CurrencyBankId ConfigKey { get; }
+        public CurrencyBankId ConfigKey => CurrencyBankId;
         public string DisplayShortInfo { get; }
 
         public CurrencyBankInfo()

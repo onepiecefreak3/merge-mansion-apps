@@ -19,10 +19,7 @@ namespace Metaplay.Core.Config
 
                 var configKey = item.ConfigKey;
                 if (configKey == null)
-                {
-                    //throw new InvalidOperationException("Imported an item with ConfigKey==null in GameConfigLibrary<" + typeof(TKey).Name + ", " + typeof(TValue).Name + ">");
-                    continue;
-                }
+                    throw new InvalidOperationException("Imported an item with ConfigKey==null in GameConfigLibrary<" + typeof(TKey).Name + ", " + typeof(TValue).Name + ">");
 
                 if (result.ContainsKey(configKey))
                     throw new InvalidOperationException($"Imported an item with non-unique key: {configKey} in GameConfigLibrary<{typeof(TKey).Name}, {typeof(TValue).Name}>");
