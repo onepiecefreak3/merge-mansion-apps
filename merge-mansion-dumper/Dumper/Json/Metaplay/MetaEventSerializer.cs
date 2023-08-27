@@ -242,7 +242,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 res = LocMan.Get(taskInfo.Description).Replace("\"", "'");
 
             foreach (var req in taskInfo.Requirements)
-                res += Environment.NewLine + LocMan.GetItemName(req.Item.ConfigKey) + " x" + req.Requirement;
+                res += Environment.NewLine + LocMan.GetItemName(req.Item.ItemType) + " x" + req.Requirement;
 
             return res;
         }
@@ -332,7 +332,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WriteStartArray();
 
                     foreach (var item in (IList<int>)value)
-                        WriteValue(writer, ((ItemTypeConstant)item).ToString(), serializer);
+                        WriteValue(writer, ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(item)?.ItemType, serializer);
 
                     writer.WriteEndArray();
 
@@ -377,7 +377,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WriteStartArray();
 
                     foreach (var item in (IList<MetaRef<ItemDefinition>>)value)
-                        WriteValue(writer, ((ItemTypeConstant)(item.KeyObject ?? 0)).ToString(), serializer);
+                        WriteValue(writer, item.Ref.ItemType, serializer);
 
                     writer.WriteEndArray();
 
@@ -411,7 +411,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 if (name == nameof(BoardCell.ItemId))
                 {
                     writer.WritePropertyName(name);
-                    WriteValue(writer, ((ItemTypeConstant)value).ToString(), serializer);
+                    WriteValue(writer, ClientGlobal.SharedGameConfig.Items.GetValueOrDefault((int)value)?.ItemType, serializer);
 
                     return;
                 }

@@ -112,7 +112,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             foreach (var req in hotspot.RequirementsList)
             {
                 if (req is PlayerItemRequirement pir)
-                    res += Environment.NewLine + LocMan.GetItemName(pir.Item.ConfigKey) + " x" + pir.Requirement;
+                    res += Environment.NewLine + LocMan.GetItemName(pir.Item.ItemType) + " x" + pir.Requirement;
                 else if (req is CostRequirement cr && cr.RequiredCost is CurrencyCost cc)
                     res += Environment.NewLine + "Coins x" + cc.CurrencyAmount;
             }

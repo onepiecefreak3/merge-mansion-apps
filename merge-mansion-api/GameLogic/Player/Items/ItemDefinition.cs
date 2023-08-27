@@ -150,7 +150,7 @@ namespace GameLogic.Player.Items
         public List<string> AnalyticsMetaData { get; set; }
 
         [MetaMember(31)]
-        public List<ItemTypeConstant> CombineInfoWithItem { get; set; }
+        public List<int> CombineInfoWithItem { get; set; }
 
         [MetaMember(32)]
         public ItemRarity Rarity { get; set; }

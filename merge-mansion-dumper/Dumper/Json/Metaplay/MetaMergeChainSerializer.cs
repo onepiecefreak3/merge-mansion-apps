@@ -71,10 +71,10 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         private void SerializeItem(JsonWriter writer, ItemDefinition item, JsonSerializer serializer)
         {
-            if (!Enum.IsDefined(typeof(ItemTypeConstant), item.ConfigKey))
-                _output.Warning(Program.VersionBumped ? "ItemType {0} unknown" : "[Metacore] ItemType {0} unknown", item.ConfigKey);
+        //    if (!Enum.IsDefined(typeof(ItemTypeConstant), item.ConfigKey))
+        //        _output.Warning(Program.VersionBumped ? "ItemType {0} unknown" : "[Metacore] ItemType {0} unknown", item.ConfigKey);
 
-            if (item.ConfigKey == (int)ItemTypeConstant.None)
+            if (item.ConfigKey == 0)
             {
                 WriteEmptyObject(writer);
                 return;
@@ -89,7 +89,10 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
             foreach (var mergePair in mergeCollection.Collection)
             {
-                var pairValue = (ItemTypeConstant)mergePair.Key.First + ":" + (ItemTypeConstant)mergePair.Key.Second;
+                var firstItem = ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(mergePair.Key.First);
+                var secondItem = ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(mergePair.Key.Second);
+
+                var pairValue = firstItem.ItemType + ":" + secondItem.ItemType;
                 WriteProperty(writer, pairValue, mergePair.Value, serializer);
             }
 
@@ -105,9 +108,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (producer is ConstantProducer cp)
             {
                 writer.WriteStartObject();
-
-                var product = ((ItemTypeConstant)cp.Products[0].KeyObject).ToString();
-                WriteProperty(writer, "Constant", product, serializer);
+                
+                WriteProperty(writer, "Constant", cp.Products[0].Ref.ItemType, serializer);
 
                 writer.WriteEndObject();
             }
@@ -133,13 +135,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WriteStartObject();
 
                 WriteProperty(writer, "RollType", crp.RollType.ToString(), serializer);
-                WriteProperty(writer, "ItemType", (ItemTypeConstant)crp.ItemType, serializer);
+                WriteProperty(writer, "ItemType", ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(crp.ItemType).ItemType, serializer);
 
                 writer.WritePropertyName("Odds");
                 writer.WriteStartObject();
 
                 double weightSum = crp.GenerationOdds.Sum(x => x.Weight);
-                foreach (var odd in crp.GenerationOdds.GroupBy(x => ((ItemTypeConstant)x.Type.KeyObject).ToString()))
+                foreach (var odd in crp.GenerationOdds.GroupBy(x => x.Type.Ref.ItemType))
                 {
                     var weight = _dropAsPercent ?
                         odd.Sum(x => x.Weight) / weightSum * 100 :
@@ -165,7 +167,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WriteStartObject();
 
                 double weightSum = rp.OddsList.Sum(x => x.Weight);
-                foreach (var odd in rp.OddsList.GroupBy(x => ((ItemTypeConstant)x.Type.KeyObject).ToString()))
+                foreach (var odd in rp.OddsList.GroupBy(x => x.Type.Ref.ItemType))
                 {
                     var weight = _dropAsPercent ?
                         odd.Sum(x => x.Weight) / weightSum * 100 :
@@ -193,11 +195,11 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             }
             else if (value is ItemDefinition item)
             {
-                var itemName = LocMan.GetItemName(item.ConfigKey);
+                var itemName = LocMan.GetItemName(item.ItemType);
                 if (itemName != null)
                     WriteProperty(writer, "Name", itemName, serializer);
 
-                var descName = LocMan.GetDescription(item.ConfigKey, item.LevelNumber);
+                var descName = LocMan.GetDescription(item.ItemType, item.LevelNumber);
                 if (descName != null)
                     WriteProperty(writer, "Description", descName, serializer);
 
@@ -212,7 +214,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             {
                 if (name == nameof(CodexCategoryInfo.IconItem))
                 {
-                    WriteProperty(writer, name, (ItemTypeConstant)((value as IMetaRef)?.KeyObject ?? 0), serializer);
+                    WriteProperty(writer, name, (value as MetaRef<ItemDefinition>)?.Ref.ItemType ?? string.Empty, serializer);
                     return;
                 }
             }
@@ -220,12 +222,6 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             {
                 if (name == nameof(ItemDefinition.MergeChain))
                     return;
-
-                if (name == nameof(ItemDefinition.ConfigKey))
-                {
-                    WriteProperty(writer, name, (ItemTypeConstant)value, serializer);
-                    return;
-                }
 
                 if (name == nameof(ItemDefinition.MergeChainRef))
                 {

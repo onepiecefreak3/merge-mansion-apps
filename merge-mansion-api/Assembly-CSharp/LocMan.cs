@@ -128,16 +128,6 @@ public static class LocMan
 
     #region Items
 
-    // CUSTOM: Get item description by integer item type
-    public static string GetDescription(int itemType, int level)
-    {
-        // CUSTOM: Check if item type is defined
-        if (!Enum.IsDefined(typeof(ItemTypeConstant), itemType))
-            return string.Empty;
-
-        return GetDescription(((ItemTypeConstant)itemType).ToString(), level);
-    }
-
     public static string GetDescription(string itemType, int level)
     {
         var itemName = GetSubstringBeforeLastChar(itemType, '_');
@@ -186,16 +176,6 @@ public static class LocMan
         }
 
         return Get($"Item_{itemName}{level}_Description");
-    }
-
-    // CUSTOM: Get item name by integer item type
-    public static string GetItemName(int itemType)
-    {
-        // CUSTOM: Check if item type is defined
-        if (!Enum.IsDefined(typeof(ItemTypeConstant), itemType))
-            return string.Empty;
-
-        return GetItemName(((ItemTypeConstant)itemType).ToString());
     }
 
     public static string GetItemName(string itemType)

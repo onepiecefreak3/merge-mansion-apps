@@ -65,9 +65,8 @@ namespace merge_mansion_dumper
             if (!isSetup)
                 return;
 
-            var trans = MetaplaySDK.ActiveLanguage.Translations.Values.Where(x => x.Contains("Sea Life!", StringComparison.OrdinalIgnoreCase)).ToArray();
-            var trans1 = MetaplaySDK.ActiveLanguage.Translations.Keys.Where(x => x.Value.Contains("CBE_JoysOfTheSea2023_Fish", StringComparison.OrdinalIgnoreCase)).ToArray();
-            if (trans.Length > 0 || trans1.Length > 0)
+            var trans = MetaplaySDK.ActiveLanguage.Translations.Where(x => x.Value.Contains("Batter")).ToArray();
+            if (trans.Length > 0)
                 Debugger.Break();
 
             // Dump data to files
@@ -95,7 +94,7 @@ namespace merge_mansion_dumper
                 {
                     client.Update();
 
-                    if (MetaplaySDK.Connection.State.Status != ConnectionStatus.Error) 
+                    if (MetaplaySDK.Connection.State.Status != ConnectionStatus.Error)
                         continue;
 
                     if (MetaplaySDK.Connection.State is TerminalError.LogicVersionMismatch me)
@@ -143,7 +142,7 @@ namespace merge_mansion_dumper
                 case Mode.All:
                     DumpHelper.DumpAll();
                     break;
-                
+
                 case Mode.MergeChains:
                     DumpHelper.DumpMergeChains();
                     break;

@@ -41,6 +41,6 @@ namespace Metaplay.Core
 
         public TItem MaybeRef => _item;
 
-        object Metaplay.Core.IMetaRef.MaybeRefObject { get; }
+        object IMetaRef.MaybeRefObject => MaybeRef;
     }
 }

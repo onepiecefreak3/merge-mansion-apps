@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameLogic;
+using GameLogic.Player.Items;
+using Metaplay.Core.Activables;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -27,7 +29,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(PlayerReward),
                 typeof(IDirectorAction),
                 typeof(IStringId),
-                typeof(IMetaRef)
+                typeof(IMetaRef),
+                typeof(MetaActivableLifetimeSpec),
+                typeof(MetaActivableCooldownSpec)
             };
 
         public MetaJsonSerializer(ILogger output)
@@ -59,6 +63,10 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 new JValue(sId.Value).WriteTo(writer);
             else if (value is IMetaRef metaRef)
                 SerializeMetaRef(writer, metaRef, serializer);
+            else if (value is MetaActivableLifetimeSpec activable)
+                SerializeActivable(writer, activable, serializer);
+            else if (value is MetaActivableCooldownSpec cooldown)
+                SerializeActivableCooldown(writer, cooldown, serializer);
         }
 
         private void SerializePeriod(JsonWriter writer, MetaCalendarPeriod period, JsonSerializer serializer)
@@ -118,9 +126,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (requirement is CostRequirement cReq)
                 WriteProperty(writer, "RequiredCost", cReq.RequiredCost, serializer);
             else if (requirement is ItemNeededRequirement inReq)
-                WriteProperty(writer, "ItemNeeded", (ItemTypeConstant)inReq.ItemRef.KeyObject, serializer);
+                WriteProperty(writer, "ItemNeeded", inReq.ItemRef.Ref.ItemType, serializer);
             else if (requirement is ItemNeededAndConsumeRequirement inacReq)
-                WriteProperty(writer, "ItemNeededAndConsumed", (ItemTypeConstant)(inacReq.ItemRefs.FirstOrDefault()?.KeyObject ?? 0), serializer);
+                WriteProperty(writer, "ItemNeededAndConsumed", inacReq.ItemRefs.FirstOrDefault()?.Ref.ItemType ?? string.Empty, serializer);
             else if (requirement is MergeChainItemNeededRequirement mciReq)
             {
                 writer.WritePropertyName("MergeChainItemNeeded");
@@ -139,7 +147,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WritePropertyName("ItemAcquired");
                 writer.WriteStartObject();
 
-                WriteProperty(writer, "ItemRef", (ItemTypeConstant)piReq.Item.ConfigKey, serializer);
+                WriteProperty(writer, "ItemRef", piReq.Item.ItemType, serializer);
                 WriteProperty(writer, "Requirement", piReq.Requirement, serializer);
 
                 writer.WriteEndObject();
@@ -149,7 +157,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WritePropertyName("ItemSeen");
                 writer.WriteStartObject();
 
-                WriteProperty(writer, "ItemRef", (ItemTypeConstant)psiReq.ItemRef.KeyObject, serializer);
+                WriteProperty(writer, "ItemRef", psiReq.ItemRef.ItemType, serializer);
                 WriteProperty(writer, "Requirement", psiReq.Requirement, serializer);
 
                 writer.WriteEndObject();
@@ -215,16 +223,34 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             serializer.Serialize(writer, metaRef.GetType().GetProperty("Ref")?.GetValue(metaRef));
         }
 
+        private void SerializeActivable(JsonWriter writer, MetaActivableLifetimeSpec activable, JsonSerializer serializer)
+        {
+            if (activable is MetaActivableLifetimeSpec.Fixed fixedAct)
+                WriteValue(writer, fixedAct.Duration, serializer);
+            else if (activable is MetaActivableLifetimeSpec.ScheduleBased)
+                WriteValue(writer, nameof(MetaActivableLifetimeSpec.ScheduleBased), serializer);
+            else if (activable is MetaActivableLifetimeSpec.Forever)
+                WriteValue(writer, nameof(MetaActivableLifetimeSpec.Forever), serializer);
+        }
+
+        private void SerializeActivableCooldown(JsonWriter writer, MetaActivableCooldownSpec cooldown, JsonSerializer serializer)
+        {
+            if (cooldown is MetaActivableCooldownSpec.Fixed fixedAct)
+                WriteValue(writer, fixedAct.Duration, serializer);
+            else if (cooldown is MetaActivableCooldownSpec.ScheduleBased)
+                WriteValue(writer, nameof(MetaActivableCooldownSpec.ScheduleBased), serializer);
+        }
+
         protected override void WriteObjectMember(JsonWriter writer, string name, Type type, object value, JsonSerializer serializer)
         {
             if (type.IsAssignableTo(typeof(PlayerReward)))
             {
                 if (name == "ItemRef")
                 {
-                    WriteProperty(writer, name, (ItemTypeConstant)((value as IMetaRef)?.KeyObject ?? 0), serializer);
+                    WriteProperty(writer, name, (value as MetaRef<ItemDefinition>)?.Ref.ItemType, serializer);
                     return;
                 }
-                
+
                 if (name == "EventInfoRef")
                 {
                     WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using GameLogic.MergeChains;
+using GameLogic.Player.Items;
+using GameLogic.Player.Items.Production;
 using merge_mansion_api;
 using Metaplay.Core;
 using Metaplay.Core.Config;
@@ -52,7 +55,7 @@ namespace Metaplay.Generated
         {
             if (list == null)
                 return;
-            
+
             for (var i = 0; i < list.Count; i++)
             {
                 var item = list[i];
@@ -77,9 +80,12 @@ namespace Metaplay.Generated
             {
                 if (dict[key] is IMetaRef metaRef)
                 {
-                    var resolved = metaRef.CreateResolved(resolver);
-                    dict[key] = resolved;
+                    dict[key] = metaRef.CreateResolved(resolver);
+                    continue;
                 }
+
+                var valueType = dict[key].GetType();
+                ResolveMetaRefs_Type(valueType, dict[key], resolver);
             }
         }
 
@@ -101,8 +107,8 @@ namespace Metaplay.Generated
                     {
                         if (memberValue is not IDictionary dictionary)
                         {
-                            if (!memberType.IsClass || memberValue is not string)
-                                continue;
+                            //if (!memberType.IsClass || memberValue is not string)
+                            //    continue;
 
                             ResolveMetaRefs_Type(memberType, memberValue, resolver);
                             continue;
