@@ -7,6 +7,8 @@ namespace Metaplay.Core.Config
         protected GameConfigEntryPatch()
         {
         }
+
+        internal abstract void PatchContentDangerouslyInPlace(object entryContent);
     }
 
     [MetaSerializable]
@@ -15,5 +17,12 @@ namespace Metaplay.Core.Config
         protected GameConfigEntryPatch()
         {
         }
+
+        internal sealed override void PatchContentDangerouslyInPlace(object entryContent)
+        {
+            PatchContentDangerouslyInPlace((TEntryContent)entryContent);
+        }
+
+        internal abstract void PatchContentDangerouslyInPlace(TEntryContent entryContent);
     }
 }

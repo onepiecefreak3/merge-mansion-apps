@@ -266,6 +266,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         protected override void WriteObjectMember(JsonWriter writer, string name, Type type, object value, JsonSerializer serializer)
         {
+            #region Event types
+
             if (type.IsAssignableTo(typeof(BoardEventInfo)))
             {
                 // TODO: Include story definitions
@@ -275,11 +277,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(ProgressionEventInfo)))
+
+            if (type.IsAssignableTo(typeof(ProgressionEventInfo)))
             {
                 // TODO: Include story definitions
             }
-            else if (type.IsAssignableTo(typeof(CollectibleBoardEventInfo)))
+
+            if (type.IsAssignableTo(typeof(CollectibleBoardEventInfo)))
             {
                 if (name == nameof(CollectibleBoardEventInfo.EventInitTask))
                 {
@@ -287,7 +291,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(ShopEventInfo)))
+
+            if (type.IsAssignableTo(typeof(ShopEventInfo)))
             {
                 if (name == nameof(ShopEventInfo.HintedBoardEventInfos))
                 {
@@ -302,7 +307,28 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(EventTaskInfo)))
+
+            if (type.IsAssignableTo(typeof(GarageCleanupEventInfo)))
+            {
+                if (name == nameof(GarageCleanupEventInfo.SpawnerItems))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartArray();
+
+                    foreach (var item in (IList<int>)value)
+                        WriteValue(writer, ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(item)?.ItemType, serializer);
+
+                    writer.WriteEndArray();
+
+                    return;
+                }
+            }
+
+            #endregion
+
+            #region Generic event
+
+            if (type.IsAssignableTo(typeof(EventTaskInfo)))
             {
                 if (name == nameof(EventTaskInfo.UnlockTaskRefs))
                 {
@@ -324,22 +350,12 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(GarageCleanupEventInfo)))
-            {
-                if (name == nameof(GarageCleanupEventInfo.SpawnerItems))
-                {
-                    writer.WritePropertyName(name);
-                    writer.WriteStartArray();
 
-                    foreach (var item in (IList<int>)value)
-                        WriteValue(writer, ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(item)?.ItemType, serializer);
+            #endregion
 
-                    writer.WriteEndArray();
+            #region Garage Cleanup
 
-                    return;
-                }
-            }
-            else if (type.IsAssignableTo(typeof(GarageCleanupRewardInfo)))
+            if (type.IsAssignableTo(typeof(GarageCleanupRewardInfo)))
             {
                 if (name == nameof(GarageCleanupRewardInfo.VisualItem))
                 {
@@ -347,7 +363,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(GarageCleanupBoardInfo)))
+            
+            if (type.IsAssignableTo(typeof(GarageCleanupBoardInfo)))
             {
                 if (name == nameof(GarageCleanupBoardInfo.Rows))
                 {
@@ -369,7 +386,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(GarageCleanupBoardRowInfo)))
+
+            if (type.IsAssignableTo(typeof(GarageCleanupBoardRowInfo)))
             {
                 if (name == nameof(GarageCleanupBoardRowInfo.Items))
                 {
@@ -384,7 +402,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(GarageCleanupPatternInfo)))
+            
+            if (type.IsAssignableTo(typeof(GarageCleanupPatternInfo)))
             {
                 if (name == nameof(GarageCleanupPatternInfo.Rows))
                 {
@@ -406,7 +425,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            else if (type.IsAssignableTo(typeof(BoardCell)))
+            
+            if (type.IsAssignableTo(typeof(BoardCell)))
             {
                 if (name == nameof(BoardCell.ItemId))
                 {
@@ -416,6 +436,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
+
+            #endregion
 
             base.WriteObjectMember(writer, name, type, value, serializer);
         }

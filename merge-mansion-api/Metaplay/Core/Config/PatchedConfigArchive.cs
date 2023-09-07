@@ -29,7 +29,7 @@ namespace Metaplay.Core.Config
             var entryName = MpcFileNameToEntryName(fileName);
 
             var items = GameConfigUtil.ImportBinaryLibraryItems<TKey, TInfo>(_archive, fileName);
-            PatchEntryContentInPlace(items, entryName, typeof(TInfo));
+            PatchEntryContentInPlace(items, entryName, typeof(GameConfigLibraryPatch<TKey, TInfo>));
 
             var lib = GameConfigLibrary<TKey, TInfo>.FromItems(items, registry);
 
@@ -45,14 +45,18 @@ namespace Metaplay.Core.Config
             var entryName = MpcFileNameToEntryName(fileName);
 
             var item = GameConfigUtil.ImportBinaryKeyValueStructure<TStructure>(_archive, fileName);
-            PatchEntryContentInPlace(item, entryName, typeof(TStructure));
+            PatchEntryContentInPlace(item, entryName, typeof(GameConfigStructurePatch<TStructure>));
 
             return item;
         }
 
-        internal void PatchEntryContentInPlace(object entryContent, string entryName, Type entryPatchType) 
+        internal void PatchEntryContentInPlace(object entryContent, string entryName, Type entryPatchType)
         {
-            // TODO: Implement
+            if (_patches.Length <= 0)
+                return;
+
+            foreach (var patch in _patches)
+                patch.PatchEntryContentInPlace(entryContent, entryName, entryPatchType);
         }
 
         private static string MpcFileNameToEntryName(string fileName)

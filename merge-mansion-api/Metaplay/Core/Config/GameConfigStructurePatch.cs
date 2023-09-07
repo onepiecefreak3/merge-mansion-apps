@@ -26,5 +26,11 @@ namespace Metaplay.Core.Config
         public GameConfigStructurePatch(Dictionary<string, object> replacedMembersByName)
         {
         }
+
+        internal override void PatchContentDangerouslyInPlace(TStructure structure)
+        {
+            return;
+            throw new NotImplementedException();
+        }
     }
 }

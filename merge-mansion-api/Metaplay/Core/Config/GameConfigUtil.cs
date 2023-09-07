@@ -58,7 +58,7 @@ namespace Metaplay.Core.Config
 
             try
             {
-                return MetaSerialization.DeserializeTagged<T>(entryData, MetaSerializationFlags.IncludeAll, null, 0, null);
+                return (T)MetaSerialization.DeserializeTagged(entryData, typeof(T), MetaSerializationFlags.IncludeAll, null, 0, null);
             }
             catch (Exception e)
             {

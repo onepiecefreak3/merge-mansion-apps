@@ -8,8 +8,10 @@ using CommandLine.Text;
 using Game.Logic;
 using GameLogic;
 using GameLogic.Area;
+using GameLogic.Config;
 using merge_mansion_dumper.Dumper;
 using Metaplay.Core;
+using Metaplay.Core.Config;
 using Metaplay.Generated;
 using Metaplay.Unity;
 using Metaplay.Unity.ConnectionStates;
@@ -21,6 +23,9 @@ namespace merge_mansion_dumper
     {
         [Option('m', "mode", Required = true, HelpText = "Set the mode to dump data with\n  1: all\n  2: merge chains\n  3: areas\n  4: events\n  5: dialogs")]
         public int Mode { get; set; }
+
+        [Option('c', "config", Required = false, HelpText = "Sets the path to the config archive to use. This will not download any other data archives or localizations!")]
+        public string ConfigArchivePath { get; set; }
     }
 
     public enum Mode
@@ -61,13 +66,9 @@ namespace merge_mansion_dumper
         private static async Task Execute(Options o)
         {
             // Setup system
-            var isSetup = SetupSystem();
+            var isSetup = SetupSystem(o.ConfigArchivePath);
             if (!isSetup)
                 return;
-
-            var trans = MetaplaySDK.ActiveLanguage.Translations.Where(x => x.Value.Contains("Batter")).ToArray();
-            if (trans.Length > 0)
-                Debugger.Break();
 
             // Dump data to files
             Dump(o);
@@ -75,11 +76,24 @@ namespace merge_mansion_dumper
             Console.WriteLine("Done.");
         }
 
-        private static bool SetupSystem()
+        private static bool SetupSystem(string? configArchivePath)
         {
+            if (!string.IsNullOrEmpty(configArchivePath))
+            {
+                // Setup fixed data without unnecessary internal systems
+                MetaplayCore.Initialize();
+                
+                var archive = ConfigArchive.FromBytes(FileUtil.ReadAllBytes(configArchivePath));
+                var gameConfig = (SharedGameConfig)GameConfigFactory.Instance.ImportSharedGameConfig(PatchedConfigArchive.WithNoPatches(archive));
+
+                ClientGlobal.SharedGameConfig = gameConfig;
+
+                return true;
+            }
+
             Console.WriteLine("Setup game session...");
 
-            //TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
+            TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
 
             try
             {

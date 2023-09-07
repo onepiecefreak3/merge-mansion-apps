@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Xml.Linq;
+using GameLogic.Config;
 using GameLogic.MergeChains;
 using GameLogic.Player.Items;
 using GameLogic.Player.Items.Production;
@@ -26,11 +29,15 @@ namespace Metaplay.Generated
         private static readonly Type MetaRefInterface = typeof(IMetaRef);
         private static readonly Type DynamicEnumInterface = typeof(IDynamicEnum);
         private static readonly Type MetaMessageType = typeof(MetaMessage);
+        private static readonly Type GameConfigDataType = typeof(GameConfigDataContent<>);
+        private static readonly Type CollectionType = typeof(Collection<>);
+        private static readonly Type CollectionInterfaceType = typeof(ICollection<>);
 
-        private static readonly string DynamicEnumFromId = "FromId";
-        private static readonly string StringIdFromString = "FromString";
-        private static readonly string MetaRefGetKeyType = "GetKeyType";
-        private static readonly string MetaRefFromKey = "FromKey";
+        private const string DynamicEnumFromId = "FromId";
+        private const string StringIdFromString = "FromString";
+        private const string MetaRefGetKeyType = "GetKeyType";
+        private const string MetaRefFromKey = "FromKey";
+        private const string AddItemName = "Add";
 
         private static readonly IDictionary<Type, IDictionary<int, PropertyInfo>> _properties;
         private static readonly IDictionary<Type, IDictionary<int, FieldInfo>> _fields;
@@ -205,14 +212,24 @@ namespace Metaplay.Generated
                 {
                     var property = taggedProperties[tagId];
 
+                    Tracer.Instance.Push(property.Name);
+
                     Deserialize_WireType(ref context, reader, wireType, property.PropertyType, out value);
+
+                    Tracer.Instance.Pop();
+
                     property.SetValue(outValue, value);
                 }
                 else
                 {
                     var field = taggedFields[tagId];
 
+                    Tracer.Instance.Push(field.Name);
+
                     Deserialize_WireType(ref context, reader, wireType, field.FieldType, out value);
+
+                    Tracer.Instance.Pop();
+
                     field.SetValue(outValue, value);
                 }
             } while (true);
@@ -223,9 +240,20 @@ namespace Metaplay.Generated
         {
             value = null;
 
+            // Handle MetaRef
             if (MetaRefInterface.IsAssignableFrom(memberType))
             {
                 Deserialize_MetaRef(ref context, reader, wireType, memberType, out value);
+                return;
+            }
+
+            // Handle GameConfigDataContent<>
+            if (memberType.IsGenericType && GameConfigDataType.IsAssignableTo(memberType.GetGenericTypeDefinition()))
+            {
+                var valueType = memberType.GenericTypeArguments[0];
+                Deserialize_WireType(ref context, reader, wireType, valueType, out value);
+
+                value = Activator.CreateInstance(memberType, value);
                 return;
             }
 
@@ -241,34 +269,19 @@ namespace Metaplay.Generated
 
                     if (DynamicEnumInterface.IsAssignableFrom(baseType))
                     {
-                        Deserialize_DynamicEnum(ref context, reader, out var v);
-                        value = baseType.BaseType.GetMethod(DynamicEnumFromId).Invoke(null, new object[] { v });
+                        Deserialize_DynamicEnum(ref context, reader, out value);
+                        value = baseType.BaseType.GetMethod(DynamicEnumFromId).Invoke(null, new[] { value });
                     }
                     else if (baseType == typeof(bool))
-                    {
-                        Deserialize_Boolean(ref context, reader, out var v);
-                        value = v;
-                    }
+                        Deserialize_Boolean(ref context, reader, out value);
                     else if (baseType == typeof(uint))
-                    {
-                        Deserialize_UInt32(ref context, reader, out var v);
-                        value = v;
-                    }
+                        Deserialize_UInt32(ref context, reader, out value);
                     else if (baseType == typeof(long))
-                    {
-                        Deserialize_Int64(ref context, reader, out var v);
-                        value = v;
-                    }
+                        Deserialize_Int64(ref context, reader, out value);
                     else if (baseType == typeof(ulong))
-                    {
-                        Deserialize_UInt64(ref context, reader, out var v);
-                        value = v;
-                    }
+                        Deserialize_UInt64(ref context, reader, out value);
                     else
-                    {
-                        Deserialize_Int32(ref context, reader, out var v);
-                        value = v;
-                    }
+                        Deserialize_Int32(ref context, reader, out value);
 
                     if (memberType.IsEnum)
                         value = Enum.ToObject(memberType, value);
@@ -276,87 +289,82 @@ namespace Metaplay.Generated
                     break;
 
                 case WireDataType.VarInt128:
-                    Deserialize_UInt128(ref context, reader, out var v5);
-                    value = v5;
+                    Deserialize_UInt128(ref context, reader, out value);
                     break;
 
                 case WireDataType.NullableVarInt:
-                    Deserialize_Nullable_Int32(ref context, reader, out var v4);
+                    Deserialize_Nullable_Int32(ref context, reader, out value);
 
-                    value = v4;
                     if (memberType.GenericTypeArguments[0].IsEnum)
-                        value = Enum.ToObject(memberType.GenericTypeArguments[0], v4.Value);
+                        value = Enum.ToObject(memberType.GenericTypeArguments[0], value ?? 0);
                     break;
 
                 case WireDataType.String:
-                    Deserialize_String(ref context, reader, out var v1);
+                    Deserialize_String(ref context, reader, out value);
 
-                    value = v1;
                     if (typeof(IStringId).IsAssignableFrom(memberType))
-                        value = memberType.BaseType.GetMethod(StringIdFromString).Invoke(null, new[] { v1 });
+                        value = memberType.BaseType.GetMethod(StringIdFromString).Invoke(null, new[] { value });
 
                     break;
 
                 case WireDataType.F64:
-                    Deserialize_F64(ref context, reader, out var v2);
-                    value = v2;
+                    Deserialize_F64(ref context, reader, out value);
                     break;
 
                 case WireDataType.F32:
-                    Deserialize_F32(ref context, reader, out var v3);
-                    value = v3;
+                    Deserialize_F32(ref context, reader, out value);
                     break;
 
                 case WireDataType.Float32:
-                    Deserialize_Float32(ref context, reader, out var v7);
-                    value = v7;
+                    Deserialize_Float32(ref context, reader, out value);
                     break;
 
                 case WireDataType.Struct:
                     value = Activator.CreateInstance(memberType, true);
                     Deserialize_Members(ref context, reader, value, memberType);
-                    break;
+                    return;
 
                 // Classes and Nullable<T> where T : struct
                 case WireDataType.NullableStruct:
                     var hasValue = reader.ReadVarInt();
                     if (hasValue == 0)
-                        break;
+                        return;
 
                     if (memberType.IsGenericType && memberType.GetGenericTypeDefinition() == typeof(Nullable<>))
                         memberType = memberType.GenericTypeArguments[0];
 
                     value = Activator.CreateInstance(memberType, true);
                     Deserialize_Members(ref context, reader, value, memberType);
-                    break;
+                    return;
 
                 case WireDataType.AbstractStruct:
                     var deriveId = reader.ReadVarInt();
                     if (deriveId == 0)
-                        break;
+                        return;
 
                     var targetType = GetDerivableType(memberType, deriveId);
 
                     value = Activator.CreateInstance(targetType, true);
                     Deserialize_Members(ref context, reader, value, targetType);
-                    break;
+                    return;
 
                 case WireDataType.ValueCollection:
                     Deserialize_ValueCollection(ref context, reader, memberType, out value);
-                    break;
+                    return;
 
                 case WireDataType.KeyValueCollection:
                     Deserialize_KeyValueCollection(ref context, reader, memberType, out value);
-                    break;
+                    return;
 
                 case WireDataType.Bytes:
-                    Deserialize_ByteArray(ref context, reader, out var v6);
-                    value = v6;
-                    break;
+                    Deserialize_ByteArray(ref context, reader, out value);
+                    return;
 
                 default:
                     throw new InvalidOperationException($"Unknown wire type {wireType}.");
             }
+
+            Tracer.Instance.Trace(value);
         }
 
         // CUSTOM: Deserialize MetaRef<TItem>
@@ -391,11 +399,36 @@ namespace Metaplay.Generated
 
                 for (var i = 0; i < collectionSize; i++)
                 {
+                    Tracer.Instance.Push($"[{i}]");
+
                     Deserialize_WireType(ref context, reader, listWireType, elementType, out var item);
+
+                    Tracer.Instance.Pop();
+
                     arrayValue.SetValue(item, i);
                 }
 
                 outValue = arrayValue;
+                return;
+            }
+
+            if (collectionType.IsAssignableTo(CollectionInterfaceType.MakeGenericType(elementType)))
+            {
+                var listValue = Activator.CreateInstance(collectionType.IsInterface ? CollectionType.MakeGenericType(elementType) : collectionType, collectionSize);
+                var addMethod = listValue?.GetType().GetMethod(AddItemName);
+
+                for (var i = 0; i < collectionSize; i++)
+                {
+                    Tracer.Instance.Push($"[{i}]");
+
+                    Deserialize_WireType(ref context, reader, listWireType, elementType, out var item);
+
+                    Tracer.Instance.Pop();
+
+                    addMethod?.Invoke(listValue, new[] { item });
+                }
+
+                outValue = listValue;
             }
             else
             {
@@ -403,7 +436,12 @@ namespace Metaplay.Generated
 
                 for (var i = 0; i < collectionSize; i++)
                 {
+                    Tracer.Instance.Push($"[{i}]");
+
                     Deserialize_WireType(ref context, reader, listWireType, elementType, out var item);
+
+                    Tracer.Instance.Pop();
+
                     listValue?.Add(item);
                 }
 
@@ -432,7 +470,12 @@ namespace Metaplay.Generated
             for (var i = 0; i < dictCount; i++)
             {
                 Deserialize_WireType(ref context, reader, keyWireType, dictTypes[0], out var key);
+
+                Tracer.Instance.Push($"[{key}]");
+
                 Deserialize_WireType(ref context, reader, valueWireType, dictTypes[1], out var value);
+
+                Tracer.Instance.Pop();
 
                 dictValue[key] = value;
             }
@@ -440,70 +483,70 @@ namespace Metaplay.Generated
             outValue = dictValue;
         }
 
-        private static void Deserialize_ByteArray(ref MetaSerializationContext context, IOReader reader, out byte[] value)
+        private static void Deserialize_ByteArray(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadByteString(context.MaxByteArraySize);
         }
 
-        private static void Deserialize_Boolean(ref MetaSerializationContext context, IOReader reader, out bool value)
+        private static void Deserialize_Boolean(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadByte() == 1;
         }
 
-        private static void Deserialize_DynamicEnum(ref MetaSerializationContext context, IOReader reader, out int value)
+        private static void Deserialize_DynamicEnum(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarInt();
         }
 
-        private static void Deserialize_Int32(ref MetaSerializationContext context, IOReader reader, out int value)
+        private static void Deserialize_Int32(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarInt();
         }
 
-        private static void Deserialize_UInt32(ref MetaSerializationContext context, IOReader reader, out uint value)
+        private static void Deserialize_UInt32(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarUInt();
         }
 
-        private static void Deserialize_Int64(ref MetaSerializationContext context, IOReader reader, out long value)
+        private static void Deserialize_Int64(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarLong();
         }
 
-        private static void Deserialize_UInt64(ref MetaSerializationContext context, IOReader reader, out ulong value)
+        private static void Deserialize_UInt64(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarULong();
         }
 
-        private static void Deserialize_UInt128(ref MetaSerializationContext context, IOReader reader, out UInt128 value)
+        private static void Deserialize_UInt128(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadVarUInt128();
         }
 
-        private static void Deserialize_Nullable_Int32(ref MetaSerializationContext context, IOReader reader, out int? value)
+        private static void Deserialize_Nullable_Int32(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             var flag = reader.ReadVarInt();
-            value = flag == 0 ? 0 : reader.ReadVarInt();
+            value = flag == 0 ? null : reader.ReadVarInt();
         }
 
-        private static void Deserialize_String(ref MetaSerializationContext context, IOReader reader, out string value)
+        private static void Deserialize_String(ref MetaSerializationContext context, IOReader reader, out object value)
         {
             value = reader.ReadString(context.MaxStringSize);
         }
 
-        private static void Deserialize_F64(ref MetaSerializationContext context, IOReader reader, out F64 outValue)
+        private static void Deserialize_F64(ref MetaSerializationContext context, IOReader reader, out object value)
         {
-            outValue = reader.ReadF64();
+            value = reader.ReadF64();
         }
 
-        private static void Deserialize_F32(ref MetaSerializationContext context, IOReader reader, out F32 outValue)
+        private static void Deserialize_F32(ref MetaSerializationContext context, IOReader reader, out object value)
         {
-            outValue = reader.ReadF32();
+            value = reader.ReadF32();
         }
 
-        private static void Deserialize_Float32(ref MetaSerializationContext context, IOReader reader, out float outValue)
+        private static void Deserialize_Float32(ref MetaSerializationContext context, IOReader reader, out object value)
         {
-            outValue = reader.ReadFloat();
+            value = reader.ReadFloat();
         }
 
         #endregion
@@ -859,6 +902,54 @@ namespace Metaplay.Generated
                 throw new InvalidOperationException($"Unknown derivative {targetId} for type {baseType.FullName}");
 
             return derivableType;
+        }
+
+        #endregion
+
+        #region Tracer
+
+        public class Tracer
+        {
+            private static readonly Lazy<Tracer> Lazy = new(() => new Tracer());
+            public static Tracer Instance => Lazy.Value;
+
+            private readonly Stack<string> _steps = new();
+            private readonly HashSet<object> _registered = new();
+            private readonly Dictionary<object, List<string>> _traced = new();
+
+            public void Register(object value)
+            {
+                _registered.Add(value);
+            }
+
+            public void Push(string step)
+            {
+                _steps.Push(step);
+            }
+
+            public void Pop()
+            {
+                _steps.Pop();
+            }
+
+            public void Trace(object value)
+            {
+                if (value is IMetaRef metaRef)
+                    value = metaRef.KeyObject;
+
+                if (_registered.Contains(value))
+                {
+                    if (!_traced.TryGetValue(value, out var traces))
+                        _traced[value] = traces = new();
+
+                    traces.Add(string.Join('.', _steps.Reverse()));
+                }
+            }
+
+            public IList<string> GetTraces(object value)
+            {
+                return _traced[value].ToArray();
+            }
         }
 
         #endregion

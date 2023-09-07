@@ -1,3 +1,4 @@
+using System;
 using Metaplay.Core.Model;
 using System.Collections.Generic;
 
@@ -20,6 +21,12 @@ namespace Metaplay.Core.Config
 
         public GameConfigLibraryPatch(IEnumerable<TInfo> replacedItems, IEnumerable<TInfo> appendedItems)
         {
+        }
+
+        internal override void PatchContentDangerouslyInPlace(Dictionary<TKey, TInfo> libraryItems)
+        {
+            return;
+            throw new NotImplementedException();
         }
     }
 }

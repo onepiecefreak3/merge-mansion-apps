@@ -59,7 +59,7 @@ namespace Metaplay.Core.Network
         {
             using var reader = new IOReader(buffer, payloadOffset, payloadSize);
 
-            var message = MetaSerialization.DeserializeTagged<MetaMessage>(reader, MetaSerializationFlags.SendOverNetwork, resolver, null, null);
+            var message = (MetaMessage)MetaSerialization.DeserializeTagged(reader, typeof(MetaMessage), MetaSerializationFlags.SendOverNetwork, resolver, null, null);
 
             DebugTools.WriteReceivedMessage(message);
 

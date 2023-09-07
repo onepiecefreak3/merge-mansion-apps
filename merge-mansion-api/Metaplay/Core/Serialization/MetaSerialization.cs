@@ -42,16 +42,21 @@ namespace Metaplay.Core.Serialization
 
         public static T DeserializeTagged<T>(byte[] serialized, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
         {
-            return DeserializeTagged<T>(new IOReader(serialized), flags, resolver, logicVersion, debugStream);
+            return (T)DeserializeTagged(new IOReader(serialized), typeof(T), flags, resolver, logicVersion, debugStream);
         }
 
-        public static T DeserializeTagged<T>(IOReader reader, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
+        public static object DeserializeTagged(byte[] serialized, Type type, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
+        {
+            return DeserializeTagged(new IOReader(serialized), type, flags, resolver, logicVersion, debugStream);
+        }
+
+        public static object DeserializeTagged(IOReader reader, Type type, MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
         {
             CheckInitialized();
 
             var context = CreateContext(flags, resolver, logicVersion, debugStream);
 
-            return (T)TypeSerializer.Deserialize(ref context, reader, typeof(T));
+            return TypeSerializer.Deserialize(ref context, reader, type);
         }
 
         public static byte[] SerializeTagged<T>(T value, MetaSerializationFlags flags, int? logicVersion, StringBuilder debugStream)
