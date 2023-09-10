@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1)]
     public class PlayerPropertyIdDiamonds : TypedPlayerPropertyId<long>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Diamonds";
 
         public PlayerPropertyIdDiamonds()
         {

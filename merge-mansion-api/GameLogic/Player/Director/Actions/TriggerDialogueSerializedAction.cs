@@ -15,6 +15,7 @@ namespace GameLogic.Player.Director.Actions
 
         public TriggerDialogueSerializedAction(StoryDefinitionId storyDefinitionId)
         {
+            StoryDefinitionId = storyDefinitionId;
         }
     }
 }

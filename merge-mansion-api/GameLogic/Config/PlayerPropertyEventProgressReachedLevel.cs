@@ -11,7 +11,8 @@ namespace GameLogic.Config
     {
         [MetaMember(1, 0)]
         public MergeBoardId MergeBoardId; // 0x10
-        public override string DisplayName { get; }
+
+        public override string DisplayName => $"Reached event {MergeBoardId.Value} progress level";
 
         public PlayerPropertyEventProgressReachedLevel()
         {

@@ -12,6 +12,10 @@ using System.Linq;
 using GameLogic;
 using GameLogic.Player.Items;
 using Metaplay.Core.Activables;
+using Metaplay.Core.Player;
+using Game.Logic;
+using System.Security.Cryptography;
+using GameLogic.Story;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -31,7 +35,11 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(IStringId),
                 typeof(IMetaRef),
                 typeof(MetaActivableLifetimeSpec),
-                typeof(MetaActivableCooldownSpec)
+                typeof(MetaActivableCooldownSpec),
+                typeof(PlayerPropertyId),
+                typeof(PlayerPropertyConstant),
+                typeof(SurveyString),
+                typeof(DialogItemInfo)
             };
 
         public MetaJsonSerializer(ILogger output)
@@ -44,15 +52,15 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             if (value is MetaDuration dur)
-                new JValue(dur.Milliseconds).WriteTo(writer);
+                WriteValue(writer, dur.Milliseconds, serializer);
             else if (value is MetaTime time)
-                new JValue(time.ToDateTime()).WriteTo(writer);
+                WriteValue(writer, time.ToDateTime(), serializer);
             else if (value is MetaCalendarDateTime calTime)
-                new JValue(calTime.ToDateTime()).WriteTo(writer);
+                WriteValue(writer, calTime.ToDateTime(), serializer);
             else if (value is MetaCalendarPeriod period)
                 SerializePeriod(writer, period, serializer);
             else if (value is ContentHash hash)
-                new JValue(hash.ToString()).WriteTo(writer);
+                WriteValue(writer, hash.ToString(), serializer);
             else if (value is PlayerRequirement pr)
                 SerializePlayerRequirement(writer, pr, serializer);
             else if (value is PlayerReward prew)
@@ -60,13 +68,21 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (value is IDirectorAction dirAct)
                 SerializeDirectorAction(writer, dirAct, serializer);
             else if (value is IStringId sId)
-                new JValue(sId.Value).WriteTo(writer);
+                WriteValue(writer, sId.Value, serializer);
             else if (value is IMetaRef metaRef)
                 SerializeMetaRef(writer, metaRef, serializer);
             else if (value is MetaActivableLifetimeSpec activable)
                 SerializeActivable(writer, activable, serializer);
             else if (value is MetaActivableCooldownSpec cooldown)
                 SerializeActivableCooldown(writer, cooldown, serializer);
+            else if (value is PlayerPropertyId propertyId)
+                WriteValue(writer, propertyId.DisplayName, serializer);
+            else if (value is PlayerPropertyConstant propertyConstant)
+                WriteValue(writer, propertyConstant.ConstantValue, serializer);
+            else if (value is SurveyString sSurvey)
+                WriteValue(writer, sSurvey.Id, serializer);
+            else if (value is DialogItemInfo dialogItemInfo)
+                WriteObject(writer, dialogItemInfo.GetType(), dialogItemInfo, serializer);
         }
 
         private void SerializePeriod(JsonWriter writer, MetaCalendarPeriod period, JsonSerializer serializer)
@@ -207,7 +223,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             writer.WriteStartObject();
 
             writer.WritePropertyName(directorAction.GetType().Name);
-            WriteObject(writer, directorAction.GetType(), directorAction, serializer);
+
+            if (directorAction is TriggerDialogue triggerDialogueAction)
+            {
+                var storyElements = ClientGlobal.SharedGameConfig.StoryElements;
+                if (storyElements.TryGetValue(triggerDialogueAction.StoryDefinitionId, out var element))
+                    WriteObject(writer, element.GetType(), element, serializer);
+                else
+                    writer.WriteNull();
+            }
+            else
+                WriteObject(writer, directorAction.GetType(), directorAction, serializer);
 
             writer.WriteEndObject();
         }
@@ -239,6 +265,12 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 WriteValue(writer, fixedAct.Duration, serializer);
             else if (cooldown is MetaActivableCooldownSpec.ScheduleBased)
                 WriteValue(writer, nameof(MetaActivableCooldownSpec.ScheduleBased), serializer);
+        }
+
+        protected override void WriteCustomObjectMembers(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            if (value is DialogItemInfo dialogItemInfo)
+                WriteProperty(writer, "Text", LocMan.Get(dialogItemInfo.LocalizationId), serializer);
         }
 
         protected override void WriteObjectMember(JsonWriter writer, string name, Type type, object value, JsonSerializer serializer)

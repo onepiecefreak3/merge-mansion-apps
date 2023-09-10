@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1010)]
     public class PlayerPropertyCurrentEvent : TypedPlayerPropertyId<string>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Current event";
 
         public PlayerPropertyCurrentEvent()
         {

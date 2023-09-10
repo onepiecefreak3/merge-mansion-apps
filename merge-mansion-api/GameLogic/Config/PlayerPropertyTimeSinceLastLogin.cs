@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1003)]
     public class PlayerPropertyTimeSinceLastLogin : TypedPlayerPropertyId<MetaDuration>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Time since last login";
 
         public PlayerPropertyTimeSinceLastLogin()
         {

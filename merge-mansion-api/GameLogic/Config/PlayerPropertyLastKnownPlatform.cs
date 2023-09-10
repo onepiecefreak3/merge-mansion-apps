@@ -11,7 +11,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1029)]
     public class PlayerPropertyLastKnownPlatform : PlayerPropertyMatcher<ClientPlatform>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => $"Last known platform is {_value}";
 
         public PlayerPropertyLastKnownPlatform()
         {

@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1001)]
     public class PlayerPropertyAccountCreatedAt : TypedPlayerPropertyId<MetaTime>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Account creation time";
 
         public PlayerPropertyAccountCreatedAt()
         {

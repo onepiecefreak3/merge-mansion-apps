@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Code.GameLogic.GameEvents;
 using CommandLine;
 using CommandLine.Text;
 using Game.Logic;
@@ -70,6 +71,8 @@ namespace merge_mansion_dumper
             if (!isSetup)
                 return;
 
+            var t = MetaplaySDK.ActiveLanguage.Translations.Where(x => x.Key.Value.Contains("Dialogue")).ToArray();
+
             // Dump data to files
             Dump(o);
 
@@ -82,7 +85,7 @@ namespace merge_mansion_dumper
             {
                 // Setup fixed data without unnecessary internal systems
                 MetaplayCore.Initialize();
-                
+
                 var archive = ConfigArchive.FromBytes(FileUtil.ReadAllBytes(configArchivePath));
                 var gameConfig = (SharedGameConfig)GameConfigFactory.Instance.ImportSharedGameConfig(PatchedConfigArchive.WithNoPatches(archive));
 
@@ -92,8 +95,6 @@ namespace merge_mansion_dumper
             }
 
             Console.WriteLine("Setup game session...");
-
-            TypeSerializer.Tracer.Instance.Register(AreaId.FromString("AntiqueDealer"));
 
             try
             {

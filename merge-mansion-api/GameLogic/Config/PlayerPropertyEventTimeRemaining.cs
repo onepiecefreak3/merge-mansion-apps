@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1011)]
     public class PlayerPropertyEventTimeRemaining : TypedPlayerPropertyId<MetaDuration>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Event time remaining";
 
         public PlayerPropertyEventTimeRemaining()
         {

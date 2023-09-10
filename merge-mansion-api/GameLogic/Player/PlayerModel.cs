@@ -22,6 +22,8 @@ using GameLogic.Player.ScheduledActions;
 using Metaplay.Core.Math;
 using GameLogic.Player.Leaderboard;
 using Game.Logic.Mail;
+using GameLogic.Player.Director.Actions;
+using GameLogic.Player.Director.Conditions;
 
 namespace GameLogic.Player
 {

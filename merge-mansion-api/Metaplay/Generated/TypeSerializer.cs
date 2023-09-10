@@ -18,6 +18,7 @@ using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using Metaplay.Core.Serialization;
 using Newtonsoft.Json.Linq;
+using static Metaplay.Core.Player.PlayerPropertyConstant;
 
 namespace Metaplay.Generated
 {
@@ -83,6 +84,22 @@ namespace Metaplay.Generated
             if (dict == null)
                 return;
 
+            // Resolve keys
+            var keyArray = new object[dict.Count];
+            dict.Keys.CopyTo(keyArray, 0);
+
+            foreach (var key in keyArray)
+            {
+                if (key is IMetaRef keyRef)
+                {
+                    var resolved = keyRef.CreateResolved(resolver);
+                    dict[resolved] = dict[key];
+
+                    dict.Remove(key);
+                }
+            }
+
+            // Resolve values
             foreach (var key in dict.Keys)
             {
                 if (dict[key] is IMetaRef metaRef)
@@ -779,12 +796,14 @@ namespace Metaplay.Generated
                 return;
 
             var implicitMembers = type.GetCustomAttribute<MetaImplicitMembersRangeAttribute>();
+            var isImplicit = implicitMembers != null;
+
             var startIndex = implicitMembers?.StartIndex ?? 0;
 
             if (!hasFields)
-                taggedFields = GetTaggedFields(type, implicitMembers != null, ref startIndex);
+                taggedFields = GetTaggedFields(type, isImplicit, ref startIndex);
             if (!hasProperties)
-                taggedProperties = GetTaggedProperties(type, implicitMembers != null, ref startIndex);
+                taggedProperties = GetTaggedProperties(type, isImplicit, ref startIndex);
         }
 
         private static IDictionary<int, FieldInfo> GetTaggedFields(Type type, bool isImplicit, ref int startIndex)
@@ -808,6 +827,18 @@ namespace Metaplay.Generated
                     continue;
 
                 result[customAttribute.TagId] = field;
+            }
+
+            if (type.BaseType != null)
+            {
+                var implicitMembers = type.BaseType.GetCustomAttribute<MetaImplicitMembersRangeAttribute>();
+                isImplicit = implicitMembers != null;
+
+                var startIndex1 = implicitMembers?.StartIndex ?? 0;
+
+                var baseFields = GetTaggedFields(type.BaseType, isImplicit, ref startIndex1);
+                foreach (var key in baseFields.Keys)
+                    result[key] = baseFields[key];
             }
 
             return _fields[type] = result;
@@ -834,6 +865,18 @@ namespace Metaplay.Generated
                     continue;
 
                 result[customAttribute.TagId] = property;
+            }
+
+            if (type.BaseType != null)
+            {
+                var implicitMembers = type.BaseType.GetCustomAttribute<MetaImplicitMembersRangeAttribute>();
+                isImplicit = implicitMembers != null;
+
+                var startIndex1 = implicitMembers?.StartIndex ?? 0;
+
+                var baseProperties = GetTaggedProperties(type.BaseType, isImplicit, ref startIndex1);
+                foreach (var key in baseProperties.Keys)
+                    result[key] = baseProperties[key];
             }
 
             return _properties[type] = result;

@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1004)]
     public class PlayerPropertyPlayerLevel : TypedPlayerPropertyId<int>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Player level";
 
         public PlayerPropertyPlayerLevel()
         {

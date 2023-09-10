@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1012)]
     public class PlayerPropertyAssociationIdGroup : TypedPlayerPropertyId<int>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Association id modulo group";
 
         public PlayerPropertyAssociationIdGroup()
         {

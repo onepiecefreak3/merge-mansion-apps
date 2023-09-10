@@ -6,7 +6,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1014)]
     public class PlayerPropertySurveyAnswered : PlayerPropertyMatcher<int>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => $"Survey {_value} answered";
 
         public PlayerPropertySurveyAnswered()
         {

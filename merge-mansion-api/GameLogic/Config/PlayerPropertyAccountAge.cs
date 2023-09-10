@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1002)]
     public class PlayerPropertyAccountAge : TypedPlayerPropertyId<MetaDuration>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Account age";
 
         public PlayerPropertyAccountAge()
         {

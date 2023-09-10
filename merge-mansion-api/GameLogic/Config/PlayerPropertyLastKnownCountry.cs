@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1000)]
     public class PlayerPropertyLastKnownCountry : TypedPlayerPropertyId<string>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Last known country";
 
         public PlayerPropertyLastKnownCountry()
         {

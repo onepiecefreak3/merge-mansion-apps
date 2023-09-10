@@ -13,6 +13,8 @@ using GameLogic.Player.Modifiers;
 using Game.Logic.Mail;
 using Code.GameLogic.GameEvents;
 using GameLogic.Banks;
+using GameLogic.Player.Director.Actions;
+using GameLogic.Player.Director.Conditions;
 
 namespace GameLogic.Player
 {
@@ -84,5 +86,8 @@ namespace GameLogic.Player
         CurrencyBankModel CurrencyBankModel { get; }
 
         string PlayerName { get; }
+
+        // Slot: 50
+        //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }
 }

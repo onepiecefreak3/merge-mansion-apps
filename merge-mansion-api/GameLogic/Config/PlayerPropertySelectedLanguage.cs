@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1009)]
     public class PlayerPropertySelectedLanguage : TypedPlayerPropertyId<string>
     {
-        public override string DisplayName { get; }
+        public override string DisplayName => "Selected language";
 
         public PlayerPropertySelectedLanguage()
         {

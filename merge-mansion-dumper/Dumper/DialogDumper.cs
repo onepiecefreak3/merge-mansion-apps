@@ -64,14 +64,14 @@ namespace merge_mansion_dumper.Dumper
                         var rightChar = DialogCharacterType.None;
                         var rightMood = DialogCharacterState.Default;
 
-                        var storyElement = config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId);
+                        var storyElement = config.StoryElements.GetInfoByKey(dialogueAction.x.StoryDefinitionId);
                         if (storyElement == null)
                         {
-                            Output.Warning("[Metacore] Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.DialogueId, dialogueAction.Item1, hotspot.KeyObject);
+                            Output.Warning("[Metacore] Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.StoryDefinitionId, dialogueAction.Item1, hotspot.KeyObject);
                             continue;
                         }
 
-                        foreach (var dialog in ((StoryElementInfo)config.StoryElements.GetInfoByKey(dialogueAction.x.DialogueId)).DialogItems.Select(x => x.Value))
+                        foreach (var dialog in ((StoryElementInfo)config.StoryElements.GetInfoByKey(dialogueAction.x.StoryDefinitionId)).DialogItems.Select(x => x.Value))
                         {
                             var dialogImg = CreateImage(dialog.Ref, leftChar, rightChar, leftMood, rightMood);
                             if (dialogImg != null)

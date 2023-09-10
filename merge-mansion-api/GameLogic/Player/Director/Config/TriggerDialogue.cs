@@ -1,3 +1,5 @@
+using GameLogic.Player.Director.Actions;
+using GameLogic.Player.Director.Conditions;
 using GameLogic.Story;
 using Metaplay.Core.Model;
 
@@ -7,8 +9,9 @@ namespace GameLogic.Player.Director.Config
     public class TriggerDialogue : IDirectorAction
     {
         [MetaMember(1, 0)]
-        public StoryDefinitionId DialogueId { get; set; }
-        public StoryDefinitionId StoryDefinitionId { get; }
+        private StoryDefinitionId DialogueId { get; set; }
+
+        public StoryDefinitionId StoryDefinitionId => DialogueId;
 
         private TriggerDialogue()
         {
@@ -16,6 +19,14 @@ namespace GameLogic.Player.Director.Config
 
         public TriggerDialogue(StoryDefinitionId dialogueId)
         {
+        }
+
+        public void Run(IPlayer playerModel, IDirectorActionContext context)
+        {
+            var eventCondition = new NoPopupsOpen();
+            var serializedAction = new TriggerDialogueSerializedAction(DialogueId);
+
+            //playerModel.AddScriptedEvent(eventCondition, serializedAction);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace GameLogic.Config
     [MetaSerializable]
     public abstract class PlayerPropertyMatcher : PlayerPropertyId
     {
-        public sealed override Type PropertyType { get; }
+        public sealed override Type PropertyType => typeof(bool);
 
         protected PlayerPropertyMatcher()
         {

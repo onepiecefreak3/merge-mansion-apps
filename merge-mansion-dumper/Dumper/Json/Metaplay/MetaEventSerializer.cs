@@ -28,7 +28,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(GarageCleanupBoardRowInfo),
                 typeof(GarageCleanupPatternInfo),
 
-                typeof(BoardCell)
+                typeof(BoardCell),
+                typeof(EventOfferSetInfo)
             };
 
         protected override Type[] GetTypes() => _supportedTypes;
@@ -61,6 +62,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
             else if (value is BoardCell boardCell)
                 SerializeBoardCell(writer, boardCell, serializer);
+            else if (value is EventOfferSetInfo eventOfferSet)
+                SerializeEventOfferSet(writer, eventOfferSet, serializer);
         }
 
         private void SerializeBoardEvent(JsonWriter writer, BoardEventInfo boardEvent, JsonSerializer serializer)
@@ -195,6 +198,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             WriteObject(writer, boardCell.GetType(), boardCell, serializer);
         }
 
+        private void SerializeEventOfferSet(JsonWriter writer, EventOfferSetInfo eventOfferSet, JsonSerializer serializer)
+        {
+            if (eventOfferSet.EventOfferSetId.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, eventOfferSet.GetType(), eventOfferSet, serializer);
+        }
+
         #region Task graph
 
         private string GetTaskGraph(BoardEventInfo board)
@@ -252,7 +266,25 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
         protected override void WriteCustomObjectMembers(JsonWriter writer, object value, JsonSerializer serializer)
         {
             if (value is BoardEventInfo boardEvent)
+            {
                 WriteProperty(writer, "TaskDependencies", GetTaskGraph(boardEvent), serializer);
+                WriteProperty(writer, "Name", LocMan.Get(boardEvent.NameLocalizationId), serializer);
+            }
+
+            if (value is CollectibleBoardEventInfo collectibleEvent)
+                WriteProperty(writer, "Name", LocMan.Get(collectibleEvent.NameLocId), serializer);
+
+            if (value is ProgressionEventInfo progressionEvent)
+                WriteProperty(writer, "Name", LocMan.Get(progressionEvent.NameLocId), serializer);
+
+            if (value is LeaderboardEventInfo leaderboardEvent)
+                WriteProperty(writer, "Name", LocMan.Get(leaderboardEvent.NameLocId), serializer);
+
+            if (value is EventOfferSetInfo eventOfferSet)
+                WriteProperty(writer, "Name", LocMan.Get(eventOfferSet.NameLocalizationId), serializer);
+
+            if (value is EventTaskInfo eventTask)
+                WriteProperty(writer, "TaskTitle", LocMan.Get(eventTask.TaskTitleLocId), serializer);
 
             if (value is GarageCleanupPatternInfo pattern)
             {
@@ -288,6 +320,20 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 if (name == nameof(CollectibleBoardEventInfo.EventInitTask))
                 {
                     WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+
+                if (name == nameof(CollectibleBoardEventInfo.FallbackLevelRefs))
+                {
+                    writer.WritePropertyName(name);
+                    writer.WriteStartObject();
+
+                    var fallbackRefs = (Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>>)value;
+                    foreach (var key in fallbackRefs.Keys)
+                        WriteProperty(writer, key.Ref.ConfigKey.Value, fallbackRefs[key].Ref, serializer);
+
+                    writer.WriteEndObject();
+
                     return;
                 }
             }
@@ -363,7 +409,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            
+
             if (type.IsAssignableTo(typeof(GarageCleanupBoardInfo)))
             {
                 if (name == nameof(GarageCleanupBoardInfo.Rows))
@@ -402,7 +448,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            
+
             if (type.IsAssignableTo(typeof(GarageCleanupPatternInfo)))
             {
                 if (name == nameof(GarageCleanupPatternInfo.Rows))
@@ -425,7 +471,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
             }
-            
+
             if (type.IsAssignableTo(typeof(BoardCell)))
             {
                 if (name == nameof(BoardCell.ItemId))
