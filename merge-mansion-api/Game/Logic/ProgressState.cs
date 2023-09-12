@@ -13,6 +13,7 @@ using Code.GameLogic.GameEvents;
 using System.Runtime.Serialization;
 using GameLogic;
 using Metaplay.Core.Math;
+using GameLogic.Seasonality;
 
 namespace Game.Logic
 {
@@ -199,5 +200,21 @@ namespace Game.Logic
         [ExcludeFromGdprExport]
         [MetaMember(58, (MetaMemberFlags)0)]
         private Dictionary<int, int> itemCaughtCount { get; set; }
+
+        public ItemUnlockedEvent ItemUnlocked;
+        [ExcludeFromGdprExport]
+        [MetaMember(59, (MetaMemberFlags)0)]
+        public List<int> UnclaimedWorldRecordRewardFishes { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(60, (MetaMemberFlags)0)]
+        public Dictionary<int, HashSet<int>> ClaimedWeightStarRewards { get; set; }
+
+        [MetaMember(61, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private HashSet<SeasonId> seasonsDiscovered { get; set; }
+
+        [IgnoreDataMember]
+        public IEnumerable<SeasonId> SeasonsDiscovered { get; }
     }
 }

@@ -88,5 +88,8 @@ namespace Code.GameLogic.GameEvents
         public BoardEventModel(BoardEventInfo info)
         {
         }
+
+        [MetaMember(26, (MetaMemberFlags)0)]
+        public bool Resolved { get; set; }
     }
 }

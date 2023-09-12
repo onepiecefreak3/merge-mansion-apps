@@ -23,8 +23,26 @@ namespace GameLogic.MergeChains
         {
         }
 
+        public int IndexOf(int itemId)
+        {
+            return Contains(itemId) ? 0 : -1;
+        }
+
+        public bool Contains(int itemId)
+        {
+            return (int)Item.KeyObject == itemId;
+        }
+
         public ItemDefinition First()
         {
+            return Item.Ref;
+        }
+
+        public ItemDefinition ElementAtOrDefault(int index)
+        {
+            if (index != 0)
+                return null;
+
             return Item.Ref;
         }
     }

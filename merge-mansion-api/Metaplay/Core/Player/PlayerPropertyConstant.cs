@@ -14,7 +14,6 @@ namespace Metaplay.Core.Player
         {
             [MetaMember(1)]
             private TValue _value; // 0x0
-
             public override object ConstantValue => _value;
 
             protected TypedConstant()
@@ -27,7 +26,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(1)]
-        public class LongConstant : TypedConstant<long>
+        public class LongConstant : PlayerPropertyConstant.TypedConstant<long>
         {
             private LongConstant()
             {
@@ -39,7 +38,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(2)]
-        public class F64Constant : TypedConstant<F64>
+        public class F64Constant : PlayerPropertyConstant.TypedConstant<F64>
         {
             private F64Constant()
             {
@@ -51,7 +50,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(3)]
-        public class MetaTimeConstant : TypedConstant<MetaTime>
+        public class MetaTimeConstant : PlayerPropertyConstant.TypedConstant<MetaTime>
         {
             private MetaTimeConstant()
             {
@@ -63,7 +62,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(4)]
-        public class MetaDurationConstant : TypedConstant<MetaDuration>
+        public class MetaDurationConstant : PlayerPropertyConstant.TypedConstant<MetaDuration>
         {
             private MetaDurationConstant()
             {
@@ -75,7 +74,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(5)]
-        public class BoolConstant : TypedConstant<bool>
+        public class BoolConstant : PlayerPropertyConstant.TypedConstant<bool>
         {
             private BoolConstant()
             {
@@ -87,7 +86,7 @@ namespace Metaplay.Core.Player
         }
 
         [MetaSerializableDerived(6)]
-        public class StringConstant : TypedConstant<string>
+        public class StringConstant : PlayerPropertyConstant.TypedConstant<string>
         {
             private StringConstant()
             {

@@ -16,6 +16,7 @@ namespace GameLogic.Config.Map.Characters
         Holden = 8,
         Heikki = 9,
         Hank = 10,
-        Deb = 11
+        Deb = 11,
+        Ratthew = 12
     }
 }

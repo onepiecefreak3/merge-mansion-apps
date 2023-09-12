@@ -26,5 +26,19 @@ namespace Game.Logic
         public PlayerEventSupportRemovedItem(int itemId, MergeBoardId boardId, bool fromInventory)
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public bool FromPocket { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string ItemType { get; set; }
+
+        public PlayerEventSupportRemovedItem(int itemId, MergeBoardId boardId, bool fromInventory, bool fromPocket)
+        {
+        }
+
+        public PlayerEventSupportRemovedItem(string itemType, MergeBoardId boardId, bool fromInventory, bool fromPocket)
+        {
+        }
     }
 }

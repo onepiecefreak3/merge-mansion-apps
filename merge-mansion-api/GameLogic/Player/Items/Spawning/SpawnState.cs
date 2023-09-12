@@ -36,5 +36,8 @@ namespace GameLogic.Player.Items.Spawning
         public SpawnState(SpawnState other, MetaTime timestamp)
         {
         }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public ulong SpawnCount { get; set; }
     }
 }

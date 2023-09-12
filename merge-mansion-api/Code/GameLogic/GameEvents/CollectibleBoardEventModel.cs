@@ -90,5 +90,8 @@ namespace Code.GameLogic.GameEvents
         protected HashSet<int> CaughtFishes { get; set; }
         public bool FishCaught { get; set; }
         public bool CameraNoted { get; set; }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        protected HashSet<int> FishCatchPopupSeenItems { get; set; }
     }
 }

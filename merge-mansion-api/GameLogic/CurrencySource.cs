@@ -44,6 +44,8 @@ namespace GameLogic
         EventExtended = 36,
         ThirdPartySurveyReward = 12,
         WorldRecordWeight = 37,
-        ResetBetweenEvents = 38
+        ResetBetweenEvents = 38,
+        WeightStar = 39,
+        ProgressionEventStreak = 40
     }
 }

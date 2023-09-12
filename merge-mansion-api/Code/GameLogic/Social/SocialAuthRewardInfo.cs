@@ -37,7 +37,6 @@ namespace Code.GameLogic.Social
 
         [MetaMember(9, (MetaMemberFlags)0)]
         public string InboxImageFullId { get; set; }
-
         public SocialAuthRewardId ConfigKey => SocialAuthRewardId;
 
         public SocialAuthRewardInfo()

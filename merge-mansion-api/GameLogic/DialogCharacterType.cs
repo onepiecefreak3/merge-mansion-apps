@@ -31,6 +31,7 @@ namespace GameLogic
         Amy = 19,
         Emilio = 20,
         Hank = 21,
-        Bruno = 22
+        Bruno = 22,
+        Voyance = 23
     }
 }

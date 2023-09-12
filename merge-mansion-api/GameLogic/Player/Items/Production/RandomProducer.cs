@@ -26,8 +26,6 @@ namespace GameLogic.Player.Items.Production
             yield break;
         }
 
-        private int TotalOdds { get; }
-
         private RandomProducer()
         {
         }

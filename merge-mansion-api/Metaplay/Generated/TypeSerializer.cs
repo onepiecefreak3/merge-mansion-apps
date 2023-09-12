@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Reflection.PortableExecutable;
 using System.Xml.Linq;
 using GameLogic.Config;
 using GameLogic.MergeChains;
@@ -332,6 +333,13 @@ namespace Metaplay.Generated
                     Deserialize_F32(ref context, reader, out value);
                     break;
 
+                case WireDataType.NullableF32:
+                    if (IsNull(reader))
+                        return;
+
+                    Deserialize_F32(ref context, reader, out value);
+                    break;
+
                 case WireDataType.Float32:
                     Deserialize_Float32(ref context, reader, out value);
                     break;
@@ -343,8 +351,7 @@ namespace Metaplay.Generated
 
                 // Classes and Nullable<T> where T : struct
                 case WireDataType.NullableStruct:
-                    var hasValue = reader.ReadVarInt();
-                    if (hasValue == 0)
+                    if(IsNull(reader))
                         return;
 
                     if (memberType.IsGenericType && memberType.GetGenericTypeDefinition() == typeof(Nullable<>))
@@ -382,6 +389,13 @@ namespace Metaplay.Generated
             }
 
             Tracer.Instance.Trace(value);
+        }
+
+        // CUSTOM: Deserialize null value
+        private static bool IsNull(IOReader reader)
+        {
+            var hasValue = reader.ReadVarInt();
+            return hasValue == 0;
         }
 
         // CUSTOM: Deserialize MetaRef<TItem>

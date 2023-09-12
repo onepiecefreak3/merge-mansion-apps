@@ -240,5 +240,26 @@ namespace GameLogic.Player
 
         [MetaMember(209, (MetaMemberFlags)0)]
         public Dictionary<int, ThirdPartySurveyStatus> CompletedThirdPartySurveys { get; set; }
+
+        [MetaMember(235, (MetaMemberFlags)0)]
+        private List<ProgressionEventId> ProgressionEventIAPStreaks { get; set; }
+
+        [MetaMember(236, (MetaMemberFlags)0)]
+        public BoardInventory RentableBoardInventory { get; set; }
+
+        [MetaMember(237, (MetaMemberFlags)0)]
+        public MetaTime RentableInventoryExpirationTime { get; set; }
+
+        [MetaMember(238, (MetaMemberFlags)0)]
+        public int RentableInventoryBoughtBatchCount { get; set; }
+
+        [IgnoreDataMember]
+        public ValueTuple<BoardInventory, MetaTime?> RentableInventory { get; }
+
+        [IgnoreDataMember]
+        public bool IsRentableInventoryExpired { get; }
+
+        [IgnoreDataMember]
+        public int ProgressionEventIAPStreakLength { get; }
     }
 }

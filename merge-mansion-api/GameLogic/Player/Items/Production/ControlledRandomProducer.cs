@@ -4,6 +4,7 @@ using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
@@ -38,8 +39,6 @@ namespace GameLogic.Player.Items.Production
             });
         }
 
-        private int TotalOdds { get; }
-
         private ControlledRandomProducer()
         {
         }
@@ -47,5 +46,8 @@ namespace GameLogic.Player.Items.Production
         public ControlledRandomProducer(RollHistoryType rollType, int itemId, List<ValueTuple<int, int>> oddsList)
         {
         }
+
+        [IgnoreDataMember]
+        public IEnumerable<ValueTuple<int, int>> OddsAsInt { get; }
     }
 }

@@ -18,6 +18,7 @@ using GameLogic.MergeChains;
 using GameLogic.Player.Board.Placement;
 using Metaplay.Core.Math;
 using GameLogic.Player.Items.Fishing;
+using GameLogic.Player.Items.Persistent;
 
 namespace GameLogic.Player.Items
 {
@@ -102,6 +103,8 @@ namespace GameLogic.Player.Items
             public FishingRodState FishingRodState;
             [MetaMember(19, (MetaMemberFlags)0)]
             public WeightState WeightState;
+            [MetaMember(20, (MetaMemberFlags)0)]
+            public PersistentState PersistentState;
         }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -165,9 +168,6 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public ItemVisibility Visibility { get; }
-
-        [IgnoreDataMember]
-        public bool CanBeUpgraded { get; }
 
         [IgnoreDataMember]
         public bool SupportsMerge { get; }
@@ -297,5 +297,12 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public bool HasFishingRodState { get; }
+
+        [IgnoreDataMember]
+        public PersistentState PersistentState { get; }
+
+        public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, PersistentState persistentState)
+        {
+        }
     }
 }

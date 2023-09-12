@@ -17,6 +17,7 @@ namespace GameLogic
         Screws = 4,
         Energy = 5,
         EventCurrency = 6,
-        SecondaryEnergy = 7
+        SecondaryEnergy = 7,
+        TertiaryEnergy = 8
     }
 }

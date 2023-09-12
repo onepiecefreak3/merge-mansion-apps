@@ -13,13 +13,16 @@ using GameLogic.Config;
 using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
 using System.Reflection;
+using Metaplay.Core.Math;
+using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     [DefaultMember("Item")]
     [MetaActivableConfigData("CollectibleBoardEvent", false)]
-    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, IBoardEventInfo
+    [MetaBlockedMembers(new int[] { 24, 27 })]
+    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, IBoardEventInfo, IBubbleBonusEvent
     {
         [MetaMember(1, 0)]
         public CollectibleBoardEventId CollectibleBoardEventId { get; set; }
@@ -126,13 +129,29 @@ namespace Code.GameLogic.GameEvents
         {
         }
 
-        [MetaMember(24, (MetaMemberFlags)0)]
-        public int SecondaryEnergyAttachmentChance { get; set; }
-
         [MetaMember(25, (MetaMemberFlags)0)]
         public PlayerRequirement PreviewRequirement { get; set; }
 
         public CollectibleBoardEventInfo(CollectibleBoardEventId collectibleBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, List<MetaRef<EventLevelInfo>> recurringLevelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId endDialogue, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, StoryDefinitionId startDialogue, ExtendableEventParams extendableEventParams, MetaRef<InAppProductInfo> extensionInAppProduct, MetaDuration extensionPurchaseSafetyMargin, IEnumerable<PlayerReward> extensionRewards, int secondaryEnergyAttachmentChance, PlayerRequirement previewRequirement)
+        {
+        }
+
+        [MetaMember(26, (MetaMemberFlags)0)]
+        public F32? BubbleBonusDivisor { get; set; }
+
+        [MetaMember(28, (MetaMemberFlags)0)]
+        public MetaDuration? AuxEnergyUnitRestoreDuration { get; set; }
+
+        [MetaMember(29, (MetaMemberFlags)0)]
+        public int AuxEnergyAttachmentChance { get; set; }
+
+        [MetaMember(30, (MetaMemberFlags)0)]
+        public bool DisableBubbleBonus { get; set; }
+
+        [IgnoreDataMember]
+        MergeBoardId Code.GameLogic.GameEvents.IBoardEventInfo.MergeBoardId { get; }
+
+        public CollectibleBoardEventInfo(CollectibleBoardEventId collectibleBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, List<MetaRef<EventLevelInfo>> recurringLevelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId endDialogue, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, StoryDefinitionId startDialogue, ExtendableEventParams extendableEventParams, MetaRef<InAppProductInfo> extensionInAppProduct, MetaDuration extensionPurchaseSafetyMargin, IEnumerable<PlayerReward> extensionRewards, PlayerRequirement previewRequirement, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus)
         {
         }
     }

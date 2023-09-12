@@ -12,12 +12,15 @@ using System.Runtime.Serialization;
 using GameLogic.Decorations;
 using GameLogic.Config;
 using GameLogic.Player.Rewards;
+using Metaplay.Core.Math;
+using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     [MetaActivableConfigData("LeaderboardEvent", false)]
-    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo
+    [MetaBlockedMembers(new int[] { 10, 16 })]
+    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo, IBubbleBonusEvent
     {
         [MetaMember(1, 0)]
         public LeaderboardEventId LeaderboardEventId { get; set; }
@@ -45,9 +48,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(9, 0)]
         public OfferPlacementId BoardShopPlacementId { get; set; }
-
-        [MetaMember(10, 0)]
-        public int SecondaryEnergyAttachmentChance { get; set; }
 
         [MetaMember(11, 0)]
         public List<MetaRef<EventLevelInfo>> RankingRewardLevelRefs { get; set; }
@@ -97,6 +97,25 @@ namespace Code.GameLogic.GameEvents
         }
 
         public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, int secondaryEnergyAttachmentChance, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public F32? BubbleBonusDivisor { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public MetaDuration? AuxEnergyUnitRestoreDuration { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public int AuxEnergyAttachmentChance { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public bool DisableBubbleBonus { get; set; }
+
+        [IgnoreDataMember]
+        MergeBoardId Code.GameLogic.GameEvents.IBoardEventInfo.MergeBoardId { get; }
+
+        public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus)
         {
         }
     }

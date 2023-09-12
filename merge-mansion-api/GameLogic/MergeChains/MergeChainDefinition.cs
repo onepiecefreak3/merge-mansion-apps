@@ -13,7 +13,6 @@ using System.Reflection;
 namespace GameLogic.MergeChains
 {
     [MetaSerializable]
-    [DefaultMember("Item")]
     public class MergeChainDefinition : IGameConfigData<MergeChainId>, IGameConfigData, IValidatable
     {
         private static HashSet<Type> allowedTypes = new()
@@ -50,11 +49,6 @@ namespace GameLogic.MergeChains
         public int Length => PrimaryChain.Count;
         public int FallbackLength => FallbackChain?.Count ?? 0;
 
-        [IgnoreDataMember]
-        public int Item => GetItemDefinition(0).ConfigKey;
-        public IEnumerable<int> ItemTypes => PrimaryChain.Select(x => x.First().ConfigKey);
-        public IEnumerable<ItemDefinition> Items => PrimaryChain.Select(x => x.First());
-
         public MergeChainDefinition()
         {
         }
@@ -77,9 +71,62 @@ namespace GameLogic.MergeChains
             return chainItem.First();
         }
 
-        public int Last()
+        public ItemDefinition LastItem(int itemId)
         {
-            return ItemTypes.Last();
+            var itemData = GetItemData(itemId);
+
+            var isValid = IsValid(itemData);
+            if (!isValid)
+                return null;
+
+            var chainElement = itemData.Item1.ElementAtOrDefault(itemData.Item1.Count - 1);
+            return chainElement?.ElementAtOrDefault(itemId);
         }
+
+        public bool IsLastItem(int itemId)
+        {
+            return LastItem(itemId)?.ConfigKey == itemId;
+        }
+
+        public ValueTuple<List<IMergeChainElement>, int, int> GetItemData(int itemId)
+        {
+            if (FallbackChain != null)
+            {
+                var itemData = GetItemData(FallbackChain, itemId);
+                if (itemData != default)
+                    return itemData;
+            }
+
+            return GetItemData(PrimaryChain, itemId);
+        }
+
+        private static (List<IMergeChainElement> chain, int chainIndex, int elementIndex) GetItemData(List<IMergeChainElement> chain, int itemId)
+        {
+            if (chain.Count <= 0)
+                return (null, -1, -1);
+
+            for (var i = 0; i < chain.Count; i++)
+            {
+                var item = chain[i];
+                var index = item.IndexOf(itemId);
+
+                if (index != -1)
+                    return (chain, i, index);
+            }
+
+            return (null, -1, -1);
+        }
+
+        private bool IsValid(ValueTuple<List<IMergeChainElement>, int, int> itemData)
+        {
+            if (itemData.Item1 == null || itemData.Item1.Count < 1 || itemData.Item2 < 0)
+                return false;
+
+            return itemData is { Item2: > -1, Item3: > -1 } && itemData.Item2 < itemData.Item1.Count;
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string OverrideMergeChainSfx { get; set; }
+        public IEnumerable<ItemDefinition> DefaultItems => PrimaryChain.Select(x => x.First());
     }
 }

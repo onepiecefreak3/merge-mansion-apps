@@ -179,6 +179,8 @@ namespace GameLogic.Config.Map.Characters
         AreaSaunaBurnFirstMapCharacterPositionMap = 4799,
         AreaSaunaBurnEntryMaddieMap = 4800,
         AreaStudySrFirstMapCharacterPositionMap = 4999,
-        AreaStudySrEntryMaddieMap = 5000
+        AreaStudySrEntryMaddieMap = 5000,
+        AreaDiningRoomFirstMapCharacterPositionMap = 5199,
+        AreaDiningRoomEntryMaddieMap = 5200
     }
 }

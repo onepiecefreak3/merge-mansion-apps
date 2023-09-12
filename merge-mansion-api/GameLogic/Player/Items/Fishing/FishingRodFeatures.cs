@@ -26,5 +26,16 @@ namespace GameLogic.Player.Items.Fishing
         public FishingRodFeatures(bool isFishingRod, IEnumerable<ValueTuple<int, int>> itemWeightPairs)
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public FishingRodRarity Rarity { get; set; }
+
+        public FishingRodFeatures(IEnumerable<ValueTuple<int, int>> itemWeightPairs, FishingRodRarity rarity)
+        {
+        }
+
+        private FishingRodFeatures(bool isFishingRod, List<ItemOdds> itemOdds, IPlacement placement, FishingRodRarity rarity)
+        {
+        }
     }
 }

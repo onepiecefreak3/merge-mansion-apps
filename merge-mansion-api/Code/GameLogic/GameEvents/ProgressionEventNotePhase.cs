@@ -6,6 +6,7 @@ namespace Code.GameLogic.GameEvents
     public enum ProgressionEventNotePhase
     {
         Start = 0,
-        End = 1
+        End = 1,
+        Streak = 2
     }
 }

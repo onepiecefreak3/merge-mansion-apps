@@ -29,6 +29,9 @@ namespace Metaplay.Core.Config
         ActivableScheduleExpired = 1019,
         OrphanedOffer = 1020,
         BoardEventPortalItemTaskMismatch = 1021,
-        MissingLeaderboardEventRankingRewardTag = 1022
+        MissingLeaderboardEventRankingRewardTag = 1022,
+        StarRewardWeightOutsideWeightRange = 1023,
+        UncompletableHotspots = 1024,
+        InvalidDialogue = 1025
     }
 }

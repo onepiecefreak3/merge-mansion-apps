@@ -42,6 +42,8 @@ namespace GameLogic.GameFeatures
         PlayerName = 28,
         SCIDIncentivicedFlow = 29,
         TieredOffers = 30,
-        ItemNeededBadgeEnabled = 31
+        ItemNeededBadgeEnabled = 31,
+        SinkItemTooltipEnabled = 32,
+        RentableInventory = 33
     }
 }

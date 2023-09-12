@@ -96,6 +96,10 @@ namespace Analytics
         BotSessionEnd = 87,
         ThirdPartySurveyCompleted = 55,
         ThirdPartySurveyStarted = 56,
-        DailyTasksRefreshPurchase = 88
+        DailyTasksRefreshPurchase = 88,
+        PlayerCreated = 89,
+        FishCaught = 90,
+        ItemSink = 91,
+        ScreenChange = 92
     }
 }

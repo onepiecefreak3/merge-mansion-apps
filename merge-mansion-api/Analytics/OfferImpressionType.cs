@@ -6,6 +6,8 @@ namespace Analytics
     public enum OfferImpressionType
     {
         EventExtension = 0,
-        PremiumPass = 1
+        PremiumPass = 1,
+        DiamondsShop = 2,
+        CoinsShop = 3
     }
 }

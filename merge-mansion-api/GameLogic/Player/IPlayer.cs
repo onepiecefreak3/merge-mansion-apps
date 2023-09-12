@@ -87,7 +87,10 @@ namespace GameLogic.Player
 
         string PlayerName { get; }
 
-        // Slot: 50
-        //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
+        ValueTuple<BoardInventory, MetaTime?> RentableInventory { get; }
+
+        int ProgressionEventIAPStreakLength { get; }
+    // Slot: 50
+    //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }
 }

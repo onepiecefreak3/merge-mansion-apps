@@ -13,21 +13,24 @@ namespace GameLogic.MergeChains
         [MetaMember(1, 0)]
         public List<MetaRef<ItemDefinition>> Items { get; set; }
 
-        private ListMergeChainElement()
+        public int IndexOf(int itemId)
         {
+            return Items.FindIndex(item => (int)item.KeyObject == itemId);
         }
 
-        public ListMergeChainElement(IEnumerable<int> types)
+        public bool Contains(int itemId)
         {
-        }
-
-        public ListMergeChainElement(IEnumerable<MetaRef<ItemDefinition>> items)
-        {
+            return IndexOf(itemId) != -1;
         }
 
         public ItemDefinition First()
         {
             return Items.FirstOrDefault()?.Ref;
+        }
+
+        public ItemDefinition ElementAtOrDefault(int index)
+        {
+            return Items.ElementAtOrDefault(index)?.Ref;
         }
     }
 }

@@ -39,7 +39,6 @@ namespace GameLogic.SocialMedia
 
         [MetaMember(10, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
-
         public SocialMediaId ConfigKey => SocialMediaId;
 
         public SocialMediaInfo()

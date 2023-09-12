@@ -13,7 +13,6 @@ namespace GameLogic
         public List<MetaOfferId> OfferItems;
         [MetaMember(1, (MetaMemberFlags)0)]
         public TieredOfferId OfferId { get; set; }
-
         public TieredOfferId ConfigKey => OfferId;
 
         public TieredOffer()

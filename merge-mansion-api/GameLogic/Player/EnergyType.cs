@@ -6,6 +6,7 @@ namespace GameLogic.Player
     public enum EnergyType
     {
         Default = 0,
-        Secondary = 1
+        Secondary = 1,
+        Tertiary = 2
     }
 }

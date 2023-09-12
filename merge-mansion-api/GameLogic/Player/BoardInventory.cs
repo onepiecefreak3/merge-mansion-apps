@@ -51,5 +51,9 @@ namespace GameLogic.Player
             {
             }
         }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public bool IsLocked { get; set; }
+        public bool IsEmpty { get; }
     }
 }

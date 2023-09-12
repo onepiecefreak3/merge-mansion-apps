@@ -10,7 +10,6 @@ namespace GameLogic.Player.Director.Config
     {
         [MetaMember(1, 0)]
         private StoryDefinitionId DialogueId { get; set; }
-
         public StoryDefinitionId StoryDefinitionId => DialogueId;
 
         private TriggerDialogue()
@@ -25,8 +24,7 @@ namespace GameLogic.Player.Director.Config
         {
             var eventCondition = new NoPopupsOpen();
             var serializedAction = new TriggerDialogueSerializedAction(DialogueId);
-
-            //playerModel.AddScriptedEvent(eventCondition, serializedAction);
+        //playerModel.AddScriptedEvent(eventCondition, serializedAction);
         }
     }
 }

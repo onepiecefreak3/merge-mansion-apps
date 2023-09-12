@@ -10,7 +10,6 @@ namespace Metaplay.Core.Player
         public int NumSubsets;
         [MetaMember(2, (MetaMemberFlags)0)]
         public uint Modifier;
-
         public override string DisplayName => $"Playerbase subset number out of total {NumSubsets} (with hash modifier {Modifier})";
 
         private PlayerPropertyPlayerbaseSubsetNumber()

@@ -34,5 +34,9 @@ namespace Game.Logic
         public PlayerIdentity()
         {
         }
+
+        public PlayerIdentity(RandomPCG random)
+        {
+        }
     }
 }

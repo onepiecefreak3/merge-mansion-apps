@@ -7,12 +7,13 @@ using GameLogic.Player.Director.Config;
 using Metaplay.Core.Math;
 using Merge;
 using Code.GameLogic.GameEvents;
+using Code.GameLogic.Config;
 
 namespace GameLogic.Config
 {
     [MetaBlockedMembers(new int[] { 1, 2, 3 })]
     [MetaSerializable]
-    public class SharedGlobals : GameConfigKeyValue<SharedGlobals>
+    public class SharedGlobals : GameConfigKeyValue<SharedGlobals>, IValidatable
     {
         [MetaMember(4, (MetaMemberFlags)0)]
         public int DefaultActivationCost { get; set; }
@@ -49,9 +50,6 @@ namespace GameLogic.Config
 
         [MetaMember(15, (MetaMemberFlags)0)]
         public List<int> ItemSellPrices { get; set; }
-
-        [MetaMember(16, (MetaMemberFlags)0)]
-        public MetaDuration SecondaryEnergyUnitRestoreDuration { get; set; }
 
         [MetaMember(17, (MetaMemberFlags)0)]
         public long SecondaryEnergyMaxAmount { get; set; }
@@ -122,5 +120,17 @@ namespace GameLogic.Config
 
         [MetaMember(38, (MetaMemberFlags)0)]
         public int ItemsNeededCountDisplayMax { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public MetaDuration DefaultSecondaryEnergyUnitRestoreDuration { get; set; }
+
+        [MetaMember(39, (MetaMemberFlags)0)]
+        public F32 DefaultBubbleBonusDivisor { get; set; }
+
+        [MetaMember(40, (MetaMemberFlags)0)]
+        public MetaDuration DefaultTertiaryEnergyUnitRestoreDuration { get; set; }
+
+        [MetaMember(41, (MetaMemberFlags)0)]
+        public long TertiaryEnergyMaxAmount { get; set; }
     }
 }

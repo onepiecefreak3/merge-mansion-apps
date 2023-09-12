@@ -66,9 +66,6 @@ namespace GameLogic.Player
         [MetaMember(17, (MetaMemberFlags)0)]
         private List<long> BoughtCoins { get; set; }
 
-        [MetaMember(20, (MetaMemberFlags)0)]
-        public SecondaryEnergyState SecondaryEnergyState { get; set; }
-
         [IgnoreDataMember]
         public long TotalCoins { get; }
 
@@ -91,5 +88,20 @@ namespace GameLogic.Player
         public Wallet(long coins, long experience, long diamonds, long energy)
         {
         }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public Dictionary<EnergyType, AuxEnergyState> AuxEnergyStates;
+        [MetaMember(20, (MetaMemberFlags)0)]
+        [Obsolete("Replaced by AuxEnergyStates. Required for migration.")]
+        public SecondaryEnergyState SecondaryEnergyState_DEPRECATED { get; set; }
+
+        [IgnoreDataMember]
+        public LogChannel Log { get; set; }
+
+        [IgnoreDataMember]
+        public List<IBoardItem> PocketItemsNonAlloc { get; }
+
+        [IgnoreDataMember]
+        public List<IBoardItem> EventPocketItemsNonAlloc { get; }
     }
 }

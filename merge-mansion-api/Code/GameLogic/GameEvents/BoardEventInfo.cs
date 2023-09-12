@@ -16,6 +16,9 @@ using GameLogic.Player.Rewards;
 using System.Runtime.Serialization;
 using GameLogic;
 using System.Reflection;
+using Merge;
+using Metaplay.Core.Math;
+using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -177,10 +180,26 @@ namespace Code.GameLogic.GameEvents
         {
         }
 
-        [MetaMember(45, (MetaMemberFlags)0)]
-        public int SecondaryEnergyAttachmentChance { get; set; }
-
         public BoardEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaRef<BoardInfo> boardInfo, MetaRef<EventTaskInfo> eventInitTask, List<MetaRef<EventTaskInfo>> eventTasks, MetaRef<EventLevels> eventLevels, int? portalItem, string nameLocId, OfferPlacementId offerPlacementId, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId infoPopupId, ConfigPrefabId taskProgressionId, ConfigPrefabId taskGoalItemId, StoryDefinitionId startEventDialogue, MetaRef<ShopEventInfo> hintedShopEvents, ConfigPrefabId startPopupId, ConfigPrefabId teasePopupId, ConfigPrefabId introPopupId, ConfigPrefabId extendPopupId, ConfigPrefabId endPopupId, ConfigPrefabId hudButtonId, ConfigPrefabId rewardInfoPopupId, ConfigPrefabId rewardClaimPopupId, ConfigPrefabId rewardChestPopupId, bool visualiseEventPoints, ConfigPrefabId taskItemCheckmarkId, List<IDirectorAction> startActions, List<IDirectorAction> endActions, string boardTransitionSfxOverride, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, DecorationId activeDecoration, bool givePortalItemWithoutTask, IEnumerable<PlayerReward> extensionRewards, int secondaryEnergyAttachmentChance)
+        {
+        }
+
+        [MetaMember(46, (MetaMemberFlags)0)]
+        public string PrefabsId { get; set; }
+
+        [IgnoreDataMember]
+        MergeBoardId Code.GameLogic.GameEvents.IBoardEventInfo.MergeBoardId { get; }
+
+        [IgnoreDataMember]
+        public F32? BubbleBonusDivisor { get; }
+
+        [IgnoreDataMember]
+        public EnergyType? AuxEnergyType { get; }
+
+        [IgnoreDataMember]
+        public int AuxEnergyAttachmentChance { get; }
+
+        public BoardEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaRef<BoardInfo> boardInfo, MetaRef<EventTaskInfo> eventInitTask, List<MetaRef<EventTaskInfo>> eventTasks, MetaRef<EventLevels> eventLevels, int? portalItem, string nameLocId, OfferPlacementId offerPlacementId, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId infoPopupId, ConfigPrefabId taskProgressionId, ConfigPrefabId taskGoalItemId, StoryDefinitionId startEventDialogue, MetaRef<ShopEventInfo> hintedShopEvents, ConfigPrefabId startPopupId, ConfigPrefabId teasePopupId, ConfigPrefabId introPopupId, ConfigPrefabId extendPopupId, ConfigPrefabId endPopupId, ConfigPrefabId hudButtonId, ConfigPrefabId rewardInfoPopupId, ConfigPrefabId rewardClaimPopupId, ConfigPrefabId rewardChestPopupId, bool visualiseEventPoints, ConfigPrefabId taskItemCheckmarkId, List<IDirectorAction> startActions, List<IDirectorAction> endActions, string boardTransitionSfxOverride, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, DecorationId activeDecoration, bool givePortalItemWithoutTask, IEnumerable<PlayerReward> extensionRewards, string prefabsId)
         {
         }
     }

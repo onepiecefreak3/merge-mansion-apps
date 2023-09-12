@@ -56,5 +56,8 @@ namespace Code.GameLogic.GameEvents
         public ProgressionEventModel(ProgressionEventInfo info)
         {
         }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public bool StreakNoted;
     }
 }

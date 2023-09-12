@@ -8,6 +8,7 @@ using GameLogic.Config;
 using System.Collections.Generic;
 using GameLogic.Player.Rewards;
 using System;
+using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -33,6 +34,8 @@ namespace Code.GameLogic.GameEvents
 
         List<PlayerReward> ExtensionRewards { get; }
 
-        int SecondaryEnergyAttachmentChance { get; }
+        int AuxEnergyAttachmentChance { get; }
+
+        MergeBoardId MergeBoardId { get; }
     }
 }
