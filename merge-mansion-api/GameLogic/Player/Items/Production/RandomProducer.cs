@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Production
     public class RandomProducer : IItemSpawner, IItemProducer
     {
         [MetaMember(1)]
-        public List<ItemOdds> OddsList { get; set; }
+        private List<ItemOdds> OddsList { get; set; }
         public IEnumerable<(ItemDefinition, int)> Odds => OddsList.Select(x => (x.Type.Ref, x.Weight));
         public int SpawnQuantity => 1;
 

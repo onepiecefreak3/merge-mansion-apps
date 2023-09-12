@@ -37,13 +37,9 @@ namespace merge_mansion_dumper.Dumper.Json
                 return;
             }
 
-            foreach (var s in _serializers)
-            {
-                if (!s.CanConvert(value.GetType()))
-                    continue;
-
-                s.WriteJson(writer, value, serializer);
-            }
+            var customSerializer = _serializers.FirstOrDefault(s => s.CanConvert(value.GetType()));
+            if (customSerializer != null)
+                customSerializer.WriteJson(writer, value, serializer);
         }
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)

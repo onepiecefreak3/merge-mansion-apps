@@ -257,6 +257,11 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 WriteValue(writer, nameof(MetaActivableLifetimeSpec.ScheduleBased), serializer);
             else if (activable is MetaActivableLifetimeSpec.Forever)
                 WriteValue(writer, nameof(MetaActivableLifetimeSpec.Forever), serializer);
+            else
+            {
+                writer.WriteNull();
+                _output.Warning("Unknown ActivableLifetime {0}", activable.GetType().Name);
+            }
         }
 
         private void SerializeActivableCooldown(JsonWriter writer, MetaActivableCooldownSpec cooldown, JsonSerializer serializer)
@@ -265,6 +270,11 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 WriteValue(writer, fixedAct.Duration, serializer);
             else if (cooldown is MetaActivableCooldownSpec.ScheduleBased)
                 WriteValue(writer, nameof(MetaActivableCooldownSpec.ScheduleBased), serializer);
+            else
+            {
+                writer.WriteNull();
+                _output.Warning("Unknown ActivableCooldown {0}", cooldown.GetType().Name);
+            }
         }
 
         protected override void WriteCustomObjectMembers(JsonWriter writer, object value, JsonSerializer serializer)

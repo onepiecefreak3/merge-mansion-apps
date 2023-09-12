@@ -18,7 +18,7 @@ namespace GameLogic.Player.Items.Production
         public int ItemType { get; set; } // 0x14
 
         [MetaMember(3)]
-        public List<ItemOdds> GenerationOdds { get; set; } // 0x18
+        private List<ItemOdds> GenerationOdds { get; set; } // 0x18
         public IEnumerable<(ItemDefinition, int)> Odds => GenerationOdds.Select(x => (x.Type.Ref, x.Weight));
         public int SpawnQuantity => 1;
 

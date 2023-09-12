@@ -9,6 +9,8 @@ using Serilog;
 using System;
 using System.Linq;
 using GameLogic;
+using GameLogic.Player.Items.Activation;
+using GameLogic.Player.Items.Persistent;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -22,7 +24,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(CodexCategoryInfo),
                 typeof(ItemDefinition),
                 typeof(MergeCollection),
-                typeof(IItemProducer)
+                typeof(IItemProducer),
+                typeof(PersistentFeatures)
             };
 
         public MetaMergeChainSerializer(bool dropAsPercent, ILogger output)
@@ -45,6 +48,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 SerializeMergeCollection(writer, mergeCollection, serializer);
             else if (value is IItemProducer producer)
                 SerializeProducer(writer, producer, serializer);
+            else if (value is PersistentFeatures persistent)
+                WriteObject(writer, persistent.GetType(), persistent, serializer);
         }
 
         private void SerializeMergeChain(JsonWriter writer, MergeChainDefinition chainDef, JsonSerializer serializer)
@@ -71,9 +76,6 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         private void SerializeItem(JsonWriter writer, ItemDefinition item, JsonSerializer serializer)
         {
-        //    if (!Enum.IsDefined(typeof(ItemTypeConstant), item.ConfigKey))
-        //        _output.Warning(Program.VersionBumped ? "ItemType {0} unknown" : "[Metacore] ItemType {0} unknown", item.ConfigKey);
-
             if (item.ConfigKey == 0)
             {
                 WriteEmptyObject(writer);
@@ -108,7 +110,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (producer is ConstantProducer cp)
             {
                 writer.WriteStartObject();
-                
+
                 WriteProperty(writer, "Constant", cp.Products[0].Ref.ItemType, serializer);
 
                 writer.WriteEndObject();
@@ -140,12 +142,12 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WritePropertyName("Odds");
                 writer.WriteStartObject();
 
-                double weightSum = crp.GenerationOdds.Sum(x => x.Weight);
-                foreach (var odd in crp.GenerationOdds.GroupBy(x => x.Type.Ref.ItemType))
+                double weightSum = crp.Odds.Sum(x => x.Item2);
+                foreach (var odd in crp.Odds.GroupBy(x => x.Item1.ItemType))
                 {
                     var weight = _dropAsPercent ?
-                        odd.Sum(x => x.Weight) / weightSum * 100 :
-                        odd.Sum(x => x.Weight);
+                        odd.Sum(x => x.Item2) / weightSum * 100 :
+                        odd.Sum(x => x.Item2);
 
                     WriteProperty(writer, odd.Key, weight, serializer);
                 }
@@ -166,12 +168,38 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WritePropertyName("Odds");
                 writer.WriteStartObject();
 
-                double weightSum = rp.OddsList.Sum(x => x.Weight);
-                foreach (var odd in rp.OddsList.GroupBy(x => x.Type.Ref.ItemType))
+                double weightSum = rp.Odds.Sum(x => x.Item2);
+                foreach (var odd in rp.Odds.GroupBy(x => x.Item1.ItemType))
                 {
                     var weight = _dropAsPercent ?
-                        odd.Sum(x => x.Weight) / weightSum * 100 :
-                        odd.Sum(x => x.Weight);
+                        odd.Sum(x => x.Item2) / weightSum * 100 :
+                        odd.Sum(x => x.Item2);
+
+                    WriteProperty(writer, odd.Key, weight, serializer);
+                }
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+            }
+            else if (producer is PredefinedSequenceProducer psp)
+            {
+                writer.WriteStartObject();
+
+                writer.WritePropertyName("PredefinedSequence");
+                writer.WriteStartObject();
+
+                writer.WritePropertyName("Odds");
+                writer.WriteStartObject();
+
+                double weightSum = psp.Odds.Sum(x => x.Item2);
+                foreach (var odd in psp.Odds.GroupBy(x => x.Item1.ItemType))
+                {
+                    var weight = _dropAsPercent ?
+                        odd.Sum(x => x.Item2) / weightSum * 100 :
+                        odd.Sum(x => x.Item2);
 
                     WriteProperty(writer, odd.Key, weight, serializer);
                 }
@@ -183,7 +211,10 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WriteEndObject();
             }
             else
+            {
+                writer.WriteNull();
                 _output.Warning("Producer {0} unknown", producer.GetType().Name);
+            }
         }
 
         protected override void WriteCustomObjectMembers(JsonWriter writer, object value, JsonSerializer serializer)
@@ -220,12 +251,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             }
             else if (type.IsAssignableTo(typeof(ItemDefinition)))
             {
-                if (name == nameof(ItemDefinition.MergeChain))
-                    return;
-
                 if (name == nameof(ItemDefinition.MergeChainRef))
                 {
                     WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(PersistentFeatures)))
+            {
+                if (name == nameof(PersistentFeatures.ResetToItem))
+                {
+                    WriteProperty(writer, name, (value as MetaRef<ItemDefinition>)?.Ref.ItemType ?? string.Empty, serializer);
                     return;
                 }
             }
