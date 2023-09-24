@@ -11,6 +11,7 @@ using GameLogic.Config;
 using GameLogic.MergeChains;
 using GameLogic.Player.Items;
 using GameLogic.Player.Items.Production;
+using GameLogic.Story;
 using merge_mansion_api;
 using Metaplay.Core;
 using Metaplay.Core.Config;
@@ -164,7 +165,13 @@ namespace Metaplay.Generated
             var wireType = TaggedWireSerializer.ReadWireType(reader);
             TaggedWireSerializer.ExpectWireType(reader, elementType, wireType, WireDataType.ObjectTable);
 
-            return DeserializeTable_Typed(ref context, reader, elementType);
+            Tracer.Instance.Push($"{elementType.Name}_Table");
+
+            var table = DeserializeTable_Typed(ref context, reader, elementType);
+
+            Tracer.Instance.Pop();
+
+            return table;
         }
 
         public static object Deserialize(ref MetaSerializationContext context, IOReader reader, Type itemType)
@@ -193,8 +200,12 @@ namespace Metaplay.Generated
             {
                 DebugTools.WriteIndex(elementType.Name, i);
 
+                Tracer.Instance.Push($"[{i}]");
+
                 var item = Activator.CreateInstance(elementType);
                 Deserialize_Members(ref context, reader, item, elementType);
+
+                Tracer.Instance.Pop();
 
                 items?.Add(item);
             }
@@ -351,7 +362,7 @@ namespace Metaplay.Generated
 
                 // Classes and Nullable<T> where T : struct
                 case WireDataType.NullableStruct:
-                    if(IsNull(reader))
+                    if (IsNull(reader))
                         return;
 
                     if (memberType.IsGenericType && memberType.GetGenericTypeDefinition() == typeof(Nullable<>))
@@ -500,12 +511,17 @@ namespace Metaplay.Generated
             var dictValue = (IDictionary)Activator.CreateInstance(collectionType);
             for (var i = 0; i < dictCount; i++)
             {
+                Tracer.Instance.Push($"[{i}]");
+                Tracer.Instance.Push("Key");
+
                 Deserialize_WireType(ref context, reader, keyWireType, dictTypes[0], out var key);
 
+                Tracer.Instance.Pop();
                 Tracer.Instance.Push($"[{key}]");
 
                 Deserialize_WireType(ref context, reader, valueWireType, dictTypes[1], out var value);
 
+                Tracer.Instance.Pop();
                 Tracer.Instance.Pop();
 
                 dictValue[key] = value;
