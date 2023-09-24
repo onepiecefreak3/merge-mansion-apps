@@ -17,7 +17,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
-
         public ProgressionEventStreakId ConfigKey => Id;
 
         public ProgressionEventStreakRewards()

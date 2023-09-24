@@ -23,7 +23,6 @@ namespace GameLogic.Player.Items.Production
 
         [IgnoreDataMember]
         public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Type.Deref(), x.Weight));
-
         public int SpawnQuantity => 1;
 
         public IEnumerable<ItemDefinition> Produce(IGenerationContext context, int quantity)

@@ -32,5 +32,17 @@ namespace GameLogic.MergeChains
         {
             return Items.ElementAtOrDefault(index)?.Ref;
         }
+
+        private ListMergeChainElement()
+        {
+        }
+
+        public ListMergeChainElement(IEnumerable<int> types)
+        {
+        }
+
+        public ListMergeChainElement(IEnumerable<MetaRef<ItemDefinition>> items)
+        {
+        }
     }
 }

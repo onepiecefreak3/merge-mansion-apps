@@ -42,7 +42,6 @@ namespace GameLogic.MergeChains
         {
             if (index != 0)
                 return null;
-
             return Item.Ref;
         }
     }

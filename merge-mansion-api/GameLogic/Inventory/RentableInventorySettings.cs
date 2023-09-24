@@ -25,7 +25,6 @@ namespace GameLogic.Inventory
 
         [MetaMember(6, (MetaMemberFlags)0)]
         public int MaximumBatches { get; set; }
-
         public RentableInventorySettingsId ConfigKey => Id;
 
         public RentableInventorySettings()

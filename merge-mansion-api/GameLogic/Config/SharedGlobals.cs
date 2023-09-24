@@ -132,5 +132,8 @@ namespace GameLogic.Config
 
         [MetaMember(41, (MetaMemberFlags)0)]
         public long TertiaryEnergyMaxAmount { get; set; }
+
+        [MetaMember(42, (MetaMemberFlags)0)]
+        public F32 SinkItemToolTipDisplayDuration { get; set; }
     }
 }

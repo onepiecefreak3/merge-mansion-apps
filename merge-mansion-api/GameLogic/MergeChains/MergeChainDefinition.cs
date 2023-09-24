@@ -74,11 +74,9 @@ namespace GameLogic.MergeChains
         public ItemDefinition LastItem(int itemId)
         {
             var itemData = GetItemData(itemId);
-
             var isValid = IsValid(itemData);
             if (!isValid)
                 return null;
-
             var chainElement = itemData.Item1.ElementAtOrDefault(itemData.Item1.Count - 1);
             return chainElement?.ElementAtOrDefault(itemId);
         }
@@ -104,12 +102,10 @@ namespace GameLogic.MergeChains
         {
             if (chain.Count <= 0)
                 return (null, -1, -1);
-
             for (var i = 0; i < chain.Count; i++)
             {
                 var item = chain[i];
                 var index = item.IndexOf(itemId);
-
                 if (index != -1)
                     return (chain, i, index);
             }
@@ -121,7 +117,6 @@ namespace GameLogic.MergeChains
         {
             if (itemData.Item1 == null || itemData.Item1.Count < 1 || itemData.Item2 < 0)
                 return false;
-
             return itemData is { Item2: > -1, Item3: > -1 } && itemData.Item2 < itemData.Item1.Count;
         }
 
