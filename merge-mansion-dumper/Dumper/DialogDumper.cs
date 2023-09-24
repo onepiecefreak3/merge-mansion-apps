@@ -20,10 +20,10 @@ namespace merge_mansion_dumper.Dumper
 {
     class DialogDumper : ImageDumper
     {
-        private const string BoxResource_ = "merge_mansion_dumper.Resources.Dialogue.dialogue_box.png";
-        private const string BannerResource_ = "merge_mansion_dumper.Resources.Dialogue.dialogue_banner.png";
-        private const string FontResource_ = "merge_mansion_dumper.Resources.Fonts.tisa_sans.ttf";
-        private const string PeopleResource_ = "merge_mansion_dumper.Resources.Dialogue.People.{0}{1}.png";
+        private const string BoxResource_ = "assets\\dialogue\\dialogue_box.png";
+        private const string BannerResource_ = "assets\\dialogue\\dialogue_banner.png";
+        private const string FontResource_ = "assets\\dialogue\\tisa_sans.ttf";
+        private const string PeopleResource_ = "assets\\dialogue\\characters\\{0}_{1}.png";
         private const string DialogTitle_ = "Dialog_Title_{0}";
 
         private const int BannerXDelta_ = 47;
@@ -40,10 +40,10 @@ namespace merge_mansion_dumper.Dumper
 
         public DialogDumper()
         {
-            _boxImg = LoadImageFromResource(BoxResource_);
-            _bannerImg = LoadImageFromResource(BannerResource_);
+            _boxImg = LoadImageFromFile(BoxResource_);
+            _bannerImg = LoadImageFromFile(BannerResource_);
 
-            var family = new FontCollection().Add(Assembly.GetExecutingAssembly().GetManifestResourceStream(FontResource_));
+            var family = new FontCollection().Add(FontResource_);
             _nameFont = family.CreateFont(35, FontStyle.Bold);
             _dialogFont = family.CreateFont(28);
         }
@@ -113,12 +113,12 @@ namespace merge_mansion_dumper.Dumper
                 {
                     if (!ExistsPeopleResource(leftCharacter, leftMood))
                     {
-                        Output.Warning("Unknown asset for character {0} with mood {1}", GetCharacterResourceName(leftCharacter), leftMood);
+                        Output.Warning("Unknown asset for character {0} with mood {1}", leftCharacter, leftMood);
                         leftMood = DialogCharacterState.Default;
                     }
 
                     var resizeSize = dialog.LeftSpeaks ? bigSize : smallSize;
-                    var leftImg = LoadImageFromResource(GetCharacterResourcePath(leftCharacter, leftMood));
+                    var leftImg = LoadImageFromFile(GetCharacterResourcePath(leftCharacter, leftMood));
                     if (leftImg != null)
                     {
                         leftImg.Mutate(x => x.Resize(resizeSize));
@@ -138,12 +138,12 @@ namespace merge_mansion_dumper.Dumper
                 {
                     if (!ExistsPeopleResource(rightCharacter, rightMood))
                     {
-                        Output.Warning("Unknown asset for character {0} with mood {1}", GetCharacterResourceName(rightCharacter), rightMood);
+                        Output.Warning("Unknown asset for character {0} with mood {1}", rightCharacter, rightMood);
                         rightMood = DialogCharacterState.Default;
                     }
 
                     var resizeSize = dialog.RightSpeaks ? bigSize : smallSize;
-                    var rightImg = LoadImageFromResource(GetCharacterResourcePath(rightCharacter, rightMood));
+                    var rightImg = LoadImageFromFile(GetCharacterResourcePath(rightCharacter, rightMood));
                     if (rightImg != null)
                     {
                         rightImg.Mutate(x => x.Flip(FlipMode.Horizontal).Resize(resizeSize));
@@ -231,7 +231,7 @@ namespace merge_mansion_dumper.Dumper
 
         private string GetCharacterResourcePath(DialogCharacterType character, DialogCharacterState mood)
         {
-            return string.Format(PeopleResource_, GetCharacterResourceName(character), mood);
+            return string.Format(PeopleResource_, character, mood);
         }
 
         private string GetLocalizationName(DialogCharacterType type)
@@ -261,45 +261,18 @@ namespace merge_mansion_dumper.Dumper
             }
         }
 
-        private string GetCharacterResourceName(DialogCharacterType type)
-        {
-            if (!Enum.IsDefined(type))
-            {
-                Output.Error("Unknown dialogue character {0}", type);
-                return string.Empty;
-            }
-
-            switch (type)
-            {
-                case DialogCharacterType.Grandma:
-                    return "Ursula";
-
-                case DialogCharacterType.AntiqueDealer:
-                    return "Julius";
-
-                case DialogCharacterType.Phone:
-                    return "Charlie";
-
-                case DialogCharacterType.Winston:
-                    return "Butler";
-
-                default:
-                    return type.ToString();
-            }
-        }
-
         private bool ExistsPeopleResource(DialogCharacterType character, DialogCharacterState mood)
         {
             var resourceName = GetCharacterResourcePath(character, mood);
-            return Assembly.GetExecutingAssembly().GetManifestResourceNames().Contains(resourceName);
+            return File.Exists(resourceName);
         }
 
-        private Image<Rgba32> LoadImageFromResource(string resourceName)
+        private Image<Rgba32> LoadImageFromFile(string fileName)
         {
-            if (!Assembly.GetExecutingAssembly().GetManifestResourceNames().Contains(resourceName))
+            if (!File.Exists(fileName))
                 return null;
 
-            return Image.Load<Rgba32>(Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName));
+            return Image.Load<Rgba32>(File.OpenRead(fileName));
         }
     }
 }

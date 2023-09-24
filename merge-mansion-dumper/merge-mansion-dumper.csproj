@@ -14,155 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Resources\Dialogue\People\ButlerCharming.png" />
-    <None Remove="Resources\Dialogue\People\ButlerDefault.png" />
-    <None Remove="Resources\Dialogue\People\ButlerDiscouraged.png" />
-    <None Remove="Resources\Dialogue\People\ButlerDoubtful.png" />
-    <None Remove="Resources\Dialogue\People\ButlerJoyous.png" />
-    <None Remove="Resources\Dialogue\People\ButlerSurprised.png" />
-    <None Remove="Resources\Dialogue\People\ButlerThinking.png" />
-    <None Remove="Resources\Dialogue\People\ButlerWorried.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiCharming.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiDefault.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiDiscouraged.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiDoubtful.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiJoyous.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiSurprised.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiThinking.png" />
-    <None Remove="Resources\Dialogue\People\HeikkiWorried.png" />
-    <None Remove="Resources\Dialogue\People\PearlAnnoyed.png" />
-    <None Remove="Resources\Dialogue\People\PearlDefault.png" />
-    <None Remove="Resources\Dialogue\People\PearlDoubtful.png" />
-    <None Remove="Resources\Dialogue\People\PearlEncouraging.png" />
-    <None Remove="Resources\Dialogue\People\PearlSurprised.png" />
-    <None Remove="Resources\Dialogue\People\PearlThinking.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Dialogue\dialogue_banner.png" />
-    <EmbeddedResource Include="Resources\Dialogue\dialogue_box.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\ButlerWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CharlieCalling.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CharlieTalking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherryAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherryDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherryDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherryEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherrySurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\CherryThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DebWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\DogWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HeikkiWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenPondering.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\HoldenWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JackieThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\JuliusWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\MaddieWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlSurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\PearlThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddySurprised.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\RoddyWorried.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaAnnoyed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaCharming.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDefault.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDiscouraged.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaDoubtful.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaEncouraging.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaFrustrated.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaJoyous.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaRelaxed.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaThinking.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaWateringCan.png" />
-    <EmbeddedResource Include="Resources\Dialogue\People\UrsulaWorried.png" />
-    <EmbeddedResource Include="Resources\Fonts\tisa_sans.ttf" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
     <PackageReference Include="morelinq" Version="3.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -175,6 +26,372 @@
 
   <ItemGroup>
     <ProjectReference Include="..\merge-mansion-api\merge-mansion-api.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\AntiqueDealer_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Cherry_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Deb_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Dog_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_WateringCan.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Grandma_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Heikki_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Pondering.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Holden_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Jackie_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Maddie_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Annoyed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Pearl_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Phone_Calling.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Phone_Talking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Encouraging.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Frustrated.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Relaxed.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Roddy_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Charming.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Default.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Discouraged.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Doubtful.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Joyous.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Surprised.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Thinking.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\characters\Winston_Worried.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\dialogue_banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\dialogue_box.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="assets\dialogue\tisa_sans.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
