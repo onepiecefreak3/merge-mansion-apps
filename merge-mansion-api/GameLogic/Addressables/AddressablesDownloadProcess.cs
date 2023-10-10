@@ -6,7 +6,7 @@ using System;
 namespace GameLogic.Addressables
 {
     [MetaSerializable]
-    public class AddressablesDownloadProcess : IGameConfigData<AddressablesDownloadProcessId>, IGameConfigData
+    public class AddressablesDownloadProcess : IGameConfigData<AddressablesDownloadProcessId>, IGameConfigData, IGameConfigKey<AddressablesDownloadProcessId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public AddressablesDownloadProcessId ConfigKey { get; set; }

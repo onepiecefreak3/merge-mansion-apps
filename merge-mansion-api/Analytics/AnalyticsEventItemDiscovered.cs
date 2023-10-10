@@ -25,5 +25,24 @@ namespace Analytics
         public AnalyticsEventItemDiscovered(string itemName)
         {
         }
+
+        [JsonProperty("item_level")]
+        [Description("Discovered item level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public int ItemLevel { get; set; }
+
+        [JsonProperty("item_mergechain_total_length")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Merge chain total length of the discovered item")]
+        public int ItemMergeChainTotalLength { get; set; }
+
+        [JsonProperty("item_mergechain_unlocked_length")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Merge chain unlocked length of the discovered item")]
+        public int ItemMergeChainUnlockedLength { get; set; }
+
+        public AnalyticsEventItemDiscovered(string itemName, int itemLevel, int itemMergeChainTotalLength, int itemMergeChainUnlockedLength)
+        {
+        }
     }
 }

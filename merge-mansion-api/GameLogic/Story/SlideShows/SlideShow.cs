@@ -6,7 +6,7 @@ using GameLogic.Player.Director.Config;
 namespace GameLogic.Story.SlideShows
 {
     [MetaSerializable]
-    public class SlideShow : IGameConfigData<SlideShowId>, IGameConfigData
+    public class SlideShow : IGameConfigData<SlideShowId>, IGameConfigData, IGameConfigKey<SlideShowId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public SlideShowId ConfigKey { get; set; }

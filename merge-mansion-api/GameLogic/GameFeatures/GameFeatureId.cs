@@ -44,6 +44,7 @@ namespace GameLogic.GameFeatures
         TieredOffers = 30,
         ItemNeededBadgeEnabled = 31,
         SinkItemTooltipEnabled = 32,
-        RentableInventory = 33
+        RentableInventory = 33,
+        ProducerInventory = 34
     }
 }

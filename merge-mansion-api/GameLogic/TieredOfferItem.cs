@@ -13,7 +13,7 @@ namespace GameLogic
 {
     [MetaSerializable]
     [MetaReservedMembers(100, 200)]
-    public abstract class TieredOfferItem : IGameConfigData<MetaOfferId>, IGameConfigData, IGameConfigPostLoad, IRefersToMetaOffers
+    public abstract class TieredOfferItem : IGameConfigData<MetaOfferId>, IGameConfigData, IGameConfigKey<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers
     {
         [MetaMember(100, (MetaMemberFlags)0)]
         public MetaOfferId OfferId { get; set; }

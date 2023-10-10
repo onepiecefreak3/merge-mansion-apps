@@ -9,7 +9,7 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.FlashSales
 {
     [MetaSerializable]
-    public class FlashSaleGroupDefinition : IGameConfigData<FlashSaleGroupId>, IGameConfigData, IHasRequirements
+    public class FlashSaleGroupDefinition : IGameConfigData<FlashSaleGroupId>, IGameConfigData, IGameConfigKey<FlashSaleGroupId>, IHasRequirements
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public FlashSaleGroupId ConfigKey { get; set; }

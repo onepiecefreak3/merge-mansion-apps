@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventOfferSetInfo : IGameConfigData<EventOfferSetId>, IGameConfigData, IValidatable
+    public class EventOfferSetInfo : IGameConfigData<EventOfferSetId>, IGameConfigData, IGameConfigKey<EventOfferSetId>, IValidatable
     {
         [MetaMember(5, (MetaMemberFlags)0)]
         public string NameLocalizationId { get; set; }

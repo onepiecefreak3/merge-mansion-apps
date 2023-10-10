@@ -5,12 +5,14 @@ using GameLogic.Player.Board;
 using System.Collections.Generic;
 using GameLogic.Player.Items;
 using System.Runtime.Serialization;
+using GameLogic.Player.Rewards;
+using Metaplay.Core;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaBlockedMembers(new int[] { 6, 8, 10, 16, 20 })]
     [MetaSerializableDerived(2)]
-    public class BoardEventModel : ExtendableEventState<EventId, BoardEventInfo>, IBoardEventModel
+    public class BoardEventModel : ExtendableEventState<EventId, BoardEventInfo>, IBoardEventModel, IEventGroupModel<BoardEventInfo>, IPointsEvent
     {
         [MetaMember(2, (MetaMemberFlags)0)]
         public int Level;
@@ -91,5 +93,7 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(26, (MetaMemberFlags)0)]
         public bool Resolved { get; set; }
+        public IStringId Id { get; }
+        int IPointsEvent.Points { get; }
     }
 }

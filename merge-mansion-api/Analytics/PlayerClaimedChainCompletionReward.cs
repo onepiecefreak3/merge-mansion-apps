@@ -27,5 +27,19 @@ namespace Analytics
         public PlayerClaimedChainCompletionReward(string mergeChainId, string codexDiscoveryRewardId)
         {
         }
+
+        [JsonProperty("merge_chain_total_length")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Merge chain total length")]
+        public int MergeChainTotalLength { get; set; }
+
+        [JsonProperty("merge_chain_unlocked_length")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Merge chain unlocked length")]
+        public int MergeChainUnlockedLength { get; set; }
+
+        public PlayerClaimedChainCompletionReward(string mergeChainId, string codexDiscoveryRewardId, int mergeChainTotalLength, int mergeChainUnlockedLength)
+        {
+        }
     }
 }

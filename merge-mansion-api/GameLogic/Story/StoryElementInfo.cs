@@ -9,7 +9,7 @@ using System;
 namespace GameLogic.Story
 {
     [MetaSerializable]
-    public class StoryElementInfo : IGameConfigData<StoryDefinitionId>, IGameConfigData, IValidatable
+    public class StoryElementInfo : IGameConfigData<StoryDefinitionId>, IGameConfigData, IGameConfigKey<StoryDefinitionId>, IValidatable
     {
         [MetaMember(1, 0)]
         private StoryDefinitionId StoryDefinitionId { get; set; }

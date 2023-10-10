@@ -267,6 +267,14 @@ namespace Metaplay.Core.Message
                 GamePayload = gamePayload;
                 CorrectedDeviceGuid = correctDeviceGuid;
             }
+
+            [Sensitive]
+            [MetaMember(15, (MetaMemberFlags)0)]
+            public byte[] ResumptionToken { get; set; }
+
+            public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode, EntityId playerId, SessionProtocol.InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctedDeviceGuid, byte[] resumptionToken)
+            {
+            }
         }
 
         [MetaMessage(18, MessageDirection.ServerToClient, true)]
@@ -278,21 +286,17 @@ namespace Metaplay.Core.Message
             [MetaMember(2, 0)]
             public ReasonCode Reason { get; set; } // 0x14
 
-            [MetaMember(3, 0)]
-            public SessionResourceCorrection ResourceCorrection { get; set; } // 0x18
-
             [MetaMember(4, 0)]
-            public string DebugOnlyErrorMessage { get; set; } // 0x20
+            public string DebugOnlyErrorMessage { get; set; } // 0x18
 
             private SessionStartFailure()
             {
             }
 
-            public SessionStartFailure(int queryId, ReasonCode reason, SessionResourceCorrection resourceCorrection, string debugOnlyErrorMessage)
+            public SessionStartFailure(int queryId, ReasonCode reason, string debugOnlyErrorMessage)
             {
                 QueryId = queryId;
                 Reason = reason;
-                ResourceCorrection = resourceCorrection;
                 DebugOnlyErrorMessage = debugOnlyErrorMessage;
             }
 
@@ -301,7 +305,6 @@ namespace Metaplay.Core.Message
             {
                 InternalError = 0,
                 DryRun = 1,
-                ResourceCorrection = 2,
                 Banned = 3,
                 PlayerDeserializationFailure = 4,
                 WrongAuthenticationPlatform = 5
@@ -346,6 +349,10 @@ namespace Metaplay.Core.Message
                 ServerSessionAcknowledgement = serverSessionAcknowledgement;
                 SessionToken = sessionToken;
                 ScheduledMaintenanceMode = scheduledMaintenanceMode;
+            }
+
+            public SessionResumeSuccess(SessionAcknowledgement serverSessionAcknowledgement, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode)
+            {
             }
         }
 
@@ -392,6 +399,24 @@ namespace Metaplay.Core.Message
             }
 
             public SessionStartAbort(bool hasReasonTrailer)
+            {
+            }
+        }
+
+        [MetaMessage(44, (MessageDirection)2, true)]
+        public class SessionStartResourceCorrection : MetaMessage
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public int QueryId { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public SessionProtocol.SessionResourceCorrection ResourceCorrection { get; set; }
+
+            private SessionStartResourceCorrection()
+            {
+            }
+
+            public SessionStartResourceCorrection(int queryId, SessionProtocol.SessionResourceCorrection resourceCorrection)
             {
             }
         }

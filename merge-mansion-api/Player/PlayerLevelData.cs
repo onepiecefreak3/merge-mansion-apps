@@ -7,7 +7,7 @@ using GameLogic.Player.Rewards;
 namespace Player
 {
     [MetaSerializable]
-    public class PlayerLevelData : IGameConfigData<int>, IGameConfigData
+    public class PlayerLevelData : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>
     {
         public int ConfigKey => Level;
 

@@ -9,7 +9,7 @@ using System;
 namespace GameLogic.Decorations
 {
     [MetaSerializable]
-    public class DecorationInfo : IGameConfigData<DecorationId>, IGameConfigData
+    public class DecorationInfo : IGameConfigData<DecorationId>, IGameConfigData, IGameConfigKey<DecorationId>
     {
         [MetaMember(1, 0)]
         public DecorationId DecorationId { get; set; }

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Metaplay.Core.Player
 {
     [MetaSerializable]
-    public class PlayerExperimentInfo : IGameConfigData<PlayerExperimentId>, IGameConfigData, IGameConfigPostLoad
+    public class PlayerExperimentInfo : IGameConfigData<PlayerExperimentId>, IGameConfigData, IGameConfigKey<PlayerExperimentId>, IGameConfigPostLoad
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public PlayerExperimentId ExperimentId { get; set; }
@@ -28,7 +28,7 @@ namespace Metaplay.Core.Player
         public List<ExperimentVariantId> VariantId { get; set; }
         public List<string> VariantAnalyticsId { get; set; }
 
-        PlayerExperimentId Metaplay.Core.Config.IGameConfigData<Metaplay.Core.Player.PlayerExperimentId>.ConfigKey { get; }
+        public PlayerExperimentId ConfigKey { get; }
 
         public PlayerExperimentInfo()
         {

@@ -45,5 +45,16 @@ namespace Metaplay.Core.League
         protected DivisionModelBase()
         {
         }
+
+        [MetaMember(311, (MetaMemberFlags)0)]
+        public int NextParticipantIdx { get; set; }
+
+        [MetaMember(310, (MetaMemberFlags)0)]
+        [ServerOnly]
+        public IDivisionServerModel ServerModel { get; set; }
+
+        [MetaMember(304, (MetaMemberFlags)0)]
+        [Obsolete("Use Participants instead.")]
+        public Dictionary<EntityId, TParticipantState> LegacyParticipants { get; set; }
     }
 }

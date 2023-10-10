@@ -91,7 +91,7 @@ namespace Metaplay.Unity
             MessageDispatcher.AddListener<SessionAcknowledgementMessage>(OnIgnoredMessage);
             MessageDispatcher.AddListener<ConnectedToServer>(OnIgnoredMessage);
             MessageDispatcher.AddListener<DisconnectedFromServer>(OnDisconnectedFromServer);
-            MessageDispatcher.AddListener<Handshake.LoginResponse>(OnIgnoredMessage);
+            MessageDispatcher.AddListener<Handshake.LoginSuccessResponse>(OnIgnoredMessage);
             MessageDispatcher.AddListener<SessionProtocol.SessionResumeSuccess>(OnIgnoredMessage);
             MessageDispatcher.AddListener<SessionProtocol.SessionStartFailure>(OnIgnoredMessage);
             MessageDispatcher.AddListener<ConnectionHandshakeFailure>(OnIgnoredMessage);

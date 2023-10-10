@@ -6,7 +6,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Codex
 {
     [MetaSerializable]
-    public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>, IGameConfigData
+    public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>, IGameConfigData, IGameConfigKey<CodexCategoryId>
     {
         [MetaMember(1, 0)]
         public CodexCategoryId ConfigKey { get; set; }

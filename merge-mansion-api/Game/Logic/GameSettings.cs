@@ -32,5 +32,6 @@ namespace Game.Logic
 
         [MetaMember(7, (MetaMemberFlags)0)]
         private bool mergeHints { get; set; }
+        private bool sinkTooltip { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class GarageCleanupPatternRowInfo : IGameConfigData<GarageCleanupPatternRowId>, IGameConfigData
+    public class GarageCleanupPatternRowInfo : IGameConfigData<GarageCleanupPatternRowId>, IGameConfigData, IGameConfigKey<GarageCleanupPatternRowId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public GarageCleanupPatternRowId ConfigKey { get; set; }

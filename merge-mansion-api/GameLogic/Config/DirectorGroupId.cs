@@ -169,5 +169,10 @@ namespace GameLogic.Config
         public DirectorGroupId()
         {
         }
+
+        public static DirectorGroupId StartOpeningLevelUpChest;
+        public static DirectorGroupId ChestSpeedUpGem;
+        public static DirectorGroupId ChestSpeedUp;
+        public static DirectorGroupId ProducerInventoryFTUE;
     }
 }

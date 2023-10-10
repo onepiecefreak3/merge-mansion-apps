@@ -5,7 +5,7 @@ using System;
 namespace Metaplay.Core.Localization
 {
     [MetaSerializable]
-    public class LanguageInfo : IGameConfigData<LanguageId>, IGameConfigData
+    public class LanguageInfo : IGameConfigData<LanguageId>, IGameConfigData, IGameConfigKey<LanguageId>
     {
         [MetaMember(1, 0)]
         public LanguageId LanguageId { get; set; }

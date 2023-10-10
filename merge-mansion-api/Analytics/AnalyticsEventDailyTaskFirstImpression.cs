@@ -76,5 +76,39 @@ namespace Analytics
         public AnalyticsEventDailyTaskFirstImpression(string taskId, int taskIndex, string requiredItem, int requiredItemCount, string rewardItem, int rewardItemCount, string localDateTime, string dailyTasksSetId, string dailyTasksFinalRewardsId, bool isPurchasedTask)
         {
         }
+
+        [JsonProperty("required_item_level")]
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [Description("Required item level")]
+        public int RequiredItemLevel { get; set; }
+
+        [JsonProperty("required_item_mergechain_total_length")]
+        [MetaMember(12, (MetaMemberFlags)0)]
+        [Description("Merge chain total length of the required item")]
+        public int RequiredItemMergeChainTotalLength { get; set; }
+
+        [Description("Merge chain unlocked length of the required item")]
+        [JsonProperty("required_item_mergechain_unlocked_length")]
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public int RequiredItemMergeChainUnlockedLength { get; set; }
+
+        [Description("Reward item level")]
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("reward_item_level")]
+        public int RewardItemLevel { get; set; }
+
+        [Description("Merge chain total length of the reward item")]
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("reward_item_mergechain_total_length")]
+        public int RewardItemMergeChainTotalLength { get; set; }
+
+        [Description("Merge chain unlocked length of the reward item")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [JsonProperty("reward_item_mergechain_unlocked_length")]
+        public int RewardItemMergeChainUnlockedLength { get; set; }
+
+        public AnalyticsEventDailyTaskFirstImpression(string taskId, int taskIndex, string requiredItem, int requiredItemCount, string rewardItem, int rewardItemCount, string localDateTime, string dailyTasksSetId, string dailyTasksFinalRewardsId, bool isPurchasedTask, int requiredItemLevel, int requiredItemMergeChainTotalLength, int requiredItemMergeChainUnlockedLength, int rewardItemLevel, int rewardItemMergeChainTotalLength, int rewardItemMergeChainUnlockedLength)
+        {
+        }
     }
 }

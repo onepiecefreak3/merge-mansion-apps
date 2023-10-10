@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace Metaplay.Core.League
 {
@@ -7,5 +8,7 @@ namespace Metaplay.Core.League
         EntityId CurrentDivision { get; set; }
 
         IEnumerable<IDivisionHistoryEntry> HistoricalDivisions { get; }
+
+        int CurrentDivisionParticipantIdx { get; set; }
     }
 }

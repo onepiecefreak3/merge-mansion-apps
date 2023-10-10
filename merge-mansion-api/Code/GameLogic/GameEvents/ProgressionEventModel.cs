@@ -5,11 +5,12 @@ using GameLogic.Story;
 using System.Collections.Generic;
 using GameLogic.Player;
 using Metaplay.Core;
+using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(6)]
-    public class ProgressionEventModel : MetaActivableState<ProgressionEventId, ProgressionEventInfo>
+    public class ProgressionEventModel : MetaActivableState<ProgressionEventId, ProgressionEventInfo>, IPointsEvent
     {
         public static int InitialLevelNumber;
         private static int InitialLevelProgress;
@@ -59,5 +60,7 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(16, (MetaMemberFlags)0)]
         public bool StreakNoted;
+        public IStringId Id { get; }
+        public int Points { get; }
     }
 }

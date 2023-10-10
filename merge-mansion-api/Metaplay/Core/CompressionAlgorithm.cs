@@ -6,6 +6,8 @@ namespace Metaplay.Core
     public enum CompressionAlgorithm
     {
         None = 0,
-        Deflate = 1
+        Deflate = 1,
+        LZ4 = 2,
+        Zstandard = 3
     }
 }

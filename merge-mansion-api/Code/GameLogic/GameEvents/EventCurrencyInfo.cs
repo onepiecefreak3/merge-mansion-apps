@@ -7,7 +7,7 @@ using Metaplay.Core.Model;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventCurrencyInfo : IGameConfigData<EventCurrencyId>, IGameConfigData
+    public class EventCurrencyInfo : IGameConfigData<EventCurrencyId>, IGameConfigData, IGameConfigKey<EventCurrencyId>
     {
         [MetaMember(1, 0)]
         public EventCurrencyId EventCurrencyId { get; set; }

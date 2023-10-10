@@ -5,7 +5,7 @@ namespace Metaplay.Core.Guild
 {
     [MetaSerializable]
     [MetaReservedMembers(1, 100)]
-    public abstract class GuildSearchParamsBase : IMetaIntegrationConstructible<GuildSearchParamsBase>, IMetaIntegration<GuildSearchParamsBase>, IMetaIntegrationConstructible, IRequireSingleConcreteType
+    public abstract class GuildSearchParamsBase : IMetaIntegrationConstructible<GuildSearchParamsBase>, IMetaIntegration<GuildSearchParamsBase>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string SearchString { get; set; }

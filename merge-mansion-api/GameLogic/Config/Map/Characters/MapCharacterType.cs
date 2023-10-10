@@ -17,6 +17,8 @@ namespace GameLogic.Config.Map.Characters
         Heikki = 9,
         Hank = 10,
         Deb = 11,
-        Ratthew = 12
+        Ratthew = 12,
+        Pet = 13,
+        Ash = 14
     }
 }

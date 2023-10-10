@@ -8,7 +8,7 @@ using System;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventLevelInfo : IGameConfigData<EventLevelId>, IGameConfigData, IValidatable
+    public class EventLevelInfo : IGameConfigData<EventLevelId>, IGameConfigData, IGameConfigKey<EventLevelId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventLevelId EventLevelId { get; set; }
@@ -25,6 +25,13 @@ namespace Code.GameLogic.GameEvents
         }
 
         public EventLevelInfo(EventLevelId eventLevelId, int requiredPoints, List<PlayerReward> rewards)
+        {
+        }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public int? SegmentColorOverride { get; set; }
+
+        public EventLevelInfo(EventLevelId eventLevelId, int requiredPoints, List<PlayerReward> rewards, int? segmentColorOverride)
         {
         }
     }

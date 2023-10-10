@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 using System;
 using Metaplay.Core;
 using GameLogic.Player.Items;
+using System.ComponentModel;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -30,6 +32,25 @@ namespace Analytics
         }
 
         public AnalyticsBoardStateMetaData(MergeItem item)
+        {
+        }
+
+        [JsonProperty("item_level")]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Item level")]
+        public int ItemLevel { get; set; }
+
+        [JsonProperty("item_mergechain_total_length")]
+        [Description("Merge chain total length of the item")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public int ItemMergeChainTotalLength { get; set; }
+
+        [Description("Merge chain unlocked length of the item")]
+        [JsonProperty("item_mergechain_unlocked_length")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public int ItemMergeChainUnlockedLength { get; set; }
+
+        public AnalyticsBoardStateMetaData(MergeItem item, PlayerModel player)
         {
         }
     }

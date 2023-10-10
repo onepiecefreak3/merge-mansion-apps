@@ -5,11 +5,13 @@ using System.Collections.Generic;
 using GameLogic.Player.Board;
 using GameLogic.Player.Items;
 using System.Runtime.Serialization;
+using GameLogic.Player.Rewards;
+using Metaplay.Core;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(8)]
-    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, IBoardEventModel
+    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, IBoardEventModel, IPointsEvent
     {
         public static int InitialLevel;
         private static int InitialLevelProgress;
@@ -93,5 +95,7 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(14, (MetaMemberFlags)0)]
         protected HashSet<int> FishCatchPopupSeenItems { get; set; }
+        public IStringId Id { get; }
+        public int Points { get; }
     }
 }

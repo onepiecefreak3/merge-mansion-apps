@@ -14,7 +14,7 @@ using Merge;
 namespace GameLogic.Hotspots
 {
     [MetaSerializable]
-    public class HotspotDefinition : IGameConfigData<HotspotId>, IGameConfigData, IHasRequirements
+    public class HotspotDefinition : IGameConfigData<HotspotId>, IGameConfigData, IGameConfigKey<HotspotId>, IHasRequirements
     {
         [MetaMember(1, 0)]
         public HotspotId Id { get; set; }
@@ -46,11 +46,6 @@ namespace GameLogic.Hotspots
         [MetaMember(10, 0)]
         public List<IDirectorAction> AppearActions { get; set; }
         public HotspotId ConfigKey => Id;
-
-        [IgnoreDataMember]
-        private List<HotspotDefinition> opensAfterCompletion;
-        [IgnoreDataMember]
-        public IEnumerable<HotspotDefinition> OpensAfterCompletion { get; }
 
         [IgnoreDataMember]
         public IEnumerable<HotspotDefinition> UnlockingParents { get; }
@@ -88,6 +83,34 @@ namespace GameLogic.Hotspots
         public bool BelongsToTaskGroup { get; }
 
         public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId)
+        {
+        }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public List<PlayerRequirement> UnlockRequirementsList { get; set; }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public bool IsIndependentTask { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public int AppearActionMax { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public int CompleteActionMax { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public MetaRef<HotspotDefinition> CompleteFocusHotspotRef { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsRepeatableTask { get; }
+
+        [IgnoreDataMember]
+        public List<PlayerRequirement> UnlockRequirements { get; }
+
+        [IgnoreDataMember]
+        public HotspotDefinition CompleteFocusHotspot { get; }
+
+        public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, int completeActionMax, HotspotId completeFocusHotspotId)
         {
         }
     }

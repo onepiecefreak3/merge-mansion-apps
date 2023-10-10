@@ -5,7 +5,7 @@ using GameLogic.TieredOffers;
 namespace GameLogic
 {
     [MetaSerializable]
-    public class TieredOfferGroup : IGameConfigData<TieredOfferGroupId>, IGameConfigData
+    public class TieredOfferGroup : IGameConfigData<TieredOfferGroupId>, IGameConfigData, IGameConfigKey<TieredOfferGroupId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public TieredOfferGroupId ConfigKey { get; set; }

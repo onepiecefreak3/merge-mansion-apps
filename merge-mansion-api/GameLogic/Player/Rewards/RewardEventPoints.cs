@@ -5,11 +5,9 @@ using System;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(14)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class RewardEventPoints : PlayerReward
     {
-        [MetaMember(1, 0)]
-        public EventId EventId { get; set; }
-
         [MetaMember(2, 0)]
         public int Amount { get; set; }
 
@@ -17,7 +15,7 @@ namespace GameLogic.Player.Rewards
         {
         }
 
-        public RewardEventPoints(EventId eventId, int amount, CurrencySource currencySource)
+        public RewardEventPoints(int amount, CurrencySource currencySource)
         {
         }
     }

@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace GameLogic.Decorations
 {
     [MetaSerializable]
-    public class LayeredDecorationSetInfo : IGameConfigData<LayeredDecorationSetId>, IGameConfigData, IValidatable
+    public class LayeredDecorationSetInfo : IGameConfigData<LayeredDecorationSetId>, IGameConfigData, IGameConfigKey<LayeredDecorationSetId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public LayeredDecorationSetId SetId { get; set; }

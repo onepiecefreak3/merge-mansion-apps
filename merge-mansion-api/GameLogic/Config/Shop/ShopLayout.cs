@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace GameLogic.Config.Shop
 {
     [MetaSerializable]
-    public class ShopLayout : IGameConfigData<ShopLayoutId>, IGameConfigData
+    public class ShopLayout : IGameConfigData<ShopLayoutId>, IGameConfigData, IGameConfigKey<ShopLayoutId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ShopLayoutId ConfigKey { get; set; }

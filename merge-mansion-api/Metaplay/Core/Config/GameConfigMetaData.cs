@@ -29,5 +29,12 @@ namespace Metaplay.Core.Config
         public GameConfigMetaData(MetaGuid parentConfigId, ContentHash parentConfigHash, GameConfigBuildParameters buildParams, GameConfigBuildLog buildLog, string buildDescription)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public GameConfigBuildReport BuildReport { get; set; }
+
+        public GameConfigMetaData(MetaGuid parentConfigId, ContentHash parentConfigHash, GameConfigBuildParameters buildParams, GameConfigBuildReport buildReport, string buildDescription)
+        {
+        }
     }
 }

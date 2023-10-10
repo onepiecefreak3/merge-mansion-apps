@@ -3,12 +3,13 @@ using Metaplay.Core.Offers;
 using System;
 using System.Collections.Generic;
 using Metaplay.Core.Activables;
+using Code.GameLogic.Config;
 
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
     [MetaActivableConfigData("OfferGroup", false)]
-    public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals
+    public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals, IValidatable
     {
         [MetaMember(1, 0)]
         private string OfferTitlePrefabId { get; set; }

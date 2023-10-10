@@ -216,5 +216,12 @@ namespace Game.Logic
 
         [IgnoreDataMember]
         public IEnumerable<SeasonId> SeasonsDiscovered { get; }
+
+        [MetaMember(63, (MetaMemberFlags)0)]
+        private Dictionary<HotspotId, int> completedRepeatableTasks { get; set; }
+
+        [MetaMember(64, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public bool DidClaimFreeGems { get; set; }
     }
 }

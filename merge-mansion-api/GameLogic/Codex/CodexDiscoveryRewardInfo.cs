@@ -6,7 +6,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Codex
 {
     [MetaSerializable]
-    public class CodexDiscoveryRewardInfo : IGameConfigData<CodexDiscoveryRewardId>, IGameConfigData
+    public class CodexDiscoveryRewardInfo : IGameConfigData<CodexDiscoveryRewardId>, IGameConfigData, IGameConfigKey<CodexDiscoveryRewardId>
     {
         [MetaMember(1, 0)]
         public CodexDiscoveryRewardId ConfigKey { get; set; }

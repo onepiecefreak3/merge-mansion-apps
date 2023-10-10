@@ -12,7 +12,7 @@ using GameLogic.Player.Items;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventTaskInfo : IGameConfigData<EventTaskId>, IGameConfigData, IValidatable
+    public class EventTaskInfo : IGameConfigData<EventTaskId>, IGameConfigData, IGameConfigKey<EventTaskId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventTaskId EventTaskId { get; set; }

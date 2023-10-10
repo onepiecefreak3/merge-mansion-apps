@@ -13,7 +13,7 @@ using GameLogic.Player;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData
+    public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, 0)]
         public MergeBoardId BoardId { get; set; }

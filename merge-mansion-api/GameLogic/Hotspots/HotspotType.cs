@@ -10,6 +10,7 @@ namespace GameLogic.Hotspots
         MergeGrid = 2,
         UnlockArea = 3,
         EndOfContent = 4,
-        Event = 5
+        Event = 5,
+        RepeatableTask = 6
     }
 }

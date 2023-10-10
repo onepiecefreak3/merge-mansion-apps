@@ -1,8 +1,7 @@
 namespace Metaplay.Core.Config
 {
-    public interface IGameConfigData<TKey> : IGameConfigData
+    public interface IGameConfigData<TKey> : IGameConfigData, IGameConfigKey<TKey>
     {
-        TKey ConfigKey { get; }
     }
 
     public interface IGameConfigData

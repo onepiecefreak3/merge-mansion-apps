@@ -6,7 +6,7 @@ using Metaplay.Core.Math;
 namespace GameLogic.Cutscenes
 {
     [MetaSerializable]
-    public class CutsceneInfo : IGameConfigData<CutsceneId>, IGameConfigData, IValidatable
+    public class CutsceneInfo : IGameConfigData<CutsceneId>, IGameConfigData, IGameConfigKey<CutsceneId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private CutsceneId CutsceneId { get; set; }

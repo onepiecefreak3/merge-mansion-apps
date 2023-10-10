@@ -40,5 +40,8 @@ namespace Metaplay.Core.EventLog
         public EntityEventDeserializationFailureInfo(MetaMemberDeserializationFailureParams failureParams)
         {
         }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public string EventPayloadTypeName { get; set; }
     }
 }

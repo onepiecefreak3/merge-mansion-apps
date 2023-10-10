@@ -1,12 +1,18 @@
 using FixPointCS;
+using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Math
 {
     public struct F32
     {
         public int Raw; // 0x0
+
+        [IgnoreDataMember]
         public float Float => Fixed32.ToFloat(Raw);
+        [IgnoreDataMember]
         public double Double => Fixed32.ToDouble(Raw);
+        [IgnoreDataMember]
+        public F64 F64 => new((long)Raw << 16);
 
         public F32(int raw)
         {
@@ -41,9 +47,9 @@ namespace Metaplay.Core.Math
         public static bool operator <(F32 v1, F32 v2) => v1.Raw < v2.Raw;
         public static bool operator <(int v1, F32 v2) => v1 << 16 < v2.Raw;
         public static bool operator <(F32 v1, int v2) => v1.Raw < v2 << 16;
-        public static bool operator>(F32 v1, F32 v2) => v1.Raw > v2.Raw;
-        public static bool operator>(int v1, F32 v2) => v1 << 16 > v2.Raw;
-        public static bool operator>(F32 v1, int v2) => v1.Raw > v2 << 16;
+        public static bool operator >(F32 v1, F32 v2) => v1.Raw > v2.Raw;
+        public static bool operator >(int v1, F32 v2) => v1 << 16 > v2.Raw;
+        public static bool operator >(F32 v1, int v2) => v1.Raw > v2 << 16;
         public static bool operator !=(F32 v1, F32 v2) => v1.Raw != v2.Raw;
         public static bool operator !=(int v1, F32 v2) => v1 << 16 != v2.Raw;
         public static bool operator !=(F32 v1, int v2) => v1.Raw != v2 << 16;

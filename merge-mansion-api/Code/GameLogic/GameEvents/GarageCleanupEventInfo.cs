@@ -14,7 +14,7 @@ namespace Code.GameLogic.GameEvents
     [MetaActivableConfigData("GarageCleanupEvent", false)]
     [MetaBlockedMembers(new int[] { 10, 11, 12, 13, 15, 16 })]
     [MetaSerializable]
-    public class GarageCleanupEventInfo : IMetaActivableConfigData<GarageCleanupEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<GarageCleanupEventId>, IMetaActivableInfo<GarageCleanupEventId>, IValidatable
+    public class GarageCleanupEventInfo : IMetaActivableConfigData<GarageCleanupEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<GarageCleanupEventId>, IGameConfigKey<GarageCleanupEventId>, IMetaActivableInfo<GarageCleanupEventId>, IValidatable, IEventGroupInfo
     {
         public static GarageCleanupEventInfo.BoardSizeInfo BoardSize;
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -75,6 +75,13 @@ namespace Code.GameLogic.GameEvents
             public readonly int Width;
             public readonly int Height;
             public int Size { get; }
+        }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        public GarageCleanupEventInfo(GarageCleanupEventId garageCleanupEventId, string displayName, string description, MetaActivableParams activableParams, List<GarageCleanupBoardInfo> boards, List<MetaRef<GarageCleanupPatternSetInfo>> patternSets, List<int> spawnerItems, List<int> boardCosts, List<MetaRef<GarageCleanupRewardInfo>> slotFillRewards, MergeBoardId mergeBoardId, PlayerRequirement unlockRequirement, string prefabsOverride, bool alwaysShowPatternsAndRewards, EventGroupId groupId)
+        {
         }
     }
 }

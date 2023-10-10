@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using System;
 using System.Runtime.Serialization;
+using Metaplay.Core.Session;
 
 namespace Metaplay.Core.Message
 {
@@ -138,7 +139,6 @@ namespace Metaplay.Core.Message
 
             [MetaMember(2, 0)]
             public string AuthToken { get; set; } // 0x38
-            public override bool IsCreateAccountRequest => string.IsNullOrEmpty(DeviceId) && string.IsNullOrEmpty(AuthToken);
 
             private DeviceLoginRequest()
             {
@@ -149,31 +149,20 @@ namespace Metaplay.Core.Message
                 DeviceId = deviceId;
                 AuthToken = authToken;
             }
-
-            public override string Description { get; }
         }
 
         [MetaMessage(8, MessageDirection.ServerToClient, true)]
-        public class LoginResponse : MetaMessage
+        public class LoginSuccessResponse : MetaMessage
         {
-            [MetaMember(1, 0)]
-            public EntityId PlayerId { get; set; } // 0x10
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public EntityId LoggedInPlayerId { get; set; }
 
-            [MetaMember(2, 0)]
-            public string DeviceId { get; set; } // 0x18
-
-            [MetaMember(3, 0)]
-            public string AuthToken { get; set; } // 0x20
-
-            private LoginResponse()
+            private LoginSuccessResponse()
             {
             }
 
-            public LoginResponse(EntityId playerId, string deviceId, string authToken)
+            public LoginSuccessResponse(EntityId loggedInPlayerId)
             {
-                PlayerId = playerId;
-                DeviceId = deviceId;
-                AuthToken = authToken;
             }
         }
 
@@ -215,7 +204,6 @@ namespace Metaplay.Core.Message
         {
             [MetaMember(100, 0)]
             public SocialAuthenticationClaimBase Claim { get; set; } // 0x38
-            public override bool IsCreateAccountRequest => false;
 
             private SocialAuthenticationLoginRequest()
             {
@@ -225,8 +213,6 @@ namespace Metaplay.Core.Message
             {
                 Claim = claim;
             }
-
-            public override string Description { get; }
         }
 
         [MetaMessage(32, MessageDirection.ClientToServer, true)]
@@ -293,7 +279,6 @@ namespace Metaplay.Core.Message
 
             [MetaMember(6, 0)]
             public ILoginRequestGamePayload GamePayload { get; set; } // 0x28
-            public abstract bool IsCreateAccountRequest { get; }
 
             protected LoginRequest()
             {
@@ -306,9 +291,6 @@ namespace Metaplay.Core.Message
                 DebugDiagnostics = debugDiagnostics;
                 GamePayload = gamePayload;
             }
-
-            [IgnoreDataMember]
-            public abstract string Description { get; }
         }
 
         public struct ConnectionOptions
@@ -344,6 +326,57 @@ namespace Metaplay.Core.Message
         [MetaSerializable]
         public interface ILoginRequestGamePayload
         {
+        }
+
+        [MetaMessage(93, (MessageDirection)2, true)]
+        public class CreateGuestAccountResponse : MetaMessage
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public EntityId PlayerId { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public string DeviceId { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            [Sensitive]
+            public string AuthToken { get; set; }
+
+            private CreateGuestAccountResponse()
+            {
+            }
+
+            public CreateGuestAccountResponse(EntityId playerId, string deviceId, string authToken)
+            {
+            }
+        }
+
+        [MetaMessage(19, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
+        public class LoginAndResumeSessionRequest : MetaMessage
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public EntityId ClaimedPlayerId { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public SessionResumptionInfo SessionToResume { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            [Sensitive]
+            public byte[] ResumptionToken { get; set; }
+
+            [MetaMember(4, (MetaMemberFlags)0)]
+            public LoginDebugDiagnostics DebugDiagnostics { get; set; }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public Handshake.ILoginRequestGamePayload GamePayload { get; set; }
+
+            private LoginAndResumeSessionRequest()
+            {
+            }
+
+            public LoginAndResumeSessionRequest(EntityId claimedPlayerId, SessionResumptionInfo sessionToResume, byte[] resumptionToken, LoginDebugDiagnostics debugDiagnostics, Handshake.ILoginRequestGamePayload gamePayload)
+            {
+            }
         }
     }
 }

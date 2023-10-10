@@ -38,6 +38,7 @@ using Code.GameLogic.Config;
 using GameLogic.Player.Items.Fishing;
 using GameLogic.Seasonality;
 using GameLogic.Inventory;
+using Metaplay.Core.Math;
 
 namespace GameLogic.Config
 {
@@ -137,7 +138,7 @@ namespace GameLogic.Config
         public GameConfigLibrary<int, PlayerLevelData> PlayerLevels { get; set; }
 
         [GameConfigEntry("InventorySlots", true, true, true)]
-        public GameConfigLibrary<int, InventorySlotsConfig> InventorySlots { get; set; }
+        public GameConfigLibrary<InventorySlotId, InventorySlotsConfig> InventorySlots { get; set; }
 
         [GameConfigEntry("LevelUpTutorialConfig", true, true, true)]
         public GameConfigLibrary<LevelUpTutorialConfigId, LevelUpTutorialConfig> LevelUpTutorialConfig { get; set; }
@@ -330,5 +331,7 @@ namespace GameLogic.Config
         public HashSet<MergeBoardId> AuxEnergyMergeBoards { get; set; }
         public List<ItemDefinition> FishItems { get; set; }
         public HashSet<int> ItemsAcceptedBySinks { get; set; }
+        public Dictionary<int, IReadOnlyList<ValueTuple<ItemDefinition, F32>>> ItemProducingParents { get; set; }
+        public Dictionary<HotspotId, IEnumerable<HotspotDefinition>> HotspotOpensAfterCompletion { get; set; }
     }
 }

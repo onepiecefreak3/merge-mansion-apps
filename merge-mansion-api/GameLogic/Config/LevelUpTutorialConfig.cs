@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class LevelUpTutorialConfig : IGameConfigData<LevelUpTutorialConfigId>, IGameConfigData
+    public class LevelUpTutorialConfig : IGameConfigData<LevelUpTutorialConfigId>, IGameConfigData, IGameConfigKey<LevelUpTutorialConfigId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private LevelUpTutorialConfigId ConfigId { get; set; }

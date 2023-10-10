@@ -5,13 +5,10 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class InventorySlotsConfig : IGameConfigData<int>, IGameConfigData
+    public class InventorySlotsConfig : IGameConfigData<InventorySlotId>, IGameConfigData, IGameConfigKey<InventorySlotId>
     {
-        public int ConfigKey => SlotIndex;
-
-        [MetaMember(1, (MetaMemberFlags)0)]
-        public int SlotIndex { get; set; }
-
+        [MetaMember(1, 0)]
+        public InventorySlotId ConfigKey { get; set; }
         [MetaMember(2, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 
@@ -23,6 +20,10 @@ namespace GameLogic.Config
         }
 
         public InventorySlotsConfig(int slotIndex, Currencies currency, int cost)
+        {
+        }
+
+        public InventorySlotsConfig(InventorySlotId slotId, Currencies currency, int cost)
         {
         }
     }

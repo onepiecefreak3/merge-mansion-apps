@@ -21,5 +21,9 @@ namespace GameLogic.Player.Requirements
         {
             return hotspot;
         }
+
+        public HotspotCompletedRequirement(HotspotId hotspot)
+        {
+        }
     }
 }

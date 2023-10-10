@@ -72,6 +72,7 @@ namespace Metaplay.Core.Config
                 registry.RegisterReferenceResolver(typeof(TInfo).BaseType, GetInfoByKey);
         }
 
+        public Type ItemType => typeof(TInfo);
         public int Count => _infos.Count;
         public Dictionary<TKey, TInfo>.KeyCollection Keys => _infos.Keys;
         public Dictionary<TKey, TInfo>.ValueCollection Values => _infos.Values;

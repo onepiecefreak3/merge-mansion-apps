@@ -36,6 +36,21 @@ namespace GameLogic.Decorations
         LDEGB2023PlaceBalloonsTB5 = 27,
         LDEGB2023PlaceParasolsTC1 = 28,
         LDEGB2023PlaceLightsTC2 = 29,
-        LDEGB2023PlaceFlamingoTC3 = 30
+        LDEGB2023PlaceFlamingoTC3 = 30,
+        LDEPOHB2023_UnityRemovePlayboat1TA1 = 31,
+        LDEPOHB2023_UnitySwapGrassTA2 = 32,
+        LDEPOHB2023_UnityPlaceShipHullTA3 = 33,
+        LDEPOHB2023_UnityPlaceShipCabinTA4 = 34,
+        LDEPOHB2023_UnityPlaceShipRailingsTA5 = 35,
+        LDEPOHB2023_UnityPlaceShipMastsTA6 = 36,
+        LDEPOHB2023_UnityPlaceWaterPierTA7 = 37,
+        LDEPOHB2023_UnityPlaceShipPaintTB1 = 38,
+        LDEPOHB2023_UnityPlaceRocksTB2 = 39,
+        LDEPOHB2023_UnityPlacePlantsTB3 = 40,
+        LDEPOHB2023_UnityPlacePropsTB4 = 41,
+        LDEPOHB2023_UnityPlaceSmallSailandFlagTB5 = 42,
+        LDEPOHB2023_UnityPlaceShipGoldFramesTC1 = 43,
+        LDEPOHB2023_UnityPlaceWaterfallTC2 = 44,
+        LDEPOHB2023_UnityPlaceTentaclesTC3 = 45
     }
 }

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class DebugBoardStateTriggersConfig : IGameConfigData<DebugBoardStateTriggerId>, IGameConfigData
+    public class DebugBoardStateTriggersConfig : IGameConfigData<DebugBoardStateTriggerId>, IGameConfigData, IGameConfigKey<DebugBoardStateTriggerId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DebugBoardStateTriggerId DebugBoardStateTriggerId { get; set; }

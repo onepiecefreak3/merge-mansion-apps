@@ -40,7 +40,7 @@ namespace merge_mansion_dumper.Dumper.Support
                     return new RewardModel { Type = RewardType.EventCurrency, Value = evc.EventCurrencyId.Value, Amount = evc.Amount };
 
                 case RewardEventPoints evp:
-                    return new RewardModel { Type = RewardType.EventPoints, Value = evp.EventId.Value, Amount = evp.Amount };
+                    return new RewardModel { Type = RewardType.EventPoints, Amount = evp.Amount };
 
                 default:
                     throw new InvalidOperationException($"Unknown reward {reward.GetType()}.");

@@ -6,7 +6,7 @@ using System.Data;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class SuppressedBuildLogsInfo : IGameConfigData<int>, IGameConfigData
+    public class SuppressedBuildLogsInfo : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public int RuleId { get; set; }
@@ -32,6 +32,10 @@ namespace GameLogic.Config
         }
 
         public SuppressedBuildLogsInfo(int ruleId, BuildLogLevel logLevel, string library, string row, string column, BuildLogCode code)
+        {
+        }
+
+        public SuppressedBuildLogsInfo(int ruleId, GameConfigBuildMessageLevel logLevel, string library, string row, string column, BuildLogCode code)
         {
         }
     }

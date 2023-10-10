@@ -9,7 +9,7 @@ using Metaplay.Core.Math;
 namespace GameLogic
 {
     [MetaSerializable]
-    public class DailyTaskDefinition : IGameConfigData<DailyTaskId>, IGameConfigData
+    public class DailyTaskDefinition : IGameConfigData<DailyTaskId>, IGameConfigData, IGameConfigKey<DailyTaskId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DailyTaskId ConfigKey { get; set; }

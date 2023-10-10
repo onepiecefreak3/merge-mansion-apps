@@ -1,6 +1,10 @@
 namespace Metaplay.Core
 {
-    public interface IMetaIntegration<T>
+    public interface IMetaIntegration<T> : IMetaIntegration
+    {
+    }
+
+    public interface IMetaIntegration
     {
     }
 }

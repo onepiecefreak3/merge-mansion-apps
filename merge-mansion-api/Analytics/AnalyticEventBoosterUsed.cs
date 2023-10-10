@@ -56,5 +56,51 @@ namespace Analytics
         public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, string targetItem, MetaDuration duration)
         {
         }
+
+        [JsonProperty("target_item_level")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Target item level")]
+        public int TargetItemLevel { get; set; }
+
+        [JsonProperty("target_item_mergechain_total_length")]
+        [Description("Merge chain total length of the target item")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public int TargetItemMergeChainTotalLength { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("target_item_mergechain_unlocked_length")]
+        [Description("Merge chain unlocked length of the target item")]
+        public int TargetItemMergeChainUnlockedLength { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        [Description("Source item level")]
+        [JsonProperty("source_item_level")]
+        public int SourceItemLevel { get; set; }
+
+        [Description("Merge chain total length of the source item")]
+        [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("source_item_mergechain_total_length")]
+        public int SourceItemMergeChainTotalLength { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [Description("Merge chain unlocked length of the sou<rce item")]
+        [JsonProperty("source_item_mergechain_unlocked_length")]
+        public int SourceItemMergeChainUnlockedLength { get; set; }
+
+        public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, MetaDuration duration, bool fromInventory, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength)
+        {
+        }
+
+        public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, string targetItem, bool fromInventory, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength)
+        {
+        }
+
+        public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, string targetItem, bool fromInventory, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength, int targetItemLevel, int targetItemMergeChainTotalLength, int targetItemMergeChainUnlockedLength)
+        {
+        }
+
+        public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, string targetItem, MetaDuration duration, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength, int targetItemLevel, int targetItemMergeChainTotalLength, int targetItemMergeChainUnlockedLength)
+        {
+        }
     }
 }

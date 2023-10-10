@@ -7,8 +7,8 @@ namespace Game.Logic
     public class GlobalOptions : IMetaplayCoreOptionsProvider
     {
         // CUSTOM: Constants for default value from external loading
-        private const int MinVersion_ = 230902;
-        private const int MaxVersion_ = 230902;
+        private const int MinVersion_ = 231001;
+        private const int MaxVersion_ = 231001;
 
         public static int MinVersion = -1;
         public static int MaxVersion = -1;

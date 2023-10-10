@@ -9,7 +9,7 @@ using GameLogic.Player.Director.Config;
 namespace GameLogic.Seasonality
 {
     [MetaSerializable]
-    public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData
+    public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData, IGameConfigKey<SeasonId>
     {
         public SeasonId ConfigKey => Id;
 

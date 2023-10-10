@@ -12,5 +12,8 @@ namespace Metaplay.Core.League
 
         [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public int ParticipantIdx { get; set; }
     }
 }

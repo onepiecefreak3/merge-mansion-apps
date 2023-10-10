@@ -135,5 +135,11 @@ namespace GameLogic.Config
 
         [MetaMember(42, (MetaMemberFlags)0)]
         public F32 SinkItemToolTipDisplayDuration { get; set; }
+
+        [MetaMember(43, (MetaMemberFlags)0)]
+        public MetaDuration DefaultLockedTaskTimerDuration { get; set; }
+
+        [MetaMember(44, (MetaMemberFlags)0)]
+        public int ProducerInventorySize { get; set; }
     }
 }

@@ -29,5 +29,8 @@ namespace Metaplay.Core.League
         protected DivisionParticipantStateBase(EntityId participantId)
         {
         }
+
+        public int ParticipantIndex { get; set; }
+        public abstract string ParticipantInfo { get; }
     }
 }

@@ -7,7 +7,7 @@ using Code.GameLogic.Config;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventLevels : IGameConfigData<EventLevelSetId>, IGameConfigData, IValidatable
+    public class EventLevels : IGameConfigData<EventLevelSetId>, IGameConfigData, IGameConfigKey<EventLevelSetId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventLevelSetId SetId { get; set; }

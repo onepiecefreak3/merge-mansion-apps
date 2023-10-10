@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace GameLogic.Config.Map.Characters
 {
     [MetaSerializable]
-    public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData
+    public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData, IGameConfigKey<MapCharacterEventId>
     {
         [MetaMember(1, 0)]
         public MapCharacterEventId ConfigKey { get; set; }

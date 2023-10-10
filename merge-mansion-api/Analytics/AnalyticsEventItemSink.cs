@@ -53,5 +53,39 @@ namespace Analytics
         private AnalyticsEventItemSink(string sourceItem, string targetItem, MergeBoardId mergeBoardId, Dictionary<string, ItemSinkProgressStatus> sinkStatusMulti, SimpleSinkProgressStatus sinkStatusSimple)
         {
         }
+
+        [Description("Source item level")]
+        [JsonProperty("source_item_level")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public int SourceItemLevel { get; set; }
+
+        [JsonProperty("source_item_mergechain_total_length")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("Merge chain total length of the source item")]
+        public int SourceItemMergeChainTotalLength { get; set; }
+
+        [JsonProperty("source_item_mergechain_unlocked_length")]
+        [Description("Merge chain unlocked length of the source item")]
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public int SourceItemMergeChainUnlockedLength { get; set; }
+
+        [Description("Target item level")]
+        [MetaMember(9, (MetaMemberFlags)0)]
+        [JsonProperty("target_item_level")]
+        public int TargetItemLevel { get; set; }
+
+        [Description("Merge chain total length of the target item")]
+        [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("target_item_mergechain_total_length")]
+        public int TargetItemMergeChainTotalLength { get; set; }
+
+        [Description("Merge chain unlocked length of the target item")]
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [JsonProperty("target_item_mergechain_unlocked_length")]
+        public int TargetItemMergeChainUnlockedLength { get; set; }
+
+        private AnalyticsEventItemSink(string sourceItem, string targetItem, MergeBoardId mergeBoardId, Dictionary<string, ItemSinkProgressStatus> sinkStatusMulti, SimpleSinkProgressStatus sinkStatusSimple, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength, int targetItemLevel, int targetItemMergeChainTotalLength, int targetItemMergeChainUnlockedLength)
+        {
+        }
     }
 }

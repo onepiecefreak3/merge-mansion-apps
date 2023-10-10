@@ -44,6 +44,10 @@ namespace Metaplay.Core.Debugging
             public SessionStartFailed(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
             {
             }
+
+            public SessionStartFailed(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
+            {
+            }
         }
 
         [MetaMember(100, (MetaMemberFlags)0)]
@@ -108,6 +112,10 @@ namespace Metaplay.Core.Debugging
             public TerminalNetworkError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
             {
             }
+
+            public TerminalNetworkError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
+            {
+            }
         }
 
         [MetaSerializableDerived(2)]
@@ -129,6 +137,10 @@ namespace Metaplay.Core.Debugging
             }
 
             public UnhandledExceptionError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, string exceptionName, string exceptionMessage, string stackTrace)
+            {
+            }
+
+            public UnhandledExceptionError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string exceptionName, string exceptionMessage, string stackTrace)
             {
             }
         }
@@ -175,6 +187,18 @@ namespace Metaplay.Core.Debugging
             public SessionCommunicationHanged(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, string issueType, string issueInfo, LoginDebugDiagnostics debugDiagnostics, MetaDuration roundtripEstimate, ServerGateway serverGateway, string networkReachability, string tlsPeerDescription, SessionToken sessionToken, int pingId, MetaDuration elapsedSinceCommunication)
             {
             }
+
+            public SessionCommunicationHanged(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string issueType, string issueInfo, LoginDebugDiagnostics debugDiagnostics, MetaDuration roundtripEstimate, ServerGateway serverGateway, string networkReachability, string tlsPeerDescription, SessionToken sessionToken, int pingId, MetaDuration elapsedSinceCommunication)
+            {
+            }
+        }
+
+        [MetaMember(107, (MetaMemberFlags)0)]
+        public IncidentApplicationInfo ApplicationInfo { get; set; }
+        public DateTime DeletionDateTime { get; set; }
+
+        public PlayerIncidentReport(string incidentId, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo)
+        {
         }
     }
 }

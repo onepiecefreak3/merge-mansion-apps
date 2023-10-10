@@ -23,5 +23,10 @@ namespace Metaplay.Core.League
         protected DivisionClientStateBase()
         {
         }
+
+        [Transient]
+        [NoChecksum]
+        [MetaMember(102, (MetaMemberFlags)0)]
+        public int CurrentDivisionParticipantIdx { get; set; }
     }
 }

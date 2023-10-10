@@ -32,6 +32,7 @@ namespace GameLogic
         BuyMoreBlueEnergyPopup = 24,
         BuyDailyTasksRefresh = 25,
         BuyMorePurpleEnergyPopup = 26,
-        BuyRentableInventory = 27
+        BuyRentableInventory = 27,
+        ChestsPurchase = 28
     }
 }

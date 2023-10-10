@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+using GameLogic.Player;
 using Metaplay.Client.Messages;
 using Metaplay.Core.Message;
 using Metaplay.Core.Player;
@@ -154,7 +155,7 @@ namespace Metaplay.Core.Network
             _clientAppPauseStatus = clientAppPauseStatus;
             _resourceProposal = resourceProposal;
 
-            if (_handshakePhase != ServerHandshakePhase.WaitingForSessionHandshakeCompletion)
+            if (_handshakePhase != ServerHandshakePhase.WaitingForResourceCorrectionHandledByUser)
                 return;
 
             EnqueueInfo(new SessionStartRequested());
@@ -512,39 +513,35 @@ namespace Metaplay.Core.Network
 
         private void DispatchToInternalHandlers(MetaMessage message)
         {
-            if (_handshakePhase < ServerHandshakePhase.WaitingForSessionHandshakeCompletion)
+            switch (message)
             {
-                switch (message)
-                {
-                    case Handshake.LogicVersionMismatch lvm:
-                        HandleLogicVersionMismatch(lvm);
-                        return;
+                case Handshake.LogicVersionMismatch lvm:
+                    HandleLogicVersionMismatch(lvm);
+                    return;
 
-                    case Handshake.OngoingMaintenance om:
-                        HandleOngoingMaintenance(om);
-                        return;
-                }
-            }
+                case Handshake.OngoingMaintenance om:
+                    HandleOngoingMaintenance(om);
+                    return;
 
-            if (_handshakePhase < ServerHandshakePhase.InSession)
-            {
-                if (message is Handshake.OperationStillOngoing)
+                case Handshake.OperationStillOngoing:
+                    return;
+
+                case Handshake.LoginProtocolVersionMismatch lpvm:
+                    HandleLoginProtocolVersionMismatch(lpvm);
+                    return;
+
+                case Handshake.RedirectToServer rts:
+                    HandleRedirectToServer(rts);
                     return;
             }
 
             switch (_handshakePhase)
             {
+                case ServerHandshakePhase.WaitingForHelloAcceptedFollowedByCreateGuestAccountResponse:
                 case ServerHandshakePhase.WaitingForHelloAcceptedFollowedByLoginCompletion:
+                case ServerHandshakePhase.WaitingForHelloAcceptedFollowedBySessionResumption:
                     switch (message)
                     {
-                        case Handshake.LoginProtocolVersionMismatch lpvm:
-                            HandleLoginProtocolVersionMismatch(lpvm);
-                            return;
-
-                        case Handshake.RedirectToServer rts:
-                            HandleRedirectToServer(rts);
-                            return;
-
                         case Handshake.ClientHelloAccepted cha:
                             HandleClientHelloAccepted(cha);
                             return;
@@ -553,13 +550,26 @@ namespace Metaplay.Core.Network
                     // Log debug "Expected hello response, got {Message}"
                     TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
 
-                    break;
+                    return;
+
+                case ServerHandshakePhase.WaitingForCreateGuestAccountResponse:
+                    switch (message)
+                    {
+                        case Handshake.CreateGuestAccountResponse cgar:
+                            HandleCreateGuestAccountResponse(cgar);
+                            return;
+                    }
+
+                    // Log debug "Expected account creation response, got {Message}"
+                    TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
+
+                    return;
 
                 case ServerHandshakePhase.WaitingForLoginCompletion:
                     switch (message)
                     {
-                        case Handshake.LoginResponse lr:
-                            HandleLoginResponse(lr);
+                        case Handshake.LoginSuccessResponse lsr:
+                            HandleLoginSuccessResponse(lsr);
                             return;
 
                         case Handshake.SocialAuthenticationLoginFailure sar:
@@ -572,7 +582,24 @@ namespace Metaplay.Core.Network
 
                     return;
 
-                case ServerHandshakePhase.WaitingForSessionHandshakeCompletion:
+                case ServerHandshakePhase.WaitingForSessionResumption:
+                    switch (message)
+                    {
+                        case SessionProtocol.SessionResumeSuccess srs:
+                            HandleSessionResumeSuccess(srs);
+                            return;
+
+                        case SessionProtocol.SessionResumeFailure srf:
+                            HandleSessionResumeFailure(srf);
+                            return;
+                    }
+
+                    // Log debug "Expected session response, got {Message}"
+                    TerminateWithError(new UnexpectedLoginMessageError(message.GetType().Name));
+
+                    return;
+
+                case ServerHandshakePhase.WaitingForSessionStartCompletion:
                     switch (message)
                     {
                         case SessionProtocol.SessionStartSuccess sss:
@@ -583,12 +610,8 @@ namespace Metaplay.Core.Network
                             HandleSessionStartFailure(ssf);
                             return;
 
-                        case SessionProtocol.SessionResumeSuccess srs:
-                            HandleSessionResumeSuccess(srs);
-                            return;
-
-                        case SessionProtocol.SessionResumeFailure srf:
-                            HandleSessionResumeFailure(srf);
+                        case SessionProtocol.SessionStartResourceCorrection ssrc:
+                            HandleSessionStartResourceCorrection(ssrc);
                             return;
                     }
 
@@ -662,6 +685,19 @@ namespace Metaplay.Core.Network
             _transport.EnqueueSendMessage(msg);
         }
 
+        private void HandleSessionStartResourceCorrection(SessionProtocol.SessionStartResourceCorrection startResourceCorrection)
+        {
+            if (startResourceCorrection.QueryId != _currentSessionStartQueryId)
+            {
+                // Log debug "Session resource correction request was stale, ignored. Got id {QueryId}, expected {ExpectedId}", startResourceCorrection.QueryId, _currentSessionStartQueryId
+                return;
+            }
+
+            _handshakePhase = ServerHandshakePhase.WaitingForResourceCorrectionHandledByUser;
+
+            EnqueueInfo(new ResourceCorrectionInfo(startResourceCorrection.ResourceCorrection));
+        }
+
         private void HandleSessionStartSuccess(SessionProtocol.SessionStartSuccess sessionSuccess)
         {
             if (_currentSession != null)
@@ -683,7 +719,7 @@ namespace Metaplay.Core.Network
             lock (_currentSessionSendQueueLock)
             {
                 var state = new SessionParticipantState(sessionSuccess.SessionToken);
-                _currentSession = new SessionState(state);
+                _currentSession = new SessionState(state, sessionSuccess.PlayerId, sessionSuccess.ResumptionToken);
 
                 _handshakePhase = ServerHandshakePhase.InSession;
             }
@@ -694,16 +730,8 @@ namespace Metaplay.Core.Network
             switch (sessionFailure.Reason)
             {
                 case SessionProtocol.SessionStartFailure.ReasonCode.InternalError:
-                    // Log warning "Failed to start session. Provided message: <no message>"
-                    TerminateWithError(new SessionStartFailed(sessionFailure.DebugOnlyErrorMessage));
-                    break;
-
-                case SessionProtocol.SessionStartFailure.ReasonCode.ResourceCorrection:
-                    if (sessionFailure.QueryId == _currentSessionStartQueryId)
-                        EnqueueInfo(new ResourceCorrectionInfo(sessionFailure.ResourceCorrection));
-                    else
-                        ; // Log debug "Session resource correction request was stale, ignored. Got id {sessionFailure.QueryId}, expected {_currentSessionStartQueryId}"
-
+                    // Log warning "Failed to start session. Provided message: {Message}"; Message: sessionFailure.DebugOnlyErrorMessage or "<no message>"
+                    TerminateWithError(new SessionStartFailed(sessionFailure.DebugOnlyErrorMessage ?? "internal error"));
                     break;
 
                 case SessionProtocol.SessionStartFailure.ReasonCode.Banned:
@@ -792,6 +820,8 @@ namespace Metaplay.Core.Network
                         _transport.EnqueueSendMessage(msg);
 
                     Interlocked.Add(ref _connDiagnostics.SessionMessagesDelayedSent, _currentSession.SessionParticipant.RememberedSent.Count);
+
+                    _handshakePhase = ServerHandshakePhase.InSession;
                 }
                 else if (result is SessionUtil.ResumeResult.Failure f)
                 {
@@ -805,73 +835,21 @@ namespace Metaplay.Core.Network
             _numSuccessfulSessionResumes++;
         }
 
-        private void HandleLoginResponse(Handshake.LoginResponse loginResponse)
+        private void HandleLoginSuccessResponse(Handshake.LoginSuccessResponse loginSuccessResponse)
         {
             Interlocked.Increment(ref _connDiagnostics.LoginSuccessesReceived);
             _connDiagnostics.LastLoginSuccessReceivedAtMS = MetaTime.Now.MillisecondsSinceEpoch;
 
             // Log info "Successfully logged in"
 
-            if (_credentials.SocialAuthClaim == null)
-            {
-                if (!string.IsNullOrEmpty(_credentials.DeviceId))
-                {
-                    if (loginResponse.PlayerId.IsValid)
-                    {
-                        if (_credentials.PlayerId == loginResponse.PlayerId)
-                        {
-                            // Log warning "Server corrected PlayerId but correction did not change it!"
-                        }
-                        else
-                        {
-                            _credentials = new LoginCredentials(_credentials.DeviceId, _credentials.AuthToken, loginResponse.PlayerId, _credentials.IsBot, null);
-                            EnqueueInfo(new LoginCredentialsChangedInfo(LoginCredentialsChangedInfo.ChangeType.PlayerIdChanged, _credentials.DeviceId, _credentials.AuthToken, loginResponse.PlayerId));
-                        }
-                    }
-                }
-                else
-                {
-                    if (loginResponse.DeviceId == null)
-                    {
-                        TerminateWithError(new SessionError("Newly created player must receive DeviceId from server"));
-                        return;
-                    }
-
-                    if (loginResponse.AuthToken == null)
-                    {
-                        TerminateWithError(new SessionError("Newly created player must receive AuthToken from server"));
-                        return;
-                    }
-
-                    if (!loginResponse.PlayerId.IsValid)
-                    {
-                        TerminateWithError(new SessionError("Newly created player must receive PlayerId from server"));
-                        return;
-                    }
-
-                    _credentials = new LoginCredentials(loginResponse.DeviceId, loginResponse.AuthToken, loginResponse.PlayerId, _credentials.IsBot, null);
-                    EnqueueInfo(new LoginCredentialsChangedInfo(LoginCredentialsChangedInfo.ChangeType.CredentialsCreated, loginResponse.DeviceId, loginResponse.AuthToken, loginResponse.PlayerId));
-                }
-            }
-            else
-            {
-                var deviceId = loginResponse.DeviceId;
-                if (deviceId == null && loginResponse.PlayerId.IsValid)
-                    deviceId = _credentials.DeviceId;
-
-                var playerId = loginResponse.PlayerId.IsValid ? loginResponse.PlayerId : _credentials.PlayerId;
-
-                _credentials = new LoginCredentials(deviceId, _credentials.AuthToken, playerId, _credentials.IsBot, _credentials.SocialAuthClaim);
-
-                EnqueueInfo(new LoginCredentialsChangedInfo(LoginCredentialsChangedInfo.ChangeType.PlayerIdChanged, deviceId, _credentials.AuthToken, playerId));
-            }
-
             _statistics.DurationToLoginSuccess = DateTime.UtcNow - _connectionStartTime;
-            _handshakePhase = ServerHandshakePhase.WaitingForSessionHandshakeCompletion;
+            _handshakePhase = ServerHandshakePhase.WaitingForSessionStartCompletion;
         }
 
         private void HandleOnReceiveServerHello(Handshake.ServerHello serverHello)
         {
+            // Log debug "Received {Message}"
+
             EnqueueInfo(new GotServerHello(serverHello));
 
             if (serverHello.FullProtocolHash != MetaSerializerTypeRegistry.FullProtocolHash)
@@ -916,11 +894,26 @@ namespace Metaplay.Core.Network
             }
         }
 
+        private void HandleCreateGuestAccountResponse(Handshake.CreateGuestAccountResponse createGuestResponse)
+        {
+            _handshakePhase = ServerHandshakePhase.WaitingForCreateGuestAccountCreationHandledByUser;
+
+            EnqueueInfo(new GuestAccountCreatedInfo(createGuestResponse.DeviceId, createGuestResponse.AuthToken, createGuestResponse.PlayerId));
+        }
+
         private void HandleClientHelloAccepted(Handshake.ClientHelloAccepted accepted)
         {
-            if (_handshakePhase == ServerHandshakePhase.WaitingForHelloAcceptedFollowedByLoginCompletion)
+            ServerHandshakePhase[] newPhase =
             {
-                _handshakePhase = ServerHandshakePhase.WaitingForLoginCompletion;
+                ServerHandshakePhase.WaitingForCreateGuestAccountResponse,
+                ServerHandshakePhase.WaitingForLoginCompletion,
+                ServerHandshakePhase.WaitingForSessionResumption
+            };
+
+            var currentPhase = (int)_handshakePhase - 1;
+            if (currentPhase < 3)
+            {
+                _handshakePhase = newPhase[currentPhase];
                 return;
             }
 
@@ -990,16 +983,34 @@ namespace Metaplay.Core.Network
         private class SessionState
         {
             public SessionParticipantState SessionParticipant { get; } // 0x10
-            public SessionResumptionAttempt CurrentResumptionAttempt { get; set; } // 0x18
+            public EntityId PlayerId { get; } // 0x18
+            public byte[] ResumptionToken { get; } // 0x20
+            public SessionResumptionAttempt CurrentResumptionAttempt { get; set; } // 0x28
 
-            public SessionState(SessionParticipantState sessionParticipant)
+            public SessionState(SessionParticipantState sessionParticipant, EntityId playerId, byte[] resumptionToken)
             {
                 SessionParticipant = sessionParticipant;
+                PlayerId = playerId;
+                ResumptionToken = resumptionToken;
             }
         }
 
         public class SessionStartRequested : MessageTransport.Info
         {
+        }
+
+        public class GuestAccountCreatedInfo : MessageTransport.Info
+        {
+            // Fields
+            public readonly ISessionCredentialService.GuestCredentials GuestCredentials; // 0x10
+
+            // Methods
+
+            // RVA: 0x205ECC0 Offset: 0x205ECC0 VA: 0x205ECC0
+            public GuestAccountCreatedInfo(string deviceId, string authToken, EntityId playerId)
+            {
+                GuestCredentials = new ISessionCredentialService.GuestCredentials(deviceId, authToken, playerId);
+            }
         }
 
         public class SessionResumptionAttempt
@@ -1024,11 +1035,17 @@ namespace Metaplay.Core.Network
         public enum ServerHandshakePhase
         {
             NotConnected = 0,
-            WaitingForHelloAcceptedFollowedByLoginCompletion = 1,
-            WaitingForLoginCompletion = 2,
-            WaitingForSessionHandshakeCompletion = 3,
-            InSession = 4,
-            Error = 5
+            WaitingForHelloAcceptedFollowedByCreateGuestAccountResponse = 1,
+            WaitingForHelloAcceptedFollowedByLoginCompletion = 2,
+            WaitingForHelloAcceptedFollowedBySessionResumption = 3,
+            WaitingForCreateGuestAccountResponse = 4,
+            WaitingForCreateGuestAccountCreationHandledByUser = 5,
+            WaitingForLoginCompletion = 6,
+            WaitingForSessionResumption = 7,
+            WaitingForSessionStartCompletion = 8,
+            WaitingForResourceCorrectionHandledByUser = 9,
+            InSession = 10,
+            Error = 11
         }
 
         #endregion

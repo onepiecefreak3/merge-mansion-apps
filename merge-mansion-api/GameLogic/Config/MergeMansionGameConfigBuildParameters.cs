@@ -5,6 +5,7 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
+    [MetaBlockedMembers(new int[] { 3, 4 })]
     public class MergeMansionGameConfigBuildParameters : GameConfigBuildParameters
     {
         public override bool IsIncremental { get; }
@@ -15,17 +16,14 @@ namespace GameLogic.Config
         [MetaMember(2, (MetaMemberFlags)0)]
         public string SpreadSheetUrl { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
-        public string DoltsBranch { get; set; }
-
-        [MetaMember(4, (MetaMemberFlags)0)]
-        public string DoltsCommitHash { get; set; }
-
         public MergeMansionGameConfigBuildParameters()
         {
         }
 
         [MetaMember(5, (MetaMemberFlags)0)]
         public bool IsDolts { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public DoltsConfigBuildParameters DoltsParameters { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System;
 namespace GameLogic.Inventory
 {
     [MetaSerializable]
-    public class RentableInventorySettings : IGameConfigData<RentableInventorySettingsId>, IGameConfigData
+    public class RentableInventorySettings : IGameConfigData<RentableInventorySettingsId>, IGameConfigData, IGameConfigKey<RentableInventorySettingsId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private RentableInventorySettingsId Id { get; set; }

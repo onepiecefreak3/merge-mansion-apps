@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using GameLogic.Player.Items;
 using Metaplay.Core;
 using System.Runtime.Serialization;
+using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(9)]
-    public class LeaderboardEventModel : MetaActivableState<LeaderboardEventId, LeaderboardEventInfo>, IBoardEventModel
+    public class LeaderboardEventModel : MetaActivableState<LeaderboardEventId, LeaderboardEventInfo>, IBoardEventModel, IPointsEvent
     {
         private static byte InitialBoolFields;
         private static int InitialScore;
@@ -74,5 +75,10 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public bool Joined { get; }
+
+        [IgnoreDataMember]
+        public LeaderboardEventInfo Info { get; }
+        public IStringId Id { get; }
+        public int Points { get; }
     }
 }

@@ -14,7 +14,7 @@ using Metaplay.Core.Client;
 
 namespace Metaplay.Core.Player
 {
-    public interface IPlayerModelBase : IModel<IPlayerModelBase>, IModel, ISchemaMigratable, IMetaIntegrationConstructible<IPlayerModelBase>, IMetaIntegration<IPlayerModelBase>, IMetaIntegrationConstructible, IRequireSingleConcreteType
+    public interface IPlayerModelBase : IModel<IPlayerModelBase>, IModel, ISchemaMigratable, IMetaIntegrationConstructible<IPlayerModelBase>, IMetaIntegration<IPlayerModelBase>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         // STUB
         // RVA: -1 Offset: -1 Slot: 9

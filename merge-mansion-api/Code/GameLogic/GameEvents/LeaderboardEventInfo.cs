@@ -20,7 +20,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     [MetaActivableConfigData("LeaderboardEvent", false)]
     [MetaBlockedMembers(new int[] { 10, 16 })]
-    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo, IBubbleBonusEvent
+    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IGameConfigKey<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo, IBubbleBonusEvent
     {
         [MetaMember(1, 0)]
         public LeaderboardEventId LeaderboardEventId { get; set; }

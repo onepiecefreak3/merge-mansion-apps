@@ -60,7 +60,7 @@ namespace UnityEngine
 
         private static void EnsureVersions()
         {
-            Versions[SystemLanguage.English] = "23.09.02";
+            Versions[SystemLanguage.English] = "23.10.01";
         }
 
         private static void EnsureIdentifiers()

@@ -84,5 +84,17 @@ namespace Analytics
         public AnalyticEventBoardState(PlayerModel player, AnalyticsSnapshotType snapshotType)
         {
         }
+
+        [Description("Producer inventory items")]
+        [JsonProperty("producer_inventory_items")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> ProducerInventoryItems { get; set; }
+
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [Description("Rentable inventory items")]
+        [JsonProperty("rentable_inventory_items")]
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> RentableInventoryItems { get; set; }
     }
 }

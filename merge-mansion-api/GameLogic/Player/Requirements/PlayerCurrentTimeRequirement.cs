@@ -25,5 +25,14 @@ namespace GameLogic.Player.Requirements
         public PlayerCurrentTimeRequirement(MetaTime? startInclusive, MetaTime? endExclusive)
         {
         }
+
+        [IgnoreDataMember]
+        public bool HasStartTime { get; }
+
+        [IgnoreDataMember]
+        public MetaTime? EndTimeExclusive { get; }
+
+        [IgnoreDataMember]
+        public bool HasEndTime { get; }
     }
 }

@@ -15,8 +15,6 @@ namespace Metaplay.Core.League.Player
 
         IDivisionContribution Metaplay.Core.League.Player.IPlayerDivisionParticipantState.PlayerContribution { get; set; }
 
-        EntityId Metaplay.Core.League.Player.IPlayerDivisionParticipantState.PlayerId { get; }
-
         protected PlayerDivisionParticipantStateBase()
         {
         }

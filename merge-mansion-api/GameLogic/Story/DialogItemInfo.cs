@@ -6,12 +6,13 @@ using Metaplay.Core.Model;
 using Code.GameLogic.Config;
 using System.Runtime.Serialization;
 using System;
+using GameLogic.Player.Director.Config;
 
 namespace GameLogic.Story
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 16 })]
-    public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IValidatable
+    public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IGameConfigKey<DialogItemId>, IValidatable
     {
         [MetaMember(1, 0)]
         public DialogItemId DialogItemId { get; set; }
@@ -100,6 +101,16 @@ namespace GameLogic.Story
         }
 
         public DialogItemInfo(DialogItemId dialogItemId, string localizationId, DialogMode dialogMode, DialogCharacterState leftCharacterState, DialogCharacterType leftCharacter, bool leftSpeaks, DialogCharacterState rightCharacterState, DialogCharacterType rightCharacter, bool rightSpeaks, bool waitConfirmation, CameraTargetName scrollToCameraTarget, bool waitForEndOfScrolling, CameraZoomTarget cameraZoomTarget, bool needsTransition, CameraTargetName moveToCameraTarget, List<HotspotId> scrollToHotSpot, HotspotId activateHotSpot, List<DialogLayoutEvent> layoutEvents, string animationGameObjectName, string animationTrackName, string animationSpineName, string animationFinalState, List<MetaRef<MapCharacterEventDefinition>> mapCharactersEvents, List<MapCharacterType> resetMapCharacters, List<DialogCharacterType> discoveredCharacters)
+        {
+        }
+
+        [MetaMember(27, (MetaMemberFlags)0)]
+        public bool DisallowClose { get; set; }
+
+        [MetaMember(28, (MetaMemberFlags)0)]
+        public List<IDirectorAction> StartActions { get; set; }
+
+        public DialogItemInfo(DialogItemId dialogItemId, string localizationId, DialogMode dialogMode, DialogCharacterState leftCharacterState, DialogCharacterType leftCharacter, bool leftSpeaks, DialogCharacterState rightCharacterState, DialogCharacterType rightCharacter, bool rightSpeaks, bool waitConfirmation, CameraTargetName scrollToCameraTarget, bool waitForEndOfScrolling, CameraZoomTarget cameraZoomTarget, bool needsTransition, CameraTargetName moveToCameraTarget, List<HotspotId> scrollToHotSpot, HotspotId activateHotSpot, List<DialogLayoutEvent> layoutEvents, string animationGameObjectName, string animationTrackName, string animationSpineName, string animationFinalState, List<MetaRef<MapCharacterEventDefinition>> mapCharactersEvents, List<MapCharacterType> resetMapCharacters, List<DialogCharacterType> discoveredCharacters, bool disallowClose, List<IDirectorAction> startActions)
         {
         }
     }

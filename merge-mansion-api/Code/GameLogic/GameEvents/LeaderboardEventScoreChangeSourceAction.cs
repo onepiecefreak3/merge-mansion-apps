@@ -10,6 +10,7 @@ namespace Code.GameLogic.GameEvents
         Collect = 2,
         Debug = 3,
         MoveFromPocketToBoard = 4,
-        Chest = 5
+        Chest = 5,
+        Reward = 6
     }
 }

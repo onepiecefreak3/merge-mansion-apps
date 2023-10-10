@@ -15,7 +15,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     [MetaActivableConfigData("ShopEvent", false)]
     [MetaBlockedMembers(new int[] { 6, 7, 8, 9, 12, 13, 14, 15, 21, 24, 25, 26, 27 })]
-    public class ShopEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IMetaActivableInfo<EventId>, IValidatable
+    public class ShopEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IEventGroupInfo
     {
         [MetaMember(1, 0)]
         public EventId EventId { get; set; }
@@ -87,6 +87,13 @@ namespace Code.GameLogic.GameEvents
         }
 
         public ShopEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<EventOfferInfo>> eventShopOfferInfos, MetaRef<EventLevels> eventLevels, MetaRef<EventCurrencyInfo> eventCurrencyInfo, List<MetaRef<BoardEventInfo>> hintedBoardEventInfos, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId endPopupId, ConfigPrefabId shopPopupId, ConfigPrefabId hudButtonId, List<MetaRef<EventOfferSetInfo>> eventOfferSetInfos, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement)
+        {
+        }
+
+        [MetaMember(33, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        public ShopEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<EventOfferInfo>> eventShopOfferInfos, MetaRef<EventLevels> eventLevels, MetaRef<EventCurrencyInfo> eventCurrencyInfo, List<MetaRef<BoardEventInfo>> hintedBoardEventInfos, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId endPopupId, ConfigPrefabId shopPopupId, ConfigPrefabId hudButtonId, List<MetaRef<EventOfferSetInfo>> eventOfferSetInfos, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, EventGroupId groupId)
         {
         }
     }

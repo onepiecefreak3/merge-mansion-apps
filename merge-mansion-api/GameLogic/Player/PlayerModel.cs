@@ -218,9 +218,6 @@ namespace GameLogic.Player
         public IEnumerable<IBoard> Boards { get; }
 
         [IgnoreDataMember]
-        public IEnumerable<BoardInventory> Inventories { get; }
-
-        [IgnoreDataMember]
         public IEnumerable<ValueTuple<IBoard, MetaTime?>> BoardsWithExpirationTimes { get; }
         public IEnumerable<IMailMessage> MailMessages { get; }
         public IEnumerable<GarageCleanupEventModel> ActiveGarageCleanups { get; }
@@ -261,5 +258,13 @@ namespace GameLogic.Player
 
         [IgnoreDataMember]
         public int ProgressionEventIAPStreakLength { get; }
+
+        [IgnoreDataMember]
+        public bool ShouldUpdateRentableInventoryExpiration;
+        [MetaMember(240, (MetaMemberFlags)0)]
+        public BoardInventory GarageBoardProducerInventory { get; set; }
+
+        [MetaMember(241, (MetaMemberFlags)0)]
+        public F64Vec2 CameraPosition { get; set; }
     }
 }

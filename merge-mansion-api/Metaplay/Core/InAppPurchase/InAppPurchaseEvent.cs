@@ -10,7 +10,7 @@ namespace Metaplay.Core.InAppPurchase
     [MetaReservedMembers(1, 12)]
     [MetaReservedMembers(13, 17)]
     [MetaDeserializationConvertFromIntegrationImplementation]
-    public abstract class InAppPurchaseEvent : IMetaIntegrationConstructible<InAppPurchaseEvent>, IMetaIntegration<InAppPurchaseEvent>, IMetaIntegrationConstructible, IRequireSingleConcreteType
+    public abstract class InAppPurchaseEvent : IMetaIntegrationConstructible<InAppPurchaseEvent>, IMetaIntegration<InAppPurchaseEvent>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public InAppPurchasePlatform Platform { get; set; }

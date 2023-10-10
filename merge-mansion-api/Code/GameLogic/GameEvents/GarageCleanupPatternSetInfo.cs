@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class GarageCleanupPatternSetInfo : IGameConfigData<GarageCleanupPatternSetId>, IGameConfigData
+    public class GarageCleanupPatternSetInfo : IGameConfigData<GarageCleanupPatternSetId>, IGameConfigData, IGameConfigKey<GarageCleanupPatternSetId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public GarageCleanupPatternSetId ConfigKey { get; set; }

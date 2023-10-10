@@ -16,5 +16,9 @@ namespace Metaplay.Core.League
         int AvatarDataEpoch { get; set; }
 
         IDivisionRewards ResolvedDivisionRewards { get; set; }
+
+        int ParticipantIndex { get; set; }
+
+        string ParticipantInfo { get; }
     }
 }

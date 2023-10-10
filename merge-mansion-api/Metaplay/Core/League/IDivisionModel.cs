@@ -23,6 +23,10 @@ namespace Metaplay.Core.League
         MetaTime EndingSoonStartsAt { get; set; }
 
         bool IsConcluded { get; set; }
+
+        IDivisionServerModel ServerModel { get; set; }
+
+        int NextParticipantIdx { get; set; }
     }
 
     public interface IDivisionModel<TDivisionModel> : IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IMultiplayerModel<TDivisionModel>, IModel<TDivisionModel>

@@ -1,10 +1,11 @@
 using Metaplay.Core.Config;
 using Metaplay.Core.Model;
+using Code.GameLogic.Config;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>, IGameConfigData
+    public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>, IGameConfigData, IGameConfigKey<ProgressionEventPerkId>, IValidatable
     {
         [MetaMember(1, 0)]
         public ProgressionEventPerkId Id { get; set; }

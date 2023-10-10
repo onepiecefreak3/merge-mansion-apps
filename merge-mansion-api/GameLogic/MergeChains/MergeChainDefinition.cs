@@ -13,7 +13,7 @@ using System.Reflection;
 namespace GameLogic.MergeChains
 {
     [MetaSerializable]
-    public class MergeChainDefinition : IGameConfigData<MergeChainId>, IGameConfigData, IValidatable
+    public class MergeChainDefinition : IGameConfigData<MergeChainId>, IGameConfigData, IGameConfigKey<MergeChainId>, IValidatable
     {
         private static HashSet<Type> allowedTypes = new()
         {

@@ -31,7 +31,7 @@ using GameLogic.Player.Requirements;
 namespace GameLogic.Player.Items
 {
     [MetaSerializable]
-    public class ItemDefinition : IGameConfigData<int>, IGameConfigData, IValidatable
+    public class ItemDefinition : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>, IValidatable
     {
         [MetaMember(12, (MetaMemberFlags)0)]
         private MergeFeatures _MergeFeatures;
@@ -171,9 +171,6 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public MergeChainDefinition MergeChain => MergeChainRef.Ref;
-
-        [IgnoreDataMember]
-        public IReadOnlyList<(ItemDefinition, F32)> ProducingParents { get; set; }
         public IEnumerable<IDirectorAction> OnDiscovered => OnDiscoveredActions;
         public bool IsMaxLevel => MergeChain.IsLastItem(ConfigKey);
 
@@ -254,6 +251,13 @@ namespace GameLogic.Player.Items
         public bool HasUnlockRequirements { get; }
 
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements)
+        {
+        }
+
+        [MetaMember(44, (MetaMemberFlags)0)]
+        public List<string> SpawnEffects { get; set; }
+
+        public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects)
         {
         }
     }

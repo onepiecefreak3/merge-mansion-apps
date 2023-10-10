@@ -7,7 +7,7 @@ using GameLogic.Config;
 namespace GameLogic.Dialogue
 {
     [MetaSerializable]
-    public class DialogueCharacterInfo : IGameConfigData<DialogCharacterType>, IGameConfigData
+    public class DialogueCharacterInfo : IGameConfigData<DialogCharacterType>, IGameConfigData, IGameConfigKey<DialogCharacterType>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DialogCharacterType DialogCharacterType { get; set; }

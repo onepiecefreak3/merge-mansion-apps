@@ -59,8 +59,6 @@ namespace GameLogic.Player
 
         IPlayerModelServerListener ServerListener { get; }
 
-        IEnumerable<BoardInventory> Inventories { get; }
-
         IEnumerable<ValueTuple<IBoard, MetaTime?>> BoardsWithExpirationTimes { get; }
 
         IEnumerable<IMailMessage> MailMessages { get; }
@@ -90,6 +88,10 @@ namespace GameLogic.Player
         ValueTuple<BoardInventory, MetaTime?> RentableInventory { get; }
 
         int ProgressionEventIAPStreakLength { get; }
+
+        BoardInventory GarageBoardInventory { get; }
+
+        BoardInventory GarageBoardProducerInventory { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

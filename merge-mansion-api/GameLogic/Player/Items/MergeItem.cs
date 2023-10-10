@@ -304,5 +304,7 @@ namespace GameLogic.Player.Items
         public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, PersistentState persistentState)
         {
         }
+
+        public int ItemLevel { get; }
     }
 }

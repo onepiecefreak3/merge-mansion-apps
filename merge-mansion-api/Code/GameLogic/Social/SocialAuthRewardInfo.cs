@@ -9,7 +9,7 @@ using System;
 namespace Code.GameLogic.Social
 {
     [MetaSerializable]
-    public class SocialAuthRewardInfo : IGameConfigData<SocialAuthRewardId>, IGameConfigData, IValidatable
+    public class SocialAuthRewardInfo : IGameConfigData<SocialAuthRewardId>, IGameConfigData, IGameConfigKey<SocialAuthRewardId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public SocialAuthRewardId SocialAuthRewardId { get; set; }
