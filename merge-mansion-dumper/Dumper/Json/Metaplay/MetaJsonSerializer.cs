@@ -173,7 +173,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WritePropertyName("ItemSeen");
                 writer.WriteStartObject();
 
-                WriteProperty(writer, "ItemRef", psiReq.ItemRef.ItemType, serializer);
+                WriteProperty(writer, "ItemRef", psiReq.ItemRef.Ref.ItemType, serializer);
                 WriteProperty(writer, "Requirement", psiReq.Requirement, serializer);
 
                 writer.WriteEndObject();
