@@ -78,5 +78,9 @@ namespace GameLogic.Area
         public AreaInfo(AreaId configKey, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, IEnumerable<HotspotId> hotspots, IEnumerable<MapSpotId> mapSpots, HotspotId unlockedBy)
         {
         }
+
+        public AreaInfo(AreaId configKey, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, List<MetaRef<HotspotDefinition>> hotspots, List<MetaRef<MapSpotInfo>> mapSpots, HotspotId unlockedBy)
+        {
+        }
     }
 }

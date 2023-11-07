@@ -4,14 +4,13 @@ using System.Linq;
 using Metaplay.Core.Serialization;
 using Metaplay.Generated;
 using System.Reflection;
+using Metaplay.Core.Player;
 
 namespace Metaplay.Core.Config
 {
     [DefaultMember("Item")]
     public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary<TKey, TInfo>, IGameConfigLibrary, IGameConfigEntry
     {
-        private Dictionary<TKey, TInfo> _infos; // 0x10
-        private Dictionary<TKey, TInfo> _aliases; // 0x18
         protected GameConfigLibrary(Dictionary<TKey, TInfo> infos, IGameConfigDataRegistry registry)
         {
             _infos = infos;
@@ -76,7 +75,6 @@ namespace Metaplay.Core.Config
         public int Count => _infos.Count;
         public Dictionary<TKey, TInfo>.KeyCollection Keys => _infos.Keys;
         public Dictionary<TKey, TInfo>.ValueCollection Values => _infos.Values;
-        public IReadOnlyDictionary<TKey, TInfo> Infos => _infos;
 
         IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Keys => Keys;
 
@@ -86,5 +84,19 @@ namespace Metaplay.Core.Config
         GameConfigLibrary()
         {
         }
+
+        private GameConfigRuntimeStorageMode _storageMode;
+        private GameConfigLibraryDeduplicationStorage<TKey, TInfo> _deduplicationStorage;
+        private GameConfigDeduplicationOwnership _deduplicationOwnership;
+        private ConfigPatchIdSet _activePatches;
+        private HashSet<TKey> _patchAppendedKeys;
+        private Dictionary<TKey, TInfo> _exclusivelyOwnedItems;
+        private Dictionary<TKey, TInfo> _soloStorageItems;
+        private Dictionary<TKey, TKey> _aliasToRealKey;
+        private GameConfigLibrary(GameConfigRuntimeStorageMode storageMode, Dictionary<TKey, TInfo> soloStorageItems, GameConfigLibraryDeduplicationStorage<TKey, TInfo> deduplicationStorage, GameConfigDeduplicationOwnership deduplicationOwnership, HashSet<ExperimentVariantPair> activePatches, IGameConfigDataRegistry registry)
+        {
+        }
+
+        private Dictionary<TKey, TInfo> _infos;
     }
 }

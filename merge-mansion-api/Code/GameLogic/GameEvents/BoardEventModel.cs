@@ -94,6 +94,7 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(26, (MetaMemberFlags)0)]
         public bool Resolved { get; set; }
         public IStringId Id { get; }
+
         int IPointsEvent.Points { get; }
     }
 }

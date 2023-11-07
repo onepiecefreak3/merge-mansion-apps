@@ -182,9 +182,6 @@ namespace GameLogic.Player.Items
         public bool SupportsActivation { get; }
 
         [IgnoreDataMember]
-        public bool CanBeActivated { get; }
-
-        [IgnoreDataMember]
         public bool SupportsSpawning { get; }
 
         [IgnoreDataMember]
@@ -306,5 +303,17 @@ namespace GameLogic.Player.Items
         }
 
         public int ItemLevel { get; }
+
+        [IgnoreDataMember]
+        private bool CanNotBeSpedUp { get; }
+
+        [IgnoreDataMember]
+        public bool UseCalendarBasedCycle { get; }
+
+        [IgnoreDataMember]
+        public bool IsSpawnBoosted { get; }
+
+        [IgnoreDataMember]
+        private F32 TimeSpawnBoostMultiplier { get; }
     }
 }

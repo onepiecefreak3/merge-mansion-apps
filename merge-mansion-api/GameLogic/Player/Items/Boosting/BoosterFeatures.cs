@@ -36,5 +36,16 @@ namespace GameLogic.Player.Items.Boosting
         public BoosterFeatures(BoostAreaStyle boostAreaStyle, List<int> affectedItemsSet, F32 boostFactor)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public F32 SpawnBoostFactor { get; set; }
+
+        public BoosterFeatures(bool boosts, BoostAreaStyle areaStyle, float factor, float spawnFactor)
+        {
+        }
+
+        public BoosterFeatures(BoostAreaStyle boostAreaStyle, List<int> affectedItemsSet, F32 boostFactor, F32 spawnFactor)
+        {
+        }
     }
 }

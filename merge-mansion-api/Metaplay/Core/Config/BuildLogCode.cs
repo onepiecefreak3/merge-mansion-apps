@@ -32,6 +32,7 @@ namespace Metaplay.Core.Config
         MissingLeaderboardEventRankingRewardTag = 1022,
         StarRewardWeightOutsideWeightRange = 1023,
         UncompletableHotspots = 1024,
-        InvalidDialogue = 1025
+        InvalidDialogue = 1025,
+        SeasonalEventPrefabsIdMismatch = 1026
     }
 }

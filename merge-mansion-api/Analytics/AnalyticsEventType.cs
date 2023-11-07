@@ -100,6 +100,8 @@ namespace Analytics
         PlayerCreated = 89,
         FishCaught = 90,
         ItemSink = 91,
-        ScreenChange = 92
+        ScreenChange = 92,
+        AppsflyerConversion = 93,
+        AppsflyerInitialization = 94
     }
 }

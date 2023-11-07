@@ -33,5 +33,8 @@ namespace Game.Logic
         [MetaMember(7, (MetaMemberFlags)0)]
         private bool mergeHints { get; set; }
         private bool sinkTooltip { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        private bool hapticsEnabled { get; set; }
     }
 }

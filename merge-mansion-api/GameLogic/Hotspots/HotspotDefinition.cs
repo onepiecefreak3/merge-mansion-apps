@@ -10,6 +10,7 @@ using Metaplay.Core.Model;
 using System.Runtime.Serialization;
 using System;
 using Merge;
+using GameLogic.Config.Map.Characters;
 
 namespace GameLogic.Hotspots
 {
@@ -111,6 +112,34 @@ namespace GameLogic.Hotspots
         public HotspotDefinition CompleteFocusHotspot { get; }
 
         public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, int completeActionMax, HotspotId completeFocusHotspotId)
+        {
+        }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public List<MetaRef<MapCharacterEventDefinition>> AppearMapCharactersEventsRefs { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public List<MetaRef<MapCharacterEventDefinition>> CompleteMapCharactersEventsRefs { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public MetaDuration BonusTimerDuration { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public List<PlayerReward> BonusRewards { get; set; }
+
+        [IgnoreDataMember]
+        public IEnumerable<MapCharacterEventDefinition> AppearMapCharactersEvents { get; }
+
+        [IgnoreDataMember]
+        public MapCharacterType AppearMapCharacter { get; }
+
+        [IgnoreDataMember]
+        public IEnumerable<MapCharacterEventDefinition> CompleteMapCharactersEvents { get; }
+
+        [IgnoreDataMember]
+        public MapCharacterType CompleteMapCharacter { get; }
+
+        public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, List<MetaRef<MapCharacterEventDefinition>> appearMapCharactersEvents, int completeActionMax, HotspotId completeFocusHotspotId, List<MetaRef<MapCharacterEventDefinition>> completeMapCharactersEvents, List<PlayerReward> bonusRewards, MetaDuration bonusTimerDuration)
         {
         }
     }

@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System;
 using GameLogic.Player;
 using GameLogic;
+using Metaplay.Core;
 
 namespace Analytics
 {
     [AnalyticsEvent(108, "Merge goals completed", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticsEventMergeGoalsCompleted : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -48,6 +50,25 @@ namespace Analytics
         public string TaskGroup { get; set; }
 
         public AnalyticsEventMergeGoalsCompleted(PlayerModel player, HotspotId hotspotId, string areaName, int completedHotSpots, string mapSpot, string taskGroup)
+        {
+        }
+
+        [JsonProperty("bonus_time_left")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("How much time is left for bonus")]
+        public double? BonusTimeLeft { get; set; }
+
+        [Description("Character id of the hotspot task (may be empty)")]
+        [JsonProperty("character_id")]
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public string Character { get; set; }
+
+        [JsonProperty("bonus_rewards")]
+        [MetaMember(9, (MetaMemberFlags)0)]
+        [Description("Possible bonus rewards")]
+        public AnalyticsPlayerBonusReward[] BonusRewards { get; set; }
+
+        public AnalyticsEventMergeGoalsCompleted(PlayerModel player, HotspotId hotspotId, string areaName, int completedHotSpots, string mapSpot, string taskGroup, MetaDuration? bonusTimeLeft, string character, AnalyticsPlayerBonusReward[] bonusRewards)
         {
         }
     }

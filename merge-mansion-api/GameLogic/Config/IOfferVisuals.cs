@@ -21,6 +21,10 @@ namespace GameLogic.Config
         string LeftCharacterId { get; }
 
         string RightCharacterId { get; }
+
+        string BackgroundAnimationId { get; }
+
+        string ForegroundEffectId { get; }
     // STUB
     }
 }

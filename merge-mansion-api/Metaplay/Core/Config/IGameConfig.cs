@@ -7,7 +7,7 @@ namespace Metaplay.Core.Config
         ContentHash ArchiveVersion { get; }
 
         void Import(PatchedConfigArchive archive, IGameConfigDataResolver baseResolver);
-        bool AllowReferenceResolverUpdate { get; set; }
+        bool AllowLibraryUpdate { get; set; }
     //void BuildTimeValidate(GameConfigBuildWarnings.VariantWarnings variantWarnings);
     }
 }

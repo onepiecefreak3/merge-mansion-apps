@@ -5,7 +5,6 @@ namespace Metaplay.Core.Config
 {
     public abstract class GameConfigBase : IGameConfig, IGameConfigDataResolver, IGameConfigDataRegistry
     {
-        private Dictionary<Type, List<Func<object, object>>> _refResolvers; // 0x28
         // 0x10
         ContentHash Metaplay.Core.Config.IGameConfig.ArchiveVersion => ArchiveVersion;
 
@@ -67,8 +66,15 @@ namespace Metaplay.Core.Config
 
         public ContentHash ArchiveVersion;
         protected virtual CsvParseOptions DefaultParseOptions { get; }
-        public bool AllowReferenceResolverUpdate { get; set; }
 
+        private Dictionary<Type, List<IGameConfigLibrary>> _libraries;
+        public bool AllowLibraryUpdate { get; set; }
+        protected GameConfigRuntimeStorageMode StorageMode { get; set; }
+        protected GameConfigTopLevelDeduplicationStorage DeduplicationStorage { get; set; }
+        protected GameConfigDeduplicationOwnership DeduplicationOwnership { get; set; }
+        protected bool IsConstructingDeduplicationStorage { get; }
+
+        private Dictionary<Type, List<Func<object, object>>> _refResolvers;
         public MetaTime ArchiveCreatedAt;
     }
 }

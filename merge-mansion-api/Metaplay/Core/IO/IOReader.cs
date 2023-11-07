@@ -3,6 +3,7 @@ using System.Buffers.Binary;
 using System.IO;
 using System.Text;
 using Metaplay.Core.Math;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.IO
 {

@@ -23,5 +23,12 @@ namespace GameLogic.Player
         public ItemAnalyticsContext(string context, string target, List<string> spawnedItems, bool fromInventory, bool fromPocket)
         {
         }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public bool IsProducerBoosterActive { get; set; }
+
+        public ItemAnalyticsContext(string context, string target, List<string> spawnedItems, bool fromInventory, bool fromPocket, bool isProducerBoosterActive)
+        {
+        }
     }
 }

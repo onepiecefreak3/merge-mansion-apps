@@ -1,6 +1,8 @@
 using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using System.Collections.Generic;
+using System;
+using GameLogic.Area;
 
 namespace GameLogic.Config.Map.Characters
 {
@@ -46,5 +48,26 @@ namespace GameLogic.Config.Map.Characters
         public MapCharacterEventDefinition()
         {
         }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public string CharacterConfigId { get; set; }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public string CharacterAnimationId { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public List<int> CharacterAppearRotation { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public List<int> CharacterActRotation { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public string SpeechBubbleLocalizationId { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public MapSpotId MapSpotId { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public List<string> CharacterPropActions { get; set; }
     }
 }

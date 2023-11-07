@@ -333,5 +333,7 @@ namespace GameLogic.Config
         public HashSet<int> ItemsAcceptedBySinks { get; set; }
         public Dictionary<int, IReadOnlyList<ValueTuple<ItemDefinition, F32>>> ItemProducingParents { get; set; }
         public Dictionary<HotspotId, IEnumerable<HotspotDefinition>> HotspotOpensAfterCompletion { get; set; }
+        public Dictionary<MergeBoardId, EventId> BoardEventBoards { get; set; }
+        public List<List<int>> ProducerVariants { get; set; }
     }
 }

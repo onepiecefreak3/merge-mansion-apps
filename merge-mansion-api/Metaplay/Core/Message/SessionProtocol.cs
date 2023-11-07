@@ -7,6 +7,8 @@ using Metaplay.Core.Player;
 using Metaplay.Core.Serialization;
 using Metaplay.Core.Session;
 using System;
+using Metaplay.Core.Math;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.Message
 {
@@ -206,6 +208,14 @@ namespace Metaplay.Core.Message
                 GamePayload = gamePayload;
                 SupportedArchiveCompressions = supportedArchiveCompressions;
                 ClientAppPauseStatus = clientAppPauseStatus;
+
+                ResourceProposal=new SessionResourceProposal
+                {
+                    ConfigVersions = new Dictionary<ClientSlot, ContentHash>(),
+                    PatchVersions = new Dictionary<ClientSlot, ContentHash>(),
+                    ClientActiveLanguage = LanguageId.FromString("en"),
+                    ClientLocalizationVersion = new ContentHash(new UInt128(0xD4B4D04FCA615E18, 0xB5774112D9F05D30))
+                };
             }
         }
 

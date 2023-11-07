@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using Metaplay.Core.IO;
 using Metaplay.Core.Math;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.Config
 {

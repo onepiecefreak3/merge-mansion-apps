@@ -5,6 +5,9 @@ using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using System;
+using System.Collections.Generic;
+using GameLogic.Player.Requirements;
+using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {
@@ -48,6 +51,14 @@ namespace GameLogic.Player.Items.Activation
         }
 
         public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, string overrideSfx, bool startsFull, ItemVisibility itemVisibility)
+        {
+        }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        private List<PlayerRequirement> ActivationRequirements { get; set; }
+        public MetaTime? ActivationStartTime { get; }
+
+        public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, string overrideSfx, bool startsFull, List<PlayerRequirement> activationRequirements, ItemVisibility itemVisibility)
         {
         }
     }

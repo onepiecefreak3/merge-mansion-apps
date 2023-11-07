@@ -2,6 +2,7 @@
 using Metaplay.Core.Math;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {

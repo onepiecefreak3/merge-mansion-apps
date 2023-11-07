@@ -8,6 +8,7 @@ using Metaplay.Core;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using Newtonsoft.Json;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace merge_mansion_api
 {

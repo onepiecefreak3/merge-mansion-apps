@@ -9,6 +9,7 @@ namespace GameLogic.Config
     {
         [MetaMember(1, 0)]
         public InventorySlotId ConfigKey { get; set; }
+
         [MetaMember(2, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 

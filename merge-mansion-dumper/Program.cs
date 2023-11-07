@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Code.GameLogic.GameEvents;
@@ -13,6 +14,7 @@ using GameLogic.Config;
 using merge_mansion_dumper.Dumper;
 using Metaplay.Core;
 using Metaplay.Core.Config;
+using Metaplay.Core.Localization;
 using Metaplay.Generated;
 using Metaplay.Unity;
 using Metaplay.Unity.ConnectionStates;
@@ -27,6 +29,9 @@ namespace merge_mansion_dumper
 
         [Option('c', "config", Required = false, HelpText = "Sets the path to the config archive to use. This will not download any other data archives or localizations!")]
         public string ConfigArchivePath { get; set; }
+
+        [Option('l', "language", Required = false, HelpText = "Sets the path to the language mpc to use. This will not download any other data archives or localizations!")]
+        public string LanguagePath { get; set; }
     }
 
     public enum Mode
@@ -67,7 +72,7 @@ namespace merge_mansion_dumper
         private static async Task Execute(Options o)
         {
             // Setup system
-            var isSetup = SetupSystem(o.ConfigArchivePath);
+            var isSetup = SetupSystem(o.ConfigArchivePath, o.LanguagePath);
             if (!isSetup)
                 return;
 
@@ -79,7 +84,7 @@ namespace merge_mansion_dumper
             Console.WriteLine("Done.");
         }
 
-        private static bool SetupSystem(string? configArchivePath)
+        private static bool SetupSystem(string? configArchivePath, string? localizationPath)
         {
             if (!string.IsNullOrEmpty(configArchivePath))
             {
@@ -91,8 +96,14 @@ namespace merge_mansion_dumper
 
                 ClientGlobal.SharedGameConfig = gameConfig;
 
+                if (!string.IsNullOrEmpty(localizationPath))
+                    MetaplaySDK.ActiveLanguage = LocalizationLanguage.ImportBinary(ContentHash.ParseString(Path.GetFileName(localizationPath)), File.ReadAllBytes(localizationPath));
+
                 return true;
             }
+
+            if (!string.IsNullOrEmpty(localizationPath))
+                Console.WriteLine($"[!] Explicit language file {localizationPath} will not be used for normal system setup. Set a config with -c instead to use it.");
 
             Console.WriteLine("Setup game session...");
 

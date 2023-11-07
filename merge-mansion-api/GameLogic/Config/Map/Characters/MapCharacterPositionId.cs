@@ -181,6 +181,10 @@ namespace GameLogic.Config.Map.Characters
         AreaStudySrFirstMapCharacterPositionMap = 4999,
         AreaStudySrEntryMaddieMap = 5000,
         AreaDiningRoomFirstMapCharacterPositionMap = 5199,
-        AreaDiningRoomEntryMaddieMap = 5200
+        AreaDiningRoomEntryMaddieMap = 5200,
+        AreaBathroomFirstMapCharacterPositionMap = 5399,
+        AreaBathroomEntryMaddieMap = 5400,
+        AreaBathroomEntryAshDialogue = 5401,
+        AreaBathroomCenterMaddieDialogue = 5402
     }
 }

@@ -3,11 +3,14 @@ using Metaplay.Core.Config;
 using GameLogic.Player.Requirements;
 using GameLogic.Config.Shop.Items;
 using System.Collections.Generic;
+using Metaplay.Core;
+using Metaplay.Core.Player;
+using System;
 
 namespace GameLogic.Config.Shop
 {
     [MetaSerializable]
-    public class ShopItemInfo : IGameConfigData<ShopItemId>, IGameConfigData, IGameConfigKey<ShopItemId>, IHasRequirements, IShopItemInfo
+    public class ShopItemInfo : IGameConfigData<ShopItemId>, IGameConfigData, IGameConfigKey<ShopItemId>, IShopItemInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ShopItemId ConfigKey { get; set; }
@@ -20,13 +23,22 @@ namespace GameLogic.Config.Shop
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerRequirement> RequirementsList { get; set; }
-        public List<PlayerRequirement> Requirements { get; }
 
         public ShopItemInfo()
         {
         }
 
         public ShopItemInfo(ShopItemId configKey, ShopCategoryId shopCategory, IShopItem actualItem, List<PlayerRequirement> requirements)
+        {
+        }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        private List<MetaRef<PlayerSegmentInfoBase>> Segments { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public bool IsUnderMore { get; set; }
+
+        public ShopItemInfo(ShopItemId configKey, ShopCategoryId shopCategory, IShopItem actualItem, List<PlayerRequirement> requirements, List<MetaRef<PlayerSegmentInfoBase>> segments, bool isUnderMore)
         {
         }
     }

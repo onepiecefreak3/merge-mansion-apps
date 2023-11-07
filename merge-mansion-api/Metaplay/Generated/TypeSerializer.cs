@@ -21,6 +21,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Serialization;
 using Newtonsoft.Json.Linq;
 using static Metaplay.Core.Player.PlayerPropertyConstant;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Generated
 {

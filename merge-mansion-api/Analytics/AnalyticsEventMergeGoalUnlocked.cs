@@ -10,6 +10,7 @@ using GameLogic.Hotspots;
 namespace Analytics
 {
     [AnalyticsEvent(101, "Merge goal unlocked", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticsEventMergeGoalUnlocked : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -47,5 +48,20 @@ namespace Analytics
         [Description("Task Group of the hotspot task (may be empty)")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public string TaskGroup { get; set; }
+
+        [Description("How much time is left for bonus")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("bonus_time_left")]
+        public double? BonusTimeLeft { get; set; }
+
+        [Description("Possible bonus rewards")]
+        [MetaMember(9, (MetaMemberFlags)0)]
+        [JsonProperty("bonus_rewards")]
+        public AnalyticsPlayerBonusReward[] BonusRewards { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("character_id")]
+        [Description("Character id of the hotspot task (may be empty)")]
+        public string Character { get; set; }
     }
 }

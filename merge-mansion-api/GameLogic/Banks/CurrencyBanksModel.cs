@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Activables;
 using System;
 using System.Runtime.Serialization;
+using Metaplay.Core;
 
 namespace GameLogic.Banks
 {
@@ -33,5 +34,8 @@ namespace GameLogic.Banks
         public CurrencyBanksModel()
         {
         }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public MetaTime? MostRecentCurrencyBankEndAt { get; set; }
     }
 }

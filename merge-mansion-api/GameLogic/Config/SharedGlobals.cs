@@ -141,5 +141,14 @@ namespace GameLogic.Config
 
         [MetaMember(44, (MetaMemberFlags)0)]
         public int ProducerInventorySize { get; set; }
+
+        [MetaMember(45, (MetaMemberFlags)0)]
+        public MetaDuration MinimumSpeedUpTime { get; set; }
+
+        [MetaMember(46, (MetaMemberFlags)0)]
+        public MetaDuration ThirdPartySurveyRewardCheckDuration { get; set; }
+
+        [MetaMember(47, (MetaMemberFlags)0)]
+        public bool DailyTasksSkipOldTasksForWeightCalculation { get; set; }
     }
 }

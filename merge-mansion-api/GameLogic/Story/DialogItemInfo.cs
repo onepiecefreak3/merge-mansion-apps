@@ -113,5 +113,15 @@ namespace GameLogic.Story
         public DialogItemInfo(DialogItemId dialogItemId, string localizationId, DialogMode dialogMode, DialogCharacterState leftCharacterState, DialogCharacterType leftCharacter, bool leftSpeaks, DialogCharacterState rightCharacterState, DialogCharacterType rightCharacter, bool rightSpeaks, bool waitConfirmation, CameraTargetName scrollToCameraTarget, bool waitForEndOfScrolling, CameraZoomTarget cameraZoomTarget, bool needsTransition, CameraTargetName moveToCameraTarget, List<HotspotId> scrollToHotSpot, HotspotId activateHotSpot, List<DialogLayoutEvent> layoutEvents, string animationGameObjectName, string animationTrackName, string animationSpineName, string animationFinalState, List<MetaRef<MapCharacterEventDefinition>> mapCharactersEvents, List<MapCharacterType> resetMapCharacters, List<DialogCharacterType> discoveredCharacters, bool disallowClose, List<IDirectorAction> startActions)
         {
         }
+
+        [MetaMember(29, (MetaMemberFlags)0)]
+        public string LeftCharacterConfigId { get; set; }
+
+        [MetaMember(30, (MetaMemberFlags)0)]
+        public string RightCharacterConfigId { get; set; }
+
+        public DialogItemInfo(DialogItemId dialogItemId, string localizationId, DialogMode dialogMode, DialogCharacterState leftCharacterState, DialogCharacterType leftCharacter, bool leftSpeaks, string leftCharacterConfigId, DialogCharacterState rightCharacterState, DialogCharacterType rightCharacter, bool rightSpeaks, string rightCharacterConfigId, bool waitConfirmation, CameraTargetName scrollToCameraTarget, bool waitForEndOfScrolling, CameraZoomTarget cameraZoomTarget, bool needsTransition, CameraTargetName moveToCameraTarget, List<HotspotId> scrollToHotSpot, HotspotId activateHotSpot, List<DialogLayoutEvent> layoutEvents, string animationGameObjectName, string animationTrackName, string animationSpineName, string animationFinalState, List<MetaRef<MapCharacterEventDefinition>> mapCharactersEvents, List<MapCharacterType> resetMapCharacters, List<DialogCharacterType> discoveredCharacters, bool disallowClose, List<IDirectorAction> startActions)
+        {
+        }
     }
 }

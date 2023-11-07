@@ -32,6 +32,7 @@ namespace GameLogic
         Emilio = 20,
         Hank = 21,
         Bruno = 22,
-        Voyance = 23
+        Voyance = 23,
+        Ash = 24
     }
 }

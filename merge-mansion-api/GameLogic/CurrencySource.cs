@@ -46,6 +46,7 @@ namespace GameLogic
         WorldRecordWeight = 37,
         ResetBetweenEvents = 38,
         WeightStar = 39,
-        ProgressionEventStreak = 40
+        ProgressionEventStreak = 40,
+        BonusTimerCompleted = 41
     }
 }

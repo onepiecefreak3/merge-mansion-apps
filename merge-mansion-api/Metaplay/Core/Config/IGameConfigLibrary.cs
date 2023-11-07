@@ -7,8 +7,10 @@ namespace Metaplay.Core.Config
     {
         // RVA: -1 Offset: -1 Slot: 0
         Type ItemType { get; }
+
         // RVA: -1 Offset: -1 Slot: 1
         int Count { get; }
+
         // RVA: -1 Offset: -1 Slot: 2
         IEnumerable<KeyValuePair<object, object>> EnumerateAll();
         // RVA: -1 Offset: -1 Slot: 3

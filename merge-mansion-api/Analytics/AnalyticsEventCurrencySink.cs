@@ -83,5 +83,10 @@ namespace Analytics
         public AnalyticsEventCurrencySink(CurrencySink currencySink, GameResourceCost gameResourceCost, long costSoft, long costHard, long newFreeCurrencySaldo, long newHardCurrencySaldo, AnalyticsContext context)
         {
         }
+
+        [Description("Is Producer affected by ProducerBoosterActivated_01")]
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("is_producer_booster_active", NullValueHandling = (NullValueHandling)1)]
+        public bool IsProducerBoosterActive { get; set; }
     }
 }

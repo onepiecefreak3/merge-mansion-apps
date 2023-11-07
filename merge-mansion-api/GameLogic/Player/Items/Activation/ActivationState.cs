@@ -54,5 +54,11 @@ namespace GameLogic.Player.Items.Activation
 
         [MetaMember(9, (MetaMemberFlags)0)]
         public ulong ActivationCount { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        private MetaTime? firstCycleActivationTime;
+        public ActivationState(MetaTime timestamp, MetaTime? activationStartTime)
+        {
+        }
     }
 }

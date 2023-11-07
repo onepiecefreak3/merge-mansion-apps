@@ -24,6 +24,7 @@ using GameLogic.Player.Leaderboard;
 using Game.Logic.Mail;
 using GameLogic.Player.Director.Actions;
 using GameLogic.Player.Director.Conditions;
+using GameLogic.Inventory;
 
 namespace GameLogic.Player
 {
@@ -259,12 +260,18 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public int ProgressionEventIAPStreakLength { get; }
 
-        [IgnoreDataMember]
-        public bool ShouldUpdateRentableInventoryExpiration;
         [MetaMember(240, (MetaMemberFlags)0)]
         public BoardInventory GarageBoardProducerInventory { get; set; }
 
         [MetaMember(241, (MetaMemberFlags)0)]
         public F64Vec2 CameraPosition { get; set; }
+
+        [MetaMember(244, (MetaMemberFlags)0)]
+        private MetaTime? previousIntervalCheckTime;
+        [MetaMember(242, (MetaMemberFlags)0)]
+        public RentableInventoryState RentableInventoryState { get; set; }
+
+        [MetaMember(243, (MetaMemberFlags)0)]
+        public List<string> UnlockedSongs { get; set; }
     }
 }

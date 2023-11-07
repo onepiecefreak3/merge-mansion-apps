@@ -1,0 +1,39 @@
+using Metaplay.Core.Model;
+using Metaplay.Core.Json;
+using System;
+using System.ComponentModel;
+
+namespace GameLogic
+{
+    [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<CharacterId>))]
+    public enum CharacterId
+    {
+        None = 0,
+        Grandma = 1,
+        Maddie = 2,
+        Roddy = 3,
+        Julius = 4,
+        Jackson = 5,
+        Arthur = 6,
+        Rufus = 7,
+        Jackie = 8,
+        Deb = 9,
+        Phone = 10,
+        Holden = 11,
+        Winston = 12,
+        Cherry = 13,
+        Pearl = 14,
+        Heikki = 15,
+        Victoria = 16,
+        Mason = 17,
+        Amy = 18,
+        Emilio = 19,
+        Hank = 20,
+        Bruno = 21,
+        LadyVoyance = 22,
+        Ratthew = 23,
+        Pet = 24,
+        Ash = 25
+    }
+}

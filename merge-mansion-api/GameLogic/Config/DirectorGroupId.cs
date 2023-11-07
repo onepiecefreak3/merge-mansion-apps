@@ -174,5 +174,12 @@ namespace GameLogic.Config
         public static DirectorGroupId ChestSpeedUpGem;
         public static DirectorGroupId ChestSpeedUp;
         public static DirectorGroupId ProducerInventoryFTUE;
+        public static DirectorGroupId UnfoldToDoButton_01;
+        public static DirectorGroupId UnfoldToDoButton_02;
+        public static DirectorGroupId UnfoldToDoButton_03;
+        public static DirectorGroupId SecondMergeGoalMenuOpen;
+        public static DirectorGroupId ThirdMergeGoalMenuOpen;
+        public static DirectorGroupId CoinMergeable;
+        public static DirectorGroupId MaxLevelCoinsCollectible;
     }
 }

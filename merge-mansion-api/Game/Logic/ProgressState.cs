@@ -223,5 +223,16 @@ namespace Game.Logic
         [MetaMember(64, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public bool DidClaimFreeGems { get; set; }
+
+        [MetaMember(65, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private Dictionary<HotspotId, MetaTime> visibleHotspotsWithTimestamps { get; set; }
+
+        [MetaMember(66, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public bool DidFlashSellTutorialFinished { get; set; }
+
+        [IgnoreDataMember]
+        public MetaTime LastModificationTime { get; set; }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Security.Cryptography;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core
 {

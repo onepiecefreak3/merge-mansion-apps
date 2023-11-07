@@ -20,5 +20,12 @@ namespace GameLogic.Player.Items.Boosting
         public BoosterState(F32 boostMultiplier, MetaTime lastCalculationTime)
         {
         }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public F32 SpawnBoostMultiplier { get; set; }
+
+        public BoosterState(F32 boostMultiplier, F32 spawnBoostMultiplier, MetaTime lastCalculationTime)
+        {
+        }
     }
 }

@@ -27,7 +27,6 @@ namespace Metaplay.Core.Player
         public string ControlVariantAnalyticsId { get; set; }
         public List<ExperimentVariantId> VariantId { get; set; }
         public List<string> VariantAnalyticsId { get; set; }
-
         public PlayerExperimentId ConfigKey { get; }
 
         public PlayerExperimentInfo()
