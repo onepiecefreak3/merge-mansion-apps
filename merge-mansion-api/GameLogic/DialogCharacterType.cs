@@ -33,6 +33,8 @@ namespace GameLogic
         Hank = 21,
         Bruno = 22,
         Voyance = 23,
-        Ash = 24
+        Ash = 24,
+        Sullivan = 25,
+        Pet = 26
     }
 }

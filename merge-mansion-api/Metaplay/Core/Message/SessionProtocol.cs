@@ -208,8 +208,7 @@ namespace Metaplay.Core.Message
                 GamePayload = gamePayload;
                 SupportedArchiveCompressions = supportedArchiveCompressions;
                 ClientAppPauseStatus = clientAppPauseStatus;
-
-                ResourceProposal=new SessionResourceProposal
+                ResourceProposal = new SessionResourceProposal
                 {
                     ConfigVersions = new Dictionary<ClientSlot, ContentHash>(),
                     PatchVersions = new Dictionary<ClientSlot, ContentHash>(),

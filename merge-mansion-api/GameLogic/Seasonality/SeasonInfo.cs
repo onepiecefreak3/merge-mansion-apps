@@ -9,6 +9,7 @@ using GameLogic.Player.Director.Config;
 namespace GameLogic.Seasonality
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 4 })]
     public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData, IGameConfigKey<SeasonId>
     {
         public SeasonId ConfigKey => Id;
@@ -22,9 +23,6 @@ namespace GameLogic.Seasonality
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerRequirement> UnlockRequirements { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        public ConfigPrefabId StartPopupId { get; set; }
-
         [MetaMember(5, (MetaMemberFlags)0)]
         public List<IDirectorAction> StartActions { get; set; }
 
@@ -33,6 +31,13 @@ namespace GameLogic.Seasonality
         }
 
         public SeasonInfo(SeasonId seasonId, string type, IEnumerable<PlayerRequirement> unlockRequirements, ConfigPrefabId startPopupId, List<IDirectorAction> startActions)
+        {
+        }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public string CharacterConfig { get; set; }
+
+        public SeasonInfo(SeasonId seasonId, string type, IEnumerable<PlayerRequirement> unlockRequirements, List<IDirectorAction> startActions, string characterConfig)
         {
         }
     }

@@ -39,9 +39,6 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(5, 0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(6, 0)]
-        public MetaRef<BoardInfo> BoardRef { get; set; }
-
         [MetaMember(7, 0)]
         public MetaRef<ItemDefinition> PortalItemRef { get; set; }
 
@@ -59,9 +56,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(12, 0)]
         public PlayerRequirement UnlockRequirement { get; set; }
-
-        [MetaMember(13, 0)]
-        public OfferPlacementId BoardShopPlacementId { get; set; }
 
         [MetaMember(14, 0)]
         public StoryDefinitionId EndDialogue { get; set; }
@@ -95,19 +89,6 @@ namespace Code.GameLogic.GameEvents
         public List<PlayerReward> ExtensionRewards { get; set; }
         public CollectibleBoardEventId ActivableId { get; }
         public string DisplayShortInfo { get; }
-
-        [IgnoreDataMember]
-        public BoardInfo Board { get; }
-
-        [IgnoreDataMember]
-        public ItemDefinition PortalItem { get; }
-
-        [IgnoreDataMember]
-        public IEnumerable<EventLevelInfo> Levels { get; }
-
-        [IgnoreDataMember]
-        public IEnumerable<EventLevelInfo> RecurringLevels { get; }
-        public OfferPlacementId BoardShopFlashPlacementId { get; }
 
         [IgnoreDataMember]
         IStringId Code.GameLogic.GameEvents.IBoardEventInfo.Id { get; }
@@ -159,6 +140,22 @@ namespace Code.GameLogic.GameEvents
         public EventGroupId GroupId { get; set; }
 
         public CollectibleBoardEventInfo(CollectibleBoardEventId collectibleBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, List<MetaRef<EventLevelInfo>> recurringLevelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId endDialogue, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, StoryDefinitionId startDialogue, ExtendableEventParams extendableEventParams, MetaRef<InAppProductInfo> extensionInAppProduct, MetaDuration extensionPurchaseSafetyMargin, IEnumerable<PlayerReward> extensionRewards, PlayerRequirement previewRequirement, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus, EventGroupId groupId)
+        {
+        }
+
+        [MetaMember(32, (MetaMemberFlags)0)]
+        public List<MetaRef<BoardInfo>> BoardRefs { get; set; }
+
+        [MetaMember(33, (MetaMemberFlags)0)]
+        public List<OfferPlacementId> BoardShopPlacementIds { get; set; }
+
+        [IgnoreDataMember]
+        public BoardInfo InitialBoard { get; }
+
+        [IgnoreDataMember]
+        public ItemDefinition InitialPortalItem { get; }
+
+        public CollectibleBoardEventInfo(CollectibleBoardEventId collectibleBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<BoardInfo>> boardRefs, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, List<MetaRef<EventLevelInfo>> recurringLevelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, List<OfferPlacementId> boardShopPlacementIds, StoryDefinitionId endDialogue, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, StoryDefinitionId startDialogue, ExtendableEventParams extendableEventParams, MetaRef<InAppProductInfo> extensionInAppProduct, MetaDuration extensionPurchaseSafetyMargin, IEnumerable<PlayerReward> extensionRewards, PlayerRequirement previewRequirement, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus, EventGroupId groupId)
         {
         }
     }

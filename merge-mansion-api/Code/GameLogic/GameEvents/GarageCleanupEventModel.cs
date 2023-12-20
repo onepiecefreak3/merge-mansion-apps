@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(5)]
-    public class GarageCleanupEventModel : MetaActivableState<GarageCleanupEventId, GarageCleanupEventInfo>
+    public class GarageCleanupEventModel : MetaActivableState<GarageCleanupEventId, GarageCleanupEventInfo>, IEventGroupModel<GarageCleanupEventInfo>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public sealed override GarageCleanupEventId ActivableId { get; set; }

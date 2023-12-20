@@ -34,6 +34,7 @@ namespace GameLogic
         LadyVoyance = 22,
         Ratthew = 23,
         Pet = 24,
-        Ash = 25
+        Ash = 25,
+        Sullivan = 26
     }
 }

@@ -70,6 +70,13 @@ namespace GameLogic.IAP
         currencybank_999 = 62,
         currencybank_1999 = 63,
         currencybank_2399 = 64,
-        currencybank_2999 = 65
+        currencybank_2999 = 65,
+        currencybank_4999 = 66,
+        ShopPackOffer_0599 = 67,
+        ShopPackOffer_1499 = 68,
+        ShopPackOffer_1799 = 69,
+        GemsBag_07 = 70,
+        GemsBag_08 = 71,
+        ShopPackOffer_27 = 72
     }
 }

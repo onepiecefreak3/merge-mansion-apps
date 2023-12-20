@@ -59,6 +59,7 @@ namespace GameLogic
         HallwayStatue = 51,
         HallwayCenter = 52,
         SaunaBurn = 53,
-        Decoration30 = 54
+        Decoration30 = 54,
+        GalleryEntrance = 55
     }
 }

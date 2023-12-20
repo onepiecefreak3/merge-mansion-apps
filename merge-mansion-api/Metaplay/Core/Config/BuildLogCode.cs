@@ -1,4 +1,5 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace Metaplay.Core.Config
 {
@@ -33,6 +34,10 @@ namespace Metaplay.Core.Config
         StarRewardWeightOutsideWeightRange = 1023,
         UncompletableHotspots = 1024,
         InvalidDialogue = 1025,
-        SeasonalEventPrefabsIdMismatch = 1026
+        SeasonalEventPrefabsIdMismatch = 1026,
+        [Obsolete("No more used")]
+        NonActivationHasIgnoresEnergyModeTag = 1027,
+        FramesItemWithoutFramesFeatures = 1028,
+        MultipleEnergyModeProgressionEventItemsForSameEvent = 1029
     }
 }

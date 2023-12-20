@@ -7,6 +7,7 @@ using System;
 namespace Analytics
 {
     [AnalyticsEvent(127, "Slot for decoration has been changed", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 4, 5 })]
     public class AnalyticsDecorationSlotChanged : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

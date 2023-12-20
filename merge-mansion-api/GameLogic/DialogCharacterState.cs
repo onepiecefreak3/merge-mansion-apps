@@ -19,6 +19,8 @@ namespace GameLogic
         Annoyed = 11,
         Discouraged = 12,
         Calling = 13,
-        Talking = 14
+        Talking = 14,
+        Angry = 15,
+        Yelling = 16
     }
 }

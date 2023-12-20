@@ -102,6 +102,13 @@ namespace Analytics
         ItemSink = 91,
         ScreenChange = 92,
         AppsflyerConversion = 93,
-        AppsflyerInitialization = 94
+        AppsflyerInitialization = 94,
+        BotTestStart = 95,
+        BotTestEnd = 96,
+        DecorationShopImpression = 97,
+        PetChanged = 98,
+        CobwebCleared = 99,
+        PortalPieceChain = 100,
+        SetPlayerModeActive = 101
     }
 }

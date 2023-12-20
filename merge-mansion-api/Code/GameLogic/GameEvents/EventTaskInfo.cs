@@ -8,6 +8,7 @@ using Code.GameLogic.Config;
 using System.Runtime.Serialization;
 using System;
 using GameLogic.Player.Items;
+using Metaplay.Core.Math;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -47,6 +48,43 @@ namespace Code.GameLogic.GameEvents
         }
 
         public EventTaskInfo(EventTaskId eventTaskId, string displayName, string description, List<PlayerReward> rewards, List<PlayerItemRequirement> requirements, List<MetaRef<EventTaskInfo>> unlocksTasks, string taskTitleLocId)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public bool IsDynamicTask { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public string DifficultyCurve_Item1 { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string DefaultDifficultyCurve_Item1 { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public F32 RangeMin_Item1 { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public F32 RangeMax_Item1 { get; set; }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public F32 LeftoversWeightMultiplier_Item1 { get; set; }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public string DifficultyCurve_Item2 { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public string DefaultDifficultyCurve_Item2 { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public F32 RangeMin_Item2 { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public F32 RangeMax_Item2 { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public F32 LeftoversWeightMultiplier_Item2 { get; set; }
+
+        public EventTaskInfo(EventTaskId eventTaskId, string displayName, string description, List<PlayerReward> rewards, List<PlayerItemRequirement> requirements, List<MetaRef<EventTaskInfo>> unlocksTasks, string taskTitleLocId, bool isDynamicTask, string difficultyCurveItem1, string defaultDifficultyCurveItem1, F32 rangeMinItem1, F32 rangeMaxItem1, F32 leftoversWeightMultiplier_Item1, string difficultyCurveItem2, string defaultDifficultyCurveItem2, F32 rangeMinItem2, F32 rangeMaxItem2, F32 leftoversWeightMultiplier_Item2)
         {
         }
     }

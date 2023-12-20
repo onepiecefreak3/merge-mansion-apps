@@ -25,6 +25,9 @@ using Game.Logic.Mail;
 using GameLogic.Player.Director.Actions;
 using GameLogic.Player.Director.Conditions;
 using GameLogic.Inventory;
+using GameLogic.Config.DecorationShop;
+using GameLogic.Player.Modes;
+using Code.GameLogic.DynamicEvents;
 
 namespace GameLogic.Player
 {
@@ -273,5 +276,18 @@ namespace GameLogic.Player
 
         [MetaMember(243, (MetaMemberFlags)0)]
         public List<string> UnlockedSongs { get; set; }
+
+        [MetaMember(245, (MetaMemberFlags)0)]
+        public PlayerDecorationShopsModel DecorationShops { get; set; }
+
+        [MetaMember(246, (MetaMemberFlags)0)]
+        public HashSet<PlayerModeId> ActiveModes { get; set; }
+
+        [MetaMember(247, (MetaMemberFlags)0)]
+        [Transient]
+        public bool IsProductionEnvironment { get; set; }
+        public DynamicEventTaskStatus DynamicEventTaskStatus { get; set; }
+        public PlayerModifiersChangedEvent ModifiersChanged { get; set; }
+        public PlayerModesChangedEvent ModesChanged { get; set; }
     }
 }

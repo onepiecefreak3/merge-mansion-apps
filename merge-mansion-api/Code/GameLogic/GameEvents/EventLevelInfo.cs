@@ -4,6 +4,7 @@ using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using Code.GameLogic.Config;
 using System;
+using GameLogic.Player.Director.Config;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -32,6 +33,16 @@ namespace Code.GameLogic.GameEvents
         public int? SegmentColorOverride { get; set; }
 
         public EventLevelInfo(EventLevelId eventLevelId, int requiredPoints, List<PlayerReward> rewards, int? segmentColorOverride)
+        {
+        }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public List<IDirectorAction> OnLevelClaimAction { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public List<EventLevelId> RequiredLevelRewards { get; set; }
+
+        public EventLevelInfo(EventLevelId eventLevelId, int requiredPoints, List<PlayerReward> rewards, int? segmentColorOverride, List<IDirectorAction> onLevelClaimAction, List<EventLevelId> requiredLevelRewards)
         {
         }
     }

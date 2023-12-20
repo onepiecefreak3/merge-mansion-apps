@@ -3,6 +3,7 @@ using GameLogic.Player.Items;
 using Metaplay.Core;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Requirements
 {
@@ -27,5 +28,11 @@ namespace GameLogic.Player.Requirements
         public ItemNeededAndConsumeRequirement(IEnumerable<int> itemTypes)
         {
         }
+
+        [IgnoreDataMember]
+        public IReadOnlyCollection<int> Items { get; }
+
+        [IgnoreDataMember]
+        public IEnumerable<ItemDefinition> ItemDefinitions { get; }
     }
 }

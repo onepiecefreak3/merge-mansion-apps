@@ -109,12 +109,6 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(32, 0)]
         public ConfigPrefabId RewardInfoPopupId { get; set; }
 
-        [MetaMember(33, 0)]
-        public ConfigPrefabId RewardClaimPopupId { get; set; }
-
-        [MetaMember(34, 0)]
-        public ConfigPrefabId RewardChestPopupId { get; set; }
-
         [MetaMember(35, 0)]
         public bool VisualiseEventPoints { get; set; }
 
@@ -207,6 +201,13 @@ namespace Code.GameLogic.GameEvents
         public EventGroupId GroupId { get; set; }
 
         public BoardEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaRef<BoardInfo> boardInfo, MetaRef<EventTaskInfo> eventInitTask, List<MetaRef<EventTaskInfo>> eventTasks, MetaRef<EventLevels> eventLevels, int? portalItem, string nameLocId, OfferPlacementId offerPlacementId, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId infoPopupId, ConfigPrefabId taskProgressionId, ConfigPrefabId taskGoalItemId, StoryDefinitionId startEventDialogue, MetaRef<ShopEventInfo> hintedShopEvents, ConfigPrefabId startPopupId, ConfigPrefabId teasePopupId, ConfigPrefabId introPopupId, ConfigPrefabId extendPopupId, ConfigPrefabId endPopupId, ConfigPrefabId hudButtonId, ConfigPrefabId rewardInfoPopupId, ConfigPrefabId rewardClaimPopupId, ConfigPrefabId rewardChestPopupId, bool visualiseEventPoints, ConfigPrefabId taskItemCheckmarkId, List<IDirectorAction> startActions, List<IDirectorAction> endActions, string boardTransitionSfxOverride, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, DecorationId activeDecoration, bool givePortalItemWithoutTask, IEnumerable<PlayerReward> extensionRewards, string prefabsId, EventGroupId groupId)
+        {
+        }
+
+        [MetaMember(48, (MetaMemberFlags)0)]
+        public bool HasDynamicTasks { get; set; }
+
+        public BoardEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaRef<BoardInfo> boardInfo, MetaRef<EventTaskInfo> eventInitTask, List<MetaRef<EventTaskInfo>> eventTasks, MetaRef<EventLevels> eventLevels, int? portalItem, string nameLocId, OfferPlacementId offerPlacementId, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId infoPopupId, ConfigPrefabId taskProgressionId, ConfigPrefabId taskGoalItemId, StoryDefinitionId startEventDialogue, MetaRef<ShopEventInfo> hintedShopEvents, ConfigPrefabId startPopupId, ConfigPrefabId teasePopupId, ConfigPrefabId introPopupId, ConfigPrefabId extendPopupId, ConfigPrefabId endPopupId, ConfigPrefabId hudButtonId, ConfigPrefabId rewardInfoPopupId, bool visualiseEventPoints, ConfigPrefabId taskItemCheckmarkId, List<IDirectorAction> startActions, List<IDirectorAction> endActions, string boardTransitionSfxOverride, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, DecorationId activeDecoration, bool givePortalItemWithoutTask, IEnumerable<PlayerReward> extensionRewards, string prefabsId, EventGroupId groupId, bool hasDynamicTasks)
         {
         }
     }

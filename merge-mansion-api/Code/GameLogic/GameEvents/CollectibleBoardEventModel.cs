@@ -7,6 +7,7 @@ using GameLogic.Player.Items;
 using System.Runtime.Serialization;
 using GameLogic.Player.Rewards;
 using Metaplay.Core;
+using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -97,5 +98,11 @@ namespace Code.GameLogic.GameEvents
         protected HashSet<int> FishCatchPopupSeenItems { get; set; }
         public IStringId Id { get; }
         public int Points { get; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopPlacementId { get; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
     }
 }

@@ -3,6 +3,7 @@ using GameLogic.Player.Items;
 using GameLogic.Player.Board;
 using System;
 using Metaplay.Core.Activables;
+using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -21,5 +22,9 @@ namespace Code.GameLogic.GameEvents
         MetaActivableState.Activation? LatestActivation { get; }
 
         bool RequestExtension { get; set; }
+
+        OfferPlacementId BoardShopPlacementId { get; }
+
+        OfferPlacementId BoardShopFlashPlacementId { get; }
     }
 }

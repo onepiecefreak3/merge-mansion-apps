@@ -181,5 +181,6 @@ namespace GameLogic.Config
         public static DirectorGroupId ThirdMergeGoalMenuOpen;
         public static DirectorGroupId CoinMergeable;
         public static DirectorGroupId MaxLevelCoinsCollectible;
+        public static DirectorGroupId EnergyModeFTUE;
     }
 }

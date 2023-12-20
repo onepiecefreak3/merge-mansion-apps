@@ -45,6 +45,7 @@ namespace GameLogic.GameFeatures
         ItemNeededBadgeEnabled = 31,
         SinkItemTooltipEnabled = 32,
         RentableInventory = 33,
-        ProducerInventory = 34
+        ProducerInventory = 34,
+        DoubleEnergyMode = 35
     }
 }

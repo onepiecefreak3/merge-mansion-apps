@@ -14,6 +14,7 @@ using System.Runtime.Serialization;
 using GameLogic;
 using Metaplay.Core.Math;
 using GameLogic.Seasonality;
+using GameLogic.Player.Rewards;
 
 namespace Game.Logic
 {
@@ -234,5 +235,13 @@ namespace Game.Logic
 
         [IgnoreDataMember]
         public MetaTime LastModificationTime { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(67, (MetaMemberFlags)0)]
+        private HashSet<PetId> Pets { get; set; }
+
+        [MetaMember(68, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private PetId ActivePet { get; set; }
     }
 }

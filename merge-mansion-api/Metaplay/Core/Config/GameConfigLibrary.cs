@@ -39,7 +39,7 @@ namespace Metaplay.Core.Config
 
         public object GetInfoByKey(object key)
         {
-            if (_infos.ContainsKey((TKey)key))
+            if (key != null && _infos.ContainsKey((TKey)key))
                 return _infos[(TKey)key];
             return null;
         }

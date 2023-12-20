@@ -3,6 +3,7 @@ using Metaplay.Core;
 using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using Code.GameLogic.Config;
+using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -33,6 +34,7 @@ namespace Code.GameLogic.GameEvents
         }
 
         [MetaSerializable]
+        [ForceExplicitEnumValues]
         public enum RewardingType
         {
             LevelReached = 0,

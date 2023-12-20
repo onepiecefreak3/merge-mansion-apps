@@ -67,5 +67,12 @@ namespace Code.GameLogic.GameEvents
         public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string energyType)
         {
         }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public int CobwebClearPoints { get; set; }
+
+        public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string energyType, string cobwebClearPoints)
+        {
+        }
     }
 }

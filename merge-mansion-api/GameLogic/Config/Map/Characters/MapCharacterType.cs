@@ -19,6 +19,7 @@ namespace GameLogic.Config.Map.Characters
         Deb = 11,
         Ratthew = 12,
         Pet = 13,
-        Ash = 14
+        Ash = 14,
+        Sullivan = 15
     }
 }

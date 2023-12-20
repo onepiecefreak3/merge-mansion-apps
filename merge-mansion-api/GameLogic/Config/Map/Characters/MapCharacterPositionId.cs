@@ -185,6 +185,12 @@ namespace GameLogic.Config.Map.Characters
         AreaBathroomFirstMapCharacterPositionMap = 5399,
         AreaBathroomEntryMaddieMap = 5400,
         AreaBathroomEntryAshDialogue = 5401,
-        AreaBathroomCenterMaddieDialogue = 5402
+        AreaBathroomCenterMaddieDialogue = 5402,
+        AreaGalleryFirstMapCharacterPositionMap = 5599,
+        AreaGalleryEntryDialogueMaddie = 5600,
+        AreaGallerySecondDialogueMaddie = 5601,
+        AreaGalleryEntryDialogueWinston = 5602,
+        AreaPetHomeFirstMapCharacterPositionMap = 5799,
+        AreaPetHomeEntryMapGoldie = 5800
     }
 }

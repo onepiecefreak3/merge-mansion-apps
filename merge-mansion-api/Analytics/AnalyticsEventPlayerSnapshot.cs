@@ -152,5 +152,15 @@ namespace Analytics
         [MetaMember(31, (MetaMemberFlags)0)]
         [JsonProperty("merge_hints_are_on")]
         public bool MergeHintsAreOn { get; set; }
+
+        [Description("Total amount of Producer inventory slots")]
+        [MetaMember(32, (MetaMemberFlags)0)]
+        [JsonProperty("producer_inventory_slots")]
+        public int ProducerInventorySlots { get; set; }
+
+        [JsonProperty("free_producer_inventory_slots")]
+        [MetaMember(33, (MetaMemberFlags)0)]
+        [Description("Free amount of Producer inventory slots")]
+        public int FreeProducerInventorySlots { get; set; }
     }
 }

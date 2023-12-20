@@ -33,5 +33,9 @@ namespace GameLogic.Player.Requirements
         public PlayerItemRequirement(IEnumerable<int> itemIds, int requirement)
         {
         }
+
+        public PlayerItemRequirement(ItemDefinition definition, int amount)
+        {
+        }
     }
 }

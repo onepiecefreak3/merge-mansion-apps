@@ -15,6 +15,8 @@ using Code.GameLogic.GameEvents;
 using GameLogic.Banks;
 using GameLogic.Player.Director.Actions;
 using GameLogic.Player.Director.Conditions;
+using GameLogic.Player.Modes;
+using Code.GameLogic.DynamicEvents;
 
 namespace GameLogic.Player
 {
@@ -92,6 +94,14 @@ namespace GameLogic.Player
         BoardInventory GarageBoardInventory { get; }
 
         BoardInventory GarageBoardProducerInventory { get; }
+
+        HashSet<PlayerModeId> ActiveModes { get; }
+
+        DynamicEventTaskStatus DynamicEventTaskStatus { get; }
+
+        PlayerModifiersChangedEvent ModifiersChanged { get; set; }
+
+        PlayerModesChangedEvent ModesChanged { get; set; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

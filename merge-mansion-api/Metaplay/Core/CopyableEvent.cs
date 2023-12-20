@@ -25,4 +25,12 @@ namespace Metaplay.Core
         {
         }
     }
+
+    public class CopyableEvent<DerivedEventType>
+    {
+        private Action _invoker;
+        public CopyableEvent()
+        {
+        }
+    }
 }

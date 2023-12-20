@@ -87,6 +87,9 @@ namespace GameLogic.Player.Board
         public MergeBoard(IPlayer player, MergeBoardId identifier, int boardWidth, int boardHeight, MetaTime creationTime, IEnumerable<ValueTuple<ItemDefinition, ItemVisibility>> items, IGenerationContext generationContext)
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public List<MetaDuration> PendingTimeSkips { get; set; }
     // Process merge for items
     //public void ProcessMerge(Coordinate fromPosition, Coordinate toPosition, MetaTime timeForMergeOrMove,
     //    IPlayer player, IBubbleSpawner bubbleSpawner, IProgressionEventItemSpawner progressionEventItemSpawner,

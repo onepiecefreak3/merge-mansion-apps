@@ -403,6 +403,22 @@ namespace GameLogic
         RotateOffer_NormalStudyNumbers_08 = 390,
         RotateOffer_NormalSaunaAreaWood_04 = 391,
         RotateOffer_StoneCan_03 = 392,
-        RotateOffer_StoneCan_04 = 393
+        RotateOffer_StoneCan_04 = 393,
+        RotateOffer_BathroomTools_01 = 394,
+        RotateOffer_BathroomMaterials_01 = 395,
+        RotateOffer_BathroomMaterials_02 = 396,
+        RotateOffer_BathroomMaterials_03 = 397,
+        RotateOffer_Gallery_01 = 398,
+        RotateOffer_Gallery_02 = 399,
+        RotateOffer_Gallery_03 = 400,
+        RotateOffer_Gallery_04 = 401,
+        RotateOffer_Gallery_05 = 402,
+        RotateOffer_Gallery_06 = 403,
+        RotateOffer_Gallery_07 = 404,
+        RotateOffer_Gallery_08 = 405,
+        RotateOffer_Gallery_09 = 406,
+        RotateOffer_Gallery_10 = 407,
+        RealMoney_GemsBag_07 = 408,
+        RealMoney_GemsBag_08 = 409
     }
 }

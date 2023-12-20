@@ -16,10 +16,6 @@ namespace Code.GameLogic.GameEvents
     {
         IStringId Id { get; }
 
-        OfferPlacementId BoardShopPlacementId { get; }
-
-        OfferPlacementId BoardShopFlashPlacementId { get; }
-
         StoryDefinitionId EnterBoardDialogue { get; }
 
         PlayerRequirement UnlockRequirement { get; }

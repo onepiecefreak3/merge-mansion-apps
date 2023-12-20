@@ -7,6 +7,7 @@ using GameLogic.Player.Items;
 using Metaplay.Core;
 using System.Runtime.Serialization;
 using GameLogic.Player.Rewards;
+using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -80,5 +81,11 @@ namespace Code.GameLogic.GameEvents
         public LeaderboardEventInfo Info { get; }
         public IStringId Id { get; }
         public int Points { get; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopPlacementId { get; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
     }
 }

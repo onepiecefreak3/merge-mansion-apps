@@ -7,6 +7,8 @@ using GameLogic.Player.Items;
 using System.Runtime.Serialization;
 using GameLogic.Player.Rewards;
 using Metaplay.Core;
+using GameLogic.Player.DynamicEvents;
+using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -96,5 +98,14 @@ namespace Code.GameLogic.GameEvents
         public IStringId Id { get; }
 
         int IPointsEvent.Points { get; }
+
+        [MetaMember(27, (MetaMemberFlags)0)]
+        public List<DynamicEventTaskState> DynamicEventTasks { get; set; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopPlacementId { get; }
+
+        [IgnoreDataMember]
+        OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
     }
 }

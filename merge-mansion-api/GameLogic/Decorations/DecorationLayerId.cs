@@ -51,6 +51,23 @@ namespace GameLogic.Decorations
         LDEPOHB2023_UnityPlaceSmallSailandFlagTB5 = 42,
         LDEPOHB2023_UnityPlaceShipGoldFramesTC1 = 43,
         LDEPOHB2023_UnityPlaceWaterfallTC2 = 44,
-        LDEPOHB2023_UnityPlaceTentaclesTC3 = 45
+        LDEPOHB2023_UnityPlaceTentaclesTC3 = 45,
+        SPRM2024PetHomeTA1 = 46,
+        SPRM2024PetHomeTA2 = 47,
+        LDE_HolidayCarols2023SwapTreePackagesTA1 = 48,
+        LDE_HolidayCarols2023SwapJunkTA2 = 49,
+        LDE_HolidayCarols2023SwapSignTA3 = 50,
+        LDE_HolidayCarols2023SwapLumberLeftTA4 = 51,
+        LDE_HolidayCarols2023PlaceMailboxTA5 = 52,
+        LDE_HolidayCarols2023PlaceTablesTA6 = 53,
+        LDE_HolidayCarols2023PlaceMistletoeTA7 = 54,
+        LDE_HolidayCarols2023PlaceFenceTB1 = 55,
+        LDE_HolidayCarols2023PlaceTableDrinksTB2 = 56,
+        LDE_HolidayCarols2023PlaceTinselandFlowersTB3 = 57,
+        LDE_HolidayCarols2023PlaceTreeDecosTB4 = 58,
+        LDE_HolidayCarols2023PlaceTreeCandlesTB5 = 59,
+        LDE_HolidayCarols2023PlaceBigSnowflakeTC1 = 60,
+        LDE_HolidayCarols2023PlaceOrnamentsTC2 = 61,
+        LDE_HolidayCarols2023PlaceStageOrnamentTC3 = 62
     }
 }
