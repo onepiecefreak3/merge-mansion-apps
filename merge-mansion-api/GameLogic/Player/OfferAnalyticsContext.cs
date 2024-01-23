@@ -19,5 +19,12 @@ namespace GameLogic.Player
         public OfferAnalyticsContext(string context, string target, int slotId, string impressionId)
         {
         }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public string ShopItemId { get; set; }
+
+        public OfferAnalyticsContext(string context, string target, int slotId, string impressionId, string shopItemId)
+        {
+        }
     }
 }

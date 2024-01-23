@@ -15,6 +15,7 @@ namespace GameLogic
         MergeCapReached = 7,
         InsufficientMergeChainLevel = 8,
         TakePhoto = 9,
-        PhotoOfItemAlreadyTaken = 10
+        PhotoOfItemAlreadyTaken = 10,
+        SinkEatsReverse = 11
     }
 }

@@ -5,7 +5,6 @@ namespace Metaplay.Core.Config
 {
     public class GameConfigValidationResult
     {
-        private List<GameConfigBuildDebugInfo> _debugInfoScope;
         private string _variantScope;
         private List<GameConfigBuildMessage> _validationMessages;
         private List<Predicate<GameConfigBuildMessage>> _filters;
@@ -15,5 +14,7 @@ namespace Metaplay.Core.Config
         public GameConfigValidationResult(string variantScope)
         {
         }
+
+        private List<GameConfigSourceMapping> _sourceMappingScope;
     }
 }

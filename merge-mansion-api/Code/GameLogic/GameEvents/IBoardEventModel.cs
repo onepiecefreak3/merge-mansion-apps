@@ -9,8 +9,6 @@ namespace Code.GameLogic.GameEvents
 {
     public interface IBoardEventModel
     {
-        IBoardEventInfo EventInfo { get; }
-
         List<IBoardItem> PocketItems { get; }
 
         MergeBoard MergeBoard { get; }
@@ -26,5 +24,9 @@ namespace Code.GameLogic.GameEvents
         OfferPlacementId BoardShopPlacementId { get; }
 
         OfferPlacementId BoardShopFlashPlacementId { get; }
+
+        IBoardEventInfo BoardEventInfo { get; }
+
+        bool PortalItemGiven { get; }
     }
 }

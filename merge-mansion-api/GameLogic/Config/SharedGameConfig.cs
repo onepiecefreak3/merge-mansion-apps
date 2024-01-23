@@ -45,12 +45,16 @@ using GameLogic.Config.DecorationShop;
 using Code.GameLogic.DynamicEvents;
 using GameLogic.Player.Modes;
 using Metaplay.Core.Player;
+using Metaplay.Core.Localization;
+using Metaplay.Core.InAppPurchase;
+using GameLogic.EventCharacters;
+using GameLogic.Player.Items.OverrideSpawnChance;
 
 namespace GameLogic.Config
 {
-    public class SharedGameConfig : SharedGameConfigTemplate<InAppProductInfo, PlayerSegmentInfo, MergeMansionOfferInfo, MergeMansionOfferGroupInfo>
+    public class SharedGameConfig : SharedGameConfigBase
     {
-        #region Items
+#region Items
         [GameConfigEntry("Items")]
         public GameConfigLibrary<int, ItemDefinition> Items { get; set; }
 
@@ -69,16 +73,16 @@ namespace GameLogic.Config
         [GameConfigEntry("MergeRewards")]
         public GameConfigLibrary<MergeRewardId, MergeReward> XpMergeRewards { get; set; }
 
-        #endregion
-        #region Boards
+#endregion
+#region Boards
         [GameConfigEntry("TimedMergeBoards")]
         public GameConfigLibrary<MergeBoardId, TimedMergeBoard> TimedMergeBoards { get; set; }
 
         [GameConfigEntry("Boards")]
         public GameConfigLibrary<MergeBoardId, BoardInfo> Boards { get; set; }
 
-        #endregion
-        #region Events
+#endregion
+#region Events
         [GameConfigEntry("BoardEvents")]
         public GameConfigLibrary<EventId, BoardEventInfo> BoardEvents { get; set; }
 
@@ -127,8 +131,8 @@ namespace GameLogic.Config
         [GameConfigEntry("DailyTasks", true, true, true)]
         public GameConfigLibrary<DailyTaskId, DailyTaskDefinition> DailyTasks { get; set; }
 
-        #endregion
-        #region Areas
+#endregion
+#region Areas
         [GameConfigEntry("Areas")]
         public GameConfigLibrary<AreaId, AreaInfo> Areas { get; set; }
 
@@ -138,8 +142,8 @@ namespace GameLogic.Config
         [GameConfigEntry("MapSpots", true, true, true)]
         public GameConfigLibrary<MapSpotId, MapSpotInfo> MapSpots { get; set; }
 
-        #endregion
-        #region Player
+#endregion
+#region Player
         [GameConfigEntry("PlayerLevels", true, true, true)]
         public GameConfigLibrary<int, PlayerLevelData> PlayerLevels { get; set; }
 
@@ -149,8 +153,8 @@ namespace GameLogic.Config
         [GameConfigEntry("LevelUpTutorialConfig", true, true, true)]
         public GameConfigLibrary<LevelUpTutorialConfigId, LevelUpTutorialConfig> LevelUpTutorialConfig { get; set; }
 
-        #endregion
-        #region Shops
+#endregion
+#region Shops
         [GameConfigEntry("ShopItems", true, true, true)]
         public GameConfigLibrary<ShopItemId, ShopItemInfo> ShopItems { get; set; }
 
@@ -172,8 +176,8 @@ namespace GameLogic.Config
         [GameConfigEntry("CurrencyBank", true, true, true)]
         public GameConfigLibrary<CurrencyBankId, CurrencyBankInfo> CurrencyBanks { get; set; }
 
-        #endregion
-        #region System
+#endregion
+#region System
         [GameConfigEntry("GameFeatures", true, true, true)]
         public GameConfigLibrary<GameFeatureId, GameFeatureSetting> GameFeatures { get; set; }
 
@@ -195,8 +199,8 @@ namespace GameLogic.Config
         [GameConfigEntry("ScheduledActions", true, true, true)]
         public GameConfigLibrary<ScheduledActionId, ScheduledActionInfo> ScheduledActions { get; set; }
 
-        #endregion
-        #region Dialog
+#endregion
+#region Dialog
         [GameConfigEntry("StoryDefinitions")]
         public GameConfigLibrary<StoryDefinitionId, StoryElementInfo> StoryElements { get; set; }
 
@@ -209,8 +213,8 @@ namespace GameLogic.Config
         [GameConfigEntry("DialogueCharacters", true, true, true)]
         public GameConfigLibrary<DialogCharacterType, DialogueCharacterInfo> DialogueCharacters { get; set; }
 
-        #endregion
-        #region GarageCleanup
+#endregion
+#region GarageCleanup
         [GameConfigEntry("GarageCleanupEvents", true, true, true)]
         public GameConfigLibrary<GarageCleanupEventId, GarageCleanupEventInfo> GarageCleanupEvents { get; set; }
 
@@ -226,16 +230,16 @@ namespace GameLogic.Config
         [GameConfigEntry("GarageCleanupRewards", true, true, true)]
         public GameConfigLibrary<GarageCleanupRewardId, GarageCleanupRewardInfo> GarageCleanupRewards { get; set; }
 
-        #endregion
-        #region Decorations
+#endregion
+#region Decorations
         [GameConfigEntry("Decorations")]
         public GameConfigLibrary<DecorationId, DecorationInfo> Decorations { get; set; }
 
         [GameConfigEntry("LayeredDecorations", true, true, true)]
         public GameConfigLibrary<LayeredDecorationSetId, LayeredDecorationSetInfo> LayeredDecorations { get; set; }
 
-        #endregion
-        #region Socials
+#endregion
+#region Socials
         [GameConfigEntry("SocialAuthentication", true, true, true)]
         public GameConfigLibrary<AuthenticationPlatform, SocialAuthenticationConfig> SocialAuthentication { get; set; }
 
@@ -245,8 +249,8 @@ namespace GameLogic.Config
         [GameConfigEntry("SocialAuthRewards", true, true, true)]
         public GameConfigLibrary<SocialAuthRewardId, SocialAuthRewardInfo> SocialAuthRewards { get; set; }
 
-        #endregion
-        #region Animations
+#endregion
+#region Animations
         [GameConfigEntry("Videos", true, true, true)]
         public GameConfigLibrary<VideoId, Video> Videos { get; set; }
 
@@ -256,7 +260,7 @@ namespace GameLogic.Config
         [GameConfigEntry("Cutscenes", true, true, true)]
         public GameConfigLibrary<CutsceneId, CutsceneInfo> Cutscenes { get; set; }
 
-        #endregion
+#endregion
         public override void Import(GameConfigImporter importer)
         {
             // CUSTOM: Re-implement by using reflection, instead of source generating from GameConfigEntryAttribute
@@ -370,7 +374,6 @@ namespace GameLogic.Config
 
         [GameConfigEntry("EnergyModeProgressionEventItems", true, true, true)]
         public GameConfigLibrary<int, EnergyModeProgressionEventItemInfo> EnergyModeProgressionEventItems { get; set; }
-
         public HashSet<MergeBoardId> AuxEnergyMergeBoards { get; set; }
         public List<ItemDefinition> FishItems { get; set; }
         public HashSet<int> ItemsAcceptedBySinks { get; set; }
@@ -378,9 +381,52 @@ namespace GameLogic.Config
         public Dictionary<HotspotId, IEnumerable<HotspotDefinition>> HotspotOpensAfterCompletion { get; set; }
         public Dictionary<MergeBoardId, EventId> BoardEventBoards { get; set; }
         public List<List<int>> ProducerVariants { get; set; }
-
         public Dictionary<MergeBoardId, List<IStringId>> EventsByMergeBoard { get; set; }
         public List<PortalPieceChainData> PortalPieceChains { get; set; }
         public Dictionary<DecorationShopItemId, List<PlayerSegmentId>> DecorationShopItemSegments { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { })]
+        [GameConfigEntry("Languages", true, true, true, null)]
+        public GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
+
+        [GameConfigEntry("InAppProducts", true, true, true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ProductId -> ProductId #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(InAppProductConfigSource))]
+        public GameConfigLibrary<InAppProductId, InAppProductInfo> InAppProducts { get; set; }
+
+        [GameConfigEntry("PlayerSegments", true, true, true, null)]
+        [GameConfigEntryTransform(typeof(PlayerSegmentInfoSourceItem))]
+        [GameConfigSyntaxAdapter(new string[] { "SegmentId -> SegmentId #key" }, new string[] { })]
+        public GameConfigLibrary<PlayerSegmentId, PlayerSegmentInfo> PlayerSegments { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "OfferId -> OfferId #key" }, new string[] { })]
+        [GameConfigEntry("Offers", true, true, true, null)]
+        [GameConfigEntryTransform(typeof(MergeMansionOfferSourceConfigItem))]
+        public GameConfigLibrary<MetaOfferId, MergeMansionOfferInfo> Offers { get; set; }
+
+        [GameConfigEntryTransform(typeof(MergeMansionOfferSourceConfigItem))]
+        [GameConfigSyntaxAdapter(new string[] { "OfferId -> OfferId #key" }, new string[] { })]
+        [GameConfigEntry("TieredOfferItems", true, true, true, null)]
+        public GameConfigLibrary<MetaOfferId, MergeMansionOfferInfo> TieredOfferItems { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." })]
+        [GameConfigEntryTransform(typeof(MergeMansionOfferGroupSourceItem))]
+        [GameConfigSyntaxAdapter(new string[] { "GroupId -> GroupId #key" }, new string[] { })]
+        [GameConfigEntry("OfferGroups", true, true, true, null)]
+        public GameConfigLibrary<MetaOfferGroupId, MergeMansionOfferGroupInfo> OfferGroups { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "EventId -> EventId #key" }, new string[] { })]
+        [GameConfigEntry("SideBoardEvents", true, true, true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." })]
+        [GameConfigEntryTransform(typeof(SideBoardEventSource))]
+        public GameConfigLibrary<SideBoardEventId, SideBoardEventInfo> SideBoardEvents { get; set; }
+
+        [GameConfigEntry("EventCharacters", true, true, true, null)]
+        [GameConfigEntryTransform(typeof(EventCharacterInfoSource))]
+        [GameConfigSyntaxAdapter(new string[] { "EventCharacterId -> EventCharacterId #key" }, new string[] { })]
+        public GameConfigLibrary<EventCharacterId, EventCharacterInfo> EventCharacters { get; set; }
+        public Dictionary<MergeBoardId, SideBoardEventId> SideBoardEventBoards { get; set; }
+        public List<ItemDefinition> FishingRodItems { get; set; }
+        public Dictionary<ItemDefinition, OverrideSpawnChanceFeatures> OverrideSpawnChanceByItemDefinition { get; set; }
     }
 }

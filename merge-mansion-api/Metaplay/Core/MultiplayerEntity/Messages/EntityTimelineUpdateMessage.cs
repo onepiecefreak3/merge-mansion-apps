@@ -14,12 +14,6 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
         [MetaMember(2, (MetaMemberFlags)0)]
         public uint FinalChecksum { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
-        public int StartTick { get; set; }
-
-        [MetaMember(4, (MetaMemberFlags)0)]
-        public int StartOperation { get; set; }
-
         [MetaMember(5, (MetaMemberFlags)0)]
         public uint[] DebugChecksums { get; set; }
 
@@ -28,6 +22,10 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
         }
 
         public EntityTimelineUpdateMessage(List<ModelAction> operations, int startTick, int startOperation, uint finalChecksum, uint[] debugChecksums)
+        {
+        }
+
+        public EntityTimelineUpdateMessage(List<ModelAction> operations, uint finalChecksum, uint[] debugChecksums)
         {
         }
     }

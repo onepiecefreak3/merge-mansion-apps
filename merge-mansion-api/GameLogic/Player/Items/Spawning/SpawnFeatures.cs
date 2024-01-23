@@ -9,6 +9,7 @@ using System;
 namespace GameLogic.Player.Items.Spawning
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 8 })]
     public class SpawnFeatures
     {
         [MetaMember(1)]
@@ -29,9 +30,6 @@ namespace GameLogic.Player.Items.Spawning
         [MetaMember(7)]
         public ItemVisibility SpawnVisibility { get; set; }
 
-        [MetaMember(8)]
-        public string OverrideSfx { get; set; }
-
         public F64 TimeSkipPriceGems(IGenerationContext context)
         {
             return Spawn.TimeSkipPriceGems(context);
@@ -46,6 +44,10 @@ namespace GameLogic.Player.Items.Spawning
         }
 
         public SpawnFeatures(IItemSpawner spawn, IPlacement placement, ISpawnCycle cycle, int howManyCanStore, IItemProducer decayProducer, string overrideSfx, ItemVisibility itemVisibility)
+        {
+        }
+
+        public SpawnFeatures(IItemSpawner spawn, IPlacement placement, ISpawnCycle cycle, int howManyCanStore, IItemProducer decayProducer, ItemVisibility itemVisibility)
         {
         }
     }

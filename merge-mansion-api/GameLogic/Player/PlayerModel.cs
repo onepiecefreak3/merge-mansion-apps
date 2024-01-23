@@ -266,9 +266,6 @@ namespace GameLogic.Player
         [MetaMember(240, (MetaMemberFlags)0)]
         public BoardInventory GarageBoardProducerInventory { get; set; }
 
-        [MetaMember(241, (MetaMemberFlags)0)]
-        public F64Vec2 CameraPosition { get; set; }
-
         [MetaMember(244, (MetaMemberFlags)0)]
         private MetaTime? previousIntervalCheckTime;
         [MetaMember(242, (MetaMemberFlags)0)]
@@ -289,5 +286,21 @@ namespace GameLogic.Player
         public DynamicEventTaskStatus DynamicEventTaskStatus { get; set; }
         public PlayerModifiersChangedEvent ModifiersChanged { get; set; }
         public PlayerModesChangedEvent ModesChanged { get; set; }
+
+        [MetaMember(248, (MetaMemberFlags)0)]
+        public BanInfo BanInfo { get; set; }
+
+        [MetaMember(249, (MetaMemberFlags)0)]
+        public Dictionary<LocationId, F64Vec2> CameraPositionPerLocation { get; set; }
+
+        [MetaMember(250, (MetaMemberFlags)0)]
+        public PlayerSideBoardEventsModel SideBoardEvents { get; set; }
+
+        [MetaMember(252, (MetaMemberFlags)0)]
+        public Dictionary<int, RandomPCG> RandomsByFishingRodType { get; set; }
+
+        [MetaMember(253, (MetaMemberFlags)0)]
+        public OverrideSpawnItemsStatus OverrideSpawnItemsStatus { get; set; }
+        public IEnumerable<SideBoardEventModel> ActiveSideBoardEvents { get; }
     }
 }

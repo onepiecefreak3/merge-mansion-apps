@@ -39,5 +39,10 @@ namespace GameLogic.Player.Items.Spawning
 
         [MetaMember(10, (MetaMemberFlags)0)]
         public ulong SpawnCount { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        private int customCycleMax;
+        [MetaMember(12, (MetaMemberFlags)0)]
+        private bool hasCustomCycleMax;
     }
 }

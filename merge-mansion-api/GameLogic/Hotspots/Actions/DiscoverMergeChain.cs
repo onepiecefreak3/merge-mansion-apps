@@ -1,6 +1,8 @@
 using GameLogic.MergeChains;
 using GameLogic.Player.Director.Config;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Hotspots.Actions
 {
@@ -17,5 +19,8 @@ namespace GameLogic.Hotspots.Actions
         public DiscoverMergeChain(MergeChainId mergeChainId)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

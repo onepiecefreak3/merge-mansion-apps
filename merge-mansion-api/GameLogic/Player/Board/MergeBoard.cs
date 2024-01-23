@@ -90,6 +90,21 @@ namespace GameLogic.Player.Board
 
         [MetaMember(11, (MetaMemberFlags)0)]
         public List<MetaDuration> PendingTimeSkips { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public MetaTime ProducerCooldownRemoverEndTime { get; set; }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public MetaTime ProducerCooldownRemoverStartTime { get; set; }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public MetaDuration PendingCooldownRemover { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public HashSet<int> DiscoveredItems { get; set; }
+
+        [IgnoreDataMember]
+        public int BoardSize { get; }
     // Process merge for items
     //public void ProcessMerge(Coordinate fromPosition, Coordinate toPosition, MetaTime timeForMergeOrMove,
     //    IPlayer player, IBubbleSpawner bubbleSpawner, IProgressionEventItemSpawner progressionEventItemSpawner,

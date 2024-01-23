@@ -22,7 +22,7 @@ namespace Code.GameLogic.GameEvents
     [DefaultMember("Item")]
     [MetaActivableConfigData("CollectibleBoardEvent", false)]
     [MetaBlockedMembers(new int[] { 24, 27 })]
-    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
+    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
     {
         [MetaMember(1, 0)]
         public CollectibleBoardEventId CollectibleBoardEventId { get; set; }
@@ -91,9 +91,6 @@ namespace Code.GameLogic.GameEvents
         public string DisplayShortInfo { get; }
 
         [IgnoreDataMember]
-        IStringId Code.GameLogic.GameEvents.IBoardEventInfo.Id { get; }
-
-        [IgnoreDataMember]
         public DecorationInfo ActiveDecoration { get; }
 
         [IgnoreDataMember]
@@ -158,5 +155,11 @@ namespace Code.GameLogic.GameEvents
         public CollectibleBoardEventInfo(CollectibleBoardEventId collectibleBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<BoardInfo>> boardRefs, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, List<MetaRef<EventLevelInfo>> recurringLevelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, List<OfferPlacementId> boardShopPlacementIds, StoryDefinitionId endDialogue, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, StoryDefinitionId startDialogue, ExtendableEventParams extendableEventParams, MetaRef<InAppProductInfo> extensionInAppProduct, MetaDuration extensionPurchaseSafetyMargin, IEnumerable<PlayerReward> extensionRewards, PlayerRequirement previewRequirement, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus, EventGroupId groupId)
         {
         }
+
+        [IgnoreDataMember]
+        IStringId Code.GameLogic.GameEvents.IBoardEventInfo.BoardEventId { get; }
+
+        [IgnoreDataMember]
+        public IStringId LevelEventId { get; }
     }
 }

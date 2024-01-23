@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System;
 using System.Linq;
 using GameLogic.Player.Rewards;
+using GameLogic.Player.Director.Config;
 
 namespace GameLogic.Config
 {
@@ -76,6 +77,16 @@ namespace GameLogic.Config
         public string ForegroundEffectId { get; set; }
 
         public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements)
+        {
+        }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        private List<IDirectorAction> FirstTimePurchaseActions { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public List<int> CostAmounts { get; set; }
+
+        public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions)
         {
         }
     }

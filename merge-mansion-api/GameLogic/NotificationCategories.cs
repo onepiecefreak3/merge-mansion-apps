@@ -9,6 +9,7 @@ namespace GameLogic
         ActivationItemReady = 1,
         ChestReadyForOpening = 2,
         SpawnerItemReady = 3,
-        HotspotUnlockScheduleReached = 4
+        HotspotUnlockScheduleReached = 4,
+        EnergyIsFull = 5
     }
 }

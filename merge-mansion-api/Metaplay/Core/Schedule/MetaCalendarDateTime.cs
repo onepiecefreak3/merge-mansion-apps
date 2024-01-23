@@ -28,5 +28,8 @@ namespace Metaplay.Core.Schedule
         {
             return new DateTime(Year, Month, Day, Hour, Minute, Second);
         }
+
+        public MetaCalendarDate Date { get; set; }
+        public MetaCalendarTime Time { get; set; }
     }
 }

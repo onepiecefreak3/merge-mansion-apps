@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -29,5 +30,8 @@ namespace GameLogic.Player.Director.Config
         public TriggerPopup(string popupId, IEnumerable<string> args)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

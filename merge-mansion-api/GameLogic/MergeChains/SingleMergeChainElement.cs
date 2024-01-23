@@ -44,5 +44,7 @@ namespace GameLogic.MergeChains
                 return null;
             return Item.Ref;
         }
+
+        public int Count { get; }
     }
 }

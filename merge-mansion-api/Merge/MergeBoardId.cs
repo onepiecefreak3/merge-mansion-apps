@@ -19,5 +19,7 @@ namespace Merge
         public MergeBoardId()
         {
         }
+
+        public static MergeBoardId SBE_Jailbreak;
     }
 }

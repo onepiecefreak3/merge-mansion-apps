@@ -13,6 +13,7 @@ using GameLogic.Player;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 12 })]
     public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, 0)]
@@ -48,9 +49,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(11, (MetaMemberFlags)0)]
         public string BoardMusicOverride { get; set; }
-
-        [MetaMember(12, (MetaMemberFlags)0)]
-        public int DisableAutospawns { get; set; }
         public IBubbleLogic BubbleLogic { get; }
 
         public BoardInfo()
@@ -72,6 +70,13 @@ namespace Code.GameLogic.GameEvents
         public int CobwebClearPoints { get; set; }
 
         public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string energyType, string cobwebClearPoints)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public BoardActionRequirements ActionRequirements { get; set; }
+
+        public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string disableSelling, string energyType, string cobwebClearPoints, int width, int height)
         {
         }
     }

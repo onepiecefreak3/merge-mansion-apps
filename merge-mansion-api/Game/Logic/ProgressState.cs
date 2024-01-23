@@ -15,6 +15,7 @@ using GameLogic;
 using Metaplay.Core.Math;
 using GameLogic.Seasonality;
 using GameLogic.Player.Rewards;
+using GameLogic.Player.Requirements;
 
 namespace Game.Logic
 {
@@ -243,5 +244,20 @@ namespace Game.Logic
         [MetaMember(68, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         private PetId ActivePet { get; set; }
+
+        public Dictionary<ItemDefinition, int> DebugGeneratedDynamicTasksPool;
+        [MetaMember(69, (MetaMemberFlags)0)]
+        public Dictionary<EventTaskId, List<PlayerRequirement>> DynamicTaskRequirements { get; set; }
+
+        [MetaMember(70, (MetaMemberFlags)0)]
+        public Dictionary<EventTaskId, List<PlayerReward>> DynamicTaskRewards { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(71, (MetaMemberFlags)0)]
+        public Dictionary<SideBoardEventId, SideBoardEventProgressState> SideBoardEventProgressStateBySideBoardEventId { get; set; }
+
+        [MetaMember(72, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public Dictionary<MergeBoardId, long> AnalyticsFakeZeroEnergySaldoByMergeBoardId { get; set; }
     }
 }

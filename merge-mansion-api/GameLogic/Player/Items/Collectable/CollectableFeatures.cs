@@ -4,6 +4,7 @@ using System;
 namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 3 })]
     public class CollectableFeatures
     {
         [MetaMember(1)]
@@ -11,9 +12,6 @@ namespace GameLogic.Player.Items.Collectable
 
         [MetaMember(2)]
         public ICollectAction CollectAction { get; set; }
-
-        [MetaMember(3)]
-        public string OverrideSfx { get; set; }
 
         [MetaMember(4)]
         public bool ConfirmCollectBelowMergeChainLevel { get; set; }
@@ -24,6 +22,10 @@ namespace GameLogic.Player.Items.Collectable
         }
 
         public CollectableFeatures(ICollectAction collectAction, string overrideSfx, bool confirmCollectBelowMergeChainLevel)
+        {
+        }
+
+        public CollectableFeatures(ICollectAction collectAction, bool confirmCollectBelowMergeChainLevel)
         {
         }
     }

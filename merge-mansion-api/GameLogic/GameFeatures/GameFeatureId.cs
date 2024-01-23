@@ -46,6 +46,7 @@ namespace GameLogic.GameFeatures
         SinkItemTooltipEnabled = 32,
         RentableInventory = 33,
         ProducerInventory = 34,
-        DoubleEnergyMode = 35
+        DoubleEnergyMode = 35,
+        ShowMergeItemFlashSaleBuyButton = 36
     }
 }

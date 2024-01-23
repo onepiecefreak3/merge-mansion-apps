@@ -60,9 +60,6 @@ namespace Code.GameLogic.GameEvents
         [IgnoreDataMember]
         public BoardEventInfo Info { get; }
 
-        [IgnoreDataMember]
-        public IBoardEventInfo EventInfo { get; }
-
         [MetaMember(15, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("WorkaroundMetaMember15")]
         public List<EventTaskId> AvailableTaskIds { get; set; }
@@ -107,5 +104,8 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
+
+        [IgnoreDataMember]
+        public IBoardEventInfo BoardEventInfo { get; }
     }
 }

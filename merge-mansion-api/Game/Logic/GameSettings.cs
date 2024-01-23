@@ -36,5 +36,8 @@ namespace Game.Logic
 
         [MetaMember(8, (MetaMemberFlags)0)]
         private bool hapticsEnabled { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        private bool animatedText { get; set; }
     }
 }

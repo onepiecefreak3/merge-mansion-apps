@@ -6,6 +6,7 @@ using System;
 namespace Metaplay.Core.Player
 {
     [AnalyticsEvent(1013, "In App Purchase Started", 1, "Player is about to start an IAP flow in the platform store. The purchase contents are specified in the IAP config. The event contents describe the purchase the player is attempting to buy.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     public class PlayerEventPendingStaticPurchaseContextAssigned : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

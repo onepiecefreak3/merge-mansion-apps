@@ -1,5 +1,7 @@
 using Metaplay.Core.Model;
 using GameLogic.Config;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -16,5 +18,8 @@ namespace GameLogic.Player.Director.Config
         public MarkDirectorGroupComplete(DirectorGroupId directorGroupId)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

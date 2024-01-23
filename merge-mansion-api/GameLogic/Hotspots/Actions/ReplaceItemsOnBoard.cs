@@ -5,6 +5,7 @@ using Metaplay.Core;
 using Metaplay.Core.Model;
 using Merge;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Hotspots.Actions
 {
@@ -30,5 +31,8 @@ namespace GameLogic.Hotspots.Actions
         public ReplaceItemsOnBoard(MergeBoardId mergeBoardId, MetaRef<ItemDefinition> replacementItem, string tag, MetaDuration replaceDuration)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

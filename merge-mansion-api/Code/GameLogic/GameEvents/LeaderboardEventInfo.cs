@@ -75,9 +75,6 @@ namespace Code.GameLogic.GameEvents
         public OfferPlacementId BoardShopFlashPlacementId { get; }
 
         [IgnoreDataMember]
-        IStringId Code.GameLogic.GameEvents.IBoardEventInfo.Id { get; }
-
-        [IgnoreDataMember]
         DecorationInfo Code.GameLogic.GameEvents.IBoardEventInfo.ActiveDecoration { get; }
 
         [IgnoreDataMember]
@@ -118,5 +115,8 @@ namespace Code.GameLogic.GameEvents
         public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue, F32? bubbleBonusDivisor, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, bool disableBubbleBonus)
         {
         }
+
+        [IgnoreDataMember]
+        IStringId Code.GameLogic.GameEvents.IBoardEventInfo.BoardEventId { get; }
     }
 }

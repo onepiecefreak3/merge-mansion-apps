@@ -20,6 +20,7 @@ namespace GameLogic.Config.Map.Characters
         Ratthew = 12,
         Pet = 13,
         Ash = 14,
-        Sullivan = 15
+        Sullivan = 15,
+        Bruno = 16
     }
 }

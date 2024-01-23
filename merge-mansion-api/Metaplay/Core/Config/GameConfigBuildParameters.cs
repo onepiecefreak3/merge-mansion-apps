@@ -1,19 +1,22 @@
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Forms;
 
 namespace Metaplay.Core.Config
 {
     [MetaSerializable]
     [MetaReservedMembers(100, 199)]
-    public abstract class GameConfigBuildParameters
+    public abstract class GameConfigBuildParameters : IMetaIntegration<GameConfigBuildParameters>, IMetaIntegration
     {
         public abstract bool IsIncremental { get; }
-
-        [MetaMember(100, (MetaMemberFlags)0)]
-        public ConfigValidationType ConfigValidationType { get; set; }
 
         protected GameConfigBuildParameters()
         {
         }
+
+        [MetaFormLayoutOrderHint(-1)]
+        [MetaValidateRequired]
+        [MetaMember(101, (MetaMemberFlags)0)]
+        public GameConfigBuildSource DefaultSource;
     }
 }

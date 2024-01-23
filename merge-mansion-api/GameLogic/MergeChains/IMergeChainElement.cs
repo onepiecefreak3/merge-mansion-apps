@@ -1,5 +1,6 @@
 using GameLogic.Player.Items;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.MergeChains
 {
@@ -14,5 +15,6 @@ namespace GameLogic.MergeChains
         ItemDefinition First();
         // RVA: -1 Offset: -1 Slot: 4
         ItemDefinition ElementAtOrDefault(int index);
+        int Count { get; }
     }
 }

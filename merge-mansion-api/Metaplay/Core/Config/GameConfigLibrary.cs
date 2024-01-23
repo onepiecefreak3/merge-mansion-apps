@@ -9,7 +9,7 @@ using Metaplay.Core.Player;
 namespace Metaplay.Core.Config
 {
     [DefaultMember("Item")]
-    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibrary<TKey, TInfo>, IGameConfigLibrary, IGameConfigEntry
+    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibraryEntry, IGameConfigLibrary, IGameConfigEntry, IGameConfigLibrary<TKey, TInfo>
     {
         protected GameConfigLibrary(Dictionary<TKey, TInfo> infos, IGameConfigDataRegistry registry)
         {
@@ -94,6 +94,12 @@ namespace Metaplay.Core.Config
         private Dictionary<TKey, TInfo> _soloStorageItems;
         private Dictionary<TKey, TKey> _aliasToRealKey;
         private GameConfigLibrary(GameConfigRuntimeStorageMode storageMode, Dictionary<TKey, TInfo> soloStorageItems, GameConfigLibraryDeduplicationStorage<TKey, TInfo> deduplicationStorage, GameConfigDeduplicationOwnership deduplicationOwnership, HashSet<ExperimentVariantPair> activePatches, IGameConfigDataRegistry registry)
+        {
+        }
+
+        IEnumerable<Type> Metaplay.Core.Config.IGameConfigLibraryEntry.ItemTypeHierarchy { get; }
+
+        private GameConfigLibrary(GameConfigRuntimeStorageMode storageMode, Dictionary<TKey, TInfo> soloStorageItems, GameConfigLibraryDeduplicationStorage<TKey, TInfo> deduplicationStorage, GameConfigDeduplicationOwnership deduplicationOwnership, HashSet<ExperimentVariantPair> activePatches)
         {
         }
 

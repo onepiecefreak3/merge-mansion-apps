@@ -16,7 +16,6 @@ namespace GameLogic.Player.Modes
 
         [MetaMember(2, (MetaMemberFlags)0)]
         public F32 SpawnChance { get; set; }
-
         public int ConfigKey => (int)ItemRef.KeyObject;
 
         public EnergyModeProgressionEventItemInfo()

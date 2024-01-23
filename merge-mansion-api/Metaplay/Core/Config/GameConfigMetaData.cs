@@ -1,9 +1,11 @@
 using Metaplay.Core.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Metaplay.Core.Config
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 100 })]
     public class GameConfigMetaData
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -17,9 +19,6 @@ namespace Metaplay.Core.Config
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public MetaGuid ParentConfigId { get; set; }
-
-        [MetaMember(100, (MetaMemberFlags)0)]
-        public GameConfigBuildLog BuildLog { get; set; }
         public GameConfigBuildSummary BuildSummary { get; set; }
 
         public GameConfigMetaData()
@@ -34,6 +33,17 @@ namespace Metaplay.Core.Config
         public GameConfigBuildReport BuildReport { get; set; }
 
         public GameConfigMetaData(MetaGuid parentConfigId, ContentHash parentConfigHash, GameConfigBuildParameters buildParams, GameConfigBuildReport buildReport, string buildDescription)
+        {
+        }
+
+        public static int MaxReportMessages;
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public Dictionary<string, GameConfigBuildSourceMetadata> BuildSourceMetadata;
+        public GameConfigMetaData(MetaGuid parentConfigId, ContentHash parentConfigHash, GameConfigBuildParameters buildParams, GameConfigBuildReport buildReport, Dictionary<string, GameConfigBuildSourceMetadata> buildSourceMetadata, string buildDescription)
+        {
+        }
+
+        private GameConfigMetaData(MetaGuid parentConfigId, ContentHash parentConfigHash, GameConfigBuildParameters buildParams, GameConfigBuildReport buildReport, string buildDescription, GameConfigBuildSummary buildSummary)
         {
         }
     }

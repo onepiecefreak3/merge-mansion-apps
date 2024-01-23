@@ -5,6 +5,7 @@ using GameLogic.Random;
 using Metaplay.Core;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using GameLogic.Player.Items.Activation;
 
 namespace GameLogic.Player.Items.Production
 {
@@ -57,6 +58,17 @@ namespace GameLogic.Player.Items.Production
         }
 
         public PrefixProducer(string marker, IEnumerable<MetaRef<ItemDefinition>> items, IItemSpawner baseProducer)
+        {
+        }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        private InitialSequenceType InitialSequenceType { get; set; }
+
+        public PrefixProducer(InitialSequenceType initialSequenceType, string marker, IEnumerable<int> items, IItemSpawner baseProducer)
+        {
+        }
+
+        public PrefixProducer(InitialSequenceType initialSequenceType, string marker, IEnumerable<MetaRef<ItemDefinition>> items, IItemSpawner baseProducer)
         {
         }
     }

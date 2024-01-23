@@ -17,5 +17,15 @@ namespace Metaplay.Core.Config
             RequireArchiveEntry = requireArchiveEntry;
             ResolveContainedMetaRefs = resolveContainedMetaRefs;
         }
+
+        public string ConfigBuildSource;
+        public GameConfigEntryAttribute(string entryName, bool mpcFormat, bool requireArchiveEntry, bool resolveContainedMetaRefs, string configBuildSource)
+        {
+            EntryName = entryName;
+            MpcFormat = mpcFormat;
+            RequireArchiveEntry = requireArchiveEntry;
+            ResolveContainedMetaRefs = resolveContainedMetaRefs;
+            ConfigBuildSource = configBuildSource;
+        }
     }
 }

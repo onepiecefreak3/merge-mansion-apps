@@ -202,6 +202,34 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                 writer.WriteEndObject();
             }
+            else if (requirement is SideBoardEventActiveRequirement sbear)
+            {
+                writer.WritePropertyName("SideBoardEventActive");
+                writer.WriteStartObject();
+
+                WriteProperty(writer, "Events", sbear.EventIds, serializer);
+                WriteProperty(writer, "Active", sbear.Active, serializer);
+
+                writer.WriteEndObject();
+            }
+            else if (requirement is SideBoardEventPortalItemGivenRequirement sbepigr)
+            {
+                writer.WritePropertyName("SideBoardEventPortalItemGiven");
+                writer.WriteStartObject();
+
+                WriteProperty(writer, "Events", sbepigr.EventIds, serializer);
+
+                writer.WriteEndObject();
+            }
+            else if (requirement is SideBoardEventEnteredMergeBoardRequirement sbeembr)
+            {
+                writer.WritePropertyName("SideBoardEventMergeBoardEntered");
+                writer.WriteStartObject();
+
+                WriteProperty(writer, "Events", sbeembr.EventIds, serializer);
+
+                writer.WriteEndObject();
+            }
             else
                 _output.Warning("Unknown requirement {0}", requirement.GetType().Name);
 

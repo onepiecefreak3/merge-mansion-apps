@@ -38,5 +38,8 @@ namespace Game.Logic
         public PlayerIdentity(RandomPCG random)
         {
         }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public bool PlayerNameChangeDisabled { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 using GameLogic.Cutscenes;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -16,5 +18,8 @@ namespace GameLogic.Player.Director.Config
         public TriggerCutscene(CutsceneId cutsceneId)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

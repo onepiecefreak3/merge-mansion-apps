@@ -18,7 +18,6 @@ namespace Code.GameLogic.DynamicEvents
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
-
         public DynamicEventRewardId ConfigKey => EventId;
 
         public DynamicEventRewardInfo()

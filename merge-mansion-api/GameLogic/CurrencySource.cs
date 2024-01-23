@@ -48,6 +48,9 @@ namespace GameLogic
         WeightStar = 39,
         ProgressionEventStreak = 40,
         BonusTimerCompleted = 41,
-        DecorationShopPurchase = 42
+        DecorationShopPurchase = 42,
+        EventShopPurchase = 43,
+        ItemInfoPopupShopPurchase = 44,
+        SideBoardEventResourceItemSpawn = 45
     }
 }

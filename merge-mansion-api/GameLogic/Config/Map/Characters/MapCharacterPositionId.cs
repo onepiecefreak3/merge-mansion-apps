@@ -191,6 +191,9 @@ namespace GameLogic.Config.Map.Characters
         AreaGallerySecondDialogueMaddie = 5601,
         AreaGalleryEntryDialogueWinston = 5602,
         AreaPetHomeFirstMapCharacterPositionMap = 5799,
-        AreaPetHomeEntryMapGoldie = 5800
+        AreaPetHomeEntryMapGoldie = 5800,
+        AreaLandingRoomFirstMapCharacterPositionMap = 5999,
+        AreaLandingRoomEntryMapMaddie = 6000,
+        AreaLandingRoomSecondDialogueMaddie = 6001
     }
 }

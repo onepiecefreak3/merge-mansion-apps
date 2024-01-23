@@ -3,11 +3,9 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Config
 {
-    public abstract class GameConfigBase : IGameConfig, IGameConfigDataResolver, IGameConfigDataRegistry
+    public abstract class GameConfigBase : IGameConfig, IGameConfigDataRegistry
     {
-        // 0x10
         ContentHash Metaplay.Core.Config.IGameConfig.ArchiveVersion => ArchiveVersion;
-
         protected GameConfigBase()
         {
             _refResolvers = new Dictionary<Type, List<Func<object, object>>>();
@@ -65,10 +63,7 @@ namespace Metaplay.Core.Config
         }
 
         public ContentHash ArchiveVersion;
-        protected virtual CsvParseOptions DefaultParseOptions { get; }
-
         private Dictionary<Type, List<IGameConfigLibrary>> _libraries;
-        public bool AllowLibraryUpdate { get; set; }
         protected GameConfigRuntimeStorageMode StorageMode { get; set; }
         protected GameConfigTopLevelDeduplicationStorage DeduplicationStorage { get; set; }
         protected GameConfigDeduplicationOwnership DeduplicationOwnership { get; set; }

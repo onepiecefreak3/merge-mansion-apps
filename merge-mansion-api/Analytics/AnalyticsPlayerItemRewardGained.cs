@@ -5,6 +5,7 @@ using Metaplay.Core.Model;
 using System;
 using Code.GameLogic.GameEvents;
 using GameLogic;
+using GameLogic.Player.Items;
 
 namespace Analytics
 {
@@ -33,6 +34,14 @@ namespace Analytics
         }
 
         public AnalyticsPlayerItemRewardGained()
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Duration in minutes for items with durations")]
+        [JsonProperty("duration_in_minutes", DefaultValueHandling = (DefaultValueHandling)1)]
+        public double Duration;
+        public AnalyticsPlayerItemRewardGained(ItemDefinition itemDefinition, OverrideItemFeatures overrideItemFeatures, int amount, CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLeveLId)
         {
         }
     }

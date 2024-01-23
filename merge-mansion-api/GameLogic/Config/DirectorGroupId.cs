@@ -182,5 +182,7 @@ namespace GameLogic.Config
         public static DirectorGroupId CoinMergeable;
         public static DirectorGroupId MaxLevelCoinsCollectible;
         public static DirectorGroupId EnergyModeFTUE;
+        public static DirectorGroupId CooldownRemoverFTUE;
+        public static DirectorGroupId SBE_Jailbreak_TasksTutorial;
     }
 }

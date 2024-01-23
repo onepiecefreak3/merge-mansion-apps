@@ -44,5 +44,7 @@ namespace GameLogic.MergeChains
         public ListMergeChainElement(IEnumerable<MetaRef<ItemDefinition>> items)
         {
         }
+
+        public int Count { get; }
     }
 }

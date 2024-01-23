@@ -315,5 +315,10 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         private F32 TimeSpawnBoostMultiplier { get; }
+
+        [IgnoreDataMember]
+        public bool ActivatedWithNoCost { get; }
+        public bool HideSinkProgressBar { get; }
+        public bool HideSinkUndiscoveredItemsInHints { get; }
     }
 }

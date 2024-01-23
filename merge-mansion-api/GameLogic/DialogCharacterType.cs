@@ -35,6 +35,18 @@ namespace GameLogic
         Voyance = 23,
         Ash = 24,
         Sullivan = 25,
-        Pet = 26
+        Pet = 26,
+        OfficerHill = 27,
+        OfficerLewis = 28,
+        LtJohnson = 29,
+        XOAdams = 30,
+        WardenDecker = 31,
+        PrisonerGrace = 32,
+        PrisonerKitty = 33,
+        PrisonerMama = 34,
+        PrisonerBluetooth = 35,
+        PrisonerCindy = 36,
+        PrisonerIzzy = 37,
+        PrisonSecretAgent = 38
     }
 }

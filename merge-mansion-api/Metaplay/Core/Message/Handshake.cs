@@ -378,5 +378,28 @@ namespace Metaplay.Core.Message
             {
             }
         }
+
+        [MessageRoutingRuleProtocol]
+        [MetaMessage(32, (MessageDirection)1, true)]
+        public class DualSocialAuthenticationLoginRequest : Handshake.LoginRequest
+        {
+            [MetaMember(100, (MetaMemberFlags)0)]
+            public SocialAuthenticationClaimBase Claim { get; set; }
+
+            [MetaMember(101, (MetaMemberFlags)0)]
+            public string DeviceId { get; set; }
+
+            [MetaMember(102, (MetaMemberFlags)0)]
+            [Sensitive]
+            public string AuthToken { get; set; }
+
+            private DualSocialAuthenticationLoginRequest()
+            {
+            }
+
+            public DualSocialAuthenticationLoginRequest(EntityId playerIdHint, bool isBot, LoginDebugDiagnostics debugDiagnostics, Handshake.ILoginRequestGamePayload gamePayload, SocialAuthenticationClaimBase claim, string deviceId, string authToken)
+            {
+            }
+        }
     }
 }

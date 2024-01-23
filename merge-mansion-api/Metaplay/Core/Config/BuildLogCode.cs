@@ -38,6 +38,7 @@ namespace Metaplay.Core.Config
         [Obsolete("No more used")]
         NonActivationHasIgnoresEnergyModeTag = 1027,
         FramesItemWithoutFramesFeatures = 1028,
-        MultipleEnergyModeProgressionEventItemsForSameEvent = 1029
+        MultipleEnergyModeProgressionEventItemsForSameEvent = 1029,
+        MergeChainElementsMismatch = 1030
     }
 }

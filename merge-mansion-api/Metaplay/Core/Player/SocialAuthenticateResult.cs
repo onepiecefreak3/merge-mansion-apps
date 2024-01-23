@@ -18,7 +18,6 @@ namespace Metaplay.Core.Player
 
         public AuthenticationPlatform Platform { get; set; }
         public SocialAuthenticateResult.ResultCode Result { get; set; }
-        public MetaSerialized<IPlayerModelBase> ConflictingPlayer { get; set; }
         public int ConflictResolutionId { get; set; }
         public string DebugOnlyErrorMessage { get; set; }
 
@@ -27,6 +26,13 @@ namespace Metaplay.Core.Player
         }
 
         public SocialAuthenticateResult(AuthenticationPlatform platform, SocialAuthenticateResult.ResultCode result, MetaSerialized<IPlayerModelBase> conflictingPlayer, int conflictResolutionId, string debugOnlyErrorMessage)
+        {
+        }
+
+        public EntityId ConflictingPlayerId { get; set; }
+        public MetaSerialized<IPlayerModelBase> ConflictingPlayerIfAvailable { get; set; }
+
+        public SocialAuthenticateResult(AuthenticationPlatform platform, SocialAuthenticateResult.ResultCode result, EntityId conflictingPlayerId, MetaSerialized<IPlayerModelBase> conflictingPlayer, int conflictResolutionId, string debugOnlyErrorMessage)
         {
         }
     }

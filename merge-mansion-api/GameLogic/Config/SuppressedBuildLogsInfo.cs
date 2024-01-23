@@ -38,5 +38,9 @@ namespace GameLogic.Config
         public SuppressedBuildLogsInfo(int ruleId, GameConfigBuildMessageLevel logLevel, string library, string row, string column, BuildLogCode code)
         {
         }
+
+        public SuppressedBuildLogsInfo(int ruleId, GameConfigLogLevel logLevel, string library, string row, string column, BuildLogCode code)
+        {
+        }
     }
 }

@@ -34,5 +34,8 @@ namespace Code.GameLogic.GameEvents
         public EventCurrencyInfo()
         {
         }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public EventCurrencyDisplayKind DisplayKind { get; set; }
     }
 }

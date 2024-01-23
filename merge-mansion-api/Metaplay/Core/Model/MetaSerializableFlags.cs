@@ -6,6 +6,7 @@ namespace Metaplay.Core.Model
     public enum MetaSerializableFlags
     {
         None = 0,
-        ImplicitMembers = 1
+        ImplicitMembers = 1,
+        AutomaticConstructorDetection = 2
     }
 }

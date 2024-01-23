@@ -6,6 +6,7 @@ using System;
 namespace Metaplay.Core.Player
 {
     [AnalyticsEvent(1015, "IAP Subscription State Updated", 1, "The state of an IAP subscription was updated. A state update can be a subscription renewal or some other change, such as a change in the auto-renewal status of the subscription. Here, expiration is not considered a state update, as it happens based on time.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     public class PlayerEventIAPSubscriptionStateUpdated : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

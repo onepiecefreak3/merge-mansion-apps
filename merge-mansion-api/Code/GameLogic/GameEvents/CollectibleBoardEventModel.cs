@@ -12,7 +12,7 @@ using Metaplay.Core.Offers;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(8)]
-    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, IBoardEventModel, IPointsEvent
+    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, ILevelBoardEventModel, ILevelEventModel, IBoardEventModel, IPointsEvent
     {
         public static int InitialLevel;
         private static int InitialLevelProgress;
@@ -28,7 +28,7 @@ namespace Code.GameLogic.GameEvents
         public int LevelProgress { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        public List<CollectibleBoardEventClaimedLevelData> ClaimedLevels { get; set; }
+        public List<LevelEventClaimedLevelData> ClaimedLevels { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
         public MergeBoard MergeBoard { get; set; }
@@ -67,9 +67,6 @@ namespace Code.GameLogic.GameEvents
         public CollectibleBoardEventInfo Info { get; }
 
         [IgnoreDataMember]
-        public IBoardEventInfo EventInfo { get; }
-
-        [IgnoreDataMember]
         public override ExtendableEventParams ExtendableEventParams { get; }
 
         [IgnoreDataMember]
@@ -104,5 +101,11 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
+
+        [IgnoreDataMember]
+        public IBoardEventInfo BoardEventInfo { get; }
+
+        [IgnoreDataMember]
+        public ILevelEventInfo LevelEventInfo { get; }
     }
 }

@@ -12,6 +12,7 @@ using Metaplay.Core;
 namespace GameLogic.Player.Items.Activation
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7 })]
     public class ActivationFeatures
     {
         [MetaMember(1)]
@@ -31,9 +32,6 @@ namespace GameLogic.Player.Items.Activation
 
         [MetaMember(6)]
         public ItemVisibility SpawnVisibility { get; set; }
-
-        [MetaMember(7)]
-        public string OverrideSfx { get; set; }
         public bool Activable => ActivationSpawn != null && !(ActivationSpawn is EmptyProducer);
 
         public F64 TimeSkipPriceGems(IGenerationContext context)
@@ -59,6 +57,19 @@ namespace GameLogic.Player.Items.Activation
         public MetaTime? ActivationStartTime { get; }
 
         public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, string overrideSfx, bool startsFull, List<PlayerRequirement> activationRequirements, ItemVisibility itemVisibility)
+        {
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public int? ActivationCost { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public bool ShowTapTextOnDiscovery { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public bool AllowCooldownRemover { get; set; }
+
+        public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, bool startsFull, List<PlayerRequirement> activationRequirements, int? activationCost, bool showTapTextOnDiscovery, bool allowCooldownRemover, ItemVisibility itemVisibility)
         {
         }
     }

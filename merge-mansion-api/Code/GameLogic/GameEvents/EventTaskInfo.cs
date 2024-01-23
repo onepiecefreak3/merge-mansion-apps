@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 using System;
 using GameLogic.Player.Items;
 using Metaplay.Core.Math;
+using GameLogic.Player.Director.Config;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -85,6 +86,22 @@ namespace Code.GameLogic.GameEvents
         public F32 LeftoversWeightMultiplier_Item2 { get; set; }
 
         public EventTaskInfo(EventTaskId eventTaskId, string displayName, string description, List<PlayerReward> rewards, List<PlayerItemRequirement> requirements, List<MetaRef<EventTaskInfo>> unlocksTasks, string taskTitleLocId, bool isDynamicTask, string difficultyCurveItem1, string defaultDifficultyCurveItem1, F32 rangeMinItem1, F32 rangeMaxItem1, F32 leftoversWeightMultiplier_Item1, string difficultyCurveItem2, string defaultDifficultyCurveItem2, F32 rangeMinItem2, F32 rangeMaxItem2, F32 leftoversWeightMultiplier_Item2)
+        {
+        }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public List<IDirectorAction> CompleteActions { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        private int? EventLevelMin { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        private int? EventLevelMax { get; set; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        private bool ForceHideOnEventLevelMax { get; set; }
+
+        public EventTaskInfo(EventTaskId eventTaskId, string displayName, string description, List<PlayerReward> rewards, List<PlayerItemRequirement> requirements, List<MetaRef<EventTaskInfo>> unlocksTasks, string taskTitleLocId, bool isDynamicTask, string difficultyCurveItem1, string defaultDifficultyCurveItem1, F32 rangeMinItem1, F32 rangeMaxItem1, F32 leftoversWeightMultiplier_Item1, string difficultyCurveItem2, string defaultDifficultyCurveItem2, F32 rangeMinItem2, F32 rangeMaxItem2, F32 leftoversWeightMultiplier_Item2, List<IDirectorAction> completeActions, int? eventLevelMin, int? eventLevelMax, bool forceHideOnEventLevelMax)
         {
         }
     }

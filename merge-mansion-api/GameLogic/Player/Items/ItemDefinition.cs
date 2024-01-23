@@ -27,6 +27,8 @@ using GameLogic.Player.Items.Fishing;
 using GameLogic.Player.Items.Sinkable;
 using GameLogic.Player.Items.Persistent;
 using GameLogic.Player.Requirements;
+using GameLogic.Player.Items.OverrideSpawnChance;
+using GameLogic.ConfigPrefabs;
 
 namespace GameLogic.Player.Items
 {
@@ -258,6 +260,25 @@ namespace GameLogic.Player.Items
         public List<string> SpawnEffects { get; set; }
 
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects)
+        {
+        }
+
+        [MetaMember(45, (MetaMemberFlags)0)]
+        private OverrideSpawnChanceFeatures _OverrideSpawnChanceFeatures;
+        [MetaMember(46, (MetaMemberFlags)0)]
+        public ConfigPrefabId CustomItemInfoPopupId;
+        [MetaMember(48, (MetaMemberFlags)0)]
+        private AudioFeatures _AudioFeatures;
+        [MetaMember(47, (MetaMemberFlags)0)]
+        public bool ShowCustomItemInfoPopupOnDiscovery { get; set; }
+
+        [IgnoreDataMember]
+        public OverrideSpawnChanceFeatures OverrideSpawnChanceFeatures { get; }
+
+        [IgnoreDataMember]
+        public AudioFeatures AudioFeatures { get; }
+
+        public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, OverrideSpawnChanceFeatures overrideSpawnChanceFeatures, AudioFeatures audioFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects, ConfigPrefabId customItemInfoPopupId, bool showCustomItemInfoPopupOnDiscovery)
         {
         }
     }

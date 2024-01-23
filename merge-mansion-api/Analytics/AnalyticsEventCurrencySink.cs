@@ -88,5 +88,10 @@ namespace Analytics
         [MetaMember(14, (MetaMemberFlags)0)]
         [JsonProperty("is_producer_booster_active", NullValueHandling = (NullValueHandling)1)]
         public bool IsProducerBoosterActive { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [Description("Shop Item Id if a shop item")]
+        [JsonProperty("shop_item_id", NullValueHandling = (NullValueHandling)1)]
+        public string ShopItemId { get; set; }
     }
 }

@@ -16,13 +16,18 @@ namespace GameLogic.Player.Items.Sink
 
         [MetaMember(3, 0)]
         public MetaRef<ItemDefinition> Reward { get; set; }
-        public ItemDefinition SinkProduct { get; }
 
         private SimpleSinkStateFactory()
         {
         }
 
         public SimpleSinkStateFactory(Dictionary<int, int> scores, int scoreTarget, int reward)
+        {
+        }
+
+        public IEnumerable<ValueTuple<ItemDefinition, int>> SinkProducts { get; }
+
+        public SimpleSinkStateFactory(List<ValueTuple<int, int>> scores, int scoreTarget, int reward)
         {
         }
     }

@@ -59,5 +59,7 @@ namespace Metaplay.Core.Math
         {
             return Double.ToString();
         }
+
+        private static long[] _longPow10Table;
     }
 }

@@ -1,5 +1,6 @@
 using FixPointCS;
 using System.Runtime.Serialization;
+using System;
 
 namespace Metaplay.Core.Math
 {
@@ -73,5 +74,7 @@ namespace Metaplay.Core.Math
         public static F32 E { get; }
         public static F32 MinValue { get; }
         public static F32 MaxValue { get; }
+
+        private static int[] _intPow10Table;
     }
 }

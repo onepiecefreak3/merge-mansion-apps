@@ -10,6 +10,7 @@ namespace Game.Cloud.Player
         StaticCheckFailed = 2,
         ProfanityCheckFailed = 3,
         Error = 4,
-        Timeout = 5
+        Timeout = 5,
+        PlayerNameChangeDisabled = 6
     }
 }

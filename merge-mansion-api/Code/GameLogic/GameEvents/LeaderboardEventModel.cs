@@ -55,9 +55,6 @@ namespace Code.GameLogic.GameEvents
         public bool EndDialogueTriggered { get; set; }
 
         [IgnoreDataMember]
-        IBoardEventInfo Code.GameLogic.GameEvents.IBoardEventModel.EventInfo { get; }
-
-        [IgnoreDataMember]
         int Code.GameLogic.GameEvents.IBoardEventModel.EnterMergeBoardCount { get; set; }
 
         [IgnoreDataMember]
@@ -87,5 +84,8 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         OfferPlacementId Code.GameLogic.GameEvents.IBoardEventModel.BoardShopFlashPlacementId { get; }
+
+        [IgnoreDataMember]
+        IBoardEventInfo Code.GameLogic.GameEvents.IBoardEventModel.BoardEventInfo { get; }
     }
 }

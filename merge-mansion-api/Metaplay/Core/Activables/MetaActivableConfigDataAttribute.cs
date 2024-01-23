@@ -11,5 +11,11 @@ namespace Metaplay.Core.Activables
         public MetaActivableConfigDataAttribute(string kindId, bool fallback)
         {
         }
+
+        public bool WarnAboutMissingConfigLibrary { get; }
+
+        public MetaActivableConfigDataAttribute(string kindId, bool fallback, bool warnAboutMissingConfigLibrary)
+        {
+        }
     }
 }

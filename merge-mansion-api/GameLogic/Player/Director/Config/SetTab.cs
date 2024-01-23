@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -19,5 +20,8 @@ namespace GameLogic.Player.Director.Config
         public SetTab(string targetId, int tabIndex)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

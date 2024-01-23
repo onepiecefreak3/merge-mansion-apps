@@ -109,6 +109,7 @@ namespace Analytics
         PetChanged = 98,
         CobwebCleared = 99,
         PortalPieceChain = 100,
-        SetPlayerModeActive = 101
+        SetPlayerModeActive = 101,
+        BroadcastCreated = 102
     }
 }

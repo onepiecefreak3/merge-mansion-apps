@@ -13,6 +13,7 @@ using GameLogic.Config;
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 9 })]
     public class PetInfo : IGameConfigData<PetId>, IGameConfigData, IGameConfigKey<PetId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -39,9 +40,6 @@ namespace GameLogic.Player.Rewards
         [MetaMember(8, (MetaMemberFlags)0)]
         public DecorationId Decoration { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
-        public Dictionary<AreaId, string> AreaAnimationOverrides { get; set; }
-
         [IgnoreDataMember]
         public DirectorGroupId OnDiscoveredDirectorGroupId { get; }
 
@@ -50,6 +48,10 @@ namespace GameLogic.Player.Rewards
         }
 
         public PetInfo(PetId petId, CutsceneId onDiscoveredCutscene, ConfigAssetPackId configAssetPackId, string unlockHeaderLocId, string unlockDescLocId, string infoHeaderLocId, string infoDescLocId, DecorationId decorationId, Dictionary<AreaId, string> areaAnimationOverrides)
+        {
+        }
+
+        public PetInfo(PetId petId, CutsceneId onDiscoveredCutscene, ConfigAssetPackId configAssetPackId, string unlockHeaderLocId, string unlockDescLocId, string infoHeaderLocId, string infoDescLocId, DecorationId decorationId)
         {
         }
     }

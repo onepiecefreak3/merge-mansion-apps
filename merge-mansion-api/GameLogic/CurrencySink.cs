@@ -35,6 +35,7 @@ namespace GameLogic
         BuyRentableInventory = 27,
         ChestsPurchase = 28,
         DecorationShopPurchase = 29,
-        DoubleEnergyMode = 30
+        DoubleEnergyMode = 30,
+        UsedAsSinkItem = 31
     }
 }

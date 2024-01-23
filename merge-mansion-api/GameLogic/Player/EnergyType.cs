@@ -7,6 +7,7 @@ namespace GameLogic.Player
     {
         Default = 0,
         Secondary = 1,
-        Tertiary = 2
+        Tertiary = 2,
+        None = 3
     }
 }

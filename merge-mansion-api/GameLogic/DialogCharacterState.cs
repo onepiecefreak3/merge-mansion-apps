@@ -21,6 +21,9 @@ namespace GameLogic
         Calling = 13,
         Talking = 14,
         Angry = 15,
-        Yelling = 16
+        Yelling = 16,
+        Proposal = 17,
+        Hesitant = 18,
+        Ready = 19
     }
 }

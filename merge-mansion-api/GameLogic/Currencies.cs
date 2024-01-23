@@ -18,6 +18,8 @@ namespace GameLogic
         Energy = 5,
         EventCurrency = 6,
         SecondaryEnergy = 7,
-        TertiaryEnergy = 8
+        TertiaryEnergy = 8,
+        ZeroEnergyCost = 9,
+        SideBoardEventResourceItem = 10
     }
 }

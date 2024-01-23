@@ -102,6 +102,12 @@ namespace GameLogic.Player
         PlayerModifiersChangedEvent ModifiersChanged { get; set; }
 
         PlayerModesChangedEvent ModesChanged { get; set; }
+
+        OverrideSpawnItemsStatus OverrideSpawnItemsStatus { get; }
+
+        IEnumerable<SideBoardEventModel> ActiveSideBoardEvents { get; }
+
+        Dictionary<int, RandomPCG> RandomsByFishingRodType { get; set; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

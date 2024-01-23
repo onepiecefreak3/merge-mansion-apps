@@ -4,6 +4,7 @@ using Metaplay.Core;
 using Metaplay.Core.Model;
 using Merge;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Hotspots.Actions
 {
@@ -26,5 +27,8 @@ namespace GameLogic.Hotspots.Actions
         public SellItems(MergeBoardId mergeBoardId, string tag, MetaDuration sellDuration)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

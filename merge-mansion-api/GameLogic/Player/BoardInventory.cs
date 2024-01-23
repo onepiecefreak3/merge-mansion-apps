@@ -5,6 +5,7 @@ using Merge;
 using System.Runtime.Serialization;
 using GameLogic.Player.Items;
 using Metaplay.Core;
+using Game.Logic;
 
 namespace GameLogic.Player
 {
@@ -55,5 +56,6 @@ namespace GameLogic.Player
         [MetaMember(6, (MetaMemberFlags)0)]
         public bool IsLocked { get; set; }
         public bool IsEmpty { get; }
+        public InventoryContentChanged InventoryChanged { get; set; }
     }
 }

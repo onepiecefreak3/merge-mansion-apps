@@ -14,8 +14,6 @@ namespace Code.GameLogic.GameEvents
 {
     public interface IBoardEventInfo
     {
-        IStringId Id { get; }
-
         StoryDefinitionId EnterBoardDialogue { get; }
 
         PlayerRequirement UnlockRequirement { get; }
@@ -33,5 +31,7 @@ namespace Code.GameLogic.GameEvents
         int AuxEnergyAttachmentChance { get; }
 
         MergeBoardId MergeBoardId { get; }
+
+        IStringId BoardEventId { get; }
     }
 }

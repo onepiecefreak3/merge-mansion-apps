@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -16,5 +17,8 @@ namespace GameLogic.Player.Director.Config
         public ShowTutorialFinger(string targetId)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

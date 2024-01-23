@@ -1,6 +1,8 @@
 using GameLogic.Merge;
 using Metaplay.Core.Model;
 using Merge;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Player.Director.Config
 {
@@ -17,5 +19,8 @@ namespace GameLogic.Player.Director.Config
         public DelayFinalizationToBoard(MergeBoardId boardId)
         {
         }
+
+        [IgnoreDataMember]
+        public bool IsVisualAction { get; }
     }
 }

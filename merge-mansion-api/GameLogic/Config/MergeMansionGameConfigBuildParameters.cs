@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Config
 {
@@ -10,20 +11,18 @@ namespace GameLogic.Config
     {
         public override bool IsIncremental { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
-        public string SpreadSheetTitle { get; set; }
-
-        [MetaMember(2, (MetaMemberFlags)0)]
-        public string SpreadSheetUrl { get; set; }
-
         public MergeMansionGameConfigBuildParameters()
         {
         }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
-        public bool IsDolts { get; set; }
+        [Obsolete]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
+        public string LegacySpreadSheetTitle { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
-        public DoltsConfigBuildParameters DoltsParameters { get; set; }
+        [Obsolete]
+        [MetaFormNotEditable]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public string LegacySpreadSheetUrl { get; set; }
     }
 }

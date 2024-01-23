@@ -32,5 +32,10 @@ namespace Analytics
         public AnalyticsGameEventLevelUp()
         {
         }
+
+        [JsonProperty("resource_item_used", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("The amount of ResourceItems used until now in the whole event (SideBoardEvent only)")]
+        public int? ResourceItemUsed;
     }
 }
