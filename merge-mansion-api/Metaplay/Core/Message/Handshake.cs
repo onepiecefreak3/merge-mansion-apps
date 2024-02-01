@@ -379,8 +379,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MessageRoutingRuleProtocol]
         [MetaMessage(32, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class DualSocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, (MetaMemberFlags)0)]

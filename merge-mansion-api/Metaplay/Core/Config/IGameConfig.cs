@@ -4,8 +4,8 @@ namespace Metaplay.Core.Config
 {
     public interface IGameConfig : IGameConfigDataResolver
     {
-        ContentHash ArchiveVersion { get; }
         void Import(PatchedConfigArchive archive, IGameConfigDataResolver baseResolver);
+        ContentHash ArchiveVersion { get; }
     //void BuildTimeValidate(GameConfigBuildWarnings.VariantWarnings variantWarnings);
     }
 }
