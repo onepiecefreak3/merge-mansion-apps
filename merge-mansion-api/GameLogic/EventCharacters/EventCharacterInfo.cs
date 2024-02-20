@@ -54,7 +54,8 @@ namespace GameLogic.EventCharacters
 
         [MetaMember(14, (MetaMemberFlags)0)]
         public string StartPopupDescriptionLocId { get; set; }
-        public EventCharacterId ConfigKey { get; }
+
+        public EventCharacterId ConfigKey => EventCharacterId;
 
         public EventCharacterInfo()
         {

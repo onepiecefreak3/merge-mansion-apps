@@ -109,7 +109,7 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(29, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ResourceItemCollectableRef { get; set; }
         public bool HasCustomCurrency { get; }
-        public SideBoardEventId ConfigKey { get; }
+        public SideBoardEventId ConfigKey => SideBoardEventId;
         public SideBoardEventId ActivableId { get; }
         public string DisplayShortInfo { get; }
 
