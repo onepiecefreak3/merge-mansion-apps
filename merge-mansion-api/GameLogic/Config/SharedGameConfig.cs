@@ -428,5 +428,6 @@ namespace GameLogic.Config
         public Dictionary<MergeBoardId, SideBoardEventId> SideBoardEventBoards { get; set; }
         public List<ItemDefinition> FishingRodItems { get; set; }
         public Dictionary<ItemDefinition, OverrideSpawnChanceFeatures> OverrideSpawnChanceByItemDefinition { get; set; }
+        public List<HotspotId> AreaUnlockHotspots { get; set; }
     }
 }

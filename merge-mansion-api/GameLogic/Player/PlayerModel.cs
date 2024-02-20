@@ -302,5 +302,8 @@ namespace GameLogic.Player
         [MetaMember(253, (MetaMemberFlags)0)]
         public OverrideSpawnItemsStatus OverrideSpawnItemsStatus { get; set; }
         public IEnumerable<SideBoardEventModel> ActiveSideBoardEvents { get; }
+        public IEnumerable<GarageCleanupEventModel> AllGarageCleanups { get; }
+        public IEnumerable<SideBoardEventModel> AllSideBoardEvents { get; }
+        public List<IPlayerModifier> ActiveModifiersNonAlloc { get; }
     }
 }

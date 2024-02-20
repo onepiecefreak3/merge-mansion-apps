@@ -1,6 +1,7 @@
 using Metaplay.Core;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
@@ -20,5 +21,11 @@ namespace GameLogic.Player.Items.Production
         public ItemOdds(int type, int weight)
         {
         }
+
+        [IgnoreDataMember]
+        public ItemDefinition Item { get; }
+
+        [IgnoreDataMember]
+        public int ConfigKey { get; }
     }
 }

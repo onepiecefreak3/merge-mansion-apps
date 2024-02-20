@@ -108,6 +108,12 @@ namespace GameLogic.Player
         IEnumerable<SideBoardEventModel> ActiveSideBoardEvents { get; }
 
         Dictionary<int, RandomPCG> RandomsByFishingRodType { get; set; }
+
+        List<IPlayerModifier> ActiveModifiersNonAlloc { get; }
+
+        IEnumerable<GarageCleanupEventModel> AllGarageCleanups { get; }
+
+        IEnumerable<SideBoardEventModel> AllSideBoardEvents { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }
