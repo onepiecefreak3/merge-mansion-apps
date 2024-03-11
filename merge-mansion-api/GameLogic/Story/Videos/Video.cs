@@ -9,7 +9,7 @@ using GameLogic.Audio;
 namespace GameLogic.Story.Videos
 {
     [MetaSerializable]
-    public class Video : IGameConfigData<VideoId>, IGameConfigData, IGameConfigKey<VideoId>
+    public class Video : IGameConfigData<VideoId>, IGameConfigData, IHasGameConfigKey<VideoId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public VideoId ConfigKey { get; set; }

@@ -16,6 +16,7 @@ using Metaplay.Core.Math;
 using GameLogic.Seasonality;
 using GameLogic.Player.Rewards;
 using GameLogic.Player.Requirements;
+using Code.GameLogic.DynamicEvents;
 
 namespace Game.Logic
 {
@@ -259,5 +260,8 @@ namespace Game.Logic
         [MetaMember(72, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public Dictionary<MergeBoardId, long> AnalyticsFakeZeroEnergySaldoByMergeBoardId { get; set; }
+
+        [MetaMember(73, (MetaMemberFlags)0)]
+        public Dictionary<EventTaskId, List<DebugItemData>> DynamicTasksPayload { get; set; }
     }
 }

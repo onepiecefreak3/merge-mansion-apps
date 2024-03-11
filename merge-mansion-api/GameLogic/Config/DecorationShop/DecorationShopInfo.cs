@@ -10,7 +10,7 @@ namespace GameLogic.Config.DecorationShop
 {
     [MetaSerializable]
     [MetaActivableConfigData("DecorationShop", false)]
-    public class DecorationShopInfo : IMetaActivableConfigData<DecorationShopId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DecorationShopId>, IGameConfigKey<DecorationShopId>, IMetaActivableInfo<DecorationShopId>
+    public class DecorationShopInfo : IMetaActivableConfigData<DecorationShopId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DecorationShopId>, IHasGameConfigKey<DecorationShopId>, IMetaActivableInfo<DecorationShopId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationShopId ConfigKey { get; set; }

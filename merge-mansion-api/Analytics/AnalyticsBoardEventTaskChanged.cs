@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using GameLogic.MergeChains;
+using Code.GameLogic.DynamicEvents;
 
 namespace Analytics
 {
@@ -67,5 +68,9 @@ namespace Analytics
             {
             }
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("debug_data", NullValueHandling = (NullValueHandling)1)]
+        public List<DebugItemData> DebugData { get; set; }
     }
 }

@@ -91,6 +91,10 @@ namespace Metaplay.Core.Message
                 Platform = platform;
                 LoginProtocolVersion = loginProtocolVersion;
             }
+
+            public ClientHello(string clientVersion, string buildNumber, int clientLogicVersion, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
+            {
+            }
         }
 
         [MetaMessage(6, MessageDirection.ClientToServer, true)]

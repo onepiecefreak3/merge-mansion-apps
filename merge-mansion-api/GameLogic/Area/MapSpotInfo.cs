@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace GameLogic.Area
 {
     [MetaSerializable]
-    public class MapSpotInfo : IGameConfigData<MapSpotId>, IGameConfigData, IGameConfigKey<MapSpotId>
+    public class MapSpotInfo : IGameConfigData<MapSpotId>, IGameConfigData, IHasGameConfigKey<MapSpotId>
     {
         public MapSpotId ConfigKey => MapSpotId;
 

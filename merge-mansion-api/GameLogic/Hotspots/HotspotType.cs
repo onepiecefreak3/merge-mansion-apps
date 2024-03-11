@@ -11,6 +11,7 @@ namespace GameLogic.Hotspots
         UnlockArea = 3,
         EndOfContent = 4,
         Event = 5,
-        RepeatableTask = 6
+        RepeatableTask = 6,
+        OpenUIElement = 7
     }
 }

@@ -33,7 +33,7 @@ using GameLogic.ConfigPrefabs;
 namespace GameLogic.Player.Items
 {
     [MetaSerializable]
-    public class ItemDefinition : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>, IValidatable
+    public class ItemDefinition : IGameConfigData<int>, IGameConfigData, IHasGameConfigKey<int>, IValidatable
     {
         [MetaMember(12, (MetaMemberFlags)0)]
         private MergeFeatures _MergeFeatures;

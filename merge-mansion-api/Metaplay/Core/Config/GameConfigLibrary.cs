@@ -97,8 +97,6 @@ namespace Metaplay.Core.Config
         {
         }
 
-        IEnumerable<Type> Metaplay.Core.Config.IGameConfigLibraryEntry.ItemTypeHierarchy { get; }
-
         private GameConfigLibrary(GameConfigRuntimeStorageMode storageMode, Dictionary<TKey, TInfo> soloStorageItems, GameConfigLibraryDeduplicationStorage<TKey, TInfo> deduplicationStorage, GameConfigDeduplicationOwnership deduplicationOwnership, HashSet<ExperimentVariantPair> activePatches)
         {
         }

@@ -15,7 +15,7 @@ using GameLogic.Config.Map.Characters;
 namespace GameLogic.Hotspots
 {
     [MetaSerializable]
-    public class HotspotDefinition : IGameConfigData<HotspotId>, IGameConfigData, IGameConfigKey<HotspotId>, IHasRequirements
+    public class HotspotDefinition : IGameConfigData<HotspotId>, IGameConfigData, IHasGameConfigKey<HotspotId>, IHasRequirements
     {
         [MetaMember(1, 0)]
         public HotspotId Id { get; set; }
@@ -145,5 +145,15 @@ namespace GameLogic.Hotspots
 
         [IgnoreDataMember]
         public bool HasVisualCompleteActions { get; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        public string CompleteVFXId { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsOpenUIHotspot { get; }
+
+        public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, List<MetaRef<MapCharacterEventDefinition>> appearMapCharactersEvents, int completeActionMax, HotspotId completeFocusHotspotId, List<MetaRef<MapCharacterEventDefinition>> completeMapCharactersEvents, List<PlayerReward> bonusRewards, MetaDuration bonusTimerDuration, string completeVFXId)
+        {
+        }
     }
 }

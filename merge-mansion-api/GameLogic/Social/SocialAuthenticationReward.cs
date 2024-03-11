@@ -6,7 +6,7 @@ using System;
 namespace GameLogic.Social
 {
     [MetaSerializable]
-    public class SocialAuthenticationReward : IGameConfigData<AuthenticationPlatform>, IGameConfigData, IGameConfigKey<AuthenticationPlatform>
+    public class SocialAuthenticationReward : IGameConfigData<AuthenticationPlatform>, IGameConfigData, IHasGameConfigKey<AuthenticationPlatform>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public AuthenticationPlatform ConfigKey { get; set; }

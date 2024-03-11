@@ -10,7 +10,7 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.DynamicEvents
 {
     [MetaSerializable]
-    public class DynamicEventItemInfo : IGameConfigData<DynamicEventItemId>, IGameConfigData, IGameConfigKey<DynamicEventItemId>, IValidatable
+    public class DynamicEventItemInfo : IGameConfigData<DynamicEventItemId>, IGameConfigData, IHasGameConfigKey<DynamicEventItemId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DynamicEventItemId ConfigKey { get; set; }

@@ -9,7 +9,7 @@ using GameLogic.Player.Director.Config;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventLevelInfo : IGameConfigData<EventLevelId>, IGameConfigData, IGameConfigKey<EventLevelId>, IValidatable
+    public class EventLevelInfo : IGameConfigData<EventLevelId>, IGameConfigData, IHasGameConfigKey<EventLevelId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventLevelId EventLevelId { get; set; }

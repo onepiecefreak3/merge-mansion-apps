@@ -9,12 +9,13 @@ using System.Collections.Generic;
 using GameLogic.Area;
 using System.Runtime.Serialization;
 using GameLogic.Config;
+using GameLogic.Config.Map.Characters;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 9 })]
-    public class PetInfo : IGameConfigData<PetId>, IGameConfigData, IGameConfigKey<PetId>
+    public class PetInfo : IGameConfigData<PetId>, IGameConfigData, IHasGameConfigKey<PetId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public PetId ConfigKey { get; set; }
@@ -52,6 +53,19 @@ namespace GameLogic.Player.Rewards
         }
 
         public PetInfo(PetId petId, CutsceneId onDiscoveredCutscene, ConfigAssetPackId configAssetPackId, string unlockHeaderLocId, string unlockDescLocId, string infoHeaderLocId, string infoDescLocId, DecorationId decorationId)
+        {
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string SelectionHeaderLocId { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public string SelectionDescriptionLocId { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public MapCharacterPositionId PetHomeCharacterPositionId { get; set; }
+
+        public PetInfo(PetId petId, CutsceneId onDiscoveredCutscene, ConfigAssetPackId configAssetPackId, string unlockHeaderLocId, string unlockDescLocId, string infoHeaderLocId, string infoDescLocId, DecorationId decorationId, string selectionHeaderLocId, string selectionDescriptionLocId, MapCharacterPositionId petHomeCharacterPositionId)
         {
         }
     }

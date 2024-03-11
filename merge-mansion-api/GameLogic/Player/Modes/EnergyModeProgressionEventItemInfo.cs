@@ -9,7 +9,7 @@ using Metaplay.Core.Math;
 namespace GameLogic.Player.Modes
 {
     [MetaSerializable]
-    public class EnergyModeProgressionEventItemInfo : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>, IValidatable
+    public class EnergyModeProgressionEventItemInfo : IGameConfigData<int>, IGameConfigData, IHasGameConfigKey<int>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }

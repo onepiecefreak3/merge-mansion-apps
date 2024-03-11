@@ -10,7 +10,7 @@ namespace GameLogic.Seasonality
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 4 })]
-    public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData, IGameConfigKey<SeasonId>
+    public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData, IHasGameConfigKey<SeasonId>
     {
         public SeasonId ConfigKey => Id;
 

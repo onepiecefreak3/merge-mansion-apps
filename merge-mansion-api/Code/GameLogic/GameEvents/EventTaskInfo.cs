@@ -14,7 +14,7 @@ using GameLogic.Player.Director.Config;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class EventTaskInfo : IGameConfigData<EventTaskId>, IGameConfigData, IGameConfigKey<EventTaskId>, IValidatable
+    public class EventTaskInfo : IGameConfigData<EventTaskId>, IGameConfigData, IHasGameConfigKey<EventTaskId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventTaskId EventTaskId { get; set; }

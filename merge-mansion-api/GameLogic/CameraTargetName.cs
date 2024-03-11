@@ -60,6 +60,7 @@ namespace GameLogic
         HallwayCenter = 52,
         SaunaBurn = 53,
         Decoration30 = 54,
-        GalleryEntrance = 55
+        GalleryEntrance = 55,
+        Decoration31 = 56
     }
 }

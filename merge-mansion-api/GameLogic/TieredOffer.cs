@@ -7,7 +7,7 @@ using Metaplay.Core.Offers;
 namespace GameLogic
 {
     [MetaSerializable]
-    public class TieredOffer : IGameConfigData<TieredOfferId>, IGameConfigData, IGameConfigKey<TieredOfferId>
+    public class TieredOffer : IGameConfigData<TieredOfferId>, IGameConfigData, IHasGameConfigKey<TieredOfferId>
     {
         [MetaMember(2, (MetaMemberFlags)0)]
         public List<MetaOfferId> OfferItems;

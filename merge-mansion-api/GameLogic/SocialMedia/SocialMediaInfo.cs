@@ -8,7 +8,7 @@ using GameLogic.Player.Rewards;
 namespace GameLogic.SocialMedia
 {
     [MetaSerializable]
-    public class SocialMediaInfo : IGameConfigData<SocialMediaId>, IGameConfigData, IGameConfigKey<SocialMediaId>
+    public class SocialMediaInfo : IGameConfigData<SocialMediaId>, IGameConfigData, IHasGameConfigKey<SocialMediaId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public SocialMediaId SocialMediaId { get; set; }

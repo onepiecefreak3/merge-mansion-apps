@@ -4,7 +4,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Bubble
 {
     [MetaSerializable]
-    public class BubblesSetup : IGameConfigData<BubblesSetupId>, IGameConfigData, IGameConfigKey<BubblesSetupId>
+    public class BubblesSetup : IGameConfigData<BubblesSetupId>, IGameConfigData, IHasGameConfigKey<BubblesSetupId>
     {
         [MetaMember(1, 0)]
         public BubblesSetupId ConfigKey { get; set; }

@@ -7,7 +7,7 @@ using Metaplay.Core;
 namespace GameLogic.Config.DecorationShop
 {
     [MetaSerializable]
-    public class DecorationShopSetInfo : IGameConfigData<DecorationShopSetId>, IGameConfigData, IGameConfigKey<DecorationShopSetId>
+    public class DecorationShopSetInfo : IGameConfigData<DecorationShopSetId>, IGameConfigData, IHasGameConfigKey<DecorationShopSetId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationShopSetId ConfigKey { get; set; }

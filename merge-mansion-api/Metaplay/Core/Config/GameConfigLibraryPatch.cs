@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Metaplay.Core.Config
 {
     [MetaSerializable]
-    public class GameConfigLibraryPatch<TKey, TInfo> : GameConfigEntryPatch<GameConfigLibrary<TKey, TInfo>, Dictionary<TKey, TInfo>>
+    public class GameConfigLibraryPatch<TKey, TInfo> : GameConfigEntryPatch<GameConfigLibrary<TKey, TInfo>, Dictionary<TKey, TInfo>>, IGameConfigLibraryPatch
     {
         private Dictionary<TKey, TInfo> _replacedItems;
         private Dictionary<TKey, TInfo> _appendedItems;

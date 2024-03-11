@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class InventorySlotsConfig : IGameConfigData<InventorySlotId>, IGameConfigData, IGameConfigKey<InventorySlotId>
+    public class InventorySlotsConfig : IGameConfigData<InventorySlotId>, IGameConfigData, IHasGameConfigKey<InventorySlotId>
     {
         [MetaMember(1, 0)]
         public InventorySlotId ConfigKey { get; set; }

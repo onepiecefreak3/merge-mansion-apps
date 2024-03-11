@@ -22,7 +22,7 @@ namespace Code.GameLogic.GameEvents
     [DefaultMember("Item")]
     [MetaActivableConfigData("CollectibleBoardEvent", false)]
     [MetaBlockedMembers(new int[] { 24, 27 })]
-    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
+    public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IHasGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
     {
         [MetaMember(1, 0)]
         public CollectibleBoardEventId CollectibleBoardEventId { get; set; }

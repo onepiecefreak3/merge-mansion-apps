@@ -3,7 +3,7 @@ using System;
 
 namespace Metaplay.Core.Activables
 {
-    public interface IMetaActivableConfigData<TKey> : IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<TKey>, IGameConfigKey<TKey>, IMetaActivableInfo<TKey>
+    public interface IMetaActivableConfigData<TKey> : IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<TKey>, IHasGameConfigKey<TKey>, IMetaActivableInfo<TKey>
     {
     }
 

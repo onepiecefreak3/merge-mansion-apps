@@ -26,17 +26,6 @@ namespace GameLogic.Player.DailyTasks
         [ExcludeFromGdprExport]
         [MetaMember(18, (MetaMemberFlags)0)]
         public int LastSeenLevel;
-        [MetaMember(19, (MetaMemberFlags)0)]
-        [ExcludeFromGdprExport]
-        public bool IsUsingEventLevels;
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [ExcludeFromGdprExport]
-        private MetaRef<ItemDefinition> TotalCompleteRewardItem { get; set; }
-
-        [ExcludeFromGdprExport]
-        [MetaMember(5, (MetaMemberFlags)0)]
-        private int TotalCompleteRewardAmount { get; set; }
-
         [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public MetaTime StartTime { get; set; }
@@ -54,10 +43,6 @@ namespace GameLogic.Player.DailyTasks
         public string DailyTasksSetId { get; set; }
 
         [ExcludeFromGdprExport]
-        [MetaMember(13, (MetaMemberFlags)0)]
-        private int CompletedTasksForFinalReward { get; set; }
-
-        [ExcludeFromGdprExport]
         [MetaMember(14, (MetaMemberFlags)0)]
         public MetaRef<EventLevels> Levels { get; set; }
 
@@ -69,12 +54,6 @@ namespace GameLogic.Player.DailyTasks
 
         [IgnoreDataMember]
         public IEnumerable<DailyTaskState> TaskStates { get; }
-
-        [IgnoreDataMember]
-        public ItemDefinition FinalReward { get; }
-
-        [IgnoreDataMember]
-        public int FinalRewardQuantity { get; }
 
         [IgnoreDataMember]
         public EventId EventId { get; }

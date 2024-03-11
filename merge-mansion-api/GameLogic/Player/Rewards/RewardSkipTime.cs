@@ -2,10 +2,12 @@ using Metaplay.Core.Model;
 using System.Collections.Generic;
 using Merge;
 using Metaplay.Core;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
     [MetaSerializableDerived(24)]
+    [MetaFormDeprecated]
     public class RewardSkipTime : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

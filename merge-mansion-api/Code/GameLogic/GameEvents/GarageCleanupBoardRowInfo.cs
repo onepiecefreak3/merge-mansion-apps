@@ -7,7 +7,7 @@ using GameLogic.Player.Items;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class GarageCleanupBoardRowInfo : IGameConfigData<GarageCleanupBoardRowId>, IGameConfigData, IGameConfigKey<GarageCleanupBoardRowId>
+    public class GarageCleanupBoardRowInfo : IGameConfigData<GarageCleanupBoardRowId>, IGameConfigData, IHasGameConfigKey<GarageCleanupBoardRowId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public GarageCleanupBoardRowId ConfigKey { get; set; }

@@ -9,7 +9,7 @@ namespace GameLogic.GameFeatures
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3, 4 })]
-    public class GameFeatureSetting : IGameConfigData<GameFeatureId>, IGameConfigData, IGameConfigKey<GameFeatureId>
+    public class GameFeatureSetting : IGameConfigData<GameFeatureId>, IGameConfigData, IHasGameConfigKey<GameFeatureId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public GameFeatureId GameFeatureId { get; set; }

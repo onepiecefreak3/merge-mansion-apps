@@ -7,8 +7,6 @@ namespace Metaplay.Core.Config
     {
         Type ItemType { get; }
 
-        IEnumerable<Type> ItemTypeHierarchy { get; }
-
         int Count { get; }
     }
 }

@@ -12,6 +12,7 @@ namespace GameLogic.Player.Items.Fishing
         VeryRare = 3,
         Epic = 4,
         Legendary = 5,
-        Ultimate = 6
+        Ultimate = 6,
+        SuperUltimate = 7
     }
 }

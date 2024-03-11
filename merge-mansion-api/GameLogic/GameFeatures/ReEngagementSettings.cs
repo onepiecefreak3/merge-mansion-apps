@@ -8,7 +8,7 @@ using GameLogic.Player.Rewards;
 namespace GameLogic.GameFeatures
 {
     [MetaSerializable]
-    public class ReEngagementSettings : IGameConfigData<ReEngagementSettingsId>, IGameConfigData, IGameConfigKey<ReEngagementSettingsId>
+    public class ReEngagementSettings : IGameConfigData<ReEngagementSettingsId>, IGameConfigData, IHasGameConfigKey<ReEngagementSettingsId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ReEngagementSettingsId ConfigKey { get; set; }

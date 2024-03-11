@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Metaplay.Core.Config
 {
     [MetaSerializable]
-    public class GameConfigStructurePatch<TStructure> : GameConfigEntryPatch<TStructure, TStructure>
+    public class GameConfigStructurePatch<TStructure> : GameConfigEntryPatch<TStructure, TStructure>, IGameConfigStructurePatch
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private TStructure _replacementValues;

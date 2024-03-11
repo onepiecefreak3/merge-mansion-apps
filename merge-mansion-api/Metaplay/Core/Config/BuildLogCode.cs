@@ -39,6 +39,8 @@ namespace Metaplay.Core.Config
         NonActivationHasIgnoresEnergyModeTag = 1027,
         FramesItemWithoutFramesFeatures = 1028,
         MultipleEnergyModeProgressionEventItemsForSameEvent = 1029,
-        MergeChainElementsMismatch = 1030
+        MergeChainElementsMismatch = 1030,
+        UsingDeprecatedIgnoresEnergyModeTag = 1031,
+        InvalidCutscene = 1032
     }
 }

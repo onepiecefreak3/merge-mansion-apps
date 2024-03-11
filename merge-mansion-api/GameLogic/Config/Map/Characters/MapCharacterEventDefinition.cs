@@ -3,20 +3,17 @@ using Metaplay.Core.Model;
 using System.Collections.Generic;
 using System;
 using GameLogic.Area;
+using GameLogic.Player.Requirements;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Config.Map.Characters
 {
     [MetaSerializable]
-    public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData, IGameConfigKey<MapCharacterEventId>
+    [MetaBlockedMembers(new int[] { 2, 3 })]
+    public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData, IHasGameConfigKey<MapCharacterEventId>
     {
-        [MetaMember(1, 0)]
-        public MapCharacterEventId ConfigKey { get; set; }
-
-        [MetaMember(2, 0)]
-        public HotspotId OpensAtHotspot { get; set; }
-
-        [MetaMember(3, 0)]
-        public HotspotId ClosesAtHotspot { get; set; }
+        [MetaMember(1, (MetaMemberFlags)0)]
+        private MapCharacterEventId MapCharacterEventId { get; set; }
 
         [MetaMember(4, 0)]
         public MapCharacterType CharacterType { get; set; }
@@ -69,5 +66,23 @@ namespace GameLogic.Config.Map.Characters
 
         [MetaMember(19, (MetaMemberFlags)0)]
         public List<string> CharacterPropActions { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public List<PlayerRequirement> OpenRequirementsList { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public List<PlayerRequirement> CloseRequirementsList { get; set; }
+
+        public MapCharacterEventId ConfigKey => MapCharacterEventId;
+
+        [IgnoreDataMember]
+        public List<PlayerRequirement> OpenRequirements { get; }
+
+        [IgnoreDataMember]
+        public List<PlayerRequirement> CloseRequirements { get; }
+
+        public MapCharacterEventDefinition(MapCharacterEventId id, MapCharacterType mapCharacterType, MapCharacterActType mapCharacterActType, MapCharacterDirection mapCharacterAppearDirection, MapCharacterDirection mapCharacterActDirection, MapCharacterTransitionType mapCharacterAppearType, int priority, MapCharacterPositionId mapCharacterPositionId, MapCharacterMode mapCharacterMode, List<MapCharacterType> resetMapCharacters, string mapCharacterConfigId, string mapCharacterAnimationId, List<int> mapCharacterAppearRotation, List<int> mapCharacterActRotation, string speechBubbleLocalizationId, MapSpotId mapSpotId, List<string> mapCharacterPropActions, List<PlayerRequirement> openRequirements, List<PlayerRequirement> closeRequirements)
+        {
+        }
     }
 }

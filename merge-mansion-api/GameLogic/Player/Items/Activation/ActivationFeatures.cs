@@ -72,5 +72,12 @@ namespace GameLogic.Player.Items.Activation
         public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, bool startsFull, List<PlayerRequirement> activationRequirements, int? activationCost, bool showTapTextOnDiscovery, bool allowCooldownRemover, ItemVisibility itemVisibility)
         {
         }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public bool AllowEnergyMode { get; set; }
+
+        public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, bool startsFull, List<PlayerRequirement> activationRequirements, int? activationCost, bool showTapTextOnDiscovery, bool allowCooldownRemover, bool allowEnergyMode, ItemVisibility itemVisibility)
+        {
+        }
     }
 }

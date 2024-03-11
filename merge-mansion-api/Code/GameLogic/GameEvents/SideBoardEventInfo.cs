@@ -20,7 +20,7 @@ namespace Code.GameLogic.GameEvents
     [MetaActivableConfigData("SideBoardEvent", false, true)]
     [MetaSerializable]
     [DefaultMember("Item")]
-    public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo
+    public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IHasGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public SideBoardEventId SideBoardEventId { get; set; }

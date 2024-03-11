@@ -6,7 +6,7 @@ using GameLogic.Player.Rewards;
 namespace GameLogic
 {
     [MetaSerializable]
-    public class DynamicPurchaseDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IGameConfigKey<ShopItemId>
+    public class DynamicPurchaseDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ShopItemId ItemId { get; set; }

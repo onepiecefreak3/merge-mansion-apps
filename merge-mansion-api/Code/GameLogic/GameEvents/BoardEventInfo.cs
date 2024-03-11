@@ -26,7 +26,7 @@ namespace Code.GameLogic.GameEvents
     [DefaultMember("Item")]
     [MetaActivableConfigData("BoardEvent", false)]
     [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16 })]
-    public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventGroupInfo
+    public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventGroupInfo
     {
         [MetaMember(1, 0)]
         public EventId EventId { get; set; }

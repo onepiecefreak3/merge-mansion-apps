@@ -6,7 +6,7 @@ using System.Data;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class SuppressedBuildLogsInfo : IGameConfigData<int>, IGameConfigData, IGameConfigKey<int>
+    public class SuppressedBuildLogsInfo : IGameConfigData<int>, IGameConfigData, IHasGameConfigKey<int>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public int RuleId { get; set; }

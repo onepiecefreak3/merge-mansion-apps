@@ -7,7 +7,7 @@ using GameLogic.Player.Rewards;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class ProgressionEventStreakRewards : IGameConfigData<ProgressionEventStreakId>, IGameConfigData, IGameConfigKey<ProgressionEventStreakId>
+    public class ProgressionEventStreakRewards : IGameConfigData<ProgressionEventStreakId>, IGameConfigData, IHasGameConfigKey<ProgressionEventStreakId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventStreakId Id { get; set; }

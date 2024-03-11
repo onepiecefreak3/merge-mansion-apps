@@ -7,7 +7,7 @@ using GameLogic.Player.Rewards;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class DebugBoardStatesInfo : IGameConfigData<DebugBoardStateId>, IGameConfigData, IGameConfigKey<DebugBoardStateId>, IValidatable
+    public class DebugBoardStatesInfo : IGameConfigData<DebugBoardStateId>, IGameConfigData, IHasGameConfigKey<DebugBoardStateId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DebugBoardStateId DebugBoardStateId { get; set; }

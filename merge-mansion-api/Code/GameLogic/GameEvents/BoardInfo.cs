@@ -14,7 +14,7 @@ namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 12 })]
-    public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IGameConfigKey<MergeBoardId>
+    public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, 0)]
         public MergeBoardId BoardId { get; set; }

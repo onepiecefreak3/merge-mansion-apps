@@ -8,7 +8,7 @@ using GameLogic.Player.Rewards;
 namespace Code.GameLogic.DynamicEvents
 {
     [MetaSerializable]
-    public class DynamicEventRewardInfo : IGameConfigData<DynamicEventRewardId>, IGameConfigData, IGameConfigKey<DynamicEventRewardId>, IValidatable
+    public class DynamicEventRewardInfo : IGameConfigData<DynamicEventRewardId>, IGameConfigData, IHasGameConfigKey<DynamicEventRewardId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DynamicEventRewardId EventId { get; set; }

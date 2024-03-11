@@ -6,7 +6,7 @@ namespace Metaplay.Core.Config
 {
     [MetaSerializable]
     [MetaReservedMembers(100, 199)]
-    public abstract class GameConfigBuildParameters : IMetaIntegration<GameConfigBuildParameters>, IMetaIntegration
+    public abstract class GameConfigBuildParameters : IMetaIntegration<GameConfigBuildParameters>, IMetaIntegration, IGameDataBuildParameters
     {
         public abstract bool IsIncremental { get; }
 

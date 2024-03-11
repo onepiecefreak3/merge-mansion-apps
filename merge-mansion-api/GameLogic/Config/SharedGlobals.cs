@@ -93,12 +93,6 @@ namespace GameLogic.Config
         [MetaMember(30, (MetaMemberFlags)0)]
         public int DailyTasksResetHourUTC { get; set; }
 
-        [MetaMember(31, (MetaMemberFlags)0)]
-        public bool DailyTasksRefreshTogetherWithFinalReward { get; set; }
-
-        [MetaMember(32, (MetaMemberFlags)0)]
-        public int DailyTasksRequiredTasksForFinalReward { get; set; }
-
         [MetaMember(33, (MetaMemberFlags)0)]
         public List<MetaRef<EventLevels>> DailyTasksEventLevelSets { get; set; }
 
@@ -114,9 +108,6 @@ namespace GameLogic.Config
 
         [MetaMember(36, (MetaMemberFlags)0)]
         public int DailyTasksRefreshTasksCount { get; set; }
-
-        [MetaMember(37, (MetaMemberFlags)0)]
-        public bool DailyTasksRefreshAlsoOnFinalReward { get; set; }
 
         [MetaMember(38, (MetaMemberFlags)0)]
         public int ItemsNeededCountDisplayMax { get; set; }
@@ -150,5 +141,14 @@ namespace GameLogic.Config
 
         [MetaMember(47, (MetaMemberFlags)0)]
         public bool DailyTasksSkipOldTasksForWeightCalculation { get; set; }
+
+        [MetaMember(49, (MetaMemberFlags)0)]
+        public MetaDuration MaintenanceBannerReminderTime { get; set; }
+
+        [MetaMember(50, (MetaMemberFlags)0)]
+        public string MergeMansionURL { get; set; }
+
+        [MetaMember(51, (MetaMemberFlags)0)]
+        public bool DisableDecayingSpawnerFix { get; set; }
     }
 }

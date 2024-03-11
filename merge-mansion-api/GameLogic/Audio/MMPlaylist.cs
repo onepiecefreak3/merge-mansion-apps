@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace GameLogic.Audio
 {
     [MetaSerializable]
-    public class MMPlaylist : IGameConfigData<string>, IGameConfigData, IGameConfigKey<string>
+    public class MMPlaylist : IGameConfigData<string>, IGameConfigData, IHasGameConfigKey<string>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string ConfigKey { get; set; }

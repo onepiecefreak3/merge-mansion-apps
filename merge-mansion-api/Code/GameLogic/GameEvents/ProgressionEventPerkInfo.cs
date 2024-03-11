@@ -5,7 +5,7 @@ using Code.GameLogic.Config;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>, IGameConfigData, IGameConfigKey<ProgressionEventPerkId>, IValidatable
+    public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>, IGameConfigData, IHasGameConfigKey<ProgressionEventPerkId>, IValidatable
     {
         [MetaMember(1, 0)]
         public ProgressionEventPerkId Id { get; set; }

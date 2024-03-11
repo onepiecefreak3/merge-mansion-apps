@@ -13,7 +13,7 @@ using Code.GameLogic.GameEvents;
 namespace TimedMergeBoards
 {
     [MetaSerializable]
-    public class TimedMergeBoard : IGameConfigData<MergeBoardId>, IGameConfigData, IGameConfigKey<MergeBoardId>, IValidatable, IHasRequirements, IMergeBoardGenerator
+    public class TimedMergeBoard : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>, IValidatable, IHasRequirements, IMergeBoardGenerator
     {
         [MetaMember(1, 0)]
         private MergeBoardId Id { get; set; }

@@ -68,6 +68,8 @@ namespace GameLogic.Decorations
         LDE_HolidayCarols2023PlaceTreeCandlesTB5 = 59,
         LDE_HolidayCarols2023PlaceBigSnowflakeTC1 = 60,
         LDE_HolidayCarols2023PlaceOrnamentsTC2 = 61,
-        LDE_HolidayCarols2023PlaceStageOrnamentTC3 = 62
+        LDE_HolidayCarols2023PlaceStageOrnamentTC3 = 62,
+        SP_MiniHorseMystery2024PetHomeTA1 = 63,
+        SP_MiniHorseMystery2024PetHomeTA2 = 64
     }
 }

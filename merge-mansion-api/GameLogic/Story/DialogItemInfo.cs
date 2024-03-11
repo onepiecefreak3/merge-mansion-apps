@@ -12,7 +12,7 @@ namespace GameLogic.Story
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 16 })]
-    public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IGameConfigKey<DialogItemId>, IValidatable
+    public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IHasGameConfigKey<DialogItemId>, IValidatable
     {
         [MetaMember(1, 0)]
         public DialogItemId DialogItemId { get; set; }

@@ -8,7 +8,7 @@ using GameLogic.Config.Costs;
 namespace GameLogic.Config.DecorationShop
 {
     [MetaSerializable]
-    public class DecorationShopItemInfo : IGameConfigData<DecorationShopItemId>, IGameConfigData, IGameConfigKey<DecorationShopItemId>
+    public class DecorationShopItemInfo : IGameConfigData<DecorationShopItemId>, IGameConfigData, IHasGameConfigKey<DecorationShopItemId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationShopItemId ConfigKey { get; set; }

@@ -7,7 +7,7 @@ using System;
 namespace GameLogic.Config.Shop
 {
     [MetaSerializable]
-    public class ShopLayout : IGameConfigData<ShopLayoutId>, IGameConfigData, IGameConfigKey<ShopLayoutId>
+    public class ShopLayout : IGameConfigData<ShopLayoutId>, IGameConfigData, IHasGameConfigKey<ShopLayoutId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ShopLayoutId ConfigKey { get; set; }

@@ -129,6 +129,12 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 return;
             }
 
+            if (requirement is HasAnyPetRequirement anyPetRequirement)
+            {
+                JValue.CreateString("HasAnyPet").WriteTo(writer);
+                return;
+            }
+
             writer.WriteStartObject();
 
             if (requirement is AreaCompletedRequirement aReq)

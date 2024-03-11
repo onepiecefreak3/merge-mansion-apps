@@ -9,6 +9,7 @@ namespace Game.Logic
     {
         Default = 0,
         ProgressionEventRewardMail = 1,
-        ThirdPartySurveyCompletingRewardMail = 2
+        ThirdPartySurveyCompletingRewardMail = 2,
+        ProducerInventoryPermanentMail = 3
     }
 }

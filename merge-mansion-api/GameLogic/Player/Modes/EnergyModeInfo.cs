@@ -9,7 +9,7 @@ using Metaplay.Core;
 namespace GameLogic.Player.Modes
 {
     [MetaSerializable]
-    public class EnergyModeInfo : IGameConfigData<PlayerModeId>, IGameConfigData, IGameConfigKey<PlayerModeId>, IValidatable
+    public class EnergyModeInfo : IGameConfigData<PlayerModeId>, IGameConfigData, IHasGameConfigKey<PlayerModeId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public PlayerModeId ConfigKey { get; set; }

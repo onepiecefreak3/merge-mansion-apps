@@ -8,7 +8,7 @@ using Metaplay.Core.Math;
 namespace Code.GameLogic.DynamicEvents
 {
     [MetaSerializable]
-    public class DynamicEventHelperInfo : IGameConfigData<DynamicEventHelperId>, IGameConfigData, IGameConfigKey<DynamicEventHelperId>, IValidatable
+    public class DynamicEventHelperInfo : IGameConfigData<DynamicEventHelperId>, IGameConfigData, IHasGameConfigKey<DynamicEventHelperId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DynamicEventHelperId ConfigKey { get; set; }

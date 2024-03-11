@@ -6,7 +6,7 @@ using System;
 namespace GameLogic
 {
     [MetaSerializable]
-    public class TimedMergeBoardLiveConfig : IGameConfigData<MergeBoardId>, IGameConfigData, IGameConfigKey<MergeBoardId>
+    public class TimedMergeBoardLiveConfig : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }

@@ -6,7 +6,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Merging
 {
     [MetaSerializable]
-    public class MergeReward : IGameConfigData<MergeRewardId>, IGameConfigData, IGameConfigKey<MergeRewardId>
+    public class MergeReward : IGameConfigData<MergeRewardId>, IGameConfigData, IHasGameConfigKey<MergeRewardId>
     {
         [MetaMember(1, 0)]
         public MergeRewardId ConfigKey { get; set; }

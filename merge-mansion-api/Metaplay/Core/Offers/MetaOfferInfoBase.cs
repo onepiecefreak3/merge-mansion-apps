@@ -10,7 +10,7 @@ namespace Metaplay.Core.Offers
 {
     [MetaSerializable]
     [MetaReservedMembers(100, 200)]
-    public abstract class MetaOfferInfoBase : IGameConfigData<MetaOfferId>, IGameConfigData, IGameConfigKey<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers
+    public abstract class MetaOfferInfoBase : IGameConfigData<MetaOfferId>, IGameConfigData, IHasGameConfigKey<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers
     {
         [MetaMember(100, 0)]
         public MetaOfferId OfferId { get; set; }

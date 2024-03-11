@@ -316,7 +316,8 @@ namespace Metaplay.Core.Message
                 DryRun = 1,
                 Banned = 3,
                 PlayerDeserializationFailure = 4,
-                WrongAuthenticationPlatform = 5
+                WrongAuthenticationPlatform = 5,
+                LogicVersionDowngradeNotAllowed = 5
             }
         }
 

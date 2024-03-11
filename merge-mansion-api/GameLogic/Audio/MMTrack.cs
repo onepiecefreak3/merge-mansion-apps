@@ -6,7 +6,7 @@ using Metaplay.Core;
 namespace GameLogic.Audio
 {
     [MetaSerializable]
-    public class MMTrack : IGameConfigData<string>, IGameConfigData, IGameConfigKey<string>
+    public class MMTrack : IGameConfigData<string>, IGameConfigData, IHasGameConfigKey<string>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string ConfigKey { get; set; }

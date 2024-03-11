@@ -8,7 +8,7 @@ using Metaplay.Core;
 namespace GameLogic.Config
 {
     [MetaSerializable]
-    public class AutoOfferSettingsInfo : IGameConfigData<AutoOfferSettingsId>, IGameConfigData, IGameConfigKey<AutoOfferSettingsId>, IValidatable
+    public class AutoOfferSettingsInfo : IGameConfigData<AutoOfferSettingsId>, IGameConfigData, IHasGameConfigKey<AutoOfferSettingsId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private AutoOfferSettingsId Id { get; set; }

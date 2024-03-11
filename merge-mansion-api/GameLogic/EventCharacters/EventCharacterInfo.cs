@@ -11,7 +11,7 @@ using GameLogic.Player.Rewards;
 namespace GameLogic.EventCharacters
 {
     [MetaSerializable]
-    public class EventCharacterInfo : IGameConfigData<EventCharacterId>, IGameConfigData, IGameConfigKey<EventCharacterId>
+    public class EventCharacterInfo : IGameConfigData<EventCharacterId>, IGameConfigData, IHasGameConfigKey<EventCharacterId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventCharacterId EventCharacterId { get; set; }

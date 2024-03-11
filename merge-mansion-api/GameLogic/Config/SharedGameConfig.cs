@@ -339,11 +339,11 @@ namespace GameLogic.Config
         [GameConfigEntry("RentableInventorySettings", true, true, true)]
         public GameConfigLibrary<RentableInventorySettingsId, RentableInventorySettings> RentableInventorySettings { get; set; }
 
-        [GameConfigEntry("Music.Tracks", true, true, true)]
-        public GameConfigLibrary<string, MMTrack> Tracks { get; set; }
+        //[GameConfigEntry("Music.Tracks", true, true, true)]
+        //public GameConfigLibrary<string, MMTrack> Tracks { get; set; }
 
-        [GameConfigEntry("Music.Playlists", true, true, true)]
-        public GameConfigLibrary<string, MMPlaylist> Playlists { get; set; }
+        //[GameConfigEntry("Music.Playlists", true, true, true)]
+        //public GameConfigLibrary<string, MMPlaylist> Playlists { get; set; }
 
         [GameConfigEntry("PetInfos", true, true, true)]
         public GameConfigLibrary<PetId, PetInfo> PetInfos { get; set; }

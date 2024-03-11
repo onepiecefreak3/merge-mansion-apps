@@ -12,7 +12,7 @@ using GameLogic;
 namespace Code.GameLogic.FlashSales
 {
     [MetaSerializable]
-    public class FlashSaleDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IGameConfigKey<ShopItemId>, IHasRequirements
+    public class FlashSaleDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>, IHasRequirements
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ShopItemId ConfigKey { get; set; }
@@ -43,6 +43,16 @@ namespace Code.GameLogic.FlashSales
         }
 
         public FlashSaleDefinition(ShopItemId configKey, MetaRef<ItemDefinition> itemRef, int quantity, int weight, ICost itemCost, List<PlayerRequirement> playerRequirements)
+        {
+        }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public string ItemAux0 { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public string ItemAux1 { get; set; }
+
+        public FlashSaleDefinition(ShopItemId configKey, MetaRef<ItemDefinition> itemRef, int quantity, int weight, ICost itemCost, List<PlayerRequirement> playerRequirements, string itemAux0, string itemAux1)
         {
         }
     }

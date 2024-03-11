@@ -6,7 +6,7 @@ namespace Metaplay.Core.Player
 {
     [MetaSerializable]
     [MetaReservedMembers(100, 200)]
-    public abstract class PlayerSegmentInfoBase : IGameConfigData<PlayerSegmentId>, IGameConfigData, IGameConfigKey<PlayerSegmentId>
+    public abstract class PlayerSegmentInfoBase : IGameConfigData<PlayerSegmentId>, IGameConfigData, IHasGameConfigKey<PlayerSegmentId>
     {
         [MetaMember(100)]
         public PlayerSegmentId SegmentId { get; set; }

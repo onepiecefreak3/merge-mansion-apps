@@ -11,7 +11,7 @@ namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 7, 8 })]
-    public class EventOfferInfo : IMetaActivableConfigData<EventOfferId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventOfferId>, IGameConfigKey<EventOfferId>, IMetaActivableInfo<EventOfferId>, IValidatable
+    public class EventOfferInfo : IMetaActivableConfigData<EventOfferId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventOfferId>, IHasGameConfigKey<EventOfferId>, IMetaActivableInfo<EventOfferId>, IValidatable
     {
         [MetaMember(1, 0)]
         public EventOfferId EventOfferId { get; set; }
