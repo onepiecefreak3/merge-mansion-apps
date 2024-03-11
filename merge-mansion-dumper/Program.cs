@@ -47,15 +47,15 @@ namespace merge_mansion_dumper
     {
         public static bool VersionBumped { get; private set; }
 
-        static async Task Main(string[] args)
+        static void Main(string[] args)
         {
             var parser = new Parser(parserSettings => parserSettings.AutoHelp = true);
 
             var parsedResult = parser.ParseArguments<Options>(args);
 
-            await parsedResult
+            parsedResult
                 .WithNotParsed(errors => DisplayHelp(parsedResult, errors))
-                .WithParsedAsync(Execute);
+                .WithParsed(Execute);
         }
 
         private static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errors)
@@ -69,7 +69,7 @@ namespace merge_mansion_dumper
             Console.WriteLine(helpText);
         }
 
-        private static async Task Execute(Options o)
+        private static void Execute(Options o)
         {
             // Setup system
             var isSetup = SetupSystem(o.ConfigArchivePath, o.LanguagePath);

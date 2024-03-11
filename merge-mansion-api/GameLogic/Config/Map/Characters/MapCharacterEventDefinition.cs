@@ -72,7 +72,6 @@ namespace GameLogic.Config.Map.Characters
 
         [MetaMember(21, (MetaMemberFlags)0)]
         public List<PlayerRequirement> CloseRequirementsList { get; set; }
-
         public MapCharacterEventId ConfigKey => MapCharacterEventId;
 
         [IgnoreDataMember]

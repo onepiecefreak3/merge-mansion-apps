@@ -4,7 +4,7 @@ namespace Metaplay.Core.Config
     {
     }
 
-    public interface IGameConfigSourceItem<TGameConfigKey, TGameConfigData> : IGameConfigKey<TGameConfigKey>
+    public interface IGameConfigSourceItem<TGameConfigKey, TGameConfigData> : IHasGameConfigKey<TGameConfigKey>
     {
     }
 }

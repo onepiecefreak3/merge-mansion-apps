@@ -7,7 +7,7 @@ using Metaplay.Core.Config;
 
 namespace Code.GameLogic.Config
 {
-    public interface IConfigItemSource<TConfigItem, TKey> : IGameConfigSourceItem<TKey, TConfigItem>, IGameConfigKey<TKey>
+    public interface IConfigItemSource<TConfigItem, TKey> : IGameConfigSourceItem<TKey, TConfigItem>, IHasGameConfigKey<TKey>
     {
     }
 }

@@ -9,7 +9,6 @@ namespace Metaplay.Core.Config
         public readonly string EntryName; // 0x10
         public readonly bool MpcFormat; // 0x18
         public readonly bool RequireArchiveEntry; // 0x19
-        public readonly bool ResolveContainedMetaRefs; // 0x1A
         public GameConfigEntryAttribute(string entryName, bool mpcFormat = true, bool requireArchiveEntry = true, bool resolveContainedMetaRefs = true)
         {
             EntryName = entryName;
@@ -27,5 +26,15 @@ namespace Metaplay.Core.Config
             ResolveContainedMetaRefs = resolveContainedMetaRefs;
             ConfigBuildSource = configBuildSource;
         }
+
+        public GameConfigEntryAttribute(string entryName, bool mpcFormat, bool requireArchiveEntry, string configBuildSource)
+        {
+        }
+
+        public GameConfigEntryAttribute(string entryName, bool requireArchiveEntry, string configBuildSource)
+        {
+        }
+
+        public readonly bool ResolveContainedMetaRefs; // 0x1A
     }
 }

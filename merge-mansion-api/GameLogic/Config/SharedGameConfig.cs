@@ -341,10 +341,8 @@ namespace GameLogic.Config
 
         //[GameConfigEntry("Music.Tracks", true, true, true)]
         //public GameConfigLibrary<string, MMTrack> Tracks { get; set; }
-
         //[GameConfigEntry("Music.Playlists", true, true, true)]
         //public GameConfigLibrary<string, MMPlaylist> Playlists { get; set; }
-
         [GameConfigEntry("PetInfos", true, true, true)]
         public GameConfigLibrary<PetId, PetInfo> PetInfos { get; set; }
 
@@ -429,5 +427,15 @@ namespace GameLogic.Config
         public List<ItemDefinition> FishingRodItems { get; set; }
         public Dictionary<ItemDefinition, OverrideSpawnChanceFeatures> OverrideSpawnChanceByItemDefinition { get; set; }
         public List<HotspotId> AreaUnlockHotspots { get; set; }
+
+        [GameConfigEntry("Music_Tracks", true, true, true, null)]
+        [GameConfigEntryTransform(typeof(MMTrackSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<string, MMTrack> Tracks { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MMPlaylistSource))]
+        [GameConfigEntry("Music_Playlists", true, true, true, null)]
+        public GameConfigLibrary<string, MMPlaylist> Playlists { get; set; }
     }
 }
