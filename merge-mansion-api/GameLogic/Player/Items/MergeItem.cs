@@ -320,5 +320,8 @@ namespace GameLogic.Player.Items
         public bool ActivatedWithNoCost { get; }
         public bool HideSinkProgressBar { get; }
         public bool HideSinkUndiscoveredItemsInHints { get; }
+
+        [IgnoreDataMember]
+        public MetaTime CreatedAt { get; }
     }
 }

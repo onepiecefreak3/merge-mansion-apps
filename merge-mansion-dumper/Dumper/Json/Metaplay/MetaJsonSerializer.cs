@@ -236,6 +236,15 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                 writer.WriteEndObject();
             }
+            else if (requirement is CardStackRequirement csr)
+            {
+                writer.WritePropertyName("CardStack");
+                writer.WriteStartObject();
+
+                WriteProperty(writer, "Id", csr.CardStack, serializer);
+
+                writer.WriteEndObject();
+            }
             else
                 _output.Warning("Unknown requirement {0}", requirement.GetType().Name);
 

@@ -29,5 +29,19 @@ namespace Analytics
         public AnalyticsEventThirdPartySurveyCompleted(int broadcastId, string surveyType)
         {
         }
+
+        [Description("Association Id")]
+        [JsonProperty("association_id")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public string AssociationId { get; set; }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("survey_response")]
+        [Description("Survey Response")]
+        public string SurveyResponse { get; set; }
+
+        public AnalyticsEventThirdPartySurveyCompleted(int broadcastId, string surveyType, string associationId, string surveyResponse)
+        {
+        }
     }
 }

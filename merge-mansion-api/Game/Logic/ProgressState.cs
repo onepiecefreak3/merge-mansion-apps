@@ -17,6 +17,7 @@ using GameLogic.Seasonality;
 using GameLogic.Player.Rewards;
 using GameLogic.Player.Requirements;
 using Code.GameLogic.DynamicEvents;
+using GameLogic.Hotspots.CardStack;
 
 namespace Game.Logic
 {
@@ -263,5 +264,9 @@ namespace Game.Logic
 
         [MetaMember(73, (MetaMemberFlags)0)]
         public Dictionary<EventTaskId, List<DebugItemData>> DynamicTasksPayload { get; set; }
+
+        [MetaMember(74, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private Dictionary<HotspotId, CardStack> visibleCardStacks { get; set; }
     }
 }

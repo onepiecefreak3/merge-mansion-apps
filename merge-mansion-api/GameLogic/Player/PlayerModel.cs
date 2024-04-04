@@ -28,6 +28,7 @@ using GameLogic.Inventory;
 using GameLogic.Config.DecorationShop;
 using GameLogic.Player.Modes;
 using Code.GameLogic.DynamicEvents;
+using Game.Cloud.Webshop;
 
 namespace GameLogic.Player
 {
@@ -305,5 +306,8 @@ namespace GameLogic.Player
         public IEnumerable<GarageCleanupEventModel> AllGarageCleanups { get; }
         public IEnumerable<SideBoardEventModel> AllSideBoardEvents { get; }
         public List<IPlayerModifier> ActiveModifiersNonAlloc { get; }
+
+        [MetaMember(254, (MetaMemberFlags)0)]
+        public WebshopState WebshopState { get; set; }
     }
 }

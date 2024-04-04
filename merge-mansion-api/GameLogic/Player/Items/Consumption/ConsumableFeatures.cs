@@ -30,5 +30,12 @@ namespace GameLogic.Player.Items.Consumption
         public ConsumableFeatures(bool isConsumableItem, IConsumptionLogic logic, bool allowNearMatching, bool dragSafeAreaEnabled, int itemStackCap)
         {
         }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public bool CanSpawnBubbles { get; set; }
+
+        public ConsumableFeatures(bool isConsumableItem, IConsumptionLogic logic, bool allowNearMatching, bool dragSafeAreaEnabled, int itemStackCap, bool canSpawnBubbles)
+        {
+        }
     }
 }

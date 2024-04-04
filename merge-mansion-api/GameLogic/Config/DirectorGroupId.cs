@@ -184,5 +184,11 @@ namespace GameLogic.Config
         public static DirectorGroupId EnergyModeFTUE;
         public static DirectorGroupId CooldownRemoverFTUE;
         public static DirectorGroupId SBE_Jailbreak_TasksTutorial;
+        public static DirectorGroupId CardStackStep01;
+        public static DirectorGroupId CardStackStep02;
+        public static DirectorGroupId CardStackStep03;
+        public static DirectorGroupId CardStackStep04;
+        public static DirectorGroupId CardStackStep05;
+        public static DirectorGroupId CardStackStep06;
     }
 }

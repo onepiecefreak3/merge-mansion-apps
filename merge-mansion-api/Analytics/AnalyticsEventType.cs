@@ -110,6 +110,8 @@ namespace Analytics
         CobwebCleared = 99,
         PortalPieceChain = 100,
         SetPlayerModeActive = 101,
-        BroadcastCreated = 102
+        BroadcastCreated = 102,
+        WebShopSignIn = 103,
+        WebShopPurchase = 104
     }
 }

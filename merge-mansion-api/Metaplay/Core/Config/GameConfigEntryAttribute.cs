@@ -29,10 +29,20 @@ namespace Metaplay.Core.Config
 
         public GameConfigEntryAttribute(string entryName, bool mpcFormat, bool requireArchiveEntry, string configBuildSource)
         {
+            EntryName = entryName;
+            MpcFormat = mpcFormat;
+            RequireArchiveEntry = requireArchiveEntry;
+            ResolveContainedMetaRefs = true;
+            ConfigBuildSource = configBuildSource;
         }
 
         public GameConfigEntryAttribute(string entryName, bool requireArchiveEntry, string configBuildSource)
         {
+            EntryName = entryName;
+            MpcFormat = true;
+            RequireArchiveEntry = requireArchiveEntry;
+            ResolveContainedMetaRefs = true;
+            ConfigBuildSource = configBuildSource;
         }
 
         public readonly bool ResolveContainedMetaRefs; // 0x1A

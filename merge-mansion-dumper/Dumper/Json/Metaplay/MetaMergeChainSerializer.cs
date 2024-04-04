@@ -210,10 +210,36 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                 writer.WriteEndObject();
             }
+            else if (producer is ControlledRandomSequenceProducer crsp)
+            {
+                writer.WriteStartObject();
+
+                writer.WritePropertyName("ControlledRandomSequence");
+                writer.WriteStartObject();
+
+                writer.WritePropertyName("Odds");
+                writer.WriteStartObject();
+
+                double weightSum = crsp.TotalWeight;
+                foreach (var odd in crsp.Odds.GroupBy(x => x.Item1.ItemType))
+                {
+                    var weight = _dropAsPercent ?
+                        odd.Sum(x => x.Item2) / weightSum * 100 :
+                        odd.Sum(x => x.Item2);
+
+                    WriteProperty(writer, odd.Key, weight, serializer);
+                }
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+            }
             else
             {
                 writer.WriteNull();
-                _output.Warning("Producer {0} unknown", producer.GetType().Name);
+                _output.Warning("Unknown producer {0}", producer.GetType().Name);
             }
         }
 

@@ -21,6 +21,7 @@ namespace GameLogic.Config.Map.Characters
         Pet = 13,
         Ash = 14,
         Sullivan = 15,
-        Bruno = 16
+        Bruno = 16,
+        Malzar = 17
     }
 }

@@ -49,6 +49,7 @@ using Metaplay.Core.Localization;
 using Metaplay.Core.InAppPurchase;
 using GameLogic.EventCharacters;
 using GameLogic.Player.Items.OverrideSpawnChance;
+using GameLogic.Hotspots.CardStack;
 
 namespace GameLogic.Config
 {
@@ -437,5 +438,14 @@ namespace GameLogic.Config
         [GameConfigEntryTransform(typeof(MMPlaylistSource))]
         [GameConfigEntry("Music_Playlists", true, true, true, null)]
         public GameConfigLibrary<string, MMPlaylist> Playlists { get; set; }
+
+        [GameConfigEntryTransform(typeof(ManuallyActivatedOfferGroupSource))]
+        [GameConfigEntry("ManuallyActivatedOfferGroupInfo", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<ManuallyActivatedOfferGroupId, ManuallyActivatedOfferGroupInfo> ManuallyActivatedOfferGroupInfos { get; set; }
+
+        [GameConfigEntry("CardStacks", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<CardStackId, CardStackInfo> CardStacks { get; set; }
     }
 }

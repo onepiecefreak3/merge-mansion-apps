@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using System;
 using System.Collections.Generic;
 using GameLogic;
+using GameLogic.Player;
 
 namespace Game.Logic
 {
@@ -39,5 +40,8 @@ namespace Game.Logic
 
         [MetaMember(10, (MetaMemberFlags)0)]
         private bool animatedText { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        private BoardInventorySortMode inventorySortMode { get; set; }
     }
 }

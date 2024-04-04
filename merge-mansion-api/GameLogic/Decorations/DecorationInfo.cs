@@ -5,6 +5,7 @@ using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using Metaplay.Core;
 using System;
+using GameLogic.Cutscenes;
 
 namespace GameLogic.Decorations
 {
@@ -49,6 +50,13 @@ namespace GameLogic.Decorations
         }
 
         public DecorationInfo(DecorationId decorationId, string displayName, string description, CameraTargetName cameraTargetName, CameraZoomTarget cameraZoomTarget, ConfigAssetPackId assetPackId, string nameLocId, string descLocId, List<IDirectorAction> onReceiveActions, string layeredDecorationSetId)
+        {
+        }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public MetaRef<CutsceneInfo> OnClaimedCutscene { get; set; }
+
+        public DecorationInfo(DecorationId decorationId, string displayName, string description, CameraTargetName cameraTargetName, CameraZoomTarget cameraZoomTarget, ConfigAssetPackId assetPackId, string nameLocId, string descLocId, List<IDirectorAction> onReceiveActions, CutsceneId onClaimedCutscene, string layeredDecorationSetId)
         {
         }
     }

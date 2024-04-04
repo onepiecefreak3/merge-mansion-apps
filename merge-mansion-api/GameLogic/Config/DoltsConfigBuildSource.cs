@@ -1,10 +1,12 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
+    [MetaFormDeprecated]
     public class DoltsConfigBuildSource : GameConfigBuildSource
     {
         [MetaMember(1, (MetaMemberFlags)0)]

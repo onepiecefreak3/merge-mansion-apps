@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Metaplay.Core.Activables;
 using Code.GameLogic.Config;
+using Metaplay.Core;
 
 namespace GameLogic.Config
 {
@@ -59,6 +60,13 @@ namespace GameLogic.Config
         public bool IsUnderMore { get; set; }
 
         public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore)
+        {
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public MetaRef<ManuallyActivatedOfferGroupInfo> ManualActivationInfo { get; set; }
+
+        public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore, ManuallyActivatedOfferGroupId manualActivationId)
         {
         }
     }

@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using GameLogic.Player.Requirements;
 using GameLogic.Player.ScheduledActions;
+using Metaplay.Core;
+using Metaplay.Core.Player;
 
 namespace GameLogic.GameFeatures
 {
@@ -35,6 +37,13 @@ namespace GameLogic.GameFeatures
         }
 
         public GameFeatureSetting(GameFeatureId id, bool isEnabled, List<PlayerRequirement> previewRequirements, List<PlayerRequirement> unlockRequirements, bool shouldBePersisted, IScheduledAction persistedAction)
+        {
+        }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public List<MetaRef<PlayerSegmentInfoBase>> Segments { get; set; }
+
+        public GameFeatureSetting(GameFeatureId id, bool isEnabled, List<PlayerRequirement> previewRequirements, List<PlayerRequirement> unlockRequirements, bool shouldBePersisted, IScheduledAction persistedAction, List<MetaRef<PlayerSegmentInfoBase>> segments)
         {
         }
     }

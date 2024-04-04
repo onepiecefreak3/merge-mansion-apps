@@ -46,8 +46,5 @@ namespace GameLogic.Player.Items.Production
         public ControlledRandomProducer(RollHistoryType rollType, int itemId, List<ValueTuple<int, int>> oddsList)
         {
         }
-
-        [IgnoreDataMember]
-        public IEnumerable<ValueTuple<int, int>> OddsAsInt { get; }
     }
 }

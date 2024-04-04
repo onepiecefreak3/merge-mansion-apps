@@ -47,6 +47,7 @@ namespace GameLogic
         PrisonerBluetooth = 35,
         PrisonerCindy = 36,
         PrisonerIzzy = 37,
-        PrisonSecretAgent = 38
+        PrisonSecretAgent = 38,
+        Malzar = 39
     }
 }

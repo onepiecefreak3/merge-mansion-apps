@@ -62,5 +62,11 @@ namespace Code.GameLogic.GameEvents
         public bool StreakNoted;
         public IStringId Id { get; }
         public int Points { get; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public bool PassPurchaseNoted { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public bool PassObtainedPopupNoted { get; set; }
     }
 }

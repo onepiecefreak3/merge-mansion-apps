@@ -100,5 +100,10 @@ namespace GameLogic.Player
         public WeightedDistributionStates()
         {
         }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        private Dictionary<string, int> wdSequenceIndexes;
+        [MetaMember(4, (MetaMemberFlags)0)]
+        private Dictionary<string, ulong> wdRandomSequenceSeeds;
     }
 }

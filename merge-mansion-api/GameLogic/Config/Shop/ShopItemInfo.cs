@@ -41,5 +41,12 @@ namespace GameLogic.Config.Shop
         public ShopItemInfo(ShopItemId configKey, ShopCategoryId shopCategory, IShopItem actualItem, List<PlayerRequirement> requirements, List<MetaRef<PlayerSegmentInfoBase>> segments, bool isUnderMore)
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public bool ForWebShopShop { get; set; }
+
+        public ShopItemInfo(ShopItemId configKey, ShopCategoryId shopCategory, IShopItem actualItem, List<PlayerRequirement> requirements, List<MetaRef<PlayerSegmentInfoBase>> segments, bool isUnderMore, bool forWebShop)
+        {
+        }
     }
 }

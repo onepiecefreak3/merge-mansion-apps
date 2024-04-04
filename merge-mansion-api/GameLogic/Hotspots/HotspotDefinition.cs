@@ -11,6 +11,7 @@ using System.Runtime.Serialization;
 using System;
 using Merge;
 using GameLogic.Config.Map.Characters;
+using GameLogic.Hotspots.CardStack;
 
 namespace GameLogic.Hotspots
 {
@@ -155,5 +156,14 @@ namespace GameLogic.Hotspots
         public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, List<MetaRef<MapCharacterEventDefinition>> appearMapCharactersEvents, int completeActionMax, HotspotId completeFocusHotspotId, List<MetaRef<MapCharacterEventDefinition>> completeMapCharactersEvents, List<PlayerReward> bonusRewards, MetaDuration bonusTimerDuration, string completeVFXId)
         {
         }
+
+        [MetaMember(23, (MetaMemberFlags)0)]
+        private MetaRef<CardStackInfo> CardStackRef { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsCardStackTask { get; }
+
+        [IgnoreDataMember]
+        public CardStackInfo CardStackInfo { get; }
     }
 }

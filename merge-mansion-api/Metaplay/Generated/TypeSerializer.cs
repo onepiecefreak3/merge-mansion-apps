@@ -323,7 +323,16 @@ namespace Metaplay.Generated
                     break;
 
                 case WireDataType.NullableVarInt:
-                    Deserialize_Nullable_Int32(ref context, reader, out value);
+                    var resolvedType = memberType;
+
+                    var nullableType = Nullable.GetUnderlyingType(resolvedType);
+                    if (nullableType != null)
+                        resolvedType = nullableType;
+
+                    if (resolvedType == typeof(long))
+                        Deserialize_Nullable_Int64(ref context, reader, out value);
+                    else
+                        Deserialize_Nullable_Int32(ref context, reader, out value);
 
                     if (memberType.GenericTypeArguments[0].IsEnum)
                         value = Enum.ToObject(memberType.GenericTypeArguments[0], value ?? 0);
@@ -575,6 +584,12 @@ namespace Metaplay.Generated
         {
             var flag = reader.ReadVarInt();
             value = flag == 0 ? null : reader.ReadVarInt();
+        }
+
+        private static void Deserialize_Nullable_Int64(ref MetaSerializationContext context, IOReader reader, out object value)
+        {
+            var flag = reader.ReadVarInt();
+            value = flag == 0 ? null : reader.ReadVarLong();
         }
 
         private static void Deserialize_String(ref MetaSerializationContext context, IOReader reader, out object value)

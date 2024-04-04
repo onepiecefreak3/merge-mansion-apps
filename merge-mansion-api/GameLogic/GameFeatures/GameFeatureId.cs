@@ -48,6 +48,7 @@ namespace GameLogic.GameFeatures
         ProducerInventory = 34,
         DoubleEnergyMode = 35,
         ShowMergeItemFlashSaleBuyButton = 36,
-        PetsEnabled = 37
+        PetsEnabled = 37,
+        WebShop = 38
     }
 }

@@ -61,6 +61,12 @@ namespace GameLogic
         SaunaBurn = 53,
         Decoration30 = 54,
         GalleryEntrance = 55,
-        Decoration31 = 56
+        Decoration31 = 56,
+        Decoration32 = 57,
+        Decoration33 = 58,
+        Decoration34 = 59,
+        Decoration35 = 60,
+        Decoration36 = 61,
+        Decoration37 = 62
     }
 }
