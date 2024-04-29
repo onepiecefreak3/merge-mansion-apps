@@ -1754,6 +1754,7 @@ namespace GameLogic
         New_RotateOffer_Reserve_197 = 1741,
         New_RotateOffer_Reserve_198 = 1742,
         New_RotateOffer_Reserve_199 = 1743,
-        New_RotateOffer_Reserve_200 = 1744
+        New_RotateOffer_Reserve_200 = 1744,
+        MysteryMachineEnergyItem_ItemRecharge = 1745
     }
 }

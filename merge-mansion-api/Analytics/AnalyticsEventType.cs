@@ -112,6 +112,12 @@ namespace Analytics
         SetPlayerModeActive = 101,
         BroadcastCreated = 102,
         WebShopSignIn = 103,
-        WebShopPurchase = 104
+        WebShopPurchase = 104,
+        AdPlacementShown = 105,
+        AdStarted = 106,
+        AdFinished = 107,
+        AdImpression = 108,
+        MachineScore = 109,
+        MachineTaskCompleted = 110
     }
 }

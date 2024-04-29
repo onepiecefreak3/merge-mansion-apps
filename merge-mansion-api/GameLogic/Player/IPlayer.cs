@@ -114,6 +114,10 @@ namespace GameLogic.Player
         IEnumerable<GarageCleanupEventModel> AllGarageCleanups { get; }
 
         IEnumerable<SideBoardEventModel> AllSideBoardEvents { get; }
+
+        IEnumerable<MysteryMachineEventModel> ActiveMysteryMachineEvents { get; }
+
+        RandomPCG MysteryMachineRandom { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

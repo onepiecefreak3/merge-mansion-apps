@@ -12,7 +12,6 @@ namespace GameLogic.Player.Items.Production
     public class ControlledRandomSequenceProducer : IItemSpawner, IItemProducer
     {
         private static int MaxWeight;
-
         [MetaMember(1, (MetaMemberFlags)0)]
         public RollHistoryType RollType { get; set; }
 
@@ -34,6 +33,7 @@ namespace GameLogic.Player.Items.Production
         }
 
         public int SpawnQuantity => 1;
+
         public F64 TimeSkipPriceGems(IGenerationContext context)
         {
             throw new NotImplementedException();

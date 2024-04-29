@@ -24,5 +24,9 @@ namespace Analytics
         public AnalyticsPlayerAcceptedToS()
         {
         }
+
+        public AnalyticsPlayerAcceptedToS(int acceptanceVersion)
+        {
+        }
     }
 }

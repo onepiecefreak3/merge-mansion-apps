@@ -36,6 +36,10 @@ namespace GameLogic
         ChestsPurchase = 28,
         DecorationShopPurchase = 29,
         DoubleEnergyMode = 30,
-        UsedAsSinkItem = 31
+        UsedAsSinkItem = 31,
+        InsertMachineCoin = 32,
+        SpawnItemsIntoMysteryMachine = 33,
+        MysteryMachineSpecialSale = 34,
+        MysteryMachineContinue = 35
     }
 }

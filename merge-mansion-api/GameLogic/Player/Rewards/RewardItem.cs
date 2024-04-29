@@ -53,5 +53,19 @@ namespace GameLogic.Player.Rewards
         public RewardItem(MergeBoardId boardId, MetaRef<ItemDefinition> itemRef, int amount, bool fromSupport, CurrencySource currencySource, OverrideItemFeatures overrideItemFeatures, bool forceOnTopOfPocket)
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        private string OverridePoolTag { get; set; }
+
+        [IgnoreDataMember]
+        public string PoolTag { get; }
+
+        public RewardItem(MergeBoardId boardId, ItemDefinition itemDefinition, int amount, bool fromSupport, CurrencySource currencySource, bool forceOnTopOfPocket, string overridePoolTag)
+        {
+        }
+
+        public RewardItem(MergeBoardId boardId, MetaRef<ItemDefinition> itemRef, int amount, bool fromSupport, CurrencySource currencySource, OverrideItemFeatures overrideItemFeatures, bool forceOnTopOfPocket, string overridePoolTag)
+        {
+        }
     }
 }

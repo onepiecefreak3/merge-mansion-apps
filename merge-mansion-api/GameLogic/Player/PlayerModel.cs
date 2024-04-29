@@ -309,5 +309,18 @@ namespace GameLogic.Player
 
         [MetaMember(254, (MetaMemberFlags)0)]
         public WebshopState WebshopState { get; set; }
+
+        [MetaMember(255, (MetaMemberFlags)0)]
+        public PlayerMysteryMachineEventsModel MysteryMachineEvents { get; set; }
+
+        [MetaMember(256, (MetaMemberFlags)0)]
+        public RandomPCG MysteryMachineRandom { get; set; }
+
+        [MetaMember(257, (MetaMemberFlags)0)]
+        public int MysteryMachineEventsStarted { get; set; }
+
+        [MetaMember(258, (MetaMemberFlags)0)]
+        public bool MysteryMachineAllTasksCompletedRewardClaimed { get; set; }
+        public IEnumerable<MysteryMachineEventModel> ActiveMysteryMachineEvents { get; }
     }
 }

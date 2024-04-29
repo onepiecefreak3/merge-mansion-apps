@@ -268,5 +268,9 @@ namespace Game.Logic
         [MetaMember(74, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         private Dictionary<HotspotId, CardStack> visibleCardStacks { get; set; }
+
+        [MetaMember(75, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public AdsData adRewardToClaim { get; set; }
     }
 }

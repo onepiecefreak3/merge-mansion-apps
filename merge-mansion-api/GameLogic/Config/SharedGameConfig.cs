@@ -50,6 +50,8 @@ using Metaplay.Core.InAppPurchase;
 using GameLogic.EventCharacters;
 using GameLogic.Player.Items.OverrideSpawnChance;
 using GameLogic.Hotspots.CardStack;
+using Game.Cloud.Webshop;
+using GameLogic.Advertisement;
 
 namespace GameLogic.Config
 {
@@ -447,5 +449,110 @@ namespace GameLogic.Config
         [GameConfigEntry("CardStacks", true, null)]
         [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
         public GameConfigLibrary<CardStackId, CardStackInfo> CardStacks { get; set; }
+
+        [GameConfigEntry("WebShopSettings", true, null)]
+        public WebShopSettings WebShopSettings { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(AdvertisementPlacementsSource))]
+        [GameConfigEntry("AdvertisementPlacements", true, null)]
+        public GameConfigLibrary<AdvertisementPlacementId, AdvertisementPlacementsInfo> AdvertisementPlacements { get; set; }
+
+        [GameConfigEntry("MysteryMachineEvents", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineEventSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." })]
+        public GameConfigLibrary<MysteryMachineEventId, MysteryMachineEventInfo> MysteryMachineEvents { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineItemSetSource))]
+        [GameConfigEntry("MysteryMachineItemSets", true, null)]
+        public GameConfigLibrary<MysteryMachineItemSetId, MysteryMachineItemSetInfo> MysteryMachineItemSets { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineItemSource))]
+        [GameConfigEntry("MysteryMachineItems", true, null)]
+        public GameConfigLibrary<MysteryMachineItemId, MysteryMachineItemInfo> MysteryMachineItems { get; set; }
+
+        [GameConfigEntry("MysteryMachineItemScores", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineItemScoreSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineItemScoreId, MysteryMachineItemScore> MysteryMachineItemScores { get; set; }
+
+        [GameConfigEntry("MysteryMachineSpecialItems", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineSpecialItemSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineSpecialItemItemId, MysteryMachineSpecialItemInfo> MysteryMachineSpecialItems { get; set; }
+
+        [GameConfigEntry("MysteryMachineItemChainMultipliers", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineChainMultiplierSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineChainMultiplierId, MysteryMachineChainMultiplierInfo> MysteryMachineChainMultipliers { get; set; }
+
+        [GameConfigEntry("MysteryMachineExtraItemGranting", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineExtraItemGrantingSource))]
+        public GameConfigLibrary<MysteryMachineExtraItemGrantingId, MysteryMachineExtraItemGrantingInfo> MysteryMachineExtraItemGranting { get; set; }
+
+        [GameConfigEntryTransform(typeof(MysteryMachineMultiplierSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntry("MysteryMachineMultipliers", true, null)]
+        public GameConfigLibrary<MysteryMachineMultiplierId, MysteryMachineMultiplierInfo> MysteryMachineMultipliers { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineSource))]
+        [GameConfigEntry("MergeMysteryMachines", true, null)]
+        public GameConfigLibrary<MysteryMachineId, MysteryMachineInfo> MysteryMachines { get; set; }
+
+        [GameConfigEntryTransform(typeof(MysteryMachineCurrencyItemSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntry("MergeMysteryMachineCurrencyItems", true, null)]
+        public GameConfigLibrary<MysteryMachineCurrencyItemId, MysteryMachineCurrencyItemInfo> MysteryMachineCurrencyItems { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineCurrencyItemChainSource))]
+        [GameConfigEntry("MergeMysteryMachineCurrencyItemChains", true, null)]
+        public GameConfigLibrary<MysteryMachineCurrencyItemChainId, MysteryMachineCurrencyItemChainInfo> MysteryMachineCurrencyItemChains { get; set; }
+
+        [GameConfigEntry("MergeMysteryMachineProgressionEventProgressItems", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineProgressionEventProgressItemSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineProgressionEventProgressItemId, MysteryMachineProgressionEventProgressItemInfo> MysteryMachineProgressionEventProgressItems { get; set; }
+
+        [GameConfigEntry("MergeMysteryMachineProgressionEventProgressItemChains", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineProgressionEventProgressItemChainSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineProgressionEventProgressItemChainId, MysteryMachineProgressionEventProgressItemChainInfo> MysteryMachineProgressionEventProgressItemChains { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineHeatLevelSource))]
+        [GameConfigEntry("MysteryMachineHeatLevels", true, null)]
+        public GameConfigLibrary<MysteryMachineHeatLevelId, MysteryMachineHeatLevelInfo> MysteryMachineHeatLevels { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachinePerkSource))]
+        [GameConfigEntry("MysteryMachinePerks", true, null)]
+        public GameConfigLibrary<MysteryMachinePerkId, MysteryMachinePerkInfo> MysteryMachinePerks { get; set; }
+
+        [GameConfigEntry("MysteryMachineSpecialSales", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineSpecialSaleSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineSpecialSaleId, MysteryMachineSpecialSaleInfo> MysteryMachineSpecialSales { get; set; }
+
+        [GameConfigEntryTransform(typeof(MysteryMachineTaskSource))]
+        [GameConfigEntry("MysteryMachineTasks", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineTaskId, MysteryMachineTaskInfo> MysteryMachineTasks { get; set; }
+
+        [GameConfigEntry("MysteryMachineTaskSets", true, null)]
+        [GameConfigEntryTransform(typeof(MysteryMachineTaskSetSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        public GameConfigLibrary<MysteryMachineTaskSetId, MysteryMachineTaskSetInfo> MysteryMachineTaskSets { get; set; }
+
+        [GameConfigEntry("MysteryMachineLevels", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { })]
+        [GameConfigEntryTransform(typeof(MysteryMachineLevelSource))]
+        public GameConfigLibrary<MysteryMachineLevelId, MysteryMachineLevelInfo> MysteryMachineLevels { get; set; }
+        public Dictionary<MergeBoardId, MysteryMachineEventId> MysteryMachineEventBoards { get; set; }
     }
 }

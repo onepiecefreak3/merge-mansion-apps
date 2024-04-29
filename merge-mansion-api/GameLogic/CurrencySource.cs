@@ -51,6 +51,11 @@ namespace GameLogic
         DecorationShopPurchase = 42,
         EventShopPurchase = 43,
         ItemInfoPopupShopPurchase = 44,
-        SideBoardEventResourceItemSpawn = 45
+        SideBoardEventResourceItemSpawn = 45,
+        AdReward = 46,
+        InsertMachineCoin = 47,
+        MysteryMachineMerge = 48,
+        MachineTaskCompleted = 49,
+        MysteryMachineContinue = 50
     }
 }

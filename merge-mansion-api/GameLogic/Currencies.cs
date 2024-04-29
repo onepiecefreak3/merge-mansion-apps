@@ -20,6 +20,8 @@ namespace GameLogic
         SecondaryEnergy = 7,
         TertiaryEnergy = 8,
         ZeroEnergyCost = 9,
-        SideBoardEventResourceItem = 10
+        SideBoardEventResourceItem = 10,
+        MysteryMachineEnergy = 11,
+        MysteryMachineCoins = 12
     }
 }

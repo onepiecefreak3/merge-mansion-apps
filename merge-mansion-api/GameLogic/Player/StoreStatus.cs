@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Metaplay.Core;
 using Merge;
 using System.Runtime.Serialization;
+using GameLogic.Advertisement;
 
 namespace GameLogic.Player
 {
@@ -89,5 +90,9 @@ namespace GameLogic.Player
             {
             }
         }
+
+        public static string[] FlashSalePlacementKeys;
+        [MetaMember(26, (MetaMemberFlags)0)]
+        public Dictionary<AdvertisementPlacementId, ValueTuple<ShopItemId, int>> FlashSaleAdPlacements { get; set; }
     }
 }

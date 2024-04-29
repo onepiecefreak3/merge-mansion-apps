@@ -31,6 +31,7 @@ namespace GameLogic.Player.Items.Production
         }
 
         public int SpawnQuantity { get; }
+
         public F64 TimeSkipPriceGems(IGenerationContext context)
         {
             throw new NotImplementedException();

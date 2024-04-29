@@ -325,6 +325,8 @@ namespace Metaplay.Core.Message
             public string ImmutableXLinkApiUrl; // 0x18
             [MetaMember(6, 0)]
             public string GameEnvironment; // 0x20
+            [MetaMember(100, (MetaMemberFlags)0)]
+            public int ClientTosVersion;
         }
 
         [MetaSerializable]

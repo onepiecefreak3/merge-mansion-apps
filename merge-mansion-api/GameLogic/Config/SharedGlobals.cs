@@ -8,6 +8,7 @@ using Metaplay.Core.Math;
 using Merge;
 using Code.GameLogic.GameEvents;
 using Code.GameLogic.Config;
+using Metaplay.Core.Player;
 
 namespace GameLogic.Config
 {
@@ -150,5 +151,20 @@ namespace GameLogic.Config
 
         [MetaMember(51, (MetaMemberFlags)0)]
         public bool DisableDecayingSpawnerFix { get; set; }
+
+        [MetaMember(52, (MetaMemberFlags)0)]
+        public int AdsDailyWatchCap { get; set; }
+
+        [MetaMember(53, (MetaMemberFlags)0)]
+        public List<MetaRef<PlayerSegmentInfoBase>> AdsSoftLaunchSegments { get; set; }
+
+        [MetaMember(54, (MetaMemberFlags)0)]
+        public long MysteryMachineEnergyMaxAmount { get; set; }
+
+        [MetaMember(55, (MetaMemberFlags)0)]
+        public MetaDuration DefaultMysteryMachineCoinsUnitRestoreDuration { get; set; }
+
+        [MetaMember(56, (MetaMemberFlags)0)]
+        public long MysteryMachineCoinsMaxAmount { get; set; }
     }
 }
