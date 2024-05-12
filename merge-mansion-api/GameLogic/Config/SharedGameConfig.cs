@@ -52,6 +52,7 @@ using GameLogic.Player.Items.OverrideSpawnChance;
 using GameLogic.Hotspots.CardStack;
 using Game.Cloud.Webshop;
 using GameLogic.Advertisement;
+using Metaplay;
 
 namespace GameLogic.Config
 {
@@ -554,5 +555,20 @@ namespace GameLogic.Config
         [GameConfigEntryTransform(typeof(MysteryMachineLevelSource))]
         public GameConfigLibrary<MysteryMachineLevelId, MysteryMachineLevelInfo> MysteryMachineLevels { get; set; }
         public Dictionary<MergeBoardId, MysteryMachineEventId> MysteryMachineEventBoards { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntryTransform(typeof(ProducerInventorySlotSource))]
+        [GameConfigEntry("ProducerInventorySlots", true, null)]
+        public GameConfigLibrary<ProducerInventorySlotId, ProducerInventorySlotConfig> ProducerInventorySlots { get; set; }
+
+        [GameConfigEntry("OfferPopupTriggers", true, null)]
+        [GameConfigEntryTransform(typeof(OfferPopupTriggerSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<OfferPopupTriggerId, OfferPopupTrigger> OfferPopupTriggers { get; set; }
+
+        [GameConfigEntry("LocationTravels", true, null)]
+        [GameConfigEntryTransform(typeof(LocationTravelSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<LocationTravelId, LocationTravelInfo> LocationTravels { get; set; }
     }
 }

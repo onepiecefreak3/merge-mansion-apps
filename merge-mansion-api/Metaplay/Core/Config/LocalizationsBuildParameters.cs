@@ -10,6 +10,7 @@ namespace Metaplay.Core.Config
         [MetaMember(101, (MetaMemberFlags)0)]
         [MetaValidateRequired]
         [MetaFormLayoutOrderHint(-1)]
+        [MetaFormExcludeDerivedType(new string[] { "Metaplay.Core.Config.GoogleSheetBuildSource" })]
         public GameConfigBuildSource DefaultSource;
         protected LocalizationsBuildParameters()
         {

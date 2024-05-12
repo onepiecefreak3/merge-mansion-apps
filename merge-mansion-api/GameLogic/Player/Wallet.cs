@@ -103,5 +103,17 @@ namespace GameLogic.Player
 
         [IgnoreDataMember]
         public List<IBoardItem> EventPocketItemsNonAlloc { get; }
+
+        [IgnoreDataMember]
+        public long[] CurrenciesGainedThisSession { get; set; }
+
+        [IgnoreDataMember]
+        public long[] CurrenciesSpentThisSession { get; set; }
+
+        [IgnoreDataMember]
+        public long[] CurrenciesDeltaThisSession { get; set; }
+
+        [IgnoreDataMember]
+        public long[] InitialCurrenciesThisSession { get; set; }
     }
 }

@@ -13,6 +13,8 @@ namespace GameLogic.Config
         string ButtonId { get; }
 
         string ContainerId { get; }
+
+        string GroupDescriptionLocId { get; }
     // STUB
     }
 }

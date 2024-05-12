@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using Code.GameLogic.GameEvents;
 using GameLogic;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -33,6 +34,10 @@ namespace Analytics
         }
 
         public AnalyticsPlayerDecorationRewardGained()
+        {
+        }
+
+        public AnalyticsPlayerDecorationRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId, AnalyticsContext analyticsContext)
         {
         }
     }

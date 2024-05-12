@@ -272,5 +272,9 @@ namespace Game.Logic
         [MetaMember(75, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public AdsData adRewardToClaim { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(76, (MetaMemberFlags)0)]
+        private Dictionary<HotspotId, int> hotspotAppearActionCount { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Code.GameLogic.Config;
 using Metaplay.Core.Offers;
 using System;
 using Metaplay.Core;
+using System.Collections.Generic;
 
 namespace GameLogic.Config
 {
@@ -34,6 +35,13 @@ namespace GameLogic.Config
         }
 
         public AutoOfferSettingsInfo(AutoOfferSettingsId id, OfferPlacementId placement, bool autoPromptEnabled, MetaDuration autoPromptCooldown, int maxCount, MetaDuration maxWaitTimerToPrompt)
+        {
+        }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public List<MetaOfferGroupId> IgnoredOfferGroupIds { get; set; }
+
+        public AutoOfferSettingsInfo(AutoOfferSettingsId id, OfferPlacementId placement, bool autoPromptEnabled, MetaDuration autoPromptCooldown, int maxCount, MetaDuration maxWaitTimerToPrompt, List<MetaOfferGroupId> ignoredOfferGroupIds)
         {
         }
     }

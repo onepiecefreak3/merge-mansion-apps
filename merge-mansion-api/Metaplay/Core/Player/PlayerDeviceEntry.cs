@@ -32,5 +32,8 @@ namespace Metaplay.Core.Player
         private PlayerDeviceEntry()
         {
         }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public string LastSeenOperatingSystem { get; set; }
     }
 }

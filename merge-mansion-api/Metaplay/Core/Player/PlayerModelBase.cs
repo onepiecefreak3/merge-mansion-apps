@@ -12,6 +12,7 @@ using Metaplay.Core.InGameMail;
 using Metaplay.Core.Web3;
 using Metaplay.Core.Client;
 using Metaplay.Core.Offers;
+using Metaplay.Core.LiveOpsEvent;
 
 namespace Metaplay.Core.Player
 {
@@ -229,5 +230,8 @@ namespace Metaplay.Core.Player
         protected PlayerModelBase()
         {
         }
+
+        [MetaMember(55, (MetaMemberFlags)0)]
+        public PlayerLiveOpsEventsModel LiveOpsEvents { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System;
 using GameLogic;
 using Code.GameLogic.GameEvents;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -29,6 +30,10 @@ namespace Analytics
         }
 
         public AnalyticsPlayerPetRewardGained()
+        {
+        }
+
+        public AnalyticsPlayerPetRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId, AnalyticsContext analyticsContext)
         {
         }
     }

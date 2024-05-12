@@ -57,5 +57,27 @@ namespace GameLogic.Player
         public bool IsLocked { get; set; }
         public bool IsEmpty { get; }
         public InventoryContentChanged InventoryChanged { get; set; }
+
+        [MetaSerializable]
+        public class ProducerInventorySlotState
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public bool Unlocked { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public bool Seen { get; set; }
+
+            public ProducerInventorySlotState()
+            {
+            }
+
+            public ProducerInventorySlotState(bool unlocked)
+            {
+            }
+
+            public ProducerInventorySlotState(bool unlocked, bool seen)
+            {
+            }
+        }
     }
 }

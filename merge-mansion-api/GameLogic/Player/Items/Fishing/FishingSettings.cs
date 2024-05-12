@@ -2,11 +2,12 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using System.Collections.Generic;
 using System;
+using Code.GameLogic.Config;
 
 namespace GameLogic.Player.Items.Fishing
 {
     [MetaSerializable]
-    public class FishingSettings : GameConfigKeyValue<FishingSettings>
+    public class FishingSettings : GameConfigKeyValue<FishingSettings>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public Dictionary<int, int> SmallFishWaterDropletCounts { get; set; }

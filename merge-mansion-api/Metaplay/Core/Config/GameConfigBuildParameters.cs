@@ -17,6 +17,7 @@ namespace Metaplay.Core.Config
         [MetaFormLayoutOrderHint(-1)]
         [MetaValidateRequired]
         [MetaMember(101, (MetaMemberFlags)0)]
+        [MetaFormExcludeDerivedType(new string[] { "Game.Cloud.Localization.GridlyBuildSource" })]
         public GameConfigBuildSource DefaultSource;
     }
 }

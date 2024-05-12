@@ -7,6 +7,7 @@ namespace GameLogic.Player.Items.Activation
     public enum InitialSequenceType
     {
         Global = 0,
-        MergeItemInstance = 1
+        MergeItemInstance = 1,
+        BoardInstance = 2
     }
 }

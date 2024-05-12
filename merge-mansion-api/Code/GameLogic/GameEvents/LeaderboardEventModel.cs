@@ -12,7 +12,7 @@ using Metaplay.Core.Offers;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(9)]
-    public class LeaderboardEventModel : MetaActivableState<LeaderboardEventId, LeaderboardEventInfo>, IBoardEventModel, IPointsEvent
+    public class LeaderboardEventModel : MetaActivableState<LeaderboardEventId, LeaderboardEventInfo>, IBoardEventModel, IPointsEvent, IGroupIdGetter
     {
         private static byte InitialBoolFields;
         private static int InitialScore;

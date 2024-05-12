@@ -3,6 +3,7 @@ using GameLogic.Merge;
 using GameLogic.Player.Items;
 using Merge;
 using System.Reflection;
+using Metaplay.Core;
 
 namespace GameLogic.Player.Board
 {
@@ -21,5 +22,7 @@ namespace GameLogic.Player.Board
         List<MergeItem> MergeItemsNonAlloc { get; }
 
         MergeItem Item { get; }
+
+        MetaTime BoardCreationTime { get; }
     }
 }

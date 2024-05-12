@@ -94,5 +94,12 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachineInfo(MysteryMachineId configKey, int itemCapacity, MetaRef<MysteryMachineItemSetInfo> itemSetRef, MetaRef<MysteryMachineItemSetInfo> initialSpawnOrderItemSetRef, F32 width, List<MetaRef<MysteryMachineHeatLevelInfo>> heatLevelRefs, int coughsPerHeatLevel, F32 maxMergeDuration, F32 minMergeDuration, F32 mergeDurationDecreasePerMerge, F32 maxDelayBetweenMerges, F32 minDelayBetweenMerges, F32 delayDecreasePerMerge, MysteryMachineDurationDelayResetStyle durationDelayResetStyle, List<MetaRef<MysteryMachineSpecialSaleInfo>> specialSaleRefs, int maxSpecialSalePurchaseCount, List<MetaRef<MysteryMachineTaskSetInfo>> taskSetRefs, PlayerReward allTasksCompletedReward, List<F64> overheatBaseScoreMultiplierIncreases, List<MetaRef<MysteryMachineLevelInfo>> levelRefs, List<MetaRef<MysteryMachineTaskInfo>> recurringTaskRefs, int ftueMachineRestartLimit, List<int> ftueCoughStates, List<int> ftueItemSpawnCounts, List<int> energyPurchasePrices)
         {
         }
+
+        [MetaMember(26, (MetaMemberFlags)0)]
+        public PlayerReward SecondaryAllTasksCompletedReward { get; set; }
+
+        public MysteryMachineInfo(MysteryMachineId configKey, int itemCapacity, MetaRef<MysteryMachineItemSetInfo> itemSetRef, MetaRef<MysteryMachineItemSetInfo> initialSpawnOrderItemSetRef, F32 width, List<MetaRef<MysteryMachineHeatLevelInfo>> heatLevelRefs, int coughsPerHeatLevel, F32 maxMergeDuration, F32 minMergeDuration, F32 mergeDurationDecreasePerMerge, F32 maxDelayBetweenMerges, F32 minDelayBetweenMerges, F32 delayDecreasePerMerge, MysteryMachineDurationDelayResetStyle durationDelayResetStyle, List<MetaRef<MysteryMachineSpecialSaleInfo>> specialSaleRefs, int maxSpecialSalePurchaseCount, List<MetaRef<MysteryMachineTaskSetInfo>> taskSetRefs, PlayerReward allTasksCompletedReward, List<F64> overheatBaseScoreMultiplierIncreases, List<MetaRef<MysteryMachineLevelInfo>> levelRefs, List<MetaRef<MysteryMachineTaskInfo>> recurringTaskRefs, int ftueMachineRestartLimit, List<int> ftueCoughStates, List<int> ftueItemSpawnCounts, List<int> energyPurchasePrices, PlayerReward secondaryAllTasksCompletedReward)
+        {
+        }
     }
 }

@@ -22,5 +22,7 @@ namespace Metaplay.Core.Schedule
         [MetaMember(6, 0)]
         public int Seconds; // 0x14
         public bool IsNone { get; }
+
+        private static Regex s_isoPattern;
     }
 }

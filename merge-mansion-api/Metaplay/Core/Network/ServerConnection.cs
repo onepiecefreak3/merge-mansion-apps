@@ -161,7 +161,7 @@ namespace Metaplay.Core.Network
             EnqueueInfo(new SessionStartRequested());
 
             _currentSessionStartQueryId++;
-            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceModel, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
+            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
 
             _transport.EnqueueSendMessage(req);
         }
@@ -880,7 +880,7 @@ namespace Metaplay.Core.Network
                 EnqueueInfo(new SessionStartRequested());
 
                 var sessionReq = _currentSession == null ?
-                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceModel, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
+                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
                     new SessionProtocol.SessionResumeRequest(SessionResumptionInfo.FromParticipantState(_currentSession.SessionParticipant));
 
                 _transport.EnqueueSendMessage(sessionReq);
@@ -975,7 +975,7 @@ namespace Metaplay.Core.Network
             public MetaDuration SessionResumptionAttemptConnectionInterval; // 0x18
             public MetaDuration ConnectTimeout; // 0x20
             public ClientServerCommitIdCheckRule CommitIdCheckRule; // 0x28
-            public string DeviceModel; // 0x30
+            public SessionProtocol.ClientDeviceInfo DeviceInfo; // 0x30
             public Handshake.ILoginRequestGamePayload LoginGamePayload; // 0x38
             public SessionProtocol.ISessionStartRequestGamePayload SessionStartGamePayload; // 0x40
         }

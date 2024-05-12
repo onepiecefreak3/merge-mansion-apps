@@ -204,7 +204,12 @@ namespace Metaplay.Unity
                 SessionResumptionAttemptConnectionInterval = Config.SessionResumptionAttemptConnectionInterval,
                 ConnectTimeout = Config.ConnectTimeout,
                 CommitIdCheckRule = Config.CommitIdCheckRule,
-                DeviceModel = SystemInfo.DeviceModel,
+                DeviceInfo = new SessionProtocol.ClientDeviceInfo
+                {
+                    DeviceModel = SystemInfo.DeviceModel,
+                    ClientPlatform = ClientPlatform.Android,
+                    OperatingSystem = string.Empty
+                },
                 LoginGamePayload = Delegate.GetLoginPayload(),
                 SessionStartGamePayload = Delegate.GetSessionStartRequestPayload()
             };

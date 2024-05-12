@@ -6,6 +6,7 @@ using System;
 using Code.GameLogic.GameEvents;
 using GameLogic;
 using GameLogic.Player.Items;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -42,6 +43,10 @@ namespace Analytics
         [JsonProperty("duration_in_minutes", DefaultValueHandling = (DefaultValueHandling)1)]
         public double Duration;
         public AnalyticsPlayerItemRewardGained(ItemDefinition itemDefinition, OverrideItemFeatures overrideItemFeatures, int amount, CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLeveLId)
+        {
+        }
+
+        public AnalyticsPlayerItemRewardGained(ItemDefinition itemDefinition, OverrideItemFeatures overrideItemFeatures, int amount, CurrencySource rewardSource, string context, AnalyticsContext analyticsContext, string eventOfferSetId, EventLevelId eventLeveLId)
         {
         }
     }

@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using Code.GameLogic.GameEvents;
 using GameLogic;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -39,6 +40,20 @@ namespace Analytics
         }
 
         protected AnalyticsPlayerRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId)
+        {
+        }
+
+        [MetaMember(204, (MetaMemberFlags)0)]
+        [JsonProperty("offer_id", NullValueHandling = (NullValueHandling)1)]
+        [Description("Offer id")]
+        public string OfferId { get; set; }
+
+        [MetaMember(205, (MetaMemberFlags)0)]
+        [JsonProperty("transaction_id", NullValueHandling = (NullValueHandling)1)]
+        [Description("Transaction id")]
+        public string TransactionId { get; set; }
+
+        protected AnalyticsPlayerRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId, AnalyticsContext analyticsContext)
         {
         }
     }

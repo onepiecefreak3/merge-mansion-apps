@@ -38,6 +38,9 @@ namespace GameLogic.Player
         public Statistics(MetaTime currentTime)
         {
         }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public MetaDuration TotalPlaytimeApprox { get; set; }
     // STUB
     }
 }

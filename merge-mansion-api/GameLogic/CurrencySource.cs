@@ -56,6 +56,7 @@ namespace GameLogic
         InsertMachineCoin = 47,
         MysteryMachineMerge = 48,
         MachineTaskCompleted = 49,
-        MysteryMachineContinue = 50
+        MysteryMachineContinue = 50,
+        Tutorial = 51
     }
 }

@@ -8,6 +8,6 @@ namespace GameLogic
     {
         UnKnown = 0,
         GrandmaMansion = 1,
-        Stables = 2
+        Ranch = 2
     }
 }

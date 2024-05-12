@@ -25,5 +25,12 @@ namespace Metaplay.Core.Debugging
         public IncidentApplicationInfo(BuildVersion buildVersion, string deviceGuid, string activeLanguage, int highestSupportedLogicVersion)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string EnvironmentId { get; set; }
+
+        public IncidentApplicationInfo(BuildVersion buildVersion, string deviceGuid, string activeLanguage, int highestSupportedLogicVersion, string environmentId)
+        {
+        }
     }
 }

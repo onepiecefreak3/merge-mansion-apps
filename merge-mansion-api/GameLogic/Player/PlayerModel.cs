@@ -318,9 +318,23 @@ namespace GameLogic.Player
 
         [MetaMember(257, (MetaMemberFlags)0)]
         public int MysteryMachineEventsStarted { get; set; }
-
-        [MetaMember(258, (MetaMemberFlags)0)]
-        public bool MysteryMachineAllTasksCompletedRewardClaimed { get; set; }
         public IEnumerable<MysteryMachineEventModel> ActiveMysteryMachineEvents { get; }
+
+        [MetaMember(259, (MetaMemberFlags)0)]
+        private List<BoardInventory.ProducerInventorySlotState> producerInventoryEntries;
+        [MetaMember(258, (MetaMemberFlags)0)]
+        public bool MysteryMachineAllTasksCompletedRewardClaimed_DEPRECATED { get; set; }
+
+        [IgnoreDataMember]
+        public List<BoardInventory.ProducerInventorySlotState> ProducerInventoryEntries { get; set; }
+
+        [MetaMember(260, (MetaMemberFlags)0)]
+        public int MysteryMachineAllTasksCompletedRewardClaimedEventInstance { get; set; }
+
+        [IgnoreDataMember]
+        public string SessionConfigVersion { get; set; }
+
+        [IgnoreDataMember]
+        public string ServerBuildVersion { get; set; }
     }
 }

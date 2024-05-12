@@ -72,5 +72,7 @@ namespace Metaplay.Core.Debugging
         public UnitySystemInfo()
         {
         }
+
+        private MetaTime _nextBatteryUpdateAt;
     }
 }

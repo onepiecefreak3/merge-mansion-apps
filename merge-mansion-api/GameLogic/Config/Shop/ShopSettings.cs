@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using Code.GameLogic.FlashSales;
 using System;
 using System.Runtime.Serialization;
+using Code.GameLogic.Config;
 
 namespace GameLogic.Config.Shop
 {
     [MetaSerializable]
-    public class ShopSettings : GameConfigKeyValue<ShopSettings>
+    [MetaBlockedMembers(new int[] { 4 })]
+    public class ShopSettings : GameConfigKeyValue<ShopSettings>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public List<FlashSaleSlotId> ActiveFlashSaleSlots { get; set; }
@@ -19,14 +21,11 @@ namespace GameLogic.Config.Shop
         [MetaMember(3, (MetaMemberFlags)0)]
         private Currencies FlashResetCurrency { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        private int FlashResetCost { get; set; }
-
-        [IgnoreDataMember]
-        public (Currencies Currency, int Cost) FlashResetPrice => (FlashResetCurrency, FlashResetCost);
-
         public ShopSettings()
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public List<int> FlashResetCosts { get; set; }
     }
 }

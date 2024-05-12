@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System;
 using Code.GameLogic.GameEvents;
 using GameLogic;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -33,6 +34,10 @@ namespace Analytics
         }
 
         public AnalyticsPlayerEventPointsRewardGained()
+        {
+        }
+
+        public AnalyticsPlayerEventPointsRewardGained(CurrencySource rewardSource, EventLevelId eventLevelId, AnalyticsContext analyticsContext)
         {
         }
     }

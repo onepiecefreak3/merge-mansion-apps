@@ -1,6 +1,9 @@
-﻿namespace Metaplay.Core.Player
+namespace Metaplay.Core.Player
 {
     public abstract class PlayerSynchronizedServerActionCore<TModel> : PlayerSynchronizedServerActionBase
     {
+        protected PlayerSynchronizedServerActionCore()
+        {
+        }
     }
 }

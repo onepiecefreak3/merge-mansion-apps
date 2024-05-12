@@ -52,8 +52,6 @@ namespace GameLogic.Decorations
         LDEPOHB2023_UnityPlaceShipGoldFramesTC1 = 43,
         LDEPOHB2023_UnityPlaceWaterfallTC2 = 44,
         LDEPOHB2023_UnityPlaceTentaclesTC3 = 45,
-        SPRM2024PetHomeTA1 = 46,
-        SPRM2024PetHomeTA2 = 47,
         LDE_HolidayCarols2023SwapTreePackagesTA1 = 48,
         LDE_HolidayCarols2023SwapJunkTA2 = 49,
         LDE_HolidayCarols2023SwapSignTA3 = 50,
@@ -70,6 +68,22 @@ namespace GameLogic.Decorations
         LDE_HolidayCarols2023PlaceOrnamentsTC2 = 61,
         LDE_HolidayCarols2023PlaceStageOrnamentTC3 = 62,
         SP_MiniHorseMystery2024PetHomeTA1 = 63,
-        SP_MiniHorseMystery2024PetHomeTA2 = 64
+        SP_MiniHorseMystery2024PetHomeTA2 = 64,
+        SP_StrayBonesMystery2024_TA1 = 46,
+        SP_StrayBonesMystery2024_TA2 = 47,
+        LDE_Hopeberry2024_TA0 = 65,
+        LDE_Hopeberry2024_TA1 = 66,
+        LDE_Hopeberry2024_TA2 = 67,
+        LDE_Hopeberry2024_TA3 = 68,
+        LDE_Hopeberry2024_TA4 = 69,
+        LDE_Hopeberry2024_TA5 = 70,
+        LDE_Hopeberry2024_TA6 = 71,
+        LDE_Hopeberry2024_TA7 = 72,
+        LDE_Hopeberry2024_TB1 = 73,
+        LDE_Hopeberry2024_TB2 = 74,
+        LDE_Hopeberry2024_TB3 = 75,
+        LDE_Hopeberry2024_TC1 = 76,
+        LDE_Hopeberry2024_TC2 = 77,
+        LDE_Hopeberry2024_TC3 = 78
     }
 }

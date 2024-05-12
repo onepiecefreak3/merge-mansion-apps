@@ -201,6 +201,19 @@ namespace GameLogic.Config.Map.Characters
         AreaLoungFirstMapCharacterPositionMap = 6199,
         AreaLoungEntryMapMaddie = 6200,
         AreaLoungEntryWinston = 6201,
-        AreaLoungSecondDialogueMaddie = 6202
+        AreaLoungSecondDialogueMaddie = 6202,
+        AreaRanchStablesExteriorFirstMapCharacterPosition = 6399,
+        AreaRanchStablesExteriorEntryMapMaddie = 6400,
+        AreaRanchStablesExteriorAppleBasket = 6401,
+        AreaRanchStablesExteriorWater = 6402,
+        AreaRanchStablesExteriorBeforeBridge = 6403,
+        AreaRanchStablesExteriorAfterBridge = 6404,
+        AreaRanchStablesExteriorBehindFence = 6405,
+        AreaRanchStablesExteriorAppleBasketMaddie = 6406,
+        AreaRanchStablesExteriorWaterMaddie = 6407,
+        AreaRanchStablesExteriorBeforeBridgeMaddie = 6408,
+        AreaRanchStablesExteriorAfterBridgeMaddie = 6409,
+        AreaRanchStablesExteriorBehindFenceMaddie = 6410,
+        AreaRanchStablesExteriorFirstMapCharacterPositionMaddie = 6411
     }
 }

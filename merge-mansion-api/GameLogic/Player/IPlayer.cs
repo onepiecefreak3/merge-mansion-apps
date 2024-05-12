@@ -118,6 +118,8 @@ namespace GameLogic.Player
         IEnumerable<MysteryMachineEventModel> ActiveMysteryMachineEvents { get; }
 
         RandomPCG MysteryMachineRandom { get; }
+
+        List<BoardInventory.ProducerInventorySlotState> ProducerInventoryEntries { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

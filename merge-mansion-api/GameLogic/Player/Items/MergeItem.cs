@@ -19,6 +19,7 @@ using GameLogic.Player.Board.Placement;
 using Metaplay.Core.Math;
 using GameLogic.Player.Items.Fishing;
 using GameLogic.Player.Items.Persistent;
+using Merge;
 
 namespace GameLogic.Player.Items
 {
@@ -323,5 +324,10 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public MetaTime CreatedAt { get; }
+
+        private static string HotspotTagKey;
+        public MergeItem(IPlayer player, ItemDefinition itemDefinition, MetaTime timestamp, MergeBoardId boardId, ItemVisibility itemVisibility, bool insideBubble)
+        {
+        }
     }
 }

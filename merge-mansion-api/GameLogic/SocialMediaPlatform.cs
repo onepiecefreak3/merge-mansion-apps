@@ -9,6 +9,8 @@ namespace GameLogic
         Instagram = 2,
         Tiktok = 3,
         Twitter = 4,
-        Youtube = 5
+        Youtube = 5,
+        Discord = 6,
+        InboxLink = 7
     }
 }

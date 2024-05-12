@@ -190,5 +190,9 @@ namespace GameLogic.Config
         public static DirectorGroupId CardStackStep04;
         public static DirectorGroupId CardStackStep05;
         public static DirectorGroupId CardStackStep06;
+        public static DirectorGroupId SocialMediaDiscord;
+        public static DirectorGroupId SocialMediaInboxLink;
+        public static DirectorGroupId ProducerInventoryLockedFTUE;
+        public static DirectorGroupId PetFTUE;
     }
 }

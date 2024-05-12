@@ -22,6 +22,7 @@ namespace GameLogic.Config.Map.Characters
         Ash = 14,
         Sullivan = 15,
         Bruno = 16,
-        Malzar = 17
+        Malzar = 17,
+        Babylon = 18
     }
 }

@@ -7,7 +7,7 @@ namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(3)]
     [MetaBlockedMembers(new int[] { 3, 8, 9, 10, 11 })]
-    public class ShopEventModel : ExtendableEventState<EventId, ShopEventInfo>, IEventGroupModel<ShopEventInfo>
+    public class ShopEventModel : ExtendableEventState<EventId, ShopEventInfo>, IEventGroupModel<ShopEventInfo>, IGroupIdGetter
     {
         [MetaMember(4, (MetaMemberFlags)0)]
         public int Level;

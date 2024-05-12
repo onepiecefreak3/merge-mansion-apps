@@ -48,6 +48,9 @@ namespace GameLogic
         PrisonerCindy = 36,
         PrisonerIzzy = 37,
         PrisonSecretAgent = 38,
-        Malzar = 39
+        Malzar = 39,
+        Kazuko = 40,
+        SgtPepper = 41,
+        Babylon = 42
     }
 }

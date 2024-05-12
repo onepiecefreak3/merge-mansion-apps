@@ -172,8 +172,8 @@ namespace Metaplay.Core.Message
             [MetaMember(2, 0)]
             public string DeviceGuid { get; set; } // 0x18
 
-            [MetaMember(3, 0)]
-            public string DeviceModel { get; set; } // 0x20
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public SessionProtocol.ClientDeviceInfo DeviceInfo { get; set; }
 
             [MetaMember(4, 0)]
             public PlayerTimeZoneInfo TimeZoneInfo { get; set; } // 0x28
@@ -197,11 +197,11 @@ namespace Metaplay.Core.Message
             {
             }
 
-            public SessionStartRequest(int queryId, string deviceGuid, string deviceModel, PlayerTimeZoneInfo timeZoneInfo, SessionResourceProposal resourceProposal, bool isDryRun, ISessionStartRequestGamePayload gamePayload, CompressionAlgorithmSet supportedArchiveCompressions, ClientAppPauseStatus clientAppPauseStatus)
+            public SessionStartRequest(int queryId, string deviceGuid, SessionProtocol.ClientDeviceInfo deviceInfo, PlayerTimeZoneInfo timeZoneInfo, SessionResourceProposal resourceProposal, bool isDryRun, ISessionStartRequestGamePayload gamePayload, CompressionAlgorithmSet supportedArchiveCompressions, ClientAppPauseStatus clientAppPauseStatus)
             {
                 QueryId = queryId;
                 DeviceGuid = deviceGuid;
-                DeviceModel = deviceModel;
+                DeviceInfo = deviceInfo;
                 TimeZoneInfo = timeZoneInfo;
                 ResourceProposal = resourceProposal;
                 IsDryRun = isDryRun;
@@ -429,6 +429,19 @@ namespace Metaplay.Core.Message
             public SessionStartResourceCorrection(int queryId, SessionProtocol.SessionResourceCorrection resourceCorrection)
             {
             }
+        }
+
+        [MetaSerializable]
+        public struct ClientDeviceInfo
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public ClientPlatform ClientPlatform { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public string DeviceModel { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public string OperatingSystem { get; set; }
         }
     }
 }

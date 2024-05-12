@@ -94,5 +94,12 @@ namespace GameLogic.Player
         public static string[] FlashSalePlacementKeys;
         [MetaMember(26, (MetaMemberFlags)0)]
         public Dictionary<AdvertisementPlacementId, ValueTuple<ShopItemId, int>> FlashSaleAdPlacements { get; set; }
+
+        [MetaMember(28, (MetaMemberFlags)0)]
+        private Dictionary<string, int> OfferPopupTriggersActivatedTotal { get; set; }
+
+        [MetaMember(29, (MetaMemberFlags)0)]
+        public int BoughtFlashSaleRefreshes { get; set; }
+        private Dictionary<string, int> OfferPopupTriggersActivatedThisSession { get; set; }
     }
 }

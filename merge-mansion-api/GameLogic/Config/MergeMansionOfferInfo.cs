@@ -8,6 +8,8 @@ using System;
 using System.Linq;
 using GameLogic.Player.Rewards;
 using GameLogic.Player.Director.Config;
+using Metaplay.Core;
+using Metaplay.Core.InAppPurchase;
 
 namespace GameLogic.Config
 {
@@ -87,6 +89,13 @@ namespace GameLogic.Config
         public List<int> CostAmounts { get; set; }
 
         public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions)
+        {
+        }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public MetaRef<InAppProductInfoBase> PreviousInAppProduct { get; set; }
+
+        public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions, MetaRef<InAppProductInfoBase> previousInAppProduct)
         {
         }
     }

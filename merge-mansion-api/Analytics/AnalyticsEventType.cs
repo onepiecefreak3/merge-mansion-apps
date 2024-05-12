@@ -118,6 +118,8 @@ namespace Analytics
         AdFinished = 107,
         AdImpression = 108,
         MachineScore = 109,
-        MachineTaskCompleted = 110
+        MachineTaskCompleted = 110,
+        ActiveLogicVersionChanged = 111,
+        SceneChange = 112
     }
 }

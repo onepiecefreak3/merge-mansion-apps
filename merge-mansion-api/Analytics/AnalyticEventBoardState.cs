@@ -96,5 +96,11 @@ namespace Analytics
         [JsonProperty("rentable_inventory_items")]
         [MetaMember(18, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> RentableInventoryItems { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        [Description("Pets")]
+        [JsonProperty("pets")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        public List<AnalyticsBoardStateDecorationMetaData> Pets { get; set; }
     }
 }

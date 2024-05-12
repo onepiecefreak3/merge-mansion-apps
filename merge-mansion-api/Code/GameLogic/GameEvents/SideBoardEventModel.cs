@@ -12,7 +12,7 @@ using Metaplay.Core;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(11)]
-    public class SideBoardEventModel : ExtendableEventState<SideBoardEventId, SideBoardEventInfo>, IBoardEventModel
+    public class SideBoardEventModel : ExtendableEventState<SideBoardEventId, SideBoardEventInfo>, IBoardEventModel, IGroupIdGetter
     {
         public static int InitialLevel;
         private static int InitialLevelProgress;

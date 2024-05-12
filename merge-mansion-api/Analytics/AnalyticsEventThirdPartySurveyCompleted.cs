@@ -7,6 +7,7 @@ using System;
 namespace Analytics
 {
     [AnalyticsEvent(140, "Third Party Survey completed", 1, null, true, true, false)]
+    [JsonConverter(typeof(AnalyticsEventThirdPartySurveyCompletedJsonConverter))]
     public class AnalyticsEventThirdPartySurveyCompleted : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

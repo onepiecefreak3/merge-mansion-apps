@@ -11,6 +11,7 @@ using Metaplay.Core.InGameMail;
 using Metaplay.Core.Offers;
 using Metaplay.Core.Web3;
 using Metaplay.Core.Client;
+using Metaplay.Core.LiveOpsEvent;
 
 namespace Metaplay.Core.Player
 {
@@ -126,5 +127,7 @@ namespace Metaplay.Core.Player
         PlayerNftSubModel Nft { get; }
 
         Dictionary<ClientSlot, PlayerSubClientStateBase> PlayerSubClientStates { get; }
+
+        PlayerLiveOpsEventsModel LiveOpsEvents { get; }
     }
 }

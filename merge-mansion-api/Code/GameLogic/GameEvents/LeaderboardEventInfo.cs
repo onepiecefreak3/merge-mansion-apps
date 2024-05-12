@@ -20,7 +20,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     [MetaActivableConfigData("LeaderboardEvent", false)]
     [MetaBlockedMembers(new int[] { 10, 16 })]
-    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IHasGameConfigKey<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo, IBubbleBonusEvent
+    public class LeaderboardEventInfo : IMetaActivableConfigData<LeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<LeaderboardEventId>, IHasGameConfigKey<LeaderboardEventId>, IMetaActivableInfo<LeaderboardEventId>, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
     {
         [MetaMember(1, 0)]
         public LeaderboardEventId LeaderboardEventId { get; set; }
@@ -118,5 +118,15 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         IStringId Code.GameLogic.GameEvents.IBoardEventInfo.BoardEventId { get; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public List<BubbleBonusInfo> SecondaryBoardBubbleBonus { get; set; }
+
+        public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, EventGroupId eventGroupId, bool disableBubbleBonus, F32? bubbleBonusDivisor, List<BubbleBonusInfo> secondaryBoardBubbleBonus)
+        {
+        }
     }
 }

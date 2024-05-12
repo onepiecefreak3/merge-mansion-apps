@@ -69,5 +69,16 @@ namespace GameLogic.Config
         public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore, ManuallyActivatedOfferGroupId manualActivationId)
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public List<MetaRef<OfferPopupTrigger>> OfferPopupTriggers { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        private string DescriptionLocId { get; set; }
+        public string GroupDescriptionLocId { get; }
+
+        public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string descriptionLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore, ManuallyActivatedOfferGroupId manualActivationId, List<OfferPopupTriggerId> offerPopupTriggerIds)
+        {
+        }
     }
 }

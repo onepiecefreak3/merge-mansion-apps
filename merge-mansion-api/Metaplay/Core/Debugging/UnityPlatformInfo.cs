@@ -39,5 +39,7 @@ namespace Metaplay.Core.Debugging
         public UnityPlatformInfo()
         {
         }
+
+        private MetaTime _nextReachabilityUpdateAt;
     }
 }

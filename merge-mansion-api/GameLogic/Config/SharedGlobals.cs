@@ -131,9 +131,6 @@ namespace GameLogic.Config
         [MetaMember(43, (MetaMemberFlags)0)]
         public MetaDuration DefaultLockedTaskTimerDuration { get; set; }
 
-        [MetaMember(44, (MetaMemberFlags)0)]
-        public int ProducerInventorySize { get; set; }
-
         [MetaMember(45, (MetaMemberFlags)0)]
         public MetaDuration MinimumSpeedUpTime { get; set; }
 
@@ -166,5 +163,8 @@ namespace GameLogic.Config
 
         [MetaMember(56, (MetaMemberFlags)0)]
         public long MysteryMachineCoinsMaxAmount { get; set; }
+
+        [MetaMember(57, (MetaMemberFlags)0)]
+        public int InventorySlotsRequiredToTeaseProducerInventory { get; set; }
     }
 }

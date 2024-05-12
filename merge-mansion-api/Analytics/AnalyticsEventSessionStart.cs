@@ -72,5 +72,20 @@ namespace Analytics
         public AnalyticsEventSessionStart()
         {
         }
+
+        [JsonProperty("config_version")]
+        [MetaMember(18, (MetaMemberFlags)0)]
+        [Description("Config Version")]
+        public string ConfigVersion { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        [JsonProperty("server_build_version")]
+        [Description("Server Build Version")]
+        public string ServerBuildVersion { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        [JsonProperty("os_version")]
+        [Description("OS Version")]
+        public string OsVersion { get; set; }
     }
 }

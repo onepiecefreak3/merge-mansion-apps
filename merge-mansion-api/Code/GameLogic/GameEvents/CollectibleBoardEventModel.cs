@@ -12,7 +12,7 @@ using Metaplay.Core.Offers;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(8)]
-    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, ILevelBoardEventModel, ILevelEventModel, IBoardEventModel, IPointsEvent
+    public class CollectibleBoardEventModel : ExtendableEventState<CollectibleBoardEventId, CollectibleBoardEventInfo>, ILevelBoardEventModel, ILevelEventModel, IBoardEventModel, IPointsEvent, IGroupIdGetter
     {
         public static int InitialLevel;
         private static int InitialLevelProgress;

@@ -29,5 +29,8 @@ namespace Metaplay.Core.Player
             var metaOffset = MetaDuration.FromMilliseconds((long)offset.TotalMilliseconds);
             return new PlayerTimeZoneInfo(metaOffset);
         }
+
+        public static MetaDuration MinimumUtcOffset;
+        public static MetaDuration MaximumUtcOffset;
     }
 }

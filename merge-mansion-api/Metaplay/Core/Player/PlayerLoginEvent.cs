@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Message;
 
 namespace Metaplay.Core.Player
 {
@@ -35,6 +36,16 @@ namespace Metaplay.Core.Player
         }
 
         public PlayerLoginEvent(MetaTime timestamp, string deviceId, string deviceModel, string clientVersion, PlayerLocation? location, AuthenticationKey authKey, string ipAddress, ClientPlatform clientPlatform)
+        {
+        }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public string OperatingSystem { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public MetaDuration? SessionLengthApprox { get; set; }
+
+        public PlayerLoginEvent(MetaTime timestamp, string deviceId, SessionProtocol.ClientDeviceInfo device, string clientVersion, PlayerLocation? location, AuthenticationKey authKey, string ipAddress)
         {
         }
     }

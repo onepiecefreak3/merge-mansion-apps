@@ -16,5 +16,10 @@ namespace Metaplay.Core.Config
             public string From;
             public string To;
         }
+
+        public bool EnsureHasKeyValueSheetHeader;
+        public GameConfigSyntaxAdapterAttribute(string[] headerReplaces, string[] headerPrefixReplaces, bool ensureHasKeyValueSheetHeader)
+        {
+        }
     }
 }
