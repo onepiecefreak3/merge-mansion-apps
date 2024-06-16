@@ -30,6 +30,8 @@ namespace Metaplay.Core.Config
 
             var items = GameConfigUtil.ImportBinaryLibraryItems<TKey, TInfo>(_archive, fileName);
             PatchEntryContentInPlace(items, entryName, typeof(GameConfigLibraryPatch<TKey, TInfo>));
+            if (items == null)
+                return null;
 
             var lib = GameConfigLibrary<TKey, TInfo>.FromItems(items, registry);
 

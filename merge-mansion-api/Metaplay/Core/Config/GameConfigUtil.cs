@@ -44,8 +44,8 @@ namespace Metaplay.Core.Config
             }
             catch (Exception e)
             {
-                Console.WriteLine($"[!] Error deserializing table of type {typeof(TValue).Name}.");
-                return default;
+                Console.WriteLine($"[!] Error deserializing table of type {typeof(TValue).Name}: {e.Message}");
+                return null;
             }
         }
 
