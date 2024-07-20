@@ -9,8 +9,8 @@ using Metaplay.Core;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 6 })]
     [AnalyticsEvent(108, "Merge goals completed", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticsEventMergeGoalsCompleted : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

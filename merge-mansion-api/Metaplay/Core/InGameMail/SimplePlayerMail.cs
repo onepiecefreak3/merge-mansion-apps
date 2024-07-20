@@ -7,12 +7,12 @@ using Metaplay.Core.Rewards;
 
 namespace Metaplay.Core.InGameMail
 {
-    [MetaSerializableDerived(100)]
     [MetaReservedMembers(0, 100)]
+    [MetaSerializableDerived(100)]
     public class SimplePlayerMail : MetaInGameMail
     {
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         public LocalizedString Title { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

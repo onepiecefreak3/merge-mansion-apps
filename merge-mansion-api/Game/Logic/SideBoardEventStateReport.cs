@@ -6,8 +6,8 @@ namespace Game.Logic
     [MetaSerializable]
     public class SideBoardEventStateReport
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int SinkedResourceItemCount { get; set; }
 
         [ExcludeFromGdprExport]

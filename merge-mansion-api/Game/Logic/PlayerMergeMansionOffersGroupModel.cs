@@ -5,8 +5,8 @@ using GameLogic.Config;
 
 namespace Game.Logic
 {
-    [MetaActivableSet("OfferGroup", false)]
     [MetaSerializableDerived(1)]
+    [MetaActivableSet("OfferGroup", false)]
     public class PlayerMergeMansionOffersGroupModel : PlayerMetaOfferGroupsModelBase<MergeMansionOfferGroupInfo>
     {
         public PlayerMergeMansionOffersGroupModel()

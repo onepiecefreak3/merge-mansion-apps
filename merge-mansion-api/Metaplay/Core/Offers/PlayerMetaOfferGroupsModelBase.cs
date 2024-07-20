@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Offers
 {
-    [MetaReservedMembers(200, 300)]
     [MetaSerializable]
+    [MetaReservedMembers(200, 300)]
     public abstract class PlayerMetaOfferGroupsModelBase<TOfferGroupInfo> : MetaActivableSet<MetaOfferGroupId, TOfferGroupInfo, MetaOfferGroupModelBase>, IPlayerMetaOfferGroups, IMetaActivableSet<MetaOfferGroupId, MetaOfferGroupInfoBase, MetaOfferGroupModelBase>, IMetaActivableSet<MetaOfferGroupId>, IMetaActivableSet
     {
         [MetaMember(200, (MetaMemberFlags)0)]

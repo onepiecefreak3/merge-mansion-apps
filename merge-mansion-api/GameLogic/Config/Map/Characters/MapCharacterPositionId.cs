@@ -217,6 +217,10 @@ namespace GameLogic.Config.Map.Characters
         AreaRanchStablesExteriorFirstMapCharacterPositionMaddie = 6411,
         AreaMansionSecretSocietyFirstMapCharacterPosition = 6599,
         AreaMansionSecretSocietyEntryMapMaddie = 6600,
-        AreaMansionSecretSocietyJackieEntry = 6601
+        AreaMansionSecretSocietyJackieEntry = 6601,
+        AreaMansionDanceFloorFirstMapCharacterPosition = 6799,
+        AreaMansionDanceFloorEntryMapMaddie = 6800,
+        AreaMansionDanceFloorCharacter = 6801,
+        AreaMansionDanceFloorEntrance = 6802
     }
 }

@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Rewards
 {
-    [UseCustomParserFromDerived]
     [MetaSerializable]
+    [UseCustomParserFromDerived]
     public abstract class MetaPlayerReward<TModel> : MetaPlayerRewardBase
     {
         protected MetaPlayerReward()

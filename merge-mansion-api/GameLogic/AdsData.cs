@@ -11,8 +11,8 @@ namespace GameLogic
         [MetaMember(1, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public string placementId;
-        [ExcludeFromGdprExport]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public bool canBeClaimed;
         [MetaMember(3, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]

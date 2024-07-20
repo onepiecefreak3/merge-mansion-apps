@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEventKeywords(new string[] { "Session" })]
     [AnalyticsEvent(1005, null, 1, "Client has connected to the server.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "Session" })]
     public class PlayerEventClientConnected : PlayerEventBase
     {
         [MetaMember(7, (MetaMemberFlags)0)]

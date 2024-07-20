@@ -4,16 +4,16 @@ using System;
 namespace Metaplay.Core.League.Player
 {
     [MetaSerializable]
-    [PlayerLeaguesEnabledCondition]
     [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
+    [PlayerLeaguesEnabledCondition]
     public abstract class PlayerDivisionAvatarBase
     {
         protected PlayerDivisionAvatarBase()
         {
         }
 
-        [MetaSerializableDerived(101)]
         [PlayerLeaguesEnabledCondition]
+        [MetaSerializableDerived(101)]
         public class Default : PlayerDivisionAvatarBase
         {
             [MetaMember(1, (MetaMemberFlags)0)]

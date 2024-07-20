@@ -10,8 +10,8 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 2, 3, 4, 5, 7, 9 })]
     [AnalyticsEvent(122, "Player snapshot", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 2, 3, 4, 5, 7, 9 })]
     public class AnalyticsEventPlayerSnapshot : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

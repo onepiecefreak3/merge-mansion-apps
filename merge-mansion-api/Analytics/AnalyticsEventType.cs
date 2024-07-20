@@ -123,6 +123,8 @@ namespace Analytics
         SceneChange = 112,
         ShopItemIapImpression = 113,
         DailyTaskV2StateChanged = 114,
-        DailyTasksV2StreakChanged = 115
+        DailyTasksV2StreakChanged = 115,
+        CutsceneView = 116,
+        ItemSpawnedByMerge = 117
     }
 }

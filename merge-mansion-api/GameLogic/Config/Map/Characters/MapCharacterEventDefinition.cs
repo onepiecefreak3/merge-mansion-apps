@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Config.Map.Characters
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 2, 3 })]
+    [MetaSerializable]
     public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData, IHasGameConfigKey<MapCharacterEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

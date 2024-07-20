@@ -31,8 +31,8 @@ namespace GameLogic.Player.Items
         private static readonly MetaTime guaranteedFuture; // 0x0
         private MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
         public DecayState DecayState => Extra.DecayState;
         public ActivationState ActivationState => Extra.ActivationState;

@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class PlayerAuthEntryBase
     {
         [MetaMember(100, (MetaMemberFlags)0)]

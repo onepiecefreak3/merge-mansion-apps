@@ -10,21 +10,21 @@ using System.Runtime.Serialization;
 namespace GameLogic.Player.DailyTasks
 {
     [MetaBlockedMembers(new int[] { 1, 2, 3, 4, 5, 7, 9, 10, 13, 19 })]
-    [DefaultMember("Item")]
     [MetaSerializable]
+    [DefaultMember("Item")]
     public class DailyTaskStatus
     {
+        [ExcludeFromGdprExport]
         [MetaMember(15, (MetaMemberFlags)0)]
-        [ExcludeFromGdprExport]
         public int Level;
-        [MetaMember(16, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public int Points;
         [MetaMember(17, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int LastSeenPoints;
-        [ExcludeFromGdprExport]
         [MetaMember(18, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int LastSeenLevel;
         [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]

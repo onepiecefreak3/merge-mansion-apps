@@ -22,10 +22,10 @@ namespace GameLogic.Player.Items.Production
         {
         }
 
-        [IgnoreDataMember] 
+        [IgnoreDataMember]
         public ItemDefinition Item => Type.Ref;
 
-        [IgnoreDataMember] 
+        [IgnoreDataMember]
         public int ConfigKey => Item.ConfigKey;
     }
 }

@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [TypeConverter(typeof(EnumStringConverter<CharacterId>))]
+    [MetaSerializable]
     public enum CharacterId
     {
         None = 0,

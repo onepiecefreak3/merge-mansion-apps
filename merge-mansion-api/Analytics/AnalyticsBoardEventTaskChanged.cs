@@ -16,13 +16,13 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
         public string EventId;
-        [Description("ID of the event task")]
         [JsonProperty("event_task_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("ID of the event task")]
         public string EventTaskId;
-        [Description("State of the event task")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("state")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("State of the event task")]
         public string State;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }
@@ -31,13 +31,13 @@ namespace Analytics
         {
         }
 
-        [Description("Items required by the task")]
-        [JsonProperty("required_items")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("required_items")]
+        [Description("Items required by the task")]
         public List<AnalyticsBoardEventTaskChanged.ItemRequirement> RequiredItems;
-        [JsonProperty("task_type")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Task type: dynamic / predefined")]
+        [JsonProperty("task_type")]
         public string TaskType;
         [JsonProperty("rewards")]
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -46,17 +46,17 @@ namespace Analytics
         [MetaSerializable]
         public class ItemRequirement
         {
-            [JsonProperty("item_id")]
             [MetaMember(1, (MetaMemberFlags)0)]
+            [JsonProperty("item_id")]
             public int ItemId;
             [MetaMember(2, (MetaMemberFlags)0)]
             [JsonProperty("merge_chain_id")]
             public MergeChainId MergeChainId;
-            [JsonProperty("item_level")]
             [MetaMember(3, (MetaMemberFlags)0)]
+            [JsonProperty("item_level")]
             public int ItemLevel;
-            [MetaMember(4, (MetaMemberFlags)0)]
             [JsonProperty("item_level_to_lvl_1")]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public int ItemLevelToLvl1;
             [MetaMember(5, (MetaMemberFlags)0)]
             [JsonProperty("merge_chain_items_as_lvl_1", NullValueHandling = (NullValueHandling)1)]

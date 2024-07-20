@@ -14,6 +14,7 @@ namespace GameLogic.Hotspots
         RepeatableTask = 6,
         OpenUIElement = 7,
         CardStack = 8,
-        LocationTravel = 9
+        LocationTravel = 9,
+        IllustrationTask = 10
     }
 }

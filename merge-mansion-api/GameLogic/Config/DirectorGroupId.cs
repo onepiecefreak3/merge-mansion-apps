@@ -181,6 +181,7 @@ namespace GameLogic.Config
         public static DirectorGroupId ThirdMergeGoalMenuOpen;
         public static DirectorGroupId CoinMergeable;
         public static DirectorGroupId MaxLevelCoinsCollectible;
+        [Obsolete("EnergyModeFTUE is now triggered by EnergyModeEventStartPopup")]
         public static DirectorGroupId EnergyModeFTUE;
         public static DirectorGroupId CooldownRemoverFTUE;
         public static DirectorGroupId SBE_Jailbreak_TasksTutorial;

@@ -7,8 +7,8 @@ namespace Metaplay.Core.Guild
     [AnalyticsEvent(1106, null, 1, "The guild's name and/or description were changed by a member or an admin.", true, true, false)]
     public class GuildEventNameAndDescriptionChanged : GuildEventBase
     {
-        [FirebaseAnalyticsIgnore]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public GuildEventInvokerInfo Invoker { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

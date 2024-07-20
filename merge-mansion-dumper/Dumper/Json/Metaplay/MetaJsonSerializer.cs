@@ -151,6 +151,10 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 WriteProperty(writer, "ItemNeeded", inReq.ItemRef.Ref.ItemType, serializer);
             else if (requirement is ItemNeededAndConsumeRequirement inacReq)
                 WriteProperty(writer, "ItemNeededAndConsumed", inacReq.ItemRefs.FirstOrDefault()?.Ref.ItemType ?? string.Empty, serializer);
+            else if (requirement is CardStackRequirement csr)
+                WriteProperty(writer, "CardStack", csr.CardStack, serializer);
+            else if (requirement is CompleteIllustrationRequirement cir)
+                WriteProperty(writer, "CompleteIllustration", cir.Illustration, serializer);
             else if (requirement is MergeChainItemNeededRequirement mciReq)
             {
                 writer.WritePropertyName("MergeChainItemNeeded");
@@ -233,15 +237,6 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 writer.WriteStartObject();
 
                 WriteProperty(writer, "Events", sbeembr.EventIds, serializer);
-
-                writer.WriteEndObject();
-            }
-            else if (requirement is CardStackRequirement csr)
-            {
-                writer.WritePropertyName("CardStack");
-                writer.WriteStartObject();
-
-                WriteProperty(writer, "Id", csr.CardStack, serializer);
 
                 writer.WriteEndObject();
             }

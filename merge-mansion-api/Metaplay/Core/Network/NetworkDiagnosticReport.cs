@@ -57,5 +57,8 @@ namespace Metaplay.Core.Network
 
         [MetaMember(101, (MetaMemberFlags)0)]
         public SocketProbeResult MetacoreGlobalAccelerator { get; set; }
+
+        [MetaMember(102, (MetaMemberFlags)0)]
+        public SocketProbeResult MetacoreGlobalAcceleratorTls { get; set; }
     }
 }

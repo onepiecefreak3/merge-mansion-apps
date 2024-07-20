@@ -7,8 +7,8 @@ using System.Runtime.CompilerServices;
 
 namespace GameLogic.Shop
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializableDerived(4)]
+    [MetaAllowNoSerializedMembers]
     public class FlashSaleItem : IShopItem
     {
         private (Currencies currency, long price) HowMuchPlayerMustPay { get; set; }

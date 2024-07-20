@@ -19,6 +19,7 @@ using GameLogic.Player.Modes;
 using Code.GameLogic.DynamicEvents;
 using GameLogic.Player.DailyTasksV2;
 using System.Runtime.CompilerServices;
+using GameLogic.Config.EnergyModeEvent;
 
 namespace GameLogic.Player
 {
@@ -124,6 +125,8 @@ namespace GameLogic.Player
         List<BoardInventory.ProducerInventorySlotState> ProducerInventoryEntries { get; }
 
         DailyTasksV2Status DailyTasksV2Status { get; }
+
+        PlayerEnergyModeEventsModel EnergyModeEvents { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

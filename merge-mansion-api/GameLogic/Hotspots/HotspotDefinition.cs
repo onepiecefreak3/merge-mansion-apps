@@ -197,5 +197,21 @@ namespace GameLogic.Hotspots
         public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, List<MetaRef<MapCharacterEventDefinition>> appearMapCharactersEvents, int completeActionMax, HotspotId completeFocusHotspotId, List<MetaRef<MapCharacterEventDefinition>> completeMapCharactersEvents, List<PlayerReward> bonusRewards, MetaDuration bonusTimerDuration, string completeVFXId, string descriptionLocalizationId, LocationTravelId locationTravelId, AreaId areaInfoOverride)
         {
         }
+
+        [MetaMember(27, (MetaMemberFlags)0)]
+        private CustomHotspotTableId CustomHotspotTableId { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsIllustrationParentTask { get; }
+
+        [IgnoreDataMember]
+        public bool IsIllustrationChildTask { get; }
+
+        [IgnoreDataMember]
+        public CustomHotspotTableId HotspotTableId { get; }
+
+        public HotspotDefinition(HotspotId id, HotspotType type, MergeBoardId mergeBoardId, List<PlayerRequirement> requirements, IEnumerable<HotspotId> unlockingParents, List<PlayerReward> rewards, List<IDirectorAction> completionActions, List<IDirectorAction> finalizationActions, List<IDirectorAction> appearActions, MapSpotId mapSpot, TaskGroupId taskGroupId, List<PlayerRequirement> unlockRequirements, bool isIndependentTask, int appearActionMax, List<MetaRef<MapCharacterEventDefinition>> appearMapCharactersEvents, int completeActionMax, HotspotId completeFocusHotspotId, List<MetaRef<MapCharacterEventDefinition>> completeMapCharactersEvents, List<PlayerReward> bonusRewards, MetaDuration bonusTimerDuration, string completeVFXId, string descriptionLocalizationId, LocationTravelId locationTravelId, AreaId areaInfoOverride, CustomHotspotTableId customHotspotTableId)
+        {
+        }
     }
 }

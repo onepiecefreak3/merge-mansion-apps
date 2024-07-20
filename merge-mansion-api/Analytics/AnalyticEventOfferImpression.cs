@@ -7,8 +7,8 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEvent(137, "Meta Offer Impression", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 6 })]
+    [AnalyticsEvent(137, "Meta Offer Impression", 1, null, false, true, false)]
     public class AnalyticEventOfferImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

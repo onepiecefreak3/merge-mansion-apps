@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player.Items.Bubble
 {
-    [MetaSerializableDerived(2)]
     [Obsolete("Replaced by BubbleAuxEnergyBonus.")]
+    [MetaSerializableDerived(2)]
     public class BubbleSecondaryEnergyBonus : IBubbleBonus
     {
         [MetaMember(1, (MetaMemberFlags)0)]

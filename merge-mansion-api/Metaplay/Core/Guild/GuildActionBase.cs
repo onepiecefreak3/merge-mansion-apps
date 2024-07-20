@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Guild
 {
-    [ModelActionExecuteFlags((ModelActionExecuteFlags)1)]
     [MetaSerializable]
+    [ModelActionExecuteFlags((ModelActionExecuteFlags)1)]
     public abstract class GuildActionBase : ModelAction<IGuildModelBase>
     {
         [IgnoreDataMember]

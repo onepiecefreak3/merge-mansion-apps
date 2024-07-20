@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1, 2 })]
     [AnalyticsEvent(150, "Flash Sale Impression", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 1, 2 })]
     public class AnalyticEventFlashSaleImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

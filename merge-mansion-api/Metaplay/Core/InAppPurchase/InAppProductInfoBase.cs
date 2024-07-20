@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.InAppPurchase
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class InAppProductInfoBase : IGameConfigData<InAppProductId>, IGameConfigData, IHasGameConfigKey<InAppProductId>
     {
         [MetaMember(100, (MetaMemberFlags)0)]

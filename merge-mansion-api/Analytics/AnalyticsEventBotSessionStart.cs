@@ -8,8 +8,8 @@ namespace Analytics
     [AnalyticsEvent(168, "Bot session start", 1, null, true, true, false)]
     public class AnalyticsEventBotSessionStart : AnalyticsServersideEventBase
     {
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("bot_session_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int SessionId;
         public sealed override AnalyticsEventType EventType { get; }
 

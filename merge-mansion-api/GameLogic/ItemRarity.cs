@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum ItemRarity
     {
         Undefined = 0,

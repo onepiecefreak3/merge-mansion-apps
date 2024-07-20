@@ -4,9 +4,9 @@ using Metaplay.Core.Client;
 
 namespace Metaplay.Core.League.Messages
 {
-    [MetaSerializableDerived(102)]
-    [MetaReservedMembers(200, 300)]
     [LeaguesEnabledCondition]
+    [MetaReservedMembers(200, 300)]
+    [MetaSerializableDerived(102)]
     public class DivisionChannelContextData : ChannelContextDataBase
     {
         [MetaMember(201, (MetaMemberFlags)0)]

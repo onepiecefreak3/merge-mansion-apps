@@ -7,8 +7,8 @@ using Merge;
 
 namespace Analytics
 {
-    [AnalyticsEvent(102, "Bubble expired", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [AnalyticsEvent(102, "Bubble expired", 1, null, false, true, false)]
     public class AnalyticsEventBubbleExpired : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

@@ -5,8 +5,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Leaderboard
 {
-    [SupportedSchemaVersions(1, 3)]
     [MetaSerializableDerived(3)]
+    [SupportedSchemaVersions(1, 3)]
     public class PlayerDivisionModel : PlayerDivisionModelBase<PlayerDivisionModel, PlayerDivisionParticipantState, PlayerDivisionScore, PlayerDivisionAvatar>
     {
         public override int TicksPerSecond { get; }

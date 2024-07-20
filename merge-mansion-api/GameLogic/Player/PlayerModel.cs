@@ -32,23 +32,24 @@ using Game.Cloud.Webshop;
 using GameLogic.Player.DailyTasksV2;
 using Metaplay.Core.Debugging;
 using System.Runtime.CompilerServices;
+using GameLogic.Config.EnergyModeEvent;
 
 namespace GameLogic.Player
 {
     [SupportedSchemaVersions(21, 38)]
-    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
+    [MetaSerializableDerived(1)]
     [MetaReservedMembers(11, 12)]
     [MetaReservedMembers(99, 300)]
-    [MetaSerializableDerived(1)]
+    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
+        [ServerOnly]
         [MetaMember(211, (MetaMemberFlags)0)]
         [Transient]
-        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -349,5 +350,8 @@ namespace GameLogic.Player
 
         [MetaMember(265, (MetaMemberFlags)0)]
         public UnitySystemInfo UnitySystemInfo { get; set; }
+
+        [MetaMember(266, (MetaMemberFlags)0)]
+        public PlayerEnergyModeEventsModel EnergyModeEvents { get; set; }
     }
 }

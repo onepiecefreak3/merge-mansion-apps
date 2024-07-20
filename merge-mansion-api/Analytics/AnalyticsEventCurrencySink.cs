@@ -9,8 +9,8 @@ using GameLogic;
 
 namespace Analytics
 {
-    [AnalyticsEvent(115, "Currency sink", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [AnalyticsEvent(115, "Currency sink", 1, null, false, true, false)]
     public class AnalyticsEventCurrencySink : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

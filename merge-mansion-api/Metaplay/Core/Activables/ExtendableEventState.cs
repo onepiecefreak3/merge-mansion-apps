@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Activables
 {
-    [MetaSerializable]
     [MetaReservedMembers(200, 300)]
+    [MetaSerializable]
     public abstract class ExtendableEventState<TId, TInfo> : MetaActivableState<TId, TInfo>
     {
         [MetaMember(200, (MetaMemberFlags)0)]

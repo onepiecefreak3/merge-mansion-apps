@@ -8,8 +8,8 @@ using System;
 
 namespace GameLogic.Player.Items.Spawning
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 8 })]
+    [MetaSerializable]
     public class SpawnFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]

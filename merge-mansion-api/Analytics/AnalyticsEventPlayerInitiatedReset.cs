@@ -6,8 +6,8 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEvent(153, "Player Requested for reset", 1, null, true, true, false)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [AnalyticsEvent(153, "Player Requested for reset", 1, null, true, true, false)]
     public class AnalyticsEventPlayerInitiatedReset : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

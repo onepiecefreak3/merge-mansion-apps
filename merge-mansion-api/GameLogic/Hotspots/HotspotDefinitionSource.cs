@@ -59,5 +59,7 @@ namespace GameLogic.Hotspots
         public HotspotDefinitionSource()
         {
         }
+
+        public CustomHotspotTableId CustomHotspotTableId { get; set; }
     }
 }

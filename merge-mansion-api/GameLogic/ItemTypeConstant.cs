@@ -6,9 +6,9 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
-    [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
+    [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
     public enum ItemTypeConstant
     {
         None = 0,
@@ -5048,6 +5048,29 @@ namespace GameLogic
         SP_GrandmasMystery2024_CollectableItems_03 = 10364108,
         SP_GrandmasMystery2024_CollectableItems_02 = 10364109,
         SP_GrandmasMystery2024_MysteryPassChest_01 = 49161778,
-        ScarabSpawner_01 = 57685159
+        ScarabSpawner_01 = 57685159,
+        DanceFloor_RemovalTools_05 = 91076137,
+        Fabric_08 = 97419522,
+        DanceFloor_RemovalTools_01 = 91076141,
+        SewingTools_11 = 53253315,
+        DanceFloor_RemovalTools_07 = 91076135,
+        DanceFloor_RestorationTools_06 = 71318751,
+        DanceFloor_RestorationTools_08 = 71318749,
+        DanceFloor_RestorationTools_04 = 71318753,
+        DanceFloor_ConservationTools_01 = 31748339,
+        DanceFloor_RestorationTools_03 = 71318754,
+        DanceFloor_RestorationTools_05 = 71318752,
+        Fabric_07 = 97419523,
+        DanceFloor_RemovalTools_06 = 91076136,
+        DanceFloor_RemovalTools_03 = 91076139,
+        DanceFloor_RestorationTools_01 = 71318756,
+        DanceFloor_RemovalTools_02 = 91076140,
+        SewingTools_12 = 53253314,
+        DanceFloor_RestorationTools_07 = 71318750,
+        Sewingkit_11 = 7396774,
+        Sewingkit_12 = 7396773,
+        DanceFloor_RemovalTools_08 = 91076134,
+        DanceFloor_RestorationTools_02 = 71318755,
+        DanceFloor_RemovalTools_04 = 91076138
     }
 }

@@ -6,8 +6,8 @@ using GameLogic.Config;
 
 namespace GameLogic.Player.Items.OverrideSpawnChance
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 4 })]
+    [MetaSerializable]
     public class OverrideSpawnChance
     {
         [MetaMember(1, (MetaMemberFlags)0)]

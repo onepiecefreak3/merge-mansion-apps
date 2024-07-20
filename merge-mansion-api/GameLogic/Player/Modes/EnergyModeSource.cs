@@ -12,8 +12,6 @@ namespace GameLogic.Player.Modes
         private int EnergyConsumptionMultiplier { get; set; }
         private int CapacityConsumptionMultiplier { get; set; }
         private F32 LevelUpChance { get; set; }
-        private MetaTime ActivationDate { get; set; }
-        private MetaDuration? Duration { get; set; }
 
         public EnergyModeSource()
         {

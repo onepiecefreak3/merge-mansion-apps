@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializableDerived(9)]
     [MetaActivableSet("LeaderboardEvent", false)]
+    [MetaSerializableDerived(9)]
     public class PlayerLeaderboardEventsModel : MetaActivableSet<LeaderboardEventId, LeaderboardEventInfo, LeaderboardEventModel>
     {
         public PlayerLeaderboardEventsModel()

@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player
 {
-    [MetaReservedMembers(10, 19)]
     [MetaSerializableDerived(5)]
+    [MetaReservedMembers(10, 19)]
     public class WeightStarRewardAnalyticsContext : AnalyticsContext
     {
         [MetaMember(10, (MetaMemberFlags)0)]

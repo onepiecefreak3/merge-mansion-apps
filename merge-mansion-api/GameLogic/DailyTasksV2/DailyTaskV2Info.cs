@@ -25,7 +25,6 @@ namespace GameLogic.DailyTasksV2
 
         [MetaMember(6, (MetaMemberFlags)0)]
         public int UIOrder { get; set; }
-
         public DailyTaskV2Id ConfigKey => TaskId;
 
         public DailyTaskV2Info()

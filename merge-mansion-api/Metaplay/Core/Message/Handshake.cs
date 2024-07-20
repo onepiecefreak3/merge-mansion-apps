@@ -200,8 +200,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(31, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(31, (MessageDirection)1, true)]
         public class SocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, (MetaMemberFlags)0)]
@@ -380,8 +380,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(32, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(32, (MessageDirection)1, true)]
         public class DualSocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, (MetaMemberFlags)0)]

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializable]
     [MetaReservedMembers(1, 100)]
+    [MetaSerializable]
     public class PlayerGuildStateCore : IPlayerGuildState
     {
-        [ServerOnly]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [ServerOnly]
         public EntityId GuildId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

@@ -13,9 +13,9 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("pet_id_prev")]
         public string PreviousPetId;
-        [Description("New pet (null if slot was cleared)")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("pet_id_new")]
+        [Description("New pet (null if slot was cleared)")]
         public string NewPetId;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

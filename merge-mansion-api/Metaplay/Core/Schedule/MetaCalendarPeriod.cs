@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace Metaplay.Core.Schedule
 {
-    [MetaSerializable]
     [TypeConverter(typeof(MetaCalendarPeriodTypeConverter))]
+    [MetaSerializable]
     public struct MetaCalendarPeriod
     {
         [MetaMember(1, (MetaMemberFlags)0)]

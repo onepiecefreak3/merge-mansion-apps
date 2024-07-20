@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.GuildDiscovery
 {
-    [MetaReservedMembers(1, 100)]
     [MetaSerializable]
+    [MetaReservedMembers(1, 100)]
     public abstract class GuildDiscoveryInfoBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

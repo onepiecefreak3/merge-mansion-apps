@@ -54,6 +54,7 @@ using Game.Cloud.Webshop;
 using GameLogic.Advertisement;
 using Metaplay;
 using GameLogic.DailyTasksV2;
+using GameLogic.Config.EnergyModeEvent;
 
 namespace GameLogic.Config
 {
@@ -384,8 +385,8 @@ namespace GameLogic.Config
         public List<PortalPieceChainData> PortalPieceChains { get; set; }
         public Dictionary<DecorationShopItemId, List<PlayerSegmentId>> DecorationShopItemSegments { get; set; }
 
-        [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { })]
-        [GameConfigEntry("Languages", true, true, true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { }, false)]
+        [GameConfigEntry("Languages", true, null)]
         public GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
 
         [GameConfigEntry("InAppProducts", true, true, true, null)]
@@ -613,5 +614,11 @@ namespace GameLogic.Config
         [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> Member" }, new string[] { }, false)]
         public DailyTasksV2Settings DailyTasksV2Settings { get; set; }
         public List<int> MysteryMachineItemIds { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("EnergyModeEvents", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." }, false)]
+        [GameConfigEntryTransform(typeof(EnergyModeEventSource))]
+        public GameConfigLibrary<EnergyModeEventId, EnergyModeEventInfo> EnergyModeEvents { get; set; }
     }
 }

@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [MetaReservedMembers(100, 200)]
+    [LeaguesEnabledCondition]
     public abstract class PlayerDivisionHistoryEntryBase : IDivisionHistoryEntry
     {
         [MetaMember(100, (MetaMemberFlags)0)]

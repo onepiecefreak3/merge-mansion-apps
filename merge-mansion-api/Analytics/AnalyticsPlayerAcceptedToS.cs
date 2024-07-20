@@ -11,8 +11,8 @@ namespace Analytics
     public class AnalyticsPlayerAcceptedToS : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Version of the ToS accepted")]
         [JsonProperty("version")]
+        [Description("Version of the ToS accepted")]
         public TOSAcceptance Acceptance;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

@@ -5,8 +5,8 @@ using GameLogic.Player.Rewards;
 
 namespace GameLogic
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class DynamicPurchaseDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>
     {
         [MetaMember(3, (MetaMemberFlags)0)]
