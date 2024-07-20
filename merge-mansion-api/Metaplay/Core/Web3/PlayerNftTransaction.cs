@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Web3
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class PlayerNftTransaction
     {
         [MetaSerializable]

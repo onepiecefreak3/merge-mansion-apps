@@ -8,7 +8,7 @@ namespace GameLogic.Player.Director.Config
     [MetaSerializableDerived(6)]
     public class TriggerSlideShow : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private SlideShowId SlideShowId { get; set; }
 
         private TriggerSlideShow()

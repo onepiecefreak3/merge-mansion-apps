@@ -11,8 +11,7 @@ namespace Metaplay.Core
     {
         // 0x0
         public static readonly ContentHash None = new ContentHash(UInt128.Zero);
-        // 0x0
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public UInt128 Value { get; set; }
         public bool IsValid => Value != UInt128.Zero;
 

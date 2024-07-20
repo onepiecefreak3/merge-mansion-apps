@@ -120,6 +120,9 @@ namespace Analytics
         MachineScore = 109,
         MachineTaskCompleted = 110,
         ActiveLogicVersionChanged = 111,
-        SceneChange = 112
+        SceneChange = 112,
+        ShopItemIapImpression = 113,
+        DailyTaskV2StateChanged = 114,
+        DailyTasksV2StreakChanged = 115
     }
 }

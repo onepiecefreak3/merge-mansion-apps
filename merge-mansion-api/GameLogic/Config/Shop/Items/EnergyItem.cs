@@ -7,9 +7,10 @@ using GameLogic.Player;
 namespace GameLogic.Config.Shop.Items
 {
     [MetaSerializableDerived(3)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class EnergyItem : IShopItem
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         private ShopItemId ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

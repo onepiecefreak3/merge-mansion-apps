@@ -23,6 +23,8 @@ namespace GameLogic.Config.Map.Characters
         Sullivan = 15,
         Bruno = 16,
         Malzar = 17,
-        Babylon = 18
+        Babylon = 18,
+        Mason = 19,
+        Julius = 20
     }
 }

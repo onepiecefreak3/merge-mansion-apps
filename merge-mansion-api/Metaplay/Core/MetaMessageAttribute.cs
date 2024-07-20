@@ -3,7 +3,7 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage((AttributeTargets)4)]
     public class MetaMessageAttribute : Attribute, ISerializableTypeCodeProvider, ISerializableFlagsProvider
     {
         public readonly int MessageTypeCode; // 0x10

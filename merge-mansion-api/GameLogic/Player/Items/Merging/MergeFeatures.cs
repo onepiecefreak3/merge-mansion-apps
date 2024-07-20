@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Merging
     [MetaSerializable]
     public class MergeFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public IMergeMechanic Mechanic { get; set; }
 
         [MetaMember(2)]

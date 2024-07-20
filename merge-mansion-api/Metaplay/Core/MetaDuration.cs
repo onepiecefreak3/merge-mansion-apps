@@ -11,8 +11,7 @@ namespace Metaplay.Core
         public static readonly MetaDuration Zero = default;
         // 0x8
         private static Regex s_pattern = new Regex(@"^(\-)?(\d+)\.(\d{2}):(\d{2}):(\d{2})\.(\d{7})$", RegexOptions.Compiled);
-        // 0x0
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public long Milliseconds { get; set; }
 
         public static MetaDuration FromDays(int days)

@@ -6,7 +6,7 @@ namespace Metaplay.Core.Serialization
     [MetaSerializable]
     public struct MetaSerialized<T>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public byte[] Bytes { get; set; } // 0x0
 
         [MetaMember(2, 0)]

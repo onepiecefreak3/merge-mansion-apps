@@ -9,7 +9,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     public class EventCurrencyInfo : IGameConfigData<EventCurrencyId>, IGameConfigData, IHasGameConfigKey<EventCurrencyId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EventCurrencyId EventCurrencyId { get; set; }
 
         [MetaMember(2, 0)]

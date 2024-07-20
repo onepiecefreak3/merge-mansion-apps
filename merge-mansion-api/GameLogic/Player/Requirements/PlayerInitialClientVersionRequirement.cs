@@ -6,9 +6,9 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(14)]
     public class PlayerInitialClientVersionRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string Min; // 0x10
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string Max; // 0x18
         public PlayerInitialClientVersionRequirement()
         {

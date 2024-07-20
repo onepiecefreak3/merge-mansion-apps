@@ -12,7 +12,7 @@ namespace GameLogic.Hotspots.Actions
     [MetaSerializableDerived(2)]
     public class ReplaceItemsOnBoard : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private MergeBoardId MergeBoardId { get; set; }
 
         [MetaMember(2, 0)]

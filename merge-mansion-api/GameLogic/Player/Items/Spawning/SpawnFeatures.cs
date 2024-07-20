@@ -12,7 +12,7 @@ namespace GameLogic.Player.Items.Spawning
     [MetaBlockedMembers(new int[] { 8 })]
     public class SpawnFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public IItemSpawner Spawn { get; set; }
 
         [MetaMember(2)]

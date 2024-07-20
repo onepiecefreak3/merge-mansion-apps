@@ -6,7 +6,7 @@ namespace Metaplay.Core.Schedule
     [MetaSerializableDerived(1)]
     public class MetaRecurringCalendarSchedule : MetaScheduleBase
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaCalendarDateTime Start { get; set; }
 
         [MetaMember(2)]

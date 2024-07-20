@@ -6,13 +6,14 @@ using GameLogic.Random;
 using Metaplay.Core;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(1)]
     public class ConstantProducer : IItemSpawner, IItemProducer
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public List<MetaRef<ItemDefinition>> Products { get; set; } // 0x10
 
         [MetaMember(2)]

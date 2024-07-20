@@ -214,6 +214,9 @@ namespace GameLogic.Config.Map.Characters
         AreaRanchStablesExteriorBeforeBridgeMaddie = 6408,
         AreaRanchStablesExteriorAfterBridgeMaddie = 6409,
         AreaRanchStablesExteriorBehindFenceMaddie = 6410,
-        AreaRanchStablesExteriorFirstMapCharacterPositionMaddie = 6411
+        AreaRanchStablesExteriorFirstMapCharacterPositionMaddie = 6411,
+        AreaMansionSecretSocietyFirstMapCharacterPosition = 6599,
+        AreaMansionSecretSocietyEntryMapMaddie = 6600,
+        AreaMansionSecretSocietyJackieEntry = 6601
     }
 }

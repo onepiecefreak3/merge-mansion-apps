@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Chest
     [MetaSerializable]
     public class ChestFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsChest { get; set; }
 
         [MetaMember(2)]

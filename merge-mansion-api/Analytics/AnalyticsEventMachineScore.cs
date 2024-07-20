@@ -9,7 +9,7 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [AnalyticsEvent(189, "Mystery Machine score at end of run", 1, null, true, true, false)]
+    [AnalyticsEvent(190, "Mystery Machine score at end of run", 1, null, true, true, false)]
     public class AnalyticsEventMachineScore : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -80,6 +80,15 @@ namespace Analytics
         }
 
         public AnalyticsEventMachineScore(int machineEventInstance, int runNumber, int score, F64 permanentMultiplier, F64 temporaryMultiplier, int heatLevel, Dictionary<string, int> itemsSpawned, Dictionary<string, int> diamondsSpentOnSpecialItems, Dictionary<string, int> batterySpentOnSpecialItems, AnalyticsContext context, int numberOfTaps, string startTime)
+        {
+        }
+
+        [JsonProperty("mysterymachine_energy_remaining")]
+        [MetaMember(13, (MetaMemberFlags)0)]
+        [Description("MysteryMachine Energy Remaining")]
+        public int MysteryMachineEnergyRemaining { get; set; }
+
+        public AnalyticsEventMachineScore(int machineEventInstance, int runNumber, int score, F64 permanentMultiplier, F64 temporaryMultiplier, int heatLevel, Dictionary<string, int> itemsSpawned, Dictionary<string, int> diamondsSpentOnSpecialItems, Dictionary<string, int> batterySpentOnSpecialItems, AnalyticsContext context, int numberOfTaps, string startTime, int mysteryMachineEnergyRemaining)
         {
         }
     }

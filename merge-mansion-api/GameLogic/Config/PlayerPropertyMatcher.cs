@@ -17,7 +17,7 @@ namespace GameLogic.Config
     [MetaSerializable]
     public abstract class PlayerPropertyMatcher<TValue> : PlayerPropertyMatcher
     {
-        [MetaMember(100, 0)]
+        [MetaMember(100, (MetaMemberFlags)0)]
         protected TValue _value { get; set; }
 
         protected PlayerPropertyMatcher()

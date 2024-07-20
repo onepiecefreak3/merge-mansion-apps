@@ -9,7 +9,7 @@ namespace GameLogic.Player.Requirements
     [MetaBlockedMembers(new int[] { 3 })]
     public class PlayerCurrentTimeRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public Nullable<MetaTime> StartInclusive { get; set; }
 
         [MetaMember(2, 0)]

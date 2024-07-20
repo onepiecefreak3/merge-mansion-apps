@@ -5,11 +5,12 @@ using Metaplay.Core.Forms;
 using Metaplay.Core;
 using System.Collections.Generic;
 using GameLogic.Player.Rewards;
+using Metaplay.Core.Analytics;
 
 namespace Game.Logic
 {
-    [MetaSerializableDerived(11)]
     [MetaReservedMembers(0, 80)]
+    [MetaSerializableDerived(11)]
     public class SurveyInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -11,7 +11,7 @@ namespace GameLogic.Story
     [MetaSerializable]
     public class StoryElementInfo : IGameConfigData<StoryDefinitionId>, IGameConfigData, IHasGameConfigKey<StoryDefinitionId>, IValidatable
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private StoryDefinitionId StoryDefinitionId { get; set; }
 
         [MetaMember(2, 0)]

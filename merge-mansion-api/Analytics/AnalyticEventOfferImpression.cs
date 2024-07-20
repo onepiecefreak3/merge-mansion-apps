@@ -7,8 +7,8 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 6 })]
     [AnalyticsEvent(137, "Meta Offer Impression", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticEventOfferImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -59,6 +59,15 @@ namespace Analytics
         }
 
         public AnalyticEventOfferImpression(MetaOfferId offerId, MetaOfferGroupId offerGroupId, string platformId, OfferPlacementId placementId, bool automaticallyShown, int activations, int purchases, string impressionId)
+        {
+        }
+
+        [Description("Offer trigger")]
+        [JsonProperty("trigger_type")]
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string PopupTrigger { get; set; }
+
+        public AnalyticEventOfferImpression(MetaOfferId offerId, MetaOfferGroupId offerGroupId, string platformId, OfferPlacementId placementId, bool automaticallyShown, int activations, int purchases, string impressionId, string popupTrigger)
         {
         }
     }

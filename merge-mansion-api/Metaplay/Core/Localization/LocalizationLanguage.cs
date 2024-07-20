@@ -63,10 +63,10 @@ namespace Metaplay.Core.Localization
         [MetaSerializable]
         public class BinaryV1
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public LanguageId LanguageId; // 0x10
-            [MetaMember(2, 0)]
             [MaxCollectionSize(2147483647)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public Dictionary<TranslationId, string> Translations; // 0x18
             public BinaryV1()
             {

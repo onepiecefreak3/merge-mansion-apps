@@ -8,7 +8,7 @@ namespace GameLogic.Player.Director.Config
     [MetaSerializableDerived(13)]
     public class TriggerCutscene : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private CutsceneId CutsceneId { get; set; }
 
         private TriggerCutscene()

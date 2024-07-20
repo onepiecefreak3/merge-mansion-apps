@@ -9,10 +9,10 @@ using Metaplay.Core;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
-    [MetaActivableConfigData("OfferGroup", false)]
+    [MetaActivableConfigData("OfferGroup", false, true)]
     public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals, IValidatable
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private string OfferTitlePrefabId { get; set; }
 
         [MetaMember(2, 0)]
@@ -78,6 +78,14 @@ namespace GameLogic.Config
         public string GroupDescriptionLocId { get; }
 
         public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string descriptionLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore, ManuallyActivatedOfferGroupId manualActivationId, List<OfferPopupTriggerId> offerPopupTriggerIds)
+        {
+        }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public int? MaxPurchasesPerActivation { get; set; }
+        public bool CanEndBeforeExpiration { get; }
+
+        public MergeMansionOfferGroupInfo(MetaOfferGroupSourceConfigItemBase source, string titleLocId, string descriptionLocId, string offerTitlePrefabId, string backgroundPrefabId, string offerButtonPrefabId, string offerContainerPrefabId, int flashSaleWeight, bool dynamicContent, OfferPlacementId[] additionalPlacements, bool isUnderMore, ManuallyActivatedOfferGroupId manualActivationId, List<OfferPopupTriggerId> offerPopupTriggerIds, int? maxPurchasesPerActivation)
         {
         }
     }

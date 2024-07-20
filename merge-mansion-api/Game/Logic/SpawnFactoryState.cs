@@ -6,7 +6,7 @@ namespace Game.Logic
     [MetaSerializable]
     public class SpawnFactoryState
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private Dictionary<string, int> currentSpawnIndex; // 0x10
         public int GetIndexOf(string id)
         {

@@ -19,13 +19,13 @@ using GameLogic.Cutscenes;
 
 namespace Code.GameLogic.GameEvents
 {
+    [MetaBlockedMembers(new int[] { 6, 13, 24, 27 })]
+    [MetaActivableConfigData("CollectibleBoardEvent", false, true)]
     [MetaSerializable]
     [DefaultMember("Item")]
-    [MetaActivableConfigData("CollectibleBoardEvent", false)]
-    [MetaBlockedMembers(new int[] { 24, 27 })]
     public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IHasGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventGroupInfo
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public CollectibleBoardEventId CollectibleBoardEventId { get; set; }
 
         [MetaMember(2, 0)]

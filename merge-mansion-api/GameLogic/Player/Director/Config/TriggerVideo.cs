@@ -8,7 +8,7 @@ namespace GameLogic.Player.Director.Config
     [MetaSerializableDerived(5)]
     public class TriggerVideo : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private VideoId VideoId { get; set; }
 
         private TriggerVideo()

@@ -9,7 +9,7 @@ namespace Metaplay.Core.Config
     [MetaSerializable]
     public class GameConfigSpecializationPatches
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ContentHash Version { get; set; } // 0x10
 
         [MetaMember(2, 0)]

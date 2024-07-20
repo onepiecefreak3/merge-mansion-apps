@@ -18,7 +18,6 @@ namespace GameLogic.Area
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public string TitleLocalizationId { get; set; }
-
         public LocationTravelId ConfigKey => Id;
 
         public LocationTravelInfo()

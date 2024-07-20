@@ -16,8 +16,7 @@ namespace Analytics
             throw new NotImplementedException();
         }
 
-        public override AnalyticsPlayerReward ReadJson(JsonReader reader, Type objectType, AnalyticsPlayerReward existingValue,
-            bool hasExistingValue, JsonSerializer serializer)
+        public override AnalyticsPlayerReward ReadJson(JsonReader reader, Type objectType, AnalyticsPlayerReward existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

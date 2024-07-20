@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.GameFeatures
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum GameFeatureId
     {
         None = 0,
@@ -49,6 +49,7 @@ namespace GameLogic.GameFeatures
         DoubleEnergyMode = 35,
         ShowMergeItemFlashSaleBuyButton = 36,
         PetsEnabled = 37,
-        WebShop = 38
+        WebShop = 38,
+        DailyTasksMenuV2 = 39
     }
 }

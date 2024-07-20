@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items
     [MetaSerializable]
     public class PortalFeatures
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsPortal { get; set; }
 
         [MetaMember(2, 0)]

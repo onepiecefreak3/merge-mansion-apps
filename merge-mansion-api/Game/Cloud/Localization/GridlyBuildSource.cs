@@ -8,8 +8,8 @@ namespace Game.Cloud.Localization
     [MetaSerializableDerived(200)]
     public class GridlyBuildSource : GameConfigBuildSource
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string Name { get; set; }
 
         [GridlyBranchFieldTypeHint]

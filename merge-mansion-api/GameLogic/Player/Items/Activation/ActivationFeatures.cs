@@ -15,7 +15,7 @@ namespace GameLogic.Player.Items.Activation
     [MetaBlockedMembers(new int[] { 7 })]
     public class ActivationFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public IItemSpawner ActivationSpawn { get; set; } // 0x10
 
         [MetaMember(2)]

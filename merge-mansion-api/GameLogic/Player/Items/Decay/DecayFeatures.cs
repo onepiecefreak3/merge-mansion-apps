@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Decay
     [MetaSerializable]
     public class DecayFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool DoesDecay { get; set; }
 
         [MetaMember(2)]

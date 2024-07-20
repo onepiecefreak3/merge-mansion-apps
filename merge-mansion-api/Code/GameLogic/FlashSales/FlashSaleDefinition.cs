@@ -8,17 +8,16 @@ using GameLogic.Config.Costs;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using GameLogic;
+using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.FlashSales
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 5, 2, 7, 8 })]
     public class FlashSaleDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>, IHasRequirements
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public ShopItemId ConfigKey { get; set; }
-
-        [MetaMember(2, (MetaMemberFlags)0)]
-        public MetaRef<ItemDefinition> ItemRef { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public int Quantity { get; set; }
@@ -26,17 +25,11 @@ namespace Code.GameLogic.FlashSales
         [MetaMember(4, (MetaMemberFlags)0)]
         public int Weight { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
-        public ICost ItemCost { get; set; }
-
         [MetaMember(6, (MetaMemberFlags)0)]
         private List<PlayerRequirement> PlayerRequirements { get; set; }
 
         [IgnoreDataMember]
         public List<PlayerRequirement> Requirements { get; }
-
-        [IgnoreDataMember]
-        public ItemDefinition Item { get; }
 
         public FlashSaleDefinition()
         {
@@ -46,13 +39,17 @@ namespace Code.GameLogic.FlashSales
         {
         }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
-        public string ItemAux0 { get; set; }
-
-        [MetaMember(8, (MetaMemberFlags)0)]
-        public string ItemAux1 { get; set; }
-
         public FlashSaleDefinition(ShopItemId configKey, MetaRef<ItemDefinition> itemRef, int quantity, int weight, ICost itemCost, List<PlayerRequirement> playerRequirements, string itemAux0, string itemAux1)
+        {
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        private List<ICost> ItemCosts { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public PlayerReward Reward { get; set; }
+
+        public FlashSaleDefinition(ShopItemId configKey, PlayerReward reward, int quantity, int weight, List<ICost> itemCost, List<PlayerRequirement> playerRequirements)
         {
         }
     }

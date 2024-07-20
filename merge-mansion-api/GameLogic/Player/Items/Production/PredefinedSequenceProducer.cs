@@ -22,7 +22,7 @@ namespace GameLogic.Player.Items.Production
         private HashSet<MetaRef<ItemDefinition>> UniqueItems { get; set; }
 
         [IgnoreDataMember]
-        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Type.Deref(), x.Weight));
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Item, x.Weight));
         public int SpawnQuantity => 1;
 
         public IEnumerable<ItemDefinition> Produce(IGenerationContext context, int quantity)

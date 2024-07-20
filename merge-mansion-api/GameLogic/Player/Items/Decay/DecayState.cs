@@ -10,7 +10,7 @@ namespace GameLogic.Player.Items.Decay
         private MetaDuration relativeTimeSpendOnDecay;
         [MetaMember(4, (MetaMemberFlags)0)]
         private MetaTime lastTimeAddTime;
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime EstimatedTime { get; set; }
 
         [MetaMember(2, 0)]

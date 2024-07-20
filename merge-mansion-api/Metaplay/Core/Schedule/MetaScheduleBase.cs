@@ -4,12 +4,12 @@ using Metaplay.Core.Config;
 
 namespace Metaplay.Core.Schedule
 {
-    [MetaSerializable]
-    [MetaReservedMembers(100, 200)]
     [ParseAsDerivedType(typeof(MetaRecurringCalendarSchedule))]
+    [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class MetaScheduleBase
     {
-        [MetaMember(100)]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public MetaScheduleTimeMode TimeMode { get; set; }
 
         static DateTime DateTimeEpoch;

@@ -2,7 +2,7 @@ using System;
 
 namespace Metaplay.Core.Model
 {
-    [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+    [AttributeUsage((AttributeTargets)384)]
     public class MetaMemberAttribute : Attribute
     {
         // 0x10

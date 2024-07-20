@@ -8,8 +8,8 @@ namespace Analytics
     [AnalyticsEvent(169, "Bot session end", 1, null, true, true, false)]
     public class AnalyticsEventBotSessionEnd : AnalyticsServersideEventBase
     {
-        [JsonProperty("bot_session_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("bot_session_id")]
         public int SessionId;
         public sealed override AnalyticsEventType EventType { get; }
 

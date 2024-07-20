@@ -2,7 +2,7 @@ using System;
 
 namespace Metaplay.Core.Model
 {
-    [AttributeUsage(AttributeTargets.Class)]
+    [AttributeUsage((AttributeTargets)4)]
     public class MetaSerializableDerivedAttribute : Attribute, ISerializableTypeCodeProvider
     {
         public MetaSerializableDerivedAttribute(int deriveDeriveId)

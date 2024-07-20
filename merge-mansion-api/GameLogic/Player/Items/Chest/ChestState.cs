@@ -29,5 +29,8 @@ namespace GameLogic.Player.Items.Chest
         public ChestState()
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public ulong ActivationCount { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Bubble
     [MetaSerializableDerived(1)]
     public class DefaultBubbleLogic : IBubbleLogic, IProvidesDebugOutput
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private int MaxBubblesOnBoard { get; set; }
 
         [MetaMember(2, 0)]

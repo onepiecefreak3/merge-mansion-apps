@@ -8,7 +8,7 @@ using Metaplay.Core;
 
 namespace GameLogic.Config
 {
-    public class InAppProductConfigSource : IConfigItemSource<InAppProductInfo, InAppProductId>, IGameConfigSourceItem<InAppProductId, InAppProductInfo>, IGameConfigKey<InAppProductId>
+    public class InAppProductConfigSource : IConfigItemSource<InAppProductInfo, InAppProductId>, IGameConfigSourceItem<InAppProductId, InAppProductInfo>, IHasGameConfigKey<InAppProductId>
     {
         private InAppProductId ProductId { get; set; }
         private string Name { get; set; }

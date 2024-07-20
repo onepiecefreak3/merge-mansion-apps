@@ -6,7 +6,7 @@ namespace GameLogic.Config.Costs
     [MetaSerializableDerived(1)]
     public class GameCurrencyCost : CurrencyCost
     {
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public Currencies Type { get; set; }
         public override Currencies Currency => Type;
 

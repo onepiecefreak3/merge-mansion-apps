@@ -9,10 +9,11 @@ using System;
 
 namespace GameLogic.Config.Shop
 {
+    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializable]
     public class ShopItemInfo : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>, IShopItemInfo
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public ShopItemId ConfigKey { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

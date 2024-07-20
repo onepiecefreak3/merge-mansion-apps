@@ -1,5 +1,6 @@
 using FixPointCS;
 using System;
+using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Math
 {

@@ -9,19 +9,19 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.DailyTasks
 {
-    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 4, 5, 7, 9, 10, 13, 19 })]
     [DefaultMember("Item")]
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 7, 9, 10 })]
+    [MetaSerializable]
     public class DailyTaskStatus
     {
         [MetaMember(15, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int Level;
-        [ExcludeFromGdprExport]
         [MetaMember(16, (MetaMemberFlags)0)]
-        public int Points;
         [ExcludeFromGdprExport]
+        public int Points;
         [MetaMember(17, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int LastSeenPoints;
         [ExcludeFromGdprExport]
         [MetaMember(18, (MetaMemberFlags)0)]

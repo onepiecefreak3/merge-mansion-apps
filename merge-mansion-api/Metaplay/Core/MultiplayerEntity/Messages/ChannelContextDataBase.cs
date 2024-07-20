@@ -3,11 +3,11 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class ChannelContextDataBase
     {
-        [MetaMember(101, 0)]
+        [MetaMember(101, (MetaMemberFlags)0)]
         public ClientSlot ClientSlot { get; set; }
 
         protected ChannelContextDataBase()

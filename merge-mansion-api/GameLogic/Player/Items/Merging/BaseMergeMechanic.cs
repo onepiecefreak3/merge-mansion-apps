@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Merging
     [MetaBlockedMembers(new int[] { 2 })]
     public abstract class BaseMergeMechanic : IMergeMechanic
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ItemVisibility ResultVisibility { get; set; } // 0x10
 
         [MetaMember(3)]

@@ -14,8 +14,8 @@ namespace Analytics
         [JsonProperty("analytics_event_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public string AnalyticsEventName;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("timestamp")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaTime ModelTime;
         [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("unique_id")]
@@ -24,6 +24,7 @@ namespace Analytics
         [JsonProperty("context")]
         public AnalyticsContextBase Context;
         [JsonProperty("payload")]
+        [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
         [MetaMember(6, (MetaMemberFlags)0)]
         public AnalyticsEventBase Payload;
     }

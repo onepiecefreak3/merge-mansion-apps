@@ -6,7 +6,7 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEvent(185, "Rewarded ad placement shown", 1, null, true, true, false)]
+    [AnalyticsEvent(186, "Rewarded ad placement shown", 1, null, true, true, false)]
     public class AnalyticsEventAdPlacementShown : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

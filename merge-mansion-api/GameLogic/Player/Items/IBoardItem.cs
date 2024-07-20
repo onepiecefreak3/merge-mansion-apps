@@ -4,8 +4,8 @@ using System;
 
 namespace GameLogic.Player.Items
 {
-    [MetaDeserializationConvertFromConcreteDerivedType(typeof(MergeItem))]
     [MetaSerializable]
+    [MetaDeserializationConvertFromConcreteDerivedType(typeof(MergeItem))]
     public interface IBoardItem
     {
         int ItemId { get; }

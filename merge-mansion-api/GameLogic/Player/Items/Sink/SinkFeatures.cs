@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Sink
     [MetaBlockedMembers(new int[] { 3 })]
     public class SinkFeatures
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsSink { get; set; }
 
         [MetaMember(2, 0)]

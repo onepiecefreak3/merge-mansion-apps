@@ -11,7 +11,7 @@ using GameLogic.Decorations;
 
 namespace Code.GameLogic.GameEvents
 {
-    public class SideBoardEventSource : IConfigItemSource<SideBoardEventInfo, SideBoardEventId>, IGameConfigSourceItem<SideBoardEventId, SideBoardEventInfo>, IGameConfigKey<SideBoardEventId>
+    public class SideBoardEventSource : IConfigItemSource<SideBoardEventInfo, SideBoardEventId>, IGameConfigSourceItem<SideBoardEventId, SideBoardEventInfo>, IHasGameConfigKey<SideBoardEventId>
     {
         private SideBoardEventId EventId { get; set; }
         private string NameLocId { get; set; }
@@ -54,5 +54,7 @@ namespace Code.GameLogic.GameEvents
         public SideBoardEventSource()
         {
         }
+
+        private EventGroupId GroupId { get; set; }
     }
 }

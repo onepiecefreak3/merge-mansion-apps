@@ -8,7 +8,7 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
     [MetaSerializable]
     public struct EntitySerializedState
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaSerialized<IMultiplayerModel> PublicState { get; set; } // 0x0
 
         [MetaMember(2, 0)]

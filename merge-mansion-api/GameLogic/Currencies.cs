@@ -5,8 +5,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [TypeConverter(typeof(EnumStringConverter<Currencies>))]
     [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<Currencies>))]
     public enum Currencies
     {
         None = 0,

@@ -6,9 +6,10 @@ using System;
 namespace GameLogic.Config.Shop.Items
 {
     [MetaSerializableDerived(7)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class DiamondItem : IShopItem
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         private ShopItemId ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

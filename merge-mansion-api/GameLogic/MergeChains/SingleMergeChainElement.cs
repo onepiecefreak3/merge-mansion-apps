@@ -8,7 +8,7 @@ namespace GameLogic.MergeChains
     [MetaSerializableDerived(1)]
     public class SingleMergeChainElement : IMergeChainElement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> Item { get; set; }
 
         private SingleMergeChainElement()

@@ -9,8 +9,8 @@ namespace Analytics
     public class AnalyticsCurrencyCost
     {
         [JsonProperty("currency_code")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Code of the currency used for purchase")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string CurrencyCode { get; set; }
 
         [Description("Amount of the currency used for purchase")]

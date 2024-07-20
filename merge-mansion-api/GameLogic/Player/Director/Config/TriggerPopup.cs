@@ -9,7 +9,7 @@ namespace GameLogic.Player.Director.Config
     [MetaBlockedMembers(new int[] { 2 })]
     public class TriggerPopup : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private string PopupId { get; set; }
 
         [MetaMember(2, 0)]

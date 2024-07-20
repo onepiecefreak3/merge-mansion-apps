@@ -11,8 +11,8 @@ using GameLogic.Player.Rewards;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class TieredOfferItem : IGameConfigData<MetaOfferId>, IGameConfigData, IHasGameConfigKey<MetaOfferId>, IGameConfigPostLoad, IRefersToMetaOffers
     {
         [MetaMember(100, (MetaMemberFlags)0)]

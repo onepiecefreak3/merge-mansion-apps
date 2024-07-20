@@ -4,13 +4,15 @@ using System.Linq;
 using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
-    [MetaSerializableDerived(10)]
     [MetaAllowNoSerializedMembers]
+    [MetaSerializableDerived(10)]
     public class EmptyProducer : IItemSpawner, IItemProducer
     {
+        [IgnoreDataMember]
         public IEnumerable<(ItemDefinition, int)> Odds => Array.Empty<(ItemDefinition, int)>();
         public int SpawnQuantity => 0;
 

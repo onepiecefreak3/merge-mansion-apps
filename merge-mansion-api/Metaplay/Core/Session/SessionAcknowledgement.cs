@@ -6,7 +6,7 @@ namespace Metaplay.Core.Session
     [MetaSerializable]
     public class SessionAcknowledgement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int NumReceived { get; set; } // 0x10
 
         [MetaMember(2, 0)]

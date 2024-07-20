@@ -17,9 +17,9 @@ namespace GameLogic.Player
         private const string DecayPrefix = "ad_";
         private const string ActivationPrefix = "ms_";
         private const string ChestPrefix = "ch_";
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private Dictionary<string, Weight[]> wdStates; // 0x10
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private Dictionary<string, uint> wdChecksums; // 0x18
         public int Roll(RollHistoryType rollType, int markerItem, List<(int, int)> initialOddsList, RandomPCG rng)
         {

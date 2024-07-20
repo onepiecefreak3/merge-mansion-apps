@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Production
     [MetaSerializable]
     public class ItemOdds
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> Type { get; set; } // 0x10
 
         [MetaMember(2)]
@@ -22,10 +22,10 @@ namespace GameLogic.Player.Items.Production
         {
         }
 
-        [IgnoreDataMember]
-        public ItemDefinition Item { get; }
+        [IgnoreDataMember] 
+        public ItemDefinition Item => Type.Ref;
 
-        [IgnoreDataMember]
-        public int ConfigKey { get; }
+        [IgnoreDataMember] 
+        public int ConfigKey => Item.ConfigKey;
     }
 }

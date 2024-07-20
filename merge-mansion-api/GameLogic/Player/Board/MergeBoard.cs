@@ -10,12 +10,14 @@ using GameLogic.Player.Board.Placement;
 using Merge;
 using GameLogic.Random;
 using System.Reflection;
+using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player.Board
 {
-    [DefaultMember("Item")]
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 4 })]
+    [MetaSerializable]
+    [DefaultMember("Item")]
     public class MergeBoard : IBoard, IBoardQuery
     {
         public (int, int) BoardDimensions { get; }

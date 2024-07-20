@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Activation
     [MetaSerializableDerived(1)]
     public class ActivationCycle : IActivationCycle
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration ActivationDelay { get; set; } // 0x10
 
         [MetaMember(2)]

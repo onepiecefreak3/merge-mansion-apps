@@ -6,9 +6,9 @@ using System;
 
 namespace Analytics
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 199)]
     [MetaDeserializationConvertFromConcreteDerivedType(typeof(AnalyticsFlashSaleImpressionItem))]
+    [MetaSerializable]
     public abstract class AnalyticsFlashSaleImpressionItemBase
     {
         [MetaMember(100, (MetaMemberFlags)0)]

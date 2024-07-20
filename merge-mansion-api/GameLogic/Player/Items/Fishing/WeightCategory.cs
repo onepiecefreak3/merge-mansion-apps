@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Player.Items.Fishing
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum WeightCategory
     {
         Small = 0,

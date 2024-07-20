@@ -6,7 +6,7 @@ namespace GameLogic.Player.Items.Charges
     [MetaSerializable]
     public class ChargesFeatures
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool SupportsCharges { get; set; }
 
         [MetaMember(2, 0)]

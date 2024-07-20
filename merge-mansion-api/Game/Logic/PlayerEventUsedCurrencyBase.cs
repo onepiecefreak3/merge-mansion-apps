@@ -13,8 +13,8 @@ namespace Game.Logic
         public long Amount;
         [MetaMember(2, (MetaMemberFlags)0)]
         public CurrencySink CurrencySink;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("FixItemType")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string SpendOnItemType;
         [MetaMember(4, (MetaMemberFlags)0)]
         public long TotalAfterUse;

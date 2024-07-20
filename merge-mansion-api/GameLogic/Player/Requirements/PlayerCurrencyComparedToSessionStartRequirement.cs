@@ -9,14 +9,15 @@ namespace GameLogic.Player.Requirements
         [MetaMember(1, (MetaMemberFlags)0)]
         private Currencies Currency { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        private long? Amount { get; set; }
-
         public PlayerCurrencyComparedToSessionStartRequirement()
         {
         }
 
         public PlayerCurrencyComparedToSessionStartRequirement(Currencies currency, long? amount)
+        {
+        }
+
+        public PlayerCurrencyComparedToSessionStartRequirement(Currencies currency)
         {
         }
     }

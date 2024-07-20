@@ -9,7 +9,7 @@ namespace GameLogic.Hotspots.Actions
     [MetaSerializableDerived(7)]
     public class DiscoverMergeChain : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private MergeChainId MergeChainId { get; set; }
 
         private DiscoverMergeChain()

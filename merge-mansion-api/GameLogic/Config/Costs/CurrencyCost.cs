@@ -5,7 +5,7 @@ namespace GameLogic.Config.Costs
 {
     public abstract class CurrencyCost : ICost
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public long CurrencyAmount { get; set; }
         public abstract Currencies Currency { get; }
 

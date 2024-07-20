@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1030)]
     public class PlayerPointsInBoardEvent : TypedPlayerPropertyId<int>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private EventId EventId { get; set; }
 
         private static int InvalidResult;

@@ -8,7 +8,7 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(10)]
     public class AreaCompletedRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<AreaInfo> AreaRef { get; set; }
 
         [IgnoreDataMember]

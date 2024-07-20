@@ -5,8 +5,8 @@ using System;
 
 namespace GameLogic.Player.ScheduledActions
 {
-    [MetaActivableConfigData("ScheduledAction", false)]
     [MetaSerializable]
+    [MetaActivableConfigData("ScheduledAction", false, true)]
     public class ScheduledActionInfo : IMetaActivableConfigData<ScheduledActionId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ScheduledActionId>, IHasGameConfigKey<ScheduledActionId>, IMetaActivableInfo<ScheduledActionId>
     {
         public ScheduledActionId ActivableId => ConfigKey;

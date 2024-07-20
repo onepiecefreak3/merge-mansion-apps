@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Merging
     [MetaSerializableDerived(3)]
     public class MergeCollectionMergeMechanics : BaseMergeMechanic
     {
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MergeCollection MergeCollection { get; set; } // 0x18
 
         public override bool CanMerge(MergeItem sourceItem, MergeItem targetItem)

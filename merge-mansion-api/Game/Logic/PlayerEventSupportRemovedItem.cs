@@ -9,6 +9,7 @@ namespace Game.Logic
     [AnalyticsEvent(10, "Support removed item", 1, null, true, false, false)]
     public class PlayerEventSupportRemovedItem : PlayerEventBase
     {
+        [Obsolete("Item information now stored in ItemType. ItemId kept for backwards compatibility")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public int ItemId { get; set; }
 

@@ -42,5 +42,12 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachineSource()
         {
         }
+
+        private string SecondaryAllTasksCompletedRewardType { get; set; }
+        private string SecondaryAllTasksCompletedRewardId { get; set; }
+        private string SecondaryAllTasksCompletedRewardAux0 { get; set; }
+        private string SecondaryAllTasksCompletedRewardAux1 { get; set; }
+        private int SecondaryAllTasksCompletedRewardAmount { get; set; }
+        private WeightsType WeightsType { get; set; }
     }
 }

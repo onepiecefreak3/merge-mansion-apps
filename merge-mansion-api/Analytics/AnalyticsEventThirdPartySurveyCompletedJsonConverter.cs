@@ -16,8 +16,7 @@ namespace Analytics
             throw new NotImplementedException();
         }
 
-        public override AnalyticsEventThirdPartySurveyCompleted ReadJson(JsonReader reader, Type objectType,
-            AnalyticsEventThirdPartySurveyCompleted existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override AnalyticsEventThirdPartySurveyCompleted ReadJson(JsonReader reader, Type objectType, AnalyticsEventThirdPartySurveyCompleted existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

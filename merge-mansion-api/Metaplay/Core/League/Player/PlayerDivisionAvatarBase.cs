@@ -3,9 +3,9 @@ using System;
 
 namespace Metaplay.Core.League.Player
 {
-    [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
     [MetaSerializable]
     [PlayerLeaguesEnabledCondition]
+    [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
     public abstract class PlayerDivisionAvatarBase
     {
         protected PlayerDivisionAvatarBase()

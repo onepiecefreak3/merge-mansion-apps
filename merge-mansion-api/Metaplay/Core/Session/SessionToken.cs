@@ -6,7 +6,7 @@ namespace Metaplay.Core.Session
     [MetaSerializable]
     public struct SessionToken
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ulong Value { get; set; } // 0x0
 
         public SessionToken(ulong value)

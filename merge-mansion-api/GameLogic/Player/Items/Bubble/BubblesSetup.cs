@@ -6,7 +6,7 @@ namespace GameLogic.Player.Items.Bubble
     [MetaSerializable]
     public class BubblesSetup : IGameConfigData<BubblesSetupId>, IGameConfigData, IHasGameConfigKey<BubblesSetupId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public BubblesSetupId ConfigKey { get; set; }
 
         [MetaMember(2, 0)]

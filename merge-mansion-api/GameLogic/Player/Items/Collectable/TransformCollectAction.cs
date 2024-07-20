@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Collectable
     [MetaSerializableDerived(3)]
     public class TransformCollectAction : ICollectAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> TransformsInto { get; set; }
 
         private TransformCollectAction()

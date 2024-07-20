@@ -40,6 +40,9 @@ namespace GameLogic
         InsertMachineCoin = 32,
         SpawnItemsIntoMysteryMachine = 33,
         MysteryMachineSpecialSale = 34,
-        MysteryMachineContinue = 35
+        MysteryMachineContinue = 35,
+        FillDailyTaskV2StepWithPurchase = 36,
+        DailyTasksV2TimeExtensionPurchase = 37,
+        FillDailyTaskV2StepWithRefresh = 38
     }
 }

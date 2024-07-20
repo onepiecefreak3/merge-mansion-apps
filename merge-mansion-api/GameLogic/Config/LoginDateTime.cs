@@ -6,7 +6,7 @@ namespace GameLogic.Config
     [MetaSerializable]
     public struct LoginDateTime
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime Time { get; set; }
     }
 }

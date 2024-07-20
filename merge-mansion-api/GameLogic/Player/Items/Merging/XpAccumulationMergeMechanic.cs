@@ -12,7 +12,7 @@ namespace GameLogic.Player.Items.Merging
     [MetaBlockedMembers(new int[] { 2 })]
     public class XpAccumulationMergeMechanic : IMergeMechanic
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ItemVisibility ResultVisibility { get; set; }
 
         [MetaMember(3, 0)]

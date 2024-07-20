@@ -9,27 +9,27 @@ namespace Metaplay.Core.Activables
     [MetaSerializable]
     public class MetaActivableParams
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsEnabled; // 0x10
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<MetaRef<PlayerSegmentInfoBase>> Segments; // 0x18
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerCondition> AdditionalConditions; // 0x20
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaActivableLifetimeSpec Lifetime; // 0x28
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public bool IsTransient; // 0x30
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public MetaScheduleBase Schedule; // 0x38
-        [MetaMember(7)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public int? MaxActivations; // 0x40
-        [MetaMember(8)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int? MaxTotalConsumes; // 0x48
-        [MetaMember(9)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public int? MaxConsumesPerActivation; // 0x50
-        [MetaMember(10)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public MetaActivableCooldownSpec Cooldown; // 0x58
-        [MetaMember(11)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public bool AllowActivationAdjustment; // 0x60
         public MetaActivableParams()
         {

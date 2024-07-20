@@ -6,7 +6,7 @@ namespace Metaplay.Core
     [MetaSerializable]
     public struct CompressionAlgorithmSet
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private uint _flags; // 0x0
         public bool Contains(CompressionAlgorithm algorithm)
         {

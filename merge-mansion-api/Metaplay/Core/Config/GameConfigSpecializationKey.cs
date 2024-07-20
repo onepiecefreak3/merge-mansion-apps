@@ -7,7 +7,7 @@ namespace Metaplay.Core.Config
     [MetaSerializable]
     public struct GameConfigSpecializationKey
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ExperimentVariantId[] VariantIds { get; set; }
 
         private GameConfigSpecializationKey(ExperimentVariantId[] variantIds)

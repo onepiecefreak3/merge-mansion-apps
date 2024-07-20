@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Collectable
     [MetaBlockedMembers(new int[] { 3 })]
     public class CollectableFeatures
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool Collectable { get; set; }
 
         [MetaMember(2)]

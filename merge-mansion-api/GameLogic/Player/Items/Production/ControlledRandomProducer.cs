@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Production
     [MetaSerializableDerived(4)]
     public class ControlledRandomProducer : IItemSpawner, IItemProducer
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public RollHistoryType RollType { get; set; } // 0x10
 
         [MetaMember(2)]
@@ -19,7 +19,7 @@ namespace GameLogic.Player.Items.Production
 
         [MetaMember(3)]
         private List<ItemOdds> GenerationOdds { get; set; } // 0x18
-        public IEnumerable<(ItemDefinition, int)> Odds => GenerationOdds.Select(x => (x.Type.Ref, x.Weight));
+        public IEnumerable<(ItemDefinition, int)> Odds => GenerationOdds.Select(x => (x.Item, x.Weight));
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

@@ -7,6 +7,7 @@ using Code.GameLogic.Config;
 using System.Runtime.Serialization;
 using System;
 using GameLogic.Player.Director.Config;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Story
 {
@@ -14,7 +15,7 @@ namespace GameLogic.Story
     [MetaBlockedMembers(new int[] { 16 })]
     public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IHasGameConfigKey<DialogItemId>, IValidatable
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public DialogItemId DialogItemId { get; set; }
 
         [MetaMember(2, 0)]

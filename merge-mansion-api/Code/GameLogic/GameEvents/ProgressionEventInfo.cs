@@ -16,14 +16,14 @@ using GameLogic.Cutscenes;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 7, 8 })]
+    [MetaActivableConfigData("ProgressionEvent", false, true)]
     [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
+    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 5, 6 })]
-    [MetaActivableConfigData("ProgressionEvent", false)]
     public class ProgressionEventInfo : IMetaActivableConfigData<ProgressionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ProgressionEventId>, IHasGameConfigKey<ProgressionEventId>, IMetaActivableInfo<ProgressionEventId>, IValidatable, IBubbleBonusEvent, IEventGroupInfo
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventId ProgressionEventId { get; set; }
 
         [MetaMember(2)]
@@ -166,5 +166,39 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public List<BubbleBonusInfo> SecondaryBoardBubbleBonus { get; }
+
+        [MetaMember(37, (MetaMemberFlags)0)]
+        public string StartPopupDescId { get; set; }
+
+        [MetaMember(38, (MetaMemberFlags)0)]
+        public string EndPopupNoRewardsDescId { get; set; }
+
+        [MetaMember(39, (MetaMemberFlags)0)]
+        public string EventPrefabsId { get; set; }
+
+        [MetaMember(40, (MetaMemberFlags)0)]
+        public string StartHeaderBackgroundId { get; set; }
+
+        [MetaMember(41, (MetaMemberFlags)0)]
+        public string EndHeaderBackgroundId { get; set; }
+
+        [MetaMember(42, (MetaMemberFlags)0)]
+        public string MainHubBadgeIconId { get; set; }
+
+        [MetaMember(43, (MetaMemberFlags)0)]
+        public string TodoItemHeaderBackgroundId { get; set; }
+
+        [MetaMember(44, (MetaMemberFlags)0)]
+        public string ProgressionPopupHeaderBackgroundId { get; set; }
+
+        [MetaMember(45, (MetaMemberFlags)0)]
+        public string EventRewardTagId { get; set; }
+
+        [MetaMember(46, (MetaMemberFlags)0)]
+        public string UiCharacterItemId { get; set; }
+
+        public ProgressionEventInfo(ProgressionEventId progressionEventId, string nameLocId, string startPopupDescId, string endPopupNoRewardsDescId, string displayName, string description, MetaActivableParams activableParams, List<int> chancesToSpawnEventPerItemLevel, int eventItem, MetaRef<InAppProductInfo> premiumIap, int premiumIapOfferMinLevel, List<MetaRef<ProgressionEventPerkInfo>> premiumIapPerks, List<MetaRef<ProgressionEventStreakRewards>> premiumIAPStreakRewards, List<MetaRef<EventLevelInfo>> freeEventLevels, List<MetaRef<EventLevelInfo>> premiumEventLevels, List<MetaRef<EventLevelInfo>> recurringFreeEventLevels, List<MetaRef<EventLevelInfo>> recurringPremiumEventLevels, int recurringLevelPointsIncrement, bool hasZeroLevel, StoryDefinitionId introDialogue, StoryDefinitionId endDialogue, List<MetaRef<StoryElementInfo>> levelRewardClaimedStories, List<MetaRef<EventLevelInfo>> storyTriggeringLevels, PlayerRequirement unlockRequirement, F32? bubbleBonusDivisor, EventGroupId groupId, List<EventLevelId> teasedEventLevelIds, CutsceneId introCutscene, string eventPrefabsId, string startHeaderBackgroundId, string endHeaderBackgroundId, string mainHubBadgeIconId, string todoItemHeaderBackgroundId, string progressionPopupHeaderBackgroundId, string eventRewardTagId, string uiCharacterItemId)
+        {
+        }
     }
 }

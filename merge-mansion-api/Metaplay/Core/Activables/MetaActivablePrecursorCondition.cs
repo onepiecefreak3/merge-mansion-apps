@@ -7,7 +7,7 @@ namespace Metaplay.Core.Activables
     [MetaSerializable]
     public abstract class MetaActivablePrecursorCondition<TId> : PlayerCondition
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public TId Id { get; set; }
 
         [MetaMember(2, 0)]

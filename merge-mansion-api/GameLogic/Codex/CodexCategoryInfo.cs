@@ -8,7 +8,7 @@ namespace GameLogic.Codex
     [MetaSerializable]
     public class CodexCategoryInfo : IGameConfigData<CodexCategoryId>, IGameConfigData, IHasGameConfigKey<CodexCategoryId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public CodexCategoryId ConfigKey { get; set; }
 
         [MetaMember(2, 0)]

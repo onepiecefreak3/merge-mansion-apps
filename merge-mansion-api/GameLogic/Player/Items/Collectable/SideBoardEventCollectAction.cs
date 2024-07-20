@@ -4,8 +4,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaSerializableDerived(11)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(11)]
     public class SideBoardEventCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(2, (MetaMemberFlags)0)]

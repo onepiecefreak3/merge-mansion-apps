@@ -7,7 +7,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     public class ProgressionEventPerkInfo : IGameConfigData<ProgressionEventPerkId>, IGameConfigData, IHasGameConfigKey<ProgressionEventPerkId>, IValidatable
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventPerkId Id { get; set; }
 
         [MetaMember(2, 0)]

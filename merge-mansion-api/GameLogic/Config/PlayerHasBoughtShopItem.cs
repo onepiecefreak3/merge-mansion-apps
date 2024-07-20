@@ -5,6 +5,7 @@ using System;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1022)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class PlayerHasBoughtShopItem : TypedPlayerPropertyId<int>
     {
         public override string DisplayName { get; }

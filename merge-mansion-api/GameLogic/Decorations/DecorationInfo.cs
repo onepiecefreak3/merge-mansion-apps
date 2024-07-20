@@ -12,7 +12,7 @@ namespace GameLogic.Decorations
     [MetaSerializable]
     public class DecorationInfo : IGameConfigData<DecorationId>, IGameConfigData, IHasGameConfigKey<DecorationId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationId DecorationId { get; set; }
 
         [MetaMember(2, 0)]

@@ -12,7 +12,7 @@ using Metaplay.Core.Player;
 
 namespace GameLogic.Config
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 3 })]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48 })]
     [MetaSerializable]
     public class SharedGlobals : GameConfigKeyValue<SharedGlobals>, IValidatable
     {
@@ -166,5 +166,11 @@ namespace GameLogic.Config
 
         [MetaMember(57, (MetaMemberFlags)0)]
         public int InventorySlotsRequiredToTeaseProducerInventory { get; set; }
+
+        [MetaMember(58, (MetaMemberFlags)0)]
+        public int MaxGemCostForOutOfEnergyAds { get; set; }
+
+        [MetaMember(59, (MetaMemberFlags)0)]
+        public bool DisableMysteryMachineItemOddsPopup { get; set; }
     }
 }

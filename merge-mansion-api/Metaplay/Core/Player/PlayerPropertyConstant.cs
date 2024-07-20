@@ -12,7 +12,7 @@ namespace Metaplay.Core.Player
         [MetaSerializable]
         public abstract class TypedConstant<TValue> : PlayerPropertyConstant
         {
-            [MetaMember(1)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             private TValue _value; // 0x0
             public override object ConstantValue => _value;
 

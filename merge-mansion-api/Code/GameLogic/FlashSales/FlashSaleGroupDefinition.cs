@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Metaplay.Core;
 using System.Runtime.Serialization;
+using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.FlashSales
 {
@@ -37,6 +38,16 @@ namespace Code.GameLogic.FlashSales
         }
 
         public FlashSaleGroupDefinition(FlashSaleGroupId configKey, int weight, List<MetaRef<FlashSaleDefinition>> offers, FlashSaleSlotId slotId, List<PlayerRequirement> playerRequirements)
+        {
+        }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public OfferPlacementId PlacementId { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public bool IgnoreRoll { get; set; }
+
+        public FlashSaleGroupDefinition(FlashSaleGroupId configKey, int weight, List<MetaRef<FlashSaleDefinition>> offers, FlashSaleSlotId slotId, List<PlayerRequirement> playerRequirements, OfferPlacementId placementId, bool ignoreRoll)
         {
         }
     }

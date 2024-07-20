@@ -10,7 +10,7 @@ namespace GameLogic.MergeChains
     [MetaSerializableDerived(2)]
     public class ListMergeChainElement : IMergeChainElement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public List<MetaRef<ItemDefinition>> Items { get; set; }
 
         public int IndexOf(int itemId)

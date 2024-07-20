@@ -2,7 +2,7 @@ using System;
 
 namespace Metaplay.Core.Model
 {
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum | AttributeTargets.Interface)]
+    [AttributeUsage((AttributeTargets)1052)]
     public class MetaSerializableAttribute : Attribute
     {
         public readonly MetaSerializableFlags Flags; // 0x10

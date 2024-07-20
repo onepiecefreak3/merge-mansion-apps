@@ -8,7 +8,7 @@ namespace GameLogic.Player.Rewards
     [MetaFormHidden]
     public class ProgressionEventPerkReward : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventPerkId PerkId { get; set; }
 
         public ProgressionEventPerkReward()

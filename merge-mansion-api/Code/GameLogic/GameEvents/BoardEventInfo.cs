@@ -22,13 +22,13 @@ using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
+    [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16, 33, 34, 45 })]
     [MetaSerializable]
+    [MetaActivableConfigData("BoardEvent", false, true)]
     [DefaultMember("Item")]
-    [MetaActivableConfigData("BoardEvent", false)]
-    [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16 })]
     public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventGroupInfo
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EventId EventId { get; set; }
 
         [MetaMember(2, 0)]

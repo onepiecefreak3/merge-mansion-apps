@@ -63,7 +63,7 @@ namespace GameLogic.Player.Items
         private TimeContainerFeatures _TimeContainer;
         [MetaMember(34, (MetaMemberFlags)0)]
         private LeaderboardFeatures _LeaderboardFeatures;
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int ConfigKey { get; set; } // 0x10
 
         [MetaMember(2)]

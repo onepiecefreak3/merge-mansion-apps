@@ -6,7 +6,7 @@ namespace GameLogic.Player.Items.Collectable
     [MetaSerializableDerived(1)]
     public class LevelBasedCollectValue : ICalculateCollectValue
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int Factor { get; set; }
 
         [MetaMember(2, 0)]

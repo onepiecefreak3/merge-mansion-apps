@@ -20,7 +20,7 @@ namespace GameLogic.MergeChains
             typeof(int),
             typeof(int[])
         };
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeChainId ConfigKey { get; set; }
 
         [MetaMember(2, 0)]

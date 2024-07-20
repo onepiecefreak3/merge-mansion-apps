@@ -6,7 +6,7 @@ namespace GameLogic.Random.ControlledRandom
     [MetaSerializable]
     public struct Weight
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public F32 NextEventTime { get; set; }
 
         [MetaMember(2, 0)]

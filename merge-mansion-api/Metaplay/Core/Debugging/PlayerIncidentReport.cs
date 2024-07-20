@@ -14,7 +14,7 @@ namespace Metaplay.Core.Debugging
         [MetaSerializableDerived(4)]
         public class SessionStartFailed : PlayerIncidentReport
         {
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public string ErrorType { get; set; }
 
             [MetaMember(1, 0)]

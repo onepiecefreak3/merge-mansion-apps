@@ -12,7 +12,8 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(6)]
     public class RewardItem : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [ValidateItemDefinitionMetaRef]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
         [MetaMember(2, 0)]

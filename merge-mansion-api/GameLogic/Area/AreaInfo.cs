@@ -13,7 +13,7 @@ namespace GameLogic.Area
     [MetaSerializable]
     public class AreaInfo : IGameConfigData<AreaId>, IGameConfigData, IHasGameConfigKey<AreaId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public AreaId AreaId { get; set; }
 
         [MetaMember(2, 0)]

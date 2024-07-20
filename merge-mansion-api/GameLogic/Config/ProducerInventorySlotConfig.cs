@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using GameLogic.Player.Requirements;
 using System;
 using System.Linq;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Config
 {
@@ -21,7 +22,6 @@ namespace GameLogic.Config
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public int SlotIndex { get; set; }
-
         public ProducerInventorySlotId ConfigKey => SlotId;
         public PlayerRequirement UnlockRequirement => UnlockRequirements.FirstOrDefault();
 

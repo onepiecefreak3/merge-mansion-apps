@@ -8,7 +8,7 @@ namespace GameLogic.Codex
     [MetaSerializable]
     public class CodexDiscoveryRewardInfo : IGameConfigData<CodexDiscoveryRewardId>, IGameConfigData, IHasGameConfigKey<CodexDiscoveryRewardId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public CodexDiscoveryRewardId ConfigKey { get; set; }
 
         [MetaMember(2, 0)]

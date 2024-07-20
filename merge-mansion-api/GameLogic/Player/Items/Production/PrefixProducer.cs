@@ -6,13 +6,14 @@ using Metaplay.Core;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using GameLogic.Player.Items.Activation;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
     [MetaSerializableDerived(11)]
     public class PrefixProducer : IItemSpawner, IItemProducer
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string Marker { get; set; } // 0x10
 
         [MetaMember(2)]

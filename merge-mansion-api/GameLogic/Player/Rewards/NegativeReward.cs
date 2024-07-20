@@ -5,11 +5,11 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(8)]
     [MetaFormHidden]
+    [MetaSerializableDerived(8)]
     public class NegativeReward : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 
         [MetaMember(2, 0)]

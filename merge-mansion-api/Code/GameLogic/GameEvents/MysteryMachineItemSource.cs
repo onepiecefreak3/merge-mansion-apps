@@ -11,11 +11,13 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachineItemId ConfigKey { get; set; }
         private string ItemType { get; set; }
         private string ItemId { get; set; }
-        private List<int> Weight { get; set; }
         private F64 CameraMultiplier { get; set; }
 
         public MysteryMachineItemSource()
         {
         }
+
+        private List<int> WeightsBasedClicks { get; set; }
+        private List<int> WeightsBasedHeat { get; set; }
     }
 }

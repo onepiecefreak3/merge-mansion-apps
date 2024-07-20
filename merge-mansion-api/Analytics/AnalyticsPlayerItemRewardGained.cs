@@ -13,12 +13,12 @@ namespace Analytics
     [AnalyticsEvent(131, "Player received item reward", 1, null, false, true, false)]
     public class AnalyticsPlayerItemRewardGained : AnalyticsPlayerRewardGained
     {
-        [Description("ID of the received item")]
         [JsonProperty("item_name")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("ID of the received item")]
         public string ItemName;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Amount of the received items")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("amount")]
         public int Amount;
         [Description("Type of the reward received")]
@@ -38,9 +38,9 @@ namespace Analytics
         {
         }
 
+        [JsonProperty("duration_in_minutes", DefaultValueHandling = (DefaultValueHandling)1)]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Duration in minutes for items with durations")]
-        [JsonProperty("duration_in_minutes", DefaultValueHandling = (DefaultValueHandling)1)]
         public double Duration;
         public AnalyticsPlayerItemRewardGained(ItemDefinition itemDefinition, OverrideItemFeatures overrideItemFeatures, int amount, CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLeveLId)
         {

@@ -5,7 +5,7 @@ namespace Metaplay.Core.Player
     [MetaSerializable]
     public class PlayerPropertyRequirement
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public PlayerPropertyId Id { get; set; }
 
         [MetaMember(2)]

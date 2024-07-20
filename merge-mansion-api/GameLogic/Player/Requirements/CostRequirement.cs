@@ -6,7 +6,7 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(6)]
     public class CostRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ICost RequiredCost { get; set; }
 
         public CostRequirement()

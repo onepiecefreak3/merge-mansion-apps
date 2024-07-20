@@ -7,11 +7,10 @@ namespace Metaplay.Core.Message
 {
     public static class Handshake
     {
-        [MetaMessage(4, MessageDirection.ServerToClient, true)]
+        [MetaMessage(4, (MessageDirection)2, true)]
         public class ServerHello : MetaMessage
         {
-            // Properties
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public string ServerVersion { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -36,11 +35,11 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(5, MessageDirection.ClientToServer, true)]
+        [MetaMessage(5, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
         public class ClientHello : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public string ClientVersion { get; set; }
 
             [MetaMember(2, 0)]
@@ -97,11 +96,11 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(6, MessageDirection.ClientToServer, true)]
+        [MetaMessage(6, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
         public class ClientAbandon : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaTime ConnectionStartedAt { get; set; }
 
             [MetaMember(2, 0)]
@@ -133,12 +132,11 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(7, MessageDirection.ClientToServer, true)]
+        [MetaMessage(7, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
         public class DeviceLoginRequest : Handshake.LoginRequest
         {
-            // Properties
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public string DeviceId { get; set; } // 0x30
 
             [MetaMember(2, 0)]
@@ -155,7 +153,7 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(8, MessageDirection.ServerToClient, true)]
+        [MetaMessage(8, (MessageDirection)2, true)]
         public class LoginSuccessResponse : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -170,10 +168,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(13, MessageDirection.ClientToServer, true)]
+        [MetaMessage(13, (MessageDirection)2, true)]
         public class LogicVersionMismatch : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaVersionRange ServerAcceptedLogicVersions { get; set; } // 0x10
 
             private LogicVersionMismatch()
@@ -186,10 +184,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(14, MessageDirection.ClientToServer, true)]
+        [MetaMessage(14, (MessageDirection)2, true)]
         public class RedirectToServer : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public ServerEndpoint RedirectToEndpoint { get; set; } // 0x10
 
             private RedirectToServer()
@@ -202,11 +200,11 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(31, MessageDirection.ClientToServer, true)]
+        [MetaMessage(31, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
         public class SocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
-            [MetaMember(100, 0)]
+            [MetaMember(100, (MetaMemberFlags)0)]
             public SocialAuthenticationClaimBase Claim { get; set; } // 0x38
 
             private SocialAuthenticationLoginRequest()
@@ -237,11 +235,10 @@ namespace Metaplay.Core.Message
             public static OperationStillOngoing Instance = new OperationStillOngoing();
         }
 
-        [MetaMessage(90, MessageDirection.ServerToClient, false)]
+        [MetaMessage(90, (MessageDirection)2, false)]
         public class ClientHelloAccepted : MetaMessage
         {
-            // Properties
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public ServerOptions ServerOptions { get; set; }
 
             private ClientHelloAccepted()
@@ -253,11 +250,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(91, MessageDirection.ServerToClient, true)]
+        [MetaMessage(91, (MessageDirection)2, true)]
         public class LoginProtocolVersionMismatch : MetaMessage
         {
-            // Properties
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public int ServerAcceptedProtocolVersion { get; set; }
 
             private LoginProtocolVersionMismatch()
@@ -271,8 +267,7 @@ namespace Metaplay.Core.Message
 
         public abstract class LoginRequest : MetaMessage
         {
-            // Properties
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public EntityId PlayerIdHint { get; set; } // 0x10
 
             [MetaMember(4, 0)]
@@ -313,17 +308,17 @@ namespace Metaplay.Core.Message
         [MetaSerializable]
         public struct ServerOptions
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public int PushUploadPercentageSessionStartFailedIncidentReport; // 0x0
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public bool EnableWireCompression; // 0x4
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public MetaDuration DeletionRequestSafetyDelay; // 0x8
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public string GameServerGooglePlaySignInOAuthClientId; // 0x10
-            [MetaMember(5, 0)]
+            [MetaMember(5, (MetaMemberFlags)0)]
             public string ImmutableXLinkApiUrl; // 0x18
-            [MetaMember(6, 0)]
+            [MetaMember(6, (MetaMemberFlags)0)]
             public string GameEnvironment; // 0x20
             [MetaMember(100, (MetaMemberFlags)0)]
             public int ClientTosVersion;

@@ -2,2080 +2,2084 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Json;
 using System;
 using System.ComponentModel;
+using Metaplay.Core;
+using System.Collections.Generic;
 
 namespace GameLogic
 {
     [MetaSerializable]
-    [TypeConverter(typeof(EnumStringConverter<ShopItemId>))]
-    [ForceExplicitEnumValues]
-    public enum ShopItemId
+    public class ShopItemId : StringId<ShopItemId>
     {
-        None = 0,
-        DailyDeal_PiggyBank = 1,
-        DailyDeal_EnergyChest = 2,
-        DailyDeal_SimpleBrownBox = 3,
-        DailyDeal_ClothCoveredBrownBox = 4,
-        DailyDeal_BlueBox = 5,
-        DailyDeal_RedBox = 6,
-        DailyDeal_LBETimeSkip = 292,
-        EnergyItem_ItemRecharge = 7,
-        SecondaryEnergyItem_ItemRecharge = 290,
-        RealMoney_GemsBag_01 = 8,
-        RealMoney_GemsBag_02 = 9,
-        RealMoney_GemsBag_03 = 10,
-        RealMoney_GemsBag_04 = 11,
-        RealMoney_GemsBag_05 = 12,
-        RealMoney_GemsBag_06 = 13,
-        RealMoney_CoinsBag_01 = 14,
-        RealMoney_CoinsBag_02 = 15,
-        RealMoney_CoinsBag_03 = 16,
-        RealMoney_CoinsBag_04 = 17,
-        RealMoney_CoinsBag_05 = 18,
-        RealMoney_CoinsBag_06 = 19,
-        RealMoney_PiggyBank_01 = 20,
-        RealMoney_StarterPack_01 = 21,
-        RealMoney_StarterPack_02 = 22,
-        RealMoney_StarterPack_03 = 23,
-        RealMoney_StarterPack_04 = 24,
-        RealMoney_Gardenpack_01 = 25,
-        RealMoney_Gardenpack_02 = 26,
-        RealMoney_ToolsPack_01 = 27,
-        RealMoney_ToolsPack_02 = 28,
-        RealMoney_CleaningPack_01 = 29,
-        RealMoney_CleaningPack_02 = 30,
-        RealMoney_BoosterPack_01 = 31,
-        RealMoney_BoosterPack_02 = 32,
-        RealMoney_BoosterPack_03 = 33,
-        RealMoney_BoosterPack_04 = 34,
-        RotateOffer_StartGlovesSet_01 = 35,
-        RotateOffer_StartGlovesSet_02 = 36,
-        RotateOffer_StartGlovesSet_03 = 37,
-        RotateOffer_StartGlovesSet_04 = 38,
-        RotateOffer_StartGlovesSet_05 = 39,
-        RotateOffer_StartGlovesSet_06 = 40,
-        RotateOffer_StartGargenToolSet_01 = 41,
-        RotateOffer_StartGargenToolSet_02 = 42,
-        RotateOffer_StartGargenToolSet_03 = 43,
-        RotateOffer_StartGargenToolSet_04 = 44,
-        RotateOffer_StartGargenToolSet_05 = 45,
-        RotateOffer_StartGargenToolSet_06 = 46,
-        RotateOffer_StartGargenToolSet_07 = 47,
-        RotateOffer_NormalGameplayGlovesSet_01 = 48,
-        RotateOffer_NormalGameplayGlovesSet_02 = 49,
-        RotateOffer_NormalGameplayGlovesSet_03 = 50,
-        RotateOffer_NormalGameplayGlovesSet_04 = 51,
-        RotateOffer_NormalGameplayGlovesSet_05 = 52,
-        RotateOffer_NormalGameplayGlovesSet_06 = 53,
-        RotateOffer_NormalGameplayScrewsSet_01 = 54,
-        RotateOffer_NormalGameplayScrewsSet_02 = 55,
-        RotateOffer_NormalGameplayScrewsSet_03 = 56,
-        RotateOffer_NormalGameplayScrewsSet_04 = 57,
-        RotateOffer_NormalGameplayScrewsSet_05 = 58,
-        RotateOffer_NormalGameplayScrewsSet_06 = 59,
-        RotateOffer_NormalPaintCanSet_01 = 60,
-        RotateOffer_NormalPaintCanSet_02 = 61,
-        RotateOffer_NormalPaintCanSet_03 = 62,
-        RotateOffer_NormalPaintCanSet_04 = 63,
-        RotateOffer_NormalPaintCanSet_05 = 64,
-        RotateOffer_NormalPaintCanSet_06 = 65,
-        RotateOffer_NormalDetergentSet_01 = 66,
-        RotateOffer_NormalDetergentSet_02 = 67,
-        RotateOffer_NormalDetergentSet_03 = 68,
-        RotateOffer_NormalDetergentSet_04 = 69,
-        RotateOffer_NormalDetergentSet_05 = 70,
-        RotateOffer_NormalDetergentSet_06 = 71,
-        RotateOffer_NormalGargenToolSet_01 = 72,
-        RotateOffer_NormalGargenToolSet_02 = 73,
-        RotateOffer_NormalGargenToolSet_03 = 74,
-        RotateOffer_NormalGargenToolSet_04 = 75,
-        RotateOffer_NormalGargenToolSet_05 = 76,
-        RotateOffer_NormalGargenToolSet_06 = 77,
-        RotateOffer_NormalGargenToolSet_07 = 78,
-        RotateOffer_NormalCleaningSet_01 = 79,
-        RotateOffer_NormalCleaningSet_02 = 80,
-        RotateOffer_NormalCleaningSet_03 = 81,
-        RotateOffer_NormalCleaningSet_04 = 82,
-        RotateOffer_NormalCleaningSet_05 = 83,
-        RotateOffer_NormalCleaningSet_06 = 84,
-        RotateOffer_NormalCleaningSet_07 = 85,
-        RotateOffer_NormalToolsSet_01 = 86,
-        RotateOffer_NormalToolsSet_02 = 87,
-        RotateOffer_NormalToolsSet_03 = 88,
-        RotateOffer_NormalToolsSet_04 = 89,
-        RotateOffer_NormalToolsSet_05 = 90,
-        RotateOffer_NormalToolsSet_06 = 91,
-        RotateOffer_NormalToolsSet_07 = 92,
-        RotateOffer_NormalSeedBagSet_01 = 93,
-        RotateOffer_NormalSeedBagSet_02 = 94,
-        RotateOffer_NormalWoodSet_01 = 95,
-        RotateOffer_NormalWoodSet_02 = 96,
-        RotateOffer_NormalLampSet_01 = 97,
-        RotateOffer_NormalLampSet_02 = 98,
-        RotateOffer_NormalLampSet_03 = 99,
-        RotateOffer_NormalLampSet_04 = 100,
-        RotateOffer_NormalLampSet_05 = 101,
-        RotateOffer_NormalLampSet_06 = 102,
-        RotateOffer_NormalFlowerSet_01 = 103,
-        RotateOffer_NormalFlowerSet_02 = 104,
-        RotateOffer_NormalFlowerSet_03 = 105,
-        RotateOffer_NormalFlowerSet_04 = 106,
-        RotateOffer_NormalFlowerSet_05 = 107,
-        RotateOffer_NormalFlowerSet_06 = 108,
-        RotateOffer_NormalFlowerSet_07 = 109,
-        RotateOffer_PermanentSpawnerVaseSet_01 = 110,
-        RotateOffer_PermanentSpawnerToolboxSet_01 = 111,
-        RotateOffer_PermanentSpawnerPlantedBushSet_01 = 112,
-        RotateOffer_PermanentSpawnerDrawerSet_01 = 113,
-        RotateOffer_PermanentSpawnerFlowerpotSet_01 = 114,
-        RotateOffer_PermanentSpawnerBroomCabinetSet_01 = 115,
-        RotateOffer_PermanentSpawnerTreeSet_01 = 116,
-        RotateOffer_PermanentSpawnerToyCarSet_01 = 117,
-        EventSale_Pack_01 = 118,
-        EventSale_Pack_02 = 119,
-        EventSale_Pack_03 = 120,
-        EventSale_Pack_04 = 121,
-        EventSale_Pack_05 = 122,
-        EventSale_Pack_06 = 123,
-        EventSaleCasey_Pack_01 = 124,
-        EventSaleCasey_Pack_02 = 125,
-        EventSaleCasey_Pack_03 = 126,
-        EventSaleCasey_Pack_04 = 127,
-        EventSaleCasey_Pack_05 = 128,
-        EventSaleCasey_Pack_06 = 129,
-        EventSaleTinCan_Pack_01 = 130,
-        EventSaleTinCan_Pack_02 = 131,
-        EventSaleTinCan_Pack_03 = 132,
-        EventSaleTinCan_Pack_04 = 133,
-        EventSaleTinCan_Pack_05 = 134,
-        EventSaleTinCan_Pack_06 = 135,
-        EventSaleChristmas_Pack_01 = 136,
-        EventSaleChristmas_Pack_02 = 137,
-        EventSaleChristmas_Pack_03 = 138,
-        EventSaleChristmas_Pack_04 = 139,
-        EventSaleChristmas_Pack_05 = 140,
-        EventSaleChristmas_Pack_06 = 141,
-        RealMoney_ShopOffer = 142,
-        RealMoney_GameEventExtension = 143,
-        RotateOffer_NormalGameplayGlovesSet_07 = 144,
-        RotateOffer_NormalGargenToolSet_08 = 145,
-        RotateOffer_NormalGargenToolSet_09 = 146,
-        RotateOffer_NormalGargenToolSet_10 = 147,
-        RotateOffer_NormalGameplayScrewsSet_07 = 148,
-        RotateOffer_NormalDetergentSet_07 = 149,
-        RotateOffer_NormalDetergentSet_08 = 150,
-        RotateOffer_NormalDetergentSet_09 = 151,
-        RotateOffer_NormalCleaningSet_08 = 152,
-        RotateOffer_NormalCleaningSet_09 = 153,
-        RotateOffer_NormalToolsSet_08 = 154,
-        RotateOffer_NormalSeedBagSet_03 = 155,
-        RotateOffer_NormalOrangeFlowerSet_01 = 156,
-        RotateOffer_NormalWoodSet_03 = 157,
-        RotateOffer_NormalGardenBenchSet_01 = 158,
-        RotateOffer_NormalLampSet_07 = 159,
-        RotateOffer_PermanentSpawnerBroomCabinetSet_02 = 160,
-        RotateOffer_PermanentSpawnerToyCarSet_02 = 161,
-        RealMoney_ProgressionEventPremium = 162,
-        RotateOffer_NormalPaintCanSet_07 = 163,
-        RotateOffer_PermanentSpawnerToolboxSet_02 = 164,
-        RotateOffer_PermanentSpawnerPlantedBushSet_02 = 165,
-        RotateOffer_PermanentSpawnerGardenToolBarrel_01 = 166,
-        RotateOffer_PermanentSpawnerGardenToolBarrel_02 = 167,
-        RotateOffer_NormalCleaningSet_10 = 168,
-        RotateOffer_NormalFlowerSet_08 = 169,
-        RotateOffer_NormalGargenToolSet_11 = 170,
-        RotateOffer_NormalLocket_01 = 171,
-        RotateOffer_NormalLoveStory_01 = 172,
-        RotateOffer_NormalLoveStory_02 = 173,
-        RotateOffer_NormalLocket_02 = 174,
-        RotateOffer_NormalLocket_03 = 175,
-        RotateOffer_NormalMasonry_01 = 176,
-        RotateOffer_NormalMasonry_02 = 177,
-        RotateOffer_NormalMasonry_03 = 178,
-        RotateOffer_NormalMasonry_04 = 179,
-        RotateOffer_NormalMasonry_05 = 180,
-        RotateOffer_NormalMasonryTools_01 = 181,
-        RotateOffer_NormalMasonryTools_02 = 182,
-        RotateOffer_NormalTennisCourt_01 = 183,
-        RotateOffer_NormalTennisCourt_02 = 184,
-        RotateOffer_Generic_01 = 185,
-        RotateOffer_Generic_02 = 186,
-        RotateOffer_Generic_03 = 187,
-        RotateOffer_Generic_04 = 188,
-        RotateOffer_Generic_05 = 189,
-        RotateOffer_Generic_06 = 190,
-        RotateOffer_Generic_07 = 191,
-        RotateOffer_Generic_08 = 192,
-        RotateOffer_Generic_09 = 193,
-        RotateOffer_Generic_10 = 194,
-        RotateOffer_Generic_11 = 195,
-        RotateOffer_Generic_12 = 196,
-        RotateOffer_Generic_13 = 197,
-        RotateOffer_Generic_14 = 198,
-        RotateOffer_Generic_15 = 199,
-        RotateOffer_Generic_16 = 200,
-        RotateOffer_Generic_17 = 201,
-        RotateOffer_Generic_18 = 202,
-        RotateOffer_Generic_19 = 203,
-        RotateOffer_Generic_20 = 204,
-        RotateOffer_NormalCleaningSet_08B = 205,
-        RotateOffer_NormalCleaningSet_09B = 206,
-        RotateOffer_NormalCleaningSet_06B = 207,
-        RotateOffer_NormalCleaningSet_07B = 208,
-        RotateOffer_NormalLampSet_07B = 209,
-        RealMoney_SeasonPassPremium = 210,
-        RotateOffer_NormalGameplayGlovesSet_07_B = 211,
-        RotateOffer_NormalGargenToolSet_09_B = 212,
-        RotateOffer_NormalGargenToolSet_10_B = 213,
-        RotateOffer_NormalDetergentSet_09_B = 214,
-        RotateOffer_NormalCleaningSet_09_B = 215,
-        RotateOffer_NormalToolsSet_07_B = 216,
-        RotateOffer_NormalToolsSet_08_B = 217,
-        RotateOffer_NormalGargenToolSet_06_B = 218,
-        RotateOffer_NormalGargenToolSet_07_B = 219,
-        RotateOffer_NormalCleaningSet_07_B = 220,
-        RotateOffer_NormalToolsSet_05_B = 221,
-        RotateOffer_NormalToolsSet_06_B = 222,
-        RotateOffer_NormalSeedBagSet_03_B = 223,
-        RotateOffer_NormalOrangeFlowerSet_01_B = 224,
-        RotateOffer_NormalWoodSet_03_B = 225,
-        RotateOffer_NormalLampSet_07_B = 226,
-        RotateOffer_NormalFlowerSet_05_B = 227,
-        RotateOffer_NormalFlowerSet_06_B = 228,
-        RotateOffer_NormalFlowerSet_07_B = 229,
-        RotateOffer_PermanentSpawnerVaseSet_01_B = 230,
-        RotateOffer_PermanentSpawnerToyCarSet_02_B = 231,
-        RotateOffer_NormalMasonry_02_B = 232,
-        RotateOffer_NormalMasonryTools_01_B = 233,
-        RotateOffer_NormalMasonryTools_02_B = 234,
-        RotateOffer_NormalGameplayGlovesSet_06_B = 235,
-        RotateOffer_NormalGoldRoot_01 = 236,
-        RotateOffer_NormalPlantedFlower_01 = 237,
-        RotateOffer_NormalPlantedFlower_02 = 238,
-        RotateOffer_NormalPlantedFlower_03 = 239,
-        RotateOffer_NormalPlantedFlower_04 = 240,
-        RotateOffer_NormalPlantedFlower_05 = 241,
-        RotateOffer_NormalGargenToolSet_12 = 242,
-        RotateOffer_NormalGargenToolSet_13 = 243,
-        RedChest_01 = 244,
-        BrownChest_01 = 245,
-        FancyBlueChest_01 = 246,
-        RealMoney_CurrencyBank = 247,
-        RotateOffer_NormalGameplayScrewsSet_08 = 248,
-        RotateOffer_NormalGameplayScrewsSet_09 = 249,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_01 = 250,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_02 = 251,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_03 = 252,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_04 = 253,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_05 = 254,
-        RotateOffer_NormalMaintenanceRoomValuablesChain_06 = 255,
-        RotateOffer_NormalMaintenanceRoomCutleryChain_01 = 256,
-        RotateOffer_NormalMaintenanceRoomCutleryChain_02 = 257,
-        RotateOffer_NormalMaintenanceRoomCutleryChain_03 = 258,
-        RotateOffer_NormalMaintenanceRoomCutleryChain_04 = 259,
-        RotateOffer_NormalConservatoryExoticPlants_01 = 260,
-        RotateOffer_NormalConservatoryExoticPlants_02 = 261,
-        RotateOffer_NormalConservatoryExoticPlants_03 = 262,
-        RotateOffer_NormalConservatoryExoticPlants_04 = 263,
-        RotateOffer_NormalLighthouseShinythings_01 = 264,
-        RotateOffer_NormalLighthouseShinythings_02 = 265,
-        RotateOffer_NormalLighthouseShinythings_03 = 266,
-        RotateOffer_NormalLighthouseShinythings_04 = 267,
-        RotateOffer_NormalWorkbench_01 = 268,
-        RotateOffer_NormalWorkbench_02 = 269,
-        RotateOffer_NormalSewingkit_01 = 270,
-        RotateOffer_NormalSewingTools_01 = 271,
-        RotateOffer_NormalSewingTools_02 = 272,
-        RotateOffer_NormalSewingTools_03 = 273,
-        RotateOffer_NormalSewingTools_04 = 274,
-        RotateOffer_NormalSewingTools_05 = 275,
-        RotateOffer_NormalSewingTools_06 = 276,
-        RotateOffer_NormalFabric_01 = 277,
-        RotateOffer_NormalFabric_02 = 278,
-        RotateOffer_NormalFabric_03 = 279,
-        RotateOffer_NormalMaintenanceTools_01 = 280,
-        RotateOffer_NormalMaintenanceTools_02 = 281,
-        RotateOffer_NormalMaintenanceTools_03 = 282,
-        RotateOffer_NormalMaintenanceTools_04 = 283,
-        RotateOffer_NormalMaintenanceTools_05 = 284,
-        RotateOffer_NormalMaintenanceMaterials_01 = 285,
-        RotateOffer_NormalMaintenanceMaterials_02 = 286,
-        RotateOffer_NormalMaintenanceMaterials_03 = 287,
-        RotateOffer_NormalMasonry_06 = 288,
-        RotateOffer_NormalPlantedFlower_06 = 289,
-        DiamondItem_ItemAdd = 291,
-        RotateOffer_BoosterHourglass = 293,
-        RotateOffer_BoosterTimeskip_01 = 294,
-        RotateOffer_BoosterScissors = 295,
-        RotateOffer_NormalOrangeFlowerSet_02 = 296,
-        RotateOffer_NormalWoodSet_04 = 297,
-        RotateOffer_PermanentSpawnerToolboxSet_03 = 298,
-        RotateOffer_PermanentSpawnerGardenToolBarrel_03 = 299,
-        RotateOffer_PermanentSpawnerWorkbench_01 = 300,
-        RotateOffer_PermanentSpawnerWorkbench_02 = 301,
-        RotateOffer_PermanentSpawnerWorkbench_03 = 302,
-        RotateOffer_PermanentSpawnerSewingkit_01 = 303,
-        RotateOffer_PermanentSpawnerSewingkit_02 = 304,
-        RotateOffer_NormalMaintenanceTools_06 = 305,
-        RotateOffer_NormalMaintenanceTools_07 = 306,
-        RotateOffer_NormalStudyNumbers_01 = 307,
-        RotateOffer_NormalStudyNumbers_02 = 308,
-        RotateOffer_NormalStudyNumbers_03 = 309,
-        RotateOffer_NormalStudyNumbers_04 = 310,
-        RotateOffer_NormalStudyNumbers_05 = 311,
-        RotateOffer_NormalStudyNumbers_06 = 312,
-        RotateOffer_NormalSaunaCharredWood_01 = 313,
-        RotateOffer_NormalDogAreaWood_01 = 314,
-        RotateOffer_NormalDogAreaWood_02 = 315,
-        RotateOffer_NormalDogAreaWood_03 = 316,
-        RotateOffer_NormalNails_01 = 317,
-        RotateOffer_NormalNails_02 = 318,
-        RotateOffer_NormalNails_03 = 319,
-        RotateOffer_NormalNails_04 = 320,
-        RotateOffer_NormalNails_05 = 321,
-        RotateOffer_StoneCan_01 = 322,
-        RotateOffer_StoneCan_02 = 323,
-        DiamondItem_ItemAdd_02 = 324,
-        TertiaryEnergyItem_ItemRecharge = 365,
-        RotateOffer_NormalHideoutNutsandBolts_01 = 325,
-        RotateOffer_NormalHideoutNutsandBolts_02 = 326,
-        RotateOffer_NormalHideoutNutsandBolts_03 = 327,
-        RotateOffer_NormalHideoutNutsandBolts_04 = 328,
-        RotateOffer_NormalHideoutNutsandBolts_05 = 329,
-        RotateOffer_NormalHideoutNutsandBolts_06 = 330,
-        RotateOffer_NormalHideoutLockPick_01 = 331,
-        RotateOffer_NormalHideoutLockPick_02 = 332,
-        RotateOffer_NormalHideoutLockPick_03 = 333,
-        RotateOffer_NormalHideoutLockPick_04 = 334,
-        RotateOffer_NormalHideoutLockPick_05 = 335,
-        RotateOffer_NormalHideoutLockPick_06 = 336,
-        RotateOffer_NormalHideoutMagnifier_01 = 337,
-        RotateOffer_NormalButterfly_01 = 338,
-        RotateOffer_NormalButterfly_02 = 339,
-        RotateOffer_NormalButterfly_03 = 340,
-        RotateOffer_NormalButterfly_04 = 341,
-        RotateOffer_NormalButterfly_05 = 342,
-        RotateOffer_NormalCarHoodOrnament_01 = 343,
-        RotateOffer_NormalCarHoodOrnament_02 = 344,
-        RotateOffer_NormalMosaic_01 = 345,
-        RotateOffer_NormalMosaic_02 = 346,
-        RotateOffer_NormalSeedBagEmpty_01 = 347,
-        RotateOffer_NormalThread_01 = 348,
-        RotateOffer_NormalBottle_01 = 349,
-        RotateOffer_NormalBottle_02 = 350,
-        RotateOffer_NormalMoth_01 = 351,
-        RotateOffer_NormalMoth_02 = 352,
-        RotateOffer_NormalMoth_03 = 353,
-        RotateOffer_NormalDogAreaCarpenterTools_01 = 354,
-        RotateOffer_NormalDogAreaCarpenterTools_02 = 355,
-        RotateOffer_StartSeedBag_01 = 356,
-        RotateOffer_StartSeedBag_02 = 357,
-        RotateOffer_StartOrangeFlower_01 = 358,
-        RotateOffer_StartOrangeFlower_02 = 359,
-        RotateOffer_StartPaintCanSet_01 = 360,
-        RotateOffer_StartPaintCanSet_02 = 361,
-        RotateOffer_NormalSaunaAreaWood_01 = 362,
-        RotateOffer_NormalSaunaAreaWood_02 = 363,
-        RotateOffer_NormalSaunaAreaWood_03 = 364,
-        RotateOffer_NormalWatering_01 = 366,
-        RotateOffer_NormalWatering_02 = 367,
-        RotateOffer_NormalWatering_03 = 368,
-        RotateOffer_NormalWatering_04 = 369,
-        RotateOffer_NormalWatering_05 = 370,
-        RotateOffer_NormalWatering_06 = 371,
-        RotateOffer_DiningBadNote_01 = 372,
-        RotateOffer_DiningBadNote_02 = 373,
-        RotateOffer_DiningBadNote_03 = 374,
-        RotateOffer_DiningBadNote_04 = 375,
-        RotateOffer_DiningPureNote_01 = 376,
-        RotateOffer_DiningPureNote_02 = 377,
-        RotateOffer_DiningPureNote_03 = 378,
-        RotateOffer_DiningPureNote_04 = 379,
-        RotateOffer_DiningPureNote_05 = 380,
-        RotateOffer_NormalFabric_04 = 381,
-        RotateOffer_NormalFabric_05 = 382,
-        RotateOffer_NormalMaintenanceTools_08 = 383,
-        RotateOffer_NormalMaintenanceTools_09 = 384,
-        RotateOffer_NormalMaintenanceMaterials_04 = 385,
-        RotateOffer_NormalConservatoryExoticPlants_05 = 386,
-        RotateOffer_NormalLighthouseShinythings_05 = 387,
-        RotateOffer_NormalLighthouseShinythings_06 = 388,
-        RotateOffer_NormalStudyNumbers_07 = 389,
-        RotateOffer_NormalStudyNumbers_08 = 390,
-        RotateOffer_NormalSaunaAreaWood_04 = 391,
-        RotateOffer_StoneCan_03 = 392,
-        RotateOffer_StoneCan_04 = 393,
-        RotateOffer_BathroomTools_01 = 394,
-        RotateOffer_BathroomMaterials_01 = 395,
-        RotateOffer_BathroomMaterials_02 = 396,
-        RotateOffer_BathroomMaterials_03 = 397,
-        RotateOffer_Gallery_01 = 398,
-        RotateOffer_Gallery_02 = 399,
-        RotateOffer_Gallery_03 = 400,
-        RotateOffer_Gallery_04 = 401,
-        RotateOffer_Gallery_05 = 402,
-        RotateOffer_Gallery_06 = 403,
-        RotateOffer_Gallery_07 = 404,
-        RotateOffer_Gallery_08 = 405,
-        RotateOffer_Gallery_09 = 406,
-        RotateOffer_Gallery_10 = 407,
-        RealMoney_GemsBag_07 = 408,
-        RealMoney_GemsBag_08 = 409,
-        RotateOffer_Landing_01 = 410,
-        RotateOffer_Landing_02 = 411,
-        RotateOffer_Landing_03 = 412,
-        RotateOffer_Landing_04 = 413,
-        RotateOffer_Landing_05 = 414,
-        RotateOffer_Landing_06 = 415,
-        RotateOffer_Landing_07 = 416,
-        RotateOffer_Landing_08 = 417,
-        RotateOffer_Landing_09 = 418,
-        RotateOffer_Landing_10 = 419,
-        RotateOffer_Landing_11 = 420,
-        RotateOffer_Landing_12 = 421,
-        RotateOffer_Landing_13 = 422,
-        RotateOffer_Landing_14 = 423,
-        RotateOffer_Landing_15 = 424,
-        RotateOffer_Landing_16 = 425,
-        RotateOffer_Landing_17 = 426,
-        RotateOffer_Landing_18 = 427,
-        RotateOffer_Landing_19 = 428,
-        RotateOffer_Landing_20 = 429,
-        RotateOffer_Landing_21 = 430,
-        RotateOffer_Landing_22 = 431,
-        RotateOffer_Landing_23 = 432,
-        RotateOffer_Landing_24 = 433,
-        RotateOffer_Landing_25 = 434,
-        RotateOffer_Landing_26 = 435,
-        RotateOffer_Landing_27 = 436,
-        RotateOffer_Landing_28 = 437,
-        RotateOffer_Landing_29 = 438,
-        RotateOffer_Landing_30 = 439,
-        RotateOffer_Landing_31 = 440,
-        RotateOffer_Landing_32 = 441,
-        RotateOffer_Landing_33 = 442,
-        RotateOffer_Landing_34 = 443,
-        RotateOffer_Landing_35 = 444,
-        RotateOffer_Landing_36 = 445,
-        RotateOffer_Landing_37 = 446,
-        RotateOffer_Landing_38 = 447,
-        RotateOffer_Landing_39 = 448,
-        RotateOffer_Landing_40 = 449,
-        RotateOffer_Landing_41 = 450,
-        RotateOffer_Landing_42 = 451,
-        RotateOffer_Landing_43 = 452,
-        RotateOffer_Landing_44 = 453,
-        RotateOffer_Landing_45 = 454,
-        RotateOffer_Landing_46 = 455,
-        RotateOffer_Landing_47 = 456,
-        RotateOffer_Landing_48 = 457,
-        RotateOffer_Landing_49 = 458,
-        RotateOffer_Landing_50 = 459,
-        RotateOffer_Landing_51 = 460,
-        RotateOffer_Landing_52 = 461,
-        RotateOffer_Landing_53 = 462,
-        RotateOffer_Landing_54 = 463,
-        RotateOffer_Landing_55 = 464,
-        RotateOffer_Landing_56 = 465,
-        RotateOffer_Landing_57 = 466,
-        RotateOffer_Landing_58 = 467,
-        RotateOffer_Landing_59 = 468,
-        RotateOffer_Landing_60 = 469,
-        RotateOffer_Landing_61 = 470,
-        RotateOffer_Landing_62 = 471,
-        RotateOffer_Landing_63 = 472,
-        RotateOffer_Landing_64 = 473,
-        RotateOffer_Landing_65 = 474,
-        RotateOffer_Landing_66 = 475,
-        RotateOffer_Landing_67 = 476,
-        RotateOffer_Landing_68 = 477,
-        RotateOffer_Landing_69 = 478,
-        RotateOffer_Landing_70 = 479,
-        RotateOffer_Landing_71 = 480,
-        RotateOffer_Landing_72 = 481,
-        RotateOffer_Landing_73 = 482,
-        RotateOffer_Landing_74 = 483,
-        RotateOffer_Landing_75 = 484,
-        RotateOffer_Landing_76 = 485,
-        RotateOffer_Landing_77 = 486,
-        RotateOffer_Landing_78 = 487,
-        RotateOffer_Landing_79 = 488,
-        RotateOffer_Landing_80 = 489,
-        RotateOffer_Landing_81 = 490,
-        RotateOffer_Landing_82 = 491,
-        RotateOffer_Landing_83 = 492,
-        RotateOffer_Landing_84 = 493,
-        RotateOffer_Landing_85 = 494,
-        RotateOffer_Landing_86 = 495,
-        RotateOffer_Landing_87 = 496,
-        RotateOffer_Landing_88 = 497,
-        RotateOffer_Landing_89 = 498,
-        RotateOffer_Landing_90 = 499,
-        RotateOffer_Landing_91 = 500,
-        RotateOffer_Landing_92 = 501,
-        RotateOffer_Landing_93 = 502,
-        RotateOffer_Landing_94 = 503,
-        RotateOffer_Landing_95 = 504,
-        RotateOffer_Landing_96 = 505,
-        RotateOffer_Landing_97 = 506,
-        RotateOffer_Landing_98 = 507,
-        RotateOffer_Landing_99 = 508,
-        RotateOffer_Landing_100 = 509,
-        RotateOffer_Landing_101 = 510,
-        RotateOffer_Landing_102 = 511,
-        RotateOffer_Landing_103 = 512,
-        RotateOffer_Landing_104 = 513,
-        RotateOffer_Landing_105 = 514,
-        RotateOffer_Landing_106 = 515,
-        RotateOffer_Landing_107 = 516,
-        RotateOffer_Landing_108 = 517,
-        RotateOffer_Landing_109 = 518,
-        RotateOffer_Landing_110 = 519,
-        RotateOffer_Landing_111 = 520,
-        RotateOffer_Landing_112 = 521,
-        RotateOffer_Landing_113 = 522,
-        RotateOffer_Landing_114 = 523,
-        RotateOffer_Landing_115 = 524,
-        RotateOffer_Landing_116 = 525,
-        RotateOffer_Landing_117 = 526,
-        RotateOffer_Landing_118 = 527,
-        RotateOffer_Landing_119 = 528,
-        RotateOffer_Landing_120 = 529,
-        RotateOffer_Landing_121 = 530,
-        RotateOffer_Landing_122 = 531,
-        RotateOffer_Landing_123 = 532,
-        RotateOffer_Landing_124 = 533,
-        RotateOffer_Landing_125 = 534,
-        RotateOffer_Landing_126 = 535,
-        RotateOffer_Landing_127 = 536,
-        RotateOffer_Landing_128 = 537,
-        RotateOffer_Landing_129 = 538,
-        RotateOffer_Landing_130 = 539,
-        RotateOffer_Landing_131 = 540,
-        RotateOffer_Landing_132 = 541,
-        RotateOffer_Landing_133 = 542,
-        RotateOffer_Landing_134 = 543,
-        RotateOffer_Landing_135 = 544,
-        RotateOffer_Landing_136 = 545,
-        RotateOffer_Landing_137 = 546,
-        RotateOffer_Landing_138 = 547,
-        RotateOffer_Landing_139 = 548,
-        RotateOffer_Landing_140 = 549,
-        RotateOffer_Landing_141 = 550,
-        RotateOffer_Landing_142 = 551,
-        RotateOffer_LandingBox_1 = 552,
-        RotateOffer_LandingBox_2 = 553,
-        RotateOffer_LandingBox_3 = 554,
-        RotateOffer_LandingBox_4 = 555,
-        RotateOffer_LandingBox_5 = 556,
-        RotateOffer_LandingBox_6 = 557,
-        RotateOffer_LandingBox_7 = 558,
-        RotateOffer_LandingBox_8 = 559,
-        RotateOffer_LandingBox_9 = 560,
-        RotateOffer_LandingBox_10 = 561,
-        RotateOffer_LandingBox_11 = 562,
-        RotateOffer_LandingBox_12 = 563,
-        RotateOffer_LandingBox_13 = 564,
-        RotateOffer_LandingBox_14 = 565,
-        RotateOffer_LandingBox_15 = 566,
-        RotateOffer_LandingBox_16 = 567,
-        RotateOffer_LandingBox_17 = 568,
-        RotateOffer_LandingBox_18 = 569,
-        RotateOffer_LandingBox_19 = 570,
-        RotateOffer_LandingBox_20 = 571,
-        RotateOffer_LandingBox_21 = 572,
-        RotateOffer_LandingBox_22 = 573,
-        RotateOffer_LandingBox_23 = 574,
-        RotateOffer_LandingBox_24 = 575,
-        RotateOffer_LandingBox_25 = 576,
-        RotateOffer_LandingBox_26 = 577,
-        RotateOffer_LandingBox_27 = 578,
-        RotateOffer_LandingBox_28 = 579,
-        RotateOffer_LandingBox_29 = 580,
-        RotateOffer_LandingBox_30 = 581,
-        RotateOffer_LandingBox_31 = 582,
-        RotateOffer_LandingBox_32 = 583,
-        RotateOffer_LandingBox_33 = 584,
-        RotateOffer_LandingBox_34 = 585,
-        RotateOffer_LandingBox_35 = 586,
-        RotateOffer_LandingBox_36 = 587,
-        RotateOffer_LandingBox_37 = 588,
-        RotateOffer_LandingBox_38 = 589,
-        RotateOffer_LandingBox_39 = 590,
-        RotateOffer_LandingBox_40 = 591,
-        RotateOffer_LandingBox_41 = 592,
-        RotateOffer_LandingBox_42 = 593,
-        RotateOffer_LandingBox_43 = 594,
-        RotateOffer_LandingBox_44 = 595,
-        RotateOffer_LandingBox_45 = 596,
-        RotateOffer_LandingBox_46 = 597,
-        RotateOffer_LandingBox_47 = 598,
-        RotateOffer_LandingBox_48 = 599,
-        RotateOffer_LandingBox_49 = 600,
-        RotateOffer_LandingBox_50 = 601,
-        RotateOffer_LandingBox_51 = 602,
-        RotateOffer_LandingBox_52 = 603,
-        RotateOffer_LandingBox_53 = 604,
-        RotateOffer_LandingBox_54 = 605,
-        RotateOffer_LandingBox_55 = 606,
-        RotateOffer_LandingBox_56 = 607,
-        RotateOffer_LandingBox_57 = 608,
-        RotateOffer_LandingBox_58 = 609,
-        RotateOffer_LandingBox_59 = 610,
-        RotateOffer_LandingBox_60 = 611,
-        RotateOffer_LandingBox_61 = 612,
-        RotateOffer_LandingBox_62 = 613,
-        RotateOffer_LandingBox_63 = 614,
-        RotateOffer_LandingBox_64 = 615,
-        RotateOffer_LandingBox_65 = 616,
-        RotateOffer_LandingBox_66 = 617,
-        RotateOffer_LandingBox_67 = 618,
-        RotateOffer_LandingBox_68 = 619,
-        RotateOffer_LandingBox_69 = 620,
-        RotateOffer_LandingBox_70 = 621,
-        RotateOffer_Lounge_01 = 622,
-        RotateOffer_Lounge_02 = 623,
-        RotateOffer_Lounge_03 = 624,
-        Ws_RealMoney_GemsBag_01 = 625,
-        Ws_RealMoney_GemsBag_02 = 626,
-        Ws_RealMoney_GemsBag_03 = 627,
-        Ws_RealMoney_GemsBag_04 = 628,
-        Ws_RealMoney_GemsBag_05 = 629,
-        Ws_RealMoney_GemsBag_06 = 630,
-        Ws_RealMoney_CoinsBag_01 = 631,
-        Ws_RealMoney_CoinsBag_02 = 632,
-        Ws_RealMoney_CoinsBag_03 = 633,
-        Ws_RealMoney_CoinsBag_04 = 634,
-        Ws_RealMoney_CoinsBag_05 = 635,
-        Ws_RealMoney_CoinsBag_06 = 636,
-        New_RotateOffer_BathroomMaterials_03_1_Diamonds_MergeChainItemNeeded = 637,
-        New_RotateOffer_BathroomMaterials_03_2_Diamonds_MergeChainItemNeeded = 638,
-        New_RotateOffer_BathroomMaterials_04_1_Diamonds_MergeChainItemNeeded = 639,
-        New_RotateOffer_BathroomMaterials_04_2_Diamonds_MergeChainItemNeeded = 640,
-        New_RotateOffer_BathroomMaterials_05_1_Diamonds_MergeChainItemNeeded = 641,
-        New_RotateOffer_BathroomMaterials_05_2_Diamonds_MergeChainItemNeeded = 642,
-        New_RotateOffer_BathroomMaterials_06_1_Diamonds_MergeChainItemNeeded = 643,
-        New_RotateOffer_BathroomMaterials_07_1_Diamonds_MergeChainItemNeeded = 644,
-        New_RotateOffer_BathroomMaterials_08_1_Diamonds_MergeChainItemNeeded = 645,
-        New_RotateOffer_BathroomMaterials_09_1_Diamonds_MergeChainItemNeeded = 646,
-        New_RotateOffer_BathroomMaterials_10_1_Diamonds_MergeChainItemNeeded = 647,
-        New_RotateOffer_BathroomMaterials_11_1_Diamonds_MergeChainItemNeeded = 648,
-        New_RotateOffer_BathroomTools_01_1_Diamonds_MergeChainItemNeeded = 649,
-        New_RotateOffer_BathroomTools_02_1_Diamonds_MergeChainItemNeeded = 650,
-        New_RotateOffer_BathroomTools_03_1_Diamonds_MergeChainItemNeeded = 651,
-        New_RotateOffer_BathroomTools_04_1_Diamonds_MergeChainItemNeeded = 652,
-        New_RotateOffer_BathroomTools_05_1_Diamonds_MergeChainItemNeeded = 653,
-        New_RotateOffer_Bottle_01_1_Diamonds_MergeChainItemNeeded = 654,
-        New_RotateOffer_Bottle_01_2_Diamonds_MergeChainItemNeeded = 655,
-        New_RotateOffer_Bottle_02_1_Diamonds_MergeChainItemNeeded = 656,
-        New_RotateOffer_Bottle_02_2_Diamonds_MergeChainItemNeeded = 657,
-        New_RotateOffer_Bottle_03_1_Diamonds_MergeChainItemNeeded = 658,
-        New_RotateOffer_Bottle_03_2_Diamonds_MergeChainItemNeeded = 659,
-        New_RotateOffer_Bottle_04_1_Diamonds_MergeChainItemNeeded = 660,
-        New_RotateOffer_Bottle_04_2_Diamonds_MergeChainItemNeeded = 661,
-        New_RotateOffer_Bottle_05_1_Diamonds_MergeChainItemNeeded = 662,
-        New_RotateOffer_Bottle_05_2_Diamonds_MergeChainItemNeeded = 663,
-        New_RotateOffer_Bottle_06_1_Diamonds_MergeChainItemNeeded = 664,
-        New_RotateOffer_Bottle_06_2_Diamonds_MergeChainItemNeeded = 665,
-        New_RotateOffer_Bottle_07_1_Diamonds_MergeChainItemNeeded = 666,
-        New_RotateOffer_Bottle_07_2_Diamonds_MergeChainItemNeeded = 667,
-        New_RotateOffer_Bottle_08_1_Diamonds_MergeChainItemNeeded = 668,
-        New_RotateOffer_Bottle_08_2_Diamonds_MergeChainItemNeeded = 669,
-        New_RotateOffer_Butterfly_01_1_Diamonds_MergeChainItemNeeded = 670,
-        New_RotateOffer_Butterfly_02_1_Diamonds_MergeChainItemNeeded = 671,
-        New_RotateOffer_Butterfly_03_1_Diamonds_MergeChainItemNeeded = 672,
-        New_RotateOffer_Butterfly_03_2_Diamonds_MergeChainItemNeeded = 673,
-        New_RotateOffer_Butterfly_04_1_Diamonds_MergeChainItemNeeded = 674,
-        New_RotateOffer_Butterfly_04_2_Diamonds_MergeChainItemNeeded = 675,
-        New_RotateOffer_Butterfly_05_1_Diamonds_MergeChainItemNeeded = 676,
-        New_RotateOffer_Butterfly_05_2_Diamonds_MergeChainItemNeeded = 677,
-        New_RotateOffer_Butterfly_06_1_Diamonds_MergeChainItemNeeded = 678,
-        New_RotateOffer_CarHoodOrnament_01_1_Diamonds_MergeChainItemNeeded = 679,
-        New_RotateOffer_CarHoodOrnament_02_1_Diamonds_MergeChainItemNeeded = 680,
-        New_RotateOffer_CarHoodOrnament_03_1_Diamonds_MergeChainItemNeeded = 681,
-        New_RotateOffer_CarHoodOrnament_04_1_Diamonds_MergeChainItemNeeded = 682,
-        New_RotateOffer_CarHoodOrnament_05_1_Diamonds_MergeChainItemNeeded = 683,
-        New_RotateOffer_CarHoodOrnament_06_1_Diamonds_MergeChainItemNeeded = 684,
-        New_RotateOffer_CarHoodOrnament_07_1_Diamonds_MergeChainItemNeeded = 685,
-        New_RotateOffer_CarHoodOrnament_08_1_Diamonds_MergeChainItemNeeded = 686,
-        New_RotateOffer_CarHoodOrnament_09_1_Diamonds_MergeChainItemNeeded = 687,
-        New_RotateOffer_CarHoodOrnament_10_1_Diamonds_MergeChainItemNeeded = 688,
-        New_RotateOffer_CarHoodOrnament_11_1_Diamonds_MergeChainItemNeeded = 689,
-        New_RotateOffer_Cleaning_01_1_Diamonds_MergeChainItemNeeded = 690,
-        New_RotateOffer_Cleaning_02_1_Diamonds_MergeChainItemNeeded = 691,
-        New_RotateOffer_Cleaning_03_1_Diamonds_MergeChainItemNeeded = 692,
-        New_RotateOffer_Cleaning_04_1_Diamonds_MergeChainItemNeeded = 693,
-        New_RotateOffer_Cleaning_05_1_Diamonds_MergeChainItemNeeded = 694,
-        New_RotateOffer_Cleaning_06_1_Diamonds_MergeChainItemNeeded = 695,
-        New_RotateOffer_Cleaning_07_1_Diamonds_MergeChainItemNeeded = 696,
-        New_RotateOffer_Cleaning_08_1_Diamonds_MergeChainItemNeeded = 697,
-        New_RotateOffer_Cleaning_09_1_Diamonds_MergeChainItemNeeded = 698,
-        New_RotateOffer_Cleaning_10_1_Diamonds_MergeChainItemNeeded = 699,
-        New_RotateOffer_Cleaning_11_1_Diamonds_MergeChainItemNeeded = 700,
-        New_RotateOffer_Cleaning_12_1_Diamonds_MergeChainItemNeeded = 701,
-        New_RotateOffer_Cleaning_13_1_Diamonds_MergeChainItemNeeded = 702,
-        New_RotateOffer_ConservatoryExoticPlants_01_1_Diamonds_MergeChainItemNeeded = 703,
-        New_RotateOffer_ConservatoryExoticPlants_02_1_Diamonds_MergeChainItemNeeded = 704,
-        New_RotateOffer_ConservatoryExoticPlants_03_1_Diamonds_MergeChainItemNeeded = 705,
-        New_RotateOffer_ConservatoryExoticPlants_04_1_Diamonds_MergeChainItemNeeded = 706,
-        New_RotateOffer_ConservatoryExoticPlants_05_1_Diamonds_MergeChainItemNeeded = 707,
-        New_RotateOffer_ConservatoryExoticPlants_06_1_Diamonds_MergeChainItemNeeded = 708,
-        New_RotateOffer_ConservatoryExoticPlants_07_1_Diamonds_MergeChainItemNeeded = 709,
-        New_RotateOffer_ConservatoryExoticPlants_08_1_Diamonds_MergeChainItemNeeded = 710,
-        New_RotateOffer_ConservatoryExoticPlants_09_1_Diamonds_MergeChainItemNeeded = 711,
-        New_RotateOffer_Detergent_01_1_Diamonds_MergeChainItemNeeded = 712,
-        New_RotateOffer_Detergent_02_1_Diamonds_MergeChainItemNeeded = 713,
-        New_RotateOffer_Detergent_03_1_Diamonds_MergeChainItemNeeded = 714,
-        New_RotateOffer_Detergent_04_1_Diamonds_MergeChainItemNeeded = 715,
-        New_RotateOffer_Detergent_05_1_Diamonds_MergeChainItemNeeded = 716,
-        New_RotateOffer_Detergent_06_1_Diamonds_MergeChainItemNeeded = 717,
-        New_RotateOffer_Detergent_07_1_Diamonds_MergeChainItemNeeded = 718,
-        New_RotateOffer_Detergent_08_1_Diamonds_MergeChainItemNeeded = 719,
-        New_RotateOffer_DiningBadNote_01_1_Diamonds_MergeChainItemNeeded = 720,
-        New_RotateOffer_DiningBadNote_02_1_Diamonds_MergeChainItemNeeded = 721,
-        New_RotateOffer_DiningBadNote_03_1_Diamonds_MergeChainItemNeeded = 722,
-        New_RotateOffer_DiningBadNote_04_1_Diamonds_MergeChainItemNeeded = 723,
-        New_RotateOffer_DiningBadNote_05_1_Diamonds_MergeChainItemNeeded = 724,
-        New_RotateOffer_DiningBadNote_06_1_Diamonds_MergeChainItemNeeded = 725,
-        New_RotateOffer_DiningBadNote_07_1_Diamonds_MergeChainItemNeeded = 726,
-        New_RotateOffer_DiningBadNote_08_1_Diamonds_MergeChainItemNeeded = 727,
-        New_RotateOffer_DiningPureNote_01_1_Diamonds_MergeChainItemNeeded = 728,
-        New_RotateOffer_DiningPureNote_02_1_Diamonds_MergeChainItemNeeded = 729,
-        New_RotateOffer_DiningPureNote_03_1_Diamonds_MergeChainItemNeeded = 730,
-        New_RotateOffer_DiningPureNote_04_1_Diamonds_MergeChainItemNeeded = 731,
-        New_RotateOffer_DiningPureNote_05_1_Diamonds_MergeChainItemNeeded = 732,
-        New_RotateOffer_DiningPureNote_06_1_Diamonds_MergeChainItemNeeded = 733,
-        New_RotateOffer_DiningPureNote_07_1_Diamonds_MergeChainItemNeeded = 734,
-        New_RotateOffer_DiningPureNote_08_1_Diamonds_MergeChainItemNeeded = 735,
-        New_RotateOffer_DiningPureNote_09_1_Diamonds_MergeChainItemNeeded = 736,
-        New_RotateOffer_DiningPureNote_10_1_Diamonds_MergeChainItemNeeded = 737,
-        New_RotateOffer_DiningPureNote_11_1_Diamonds_MergeChainItemNeeded = 738,
-        New_RotateOffer_DogAreaCarpenterTools_01_1_Diamonds_MergeChainItemNeeded = 739,
-        New_RotateOffer_DogAreaCarpenterTools_02_1_Diamonds_MergeChainItemNeeded = 740,
-        New_RotateOffer_DogAreaCarpenterTools_03_1_Diamonds_MergeChainItemNeeded = 741,
-        New_RotateOffer_DogAreaCarpenterTools_04_1_Diamonds_MergeChainItemNeeded = 742,
-        New_RotateOffer_DogAreaWood_01_1_Diamonds_MergeChainItemNeeded = 743,
-        New_RotateOffer_DogAreaWood_02_1_Diamonds_MergeChainItemNeeded = 744,
-        New_RotateOffer_DogAreaWood_03_1_Diamonds_MergeChainItemNeeded = 745,
-        New_RotateOffer_DogAreaWood_04_1_Diamonds_MergeChainItemNeeded = 746,
-        New_RotateOffer_DogAreaWood_05_1_Diamonds_MergeChainItemNeeded = 747,
-        New_RotateOffer_DogAreaWood_06_1_Diamonds_MergeChainItemNeeded = 748,
-        New_RotateOffer_DogAreaWood_07_1_Diamonds_MergeChainItemNeeded = 749,
-        New_RotateOffer_PermanentSpawnerDrawer_01 = 750,
-        New_RotateOffer_Fabric_01_1_Diamonds_MergeChainItemNeeded = 751,
-        New_RotateOffer_Fabric_02_1_Diamonds_MergeChainItemNeeded = 752,
-        New_RotateOffer_Fabric_03_1_Diamonds_MergeChainItemNeeded = 753,
-        New_RotateOffer_Fabric_04_1_Diamonds_MergeChainItemNeeded = 754,
-        New_RotateOffer_Fabric_05_1_Diamonds_MergeChainItemNeeded = 755,
-        New_RotateOffer_Fabric_06_1_Diamonds_MergeChainItemNeeded = 756,
-        New_RotateOffer_Flower_01_1_Diamonds_MergeChainItemNeeded = 757,
-        New_RotateOffer_Flower_02_1_Diamonds_MergeChainItemNeeded = 758,
-        New_RotateOffer_Flower_03_1_Diamonds_MergeChainItemNeeded = 759,
-        New_RotateOffer_Flower_04_1_Diamonds_MergeChainItemNeeded = 760,
-        New_RotateOffer_Flower_05_1_Diamonds_MergeChainItemNeeded = 761,
-        New_RotateOffer_Flower_06_1_Diamonds_MergeChainItemNeeded = 762,
-        New_RotateOffer_PermanentSpawnerFlowerpot_01 = 763,
-        New_RotateOffer_GalleryDodo_01_1_Diamonds_MergeChainItemNeeded = 764,
-        New_RotateOffer_GalleryDodo_02_1_Diamonds_MergeChainItemNeeded = 765,
-        New_RotateOffer_GalleryDodo_03_1_Diamonds_MergeChainItemNeeded = 766,
-        New_RotateOffer_GalleryExploration_01_1_Diamonds_MergeChainItemNeeded = 767,
-        New_RotateOffer_GalleryExploration_01_2_Diamonds_MergeChainItemNeeded = 768,
-        New_RotateOffer_GalleryExploration_01_3_Diamonds_MergeChainItemNeeded = 769,
-        New_RotateOffer_GalleryExploration_01_4_Diamonds_MergeChainItemNeeded = 770,
-        New_RotateOffer_GalleryExploration_01_5_Diamonds_MergeChainItemNeeded = 771,
-        New_RotateOffer_GalleryExploration_01_6_Diamonds_MergeChainItemNeeded = 772,
-        New_RotateOffer_GalleryExploration_01_7_Diamonds_MergeChainItemNeeded = 773,
-        New_RotateOffer_GalleryExploration_01_8_Diamonds_MergeChainItemNeeded = 774,
-        New_RotateOffer_GalleryExploration_02_1_Diamonds_MergeChainItemNeeded = 775,
-        New_RotateOffer_GalleryExploration_02_2_Diamonds_MergeChainItemNeeded = 776,
-        New_RotateOffer_GalleryExploration_02_3_Diamonds_MergeChainItemNeeded = 777,
-        New_RotateOffer_GalleryExploration_02_4_Diamonds_MergeChainItemNeeded = 778,
-        New_RotateOffer_GalleryExploration_02_5_Diamonds_MergeChainItemNeeded = 779,
-        New_RotateOffer_GalleryExploration_02_6_Diamonds_MergeChainItemNeeded = 780,
-        New_RotateOffer_GalleryExploration_02_7_Diamonds_MergeChainItemNeeded = 781,
-        New_RotateOffer_GalleryExploration_02_8_Diamonds_MergeChainItemNeeded = 782,
-        New_RotateOffer_GalleryExploration_03_1_Diamonds_MergeChainItemNeeded = 783,
-        New_RotateOffer_GalleryExploration_03_2_Diamonds_MergeChainItemNeeded = 784,
-        New_RotateOffer_GalleryExploration_03_3_Diamonds_MergeChainItemNeeded = 785,
-        New_RotateOffer_GalleryExploration_03_4_Diamonds_MergeChainItemNeeded = 786,
-        New_RotateOffer_GalleryExploration_03_5_Diamonds_MergeChainItemNeeded = 787,
-        New_RotateOffer_GalleryExploration_03_6_Diamonds_MergeChainItemNeeded = 788,
-        New_RotateOffer_GalleryExploration_03_7_Diamonds_MergeChainItemNeeded = 789,
-        New_RotateOffer_GalleryExploration_03_8_Diamonds_MergeChainItemNeeded = 790,
-        New_RotateOffer_GalleryExploration_04_1_Diamonds_MergeChainItemNeeded = 791,
-        New_RotateOffer_GalleryExploration_04_2_Diamonds_MergeChainItemNeeded = 792,
-        New_RotateOffer_GalleryExploration_04_3_Diamonds_MergeChainItemNeeded = 793,
-        New_RotateOffer_GalleryExploration_04_4_Diamonds_MergeChainItemNeeded = 794,
-        New_RotateOffer_GalleryExploration_04_5_Diamonds_MergeChainItemNeeded = 795,
-        New_RotateOffer_GalleryExploration_04_6_Diamonds_MergeChainItemNeeded = 796,
-        New_RotateOffer_GalleryExploration_04_7_Diamonds_MergeChainItemNeeded = 797,
-        New_RotateOffer_GalleryExploration_04_8_Diamonds_MergeChainItemNeeded = 798,
-        New_RotateOffer_GalleryExploration_05_1_Diamonds_MergeChainItemNeeded = 799,
-        New_RotateOffer_GalleryExploration_05_2_Diamonds_MergeChainItemNeeded = 800,
-        New_RotateOffer_GalleryExploration_05_3_Diamonds_MergeChainItemNeeded = 801,
-        New_RotateOffer_GalleryExploration_05_4_Diamonds_MergeChainItemNeeded = 802,
-        New_RotateOffer_GalleryExploration_05_5_Diamonds_MergeChainItemNeeded = 803,
-        New_RotateOffer_GalleryExploration_05_6_Diamonds_MergeChainItemNeeded = 804,
-        New_RotateOffer_GalleryExploration_05_7_Diamonds_MergeChainItemNeeded = 805,
-        New_RotateOffer_GalleryFossil_01_1_Diamonds_MergeChainItemNeeded = 806,
-        New_RotateOffer_GalleryFossil_02_1_Diamonds_MergeChainItemNeeded = 807,
-        New_RotateOffer_GalleryFossil_03_1_Diamonds_MergeChainItemNeeded = 808,
-        New_RotateOffer_GalleryIguana_01_1_Diamonds_MergeChainItemNeeded = 809,
-        New_RotateOffer_GalleryIguana_02_1_Diamonds_MergeChainItemNeeded = 810,
-        New_RotateOffer_GalleryIguana_03_1_Diamonds_MergeChainItemNeeded = 811,
-        New_RotateOffer_GalleryMask_01_1_Diamonds_MergeChainItemNeeded = 812,
-        New_RotateOffer_GalleryMask_02_1_Diamonds_MergeChainItemNeeded = 813,
-        New_RotateOffer_GalleryMask_03_1_Diamonds_MergeChainItemNeeded = 814,
-        New_RotateOffer_GalleryMonster_01_1_Diamonds_MergeChainItemNeeded = 815,
-        New_RotateOffer_GalleryMonster_02_1_Diamonds_MergeChainItemNeeded = 816,
-        New_RotateOffer_GalleryMonster_03_1_Diamonds_MergeChainItemNeeded = 817,
-        New_RotateOffer_GalleryPiranha_01_1_Diamonds_MergeChainItemNeeded = 818,
-        New_RotateOffer_GalleryPiranha_02_1_Diamonds_MergeChainItemNeeded = 819,
-        New_RotateOffer_GalleryPiranha_03_1_Diamonds_MergeChainItemNeeded = 820,
-        New_RotateOffer_GalleryTiger_01_1_Diamonds_MergeChainItemNeeded = 821,
-        New_RotateOffer_GalleryTiger_02_1_Diamonds_MergeChainItemNeeded = 822,
-        New_RotateOffer_GalleryTiger_03_1_Diamonds_MergeChainItemNeeded = 823,
-        New_RotateOffer_GalleryToucan_01_1_Diamonds_MergeChainItemNeeded = 824,
-        New_RotateOffer_GalleryToucan_02_1_Diamonds_MergeChainItemNeeded = 825,
-        New_RotateOffer_GalleryToucan_03_1_Diamonds_MergeChainItemNeeded = 826,
-        New_RotateOffer_GardenBench_01_1_Diamonds_MergeChainItemNeeded = 827,
-        New_RotateOffer_GardenBench_02_1_Diamonds_MergeChainItemNeeded = 828,
-        New_RotateOffer_GardenBench_03_1_Diamonds_MergeChainItemNeeded = 829,
-        New_RotateOffer_GardenBench_04_1_Diamonds_MergeChainItemNeeded = 830,
-        New_RotateOffer_GardenBench_05_1_Diamonds_MergeChainItemNeeded = 831,
-        New_RotateOffer_GardenBench_06_1_Diamonds_MergeChainItemNeeded = 832,
-        New_RotateOffer_GardenBench_07_1_Diamonds_MergeChainItemNeeded = 833,
-        New_RotateOffer_GardenBench_08_1_Diamonds_MergeChainItemNeeded = 834,
-        New_RotateOffer_GardenBench_09_1_Diamonds_MergeChainItemNeeded = 835,
-        New_RotateOffer_GardenGloves_01_1_Diamonds_MergeChainItemNeeded = 836,
-        New_RotateOffer_GardenGloves_02_1_Diamonds_MergeChainItemNeeded = 837,
-        New_RotateOffer_GardenGloves_03_1_Diamonds_MergeChainItemNeeded = 838,
-        New_RotateOffer_GardenGloves_04_1_Diamonds_MergeChainItemNeeded = 839,
-        New_RotateOffer_GardenGloves_05_1_Diamonds_MergeChainItemNeeded = 840,
-        New_RotateOffer_GardenTools_04_1_Diamonds_MergeChainItemNeeded = 841,
-        New_RotateOffer_GardenTools_04_2_Diamonds_MergeChainItemNeeded = 842,
-        New_RotateOffer_GardenTools_05_1_Diamonds_MergeChainItemNeeded = 843,
-        New_RotateOffer_GardenTools_05_2_Diamonds_MergeChainItemNeeded = 844,
-        New_RotateOffer_GardenTools_06_1_Diamonds_MergeChainItemNeeded = 845,
-        New_RotateOffer_GardenTools_06_2_Diamonds_MergeChainItemNeeded = 846,
-        New_RotateOffer_GardenTools_07_1_Diamonds_MergeChainItemNeeded = 847,
-        New_RotateOffer_GardenTools_07_2_Diamonds_MergeChainItemNeeded = 848,
-        New_RotateOffer_GardenTools_08_1_Diamonds_MergeChainItemNeeded = 849,
-        New_RotateOffer_GardenTools_08_2_Diamonds_MergeChainItemNeeded = 850,
-        New_RotateOffer_GardenTools_09_1_Diamonds_MergeChainItemNeeded = 851,
-        New_RotateOffer_GardenTools_09_2_Diamonds_MergeChainItemNeeded = 852,
-        New_RotateOffer_GardenTools_10_1_Diamonds_MergeChainItemNeeded = 853,
-        New_RotateOffer_GardenTools_10_2_Diamonds_MergeChainItemNeeded = 854,
-        New_RotateOffer_GardenTools_11_1_Diamonds_MergeChainItemNeeded = 855,
-        New_RotateOffer_GardenTools_11_2_Diamonds_MergeChainItemNeeded = 856,
-        New_RotateOffer_GardenTools_12_1_Diamonds_MergeChainItemNeeded = 857,
-        New_RotateOffer_GardenTools_13_1_Diamonds_MergeChainItemNeeded = 858,
-        New_RotateOffer_GardenTools_14_1_Diamonds_MergeChainItemNeeded = 859,
-        New_RotateOffer_GoldRoot_01_1_Diamonds_MergeChainItemNeeded = 860,
-        New_RotateOffer_HideoutLockPick_01_1_Diamonds_MergeChainItemNeeded = 861,
-        New_RotateOffer_HideoutLockPick_02_1_Diamonds_MergeChainItemNeeded = 862,
-        New_RotateOffer_HideoutLockPick_03_1_Diamonds_MergeChainItemNeeded = 863,
-        New_RotateOffer_HideoutLockPick_04_1_Diamonds_MergeChainItemNeeded = 864,
-        New_RotateOffer_HideoutLockPick_05_1_Diamonds_MergeChainItemNeeded = 865,
-        New_RotateOffer_HideoutLockPick_06_1_Diamonds_MergeChainItemNeeded = 866,
-        New_RotateOffer_HideoutMagnifier_01_1_Diamonds_MergeChainItemNeeded = 867,
-        New_RotateOffer_HideoutNutsandBolts_01_1_Diamonds_MergeChainItemNeeded = 868,
-        New_RotateOffer_HideoutNutsandBolts_02_1_Diamonds_MergeChainItemNeeded = 869,
-        New_RotateOffer_HideoutNutsandBolts_03_1_Diamonds_MergeChainItemNeeded = 870,
-        New_RotateOffer_HideoutNutsandBolts_04_1_Diamonds_MergeChainItemNeeded = 871,
-        New_RotateOffer_HideoutNutsandBolts_05_1_Diamonds_MergeChainItemNeeded = 872,
-        New_RotateOffer_HideoutNutsandBolts_06_1_Diamonds_MergeChainItemNeeded = 873,
-        New_RotateOffer_HideoutNutsandBolts_07_1_Diamonds_MergeChainItemNeeded = 874,
-        New_RotateOffer_Lamp_01_1_Diamonds_MergeChainItemNeeded = 875,
-        New_RotateOffer_Lamp_02_1_Diamonds_MergeChainItemNeeded = 876,
-        New_RotateOffer_Lamp_03_1_Diamonds_MergeChainItemNeeded = 877,
-        New_RotateOffer_Lamp_04_1_Diamonds_MergeChainItemNeeded = 878,
-        New_RotateOffer_Lamp_05_1_Diamonds_MergeChainItemNeeded = 879,
-        New_RotateOffer_Lamp_06_1_Diamonds_MergeChainItemNeeded = 880,
-        New_RotateOffer_Lamp_07_1_Diamonds_MergeChainItemNeeded = 881,
-        New_RotateOffer_Lamp_08_1_Diamonds_MergeChainItemNeeded = 882,
-        New_RotateOffer_Lamp_09_1_Diamonds_MergeChainItemNeeded = 883,
-        New_RotateOffer_Lamp_10_1_Diamonds_MergeChainItemNeeded = 884,
-        New_RotateOffer_LandingAquarium_01_1_Diamonds_MergeChainItemNeeded = 885,
-        New_RotateOffer_LandingAquarium_02_1_Diamonds_MergeChainItemNeeded = 886,
-        New_RotateOffer_LandingAquarium_03_1_Diamonds_MergeChainItemNeeded = 887,
-        New_RotateOffer_LandingAquarium_04_1_Diamonds_MergeChainItemNeeded = 888,
-        New_RotateOffer_LandingAquarium_05_1_Diamonds_MergeChainItemNeeded = 889,
-        New_RotateOffer_LandingAquarium_06_1_Diamonds_MergeChainItemNeeded = 890,
-        New_RotateOffer_LandingAquarium_07_1_Diamonds_MergeChainItemNeeded = 891,
-        New_RotateOffer_LandingAquarium_08_1_Diamonds_MergeChainItemNeeded = 892,
-        New_RotateOffer_LandingAquarium_09_1_Diamonds_MergeChainItemNeeded = 893,
-        New_RotateOffer_LandingAquarium_10_1_Diamonds_MergeChainItemNeeded = 894,
-        New_RotateOffer_LandingGlassTools_01_1_Diamonds_MergeChainItemNeeded = 895,
-        New_RotateOffer_LandingGlassTools_02_1_Diamonds_MergeChainItemNeeded = 896,
-        New_RotateOffer_LandingGlassTools_03_1_Diamonds_MergeChainItemNeeded = 897,
-        New_RotateOffer_LandingGlassTools_04_1_Diamonds_MergeChainItemNeeded = 898,
-        New_RotateOffer_LandingGlassTools_05_1_Diamonds_MergeChainItemNeeded = 899,
-        New_RotateOffer_LevelDownBoosterScissors_01_1_Diamonds_Level = 900,
-        New_RotateOffer_LevelDownBoosterScissors_01_2_Diamonds_Level = 901,
-        New_RotateOffer_LighthouseShinythings_01_1_Diamonds_MergeChainItemNeeded = 902,
-        New_RotateOffer_LighthouseShinythings_02_1_Diamonds_MergeChainItemNeeded = 903,
-        New_RotateOffer_LighthouseShinythings_03_1_Diamonds_MergeChainItemNeeded = 904,
-        New_RotateOffer_LighthouseShinythings_04_1_Diamonds_MergeChainItemNeeded = 905,
-        New_RotateOffer_LighthouseShinythings_05_1_Diamonds_MergeChainItemNeeded = 906,
-        New_RotateOffer_LighthouseShinythings_06_1_Diamonds_MergeChainItemNeeded = 907,
-        New_RotateOffer_LighthouseShinythings_07_1_Diamonds_MergeChainItemNeeded = 908,
-        New_RotateOffer_LighthouseShinythings_08_1_Diamonds_MergeChainItemNeeded = 909,
-        New_RotateOffer_LighthouseShinythings_09_1_Diamonds_MergeChainItemNeeded = 910,
-        New_RotateOffer_LighthouseShinythings_10_1_Diamonds_MergeChainItemNeeded = 911,
-        New_RotateOffer_LighthouseShinythings_11_1_Diamonds_MergeChainItemNeeded = 912,
-        New_RotateOffer_LighthouseShinythings_12_1_Diamonds_MergeChainItemNeeded = 913,
-        New_RotateOffer_Locket_01_1_Diamonds_MergeChainItemNeeded = 914,
-        New_RotateOffer_Locket_02_1_Diamonds_MergeChainItemNeeded = 915,
-        New_RotateOffer_Locket_03_1_Diamonds_MergeChainItemNeeded = 916,
-        New_RotateOffer_Locket_04_1_Diamonds_MergeChainItemNeeded = 917,
-        New_RotateOffer_Locket_05_1_Diamonds_MergeChainItemNeeded = 918,
-        New_RotateOffer_Lounge_Joker_01_1_Diamonds_CardStackVisible = 919,
-        New_RotateOffer_Lounge_Joker_01_2_Diamonds_CardStackVisible = 920,
-        New_RotateOffer_Lounge_Joker_01_3_Diamonds_CardStackVisible = 921,
-        New_RotateOffer_LoveStory_01_1_Diamonds_MergeChainItemNeeded = 922,
-        New_RotateOffer_LoveStory_02_1_Diamonds_MergeChainItemNeeded = 923,
-        New_RotateOffer_LoveStory_03_1_Diamonds_MergeChainItemNeeded = 924,
-        New_RotateOffer_LoveStory_04_1_Diamonds_MergeChainItemNeeded = 925,
-        New_RotateOffer_LoveStory_05_1_Diamonds_MergeChainItemNeeded = 926,
-        New_RotateOffer_LoveStory_06_1_Diamonds_MergeChainItemNeeded = 927,
-        New_RotateOffer_LoveStory_07_1_Diamonds_MergeChainItemNeeded = 928,
-        New_RotateOffer_LoveStory_08_1_Diamonds_MergeChainItemNeeded = 929,
-        New_RotateOffer_LoveStory_09_1_Diamonds_MergeChainItemNeeded = 930,
-        New_RotateOffer_LoveStory_10_1_Diamonds_MergeChainItemNeeded = 931,
-        New_RotateOffer_LoveStory_11_1_Diamonds_MergeChainItemNeeded = 932,
-        New_RotateOffer_LoveStory_12_1_Diamonds_MergeChainItemNeeded = 933,
-        New_RotateOffer_MaintenanceMaterials_01_1_Diamonds_MergeChainItemNeeded = 934,
-        New_RotateOffer_MaintenanceMaterials_01_2_Diamonds_MergeChainItemNeeded = 935,
-        New_RotateOffer_MaintenanceMaterials_01_3_Diamonds_MergeChainItemNeeded = 936,
-        New_RotateOffer_MaintenanceMaterials_02_1_Diamonds_MergeChainItemNeeded = 937,
-        New_RotateOffer_MaintenanceMaterials_02_2_Diamonds_MergeChainItemNeeded = 938,
-        New_RotateOffer_MaintenanceMaterials_02_3_Diamonds_MergeChainItemNeeded = 939,
-        New_RotateOffer_MaintenanceMaterials_03_1_Diamonds_MergeChainItemNeeded = 940,
-        New_RotateOffer_MaintenanceMaterials_03_2_Diamonds_MergeChainItemNeeded = 941,
-        New_RotateOffer_MaintenanceMaterials_04_1_Diamonds_MergeChainItemNeeded = 942,
-        New_RotateOffer_MaintenanceMaterials_04_2_Diamonds_MergeChainItemNeeded = 943,
-        New_RotateOffer_MaintenanceMaterials_05_1_Diamonds_MergeChainItemNeeded = 944,
-        New_RotateOffer_MaintenanceMaterials_05_2_Diamonds_MergeChainItemNeeded = 945,
-        New_RotateOffer_MaintenanceMaterials_06_1_Diamonds_MergeChainItemNeeded = 946,
-        New_RotateOffer_MaintenanceMaterials_06_2_Diamonds_MergeChainItemNeeded = 947,
-        New_RotateOffer_MaintenanceMaterials_07_1_Diamonds_MergeChainItemNeeded = 948,
-        New_RotateOffer_MaintenanceRoomCutleryChain_01_1_Diamonds_MergeChainItemNeeded = 949,
-        New_RotateOffer_MaintenanceRoomCutleryChain_02_1_Diamonds_MergeChainItemNeeded = 950,
-        New_RotateOffer_MaintenanceRoomCutleryChain_03_1_Diamonds_MergeChainItemNeeded = 951,
-        New_RotateOffer_MaintenanceRoomValuablesChain_01_1_Diamonds_MergeChainItemNeeded = 952,
-        New_RotateOffer_MaintenanceRoomValuablesChain_02_1_Diamonds_MergeChainItemNeeded = 953,
-        New_RotateOffer_MaintenanceRoomValuablesChain_03_1_Diamonds_MergeChainItemNeeded = 954,
-        New_RotateOffer_MaintenanceRoomValuablesChain_04_1_Diamonds_MergeChainItemNeeded = 955,
-        New_RotateOffer_MaintenanceRoomValuablesChain_05_1_Diamonds_MergeChainItemNeeded = 956,
-        New_RotateOffer_MaintenanceRoomValuablesChain_06_1_Diamonds_MergeChainItemNeeded = 957,
-        New_RotateOffer_MaintenanceRoomValuablesChain_07_1_Diamonds_MergeChainItemNeeded = 958,
-        New_RotateOffer_MaintenanceRoomValuablesChain_08_1_Diamonds_MergeChainItemNeeded = 959,
-        New_RotateOffer_MaintenanceTools_01_1_Diamonds_MergeChainItemNeeded = 960,
-        New_RotateOffer_MaintenanceTools_01_2_Diamonds_MergeChainItemNeeded = 961,
-        New_RotateOffer_MaintenanceTools_01_3_Diamonds_MergeChainItemNeeded = 962,
-        New_RotateOffer_MaintenanceTools_02_1_Diamonds_MergeChainItemNeeded = 963,
-        New_RotateOffer_MaintenanceTools_02_2_Diamonds_MergeChainItemNeeded = 964,
-        New_RotateOffer_MaintenanceTools_02_3_Diamonds_MergeChainItemNeeded = 965,
-        New_RotateOffer_MaintenanceTools_03_1_Diamonds_MergeChainItemNeeded = 966,
-        New_RotateOffer_MaintenanceTools_03_2_Diamonds_MergeChainItemNeeded = 967,
-        New_RotateOffer_MaintenanceTools_03_3_Diamonds_MergeChainItemNeeded = 968,
-        New_RotateOffer_MaintenanceTools_04_1_Diamonds_MergeChainItemNeeded = 969,
-        New_RotateOffer_MaintenanceTools_04_2_Diamonds_MergeChainItemNeeded = 970,
-        New_RotateOffer_MaintenanceTools_05_1_Diamonds_MergeChainItemNeeded = 971,
-        New_RotateOffer_MaintenanceTools_05_2_Diamonds_MergeChainItemNeeded = 972,
-        New_RotateOffer_MaintenanceTools_06_1_Diamonds_MergeChainItemNeeded = 973,
-        New_RotateOffer_MaintenanceTools_06_2_Diamonds_MergeChainItemNeeded = 974,
-        New_RotateOffer_MaintenanceTools_07_1_Diamonds_MergeChainItemNeeded = 975,
-        New_RotateOffer_MaintenanceTools_07_2_Diamonds_MergeChainItemNeeded = 976,
-        New_RotateOffer_MaintenanceTools_08_1_Diamonds_MergeChainItemNeeded = 977,
-        New_RotateOffer_MaintenanceTools_08_2_Diamonds_MergeChainItemNeeded = 978,
-        New_RotateOffer_MaintenanceTools_09_1_Diamonds_MergeChainItemNeeded = 979,
-        New_RotateOffer_MaintenanceTools_09_2_Diamonds_MergeChainItemNeeded = 980,
-        New_RotateOffer_MaintenanceTools_10_1_Diamonds_MergeChainItemNeeded = 981,
-        New_RotateOffer_MaintenanceTools_10_2_Diamonds_MergeChainItemNeeded = 982,
-        New_RotateOffer_MaintenanceTools_11_1_Diamonds_MergeChainItemNeeded = 983,
-        New_RotateOffer_MaintenanceTools_12_1_Diamonds_MergeChainItemNeeded = 984,
-        New_RotateOffer_Masonry_01_1_Diamonds_MergeChainItemNeeded = 985,
-        New_RotateOffer_Masonry_02_1_Diamonds_MergeChainItemNeeded = 986,
-        New_RotateOffer_Masonry_03_1_Diamonds_MergeChainItemNeeded = 987,
-        New_RotateOffer_Masonry_04_1_Diamonds_MergeChainItemNeeded = 988,
-        New_RotateOffer_Masonry_05_1_Diamonds_MergeChainItemNeeded = 989,
-        New_RotateOffer_Masonry_06_1_Diamonds_MergeChainItemNeeded = 990,
-        New_RotateOffer_Masonry_07_1_Diamonds_MergeChainItemNeeded = 991,
-        New_RotateOffer_Masonry_08_1_Diamonds_MergeChainItemNeeded = 992,
-        New_RotateOffer_MasonryTools_01_1_Diamonds_MergeChainItemNeeded = 993,
-        New_RotateOffer_MasonryTools_02_1_Diamonds_MergeChainItemNeeded = 994,
-        New_RotateOffer_MasonryTools_03_1_Diamonds_MergeChainItemNeeded = 995,
-        New_RotateOffer_MasonryTools_04_1_Diamonds_MergeChainItemNeeded = 996,
-        New_RotateOffer_MasonryTools_05_1_Diamonds_MergeChainItemNeeded = 997,
-        New_RotateOffer_Mosaic_01_1_Diamonds_MergeChainItemNeeded = 998,
-        New_RotateOffer_Mosaic_02_1_Diamonds_MergeChainItemNeeded = 999,
-        New_RotateOffer_Mosaic_03_1_Diamonds_MergeChainItemNeeded = 1000,
-        New_RotateOffer_Mosaic_04_1_Diamonds_MergeChainItemNeeded = 1001,
-        New_RotateOffer_Mosaic_05_1_Diamonds_MergeChainItemNeeded = 1002,
-        New_RotateOffer_Mosaic_06_1_Diamonds_MergeChainItemNeeded = 1003,
-        New_RotateOffer_Mosaic_07_1_Diamonds_MergeChainItemNeeded = 1004,
-        New_RotateOffer_Mosaic_08_1_Diamonds_MergeChainItemNeeded = 1005,
-        New_RotateOffer_Mosaic_09_1_Diamonds_MergeChainItemNeeded = 1006,
-        New_RotateOffer_Mosaic_10_1_Diamonds_MergeChainItemNeeded = 1007,
-        New_RotateOffer_Mosaic_11_1_Diamonds_MergeChainItemNeeded = 1008,
-        New_RotateOffer_Mosaic_12_1_Diamonds_MergeChainItemNeeded = 1009,
-        New_RotateOffer_Moth_01_1_Diamonds_MergeChainItemNeeded = 1010,
-        New_RotateOffer_Moth_02_1_Diamonds_MergeChainItemNeeded = 1011,
-        New_RotateOffer_Moth_03_1_Diamonds_MergeChainItemNeeded = 1012,
-        New_RotateOffer_Moth_03_2_Diamonds_MergeChainItemNeeded = 1013,
-        New_RotateOffer_Moth_04_1_Diamonds_MergeChainItemNeeded = 1014,
-        New_RotateOffer_Moth_04_2_Diamonds_MergeChainItemNeeded = 1015,
-        New_RotateOffer_Moth_05_1_Diamonds_MergeChainItemNeeded = 1016,
-        New_RotateOffer_Moth_05_2_Diamonds_MergeChainItemNeeded = 1017,
-        New_RotateOffer_Moth_06_1_Diamonds_MergeChainItemNeeded = 1018,
-        New_RotateOffer_Moth_06_2_Diamonds_MergeChainItemNeeded = 1019,
-        New_RotateOffer_Nails_01_1_Diamonds_MergeChainItemNeeded = 1020,
-        New_RotateOffer_Nails_02_1_Diamonds_MergeChainItemNeeded = 1021,
-        New_RotateOffer_Nails_03_1_Diamonds_MergeChainItemNeeded = 1022,
-        New_RotateOffer_Nails_04_1_Diamonds_MergeChainItemNeeded = 1023,
-        New_RotateOffer_Nails_05_1_Diamonds_MergeChainItemNeeded = 1024,
-        New_RotateOffer_OrangeFlower_01_1_Diamonds_MergeChainItemNeeded = 1025,
-        New_RotateOffer_OrangeFlower_02_1_Diamonds_MergeChainItemNeeded = 1026,
-        New_RotateOffer_OrangeFlower_03_1_Diamonds_MergeChainItemNeeded = 1027,
-        New_RotateOffer_OrangeFlower_04_1_Diamonds_MergeChainItemNeeded = 1028,
-        New_RotateOffer_OrangeFlower_05_1_Diamonds_MergeChainItemNeeded = 1029,
-        New_RotateOffer_OrangeFlower_06_1_Diamonds_MergeChainItemNeeded = 1030,
-        New_RotateOffer_PaintCan_01_1_Diamonds_MergeChainItemNeeded = 1031,
-        New_RotateOffer_PaintCan_02_1_Diamonds_MergeChainItemNeeded = 1032,
-        New_RotateOffer_PaintCan_03_1_Diamonds_MergeChainItemNeeded = 1033,
-        New_RotateOffer_PaintCan_04_1_Diamonds_MergeChainItemNeeded = 1034,
-        New_RotateOffer_PlantedFlower_01_1_Diamonds_MergeChainItemNeeded = 1035,
-        New_RotateOffer_PlantedFlower_02_1_Diamonds_MergeChainItemNeeded = 1036,
-        New_RotateOffer_PlantedFlower_03_1_Diamonds_MergeChainItemNeeded = 1037,
-        New_RotateOffer_PlantedFlower_04_1_Diamonds_MergeChainItemNeeded = 1038,
-        New_RotateOffer_PlantedFlower_05_1_Diamonds_MergeChainItemNeeded = 1039,
-        New_RotateOffer_PlantedFlower_06_1_Diamonds_MergeChainItemNeeded = 1040,
-        New_RotateOffer_PlantedFlower_07_1_Diamonds_MergeChainItemNeeded = 1041,
-        New_RotateOffer_PlantedFlower_08_1_Diamonds_MergeChainItemNeeded = 1042,
-        New_RotateOffer_PlantedFlower_09_1_Diamonds_MergeChainItemNeeded = 1043,
-        New_RotateOffer_MaintenanceTools_09_3_Diamonds_MergeChainItemNeeded = 1044,
-        New_RotateOffer_MaintenanceTools_10_3_Diamonds_MergeChainItemNeeded = 1045,
-        New_RotateOffer_MaintenanceTools_11_2_Diamonds_MergeChainItemNeeded = 1046,
-        New_RotateOffer_SaunaAreaWood_01_1_Diamonds_MergeChainItemNeeded = 1047,
-        New_RotateOffer_SaunaAreaWood_02_1_Diamonds_MergeChainItemNeeded = 1048,
-        New_RotateOffer_SaunaAreaWood_03_1_Diamonds_MergeChainItemNeeded = 1049,
-        New_RotateOffer_SaunaAreaWood_04_1_Diamonds_MergeChainItemNeeded = 1050,
-        New_RotateOffer_SaunaAreaWood_05_1_Diamonds_MergeChainItemNeeded = 1051,
-        New_RotateOffer_SaunaAreaWood_06_1_Diamonds_MergeChainItemNeeded = 1052,
-        New_RotateOffer_SaunaAreaWood_07_1_Diamonds_MergeChainItemNeeded = 1053,
-        New_RotateOffer_SaunaCharredWood_01_1_Diamonds_MergeChainItemNeeded = 1054,
-        New_RotateOffer_Scarab_01_1_Diamonds_MergeChainItemNeeded = 1055,
-        New_RotateOffer_Scarab_02_1_Diamonds_MergeChainItemNeeded = 1056,
-        New_RotateOffer_Scarab_03_1_Diamonds_MergeChainItemNeeded = 1057,
-        New_RotateOffer_Scarab_04_1_Diamonds_MergeChainItemNeeded = 1058,
-        New_RotateOffer_Scarab_05_1_Diamonds_MergeChainItemNeeded = 1059,
-        New_RotateOffer_Scarab_06_1_Diamonds_MergeChainItemNeeded = 1060,
-        New_RotateOffer_ScarabBox_01_1_Diamonds_MergeChainItemNeeded = 1061,
-        New_RotateOffer_ScarabBox_01_2_Diamonds_MergeChainItemNeeded = 1062,
-        New_RotateOffer_ScarabBox_02_1_Diamonds_MergeChainItemNeeded = 1063,
-        New_RotateOffer_ScarabBox_02_2_Diamonds_MergeChainItemNeeded = 1064,
-        New_RotateOffer_ScarabBox_03_1_Diamonds_MergeChainItemNeeded = 1065,
-        New_RotateOffer_ScarabBox_03_2_Diamonds_MergeChainItemNeeded = 1066,
-        New_RotateOffer_ScarabBox_04_1_Diamonds_MergeChainItemNeeded = 1067,
-        New_RotateOffer_ScarabBox_04_2_Diamonds_MergeChainItemNeeded = 1068,
-        New_RotateOffer_ScarabBox_05_1_Diamonds_MergeChainItemNeeded = 1069,
-        New_RotateOffer_ScarabBox_05_2_Diamonds_MergeChainItemNeeded = 1070,
-        New_RotateOffer_ScarabBox_06_1_Diamonds_MergeChainItemNeeded = 1071,
-        New_RotateOffer_ScarabBox_06_2_Diamonds_MergeChainItemNeeded = 1072,
-        New_RotateOffer_ScarabBox_07_1_Diamonds_MergeChainItemNeeded = 1073,
-        New_RotateOffer_ScarabBox_07_2_Diamonds_MergeChainItemNeeded = 1074,
-        New_RotateOffer_Screws_01_1_Diamonds_MergeChainItemNeeded = 1075,
-        New_RotateOffer_Screws_02_1_Diamonds_MergeChainItemNeeded = 1076,
-        New_RotateOffer_Screws_03_1_Diamonds_MergeChainItemNeeded = 1077,
-        New_RotateOffer_Screws_04_1_Diamonds_MergeChainItemNeeded = 1078,
-        New_RotateOffer_Screws_05_1_Diamonds_MergeChainItemNeeded = 1079,
-        New_RotateOffer_SeedBag_01_1_Diamonds_MergeChainItemNeeded = 1080,
-        New_RotateOffer_SeedBag_01_2_Diamonds_MergeChainItemNeeded = 1081,
-        New_RotateOffer_SeedBag_02_1_Diamonds_MergeChainItemNeeded = 1082,
-        New_RotateOffer_SeedBag_02_2_Diamonds_MergeChainItemNeeded = 1083,
-        New_RotateOffer_SeedBag_03_1_Diamonds_MergeChainItemNeeded = 1084,
-        New_RotateOffer_SeedBag_03_2_Diamonds_MergeChainItemNeeded = 1085,
-        New_RotateOffer_SeedBag_04_1_Diamonds_MergeChainItemNeeded = 1086,
-        New_RotateOffer_SeedBag_04_2_Diamonds_MergeChainItemNeeded = 1087,
-        New_RotateOffer_SeedBagEmpty_01_1_Diamonds_MergeChainItemNeeded = 1088,
-        New_RotateOffer_SeedBagEmpty_01_2_Diamonds_MergeChainItemNeeded = 1089,
-        New_RotateOffer_SeedBagEmpty_02_1_Diamonds_MergeChainItemNeeded = 1090,
-        New_RotateOffer_SeedBagEmpty_02_2_Diamonds_MergeChainItemNeeded = 1091,
-        New_RotateOffer_SeedBagEmpty_03_1_Diamonds_MergeChainItemNeeded = 1092,
-        New_RotateOffer_SeedBagEmpty_03_2_Diamonds_MergeChainItemNeeded = 1093,
-        New_RotateOffer_SeedBagEmpty_04_1_Diamonds_MergeChainItemNeeded = 1094,
-        New_RotateOffer_SeedBagEmpty_04_2_Diamonds_MergeChainItemNeeded = 1095,
-        New_RotateOffer_SewingTools_01_1_Diamonds_MergeChainItemNeeded = 1096,
-        New_RotateOffer_SewingTools_02_1_Diamonds_MergeChainItemNeeded = 1097,
-        New_RotateOffer_SewingTools_03_1_Diamonds_MergeChainItemNeeded = 1098,
-        New_RotateOffer_SewingTools_04_1_Diamonds_MergeChainItemNeeded = 1099,
-        New_RotateOffer_SewingTools_05_1_Diamonds_MergeChainItemNeeded = 1100,
-        New_RotateOffer_SewingTools_06_1_Diamonds_MergeChainItemNeeded = 1101,
-        New_RotateOffer_SewingTools_07_1_Diamonds_MergeChainItemNeeded = 1102,
-        New_RotateOffer_SewingTools_08_1_Diamonds_MergeChainItemNeeded = 1103,
-        New_RotateOffer_SewingTools_09_1_Diamonds_MergeChainItemNeeded = 1104,
-        New_RotateOffer_SewingTools_10_1_Diamonds_MergeChainItemNeeded = 1105,
-        New_RotateOffer_Ship_01_1_Diamonds_MergeChainItemNeeded = 1106,
-        New_RotateOffer_Ship_01_2_Diamonds_MergeChainItemNeeded = 1107,
-        New_RotateOffer_Ship_01_3_Diamonds_MergeChainItemNeeded = 1108,
-        New_RotateOffer_Ship_02_1_Diamonds_MergeChainItemNeeded = 1109,
-        New_RotateOffer_Ship_02_2_Diamonds_MergeChainItemNeeded = 1110,
-        New_RotateOffer_Ship_02_3_Diamonds_MergeChainItemNeeded = 1111,
-        New_RotateOffer_Ship_03_1_Diamonds_MergeChainItemNeeded = 1112,
-        New_RotateOffer_Ship_03_2_Diamonds_MergeChainItemNeeded = 1113,
-        New_RotateOffer_Ship_03_3_Diamonds_MergeChainItemNeeded = 1114,
-        New_RotateOffer_Ship_04_1_Diamonds_MergeChainItemNeeded = 1115,
-        New_RotateOffer_Ship_04_2_Diamonds_MergeChainItemNeeded = 1116,
-        New_RotateOffer_Ship_04_3_Diamonds_MergeChainItemNeeded = 1117,
-        New_RotateOffer_Skatie_01_1_Diamonds_MergeChainItemNeeded = 1118,
-        New_RotateOffer_Skatie_02_1_Diamonds_MergeChainItemNeeded = 1119,
-        New_RotateOffer_Skatie_03_1_Diamonds_MergeChainItemNeeded = 1120,
-        New_RotateOffer_Skatie_04_1_Diamonds_MergeChainItemNeeded = 1121,
-        New_RotateOffer_Skatie_05_1_Diamonds_MergeChainItemNeeded = 1122,
-        New_RotateOffer_Skatie_06_1_Diamonds_MergeChainItemNeeded = 1123,
-        New_RotateOffer_Skatie_07_1_Diamonds_MergeChainItemNeeded = 1124,
-        New_RotateOffer_Skatie_08_1_Diamonds_MergeChainItemNeeded = 1125,
-        New_RotateOffer_Skatie_09_1_Diamonds_MergeChainItemNeeded = 1126,
-        New_RotateOffer_Skatie_10_1_Diamonds_MergeChainItemNeeded = 1127,
-        New_RotateOffer_Skatie_11_1_Diamonds_MergeChainItemNeeded = 1128,
-        New_RotateOffer_Skatie_12_1_Diamonds_MergeChainItemNeeded = 1129,
-        New_RotateOffer_StoneCan_01_1_Diamonds_MergeChainItemNeeded = 1130,
-        New_RotateOffer_StoneCan_02_1_Diamonds_MergeChainItemNeeded = 1131,
-        New_RotateOffer_StoneCan_03_1_Diamonds_MergeChainItemNeeded = 1132,
-        New_RotateOffer_StoneCan_04_1_Diamonds_MergeChainItemNeeded = 1133,
-        New_RotateOffer_StoneCan_05_1_Diamonds_MergeChainItemNeeded = 1134,
-        New_RotateOffer_StoneCan_06_1_Diamonds_MergeChainItemNeeded = 1135,
-        New_RotateOffer_StoneCan_07_1_Diamonds_MergeChainItemNeeded = 1136,
-        New_RotateOffer_StoneCan_08_1_Diamonds_MergeChainItemNeeded = 1137,
-        New_RotateOffer_StoneCan_09_1_Diamonds_MergeChainItemNeeded = 1138,
-        New_RotateOffer_StoneCan_10_1_Diamonds_MergeChainItemNeeded = 1139,
-        New_RotateOffer_StoneCan_11_1_Diamonds_MergeChainItemNeeded = 1140,
-        New_RotateOffer_StoneCan_12_1_Diamonds_MergeChainItemNeeded = 1141,
-        New_RotateOffer_StoneCan_13_1_Diamonds_MergeChainItemNeeded = 1142,
-        New_RotateOffer_StudyNumbers_01_1_Diamonds_MergeChainItemNeeded = 1143,
-        New_RotateOffer_StudyNumbers_02_1_Diamonds_MergeChainItemNeeded = 1144,
-        New_RotateOffer_StudyNumbers_03_1_Diamonds_MergeChainItemNeeded = 1145,
-        New_RotateOffer_StudyNumbers_04_1_Diamonds_MergeChainItemNeeded = 1146,
-        New_RotateOffer_StudyNumbers_05_1_Diamonds_MergeChainItemNeeded = 1147,
-        New_RotateOffer_StudyNumbers_06_1_Diamonds_MergeChainItemNeeded = 1148,
-        New_RotateOffer_StudyNumbers_07_1_Diamonds_MergeChainItemNeeded = 1149,
-        New_RotateOffer_StudyNumbers_08_1_Diamonds_MergeChainItemNeeded = 1150,
-        New_RotateOffer_StudyNumbers_09_1_Diamonds_MergeChainItemNeeded = 1151,
-        New_RotateOffer_StudyNumbers_10_1_Diamonds_MergeChainItemNeeded = 1152,
-        New_RotateOffer_TennisCourtItem_01_1_Diamonds_MergeChainItemNeeded = 1153,
-        New_RotateOffer_TennisCourtItem_02_1_Diamonds_MergeChainItemNeeded = 1154,
-        New_RotateOffer_TennisCourtItem_03_1_Diamonds_MergeChainItemNeeded = 1155,
-        New_RotateOffer_TennisCourtItem_04_1_Diamonds_MergeChainItemNeeded = 1156,
-        New_RotateOffer_TennisCourtItem_05_1_Diamonds_MergeChainItemNeeded = 1157,
-        New_RotateOffer_TennisCourtItem_06_1_Diamonds_MergeChainItemNeeded = 1158,
-        New_RotateOffer_TennisCourtItem_07_1_Diamonds_MergeChainItemNeeded = 1159,
-        New_RotateOffer_TennisCourtItem_08_1_Diamonds_MergeChainItemNeeded = 1160,
-        New_RotateOffer_TennisCourtItem_09_1_Diamonds_MergeChainItemNeeded = 1161,
-        New_RotateOffer_Thread_01_1_Diamonds_MergeChainItemNeeded = 1162,
-        New_RotateOffer_Thread_02_1_Diamonds_MergeChainItemNeeded = 1163,
-        New_RotateOffer_Thread_03_1_Diamonds_MergeChainItemNeeded = 1164,
-        New_RotateOffer_Thread_04_1_Diamonds_MergeChainItemNeeded = 1165,
-        New_RotateOffer_Thread_05_1_Diamonds_MergeChainItemNeeded = 1166,
-        New_RotateOffer_Thread_06_1_Diamonds_MergeChainItemNeeded = 1167,
-        New_RotateOffer_Thread_07_1_Diamonds_MergeChainItemNeeded = 1168,
-        New_RotateOffer_Thread_08_1_Diamonds_MergeChainItemNeeded = 1169,
-        New_RotateOffer_Thread_09_1_Diamonds_MergeChainItemNeeded = 1170,
-        New_RotateOffer_Thread_10_1_Diamonds_MergeChainItemNeeded = 1171,
-        New_RotateOffer_Thread_11_1_Diamonds_MergeChainItemNeeded = 1172,
-        New_RotateOffer_TimeSkipBooster_01_1_Diamonds_NoReq = 1173,
-        New_RotateOffer_TimeSkipBoosterSingle_01_1_Diamonds_NoReq = 1174,
-        New_RotateOffer_Tools_02_1_Diamonds_MergeChainItemNeeded = 1175,
-        New_RotateOffer_Tools_03_1_Diamonds_MergeChainItemNeeded = 1176,
-        New_RotateOffer_Tools_04_1_Diamonds_MergeChainItemNeeded = 1177,
-        New_RotateOffer_Tools_05_1_Diamonds_MergeChainItemNeeded = 1178,
-        New_RotateOffer_Tools_06_1_Diamonds_MergeChainItemNeeded = 1179,
-        New_RotateOffer_Tools_07_1_Diamonds_MergeChainItemNeeded = 1180,
-        New_RotateOffer_Tools_08_1_Diamonds_MergeChainItemNeeded = 1181,
-        New_RotateOffer_Tools_09_1_Diamonds_MergeChainItemNeeded = 1182,
-        New_RotateOffer_Tools_10_1_Diamonds_MergeChainItemNeeded = 1183,
-        New_RotateOffer_Tools_11_1_Diamonds_MergeChainItemNeeded = 1184,
-        New_RotateOffer_Tools_12_1_Diamonds_MergeChainItemNeeded = 1185,
-        New_RotateOffer_PermanentSpawnerTree_01 = 1186,
-        New_RotateOffer_Vase_01_1_Diamonds_MergeChainItemNeeded = 1187,
-        New_RotateOffer_Vase_01_2_Diamonds_MergeChainItemNeeded = 1188,
-        New_RotateOffer_Vase_01_3_Diamonds_MergeChainItemNeeded = 1189,
-        New_RotateOffer_Vase_02_1_Diamonds_MergeChainItemNeeded = 1190,
-        New_RotateOffer_Vase_02_2_Diamonds_MergeChainItemNeeded = 1191,
-        New_RotateOffer_Vase_02_3_Diamonds_MergeChainItemNeeded = 1192,
-        New_RotateOffer_Vase_03_1_Diamonds_MergeChainItemNeeded = 1193,
-        New_RotateOffer_Vase_03_2_Diamonds_MergeChainItemNeeded = 1194,
-        New_RotateOffer_Vase_03_3_Diamonds_MergeChainItemNeeded = 1195,
-        New_RotateOffer_Vase_04_1_Diamonds_MergeChainItemNeeded = 1196,
-        New_RotateOffer_Vase_05_1_Diamonds_MergeChainItemNeeded = 1197,
-        New_RotateOffer_Vase_06_1_Diamonds_MergeChainItemNeeded = 1198,
-        New_RotateOffer_Vase_07_1_Diamonds_MergeChainItemNeeded = 1199,
-        New_RotateOffer_Vase_08_1_Diamonds_MergeChainItemNeeded = 1200,
-        New_RotateOffer_Vase_09_1_Diamonds_MergeChainItemNeeded = 1201,
-        New_RotateOffer_Vase_10_1_Diamonds_MergeChainItemNeeded = 1202,
-        New_RotateOffer_Vase_11_1_Diamonds_MergeChainItemNeeded = 1203,
-        New_RotateOffer_Watering_02_1_Diamonds_MergeChainItemNeeded = 1204,
-        New_RotateOffer_Watering_03_1_Diamonds_MergeChainItemNeeded = 1205,
-        New_RotateOffer_Watering_04_1_Diamonds_MergeChainItemNeeded = 1206,
-        New_RotateOffer_Watering_05_1_Diamonds_MergeChainItemNeeded = 1207,
-        New_RotateOffer_Watering_06_1_Diamonds_MergeChainItemNeeded = 1208,
-        New_RotateOffer_Watering_07_1_Diamonds_MergeChainItemNeeded = 1209,
-        New_RotateOffer_Watering_08_1_Diamonds_MergeChainItemNeeded = 1210,
-        New_RotateOffer_Watering_09_1_Diamonds_MergeChainItemNeeded = 1211,
-        New_RotateOffer_Wood_01_1_Diamonds_MergeChainItemNeeded = 1212,
-        New_RotateOffer_Wood_02_1_Diamonds_MergeChainItemNeeded = 1213,
-        New_RotateOffer_Wood_03_1_Diamonds_MergeChainItemNeeded = 1214,
-        New_RotateOffer_Wood_04_1_Diamonds_MergeChainItemNeeded = 1215,
-        New_RotateOffer_Wood_05_1_Diamonds_MergeChainItemNeeded = 1216,
-        New_RotateOffer_Wood_06_1_Diamonds_MergeChainItemNeeded = 1217,
-        New_RotateOffer_Bottle_01_3_Coins_Level = 1218,
-        New_RotateOffer_Bottle_02_3_Coins_Level = 1219,
-        New_RotateOffer_Butterfly_01_2_Coins_Level = 1220,
-        New_RotateOffer_CarHoodOrnament_01_2_Coins_Level = 1221,
-        New_RotateOffer_Cleaning_01_2_Coins_Level = 1222,
-        New_RotateOffer_Cleaning_02_2_Coins_Level = 1223,
-        New_RotateOffer_Cleaning_03_2_Coins_Level = 1224,
-        New_RotateOffer_Cleaning_04_2_Coins_Level = 1225,
-        New_RotateOffer_Cleaning_05_2_Coins_Level = 1226,
-        New_RotateOffer_ConservatoryExoticPlants_01_2_Coins_Level = 1227,
-        New_RotateOffer_ConservatoryExoticPlants_02_2_Coins_Level = 1228,
-        New_RotateOffer_Detergent_01_2_Coins_Level = 1229,
-        New_RotateOffer_DogAreaCarpenterTools_01_2_Coins_Level = 1230,
-        New_RotateOffer_DogAreaWood_01_2_Coins_Level = 1231,
-        New_RotateOffer_Fabric_01_2_Coins_Level = 1232,
-        New_RotateOffer_Flower_01_2_Coins_Level = 1233,
-        New_RotateOffer_Flower_02_2_Coins_Level = 1234,
-        New_RotateOffer_Flower_03_2_Coins_Level = 1235,
-        New_RotateOffer_GardenGloves_01_2_Coins_Level = 1236,
-        New_RotateOffer_GardenTools_01_1_Coins_Level = 1237,
-        New_RotateOffer_GardenTools_02_1_Coins_Level = 1238,
-        New_RotateOffer_GardenTools_03_1_Coins_Level = 1239,
-        New_RotateOffer_GardenTools_04_3_Coins_Level = 1240,
-        New_RotateOffer_GardenTools_05_3_Coins_Level = 1241,
-        New_RotateOffer_GardenTools_06_3_Coins_Level = 1242,
-        New_RotateOffer_Lamp_01_2_Coins_Level = 1243,
-        New_RotateOffer_Lamp_02_2_Coins_Level = 1244,
-        New_RotateOffer_Lamp_03_2_Coins_Level = 1245,
-        New_RotateOffer_Locket_01_2_Coins_Level = 1246,
-        New_RotateOffer_MaintenanceRoomCutleryChain_01_2_Coins_Level = 1247,
-        New_RotateOffer_MaintenanceRoomValuablesChain_01_2_Coins_Level = 1248,
-        New_RotateOffer_MaintenanceRoomValuablesChain_02_2_Coins_Level = 1249,
-        New_RotateOffer_MaintenanceTools_01_4_Coins_Level = 1250,
-        New_RotateOffer_MaintenanceTools_02_4_Coins_Level = 1251,
-        New_RotateOffer_MaintenanceTools_03_4_Coins_Level = 1252,
-        New_RotateOffer_MaintenanceTools_04_3_Coins_Level = 1253,
-        New_RotateOffer_Masonry_01_2_Coins_Level = 1254,
-        New_RotateOffer_Masonry_02_2_Coins_Level = 1255,
-        New_RotateOffer_Masonry_03_2_Coins_Level = 1256,
-        New_RotateOffer_Mosaic_01_2_Coins_Level = 1257,
-        New_RotateOffer_Nails_01_2_Coins_Level = 1258,
-        New_RotateOffer_Nails_02_2_Coins_Level = 1259,
-        New_RotateOffer_OrangeFlower_01_2_Coins_Level = 1260,
-        New_RotateOffer_OrangeFlower_02_2_Coins_Level = 1261,
-        New_RotateOffer_PaintCan_01_2_Coins_Level = 1262,
-        New_RotateOffer_PlantedFlower_01_2_Coins_Level = 1263,
-        New_RotateOffer_PlantedFlower_02_2_Coins_Level = 1264,
-        New_RotateOffer_PlantedFlower_03_2_Coins_Level = 1265,
-        New_RotateOffer_Screws_01_2_Coins_Level = 1266,
-        New_RotateOffer_SeedBag_01_3_Coins_Level = 1267,
-        New_RotateOffer_SeedBag_02_3_Coins_Level = 1268,
-        New_RotateOffer_SeedBag_03_3_Coins_Level = 1269,
-        New_RotateOffer_SewingTools_01_2_Coins_Level = 1270,
-        New_RotateOffer_SewingTools_02_2_Coins_Level = 1271,
-        New_RotateOffer_SewingTools_03_2_Coins_Level = 1272,
-        New_RotateOffer_StoneCan_01_2_Coins_Level = 1273,
-        New_RotateOffer_StoneCan_02_2_Coins_Level = 1274,
-        New_RotateOffer_StoneCan_03_2_Coins_Level = 1275,
-        New_RotateOffer_Tools_01_1_Coins_Level = 1276,
-        New_RotateOffer_Tools_02_2_Coins_Level = 1277,
-        New_RotateOffer_Tools_03_2_Coins_Level = 1278,
-        New_RotateOffer_Tools_04_2_Coins_Level = 1279,
-        New_RotateOffer_Watering_01_1_Coins_Level = 1280,
-        New_RotateOffer_Watering_02_2_Coins_Level = 1281,
-        New_RotateOffer_Watering_03_2_Coins_Level = 1282,
-        New_RotateOffer_Watering_04_2_Coins_Level = 1283,
-        New_RotateOffer_Watering_05_2_Coins_Level = 1284,
-        New_RotateOffer_Wood_01_2_Coins_Level = 1285,
-        New_RotateOffer_Bottle_01_4_Coins_Level = 1286,
-        New_RotateOffer_Bottle_02_4_Coins_Level = 1287,
-        New_RotateOffer_Butterfly_01_3_Coins_Level = 1288,
-        New_RotateOffer_CarHoodOrnament_01_3_Coins_Level = 1289,
-        New_RotateOffer_Cleaning_01_3_Coins_Level = 1290,
-        New_RotateOffer_Cleaning_02_3_Coins_Level = 1291,
-        New_RotateOffer_Cleaning_03_3_Coins_Level = 1292,
-        New_RotateOffer_Cleaning_04_3_Coins_Level = 1293,
-        New_RotateOffer_Cleaning_05_3_Coins_Level = 1294,
-        New_RotateOffer_ConservatoryExoticPlants_01_3_Coins_Level = 1295,
-        New_RotateOffer_ConservatoryExoticPlants_02_3_Coins_Level = 1296,
-        New_RotateOffer_Detergent_01_3_Coins_Level = 1297,
-        New_RotateOffer_DogAreaCarpenterTools_01_3_Coins_Level = 1298,
-        New_RotateOffer_DogAreaWood_01_3_Coins_Level = 1299,
-        New_RotateOffer_Fabric_01_3_Coins_Level = 1300,
-        New_RotateOffer_Flower_01_3_Coins_Level = 1301,
-        New_RotateOffer_Flower_02_3_Coins_Level = 1302,
-        New_RotateOffer_Flower_03_3_Coins_Level = 1303,
-        New_RotateOffer_GardenGloves_01_3_Coins_Level = 1304,
-        New_RotateOffer_GardenTools_01_2_Coins_Level = 1305,
-        New_RotateOffer_GardenTools_02_2_Coins_Level = 1306,
-        New_RotateOffer_GardenTools_03_2_Coins_Level = 1307,
-        New_RotateOffer_GardenTools_04_4_Coins_Level = 1308,
-        New_RotateOffer_GardenTools_05_4_Coins_Level = 1309,
-        New_RotateOffer_GardenTools_06_4_Coins_Level = 1310,
-        New_RotateOffer_Lamp_01_3_Coins_Level = 1311,
-        New_RotateOffer_Lamp_02_3_Coins_Level = 1312,
-        New_RotateOffer_Lamp_03_3_Coins_Level = 1313,
-        New_RotateOffer_Locket_01_3_Coins_Level = 1314,
-        New_RotateOffer_MaintenanceRoomCutleryChain_01_3_Coins_Level = 1315,
-        New_RotateOffer_MaintenanceRoomValuablesChain_01_3_Coins_Level = 1316,
-        New_RotateOffer_MaintenanceRoomValuablesChain_02_3_Coins_Level = 1317,
-        New_RotateOffer_MaintenanceTools_01_5_Coins_Level = 1318,
-        New_RotateOffer_MaintenanceTools_02_5_Coins_Level = 1319,
-        New_RotateOffer_MaintenanceTools_03_5_Coins_Level = 1320,
-        New_RotateOffer_MaintenanceTools_04_4_Coins_Level = 1321,
-        New_RotateOffer_Masonry_01_3_Coins_Level = 1322,
-        New_RotateOffer_Masonry_02_3_Coins_Level = 1323,
-        New_RotateOffer_Masonry_03_3_Coins_Level = 1324,
-        New_RotateOffer_Mosaic_01_3_Coins_Level = 1325,
-        New_RotateOffer_Nails_01_3_Coins_Level = 1326,
-        New_RotateOffer_Nails_02_3_Coins_Level = 1327,
-        New_RotateOffer_OrangeFlower_01_3_Coins_Level = 1328,
-        New_RotateOffer_OrangeFlower_02_3_Coins_Level = 1329,
-        New_RotateOffer_PaintCan_01_3_Coins_Level = 1330,
-        New_RotateOffer_PlantedFlower_01_3_Coins_Level = 1331,
-        New_RotateOffer_PlantedFlower_02_3_Coins_Level = 1332,
-        New_RotateOffer_PlantedFlower_03_3_Coins_Level = 1333,
-        New_RotateOffer_Screws_01_3_Coins_Level = 1334,
-        New_RotateOffer_SeedBag_01_4_Coins_Level = 1335,
-        New_RotateOffer_SeedBag_02_4_Coins_Level = 1336,
-        New_RotateOffer_SeedBag_03_4_Coins_Level = 1337,
-        New_RotateOffer_SewingTools_01_3_Coins_Level = 1338,
-        New_RotateOffer_SewingTools_02_3_Coins_Level = 1339,
-        New_RotateOffer_SewingTools_03_3_Coins_Level = 1340,
-        New_RotateOffer_StoneCan_01_3_Coins_Level = 1341,
-        New_RotateOffer_StoneCan_02_3_Coins_Level = 1342,
-        New_RotateOffer_StoneCan_03_3_Coins_Level = 1343,
-        New_RotateOffer_Tools_01_2_Coins_Level = 1344,
-        New_RotateOffer_Tools_02_3_Coins_Level = 1345,
-        New_RotateOffer_Tools_03_3_Coins_Level = 1346,
-        New_RotateOffer_Tools_04_3_Coins_Level = 1347,
-        New_RotateOffer_Watering_01_2_Coins_Level = 1348,
-        New_RotateOffer_Watering_02_3_Coins_Level = 1349,
-        New_RotateOffer_Watering_03_3_Coins_Level = 1350,
-        New_RotateOffer_Watering_04_3_Coins_Level = 1351,
-        New_RotateOffer_Watering_05_3_Coins_Level = 1352,
-        New_RotateOffer_Wood_01_3_Coins_Level = 1353,
-        New_RotateOffer_Bottle_01_5_Coins_Level = 1354,
-        New_RotateOffer_Bottle_02_5_Coins_Level = 1355,
-        New_RotateOffer_Butterfly_01_4_Coins_Level = 1356,
-        New_RotateOffer_CarHoodOrnament_01_4_Coins_Level = 1357,
-        New_RotateOffer_Cleaning_01_4_Coins_Level = 1358,
-        New_RotateOffer_Cleaning_02_4_Coins_Level = 1359,
-        New_RotateOffer_Cleaning_03_4_Coins_Level = 1360,
-        New_RotateOffer_Cleaning_04_4_Coins_Level = 1361,
-        New_RotateOffer_Cleaning_05_4_Coins_Level = 1362,
-        New_RotateOffer_ConservatoryExoticPlants_01_4_Coins_Level = 1363,
-        New_RotateOffer_ConservatoryExoticPlants_02_4_Coins_Level = 1364,
-        New_RotateOffer_Detergent_01_4_Coins_Level = 1365,
-        New_RotateOffer_DogAreaCarpenterTools_01_4_Coins_Level = 1366,
-        New_RotateOffer_DogAreaWood_01_4_Coins_Level = 1367,
-        New_RotateOffer_Fabric_01_4_Coins_Level = 1368,
-        New_RotateOffer_Flower_01_4_Coins_Level = 1369,
-        New_RotateOffer_Flower_02_4_Coins_Level = 1370,
-        New_RotateOffer_Flower_03_4_Coins_Level = 1371,
-        New_RotateOffer_GardenGloves_01_4_Coins_Level = 1372,
-        New_RotateOffer_GardenTools_01_3_Coins_Level = 1373,
-        New_RotateOffer_GardenTools_02_3_Coins_Level = 1374,
-        New_RotateOffer_GardenTools_03_3_Coins_Level = 1375,
-        New_RotateOffer_GardenTools_04_5_Coins_Level = 1376,
-        New_RotateOffer_GardenTools_05_5_Coins_Level = 1377,
-        New_RotateOffer_GardenTools_06_5_Coins_Level = 1378,
-        New_RotateOffer_Lamp_01_4_Coins_Level = 1379,
-        New_RotateOffer_Lamp_02_4_Coins_Level = 1380,
-        New_RotateOffer_Lamp_03_4_Coins_Level = 1381,
-        New_RotateOffer_Locket_01_4_Coins_Level = 1382,
-        New_RotateOffer_MaintenanceRoomCutleryChain_01_4_Coins_Level = 1383,
-        New_RotateOffer_MaintenanceRoomValuablesChain_01_4_Coins_Level = 1384,
-        New_RotateOffer_MaintenanceRoomValuablesChain_02_4_Coins_Level = 1385,
-        New_RotateOffer_MaintenanceTools_01_6_Coins_Level = 1386,
-        New_RotateOffer_MaintenanceTools_02_6_Coins_Level = 1387,
-        New_RotateOffer_MaintenanceTools_03_6_Coins_Level = 1388,
-        New_RotateOffer_MaintenanceTools_04_5_Coins_Level = 1389,
-        New_RotateOffer_Masonry_01_4_Coins_Level = 1390,
-        New_RotateOffer_Masonry_02_4_Coins_Level = 1391,
-        New_RotateOffer_Masonry_03_4_Coins_Level = 1392,
-        New_RotateOffer_Mosaic_01_4_Coins_Level = 1393,
-        New_RotateOffer_Nails_01_4_Coins_Level = 1394,
-        New_RotateOffer_Nails_02_4_Coins_Level = 1395,
-        New_RotateOffer_OrangeFlower_01_4_Coins_Level = 1396,
-        New_RotateOffer_OrangeFlower_02_4_Coins_Level = 1397,
-        New_RotateOffer_PaintCan_01_4_Coins_Level = 1398,
-        New_RotateOffer_PlantedFlower_01_4_Coins_Level = 1399,
-        New_RotateOffer_PlantedFlower_02_4_Coins_Level = 1400,
-        New_RotateOffer_PlantedFlower_03_4_Coins_Level = 1401,
-        New_RotateOffer_Screws_01_4_Coins_Level = 1402,
-        New_RotateOffer_SeedBag_01_5_Coins_Level = 1403,
-        New_RotateOffer_SeedBag_02_5_Coins_Level = 1404,
-        New_RotateOffer_SeedBag_03_5_Coins_Level = 1405,
-        New_RotateOffer_SewingTools_01_4_Coins_Level = 1406,
-        New_RotateOffer_SewingTools_02_4_Coins_Level = 1407,
-        New_RotateOffer_SewingTools_03_4_Coins_Level = 1408,
-        New_RotateOffer_StoneCan_01_4_Coins_Level = 1409,
-        New_RotateOffer_StoneCan_02_4_Coins_Level = 1410,
-        New_RotateOffer_StoneCan_03_4_Coins_Level = 1411,
-        New_RotateOffer_Tools_01_3_Coins_Level = 1412,
-        New_RotateOffer_Tools_02_4_Coins_Level = 1413,
-        New_RotateOffer_Tools_03_4_Coins_Level = 1414,
-        New_RotateOffer_Tools_04_4_Coins_Level = 1415,
-        New_RotateOffer_Watering_01_3_Coins_Level = 1416,
-        New_RotateOffer_Watering_02_4_Coins_Level = 1417,
-        New_RotateOffer_Watering_03_4_Coins_Level = 1418,
-        New_RotateOffer_Watering_04_4_Coins_Level = 1419,
-        New_RotateOffer_Watering_05_4_Coins_Level = 1420,
-        New_RotateOffer_Wood_01_4_Coins_Level = 1421,
-        New_RotateOffer_Cleaning_01_5_Diamonds_NoReq = 1422,
-        New_RotateOffer_Cleaning_02_5_Diamonds_NoReq = 1423,
-        New_RotateOffer_Cleaning_03_5_Diamonds_NoReq = 1424,
-        New_RotateOffer_Cleaning_04_5_Diamonds_NoReq = 1425,
-        New_RotateOffer_Cleaning_05_5_Diamonds_NoReq = 1426,
-        New_RotateOffer_Cleaning_06_2_Diamonds_NoReq = 1427,
-        New_RotateOffer_Cleaning_07_2_Diamonds_NoReq = 1428,
-        New_RotateOffer_Cleaning_08_2_Diamonds_NoReq = 1429,
-        New_RotateOffer_Cleaning_09_2_Diamonds_NoReq = 1430,
-        New_RotateOffer_Cleaning_10_2_Diamonds_NoReq = 1431,
-        New_RotateOffer_Cleaning_11_2_Diamonds_NoReq = 1432,
-        New_RotateOffer_Cleaning_12_2_Diamonds_NoReq = 1433,
-        New_RotateOffer_Cleaning_13_2_Diamonds_NoReq = 1434,
-        New_RotateOffer_Detergent_01_5_Diamonds_NoReq = 1435,
-        New_RotateOffer_Detergent_02_2_Diamonds_NoReq = 1436,
-        New_RotateOffer_Detergent_03_2_Diamonds_NoReq = 1437,
-        New_RotateOffer_Detergent_04_2_Diamonds_NoReq = 1438,
-        New_RotateOffer_Detergent_05_2_Diamonds_NoReq = 1439,
-        New_RotateOffer_Detergent_06_2_Diamonds_NoReq = 1440,
-        New_RotateOffer_Detergent_07_2_Diamonds_NoReq = 1441,
-        New_RotateOffer_Detergent_08_2_Diamonds_NoReq = 1442,
-        New_RotateOffer_Fabric_01_5_Diamonds_NoReq = 1443,
-        New_RotateOffer_Fabric_02_2_Diamonds_NoReq = 1444,
-        New_RotateOffer_Fabric_03_2_Diamonds_NoReq = 1445,
-        New_RotateOffer_Fabric_04_2_Diamonds_NoReq = 1446,
-        New_RotateOffer_Fabric_05_2_Diamonds_NoReq = 1447,
-        New_RotateOffer_Fabric_06_2_Diamonds_NoReq = 1448,
-        New_RotateOffer_Flower_01_5_Diamonds_NoReq = 1449,
-        New_RotateOffer_Flower_02_5_Diamonds_NoReq = 1450,
-        New_RotateOffer_Flower_03_5_Diamonds_NoReq = 1451,
-        New_RotateOffer_Flower_04_2_Diamonds_NoReq = 1452,
-        New_RotateOffer_Flower_05_2_Diamonds_NoReq = 1453,
-        New_RotateOffer_Flower_06_2_Diamonds_NoReq = 1454,
-        New_RotateOffer_GardenGloves_01_5_Diamonds_NoReq = 1455,
-        New_RotateOffer_GardenGloves_02_2_Diamonds_NoReq = 1456,
-        New_RotateOffer_GardenGloves_03_2_Diamonds_NoReq = 1457,
-        New_RotateOffer_GardenGloves_04_2_Diamonds_NoReq = 1458,
-        New_RotateOffer_GardenGloves_05_2_Diamonds_NoReq = 1459,
-        New_RotateOffer_GardenTools_04_6_Diamonds_NoReq = 1460,
-        New_RotateOffer_GardenTools_05_6_Diamonds_NoReq = 1461,
-        New_RotateOffer_GardenTools_06_6_Diamonds_NoReq = 1462,
-        New_RotateOffer_GardenTools_07_3_Diamonds_NoReq = 1463,
-        New_RotateOffer_GardenTools_08_3_Diamonds_NoReq = 1464,
-        New_RotateOffer_GardenTools_09_3_Diamonds_NoReq = 1465,
-        New_RotateOffer_GardenTools_10_3_Diamonds_NoReq = 1466,
-        New_RotateOffer_GardenTools_11_3_Diamonds_NoReq = 1467,
-        New_RotateOffer_GardenTools_12_2_Diamonds_NoReq = 1468,
-        New_RotateOffer_GardenTools_13_2_Diamonds_NoReq = 1469,
-        New_RotateOffer_GardenTools_14_2_Diamonds_NoReq = 1470,
-        New_RotateOffer_Lamp_01_5_Diamonds_NoReq = 1471,
-        New_RotateOffer_Lamp_02_5_Diamonds_NoReq = 1472,
-        New_RotateOffer_Lamp_03_5_Diamonds_NoReq = 1473,
-        New_RotateOffer_Lamp_04_2_Diamonds_NoReq = 1474,
-        New_RotateOffer_Lamp_05_2_Diamonds_NoReq = 1475,
-        New_RotateOffer_Lamp_06_2_Diamonds_NoReq = 1476,
-        New_RotateOffer_Lamp_07_2_Diamonds_NoReq = 1477,
-        New_RotateOffer_Lamp_08_2_Diamonds_NoReq = 1478,
-        New_RotateOffer_Lamp_09_2_Diamonds_NoReq = 1479,
-        New_RotateOffer_Lamp_10_2_Diamonds_NoReq = 1480,
-        New_RotateOffer_LevelDownBoosterScissors_01_3_Diamonds_Level = 1481,
-        New_RotateOffer_LevelDownBoosterScissors_01_4_Diamonds_Level = 1482,
-        New_RotateOffer_MaintenanceTools_01_7_Diamonds_NoReq = 1483,
-        New_RotateOffer_MaintenanceTools_01_8_Diamonds_NoReq = 1484,
-        New_RotateOffer_MaintenanceTools_02_7_Diamonds_NoReq = 1485,
-        New_RotateOffer_MaintenanceTools_02_8_Diamonds_NoReq = 1486,
-        New_RotateOffer_MaintenanceTools_03_7_Diamonds_NoReq = 1487,
-        New_RotateOffer_MaintenanceTools_03_8_Diamonds_NoReq = 1488,
-        New_RotateOffer_MaintenanceTools_04_6_Diamonds_NoReq = 1489,
-        New_RotateOffer_MaintenanceTools_05_3_Diamonds_NoReq = 1490,
-        New_RotateOffer_MaintenanceTools_06_3_Diamonds_NoReq = 1491,
-        New_RotateOffer_MaintenanceTools_07_3_Diamonds_NoReq = 1492,
-        New_RotateOffer_MaintenanceTools_08_3_Diamonds_NoReq = 1493,
-        New_RotateOffer_MaintenanceTools_09_4_Diamonds_NoReq = 1494,
-        New_RotateOffer_MaintenanceTools_10_4_Diamonds_NoReq = 1495,
-        New_RotateOffer_MaintenanceTools_11_3_Diamonds_NoReq = 1496,
-        New_RotateOffer_MaintenanceTools_12_2_Diamonds_NoReq = 1497,
-        New_RotateOffer_OrangeFlower_01_5_Diamonds_NoReq = 1498,
-        New_RotateOffer_OrangeFlower_02_5_Diamonds_NoReq = 1499,
-        New_RotateOffer_OrangeFlower_03_2_Diamonds_NoReq = 1500,
-        New_RotateOffer_OrangeFlower_04_2_Diamonds_NoReq = 1501,
-        New_RotateOffer_OrangeFlower_05_2_Diamonds_NoReq = 1502,
-        New_RotateOffer_OrangeFlower_06_2_Diamonds_NoReq = 1503,
-        New_RotateOffer_PaintCan_01_5_Diamonds_NoReq = 1504,
-        New_RotateOffer_PaintCan_02_2_Diamonds_NoReq = 1505,
-        New_RotateOffer_PaintCan_03_2_Diamonds_NoReq = 1506,
-        New_RotateOffer_PaintCan_04_2_Diamonds_NoReq = 1507,
-        New_RotateOffer_PlantedFlower_01_5_Diamonds_NoReq = 1508,
-        New_RotateOffer_PlantedFlower_02_5_Diamonds_NoReq = 1509,
-        New_RotateOffer_PlantedFlower_03_5_Diamonds_NoReq = 1510,
-        New_RotateOffer_PlantedFlower_04_2_Diamonds_NoReq = 1511,
-        New_RotateOffer_PlantedFlower_05_2_Diamonds_NoReq = 1512,
-        New_RotateOffer_PlantedFlower_06_2_Diamonds_NoReq = 1513,
-        New_RotateOffer_PlantedFlower_07_2_Diamonds_NoReq = 1514,
-        New_RotateOffer_PlantedFlower_08_2_Diamonds_NoReq = 1515,
-        New_RotateOffer_PlantedFlower_09_2_Diamonds_NoReq = 1516,
-        New_RotateOffer_Screws_01_5_Diamonds_NoReq = 1517,
-        New_RotateOffer_Screws_02_2_Diamonds_NoReq = 1518,
-        New_RotateOffer_Screws_03_2_Diamonds_NoReq = 1519,
-        New_RotateOffer_Screws_04_2_Diamonds_NoReq = 1520,
-        New_RotateOffer_Screws_05_2_Diamonds_NoReq = 1521,
-        New_RotateOffer_SewingTools_01_5_Diamonds_NoReq = 1522,
-        New_RotateOffer_SewingTools_02_5_Diamonds_NoReq = 1523,
-        New_RotateOffer_SewingTools_03_5_Diamonds_NoReq = 1524,
-        New_RotateOffer_SewingTools_04_2_Diamonds_NoReq = 1525,
-        New_RotateOffer_SewingTools_05_2_Diamonds_NoReq = 1526,
-        New_RotateOffer_SewingTools_06_2_Diamonds_NoReq = 1527,
-        New_RotateOffer_SewingTools_07_2_Diamonds_NoReq = 1528,
-        New_RotateOffer_SewingTools_08_2_Diamonds_NoReq = 1529,
-        New_RotateOffer_SewingTools_09_2_Diamonds_NoReq = 1530,
-        New_RotateOffer_SewingTools_10_2_Diamonds_NoReq = 1531,
-        New_RotateOffer_TimeSkipBooster_01_2_Diamonds_NoReq = 1532,
-        New_RotateOffer_TimeSkipBoosterSingle_01_2_Diamonds_NoReq = 1533,
-        New_RotateOffer_Tools_02_5_Diamonds_NoReq = 1534,
-        New_RotateOffer_Tools_03_5_Diamonds_NoReq = 1535,
-        New_RotateOffer_Tools_04_5_Diamonds_NoReq = 1536,
-        New_RotateOffer_Tools_05_2_Diamonds_NoReq = 1537,
-        New_RotateOffer_Tools_06_2_Diamonds_NoReq = 1538,
-        New_RotateOffer_Tools_07_2_Diamonds_NoReq = 1539,
-        New_RotateOffer_Tools_08_2_Diamonds_NoReq = 1540,
-        New_RotateOffer_Tools_09_2_Diamonds_NoReq = 1541,
-        New_RotateOffer_Tools_10_2_Diamonds_NoReq = 1542,
-        New_RotateOffer_Tools_11_2_Diamonds_NoReq = 1543,
-        New_RotateOffer_Tools_12_2_Diamonds_NoReq = 1544,
-        New_RotateOffer_Reserve_5 = 1549,
-        New_RotateOffer_Reserve_6 = 1550,
-        New_RotateOffer_Reserve_7 = 1551,
-        New_RotateOffer_Reserve_8 = 1552,
-        New_RotateOffer_Reserve_9 = 1553,
-        New_RotateOffer_Reserve_10 = 1554,
-        New_RotateOffer_Reserve_11 = 1555,
-        New_RotateOffer_Reserve_12 = 1556,
-        New_RotateOffer_Reserve_13 = 1557,
-        New_RotateOffer_Reserve_14 = 1558,
-        New_RotateOffer_Reserve_15 = 1559,
-        New_RotateOffer_Reserve_16 = 1560,
-        New_RotateOffer_Reserve_17 = 1561,
-        New_RotateOffer_Reserve_18 = 1562,
-        New_RotateOffer_Reserve_19 = 1563,
-        New_RotateOffer_Reserve_20 = 1564,
-        New_RotateOffer_Reserve_21 = 1565,
-        New_RotateOffer_Reserve_22 = 1566,
-        New_RotateOffer_Reserve_23 = 1567,
-        New_RotateOffer_Reserve_24 = 1568,
-        New_RotateOffer_Reserve_25 = 1569,
-        New_RotateOffer_Reserve_26 = 1570,
-        New_RotateOffer_Reserve_27 = 1571,
-        New_RotateOffer_Reserve_28 = 1572,
-        New_RotateOffer_Reserve_29 = 1573,
-        New_RotateOffer_Reserve_30 = 1574,
-        New_RotateOffer_Reserve_31 = 1575,
-        New_RotateOffer_Reserve_32 = 1576,
-        New_RotateOffer_Reserve_33 = 1577,
-        New_RotateOffer_Reserve_34 = 1578,
-        New_RotateOffer_Reserve_35 = 1579,
-        New_RotateOffer_Reserve_36 = 1580,
-        New_RotateOffer_Reserve_37 = 1581,
-        New_RotateOffer_Reserve_38 = 1582,
-        New_RotateOffer_Reserve_39 = 1583,
-        New_RotateOffer_Reserve_40 = 1584,
-        New_RotateOffer_Reserve_41 = 1585,
-        New_RotateOffer_Reserve_42 = 1586,
-        New_RotateOffer_Reserve_43 = 1587,
-        New_RotateOffer_Reserve_44 = 1588,
-        New_RotateOffer_Reserve_45 = 1589,
-        New_RotateOffer_Reserve_46 = 1590,
-        New_RotateOffer_Reserve_47 = 1591,
-        New_RotateOffer_Reserve_48 = 1592,
-        New_RotateOffer_Reserve_49 = 1593,
-        New_RotateOffer_Reserve_50 = 1594,
-        New_RotateOffer_Reserve_51 = 1595,
-        New_RotateOffer_Reserve_52 = 1596,
-        New_RotateOffer_Reserve_53 = 1597,
-        New_RotateOffer_Reserve_54 = 1598,
-        New_RotateOffer_Reserve_55 = 1599,
-        New_RotateOffer_Reserve_56 = 1600,
-        New_RotateOffer_Reserve_57 = 1601,
-        New_RotateOffer_Reserve_58 = 1602,
-        New_RotateOffer_Reserve_59 = 1603,
-        New_RotateOffer_Reserve_60 = 1604,
-        New_RotateOffer_Reserve_61 = 1605,
-        New_RotateOffer_Reserve_62 = 1606,
-        New_RotateOffer_Reserve_63 = 1607,
-        New_RotateOffer_Reserve_64 = 1608,
-        New_RotateOffer_Reserve_65 = 1609,
-        New_RotateOffer_Reserve_66 = 1610,
-        New_RotateOffer_Reserve_67 = 1611,
-        New_RotateOffer_Reserve_68 = 1612,
-        New_RotateOffer_Reserve_69 = 1613,
-        New_RotateOffer_Reserve_70 = 1614,
-        New_RotateOffer_Reserve_71 = 1615,
-        New_RotateOffer_Reserve_72 = 1616,
-        New_RotateOffer_Reserve_73 = 1617,
-        New_RotateOffer_Reserve_74 = 1618,
-        New_RotateOffer_Reserve_75 = 1619,
-        New_RotateOffer_Reserve_76 = 1620,
-        New_RotateOffer_Reserve_77 = 1621,
-        New_RotateOffer_Reserve_78 = 1622,
-        New_RotateOffer_Reserve_79 = 1623,
-        New_RotateOffer_Reserve_80 = 1624,
-        New_RotateOffer_Reserve_81 = 1625,
-        New_RotateOffer_Reserve_82 = 1626,
-        New_RotateOffer_Reserve_83 = 1627,
-        New_RotateOffer_Reserve_84 = 1628,
-        New_RotateOffer_Reserve_85 = 1629,
-        New_RotateOffer_Reserve_86 = 1630,
-        New_RotateOffer_Reserve_87 = 1631,
-        New_RotateOffer_Reserve_88 = 1632,
-        New_RotateOffer_Reserve_89 = 1633,
-        New_RotateOffer_Reserve_90 = 1634,
-        New_RotateOffer_Reserve_91 = 1635,
-        New_RotateOffer_Reserve_92 = 1636,
-        New_RotateOffer_Reserve_93 = 1637,
-        New_RotateOffer_Reserve_94 = 1638,
-        New_RotateOffer_Reserve_95 = 1639,
-        New_RotateOffer_Reserve_96 = 1640,
-        New_RotateOffer_Reserve_97 = 1641,
-        New_RotateOffer_Reserve_98 = 1642,
-        New_RotateOffer_Reserve_99 = 1643,
-        New_RotateOffer_Reserve_100 = 1644,
-        New_RotateOffer_Reserve_101 = 1645,
-        New_RotateOffer_Reserve_102 = 1646,
-        New_RotateOffer_Reserve_103 = 1647,
-        New_RotateOffer_Reserve_104 = 1648,
-        New_RotateOffer_Reserve_105 = 1649,
-        New_RotateOffer_Reserve_106 = 1650,
-        New_RotateOffer_Reserve_107 = 1651,
-        New_RotateOffer_Reserve_108 = 1652,
-        New_RotateOffer_Reserve_109 = 1653,
-        New_RotateOffer_Reserve_110 = 1654,
-        New_RotateOffer_Reserve_111 = 1655,
-        New_RotateOffer_Reserve_112 = 1656,
-        New_RotateOffer_Reserve_113 = 1657,
-        New_RotateOffer_Reserve_114 = 1658,
-        New_RotateOffer_Reserve_115 = 1659,
-        New_RotateOffer_Reserve_116 = 1660,
-        New_RotateOffer_Reserve_117 = 1661,
-        New_RotateOffer_Reserve_118 = 1662,
-        New_RotateOffer_Reserve_119 = 1663,
-        New_RotateOffer_Reserve_120 = 1664,
-        New_RotateOffer_Reserve_121 = 1665,
-        New_RotateOffer_Reserve_122 = 1666,
-        New_RotateOffer_Reserve_123 = 1667,
-        New_RotateOffer_Reserve_124 = 1668,
-        New_RotateOffer_Reserve_125 = 1669,
-        New_RotateOffer_Reserve_126 = 1670,
-        New_RotateOffer_Reserve_127 = 1671,
-        New_RotateOffer_Reserve_128 = 1672,
-        New_RotateOffer_Reserve_129 = 1673,
-        New_RotateOffer_Reserve_130 = 1674,
-        New_RotateOffer_Reserve_131 = 1675,
-        New_RotateOffer_Reserve_132 = 1676,
-        New_RotateOffer_Reserve_133 = 1677,
-        New_RotateOffer_Reserve_134 = 1678,
-        New_RotateOffer_Reserve_135 = 1679,
-        New_RotateOffer_Reserve_136 = 1680,
-        New_RotateOffer_Reserve_137 = 1681,
-        New_RotateOffer_Reserve_138 = 1682,
-        New_RotateOffer_Reserve_139 = 1683,
-        New_RotateOffer_Reserve_140 = 1684,
-        New_RotateOffer_Reserve_141 = 1685,
-        New_RotateOffer_Reserve_142 = 1686,
-        New_RotateOffer_Reserve_143 = 1687,
-        New_RotateOffer_Reserve_144 = 1688,
-        New_RotateOffer_Reserve_145 = 1689,
-        New_RotateOffer_Reserve_146 = 1690,
-        New_RotateOffer_Reserve_147 = 1691,
-        New_RotateOffer_Reserve_148 = 1692,
-        New_RotateOffer_Reserve_149 = 1693,
-        New_RotateOffer_Reserve_150 = 1694,
-        New_RotateOffer_Reserve_151 = 1695,
-        New_RotateOffer_Reserve_152 = 1696,
-        New_RotateOffer_Reserve_153 = 1697,
-        New_RotateOffer_Reserve_154 = 1698,
-        New_RotateOffer_Reserve_155 = 1699,
-        New_RotateOffer_Reserve_156 = 1700,
-        New_RotateOffer_Reserve_157 = 1701,
-        New_RotateOffer_Reserve_158 = 1702,
-        New_RotateOffer_Reserve_159 = 1703,
-        New_RotateOffer_Reserve_160 = 1704,
-        New_RotateOffer_Reserve_161 = 1705,
-        New_RotateOffer_Reserve_162 = 1706,
-        New_RotateOffer_Reserve_163 = 1707,
-        New_RotateOffer_Reserve_164 = 1708,
-        New_RotateOffer_Reserve_165 = 1709,
-        New_RotateOffer_Reserve_166 = 1710,
-        New_RotateOffer_Reserve_167 = 1711,
-        New_RotateOffer_Reserve_168 = 1712,
-        New_RotateOffer_Reserve_169 = 1713,
-        New_RotateOffer_Reserve_170 = 1714,
-        New_RotateOffer_Reserve_171 = 1715,
-        New_RotateOffer_Reserve_172 = 1716,
-        New_RotateOffer_Reserve_173 = 1717,
-        New_RotateOffer_Reserve_174 = 1718,
-        New_RotateOffer_Reserve_175 = 1719,
-        New_RotateOffer_Reserve_176 = 1720,
-        New_RotateOffer_Reserve_177 = 1721,
-        New_RotateOffer_Reserve_178 = 1722,
-        New_RotateOffer_Reserve_179 = 1723,
-        New_RotateOffer_Reserve_180 = 1724,
-        New_RotateOffer_Reserve_181 = 1725,
-        New_RotateOffer_Reserve_182 = 1726,
-        New_RotateOffer_Reserve_183 = 1727,
-        New_RotateOffer_Reserve_184 = 1728,
-        New_RotateOffer_Reserve_185 = 1729,
-        New_RotateOffer_Reserve_186 = 1730,
-        New_RotateOffer_Reserve_187 = 1731,
-        New_RotateOffer_Reserve_188 = 1732,
-        New_RotateOffer_Reserve_189 = 1733,
-        New_RotateOffer_Reserve_190 = 1734,
-        New_RotateOffer_Reserve_191 = 1735,
-        New_RotateOffer_Reserve_192 = 1736,
-        New_RotateOffer_Reserve_193 = 1737,
-        New_RotateOffer_Reserve_194 = 1738,
-        New_RotateOffer_Reserve_195 = 1739,
-        New_RotateOffer_Reserve_196 = 1740,
-        New_RotateOffer_Reserve_197 = 1741,
-        New_RotateOffer_Reserve_198 = 1742,
-        New_RotateOffer_Reserve_199 = 1743,
-        New_RotateOffer_Reserve_200 = 1744,
-        MysteryMachineEnergyItem_ItemRecharge = 1745,
-        RotateOffer_NormalLighthouseShinythings_07 = 1545,
-        RotateOffer_NormalLighthouseShinythings_08 = 1546,
-        RotateOffer_NormalLighthouseShinythings_09 = 1547,
-        RotateOffer_NormalLighthouseShinythings_10 = 1548,
-        RotateOffer_NormalWoodSet_05 = 1746,
-        RotateOffer_NormalWoodSet_06 = 1747,
-        RotateOffer_NormalWoodSet_07 = 1748,
-        RotateOffer_NormalWoodSet_08 = 1749,
-        RotateOffer_NormalWoodSet_09 = 1750,
-        RotateOffer_NormalWoodSet_10 = 1751,
-        RotateOffer_NormalWoodSet_11 = 1752,
-        RotateOffer_NormalWoodSet_12 = 1753,
-        RotateOffer_NormalWoodSet_13 = 1754,
-        RotateOffer_NormalWoodSet_14 = 1755,
-        RotateOffer_NormalWoodSet_15 = 1756,
-        RotateOffer_NormalWoodSet_16 = 1757,
-        RotateOffer_NormalWoodSet_17 = 1758,
-        RotateOffer_NormalWoodSet_18 = 1759,
-        RotateOffer_NormalWoodSet_19 = 1760,
-        RotateOffer_NormalWoodSet_20 = 1761,
-        RotateOffer_NormalWoodSet_21 = 1762,
-        RotateOffer_NormalWoodSet_22 = 1763,
-        RotateOffer_NormalWoodSet_23 = 1764,
-        RotateOffer_NormalWoodSet_24 = 1765,
-        RotateOffer_NormalWoodSet_25 = 1766,
-        RotateOffer_NormalWoodSet_26 = 1767,
-        RotateOffer_NormalWoodSet_27 = 1768,
-        RotateOffer_NormalWoodSet_28 = 1769,
-        RotateOffer_NormalWoodSet_29 = 1770,
-        RotateOffer_NormalWoodSet_30 = 1771,
-        RotateOffer_NormalWoodSet_31 = 1772,
-        RotateOffer_NormalWoodSet_32 = 1773,
-        RotateOffer_NormalWoodSet_33 = 1774,
-        RotateOffer_NormalWoodSet_34 = 1775,
-        RotateOffer_NormalWoodSet_35 = 1776,
-        RotateOffer_NormalWoodSet_36 = 1777,
-        RotateOffer_NormalWoodSet_37 = 1778,
-        RotateOffer_NormalWoodSet_38 = 1779,
-        RotateOffer_NormalWoodSet_39 = 1780,
-        RotateOffer_NormalWoodSet_40 = 1781,
-        RotateOffer_NormalWoodSet_41 = 1782,
-        RotateOffer_NormalWoodSet_42 = 1783,
-        RotateOffer_NormalWoodSet_43 = 1784,
-        RotateOffer_NormalWoodSet_44 = 1785,
-        RotateOffer_NormalWoodSet_45 = 1786,
-        RotateOffer_NormalWoodSet_46 = 1787,
-        RotateOffer_NormalWoodSet_47 = 1788,
-        RotateOffer_NormalWoodSet_48 = 1789,
-        RotateOffer_NormalWoodSet_49 = 1790,
-        RotateOffer_NormalWoodSet_50 = 1791,
-        RotateOffer_NormalWoodSet_51 = 1792,
-        RotateOffer_NormalWoodSet_52 = 1793,
-        RotateOffer_NormalWoodSet_53 = 1794,
-        RotateOffer_NormalWoodSet_54 = 1795,
-        RotateOffer_NormalWoodSet_55 = 1796,
-        RotateOffer_NormalWoodSet_56 = 1797,
-        RotateOffer_NormalWoodSet_57 = 1798,
-        RotateOffer_NormalFlowerSet_09 = 1799,
-        RotateOffer_NormalFlowerSet_10 = 1800,
-        RotateOffer_NormalFlowerSet_11 = 1801,
-        RotateOffer_NormalFlowerSet_12 = 1802,
-        RotateOffer_NormalFlowerSet_13 = 1803,
-        RotateOffer_NormalFlowerSet_14 = 1804,
-        RotateOffer_NormalFlowerSet_15 = 1805,
-        RotateOffer_NormalFlowerSet_16 = 1806,
-        RotateOffer_NormalFlowerSet_17 = 1807,
-        RotateOffer_NormalFlowerSet_18 = 1808,
-        RotateOffer_NormalFlowerSet_19 = 1809,
-        RotateOffer_NormalFlowerSet_20 = 1810,
-        RotateOffer_NormalFlowerSet_21 = 1811,
-        RotateOffer_NormalFlowerSet_22 = 1812,
-        RotateOffer_NormalFlowerSet_23 = 1813,
-        RotateOffer_NormalFlowerSet_24 = 1814,
-        RotateOffer_NormalFlowerSet_25 = 1815,
-        RotateOffer_NormalFlowerSet_26 = 1816,
-        RotateOffer_NormalFlowerSet_27 = 1817,
-        RotateOffer_NormalFlowerSet_28 = 1818,
-        RotateOffer_NormalFlowerSet_29 = 1819,
-        RotateOffer_NormalFlowerSet_30 = 1820,
-        RotateOffer_NormalFlowerSet_31 = 1821,
-        RotateOffer_NormalFlowerSet_32 = 1822,
-        RotateOffer_NormalFlowerSet_33 = 1823,
-        RotateOffer_NormalFlowerSet_34 = 1824,
-        RotateOffer_NormalFlowerSet_35 = 1825,
-        RotateOffer_NormalFlowerSet_36 = 1826,
-        RotateOffer_NormalFlowerSet_37 = 1827,
-        RotateOffer_NormalFlowerSet_38 = 1828,
-        RotateOffer_NormalFlowerSet_39 = 1829,
-        RotateOffer_NormalFlowerSet_40 = 1830,
-        RotateOffer_NormalFlowerSet_41 = 1831,
-        RotateOffer_NormalFlowerSet_42 = 1832,
-        RotateOffer_NormalFlowerSet_43 = 1833,
-        RotateOffer_NormalFlowerSet_44 = 1834,
-        RotateOffer_NormalFlowerSet_45 = 1835,
-        RotateOffer_NormalFlowerSet_46 = 1836,
-        RotateOffer_NormalFlowerSet_47 = 1837,
-        RotateOffer_NormalFlowerSet_48 = 1838,
-        RotateOffer_NormalFlowerSet_49 = 1839,
-        RotateOffer_NormalFlowerSet_50 = 1840,
-        RotateOffer_NormalFlowerSet_51 = 1841,
-        RotateOffer_NormalFlowerSet_52 = 1842,
-        RotateOffer_NormalFlowerSet_53 = 1843,
-        RotateOffer_NormalFlowerSet_54 = 1844,
-        RotateOffer_NormalFlowerSet_55 = 1845,
-        RotateOffer_NormalFlowerSet_56 = 1846,
-        RotateOffer_NormalFlowerSet_57 = 1847,
-        RotateOffer_NormalFlowerSet_58 = 1848,
-        RotateOffer_StablesApple_01 = 1849,
-        RotateOffer_StablesApple_02 = 1850,
-        RotateOffer_StablesApple_03 = 1851,
-        RotateOffer_StablesApple_04 = 1852,
-        RotateOffer_StablesApple_05 = 1853,
-        RotateOffer_StablesApple_06 = 1854,
-        RotateOffer_StablesApple_07 = 1855,
-        RotateOffer_StablesApple_08 = 1856,
-        RotateOffer_StablesApple_09 = 1857,
-        RotateOffer_StablesApple_10 = 1858,
-        RotateOffer_StablesApple_11 = 1859,
-        RotateOffer_StablesApple_12 = 1860,
-        RotateOffer_StablesApple_13 = 1861,
-        RotateOffer_StablesApple_14 = 1862,
-        RotateOffer_StablesApple_15 = 1863,
-        RotateOffer_StablesApple_17 = 1864,
-        RotateOffer_StablesApple_18 = 1865,
-        RotateOffer_StablesApple_19 = 1866,
-        RotateOffer_StablesApple_20 = 1867,
-        RotateOffer_StablesApple_21 = 1868,
-        RotateOffer_StablesApple_22 = 1869,
-        RotateOffer_StablesApple_23 = 1870,
-        RotateOffer_StablesApple_24 = 1871,
-        RotateOffer_StablesApple_25 = 1872,
-        RotateOffer_StablesApple_26 = 1873,
-        RotateOffer_StablesApple_27 = 1874,
-        RotateOffer_StablesApple_28 = 1875,
-        RotateOffer_StablesApple_29 = 1876,
-        RotateOffer_StablesApple_30 = 1877,
-        RotateOffer_StablesApple_31 = 1878,
-        RotateOffer_StablesApple_33 = 1879,
-        RotateOffer_StablesApple_34 = 1880,
-        RotateOffer_StablesApple_35 = 1881,
-        RotateOffer_StablesApple_36 = 1882,
-        RotateOffer_StablesApple_37 = 1883,
-        RotateOffer_StablesApple_38 = 1884,
-        RotateOffer_StablesApple_39 = 1885,
-        RotateOffer_StablesApple_40 = 1886,
-        RotateOffer_StablesApple_41 = 1887,
-        RotateOffer_StablesApple_42 = 1888,
-        RotateOffer_StablesApple_43 = 1889,
-        RotateOffer_StablesApple_44 = 1890,
-        RotateOffer_StablesApple_45 = 1891,
-        RotateOffer_StablesAppleTree_01 = 1892,
-        RotateOffer_StablesAppleTree_02 = 1893,
-        RotateOffer_StablesAppleTree_03 = 1894,
-        RotateOffer_StablesAppleTree_04 = 1895,
-        RotateOffer_StablesAppleTree_05 = 1896,
-        RotateOffer_StablesAppleTree_06 = 1897,
-        RotateOffer_StablesAppleTree_07 = 1898,
-        RotateOffer_StablesAppleTree_08 = 1899,
-        RotateOffer_StablesAppleTree_09 = 1900,
-        RotateOffer_StablesAppleTree_10 = 1901,
-        RotateOffer_StablesAppleTree_11 = 1902,
-        RotateOffer_StablesAppleTree_12 = 1903,
-        RotateOffer_StablesAppleTree_13 = 1904,
-        RotateOffer_StablesAppleTree_14 = 1905,
-        RotateOffer_StablesAppleTree_15 = 1906,
-        RotateOffer_StablesAppleTree_16 = 1907,
-        RotateOffer_StablesAppleTree_17 = 1908,
-        RotateOffer_StablesAppleTree_18 = 1909,
-        RotateOffer_StablesAppleTree_19 = 1910,
-        RotateOffer_StablesAppleTree_20 = 1911,
-        RotateOffer_StablesAppleTree_21 = 1912,
-        RotateOffer_StablesAppleTree_22 = 1913,
-        RotateOffer_StablesAppleTree_23 = 1914,
-        RotateOffer_StablesAppleTree_24 = 1915,
-        RotateOffer_StablesAppleTree_25 = 1916,
-        RotateOffer_StablesAppleTree_26 = 1917,
-        RotateOffer_StablesAppleTree_27 = 1918,
-        RotateOffer_StablesAppleTree_28 = 1919,
-        RotateOffer_StablesAppleTree_29 = 1920,
-        RotateOffer_StablesAppleTree_30 = 1921,
-        RotateOffer_StablesAppleTree_31 = 1922,
-        RotateOffer_StablesAppleTree_32 = 1923,
-        RotateOffer_StablesAppleTree_33 = 1924,
-        RotateOffer_StablesAppleTree_34 = 1925,
-        RotateOffer_StablesAppleTree_35 = 1926,
-        RotateOffer_StablesAppleTree_36 = 1927,
-        RotateOffer_StablesAppleTree_37 = 1928,
-        RotateOffer_StablesAppleTree_38 = 1929,
-        RotateOffer_StablesAppleTree_39 = 1930,
-        RotateOffer_StablesAppleTree_40 = 1931,
-        RotateOffer_StablesAppleTree_41 = 1932,
-        RotateOffer_StablesAppleTree_42 = 1933,
-        RotateOffer_StablesAppleTree_43 = 1934,
-        RotateOffer_StablesAppleTree_44 = 1935,
-        RotateOffer_StablesAppleTree_45 = 1936,
-        RotateOffer_StablesAppleTree_46 = 1937,
-        RotateOffer_StablesAppleTree_47 = 1938,
-        RotateOffer_StablesAppleTree_48 = 1939,
-        RotateOffer_StablesAppleTree_49 = 1940,
-        RotateOffer_StablesAppleTree_50 = 1941,
-        RotateOffer_StablesAppleTree_51 = 1942,
-        RotateOffer_StablesAppleTree_52 = 1943,
-        RotateOffer_StablesAppleTree_53 = 1944,
-        RotateOffer_StablesAppleTree_54 = 1945,
-        RotateOffer_StablesAppleTree_55 = 1946,
-        RotateOffer_StablesAppleTree_56 = 1947,
-        RotateOffer_StablesAppleTree_57 = 1948,
-        RotateOffer_StablesAppleTree_58 = 1949,
-        RotateOffer_StablesAppleTree_59 = 1950,
-        RotateOffer_StablesAppleTree_60 = 1951,
-        RotateOffer_StablesAppleTree_61 = 1952,
-        RotateOffer_StablesAppleTree_62 = 1953,
-        RotateOffer_StablesAppleTree_63 = 1954,
-        RotateOffer_StablesAppleTree_64 = 1955,
-        RotateOffer_StablesAppleTree_65 = 1956,
-        RotateOffer_StablesAppleTree_66 = 1957,
-        RotateOffer_StablesAppleTree_67 = 1958,
-        RotateOffer_StablesAppleTree_68 = 1959,
-        RotateOffer_StablesAppleTree_69 = 1960,
-        RotateOffer_StablesAppleTree_70 = 1961,
-        RotateOffer_StablesAppleTree_71 = 1962,
-        RotateOffer_StablesAppleTree_72 = 1963,
-        RotateOffer_StablesAppleTree_73 = 1964,
-        RotateOffer_StablesAppleTree_74 = 1965,
-        RotateOffer_StablesAppleTree_75 = 1966,
-        RotateOffer_StablesAppleTree_76 = 1967,
-        RotateOffer_StablesAppleTree_77 = 1968,
-        RotateOffer_StablesAppleTree_78 = 1969,
-        RotateOffer_StablesAppleTree_79 = 1970,
-        RotateOffer_StablesAppleTree_80 = 1971,
-        RotateOffer_StablesAppleTree_81 = 1972,
-        RotateOffer_StablesAppleTree_82 = 1973,
-        RotateOffer_StablesAppleTree_83 = 1974,
-        RotateOffer_StablesAppleTree_84 = 1975,
-        RotateOffer_StablesAppleTree_85 = 1976,
-        RotateOffer_StablesAppleTree_86 = 1977,
-        RotateOffer_StablesAppleTree_87 = 1978,
-        RotateOffer_StablesAppleTree_88 = 1979,
-        RotateOffer_StablesCarrot_01 = 1980,
-        RotateOffer_StablesCarrot_02 = 1981,
-        RotateOffer_StablesCarrot_03 = 1982,
-        RotateOffer_StablesCarrot_04 = 1983,
-        RotateOffer_StablesCarrot_05 = 1984,
-        RotateOffer_StablesCarrot_06 = 1985,
-        RotateOffer_StablesCarrot_07 = 1986,
-        RotateOffer_StablesCarrot_08 = 1987,
-        RotateOffer_StablesCarrot_09 = 1988,
-        RotateOffer_StablesCarrot_10 = 1989,
-        RotateOffer_StablesCarrot_11 = 1990,
-        RotateOffer_StablesCarrot_12 = 1991,
-        RotateOffer_StablesCarrot_13 = 1992,
-        RotateOffer_StablesCarrot_14 = 1993,
-        RotateOffer_StablesCarrot_15 = 1994,
-        RotateOffer_StablesCarrot_16 = 1995,
-        RotateOffer_StablesCarrot_17 = 1996,
-        RotateOffer_StablesCarrot_18 = 1997,
-        RotateOffer_StablesCarrot_19 = 1998,
-        RotateOffer_StablesCarrot_20 = 1999,
-        RotateOffer_StablesCarrot_21 = 2000,
-        RotateOffer_StablesCarrot_22 = 2001,
-        RotateOffer_StablesCarrot_23 = 2002,
-        RotateOffer_StablesCarrot_24 = 2003,
-        RotateOffer_StablesCarrot_25 = 2004,
-        RotateOffer_StablesCarrot_26 = 2005,
-        RotateOffer_StablesCarrot_27 = 2006,
-        RotateOffer_StablesCarrot_28 = 2007,
-        RotateOffer_StablesCarrot_29 = 2008,
-        RotateOffer_StablesCarrot_30 = 2009,
-        RotateOffer_StablesCarrot_31 = 2010,
-        RotateOffer_StablesCarrot_32 = 2011,
-        RotateOffer_StablesCarrot_33 = 2012,
-        RotateOffer_StablesTomato_01 = 2013,
-        RotateOffer_StablesTomato_02 = 2014,
-        RotateOffer_StablesTomato_03 = 2015,
-        RotateOffer_StablesTomato_04 = 2016,
-        RotateOffer_StablesTomato_05 = 2017,
-        RotateOffer_StablesTomato_06 = 2018,
-        RotateOffer_StablesTomato_07 = 2019,
-        RotateOffer_StablesTomato_08 = 2020,
-        RotateOffer_StablesTomato_09 = 2021,
-        RotateOffer_StablesTomato_10 = 2022,
-        RotateOffer_StablesTomato_11 = 2023,
-        RotateOffer_StablesTomato_12 = 2024,
-        RotateOffer_StablesTomato_13 = 2025,
-        RotateOffer_StablesTomato_14 = 2026,
-        RotateOffer_StablesTomato_15 = 2027,
-        RotateOffer_StablesTomato_16 = 2028,
-        RotateOffer_StablesTomato_17 = 2029,
-        RotateOffer_StablesTomato_18 = 2030,
-        RotateOffer_StablesTomato_19 = 2031,
-        RotateOffer_StablesTomato_20 = 2032,
-        RotateOffer_StablesTomato_21 = 2033,
-        RotateOffer_StablesTomato_22 = 2034,
-        RotateOffer_StablesTomato_23 = 2035,
-        RotateOffer_StablesTomato_24 = 2036,
-        RotateOffer_StablesTomato_25 = 2037,
-        RotateOffer_StablesMulch_01 = 2038,
-        RotateOffer_StablesMulch_02 = 2039,
-        RotateOffer_StablesMulch_03 = 2040,
-        RotateOffer_StablesMulch_04 = 2041,
-        RotateOffer_StablesMulch_05 = 2042,
-        RotateOffer_StablesMulch_06 = 2043,
-        RotateOffer_StablesMulch_07 = 2044,
-        RotateOffer_StablesMulch_08 = 2045,
-        RotateOffer_StablesMulch_09 = 2046,
-        RotateOffer_StablesMulch_10 = 2047,
-        RotateOffer_StablesMulch_11 = 2048,
-        RotateOffer_StablesMulch_12 = 2049,
-        RotateOffer_StablesMulch_13 = 2050,
-        RotateOffer_StablesMulch_14 = 2051,
-        RotateOffer_StablesMulch_15 = 2052,
-        RotateOffer_StablesMulch_16 = 2053,
-        RotateOffer_StablesMulch_17 = 2054,
-        RotateOffer_StablesMulch_18 = 2055,
-        RotateOffer_StablesMulch_19 = 2056,
-        RotateOffer_StablesMulch_20 = 2057,
-        RotateOffer_StablesMulch_21 = 2058,
-        RotateOffer_StablesMulch_22 = 2059,
-        RotateOffer_StablesMulch_23 = 2060,
-        RotateOffer_StablesMulch_24 = 2061,
-        RotateOffer_StablesMulch_25 = 2062,
-        RotateOffer_StablesMulch_26 = 2063,
-        RotateOffer_StablesMulch_27 = 2064,
-        RotateOffer_StablesMulch_28 = 2065,
-        RotateOffer_StablesMulch_29 = 2066
+        public static ShopItemId None;
+        public static ShopItemId DailyDeal_PiggyBank;
+        public static ShopItemId DailyDeal_EnergyChest;
+        public static ShopItemId DailyDeal_SimpleBrownBox;
+        public static ShopItemId DailyDeal_ClothCoveredBrownBox;
+        public static ShopItemId DailyDeal_BlueBox;
+        public static ShopItemId DailyDeal_RedBox;
+        public static ShopItemId EnergyItem_ItemRecharge;
+        public static ShopItemId RealMoney_GemsBag_01;
+        public static ShopItemId RealMoney_GemsBag_02;
+        public static ShopItemId RealMoney_GemsBag_03;
+        public static ShopItemId RealMoney_GemsBag_04;
+        public static ShopItemId RealMoney_GemsBag_05;
+        public static ShopItemId RealMoney_GemsBag_06;
+        public static ShopItemId RealMoney_CoinsBag_01;
+        public static ShopItemId RealMoney_CoinsBag_02;
+        public static ShopItemId RealMoney_CoinsBag_03;
+        public static ShopItemId RealMoney_CoinsBag_04;
+        public static ShopItemId RealMoney_CoinsBag_05;
+        public static ShopItemId RealMoney_CoinsBag_06;
+        public static ShopItemId RealMoney_PiggyBank_01;
+        public static ShopItemId RealMoney_StarterPack_01;
+        public static ShopItemId RealMoney_StarterPack_02;
+        public static ShopItemId RealMoney_StarterPack_03;
+        public static ShopItemId RealMoney_StarterPack_04;
+        public static ShopItemId RealMoney_Gardenpack_01;
+        public static ShopItemId RealMoney_Gardenpack_02;
+        public static ShopItemId RealMoney_ToolsPack_01;
+        public static ShopItemId RealMoney_ToolsPack_02;
+        public static ShopItemId RealMoney_CleaningPack_01;
+        public static ShopItemId RealMoney_CleaningPack_02;
+        public static ShopItemId RealMoney_BoosterPack_01;
+        public static ShopItemId RealMoney_BoosterPack_02;
+        public static ShopItemId RealMoney_BoosterPack_03;
+        public static ShopItemId RealMoney_BoosterPack_04;
+        public static ShopItemId RotateOffer_StartGlovesSet_01;
+        public static ShopItemId RotateOffer_StartGlovesSet_02;
+        public static ShopItemId RotateOffer_StartGlovesSet_03;
+        public static ShopItemId RotateOffer_StartGlovesSet_04;
+        public static ShopItemId RotateOffer_StartGlovesSet_05;
+        public static ShopItemId RotateOffer_StartGlovesSet_06;
+        public static ShopItemId RotateOffer_StartGargenToolSet_01;
+        public static ShopItemId RotateOffer_StartGargenToolSet_02;
+        public static ShopItemId RotateOffer_StartGargenToolSet_03;
+        public static ShopItemId RotateOffer_StartGargenToolSet_04;
+        public static ShopItemId RotateOffer_StartGargenToolSet_05;
+        public static ShopItemId RotateOffer_StartGargenToolSet_06;
+        public static ShopItemId RotateOffer_StartGargenToolSet_07;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_01;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_02;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_03;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_04;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_05;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_06;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_01;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_02;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_03;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_04;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_05;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_06;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_01;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_02;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_03;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_04;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_05;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_06;
+        public static ShopItemId RotateOffer_NormalDetergentSet_01;
+        public static ShopItemId RotateOffer_NormalDetergentSet_02;
+        public static ShopItemId RotateOffer_NormalDetergentSet_03;
+        public static ShopItemId RotateOffer_NormalDetergentSet_04;
+        public static ShopItemId RotateOffer_NormalDetergentSet_05;
+        public static ShopItemId RotateOffer_NormalDetergentSet_06;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_01;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_02;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_03;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_04;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_05;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_06;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_07;
+        public static ShopItemId RotateOffer_NormalCleaningSet_01;
+        public static ShopItemId RotateOffer_NormalCleaningSet_02;
+        public static ShopItemId RotateOffer_NormalCleaningSet_03;
+        public static ShopItemId RotateOffer_NormalCleaningSet_04;
+        public static ShopItemId RotateOffer_NormalCleaningSet_05;
+        public static ShopItemId RotateOffer_NormalCleaningSet_06;
+        public static ShopItemId RotateOffer_NormalCleaningSet_07;
+        public static ShopItemId RotateOffer_NormalToolsSet_01;
+        public static ShopItemId RotateOffer_NormalToolsSet_02;
+        public static ShopItemId RotateOffer_NormalToolsSet_03;
+        public static ShopItemId RotateOffer_NormalToolsSet_04;
+        public static ShopItemId RotateOffer_NormalToolsSet_05;
+        public static ShopItemId RotateOffer_NormalToolsSet_06;
+        public static ShopItemId RotateOffer_NormalToolsSet_07;
+        public static ShopItemId RotateOffer_NormalSeedBagSet_01;
+        public static ShopItemId RotateOffer_NormalSeedBagSet_02;
+        public static ShopItemId RotateOffer_NormalWoodSet_01;
+        public static ShopItemId RotateOffer_NormalWoodSet_02;
+        public static ShopItemId RotateOffer_NormalLampSet_01;
+        public static ShopItemId RotateOffer_NormalLampSet_02;
+        public static ShopItemId RotateOffer_NormalLampSet_03;
+        public static ShopItemId RotateOffer_NormalLampSet_04;
+        public static ShopItemId RotateOffer_NormalLampSet_05;
+        public static ShopItemId RotateOffer_NormalLampSet_06;
+        public static ShopItemId RotateOffer_NormalFlowerSet_01;
+        public static ShopItemId RotateOffer_NormalFlowerSet_02;
+        public static ShopItemId RotateOffer_NormalFlowerSet_03;
+        public static ShopItemId RotateOffer_NormalFlowerSet_04;
+        public static ShopItemId RotateOffer_NormalFlowerSet_05;
+        public static ShopItemId RotateOffer_NormalFlowerSet_06;
+        public static ShopItemId RotateOffer_NormalFlowerSet_07;
+        public static ShopItemId RotateOffer_PermanentSpawnerVaseSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerToolboxSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerPlantedBushSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerDrawerSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerFlowerpotSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerBroomCabinetSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerTreeSet_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerToyCarSet_01;
+        public static ShopItemId EventSale_Pack_01;
+        public static ShopItemId EventSale_Pack_02;
+        public static ShopItemId EventSale_Pack_03;
+        public static ShopItemId EventSale_Pack_04;
+        public static ShopItemId EventSale_Pack_05;
+        public static ShopItemId EventSale_Pack_06;
+        public static ShopItemId EventSaleCasey_Pack_01;
+        public static ShopItemId EventSaleCasey_Pack_02;
+        public static ShopItemId EventSaleCasey_Pack_03;
+        public static ShopItemId EventSaleCasey_Pack_04;
+        public static ShopItemId EventSaleCasey_Pack_05;
+        public static ShopItemId EventSaleCasey_Pack_06;
+        public static ShopItemId EventSaleTinCan_Pack_01;
+        public static ShopItemId EventSaleTinCan_Pack_02;
+        public static ShopItemId EventSaleTinCan_Pack_03;
+        public static ShopItemId EventSaleTinCan_Pack_04;
+        public static ShopItemId EventSaleTinCan_Pack_05;
+        public static ShopItemId EventSaleTinCan_Pack_06;
+        public static ShopItemId EventSaleChristmas_Pack_01;
+        public static ShopItemId EventSaleChristmas_Pack_02;
+        public static ShopItemId EventSaleChristmas_Pack_03;
+        public static ShopItemId EventSaleChristmas_Pack_04;
+        public static ShopItemId EventSaleChristmas_Pack_05;
+        public static ShopItemId EventSaleChristmas_Pack_06;
+        public static ShopItemId RealMoney_ShopOffer;
+        public static ShopItemId RealMoney_GameEventExtension;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_07;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_08;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_09;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_10;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_07;
+        public static ShopItemId RotateOffer_NormalDetergentSet_07;
+        public static ShopItemId RotateOffer_NormalDetergentSet_08;
+        public static ShopItemId RotateOffer_NormalDetergentSet_09;
+        public static ShopItemId RotateOffer_NormalCleaningSet_08;
+        public static ShopItemId RotateOffer_NormalCleaningSet_09;
+        public static ShopItemId RotateOffer_NormalToolsSet_08;
+        public static ShopItemId RotateOffer_NormalSeedBagSet_03;
+        public static ShopItemId RotateOffer_NormalOrangeFlowerSet_01;
+        public static ShopItemId RotateOffer_NormalWoodSet_03;
+        public static ShopItemId RotateOffer_NormalGardenBenchSet_01;
+        public static ShopItemId RotateOffer_NormalLampSet_07;
+        public static ShopItemId RotateOffer_PermanentSpawnerBroomCabinetSet_02;
+        public static ShopItemId RotateOffer_PermanentSpawnerToyCarSet_02;
+        public static ShopItemId RealMoney_ProgressionEventPremium;
+        public static ShopItemId RotateOffer_NormalPaintCanSet_07;
+        public static ShopItemId RotateOffer_PermanentSpawnerToolboxSet_02;
+        public static ShopItemId RotateOffer_PermanentSpawnerPlantedBushSet_02;
+        public static ShopItemId RotateOffer_PermanentSpawnerGardenToolBarrel_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerGardenToolBarrel_02;
+        public static ShopItemId RotateOffer_NormalCleaningSet_10;
+        public static ShopItemId RotateOffer_NormalFlowerSet_08;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_11;
+        public static ShopItemId RotateOffer_NormalLocket_01;
+        public static ShopItemId RotateOffer_NormalLoveStory_01;
+        public static ShopItemId RotateOffer_NormalLoveStory_02;
+        public static ShopItemId RotateOffer_NormalLocket_02;
+        public static ShopItemId RotateOffer_NormalLocket_03;
+        public static ShopItemId RotateOffer_NormalMasonry_01;
+        public static ShopItemId RotateOffer_NormalMasonry_02;
+        public static ShopItemId RotateOffer_NormalMasonry_03;
+        public static ShopItemId RotateOffer_NormalMasonry_04;
+        public static ShopItemId RotateOffer_NormalMasonry_05;
+        public static ShopItemId RotateOffer_NormalMasonryTools_01;
+        public static ShopItemId RotateOffer_NormalMasonryTools_02;
+        public static ShopItemId RotateOffer_NormalTennisCourt_01;
+        public static ShopItemId RotateOffer_NormalTennisCourt_02;
+        public static ShopItemId RotateOffer_Generic_01;
+        public static ShopItemId RotateOffer_Generic_02;
+        public static ShopItemId RotateOffer_Generic_03;
+        public static ShopItemId RotateOffer_Generic_04;
+        public static ShopItemId RotateOffer_Generic_05;
+        public static ShopItemId RotateOffer_Generic_06;
+        public static ShopItemId RotateOffer_Generic_07;
+        public static ShopItemId RotateOffer_Generic_08;
+        public static ShopItemId RotateOffer_Generic_09;
+        public static ShopItemId RotateOffer_Generic_10;
+        public static ShopItemId RotateOffer_Generic_11;
+        public static ShopItemId RotateOffer_Generic_12;
+        public static ShopItemId RotateOffer_Generic_13;
+        public static ShopItemId RotateOffer_Generic_14;
+        public static ShopItemId RotateOffer_Generic_15;
+        public static ShopItemId RotateOffer_Generic_16;
+        public static ShopItemId RotateOffer_Generic_17;
+        public static ShopItemId RotateOffer_Generic_18;
+        public static ShopItemId RotateOffer_Generic_19;
+        public static ShopItemId RotateOffer_Generic_20;
+        public static ShopItemId RotateOffer_NormalCleaningSet_08B;
+        public static ShopItemId RotateOffer_NormalCleaningSet_09B;
+        public static ShopItemId RotateOffer_NormalCleaningSet_06B;
+        public static ShopItemId RotateOffer_NormalCleaningSet_07B;
+        public static ShopItemId RotateOffer_NormalLampSet_07B;
+        public static ShopItemId RealMoney_SeasonPassPremium;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_07_B;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_09_B;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_10_B;
+        public static ShopItemId RotateOffer_NormalDetergentSet_09_B;
+        public static ShopItemId RotateOffer_NormalCleaningSet_09_B;
+        public static ShopItemId RotateOffer_NormalToolsSet_07_B;
+        public static ShopItemId RotateOffer_NormalToolsSet_08_B;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_06_B;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_07_B;
+        public static ShopItemId RotateOffer_NormalCleaningSet_07_B;
+        public static ShopItemId RotateOffer_NormalToolsSet_05_B;
+        public static ShopItemId RotateOffer_NormalToolsSet_06_B;
+        public static ShopItemId RotateOffer_NormalSeedBagSet_03_B;
+        public static ShopItemId RotateOffer_NormalOrangeFlowerSet_01_B;
+        public static ShopItemId RotateOffer_NormalWoodSet_03_B;
+        public static ShopItemId RotateOffer_NormalLampSet_07_B;
+        public static ShopItemId RotateOffer_NormalFlowerSet_05_B;
+        public static ShopItemId RotateOffer_NormalFlowerSet_06_B;
+        public static ShopItemId RotateOffer_NormalFlowerSet_07_B;
+        public static ShopItemId RotateOffer_PermanentSpawnerVaseSet_01_B;
+        public static ShopItemId RotateOffer_PermanentSpawnerToyCarSet_02_B;
+        public static ShopItemId RotateOffer_NormalMasonry_02_B;
+        public static ShopItemId RotateOffer_NormalMasonryTools_01_B;
+        public static ShopItemId RotateOffer_NormalMasonryTools_02_B;
+        public static ShopItemId RotateOffer_NormalGameplayGlovesSet_06_B;
+        public static ShopItemId RotateOffer_NormalGoldRoot_01;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_01;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_02;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_03;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_04;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_05;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_12;
+        public static ShopItemId RotateOffer_NormalGargenToolSet_13;
+        public static ShopItemId RedChest_01;
+        public static ShopItemId BrownChest_01;
+        public static ShopItemId FancyBlueChest_01;
+        public static ShopItemId RealMoney_CurrencyBank;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_08;
+        public static ShopItemId RotateOffer_NormalGameplayScrewsSet_09;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_01;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_02;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_03;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_04;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_05;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomValuablesChain_06;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomCutleryChain_01;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomCutleryChain_02;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomCutleryChain_03;
+        public static ShopItemId RotateOffer_NormalMaintenanceRoomCutleryChain_04;
+        public static ShopItemId RotateOffer_NormalConservatoryExoticPlants_01;
+        public static ShopItemId RotateOffer_NormalConservatoryExoticPlants_02;
+        public static ShopItemId RotateOffer_NormalConservatoryExoticPlants_03;
+        public static ShopItemId RotateOffer_NormalConservatoryExoticPlants_04;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_01;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_02;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_03;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_04;
+        public static ShopItemId RotateOffer_NormalWorkbench_01;
+        public static ShopItemId RotateOffer_NormalWorkbench_02;
+        public static ShopItemId RotateOffer_NormalSewingkit_01;
+        public static ShopItemId RotateOffer_NormalSewingTools_01;
+        public static ShopItemId RotateOffer_NormalSewingTools_02;
+        public static ShopItemId RotateOffer_NormalSewingTools_03;
+        public static ShopItemId RotateOffer_NormalSewingTools_04;
+        public static ShopItemId RotateOffer_NormalSewingTools_05;
+        public static ShopItemId RotateOffer_NormalSewingTools_06;
+        public static ShopItemId RotateOffer_NormalFabric_01;
+        public static ShopItemId RotateOffer_NormalFabric_02;
+        public static ShopItemId RotateOffer_NormalFabric_03;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_01;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_02;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_03;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_04;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_05;
+        public static ShopItemId RotateOffer_NormalMaintenanceMaterials_01;
+        public static ShopItemId RotateOffer_NormalMaintenanceMaterials_02;
+        public static ShopItemId RotateOffer_NormalMaintenanceMaterials_03;
+        public static ShopItemId RotateOffer_NormalMasonry_06;
+        public static ShopItemId RotateOffer_NormalPlantedFlower_06;
+        public static ShopItemId SecondaryEnergyItem_ItemRecharge;
+        public static ShopItemId DiamondItem_ItemAdd;
+        public static ShopItemId DailyDeal_LBETimeSkip;
+        public static ShopItemId RotateOffer_BoosterHourglass;
+        public static ShopItemId RotateOffer_BoosterTimeskip_01;
+        public static ShopItemId RotateOffer_BoosterScissors;
+        public static ShopItemId RotateOffer_NormalOrangeFlowerSet_02;
+        public static ShopItemId RotateOffer_NormalWoodSet_04;
+        public static ShopItemId RotateOffer_PermanentSpawnerToolboxSet_03;
+        public static ShopItemId RotateOffer_PermanentSpawnerGardenToolBarrel_03;
+        public static ShopItemId RotateOffer_PermanentSpawnerWorkbench_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerWorkbench_02;
+        public static ShopItemId RotateOffer_PermanentSpawnerWorkbench_03;
+        public static ShopItemId RotateOffer_PermanentSpawnerSewingkit_01;
+        public static ShopItemId RotateOffer_PermanentSpawnerSewingkit_02;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_06;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_07;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_01;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_02;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_03;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_04;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_05;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_06;
+        public static ShopItemId RotateOffer_NormalSaunaCharredWood_01;
+        public static ShopItemId RotateOffer_NormalDogAreaWood_01;
+        public static ShopItemId RotateOffer_NormalDogAreaWood_02;
+        public static ShopItemId RotateOffer_NormalDogAreaWood_03;
+        public static ShopItemId RotateOffer_NormalNails_01;
+        public static ShopItemId RotateOffer_NormalNails_02;
+        public static ShopItemId RotateOffer_NormalNails_03;
+        public static ShopItemId RotateOffer_NormalNails_04;
+        public static ShopItemId RotateOffer_NormalNails_05;
+        public static ShopItemId RotateOffer_StoneCan_01;
+        public static ShopItemId RotateOffer_StoneCan_02;
+        public static ShopItemId DiamondItem_ItemAdd_02;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_01;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_02;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_03;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_04;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_05;
+        public static ShopItemId RotateOffer_NormalHideoutNutsandBolts_06;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_01;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_02;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_03;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_04;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_05;
+        public static ShopItemId RotateOffer_NormalHideoutLockPick_06;
+        public static ShopItemId RotateOffer_NormalHideoutMagnifier_01;
+        public static ShopItemId RotateOffer_NormalButterfly_01;
+        public static ShopItemId RotateOffer_NormalButterfly_02;
+        public static ShopItemId RotateOffer_NormalButterfly_03;
+        public static ShopItemId RotateOffer_NormalButterfly_04;
+        public static ShopItemId RotateOffer_NormalButterfly_05;
+        public static ShopItemId RotateOffer_NormalCarHoodOrnament_01;
+        public static ShopItemId RotateOffer_NormalCarHoodOrnament_02;
+        public static ShopItemId RotateOffer_NormalMosaic_01;
+        public static ShopItemId RotateOffer_NormalMosaic_02;
+        public static ShopItemId RotateOffer_NormalSeedBagEmpty_01;
+        public static ShopItemId RotateOffer_NormalThread_01;
+        public static ShopItemId RotateOffer_NormalBottle_01;
+        public static ShopItemId RotateOffer_NormalBottle_02;
+        public static ShopItemId RotateOffer_NormalMoth_01;
+        public static ShopItemId RotateOffer_NormalMoth_02;
+        public static ShopItemId RotateOffer_NormalMoth_03;
+        public static ShopItemId RotateOffer_NormalDogAreaCarpenterTools_01;
+        public static ShopItemId RotateOffer_NormalDogAreaCarpenterTools_02;
+        public static ShopItemId RotateOffer_StartSeedBag_01;
+        public static ShopItemId RotateOffer_StartSeedBag_02;
+        public static ShopItemId RotateOffer_StartOrangeFlower_01;
+        public static ShopItemId RotateOffer_StartOrangeFlower_02;
+        public static ShopItemId RotateOffer_StartPaintCanSet_01;
+        public static ShopItemId RotateOffer_StartPaintCanSet_02;
+        public static ShopItemId RotateOffer_NormalSaunaAreaWood_01;
+        public static ShopItemId RotateOffer_NormalSaunaAreaWood_02;
+        public static ShopItemId RotateOffer_NormalSaunaAreaWood_03;
+        public static ShopItemId TertiaryEnergyItem_ItemRecharge;
+        public static ShopItemId RotateOffer_NormalWatering_01;
+        public static ShopItemId RotateOffer_NormalWatering_02;
+        public static ShopItemId RotateOffer_NormalWatering_03;
+        public static ShopItemId RotateOffer_NormalWatering_04;
+        public static ShopItemId RotateOffer_NormalWatering_05;
+        public static ShopItemId RotateOffer_NormalWatering_06;
+        public static ShopItemId RotateOffer_DiningBadNote_01;
+        public static ShopItemId RotateOffer_DiningBadNote_02;
+        public static ShopItemId RotateOffer_DiningBadNote_03;
+        public static ShopItemId RotateOffer_DiningBadNote_04;
+        public static ShopItemId RotateOffer_DiningPureNote_01;
+        public static ShopItemId RotateOffer_DiningPureNote_02;
+        public static ShopItemId RotateOffer_DiningPureNote_03;
+        public static ShopItemId RotateOffer_DiningPureNote_04;
+        public static ShopItemId RotateOffer_DiningPureNote_05;
+        public static ShopItemId RotateOffer_NormalFabric_04;
+        public static ShopItemId RotateOffer_NormalFabric_05;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_08;
+        public static ShopItemId RotateOffer_NormalMaintenanceTools_09;
+        public static ShopItemId RotateOffer_NormalMaintenanceMaterials_04;
+        public static ShopItemId RotateOffer_NormalConservatoryExoticPlants_05;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_05;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_06;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_07;
+        public static ShopItemId RotateOffer_NormalStudyNumbers_08;
+        public static ShopItemId RotateOffer_NormalSaunaAreaWood_04;
+        public static ShopItemId RotateOffer_StoneCan_03;
+        public static ShopItemId RotateOffer_StoneCan_04;
+        public static ShopItemId RotateOffer_BathroomTools_01;
+        public static ShopItemId RotateOffer_BathroomMaterials_01;
+        public static ShopItemId RotateOffer_BathroomMaterials_02;
+        public static ShopItemId RotateOffer_BathroomMaterials_03;
+        public static ShopItemId RotateOffer_Gallery_01;
+        public static ShopItemId RotateOffer_Gallery_02;
+        public static ShopItemId RotateOffer_Gallery_03;
+        public static ShopItemId RotateOffer_Gallery_04;
+        public static ShopItemId RotateOffer_Gallery_05;
+        public static ShopItemId RotateOffer_Gallery_06;
+        public static ShopItemId RotateOffer_Gallery_07;
+        public static ShopItemId RotateOffer_Gallery_08;
+        public static ShopItemId RotateOffer_Gallery_09;
+        public static ShopItemId RotateOffer_Gallery_10;
+        public static ShopItemId RealMoney_GemsBag_07;
+        public static ShopItemId RealMoney_GemsBag_08;
+        public static ShopItemId RotateOffer_Landing_01;
+        public static ShopItemId RotateOffer_Landing_02;
+        public static ShopItemId RotateOffer_Landing_03;
+        public static ShopItemId RotateOffer_Landing_04;
+        public static ShopItemId RotateOffer_Landing_05;
+        public static ShopItemId RotateOffer_Landing_06;
+        public static ShopItemId RotateOffer_Landing_07;
+        public static ShopItemId RotateOffer_Landing_08;
+        public static ShopItemId RotateOffer_Landing_09;
+        public static ShopItemId RotateOffer_Landing_10;
+        public static ShopItemId RotateOffer_Landing_11;
+        public static ShopItemId RotateOffer_Landing_12;
+        public static ShopItemId RotateOffer_Landing_13;
+        public static ShopItemId RotateOffer_Landing_14;
+        public static ShopItemId RotateOffer_Landing_15;
+        public static ShopItemId RotateOffer_Landing_16;
+        public static ShopItemId RotateOffer_Landing_17;
+        public static ShopItemId RotateOffer_Landing_18;
+        public static ShopItemId RotateOffer_Landing_19;
+        public static ShopItemId RotateOffer_Landing_20;
+        public static ShopItemId RotateOffer_Landing_21;
+        public static ShopItemId RotateOffer_Landing_22;
+        public static ShopItemId RotateOffer_Landing_23;
+        public static ShopItemId RotateOffer_Landing_24;
+        public static ShopItemId RotateOffer_Landing_25;
+        public static ShopItemId RotateOffer_Landing_26;
+        public static ShopItemId RotateOffer_Landing_27;
+        public static ShopItemId RotateOffer_Landing_28;
+        public static ShopItemId RotateOffer_Landing_29;
+        public static ShopItemId RotateOffer_Landing_30;
+        public static ShopItemId RotateOffer_Landing_31;
+        public static ShopItemId RotateOffer_Landing_32;
+        public static ShopItemId RotateOffer_Landing_33;
+        public static ShopItemId RotateOffer_Landing_34;
+        public static ShopItemId RotateOffer_Landing_35;
+        public static ShopItemId RotateOffer_Landing_36;
+        public static ShopItemId RotateOffer_Landing_37;
+        public static ShopItemId RotateOffer_Landing_38;
+        public static ShopItemId RotateOffer_Landing_39;
+        public static ShopItemId RotateOffer_Landing_40;
+        public static ShopItemId RotateOffer_Landing_41;
+        public static ShopItemId RotateOffer_Landing_42;
+        public static ShopItemId RotateOffer_Landing_43;
+        public static ShopItemId RotateOffer_Landing_44;
+        public static ShopItemId RotateOffer_Landing_45;
+        public static ShopItemId RotateOffer_Landing_46;
+        public static ShopItemId RotateOffer_Landing_47;
+        public static ShopItemId RotateOffer_Landing_48;
+        public static ShopItemId RotateOffer_Landing_49;
+        public static ShopItemId RotateOffer_Landing_50;
+        public static ShopItemId RotateOffer_Landing_51;
+        public static ShopItemId RotateOffer_Landing_52;
+        public static ShopItemId RotateOffer_Landing_53;
+        public static ShopItemId RotateOffer_Landing_54;
+        public static ShopItemId RotateOffer_Landing_55;
+        public static ShopItemId RotateOffer_Landing_56;
+        public static ShopItemId RotateOffer_Landing_57;
+        public static ShopItemId RotateOffer_Landing_58;
+        public static ShopItemId RotateOffer_Landing_59;
+        public static ShopItemId RotateOffer_Landing_60;
+        public static ShopItemId RotateOffer_Landing_61;
+        public static ShopItemId RotateOffer_Landing_62;
+        public static ShopItemId RotateOffer_Landing_63;
+        public static ShopItemId RotateOffer_Landing_64;
+        public static ShopItemId RotateOffer_Landing_65;
+        public static ShopItemId RotateOffer_Landing_66;
+        public static ShopItemId RotateOffer_Landing_67;
+        public static ShopItemId RotateOffer_Landing_68;
+        public static ShopItemId RotateOffer_Landing_69;
+        public static ShopItemId RotateOffer_Landing_70;
+        public static ShopItemId RotateOffer_Landing_71;
+        public static ShopItemId RotateOffer_Landing_72;
+        public static ShopItemId RotateOffer_Landing_73;
+        public static ShopItemId RotateOffer_Landing_74;
+        public static ShopItemId RotateOffer_Landing_75;
+        public static ShopItemId RotateOffer_Landing_76;
+        public static ShopItemId RotateOffer_Landing_77;
+        public static ShopItemId RotateOffer_Landing_78;
+        public static ShopItemId RotateOffer_Landing_79;
+        public static ShopItemId RotateOffer_Landing_80;
+        public static ShopItemId RotateOffer_Landing_81;
+        public static ShopItemId RotateOffer_Landing_82;
+        public static ShopItemId RotateOffer_Landing_83;
+        public static ShopItemId RotateOffer_Landing_84;
+        public static ShopItemId RotateOffer_Landing_85;
+        public static ShopItemId RotateOffer_Landing_86;
+        public static ShopItemId RotateOffer_Landing_87;
+        public static ShopItemId RotateOffer_Landing_88;
+        public static ShopItemId RotateOffer_Landing_89;
+        public static ShopItemId RotateOffer_Landing_90;
+        public static ShopItemId RotateOffer_Landing_91;
+        public static ShopItemId RotateOffer_Landing_92;
+        public static ShopItemId RotateOffer_Landing_93;
+        public static ShopItemId RotateOffer_Landing_94;
+        public static ShopItemId RotateOffer_Landing_95;
+        public static ShopItemId RotateOffer_Landing_96;
+        public static ShopItemId RotateOffer_Landing_97;
+        public static ShopItemId RotateOffer_Landing_98;
+        public static ShopItemId RotateOffer_Landing_99;
+        public static ShopItemId RotateOffer_Landing_100;
+        public static ShopItemId RotateOffer_Landing_101;
+        public static ShopItemId RotateOffer_Landing_102;
+        public static ShopItemId RotateOffer_Landing_103;
+        public static ShopItemId RotateOffer_Landing_104;
+        public static ShopItemId RotateOffer_Landing_105;
+        public static ShopItemId RotateOffer_Landing_106;
+        public static ShopItemId RotateOffer_Landing_107;
+        public static ShopItemId RotateOffer_Landing_108;
+        public static ShopItemId RotateOffer_Landing_109;
+        public static ShopItemId RotateOffer_Landing_110;
+        public static ShopItemId RotateOffer_Landing_111;
+        public static ShopItemId RotateOffer_Landing_112;
+        public static ShopItemId RotateOffer_Landing_113;
+        public static ShopItemId RotateOffer_Landing_114;
+        public static ShopItemId RotateOffer_Landing_115;
+        public static ShopItemId RotateOffer_Landing_116;
+        public static ShopItemId RotateOffer_Landing_117;
+        public static ShopItemId RotateOffer_Landing_118;
+        public static ShopItemId RotateOffer_Landing_119;
+        public static ShopItemId RotateOffer_Landing_120;
+        public static ShopItemId RotateOffer_Landing_121;
+        public static ShopItemId RotateOffer_Landing_122;
+        public static ShopItemId RotateOffer_Landing_123;
+        public static ShopItemId RotateOffer_Landing_124;
+        public static ShopItemId RotateOffer_Landing_125;
+        public static ShopItemId RotateOffer_Landing_126;
+        public static ShopItemId RotateOffer_Landing_127;
+        public static ShopItemId RotateOffer_Landing_128;
+        public static ShopItemId RotateOffer_Landing_129;
+        public static ShopItemId RotateOffer_Landing_130;
+        public static ShopItemId RotateOffer_Landing_131;
+        public static ShopItemId RotateOffer_Landing_132;
+        public static ShopItemId RotateOffer_Landing_133;
+        public static ShopItemId RotateOffer_Landing_134;
+        public static ShopItemId RotateOffer_Landing_135;
+        public static ShopItemId RotateOffer_Landing_136;
+        public static ShopItemId RotateOffer_Landing_137;
+        public static ShopItemId RotateOffer_Landing_138;
+        public static ShopItemId RotateOffer_Landing_139;
+        public static ShopItemId RotateOffer_Landing_140;
+        public static ShopItemId RotateOffer_Landing_141;
+        public static ShopItemId RotateOffer_Landing_142;
+        public static ShopItemId RotateOffer_LandingBox_1;
+        public static ShopItemId RotateOffer_LandingBox_2;
+        public static ShopItemId RotateOffer_LandingBox_3;
+        public static ShopItemId RotateOffer_LandingBox_4;
+        public static ShopItemId RotateOffer_LandingBox_5;
+        public static ShopItemId RotateOffer_LandingBox_6;
+        public static ShopItemId RotateOffer_LandingBox_7;
+        public static ShopItemId RotateOffer_LandingBox_8;
+        public static ShopItemId RotateOffer_LandingBox_9;
+        public static ShopItemId RotateOffer_LandingBox_10;
+        public static ShopItemId RotateOffer_LandingBox_11;
+        public static ShopItemId RotateOffer_LandingBox_12;
+        public static ShopItemId RotateOffer_LandingBox_13;
+        public static ShopItemId RotateOffer_LandingBox_14;
+        public static ShopItemId RotateOffer_LandingBox_15;
+        public static ShopItemId RotateOffer_LandingBox_16;
+        public static ShopItemId RotateOffer_LandingBox_17;
+        public static ShopItemId RotateOffer_LandingBox_18;
+        public static ShopItemId RotateOffer_LandingBox_19;
+        public static ShopItemId RotateOffer_LandingBox_20;
+        public static ShopItemId RotateOffer_LandingBox_21;
+        public static ShopItemId RotateOffer_LandingBox_22;
+        public static ShopItemId RotateOffer_LandingBox_23;
+        public static ShopItemId RotateOffer_LandingBox_24;
+        public static ShopItemId RotateOffer_LandingBox_25;
+        public static ShopItemId RotateOffer_LandingBox_26;
+        public static ShopItemId RotateOffer_LandingBox_27;
+        public static ShopItemId RotateOffer_LandingBox_28;
+        public static ShopItemId RotateOffer_LandingBox_29;
+        public static ShopItemId RotateOffer_LandingBox_30;
+        public static ShopItemId RotateOffer_LandingBox_31;
+        public static ShopItemId RotateOffer_LandingBox_32;
+        public static ShopItemId RotateOffer_LandingBox_33;
+        public static ShopItemId RotateOffer_LandingBox_34;
+        public static ShopItemId RotateOffer_LandingBox_35;
+        public static ShopItemId RotateOffer_LandingBox_36;
+        public static ShopItemId RotateOffer_LandingBox_37;
+        public static ShopItemId RotateOffer_LandingBox_38;
+        public static ShopItemId RotateOffer_LandingBox_39;
+        public static ShopItemId RotateOffer_LandingBox_40;
+        public static ShopItemId RotateOffer_LandingBox_41;
+        public static ShopItemId RotateOffer_LandingBox_42;
+        public static ShopItemId RotateOffer_LandingBox_43;
+        public static ShopItemId RotateOffer_LandingBox_44;
+        public static ShopItemId RotateOffer_LandingBox_45;
+        public static ShopItemId RotateOffer_LandingBox_46;
+        public static ShopItemId RotateOffer_LandingBox_47;
+        public static ShopItemId RotateOffer_LandingBox_48;
+        public static ShopItemId RotateOffer_LandingBox_49;
+        public static ShopItemId RotateOffer_LandingBox_50;
+        public static ShopItemId RotateOffer_LandingBox_51;
+        public static ShopItemId RotateOffer_LandingBox_52;
+        public static ShopItemId RotateOffer_LandingBox_53;
+        public static ShopItemId RotateOffer_LandingBox_54;
+        public static ShopItemId RotateOffer_LandingBox_55;
+        public static ShopItemId RotateOffer_LandingBox_56;
+        public static ShopItemId RotateOffer_LandingBox_57;
+        public static ShopItemId RotateOffer_LandingBox_58;
+        public static ShopItemId RotateOffer_LandingBox_59;
+        public static ShopItemId RotateOffer_LandingBox_60;
+        public static ShopItemId RotateOffer_LandingBox_61;
+        public static ShopItemId RotateOffer_LandingBox_62;
+        public static ShopItemId RotateOffer_LandingBox_63;
+        public static ShopItemId RotateOffer_LandingBox_64;
+        public static ShopItemId RotateOffer_LandingBox_65;
+        public static ShopItemId RotateOffer_LandingBox_66;
+        public static ShopItemId RotateOffer_LandingBox_67;
+        public static ShopItemId RotateOffer_LandingBox_68;
+        public static ShopItemId RotateOffer_LandingBox_69;
+        public static ShopItemId RotateOffer_LandingBox_70;
+        public static ShopItemId RotateOffer_Lounge_01;
+        public static ShopItemId RotateOffer_Lounge_02;
+        public static ShopItemId RotateOffer_Lounge_03;
+        public static ShopItemId Ws_RealMoney_GemsBag_01;
+        public static ShopItemId Ws_RealMoney_GemsBag_02;
+        public static ShopItemId Ws_RealMoney_GemsBag_03;
+        public static ShopItemId Ws_RealMoney_GemsBag_04;
+        public static ShopItemId Ws_RealMoney_GemsBag_05;
+        public static ShopItemId Ws_RealMoney_GemsBag_06;
+        public static ShopItemId Ws_RealMoney_CoinsBag_01;
+        public static ShopItemId Ws_RealMoney_CoinsBag_02;
+        public static ShopItemId Ws_RealMoney_CoinsBag_03;
+        public static ShopItemId Ws_RealMoney_CoinsBag_04;
+        public static ShopItemId Ws_RealMoney_CoinsBag_05;
+        public static ShopItemId Ws_RealMoney_CoinsBag_06;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomMaterials_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_BathroomTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_07_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_08_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Butterfly_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Cleaning_13_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Detergent_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningBadNote_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DiningPureNote_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_DogAreaWood_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PermanentSpawnerDrawer_01;
+        public static ShopItemId New_RotateOffer_Fabric_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Fabric_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Fabric_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Fabric_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Fabric_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Fabric_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Flower_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PermanentSpawnerFlowerpot_01;
+        public static ShopItemId New_RotateOffer_GalleryDodo_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryDodo_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryDodo_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_4_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_5_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_6_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_7_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_01_8_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_4_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_5_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_6_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_7_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_02_8_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_4_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_5_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_6_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_7_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_03_8_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_4_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_5_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_6_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_7_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_04_8_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_4_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_5_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_6_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryExploration_05_7_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryFossil_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryFossil_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryFossil_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryIguana_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryIguana_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryIguana_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMask_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMask_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMask_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMonster_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMonster_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryMonster_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryPiranha_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryPiranha_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryPiranha_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryTiger_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryTiger_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryTiger_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryToucan_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryToucan_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GalleryToucan_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenBench_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenGloves_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenGloves_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenGloves_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenGloves_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenGloves_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_07_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_08_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_09_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_10_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_11_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_13_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GardenTools_14_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_GoldRoot_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutLockPick_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutMagnifier_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_HideoutNutsandBolts_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lamp_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingAquarium_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingGlassTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingGlassTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingGlassTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingGlassTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LandingGlassTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LevelDownBoosterScissors_01_1_Diamonds_Level;
+        public static ShopItemId New_RotateOffer_LevelDownBoosterScissors_01_2_Diamonds_Level;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LighthouseShinythings_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Locket_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Locket_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Locket_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Locket_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Locket_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Lounge_Joker_01_1_Diamonds_CardStackVisible;
+        public static ShopItemId New_RotateOffer_Lounge_Joker_01_2_Diamonds_CardStackVisible;
+        public static ShopItemId New_RotateOffer_Lounge_Joker_01_3_Diamonds_CardStackVisible;
+        public static ShopItemId New_RotateOffer_LoveStory_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_LoveStory_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_01_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_02_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceMaterials_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_07_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_08_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_09_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_10_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Masonry_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MasonryTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MasonryTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MasonryTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MasonryTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MasonryTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Mosaic_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Moth_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Nails_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Nails_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Nails_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Nails_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Nails_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_OrangeFlower_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PaintCan_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PaintCan_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PaintCan_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PaintCan_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PlantedFlower_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_09_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_10_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_11_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaAreaWood_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SaunaCharredWood_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Scarab_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_05_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_06_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_ScarabBox_07_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Screws_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Screws_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Screws_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Screws_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Screws_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBag_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SeedBagEmpty_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_SewingTools_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_01_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_02_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_03_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_04_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Ship_04_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Skatie_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StoneCan_13_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_StudyNumbers_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TennisCourtItem_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Thread_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_TimeSkipBooster_01_1_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_TimeSkipBoosterSingle_01_1_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Tools_12_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_PermanentSpawnerTree_01;
+        public static ShopItemId New_RotateOffer_Vase_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_01_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_01_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_02_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_02_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_03_2_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_03_3_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_10_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Vase_11_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_07_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_08_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Watering_09_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_01_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_02_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_03_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_04_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_05_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Wood_06_1_Diamonds_MergeChainItemNeeded;
+        public static ShopItemId New_RotateOffer_Bottle_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Bottle_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Butterfly_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_04_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_05_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Detergent_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaWood_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Fabric_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenGloves_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_01_1_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_02_1_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_03_1_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_04_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_05_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_06_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Locket_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Mosaic_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_PaintCan_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Screws_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_01_1_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_04_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_01_1_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_04_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_05_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Wood_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Bottle_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Bottle_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Butterfly_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_04_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_05_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Detergent_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaWood_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Fabric_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenGloves_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_02_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_03_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_04_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_05_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_06_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Locket_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Mosaic_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_PaintCan_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Screws_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_04_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_01_2_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_04_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_05_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Wood_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Bottle_01_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_Bottle_02_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_Butterfly_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_CarHoodOrnament_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_04_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_05_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_ConservatoryExoticPlants_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Detergent_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaCarpenterTools_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_DogAreaWood_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Fabric_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Flower_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenGloves_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_02_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_03_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_04_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_05_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_GardenTools_06_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Lamp_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Locket_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomCutleryChain_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceRoomValuablesChain_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_6_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_6_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_6_Coins_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Masonry_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Mosaic_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Nails_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_OrangeFlower_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_PaintCan_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_PlantedFlower_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Screws_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_01_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_02_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_SeedBag_03_5_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_SewingTools_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_StoneCan_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Tools_04_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_01_3_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_02_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_03_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_04_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Watering_05_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Wood_01_4_Coins_Level;
+        public static ShopItemId New_RotateOffer_Cleaning_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_04_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_05_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_09_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_10_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_11_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_12_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Cleaning_13_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_02_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Detergent_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_02_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Fabric_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Flower_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenGloves_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenGloves_02_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenGloves_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenGloves_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenGloves_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_04_6_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_05_6_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_06_6_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_07_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_08_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_09_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_10_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_11_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_12_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_13_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_GardenTools_14_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_09_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Lamp_10_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_LevelDownBoosterScissors_01_3_Diamonds_Level;
+        public static ShopItemId New_RotateOffer_LevelDownBoosterScissors_01_4_Diamonds_Level;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_7_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_01_8_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_7_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_02_8_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_7_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_03_8_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_04_6_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_05_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_06_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_07_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_08_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_09_4_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_10_4_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_11_3_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_MaintenanceTools_12_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_OrangeFlower_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PaintCan_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PaintCan_02_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PaintCan_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PaintCan_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_PlantedFlower_09_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Screws_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Screws_02_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Screws_03_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Screws_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Screws_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_01_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_04_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_09_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_SewingTools_10_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_TimeSkipBooster_01_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_TimeSkipBoosterSingle_01_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_02_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_03_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_04_5_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_05_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_06_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_07_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_08_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_09_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_10_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_11_2_Diamonds_NoReq;
+        public static ShopItemId New_RotateOffer_Tools_12_2_Diamonds_NoReq;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_07;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_08;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_09;
+        public static ShopItemId RotateOffer_NormalLighthouseShinythings_10;
+        public static ShopItemId New_RotateOffer_Reserve_5;
+        public static ShopItemId New_RotateOffer_Reserve_6;
+        public static ShopItemId New_RotateOffer_Reserve_7;
+        public static ShopItemId New_RotateOffer_Reserve_8;
+        public static ShopItemId New_RotateOffer_Reserve_9;
+        public static ShopItemId New_RotateOffer_Reserve_10;
+        public static ShopItemId New_RotateOffer_Reserve_11;
+        public static ShopItemId New_RotateOffer_Reserve_12;
+        public static ShopItemId New_RotateOffer_Reserve_13;
+        public static ShopItemId New_RotateOffer_Reserve_14;
+        public static ShopItemId New_RotateOffer_Reserve_15;
+        public static ShopItemId New_RotateOffer_Reserve_16;
+        public static ShopItemId New_RotateOffer_Reserve_17;
+        public static ShopItemId New_RotateOffer_Reserve_18;
+        public static ShopItemId New_RotateOffer_Reserve_19;
+        public static ShopItemId New_RotateOffer_Reserve_20;
+        public static ShopItemId New_RotateOffer_Reserve_21;
+        public static ShopItemId New_RotateOffer_Reserve_22;
+        public static ShopItemId New_RotateOffer_Reserve_23;
+        public static ShopItemId New_RotateOffer_Reserve_24;
+        public static ShopItemId New_RotateOffer_Reserve_25;
+        public static ShopItemId New_RotateOffer_Reserve_26;
+        public static ShopItemId New_RotateOffer_Reserve_27;
+        public static ShopItemId New_RotateOffer_Reserve_28;
+        public static ShopItemId New_RotateOffer_Reserve_29;
+        public static ShopItemId New_RotateOffer_Reserve_30;
+        public static ShopItemId New_RotateOffer_Reserve_31;
+        public static ShopItemId New_RotateOffer_Reserve_32;
+        public static ShopItemId New_RotateOffer_Reserve_33;
+        public static ShopItemId New_RotateOffer_Reserve_34;
+        public static ShopItemId New_RotateOffer_Reserve_35;
+        public static ShopItemId New_RotateOffer_Reserve_36;
+        public static ShopItemId New_RotateOffer_Reserve_37;
+        public static ShopItemId New_RotateOffer_Reserve_38;
+        public static ShopItemId New_RotateOffer_Reserve_39;
+        public static ShopItemId New_RotateOffer_Reserve_40;
+        public static ShopItemId New_RotateOffer_Reserve_41;
+        public static ShopItemId New_RotateOffer_Reserve_42;
+        public static ShopItemId New_RotateOffer_Reserve_43;
+        public static ShopItemId New_RotateOffer_Reserve_44;
+        public static ShopItemId New_RotateOffer_Reserve_45;
+        public static ShopItemId New_RotateOffer_Reserve_46;
+        public static ShopItemId New_RotateOffer_Reserve_47;
+        public static ShopItemId New_RotateOffer_Reserve_48;
+        public static ShopItemId New_RotateOffer_Reserve_49;
+        public static ShopItemId New_RotateOffer_Reserve_50;
+        public static ShopItemId New_RotateOffer_Reserve_51;
+        public static ShopItemId New_RotateOffer_Reserve_52;
+        public static ShopItemId New_RotateOffer_Reserve_53;
+        public static ShopItemId New_RotateOffer_Reserve_54;
+        public static ShopItemId New_RotateOffer_Reserve_55;
+        public static ShopItemId New_RotateOffer_Reserve_56;
+        public static ShopItemId New_RotateOffer_Reserve_57;
+        public static ShopItemId New_RotateOffer_Reserve_58;
+        public static ShopItemId New_RotateOffer_Reserve_59;
+        public static ShopItemId New_RotateOffer_Reserve_60;
+        public static ShopItemId New_RotateOffer_Reserve_61;
+        public static ShopItemId New_RotateOffer_Reserve_62;
+        public static ShopItemId New_RotateOffer_Reserve_63;
+        public static ShopItemId New_RotateOffer_Reserve_64;
+        public static ShopItemId New_RotateOffer_Reserve_65;
+        public static ShopItemId New_RotateOffer_Reserve_66;
+        public static ShopItemId New_RotateOffer_Reserve_67;
+        public static ShopItemId New_RotateOffer_Reserve_68;
+        public static ShopItemId New_RotateOffer_Reserve_69;
+        public static ShopItemId New_RotateOffer_Reserve_70;
+        public static ShopItemId New_RotateOffer_Reserve_71;
+        public static ShopItemId New_RotateOffer_Reserve_72;
+        public static ShopItemId New_RotateOffer_Reserve_73;
+        public static ShopItemId New_RotateOffer_Reserve_74;
+        public static ShopItemId New_RotateOffer_Reserve_75;
+        public static ShopItemId New_RotateOffer_Reserve_76;
+        public static ShopItemId New_RotateOffer_Reserve_77;
+        public static ShopItemId New_RotateOffer_Reserve_78;
+        public static ShopItemId New_RotateOffer_Reserve_79;
+        public static ShopItemId New_RotateOffer_Reserve_80;
+        public static ShopItemId New_RotateOffer_Reserve_81;
+        public static ShopItemId New_RotateOffer_Reserve_82;
+        public static ShopItemId New_RotateOffer_Reserve_83;
+        public static ShopItemId New_RotateOffer_Reserve_84;
+        public static ShopItemId New_RotateOffer_Reserve_85;
+        public static ShopItemId New_RotateOffer_Reserve_86;
+        public static ShopItemId New_RotateOffer_Reserve_87;
+        public static ShopItemId New_RotateOffer_Reserve_88;
+        public static ShopItemId New_RotateOffer_Reserve_89;
+        public static ShopItemId New_RotateOffer_Reserve_90;
+        public static ShopItemId New_RotateOffer_Reserve_91;
+        public static ShopItemId New_RotateOffer_Reserve_92;
+        public static ShopItemId New_RotateOffer_Reserve_93;
+        public static ShopItemId New_RotateOffer_Reserve_94;
+        public static ShopItemId New_RotateOffer_Reserve_95;
+        public static ShopItemId New_RotateOffer_Reserve_96;
+        public static ShopItemId New_RotateOffer_Reserve_97;
+        public static ShopItemId New_RotateOffer_Reserve_98;
+        public static ShopItemId New_RotateOffer_Reserve_99;
+        public static ShopItemId New_RotateOffer_Reserve_100;
+        public static ShopItemId New_RotateOffer_Reserve_101;
+        public static ShopItemId New_RotateOffer_Reserve_102;
+        public static ShopItemId New_RotateOffer_Reserve_103;
+        public static ShopItemId New_RotateOffer_Reserve_104;
+        public static ShopItemId New_RotateOffer_Reserve_105;
+        public static ShopItemId New_RotateOffer_Reserve_106;
+        public static ShopItemId New_RotateOffer_Reserve_107;
+        public static ShopItemId New_RotateOffer_Reserve_108;
+        public static ShopItemId New_RotateOffer_Reserve_109;
+        public static ShopItemId New_RotateOffer_Reserve_110;
+        public static ShopItemId New_RotateOffer_Reserve_111;
+        public static ShopItemId New_RotateOffer_Reserve_112;
+        public static ShopItemId New_RotateOffer_Reserve_113;
+        public static ShopItemId New_RotateOffer_Reserve_114;
+        public static ShopItemId New_RotateOffer_Reserve_115;
+        public static ShopItemId New_RotateOffer_Reserve_116;
+        public static ShopItemId New_RotateOffer_Reserve_117;
+        public static ShopItemId New_RotateOffer_Reserve_118;
+        public static ShopItemId New_RotateOffer_Reserve_119;
+        public static ShopItemId New_RotateOffer_Reserve_120;
+        public static ShopItemId New_RotateOffer_Reserve_121;
+        public static ShopItemId New_RotateOffer_Reserve_122;
+        public static ShopItemId New_RotateOffer_Reserve_123;
+        public static ShopItemId New_RotateOffer_Reserve_124;
+        public static ShopItemId New_RotateOffer_Reserve_125;
+        public static ShopItemId New_RotateOffer_Reserve_126;
+        public static ShopItemId New_RotateOffer_Reserve_127;
+        public static ShopItemId New_RotateOffer_Reserve_128;
+        public static ShopItemId New_RotateOffer_Reserve_129;
+        public static ShopItemId New_RotateOffer_Reserve_130;
+        public static ShopItemId New_RotateOffer_Reserve_131;
+        public static ShopItemId New_RotateOffer_Reserve_132;
+        public static ShopItemId New_RotateOffer_Reserve_133;
+        public static ShopItemId New_RotateOffer_Reserve_134;
+        public static ShopItemId New_RotateOffer_Reserve_135;
+        public static ShopItemId New_RotateOffer_Reserve_136;
+        public static ShopItemId New_RotateOffer_Reserve_137;
+        public static ShopItemId New_RotateOffer_Reserve_138;
+        public static ShopItemId New_RotateOffer_Reserve_139;
+        public static ShopItemId New_RotateOffer_Reserve_140;
+        public static ShopItemId New_RotateOffer_Reserve_141;
+        public static ShopItemId New_RotateOffer_Reserve_142;
+        public static ShopItemId New_RotateOffer_Reserve_143;
+        public static ShopItemId New_RotateOffer_Reserve_144;
+        public static ShopItemId New_RotateOffer_Reserve_145;
+        public static ShopItemId New_RotateOffer_Reserve_146;
+        public static ShopItemId New_RotateOffer_Reserve_147;
+        public static ShopItemId New_RotateOffer_Reserve_148;
+        public static ShopItemId New_RotateOffer_Reserve_149;
+        public static ShopItemId New_RotateOffer_Reserve_150;
+        public static ShopItemId New_RotateOffer_Reserve_151;
+        public static ShopItemId New_RotateOffer_Reserve_152;
+        public static ShopItemId New_RotateOffer_Reserve_153;
+        public static ShopItemId New_RotateOffer_Reserve_154;
+        public static ShopItemId New_RotateOffer_Reserve_155;
+        public static ShopItemId New_RotateOffer_Reserve_156;
+        public static ShopItemId New_RotateOffer_Reserve_157;
+        public static ShopItemId New_RotateOffer_Reserve_158;
+        public static ShopItemId New_RotateOffer_Reserve_159;
+        public static ShopItemId New_RotateOffer_Reserve_160;
+        public static ShopItemId New_RotateOffer_Reserve_161;
+        public static ShopItemId New_RotateOffer_Reserve_162;
+        public static ShopItemId New_RotateOffer_Reserve_163;
+        public static ShopItemId New_RotateOffer_Reserve_164;
+        public static ShopItemId New_RotateOffer_Reserve_165;
+        public static ShopItemId New_RotateOffer_Reserve_166;
+        public static ShopItemId New_RotateOffer_Reserve_167;
+        public static ShopItemId New_RotateOffer_Reserve_168;
+        public static ShopItemId New_RotateOffer_Reserve_169;
+        public static ShopItemId New_RotateOffer_Reserve_170;
+        public static ShopItemId New_RotateOffer_Reserve_171;
+        public static ShopItemId New_RotateOffer_Reserve_172;
+        public static ShopItemId New_RotateOffer_Reserve_173;
+        public static ShopItemId New_RotateOffer_Reserve_174;
+        public static ShopItemId New_RotateOffer_Reserve_175;
+        public static ShopItemId New_RotateOffer_Reserve_176;
+        public static ShopItemId New_RotateOffer_Reserve_177;
+        public static ShopItemId New_RotateOffer_Reserve_178;
+        public static ShopItemId New_RotateOffer_Reserve_179;
+        public static ShopItemId New_RotateOffer_Reserve_180;
+        public static ShopItemId New_RotateOffer_Reserve_181;
+        public static ShopItemId New_RotateOffer_Reserve_182;
+        public static ShopItemId New_RotateOffer_Reserve_183;
+        public static ShopItemId New_RotateOffer_Reserve_184;
+        public static ShopItemId New_RotateOffer_Reserve_185;
+        public static ShopItemId New_RotateOffer_Reserve_186;
+        public static ShopItemId New_RotateOffer_Reserve_187;
+        public static ShopItemId New_RotateOffer_Reserve_188;
+        public static ShopItemId New_RotateOffer_Reserve_189;
+        public static ShopItemId New_RotateOffer_Reserve_190;
+        public static ShopItemId New_RotateOffer_Reserve_191;
+        public static ShopItemId New_RotateOffer_Reserve_192;
+        public static ShopItemId New_RotateOffer_Reserve_193;
+        public static ShopItemId New_RotateOffer_Reserve_194;
+        public static ShopItemId New_RotateOffer_Reserve_195;
+        public static ShopItemId New_RotateOffer_Reserve_196;
+        public static ShopItemId New_RotateOffer_Reserve_197;
+        public static ShopItemId New_RotateOffer_Reserve_198;
+        public static ShopItemId New_RotateOffer_Reserve_199;
+        public static ShopItemId New_RotateOffer_Reserve_200;
+        public static ShopItemId MysteryMachineEnergyItem_ItemRecharge;
+        public static ShopItemId RotateOffer_NormalWoodSet_05;
+        public static ShopItemId RotateOffer_NormalWoodSet_06;
+        public static ShopItemId RotateOffer_NormalWoodSet_07;
+        public static ShopItemId RotateOffer_NormalWoodSet_08;
+        public static ShopItemId RotateOffer_NormalWoodSet_09;
+        public static ShopItemId RotateOffer_NormalWoodSet_10;
+        public static ShopItemId RotateOffer_NormalWoodSet_11;
+        public static ShopItemId RotateOffer_NormalWoodSet_12;
+        public static ShopItemId RotateOffer_NormalWoodSet_13;
+        public static ShopItemId RotateOffer_NormalWoodSet_14;
+        public static ShopItemId RotateOffer_NormalWoodSet_15;
+        public static ShopItemId RotateOffer_NormalWoodSet_16;
+        public static ShopItemId RotateOffer_NormalWoodSet_17;
+        public static ShopItemId RotateOffer_NormalWoodSet_18;
+        public static ShopItemId RotateOffer_NormalWoodSet_19;
+        public static ShopItemId RotateOffer_NormalWoodSet_20;
+        public static ShopItemId RotateOffer_NormalWoodSet_21;
+        public static ShopItemId RotateOffer_NormalWoodSet_22;
+        public static ShopItemId RotateOffer_NormalWoodSet_23;
+        public static ShopItemId RotateOffer_NormalWoodSet_24;
+        public static ShopItemId RotateOffer_NormalWoodSet_25;
+        public static ShopItemId RotateOffer_NormalWoodSet_26;
+        public static ShopItemId RotateOffer_NormalWoodSet_27;
+        public static ShopItemId RotateOffer_NormalWoodSet_28;
+        public static ShopItemId RotateOffer_NormalWoodSet_29;
+        public static ShopItemId RotateOffer_NormalWoodSet_30;
+        public static ShopItemId RotateOffer_NormalWoodSet_31;
+        public static ShopItemId RotateOffer_NormalWoodSet_32;
+        public static ShopItemId RotateOffer_NormalWoodSet_33;
+        public static ShopItemId RotateOffer_NormalWoodSet_34;
+        public static ShopItemId RotateOffer_NormalWoodSet_35;
+        public static ShopItemId RotateOffer_NormalWoodSet_36;
+        public static ShopItemId RotateOffer_NormalWoodSet_37;
+        public static ShopItemId RotateOffer_NormalWoodSet_38;
+        public static ShopItemId RotateOffer_NormalWoodSet_39;
+        public static ShopItemId RotateOffer_NormalWoodSet_40;
+        public static ShopItemId RotateOffer_NormalWoodSet_41;
+        public static ShopItemId RotateOffer_NormalWoodSet_42;
+        public static ShopItemId RotateOffer_NormalWoodSet_43;
+        public static ShopItemId RotateOffer_NormalWoodSet_44;
+        public static ShopItemId RotateOffer_NormalWoodSet_45;
+        public static ShopItemId RotateOffer_NormalWoodSet_46;
+        public static ShopItemId RotateOffer_NormalWoodSet_47;
+        public static ShopItemId RotateOffer_NormalWoodSet_48;
+        public static ShopItemId RotateOffer_NormalWoodSet_49;
+        public static ShopItemId RotateOffer_NormalWoodSet_50;
+        public static ShopItemId RotateOffer_NormalWoodSet_51;
+        public static ShopItemId RotateOffer_NormalWoodSet_52;
+        public static ShopItemId RotateOffer_NormalWoodSet_53;
+        public static ShopItemId RotateOffer_NormalWoodSet_54;
+        public static ShopItemId RotateOffer_NormalWoodSet_55;
+        public static ShopItemId RotateOffer_NormalWoodSet_56;
+        public static ShopItemId RotateOffer_NormalWoodSet_57;
+        public static ShopItemId RotateOffer_NormalFlowerSet_09;
+        public static ShopItemId RotateOffer_NormalFlowerSet_10;
+        public static ShopItemId RotateOffer_NormalFlowerSet_11;
+        public static ShopItemId RotateOffer_NormalFlowerSet_12;
+        public static ShopItemId RotateOffer_NormalFlowerSet_13;
+        public static ShopItemId RotateOffer_NormalFlowerSet_14;
+        public static ShopItemId RotateOffer_NormalFlowerSet_15;
+        public static ShopItemId RotateOffer_NormalFlowerSet_16;
+        public static ShopItemId RotateOffer_NormalFlowerSet_17;
+        public static ShopItemId RotateOffer_NormalFlowerSet_18;
+        public static ShopItemId RotateOffer_NormalFlowerSet_19;
+        public static ShopItemId RotateOffer_NormalFlowerSet_20;
+        public static ShopItemId RotateOffer_NormalFlowerSet_21;
+        public static ShopItemId RotateOffer_NormalFlowerSet_22;
+        public static ShopItemId RotateOffer_NormalFlowerSet_23;
+        public static ShopItemId RotateOffer_NormalFlowerSet_24;
+        public static ShopItemId RotateOffer_NormalFlowerSet_25;
+        public static ShopItemId RotateOffer_NormalFlowerSet_26;
+        public static ShopItemId RotateOffer_NormalFlowerSet_27;
+        public static ShopItemId RotateOffer_NormalFlowerSet_28;
+        public static ShopItemId RotateOffer_NormalFlowerSet_29;
+        public static ShopItemId RotateOffer_NormalFlowerSet_30;
+        public static ShopItemId RotateOffer_NormalFlowerSet_31;
+        public static ShopItemId RotateOffer_NormalFlowerSet_32;
+        public static ShopItemId RotateOffer_NormalFlowerSet_33;
+        public static ShopItemId RotateOffer_NormalFlowerSet_34;
+        public static ShopItemId RotateOffer_NormalFlowerSet_35;
+        public static ShopItemId RotateOffer_NormalFlowerSet_36;
+        public static ShopItemId RotateOffer_NormalFlowerSet_37;
+        public static ShopItemId RotateOffer_NormalFlowerSet_38;
+        public static ShopItemId RotateOffer_NormalFlowerSet_39;
+        public static ShopItemId RotateOffer_NormalFlowerSet_40;
+        public static ShopItemId RotateOffer_NormalFlowerSet_41;
+        public static ShopItemId RotateOffer_NormalFlowerSet_42;
+        public static ShopItemId RotateOffer_NormalFlowerSet_43;
+        public static ShopItemId RotateOffer_NormalFlowerSet_44;
+        public static ShopItemId RotateOffer_NormalFlowerSet_45;
+        public static ShopItemId RotateOffer_NormalFlowerSet_46;
+        public static ShopItemId RotateOffer_NormalFlowerSet_47;
+        public static ShopItemId RotateOffer_NormalFlowerSet_48;
+        public static ShopItemId RotateOffer_NormalFlowerSet_49;
+        public static ShopItemId RotateOffer_NormalFlowerSet_50;
+        public static ShopItemId RotateOffer_NormalFlowerSet_51;
+        public static ShopItemId RotateOffer_NormalFlowerSet_52;
+        public static ShopItemId RotateOffer_NormalFlowerSet_53;
+        public static ShopItemId RotateOffer_NormalFlowerSet_54;
+        public static ShopItemId RotateOffer_NormalFlowerSet_55;
+        public static ShopItemId RotateOffer_NormalFlowerSet_56;
+        public static ShopItemId RotateOffer_NormalFlowerSet_57;
+        public static ShopItemId RotateOffer_NormalFlowerSet_58;
+        public static ShopItemId RotateOffer_StablesApple_01;
+        public static ShopItemId RotateOffer_StablesApple_02;
+        public static ShopItemId RotateOffer_StablesApple_03;
+        public static ShopItemId RotateOffer_StablesApple_04;
+        public static ShopItemId RotateOffer_StablesApple_05;
+        public static ShopItemId RotateOffer_StablesApple_06;
+        public static ShopItemId RotateOffer_StablesApple_07;
+        public static ShopItemId RotateOffer_StablesApple_08;
+        public static ShopItemId RotateOffer_StablesApple_09;
+        public static ShopItemId RotateOffer_StablesApple_10;
+        public static ShopItemId RotateOffer_StablesApple_11;
+        public static ShopItemId RotateOffer_StablesApple_12;
+        public static ShopItemId RotateOffer_StablesApple_13;
+        public static ShopItemId RotateOffer_StablesApple_14;
+        public static ShopItemId RotateOffer_StablesApple_15;
+        public static ShopItemId RotateOffer_StablesApple_17;
+        public static ShopItemId RotateOffer_StablesApple_18;
+        public static ShopItemId RotateOffer_StablesApple_19;
+        public static ShopItemId RotateOffer_StablesApple_20;
+        public static ShopItemId RotateOffer_StablesApple_21;
+        public static ShopItemId RotateOffer_StablesApple_22;
+        public static ShopItemId RotateOffer_StablesApple_23;
+        public static ShopItemId RotateOffer_StablesApple_24;
+        public static ShopItemId RotateOffer_StablesApple_25;
+        public static ShopItemId RotateOffer_StablesApple_26;
+        public static ShopItemId RotateOffer_StablesApple_27;
+        public static ShopItemId RotateOffer_StablesApple_28;
+        public static ShopItemId RotateOffer_StablesApple_29;
+        public static ShopItemId RotateOffer_StablesApple_30;
+        public static ShopItemId RotateOffer_StablesApple_31;
+        public static ShopItemId RotateOffer_StablesApple_33;
+        public static ShopItemId RotateOffer_StablesApple_34;
+        public static ShopItemId RotateOffer_StablesApple_35;
+        public static ShopItemId RotateOffer_StablesApple_36;
+        public static ShopItemId RotateOffer_StablesApple_37;
+        public static ShopItemId RotateOffer_StablesApple_38;
+        public static ShopItemId RotateOffer_StablesApple_39;
+        public static ShopItemId RotateOffer_StablesApple_40;
+        public static ShopItemId RotateOffer_StablesApple_41;
+        public static ShopItemId RotateOffer_StablesApple_42;
+        public static ShopItemId RotateOffer_StablesApple_43;
+        public static ShopItemId RotateOffer_StablesApple_44;
+        public static ShopItemId RotateOffer_StablesApple_45;
+        public static ShopItemId RotateOffer_StablesAppleTree_01;
+        public static ShopItemId RotateOffer_StablesAppleTree_02;
+        public static ShopItemId RotateOffer_StablesAppleTree_03;
+        public static ShopItemId RotateOffer_StablesAppleTree_04;
+        public static ShopItemId RotateOffer_StablesAppleTree_05;
+        public static ShopItemId RotateOffer_StablesAppleTree_06;
+        public static ShopItemId RotateOffer_StablesAppleTree_07;
+        public static ShopItemId RotateOffer_StablesAppleTree_08;
+        public static ShopItemId RotateOffer_StablesAppleTree_09;
+        public static ShopItemId RotateOffer_StablesAppleTree_10;
+        public static ShopItemId RotateOffer_StablesAppleTree_11;
+        public static ShopItemId RotateOffer_StablesAppleTree_12;
+        public static ShopItemId RotateOffer_StablesAppleTree_13;
+        public static ShopItemId RotateOffer_StablesAppleTree_14;
+        public static ShopItemId RotateOffer_StablesAppleTree_15;
+        public static ShopItemId RotateOffer_StablesAppleTree_16;
+        public static ShopItemId RotateOffer_StablesAppleTree_17;
+        public static ShopItemId RotateOffer_StablesAppleTree_18;
+        public static ShopItemId RotateOffer_StablesAppleTree_19;
+        public static ShopItemId RotateOffer_StablesAppleTree_20;
+        public static ShopItemId RotateOffer_StablesAppleTree_21;
+        public static ShopItemId RotateOffer_StablesAppleTree_22;
+        public static ShopItemId RotateOffer_StablesAppleTree_23;
+        public static ShopItemId RotateOffer_StablesAppleTree_24;
+        public static ShopItemId RotateOffer_StablesAppleTree_25;
+        public static ShopItemId RotateOffer_StablesAppleTree_26;
+        public static ShopItemId RotateOffer_StablesAppleTree_27;
+        public static ShopItemId RotateOffer_StablesAppleTree_28;
+        public static ShopItemId RotateOffer_StablesAppleTree_29;
+        public static ShopItemId RotateOffer_StablesAppleTree_30;
+        public static ShopItemId RotateOffer_StablesAppleTree_31;
+        public static ShopItemId RotateOffer_StablesAppleTree_32;
+        public static ShopItemId RotateOffer_StablesAppleTree_33;
+        public static ShopItemId RotateOffer_StablesAppleTree_34;
+        public static ShopItemId RotateOffer_StablesAppleTree_35;
+        public static ShopItemId RotateOffer_StablesAppleTree_36;
+        public static ShopItemId RotateOffer_StablesAppleTree_37;
+        public static ShopItemId RotateOffer_StablesAppleTree_38;
+        public static ShopItemId RotateOffer_StablesAppleTree_39;
+        public static ShopItemId RotateOffer_StablesAppleTree_40;
+        public static ShopItemId RotateOffer_StablesAppleTree_41;
+        public static ShopItemId RotateOffer_StablesAppleTree_42;
+        public static ShopItemId RotateOffer_StablesAppleTree_43;
+        public static ShopItemId RotateOffer_StablesAppleTree_44;
+        public static ShopItemId RotateOffer_StablesAppleTree_45;
+        public static ShopItemId RotateOffer_StablesAppleTree_46;
+        public static ShopItemId RotateOffer_StablesAppleTree_47;
+        public static ShopItemId RotateOffer_StablesAppleTree_48;
+        public static ShopItemId RotateOffer_StablesAppleTree_49;
+        public static ShopItemId RotateOffer_StablesAppleTree_50;
+        public static ShopItemId RotateOffer_StablesAppleTree_51;
+        public static ShopItemId RotateOffer_StablesAppleTree_52;
+        public static ShopItemId RotateOffer_StablesAppleTree_53;
+        public static ShopItemId RotateOffer_StablesAppleTree_54;
+        public static ShopItemId RotateOffer_StablesAppleTree_55;
+        public static ShopItemId RotateOffer_StablesAppleTree_56;
+        public static ShopItemId RotateOffer_StablesAppleTree_57;
+        public static ShopItemId RotateOffer_StablesAppleTree_58;
+        public static ShopItemId RotateOffer_StablesAppleTree_59;
+        public static ShopItemId RotateOffer_StablesAppleTree_60;
+        public static ShopItemId RotateOffer_StablesAppleTree_61;
+        public static ShopItemId RotateOffer_StablesAppleTree_62;
+        public static ShopItemId RotateOffer_StablesAppleTree_63;
+        public static ShopItemId RotateOffer_StablesAppleTree_64;
+        public static ShopItemId RotateOffer_StablesAppleTree_65;
+        public static ShopItemId RotateOffer_StablesAppleTree_66;
+        public static ShopItemId RotateOffer_StablesAppleTree_67;
+        public static ShopItemId RotateOffer_StablesAppleTree_68;
+        public static ShopItemId RotateOffer_StablesAppleTree_69;
+        public static ShopItemId RotateOffer_StablesAppleTree_70;
+        public static ShopItemId RotateOffer_StablesAppleTree_71;
+        public static ShopItemId RotateOffer_StablesAppleTree_72;
+        public static ShopItemId RotateOffer_StablesAppleTree_73;
+        public static ShopItemId RotateOffer_StablesAppleTree_74;
+        public static ShopItemId RotateOffer_StablesAppleTree_75;
+        public static ShopItemId RotateOffer_StablesAppleTree_76;
+        public static ShopItemId RotateOffer_StablesAppleTree_77;
+        public static ShopItemId RotateOffer_StablesAppleTree_78;
+        public static ShopItemId RotateOffer_StablesAppleTree_79;
+        public static ShopItemId RotateOffer_StablesAppleTree_80;
+        public static ShopItemId RotateOffer_StablesAppleTree_81;
+        public static ShopItemId RotateOffer_StablesAppleTree_82;
+        public static ShopItemId RotateOffer_StablesAppleTree_83;
+        public static ShopItemId RotateOffer_StablesAppleTree_84;
+        public static ShopItemId RotateOffer_StablesAppleTree_85;
+        public static ShopItemId RotateOffer_StablesAppleTree_86;
+        public static ShopItemId RotateOffer_StablesAppleTree_87;
+        public static ShopItemId RotateOffer_StablesAppleTree_88;
+        public static ShopItemId RotateOffer_StablesCarrot_01;
+        public static ShopItemId RotateOffer_StablesCarrot_02;
+        public static ShopItemId RotateOffer_StablesCarrot_03;
+        public static ShopItemId RotateOffer_StablesCarrot_04;
+        public static ShopItemId RotateOffer_StablesCarrot_05;
+        public static ShopItemId RotateOffer_StablesCarrot_06;
+        public static ShopItemId RotateOffer_StablesCarrot_07;
+        public static ShopItemId RotateOffer_StablesCarrot_08;
+        public static ShopItemId RotateOffer_StablesCarrot_09;
+        public static ShopItemId RotateOffer_StablesCarrot_10;
+        public static ShopItemId RotateOffer_StablesCarrot_11;
+        public static ShopItemId RotateOffer_StablesCarrot_12;
+        public static ShopItemId RotateOffer_StablesCarrot_13;
+        public static ShopItemId RotateOffer_StablesCarrot_14;
+        public static ShopItemId RotateOffer_StablesCarrot_15;
+        public static ShopItemId RotateOffer_StablesCarrot_16;
+        public static ShopItemId RotateOffer_StablesCarrot_17;
+        public static ShopItemId RotateOffer_StablesCarrot_18;
+        public static ShopItemId RotateOffer_StablesCarrot_19;
+        public static ShopItemId RotateOffer_StablesCarrot_20;
+        public static ShopItemId RotateOffer_StablesCarrot_21;
+        public static ShopItemId RotateOffer_StablesCarrot_22;
+        public static ShopItemId RotateOffer_StablesCarrot_23;
+        public static ShopItemId RotateOffer_StablesCarrot_24;
+        public static ShopItemId RotateOffer_StablesCarrot_25;
+        public static ShopItemId RotateOffer_StablesCarrot_26;
+        public static ShopItemId RotateOffer_StablesCarrot_27;
+        public static ShopItemId RotateOffer_StablesCarrot_28;
+        public static ShopItemId RotateOffer_StablesCarrot_29;
+        public static ShopItemId RotateOffer_StablesCarrot_30;
+        public static ShopItemId RotateOffer_StablesCarrot_31;
+        public static ShopItemId RotateOffer_StablesCarrot_32;
+        public static ShopItemId RotateOffer_StablesCarrot_33;
+        public static ShopItemId RotateOffer_StablesTomato_01;
+        public static ShopItemId RotateOffer_StablesTomato_02;
+        public static ShopItemId RotateOffer_StablesTomato_03;
+        public static ShopItemId RotateOffer_StablesTomato_04;
+        public static ShopItemId RotateOffer_StablesTomato_05;
+        public static ShopItemId RotateOffer_StablesTomato_06;
+        public static ShopItemId RotateOffer_StablesTomato_07;
+        public static ShopItemId RotateOffer_StablesTomato_08;
+        public static ShopItemId RotateOffer_StablesTomato_09;
+        public static ShopItemId RotateOffer_StablesTomato_10;
+        public static ShopItemId RotateOffer_StablesTomato_11;
+        public static ShopItemId RotateOffer_StablesTomato_12;
+        public static ShopItemId RotateOffer_StablesTomato_13;
+        public static ShopItemId RotateOffer_StablesTomato_14;
+        public static ShopItemId RotateOffer_StablesTomato_15;
+        public static ShopItemId RotateOffer_StablesTomato_16;
+        public static ShopItemId RotateOffer_StablesTomato_17;
+        public static ShopItemId RotateOffer_StablesTomato_18;
+        public static ShopItemId RotateOffer_StablesTomato_19;
+        public static ShopItemId RotateOffer_StablesTomato_20;
+        public static ShopItemId RotateOffer_StablesTomato_21;
+        public static ShopItemId RotateOffer_StablesTomato_22;
+        public static ShopItemId RotateOffer_StablesTomato_23;
+        public static ShopItemId RotateOffer_StablesTomato_24;
+        public static ShopItemId RotateOffer_StablesTomato_25;
+        public static ShopItemId RotateOffer_StablesMulch_01;
+        public static ShopItemId RotateOffer_StablesMulch_02;
+        public static ShopItemId RotateOffer_StablesMulch_03;
+        public static ShopItemId RotateOffer_StablesMulch_04;
+        public static ShopItemId RotateOffer_StablesMulch_05;
+        public static ShopItemId RotateOffer_StablesMulch_06;
+        public static ShopItemId RotateOffer_StablesMulch_07;
+        public static ShopItemId RotateOffer_StablesMulch_08;
+        public static ShopItemId RotateOffer_StablesMulch_09;
+        public static ShopItemId RotateOffer_StablesMulch_10;
+        public static ShopItemId RotateOffer_StablesMulch_11;
+        public static ShopItemId RotateOffer_StablesMulch_12;
+        public static ShopItemId RotateOffer_StablesMulch_13;
+        public static ShopItemId RotateOffer_StablesMulch_14;
+        public static ShopItemId RotateOffer_StablesMulch_15;
+        public static ShopItemId RotateOffer_StablesMulch_16;
+        public static ShopItemId RotateOffer_StablesMulch_17;
+        public static ShopItemId RotateOffer_StablesMulch_18;
+        public static ShopItemId RotateOffer_StablesMulch_19;
+        public static ShopItemId RotateOffer_StablesMulch_20;
+        public static ShopItemId RotateOffer_StablesMulch_21;
+        public static ShopItemId RotateOffer_StablesMulch_22;
+        public static ShopItemId RotateOffer_StablesMulch_23;
+        public static ShopItemId RotateOffer_StablesMulch_24;
+        public static ShopItemId RotateOffer_StablesMulch_25;
+        public static ShopItemId RotateOffer_StablesMulch_26;
+        public static ShopItemId RotateOffer_StablesMulch_27;
+        public static ShopItemId RotateOffer_StablesMulch_28;
+        public static ShopItemId RotateOffer_StablesMulch_29;
+        public static IDictionary<int, string> legacyShopItemIdMapping;
+        public ShopItemId()
+        {
+        }
     }
 }

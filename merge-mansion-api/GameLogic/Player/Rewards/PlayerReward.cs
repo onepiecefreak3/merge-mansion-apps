@@ -7,7 +7,7 @@ namespace GameLogic.Player.Rewards
     [MetaSerializable]
     public abstract class PlayerReward : MetaPlayerRewardBase, IValidatable
     {
-        [MetaMember(100)]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public CurrencySource Source { get; set; }
 
         protected PlayerReward()

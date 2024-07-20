@@ -21,8 +21,8 @@ using GameLogic.Hotspots.CardStack;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44, 62 })]
     public class ProgressState
     {
         public Action OnUndoSellItemCleared;

@@ -9,7 +9,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1006)]
     public class PlayerPropertyEventProgressReachedLevel : TypedPlayerPropertyId<int>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId; // 0x10
         public override string DisplayName => $"Reached event {MergeBoardId.Value} progress level";
 

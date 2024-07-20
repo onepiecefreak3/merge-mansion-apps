@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Bubble
     [MetaSerializableDerived(2)]
     public class BracketedBubbleLogic : IBubbleLogic, IProvidesDebugOutput
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private List<Bracket> Brackets { get; set; }
 
         [MetaMember(2, 0)]
@@ -29,7 +29,7 @@ namespace GameLogic.Player.Items.Bubble
         [MetaSerializable]
         public class Bracket
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaDuration? Min { get; set; }
 
             [MetaMember(2, 0)]

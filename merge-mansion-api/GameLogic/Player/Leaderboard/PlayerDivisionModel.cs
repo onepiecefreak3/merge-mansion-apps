@@ -5,7 +5,7 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Leaderboard
 {
-    [SupportedSchemaVersions(1, 2)]
+    [SupportedSchemaVersions(1, 3)]
     [MetaSerializableDerived(3)]
     public class PlayerDivisionModel : PlayerDivisionModelBase<PlayerDivisionModel, PlayerDivisionParticipantState, PlayerDivisionScore, PlayerDivisionAvatar>
     {

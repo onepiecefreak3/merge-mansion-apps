@@ -8,10 +8,11 @@ using System;
 
 namespace GameLogic.Config.Shop.Items
 {
+    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(2)]
     public class BoardShopItem : IShopItem
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         private ShopItemId ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

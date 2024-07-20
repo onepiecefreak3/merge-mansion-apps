@@ -6,7 +6,7 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEvent(103, "Item merge", 1, null, false, true, false)]
+    [AnalyticsEvent(103, "Item merged", 1, null, true, true, false)]
     public class AnalyticsEventItemMerge : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

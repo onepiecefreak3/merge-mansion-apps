@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Metaplay.Core.Player
 {
-    public abstract class PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo> : IGameConfigSourceItem<PlayerSegmentId, TPlayerSegmentInfo>, IGameConfigKey<PlayerSegmentId>, IMetaIntegrationConstructible<PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo>>, IMetaIntegration<PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo>>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
+    public abstract class PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo> : IGameConfigSourceItem<PlayerSegmentId, TPlayerSegmentInfo>, IHasGameConfigKey<PlayerSegmentId>, IMetaIntegrationConstructible<PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo>>, IMetaIntegration<PlayerSegmentBasicInfoSourceItemBase<TPlayerSegmentInfo>>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         public PlayerSegmentId SegmentId { get; set; }
         public string DisplayName { get; set; }

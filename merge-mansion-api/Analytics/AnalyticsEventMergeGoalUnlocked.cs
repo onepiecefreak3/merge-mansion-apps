@@ -9,8 +9,8 @@ using GameLogic.Hotspots;
 
 namespace Analytics
 {
-    [AnalyticsEvent(101, "Merge goal unlocked", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 6 })]
+    [AnalyticsEvent(101, "Merge goal unlocked", 1, null, false, true, false)]
     public class AnalyticsEventMergeGoalUnlocked : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

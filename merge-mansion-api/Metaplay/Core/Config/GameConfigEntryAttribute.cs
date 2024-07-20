@@ -2,7 +2,7 @@ using System;
 
 namespace Metaplay.Core.Config
 {
-    [AttributeUsage(AttributeTargets.Property)]
+    [AttributeUsage((AttributeTargets)128)]
     public class GameConfigEntryAttribute : Attribute
     {
         // Fields

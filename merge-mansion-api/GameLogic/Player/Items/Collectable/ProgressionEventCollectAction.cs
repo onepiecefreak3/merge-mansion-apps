@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Collectable
     [MetaBlockedMembers(new int[] { 1 })]
     public class ProgressionEventCollectAction : IProgressCollectAction, ICollectAction
     {
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Progress { get; set; }
 
         private ProgressionEventCollectAction()

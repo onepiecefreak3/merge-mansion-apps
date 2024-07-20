@@ -9,7 +9,7 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(22)]
     public class RewardCollectibleBoardEventProgress : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private MetaRef<CollectibleBoardEventInfo> EventInfoRef { get; set; }
 
         [MetaMember(2, 0)]

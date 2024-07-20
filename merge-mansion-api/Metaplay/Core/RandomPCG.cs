@@ -10,7 +10,7 @@ namespace Metaplay.Core
         private const ulong Increment = 0x14057B7EF767814F;
         private const float ToFloat01 = 2.3283064E-10f;
         private const double ToDouble01 = 2.3283064365386963E-10;
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private ulong _state; // 0x10
         public RandomPCG()
         {

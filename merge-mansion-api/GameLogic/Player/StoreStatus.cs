@@ -5,16 +5,16 @@ using Metaplay.Core;
 using Merge;
 using System.Runtime.Serialization;
 using GameLogic.Advertisement;
+using Metaplay.Core.Offers;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17, 18, 19, 21, 22 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17, 18, 19, 21, 22, 26 })]
     public class StoreStatus
     {
         private static int PurchaseHistoryLength;
-        [MetaMember(3, (MetaMemberFlags)0)]
-        private Dictionary<ShopItemId, int> currentFlashSaleItemsAndAmounts;
         [MetaMember(9, (MetaMemberFlags)0)]
         private List<ShopItemId> CurrentShopItems { get; set; }
 
@@ -97,9 +97,37 @@ namespace GameLogic.Player
 
         [MetaMember(28, (MetaMemberFlags)0)]
         private Dictionary<string, int> OfferPopupTriggersActivatedTotal { get; set; }
+        private Dictionary<string, int> OfferPopupTriggersActivatedThisSession { get; set; }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public Dictionary<int, int> currentFlashSaleItemsAndAmounts_deprecated;
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public List<int> CurrentShopItems_deprecated { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public Dictionary<int, StoreStatus.PurchaseHistory> RecordedPurchases_deprecated { get; set; }
+
+        [MetaMember(27, (MetaMemberFlags)0)]
+        public Dictionary<AdvertisementPlacementId, ValueTuple<int, int>> FlashSaleAdPlacements_deprecated { get; set; }
 
         [MetaMember(29, (MetaMemberFlags)0)]
-        public int BoughtFlashSaleRefreshes { get; set; }
-        private Dictionary<string, int> OfferPopupTriggersActivatedThisSession { get; set; }
+        public int BoughtFlashSaleRefreshes_deprecated { get; set; }
+
+        [MetaMember(30, (MetaMemberFlags)0)]
+        public Dictionary<OfferPlacementId, StoreStatus.FlashSale> CurrentFlashSales { get; set; }
+
+        [MetaSerializable]
+        public class FlashSale
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public Dictionary<ShopItemId, int> ItemsAndAmounts { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public int BoughtRefreshes { get; set; }
+
+            public FlashSale()
+            {
+            }
+        }
     }
 }

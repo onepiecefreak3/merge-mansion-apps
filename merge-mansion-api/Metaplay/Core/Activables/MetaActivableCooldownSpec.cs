@@ -8,7 +8,7 @@ namespace Metaplay.Core.Activables
         [MetaSerializableDerived(1)]
         public class Fixed : MetaActivableCooldownSpec
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaDuration Duration { get; set; }
 
             public static MetaActivableCooldownSpec.Fixed Zero;

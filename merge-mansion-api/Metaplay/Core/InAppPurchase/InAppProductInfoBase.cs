@@ -9,7 +9,7 @@ namespace Metaplay.Core.InAppPurchase
     [MetaReservedMembers(100, 200)]
     public abstract class InAppProductInfoBase : IGameConfigData<InAppProductId>, IGameConfigData, IHasGameConfigKey<InAppProductId>
     {
-        [MetaMember(100)]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public InAppProductId ProductId { get; set; }
 
         [MetaMember(101)]

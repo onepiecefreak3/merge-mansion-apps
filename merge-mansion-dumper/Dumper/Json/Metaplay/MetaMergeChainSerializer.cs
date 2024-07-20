@@ -236,6 +236,35 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                 writer.WriteEndObject();
             }
+            else if (producer is ControlledMixedSequenceProducer cmsp)
+            {
+                writer.WriteStartObject();
+
+                writer.WritePropertyName("ControlledMixedSequence");
+                writer.WriteStartObject();
+
+                WriteProperty(writer, "RollType", cmsp.RollType.ToString(), serializer);
+                WriteProperty(writer, "ItemType", ClientGlobal.SharedGameConfig.Items.GetValueOrDefault(cmsp.ItemType).ItemType, serializer);
+
+                writer.WritePropertyName("Odds");
+                writer.WriteStartObject();
+
+                double weightSum = cmsp.Odds.Sum(x => x.Item2);
+                foreach (var odd in cmsp.Odds.GroupBy(x => x.Item1.ItemType))
+                {
+                    var weight = _dropAsPercent ?
+                        odd.Sum(x => x.Item2) / weightSum * 100 :
+                        odd.Sum(x => x.Item2);
+
+                    WriteProperty(writer, odd.Key, weight, serializer);
+                }
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+
+                writer.WriteEndObject();
+            }
             else
             {
                 writer.WriteNull();

@@ -6,7 +6,7 @@ namespace Metaplay.Core
     [MetaSerializable]
     public class MetaVersionRange
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int MinVersion { get; set; } // 0x0
 
         [MetaMember(2, 0)]

@@ -4,15 +4,15 @@ using System;
 
 namespace GameLogic.Player.Leaderboard
 {
+    [PlayerLeaguesEnabledCondition]
     [MetaSerializableDerived(150)]
     [MetaSerializable]
-    [PlayerLeaguesEnabledCondition]
     public class PlayerDivisionAvatar : PlayerDivisionAvatarBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string DisplayName;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string AssociationId;
         private PlayerDivisionAvatar()
         {

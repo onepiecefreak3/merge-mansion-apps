@@ -14,7 +14,7 @@ namespace Metaplay.Core
         public const int IdLength = 10;
         public static EntityId None => Create(EntityKind.None, 0);
 
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public ulong Raw { get; set; } // 0x0
         public EntityKind Kind => new EntityKind((int)(Raw >> KindShift));
         public ulong Value => Raw & ValueMask;

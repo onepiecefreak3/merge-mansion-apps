@@ -7,8 +7,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [MetaReservedMembers(300, 400)]
     [LeaguesEnabledCondition]
+    [MetaReservedMembers(300, 400)]
     public abstract class DivisionModelBase<TModel, TParticipantState, TDivisionScore> : MultiplayerModelBase<TModel>, IDivisionModel<TModel>, IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IMultiplayerModel<TModel>, IModel<TModel>
     {
         [IgnoreDataMember]

@@ -17,6 +17,8 @@ using GameLogic.Player.Director.Actions;
 using GameLogic.Player.Director.Conditions;
 using GameLogic.Player.Modes;
 using Code.GameLogic.DynamicEvents;
+using GameLogic.Player.DailyTasksV2;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player
 {
@@ -120,6 +122,8 @@ namespace GameLogic.Player
         RandomPCG MysteryMachineRandom { get; }
 
         List<BoardInventory.ProducerInventorySlotState> ProducerInventoryEntries { get; }
+
+        DailyTasksV2Status DailyTasksV2Status { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

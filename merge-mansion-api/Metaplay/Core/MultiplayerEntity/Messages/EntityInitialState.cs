@@ -6,7 +6,7 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
     [MetaSerializable]
     public class EntityInitialState
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EntitySerializedState State { get; set; } // 0x10
 
         [MetaMember(2, 0)]

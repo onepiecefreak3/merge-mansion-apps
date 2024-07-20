@@ -8,6 +8,7 @@ namespace GameLogic
     {
         UnKnown = 0,
         GrandmaMansion = 1,
-        Ranch = 2
+        Ranch = 2,
+        MansionUnderground = 3
     }
 }

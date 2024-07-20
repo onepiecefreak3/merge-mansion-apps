@@ -20,17 +20,19 @@ using Metaplay.Core.Math;
 using GameLogic.Player.Items.Fishing;
 using GameLogic.Player.Items.Persistent;
 using Merge;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player.Items
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
         private MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaMember(1, 0)]
+        [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
         public DecayState DecayState => Extra.DecayState;
         public ActivationState ActivationState => Extra.ActivationState;
@@ -64,11 +66,11 @@ namespace GameLogic.Player.Items
         [MetaSerializable]
         public class MergeItemExtra
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public DecayState DecayState; // 0x10
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public ActivationState ActivationState; // 0x18
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public StorageState ActivationStorageState; // 0x28
             [MetaMember(3, (MetaMemberFlags)0)]
             public SpawnState SpawnState;

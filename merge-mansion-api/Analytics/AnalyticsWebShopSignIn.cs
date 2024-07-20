@@ -10,12 +10,12 @@ namespace Analytics
     public class AnalyticsWebShopSignIn : AnalyticsServersideEventBase
     {
         [JsonProperty("state")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("State of the webshop sign in")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public AnalyticsWebShopSignInState State;
-        [Description("Has code")]
         [JsonProperty("has_code")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Has code")]
         public bool HasCode;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

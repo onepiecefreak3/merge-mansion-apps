@@ -9,7 +9,7 @@ using Metaplay.Core.Config;
 
 namespace GameLogic.Config
 {
-    public class PlayerSegmentInfoSourceItem : PlayerSegmentBasicInfoSourceItemBase<PlayerSegmentInfo>, IConfigItemSource<PlayerSegmentInfo, PlayerSegmentId>, IGameConfigSourceItem<PlayerSegmentId, PlayerSegmentInfo>, IGameConfigKey<PlayerSegmentId>
+    public class PlayerSegmentInfoSourceItem : PlayerSegmentBasicInfoSourceItemBase<PlayerSegmentInfo>, IConfigItemSource<PlayerSegmentInfo, PlayerSegmentId>, IGameConfigSourceItem<PlayerSegmentId, PlayerSegmentInfo>, IHasGameConfigKey<PlayerSegmentId>
     {
         public PlayerSegmentInfoSourceItem()
         {

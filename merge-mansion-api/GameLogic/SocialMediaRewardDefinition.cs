@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace GameLogic
 {
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class SocialMediaRewardDefinition
     {
         public static string EventComment;

@@ -6,7 +6,7 @@ namespace Metaplay.Core.Player
     [MetaSerializableDerived(1000)]
     public class PlayerSegmentBasicCondition : PlayerCondition
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public List<PlayerPropertyRequirement> PropertyRequirements { get; set; }
 
         [MetaMember(2)]

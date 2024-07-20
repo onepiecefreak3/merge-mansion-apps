@@ -16,7 +16,7 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     public class EventTaskInfo : IGameConfigData<EventTaskId>, IGameConfigData, IHasGameConfigKey<EventTaskId>, IValidatable
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EventTaskId EventTaskId { get; set; }
 
         [MetaMember(2, 0)]

@@ -17,11 +17,11 @@ namespace Metaplay.Core.Message
         [MetaSerializable]
         public class SessionResourceCorrection
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public Dictionary<ClientSlot, ConfigArchiveUpdateInfo> ConfigUpdates; // 0x10
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public Dictionary<ClientSlot, ConfigPatchesUpdateInfo> PatchUpdates; // 0x18
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public LanguageUpdateInfo? LanguageUpdate; // 0x20
             public SessionResourceCorrection()
             {
@@ -57,9 +57,9 @@ namespace Metaplay.Core.Message
             [MetaSerializable]
             public struct ConfigArchiveUpdateInfo
             {
-                [MetaMember(1, 0)]
+                [MetaMember(1, (MetaMemberFlags)0)]
                 public ContentHash SharedGameConfigVersion; // 0x0
-                [MetaMember(2, 0)]
+                [MetaMember(2, (MetaMemberFlags)0)]
                 public string UrlSuffix; // 0x10
                 public ConfigArchiveUpdateInfo(ContentHash sharedGameConfigVersion, string urlSuffix)
                 {
@@ -71,7 +71,7 @@ namespace Metaplay.Core.Message
             [MetaSerializable]
             public struct ConfigPatchesUpdateInfo
             {
-                [MetaMember(1, 0)]
+                [MetaMember(1, (MetaMemberFlags)0)]
                 public ContentHash PatchesVersion; // 0x0
                 public ConfigPatchesUpdateInfo(ContentHash patchesVersion)
                 {
@@ -96,7 +96,7 @@ namespace Metaplay.Core.Message
         [MetaSerializable]
         public class InitialPlayerState
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaSerialized<IPlayerModelBase> PlayerModel { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -116,7 +116,7 @@ namespace Metaplay.Core.Message
         [MetaSerializable]
         public struct SessionResourceProposal
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public Dictionary<ClientSlot, ContentHash> ConfigVersions { get; set; } // 0x0
 
             [MetaMember(2, 0)]
@@ -162,11 +162,11 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(16, MessageDirection.ClientToServer, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(16, (MessageDirection)1, true)]
         public class SessionStartRequest : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -218,10 +218,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(17, MessageDirection.ServerToClient, true)]
+        [MetaMessage(17, (MessageDirection)2, true)]
         public class SessionStartSuccess : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -286,10 +286,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(18, MessageDirection.ServerToClient, true)]
+        [MetaMessage(18, (MessageDirection)2, true)]
         public class SessionStartFailure : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -338,10 +338,10 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(20, MessageDirection.ServerToClient, true)]
+        [MetaMessage(20, (MessageDirection)2, true)]
         public class SessionResumeSuccess : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public SessionAcknowledgement ServerSessionAcknowledgement { get; set; } // 0x10
 
             [MetaMember(2, 0)]
@@ -371,11 +371,11 @@ namespace Metaplay.Core.Message
         {
         }
 
-        [MetaMessage(43, MessageDirection.ClientToServer, true)]
+        [MetaMessage(43, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
         public class SessionStartAbortReasonTrailer : MetaMessage
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public string IncidentId { get; set; }
 
             [MetaMember(2, 0)]
@@ -397,8 +397,8 @@ namespace Metaplay.Core.Message
         {
         }
 
-        [MetaMessage(42, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(42, (MessageDirection)1, true)]
         public class SessionStartAbort : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]

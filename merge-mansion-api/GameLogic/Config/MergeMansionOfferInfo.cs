@@ -16,7 +16,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1)]
     public class MergeMansionOfferInfo : MetaOfferInfoBase, IOfferVisuals
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private string TitleLocId { get; set; }
 
         [MetaMember(2, 0)]

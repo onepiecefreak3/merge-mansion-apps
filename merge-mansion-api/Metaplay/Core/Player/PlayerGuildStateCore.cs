@@ -9,8 +9,8 @@ namespace Metaplay.Core.Player
     [MetaReservedMembers(1, 100)]
     public class PlayerGuildStateCore : IPlayerGuildState
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EntityId GuildId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

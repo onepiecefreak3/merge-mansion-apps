@@ -7,7 +7,7 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(13)]
     public class ItemNeededRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
         private ItemNeededRequirement()

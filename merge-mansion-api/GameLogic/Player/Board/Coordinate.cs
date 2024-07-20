@@ -8,7 +8,7 @@ namespace GameLogic.Player.Board
     [MetaSerializable]
     public struct Coordinate
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int X { get; set; }
 
         [MetaMember(2, 0)]

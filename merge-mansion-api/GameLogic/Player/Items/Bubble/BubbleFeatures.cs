@@ -10,7 +10,7 @@ namespace GameLogic.Player.Items.Bubble
     {
         private static MetaDuration defaultBubbleDuration = MetaDuration.FromMinutes(1);
         public static BubbleFeatures Placeholder = new(MetaDuration.FromMinutes(1), Currencies.Diamonds, 1000, null, 0);
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration BubbleDuration { get; set; }
 
         [MetaMember(2, 0)]

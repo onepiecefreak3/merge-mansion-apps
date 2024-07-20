@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Spawning
     [MetaSerializableDerived(1)]
     public class SpawnCycle : ISpawnCycle
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration SpawnDelay { get; set; }
 
         [MetaMember(2)]

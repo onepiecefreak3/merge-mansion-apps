@@ -9,6 +9,7 @@ namespace Metaplay.Core.Config
     {
         private Dictionary<TKey, TInfo> _replacedItems;
         private Dictionary<TKey, TInfo> _appendedItems;
+        [MaxCollectionSize(2147483647)]
         [MetaMember(1, (MetaMemberFlags)0)]
         private List<GameConfigDataContent<TInfo>> _replacedItemsForSerialization { get; set; }
 

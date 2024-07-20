@@ -24,7 +24,7 @@ namespace Metaplay.Core.Player
         [MetaSerializable]
         public struct Operation
         {
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public PlayerActionBase Action { get; set; }
 
             [MetaMember(2, 0)]

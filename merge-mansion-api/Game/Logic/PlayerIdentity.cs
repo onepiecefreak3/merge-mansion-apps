@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 
 namespace Game.Logic
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializable]
     public class PlayerIdentity
     {
         [MetaMember(2, (MetaMemberFlags)0)]

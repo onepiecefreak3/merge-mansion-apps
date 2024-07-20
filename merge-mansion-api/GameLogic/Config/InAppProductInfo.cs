@@ -12,7 +12,7 @@ namespace GameLogic.Config
     [MetaSerializable]
     public class InAppProductInfo : InAppProductInfoBase
     {
-        [MetaMember(201)]
+        [MetaMember(201, (MetaMemberFlags)0)]
         public IAPTags IAPTags { get; set; }
 
         [MetaMember(202)]

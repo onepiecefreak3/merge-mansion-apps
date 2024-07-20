@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Config.DecorationShop
 {
-    [MetaActivableSet("DecorationShop", false)]
     [MetaSerializableDerived(10)]
+    [MetaActivableSet("DecorationShop", false)]
     public class PlayerDecorationShopsModel : MetaActivableSet<DecorationShopId, DecorationShopInfo, DecorationShopModel>
     {
         public PlayerDecorationShopsModel()

@@ -25,7 +25,7 @@ namespace GameLogic.Player.Items.Production
         public List<ItemOdds> OddsList { get; set; }
 
         [IgnoreDataMember]
-        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Type.Ref, x.Weight));
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Item, x.Weight));
 
         public IEnumerable<ItemDefinition> Produce(IGenerationContext context, int quantity)
         {

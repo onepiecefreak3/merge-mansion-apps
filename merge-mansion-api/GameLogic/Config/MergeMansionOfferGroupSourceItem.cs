@@ -2,10 +2,11 @@ using Metaplay.Core.Offers;
 using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
+using System.Collections.Generic;
 
 namespace GameLogic.Config
 {
-    public class MergeMansionOfferGroupSourceItem : MetaOfferGroupSourceConfigItemBase, IConfigItemSource<MergeMansionOfferGroupInfo, MetaOfferGroupId>, IGameConfigSourceItem<MetaOfferGroupId, MergeMansionOfferGroupInfo>, IGameConfigKey<MetaOfferGroupId>
+    public class MergeMansionOfferGroupSourceItem : MetaOfferGroupSourceConfigItemBase, IConfigItemSource<MergeMansionOfferGroupInfo, MetaOfferGroupId>, IGameConfigSourceItem<MetaOfferGroupId, MergeMansionOfferGroupInfo>, IHasGameConfigKey<MetaOfferGroupId>
     {
         private string TitleLocId { get; set; }
         private string OfferTitlePrefabId { get; set; }
@@ -21,5 +22,10 @@ namespace GameLogic.Config
         public MergeMansionOfferGroupSourceItem()
         {
         }
+
+        private string DescriptionLocId { get; set; }
+        private ManuallyActivatedOfferGroupId ManualActivationInfo { get; set; }
+        private List<OfferPopupTriggerId> OfferPopupTriggers { get; set; }
+        private int? MaxPurchasesPerActivation { get; set; }
     }
 }

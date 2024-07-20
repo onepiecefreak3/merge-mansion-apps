@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Collectable
     [MetaSerializableDerived(8)]
     public class LeaderboardEventCollectAction : IProgressCollectAction, ICollectAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private MetaRef<LeaderboardEventInfo> LeaderboardEventRef { get; set; }
 
         [MetaMember(2, 0)]

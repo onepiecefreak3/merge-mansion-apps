@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum CurrencySource
     {
         Unknown = 0,
@@ -57,6 +57,7 @@ namespace GameLogic
         MysteryMachineMerge = 48,
         MachineTaskCompleted = 49,
         MysteryMachineContinue = 50,
-        Tutorial = 51
+        Tutorial = 51,
+        DailyTaskV2Reward = 52
     }
 }

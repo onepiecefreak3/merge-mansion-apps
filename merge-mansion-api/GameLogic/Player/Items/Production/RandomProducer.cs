@@ -4,6 +4,7 @@ using GameLogic.Random;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
@@ -12,7 +13,9 @@ namespace GameLogic.Player.Items.Production
     {
         [MetaMember(1)]
         private List<ItemOdds> OddsList { get; set; }
-        public IEnumerable<(ItemDefinition, int)> Odds => OddsList.Select(x => (x.Type.Ref, x.Weight));
+
+        [IgnoreDataMember]
+        public IEnumerable<(ItemDefinition, int)> Odds => OddsList.Select(x => (x.Item, x.Weight));
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

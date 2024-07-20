@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace GameLogic.EventCharacters
 {
-    public class EventCharacterInfoSource : IConfigItemSource<EventCharacterInfo, EventCharacterId>, IGameConfigSourceItem<EventCharacterId, EventCharacterInfo>, IGameConfigKey<EventCharacterId>
+    public class EventCharacterInfoSource : IConfigItemSource<EventCharacterInfo, EventCharacterId>, IGameConfigSourceItem<EventCharacterId, EventCharacterInfo>, IHasGameConfigKey<EventCharacterId>
     {
         private EventCharacterId EventCharacterId { get; set; }
         private string DisplayName { get; set; }

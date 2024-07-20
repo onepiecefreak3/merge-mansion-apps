@@ -5,7 +5,7 @@ namespace Metaplay.Core.Session
     [MetaSerializable]
     public class SessionResumptionInfo
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public SessionToken Token { get; set; } // 0x10
 
         [MetaMember(2, 0)]

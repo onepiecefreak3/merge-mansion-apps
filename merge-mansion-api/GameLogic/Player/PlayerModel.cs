@@ -29,23 +29,26 @@ using GameLogic.Config.DecorationShop;
 using GameLogic.Player.Modes;
 using Code.GameLogic.DynamicEvents;
 using Game.Cloud.Webshop;
+using GameLogic.Player.DailyTasksV2;
+using Metaplay.Core.Debugging;
+using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player
 {
-    [MetaSerializableDerived(1)]
-    [MetaReservedMembers(99, 300)]
+    [SupportedSchemaVersions(21, 38)]
+    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
     [MetaReservedMembers(11, 12)]
-    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224 })]
-    [SupportedSchemaVersions(21, 27)]
+    [MetaReservedMembers(99, 300)]
+    [MetaSerializableDerived(1)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
+        [MetaMember(211, (MetaMemberFlags)0)]
         [Transient]
         [ServerOnly]
-        [MetaMember(211, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -320,8 +323,6 @@ namespace GameLogic.Player
         public int MysteryMachineEventsStarted { get; set; }
         public IEnumerable<MysteryMachineEventModel> ActiveMysteryMachineEvents { get; }
 
-        [MetaMember(259, (MetaMemberFlags)0)]
-        private List<BoardInventory.ProducerInventorySlotState> producerInventoryEntries;
         [MetaMember(258, (MetaMemberFlags)0)]
         public bool MysteryMachineAllTasksCompletedRewardClaimed_DEPRECATED { get; set; }
 
@@ -336,5 +337,17 @@ namespace GameLogic.Player
 
         [IgnoreDataMember]
         public string ServerBuildVersion { get; set; }
+
+        [MetaMember(262, (MetaMemberFlags)0)]
+        public Dictionary<MetaTime, MetaDuration> SessionData { get; set; }
+
+        [MetaMember(263, (MetaMemberFlags)0)]
+        public DailyTasksV2Status DailyTasksV2Status { get; set; }
+
+        [MetaMember(264, (MetaMemberFlags)0)]
+        public bool HasAds { get; set; }
+
+        [MetaMember(265, (MetaMemberFlags)0)]
+        public UnitySystemInfo UnitySystemInfo { get; set; }
     }
 }

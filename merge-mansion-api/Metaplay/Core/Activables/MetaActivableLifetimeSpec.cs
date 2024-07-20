@@ -8,7 +8,7 @@ namespace Metaplay.Core.Activables
         [MetaSerializableDerived(1)]
         public class Fixed : MetaActivableLifetimeSpec
         {
-            [MetaMember(1)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public MetaDuration Duration { get; set; }
 
             public Fixed()

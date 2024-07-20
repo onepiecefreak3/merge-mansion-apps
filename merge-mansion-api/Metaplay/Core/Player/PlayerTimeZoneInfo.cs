@@ -6,7 +6,7 @@ namespace Metaplay.Core.Player
     [MetaSerializable]
     public class PlayerTimeZoneInfo
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration CurrentUtcOffset { get; set; } // 0x10
 
         public PlayerTimeZoneInfo()

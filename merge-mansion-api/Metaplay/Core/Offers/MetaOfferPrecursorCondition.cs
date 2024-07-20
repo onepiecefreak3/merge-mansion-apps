@@ -7,7 +7,7 @@ namespace Metaplay.Core.Offers
     [MetaSerializableDerived(1100)]
     public class MetaOfferPrecursorCondition : PlayerCondition, IRefersToMetaOffers
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaOfferId OfferId { get; set; }
 
         [MetaMember(2, 0)]

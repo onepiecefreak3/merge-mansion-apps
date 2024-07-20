@@ -8,7 +8,7 @@ namespace GameLogic.Player.Rewards
     [MetaBlockedMembers(new int[] { 3 })]
     public class RewardEventCurrency : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public EventCurrencyId EventCurrencyId { get; set; }
 
         [MetaMember(2, 0)]

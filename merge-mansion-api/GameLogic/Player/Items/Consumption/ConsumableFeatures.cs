@@ -7,7 +7,7 @@ namespace GameLogic.Player.Items.Consumption
     [MetaSerializable]
     public class ConsumableFeatures
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsConsumable { get; set; }
 
         [MetaMember(2, 0)]

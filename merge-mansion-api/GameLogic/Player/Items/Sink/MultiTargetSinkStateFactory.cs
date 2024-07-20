@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Sink
     [MetaSerializableDerived(3)]
     public class MultiTargetSinkStateFactory : ISinkStateFactory
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public Dictionary<ItemTypeConstant, int> ScoreTargets { get; set; }
 
         [MetaMember(2, 0)]

@@ -8,7 +8,7 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1034)]
     public class PlayerEventCurrencyAmount : TypedPlayerPropertyId<long>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private EventCurrencyId CurrencyId { get; set; }
         public override string DisplayName { get; }
 

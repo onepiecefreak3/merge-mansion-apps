@@ -9,7 +9,7 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [AnalyticsEvent(190, "Mystery Machine task completed", 1, null, true, true, false)]
+    [AnalyticsEvent(191, "Mystery Machine task completed", 1, null, true, true, false)]
     public class AnalyticsEventMachineTaskCompleted : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

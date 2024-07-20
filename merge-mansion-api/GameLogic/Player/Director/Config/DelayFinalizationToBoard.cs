@@ -9,7 +9,7 @@ namespace GameLogic.Player.Director.Config
     [MetaSerializableDerived(3)]
     public class DelayFinalizationToBoard : IDirectorAction
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private MergeBoardId BoardId { get; set; }
 
         private DelayFinalizationToBoard()

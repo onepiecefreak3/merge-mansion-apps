@@ -6,7 +6,7 @@ namespace Metaplay.Core.Schedule
     [MetaSerializable]
     public struct MetaCalendarDateTime
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int Year { get; set; }
 
         [MetaMember(2, 0)]

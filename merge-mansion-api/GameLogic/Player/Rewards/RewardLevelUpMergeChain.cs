@@ -10,7 +10,7 @@ namespace GameLogic.Player.Rewards
     [MetaFormDeprecated]
     public class RewardLevelUpMergeChain : PlayerReward
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
 
         [IgnoreDataMember]

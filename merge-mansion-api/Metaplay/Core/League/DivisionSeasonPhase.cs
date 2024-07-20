@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.League
 {
-    [MetaSerializable]
     [LeaguesEnabledCondition]
+    [MetaSerializable]
     public enum DivisionSeasonPhase
     {
         NoDivision = 0,

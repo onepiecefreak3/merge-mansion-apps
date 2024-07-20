@@ -18,5 +18,8 @@ namespace GameLogic.Player.Actions.Multi
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public OfferPlacementId PlacementId { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string PopupTrigger { get; set; }
     }
 }

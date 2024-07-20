@@ -5,11 +5,11 @@ using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaSerializableDerived(7)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(7)]
     public class CollectibleBoardEventCollectAction : IProgressCollectAction, ICollectAction
     {
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Progress { get; set; }
 
         [MetaMember(3, 0)]

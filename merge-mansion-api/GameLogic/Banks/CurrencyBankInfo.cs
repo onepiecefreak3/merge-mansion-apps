@@ -11,9 +11,9 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.Banks
 {
-    [MetaActivableConfigData("CurrencyBankEvent", false)]
-    [MetaBlockedMembers(new int[] { 8 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 8 })]
+    [MetaActivableConfigData("CurrencyBankEvent", false, true)]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
         [Description("Id of the bank")]

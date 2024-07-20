@@ -7,8 +7,8 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsBoardStateDecorationMetaData
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("item_type")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string DecorationId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

@@ -10,7 +10,7 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(1)]
     public class PlayerItemRequirement : PlayerRequirement
     {
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         private List<ItemTypeConstant> ItemTypes { get; set; }
 
         [MetaMember(1, 0)]

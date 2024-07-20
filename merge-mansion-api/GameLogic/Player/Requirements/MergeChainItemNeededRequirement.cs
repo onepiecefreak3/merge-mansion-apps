@@ -8,7 +8,7 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(12)]
     public class MergeChainItemNeededRequirement : PlayerRequirement
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
 
         [MetaMember(2, 0)]

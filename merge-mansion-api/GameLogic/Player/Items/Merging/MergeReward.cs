@@ -8,7 +8,7 @@ namespace GameLogic.Player.Items.Merging
     [MetaSerializable]
     public class MergeReward : IGameConfigData<MergeRewardId>, IGameConfigData, IHasGameConfigKey<MergeRewardId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeRewardId ConfigKey { get; set; }
 
         [MetaMember(2, 0)]

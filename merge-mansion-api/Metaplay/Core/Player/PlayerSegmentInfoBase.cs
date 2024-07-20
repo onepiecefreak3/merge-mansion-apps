@@ -8,7 +8,7 @@ namespace Metaplay.Core.Player
     [MetaReservedMembers(100, 200)]
     public abstract class PlayerSegmentInfoBase : IGameConfigData<PlayerSegmentId>, IGameConfigData, IHasGameConfigKey<PlayerSegmentId>
     {
-        [MetaMember(100)]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public PlayerSegmentId SegmentId { get; set; }
 
         [MetaMember(103)]

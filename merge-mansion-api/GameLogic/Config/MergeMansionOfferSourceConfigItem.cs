@@ -3,10 +3,12 @@ using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using Metaplay.Core;
+using Metaplay.Core.InAppPurchase;
 
 namespace GameLogic.Config
 {
-    public class MergeMansionOfferSourceConfigItem : MetaOfferSourceConfigItemBase, IConfigItemSource<MergeMansionOfferInfo, MetaOfferId>, IGameConfigSourceItem<MetaOfferId, MergeMansionOfferInfo>, IGameConfigKey<MetaOfferId>
+    public class MergeMansionOfferSourceConfigItem : MetaOfferSourceConfigItemBase, IConfigItemSource<MergeMansionOfferInfo, MetaOfferId>, IGameConfigSourceItem<MetaOfferId, MergeMansionOfferInfo>, IHasGameConfigKey<MetaOfferId>
     {
         private string TitleLocId { get; set; }
         private string SaleBadgeLocId { get; set; }
@@ -40,5 +42,7 @@ namespace GameLogic.Config
         public MergeMansionOfferSourceConfigItem()
         {
         }
+
+        private MetaRef<InAppProductInfoBase> PreviousInAppProduct { get; set; }
     }
 }
