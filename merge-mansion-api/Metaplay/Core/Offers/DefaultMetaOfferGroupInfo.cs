@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace Metaplay.Core.Offers
 {
-    [MetaActivableConfigData("OfferGroup", true, false)]
     [MetaSerializableDerived(100)]
+    [MetaActivableConfigData("OfferGroup", true, false)]
     public class DefaultMetaOfferGroupInfo : MetaOfferGroupInfoBase
     {
         public DefaultMetaOfferGroupInfo()

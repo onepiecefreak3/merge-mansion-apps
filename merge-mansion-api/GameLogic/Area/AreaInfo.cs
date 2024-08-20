@@ -7,6 +7,7 @@ using Metaplay.Core.Config;
 using Metaplay.Core.Model;
 using System.Runtime.Serialization;
 using System;
+using GameLogic.MergeChains;
 
 namespace GameLogic.Area
 {
@@ -87,6 +88,13 @@ namespace GameLogic.Area
         public LocationId LocationId { get; set; }
 
         public AreaInfo(AreaId configKey, LocationId locationId, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, List<MetaRef<HotspotDefinition>> hotspots, List<MetaRef<MapSpotInfo>> mapSpots, HotspotId unlockedBy)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public MergeChainId UnlockInstructionMergeChainId { get; set; }
+
+        public AreaInfo(AreaId configKey, LocationId locationId, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, List<MetaRef<HotspotDefinition>> hotspots, List<MetaRef<MapSpotInfo>> mapSpots, HotspotId unlockedBy, MergeChainId unlockInstructionMergeChain)
         {
         }
     }

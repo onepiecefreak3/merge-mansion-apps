@@ -14,5 +14,7 @@ namespace GameLogic.Cutscenes
         public CutsceneInfoSource()
         {
         }
+
+        private LocationId LocationId { get; set; }
     }
 }

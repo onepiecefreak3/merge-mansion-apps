@@ -48,5 +48,12 @@ namespace Metaplay.Core.Offers
         protected MetaOfferGroupInfoBase(MetaOfferGroupSourceConfigItemBase source)
         {
         }
+
+        [MetaMember(108, (MetaMemberFlags)0)]
+        public bool IncludeSoldOutOffers { get; set; }
+
+        protected MetaOfferGroupInfoBase(MetaOfferGroupId groupId, string displayName, string description, OfferPlacementId placement, int priority, List<MetaRef<MetaOfferInfoBase>> offers, MetaActivableParams activableParams, int? maxOffersActive, bool includeSoldOutOffers)
+        {
+        }
     }
 }

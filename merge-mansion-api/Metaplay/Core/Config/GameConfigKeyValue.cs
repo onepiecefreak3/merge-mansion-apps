@@ -11,7 +11,7 @@ namespace Metaplay.Core.Config
         }
     }
 
-    public abstract class GameConfigKeyValue : IGameConfigEntry
+    public abstract class GameConfigKeyValue : IGameConfigEntry, IGameConfigMember
     {
         protected GameConfigKeyValue()
         {

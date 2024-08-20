@@ -6,8 +6,8 @@ using Metaplay.Core.Math;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEvent(1011, null, 1, "Server-side IAP validation has started.", true, true, false)]
     [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
+    [AnalyticsEvent(1011, null, 1, "Server-side IAP validation has started.", true, true, false)]
     public class PlayerEventInAppValidationStarted : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

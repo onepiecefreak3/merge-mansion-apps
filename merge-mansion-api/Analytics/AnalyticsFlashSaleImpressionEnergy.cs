@@ -11,8 +11,8 @@ namespace Analytics
     [MetaSerializableDerived(2)]
     public class AnalyticsFlashSaleImpressionEnergy : AnalyticsFlashSaleImpressionItemBase
     {
-        [JsonProperty("shop_item_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("shop_item_id")]
         public ShopItemId ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -28,6 +28,10 @@ namespace Analytics
         }
 
         public AnalyticsFlashSaleImpressionEnergy(ShopItemId shopItemId, EnergyType energyType, int energyAmount, ICost cost, int slotId)
+        {
+        }
+
+        public AnalyticsFlashSaleImpressionEnergy(ShopItemId shopItemId, EnergyType energyType, int energyAmount, ICost cost, int slotId, string attachment, int attachmentAmount)
         {
         }
     }

@@ -67,5 +67,7 @@ namespace Code.GameLogic.GameEvents
         public CollectibleBoardEventSource()
         {
         }
+
+        private bool ShouldReset { get; set; }
     }
 }

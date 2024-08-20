@@ -19,5 +19,8 @@ namespace GameLogic.Player.Items.Bubble
         public BubbleAuxEnergyBonus(EnergyType energyType, int amount)
         {
         }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public int Chance { get; set; }
     }
 }

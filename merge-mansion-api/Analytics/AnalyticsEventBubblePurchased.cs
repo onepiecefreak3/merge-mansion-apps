@@ -36,5 +36,19 @@ namespace Analytics
         public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("attachment")]
+        [Description("Attachment to the bubble")]
+        public string Attachment { get; set; }
+
+        [JsonProperty("attachment_amount")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Attachment amount")]
+        public int AttachmentAmount { get; set; }
+
+        public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount)
+        {
+        }
     }
 }

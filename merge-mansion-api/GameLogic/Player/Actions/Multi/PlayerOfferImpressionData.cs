@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Offers;
 using System;
+using Metaplay.Core;
 
 namespace GameLogic.Player.Actions.Multi
 {
@@ -21,5 +22,26 @@ namespace GameLogic.Player.Actions.Multi
 
         [MetaMember(5, (MetaMemberFlags)0)]
         public string PopupTrigger { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public MetaTime? StartDate { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public MetaTime? EndDate { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public long? Duration { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public long ReferencePrice { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string OfferItems { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public string Segment { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public int OfferGlobalCounter { get; set; }
     }
 }

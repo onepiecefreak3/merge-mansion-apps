@@ -11,6 +11,7 @@ namespace GameLogic.Player
         Tertiary = 2,
         None = 3,
         MysteryMachine = 4,
-        MysteryMachineCoins = 5
+        MysteryMachineCoins = 5,
+        SoloMilestoneProgress = 6
     }
 }

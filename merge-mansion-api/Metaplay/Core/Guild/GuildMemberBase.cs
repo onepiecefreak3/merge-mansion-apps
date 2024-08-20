@@ -9,8 +9,8 @@ namespace Metaplay.Core.Guild
     [MetaSerializable]
     public abstract class GuildMemberBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsOnline;
         [MetaMember(2, (MetaMemberFlags)0)]
         public MetaTime LastOnlineAt;
@@ -22,16 +22,16 @@ namespace Metaplay.Core.Guild
         [ServerOnly]
         [MetaMember(5, (MetaMemberFlags)0)]
         public int LastPendingPlayerOpEpoch;
-        [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         [ServerOnly]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public Dictionary<int, GuildMemberPlayerOpLogEntry> PendingPlayerOps;
         [MetaMember(7, (MetaMemberFlags)0)]
         public int MemberInstanceId;
         [MetaMember(8, (MetaMemberFlags)0)]
         public GuildMemberRole Role;
-        [ServerOnly]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [ServerOnly]
         public Dictionary<int, GuildInviteState> Invites;
         [IgnoreDataMember]
         public virtual int MaxNumInvites { get; }

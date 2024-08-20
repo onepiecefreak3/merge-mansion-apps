@@ -33,13 +33,16 @@ using GameLogic.Player.DailyTasksV2;
 using Metaplay.Core.Debugging;
 using System.Runtime.CompilerServices;
 using GameLogic.Config.EnergyModeEvent;
+using GameLogic.MiniEvents;
+using GameLogic.Player.Events;
+using Code.GameLogic.Player.Events.DailyScoopEvent;
 
 namespace GameLogic.Player
 {
-    [SupportedSchemaVersions(21, 38)]
     [MetaSerializableDerived(1)]
     [MetaReservedMembers(11, 12)]
     [MetaReservedMembers(99, 300)]
+    [SupportedSchemaVersions(21, 39)]
     [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
@@ -221,9 +224,6 @@ namespace GameLogic.Player
         public bool IsBoundToSCID { get; }
 
         [IgnoreDataMember]
-        public DivisionClientState DivisionClientState { get; }
-
-        [IgnoreDataMember]
         public IEnumerable<IBoard> Boards { get; }
 
         [IgnoreDataMember]
@@ -353,5 +353,33 @@ namespace GameLogic.Player
 
         [MetaMember(266, (MetaMemberFlags)0)]
         public PlayerEnergyModeEventsModel EnergyModeEvents { get; set; }
+
+        [MetaMember(267, (MetaMemberFlags)0)]
+        public PlayerMiniEventsModel MiniEvents { get; set; }
+
+        [MetaMember(268, (MetaMemberFlags)0)]
+        public PlayerMiniEventOverrides MiniEventOverrides { get; set; }
+
+        [MetaMember(269, (MetaMemberFlags)0)]
+        public PlayerSoloMilestoneEventModel SoloMilestoneEvents { get; set; }
+
+        [MetaMember(270, (MetaMemberFlags)0)]
+        public int SoloMilestoneEventsStarted { get; set; }
+
+        [MetaMember(271, (MetaMemberFlags)0)]
+        public RandomPCG SoloMilestoneRandom { get; set; }
+
+        [MetaMember(272, (MetaMemberFlags)0)]
+        public PlayerDailyScoopEventModel DailyScoopEvents { get; set; }
+
+        [MetaMember(273, (MetaMemberFlags)0)]
+        [ServerOnly]
+        public List<int> MassMailsReceived { get; set; }
+
+        [IgnoreDataMember]
+        public LeaderboardClientState LeaderboardClientState { get; }
+        public IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
+        public IEnumerable<SoloMilestoneEventModel> ActiveSoloMilestoneEvents { get; }
+        public IEnumerable<MiniEventModel> ActiveMiniEvents { get; }
     }
 }

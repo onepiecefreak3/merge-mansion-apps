@@ -8,8 +8,8 @@ namespace Metaplay.Core.League
     [LeaguesEnabledCondition]
     public class DivisionEventCreated : DivisionEventBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public DivisionIndex DivisionIndex { get; set; }
         public override string EventDescription { get; }
 

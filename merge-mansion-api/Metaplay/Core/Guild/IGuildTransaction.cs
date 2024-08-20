@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Guild
 {
-    [MetaSerializable((MetaSerializableFlags)1)]
     [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
+    [MetaSerializable((MetaSerializableFlags)1)]
     public interface IGuildTransaction
     {
         [IgnoreDataMember]

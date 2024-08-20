@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.Activables
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class MetaActivableStateStorage
     {
         [MetaMember(100, (MetaMemberFlags)0)]

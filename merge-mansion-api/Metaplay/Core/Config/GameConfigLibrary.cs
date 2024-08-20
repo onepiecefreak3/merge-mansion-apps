@@ -9,7 +9,7 @@ using Metaplay.Core.Player;
 namespace Metaplay.Core.Config
 {
     [DefaultMember("Item")]
-    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibraryEntry, IGameConfigLibrary, IGameConfigEntry, IGameConfigLibrary<TKey, TInfo>
+    public class GameConfigLibrary<TKey, TInfo> : IGameConfigLibraryEntry, IGameConfigLibrary, IGameConfigEntry, IGameConfigMember, IGameConfigLibrary<TKey, TInfo>
     {
         protected GameConfigLibrary(Dictionary<TKey, TInfo> infos, IGameConfigDataRegistry registry)
         {

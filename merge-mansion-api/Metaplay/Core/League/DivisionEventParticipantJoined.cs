@@ -4,12 +4,12 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [AnalyticsEvent(1301, null, 1, "A participant joined the division. Either assigned by the league manager, or by the participant themselves.", true, true, false)]
     [LeaguesEnabledCondition]
+    [AnalyticsEvent(1301, null, 1, "A participant joined the division. Either assigned by the league manager, or by the participant themselves.", true, true, false)]
     public class DivisionEventParticipantJoined : DivisionEventBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public DivisionEventParticipantInfo ParticipantInfo { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

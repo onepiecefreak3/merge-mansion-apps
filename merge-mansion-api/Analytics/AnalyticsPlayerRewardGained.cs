@@ -8,8 +8,8 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [MetaSerializable]
     [MetaReservedMembers(200, 299)]
+    [MetaSerializable]
     public abstract class AnalyticsPlayerRewardGained : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

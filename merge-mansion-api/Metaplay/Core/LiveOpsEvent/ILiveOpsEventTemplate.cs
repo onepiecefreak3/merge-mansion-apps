@@ -1,3 +1,5 @@
+using System;
+
 namespace Metaplay.Core.LiveOpsEvent
 {
     public interface ILiveOpsEventTemplate
@@ -5,5 +7,14 @@ namespace Metaplay.Core.LiveOpsEvent
         LiveOpsEventTemplateId TemplateId { get; }
 
         LiveOpsEventContent ContentBase { get; }
+
+        string DefaultDisplayName { get; }
+
+        string DefaultDescription { get; }
+    }
+
+    public interface ILiveOpsEventTemplate<TContentClass> : ILiveOpsEventTemplate
+    {
+        TContentClass Content { get; }
     }
 }

@@ -29,6 +29,8 @@ using GameLogic.Player.Items.Persistent;
 using GameLogic.Player.Requirements;
 using GameLogic.Player.Items.OverrideSpawnChance;
 using GameLogic.ConfigPrefabs;
+using GameLogic.Player.Items.MiniEvents;
+using GameLogic.Player.Items.Order;
 
 namespace GameLogic.Player.Items
 {
@@ -289,6 +291,32 @@ namespace GameLogic.Player.Items
         public string LocalizationItemKey { get; }
 
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, OverrideSpawnChanceFeatures overrideSpawnChanceFeatures, AudioFeatures audioFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects, ConfigPrefabId customItemInfoPopupId, bool showCustomItemInfoPopupOnDiscovery, string overrideLocalizationItemKey)
+        {
+        }
+
+        [MetaMember(50, (MetaMemberFlags)0)]
+        private MiniEventFeatures _MiniEventFeatures;
+        [MetaMember(54, (MetaMemberFlags)0)]
+        private OrderFeatures _OrderFeatures;
+        [MetaMember(51, (MetaMemberFlags)0)]
+        public string FullOverrideLocalizationItemKey { get; set; }
+
+        [MetaMember(52, (MetaMemberFlags)0)]
+        public string SinkTag { get; set; }
+
+        [MetaMember(53, (MetaMemberFlags)0)]
+        public int SinkPoints { get; set; }
+
+        [MetaMember(55, (MetaMemberFlags)0)]
+        public List<int> OverrideProductionSource { get; set; }
+
+        [IgnoreDataMember]
+        public OrderFeatures OrderFeatures { get; }
+
+        [IgnoreDataMember]
+        public MiniEventFeatures MiniEventFeatures { get; }
+
+        public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, OverrideSpawnChanceFeatures overrideSpawnChanceFeatures, AudioFeatures audioFeatures, OrderFeatures orderFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects, ConfigPrefabId customItemInfoPopupId, bool showCustomItemInfoPopupOnDiscovery, string overrideLocalizationItemKey, MiniEventFeatures miniEventFeatures, string fullOverrideLocalizationItemKey, string sinkTag, int sinkPoints, List<string> overrideProductionSource)
         {
         }
     }

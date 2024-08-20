@@ -67,6 +67,7 @@ namespace GameLogic
         Decoration34 = 59,
         Decoration35 = 60,
         Decoration36 = 61,
-        Decoration37 = 62
+        Decoration37 = 62,
+        Decoration38 = 63
     }
 }

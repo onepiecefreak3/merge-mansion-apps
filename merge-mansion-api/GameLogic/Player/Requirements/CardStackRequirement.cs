@@ -8,7 +8,6 @@ namespace GameLogic.Player.Requirements
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private CardStackId CardStackId { get; set; }
-
         public CardStackId CardStack => CardStackId;
 
         public CardStackRequirement()

@@ -51,6 +51,9 @@ namespace GameLogic
         Malzar = 39,
         Kazuko = 40,
         SgtPepper = 41,
-        Babylon = 42
+        Babylon = 42,
+        Leonard = 43,
+        CocoBabies = 44,
+        Bella = 45
     }
 }

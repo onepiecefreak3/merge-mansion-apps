@@ -172,5 +172,14 @@ namespace GameLogic.Config
 
         [MetaMember(59, (MetaMemberFlags)0)]
         public bool DisableMysteryMachineItemOddsPopup { get; set; }
+
+        [MetaMember(60, (MetaMemberFlags)0)]
+        public bool DefaultHapticsEnabled { get; set; }
+
+        [MetaMember(61, (MetaMemberFlags)0)]
+        public long SoloMilestoneMaxAmount { get; set; }
+
+        [MetaMember(62, (MetaMemberFlags)0)]
+        public int MinLevelForAdditionalSpawnItem { get; set; }
     }
 }

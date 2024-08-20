@@ -1,4 +1,6 @@
 using Metaplay.Core.Model;
+using System.Runtime.Serialization;
+using System;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
@@ -9,5 +11,8 @@ namespace Metaplay.Core.LiveOpsEvent
         protected LiveOpsEventContent()
         {
         }
+
+        [IgnoreDataMember]
+        public virtual bool AudienceMembershipIsSticky { get; }
     }
 }

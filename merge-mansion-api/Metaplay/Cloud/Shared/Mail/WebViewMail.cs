@@ -7,8 +7,8 @@ using GameLogic.Player.Rewards;
 
 namespace Metaplay.Cloud.Shared.Mail
 {
-    [MetaReservedMembers(0, 80)]
     [MetaSerializableDerived(12)]
+    [MetaReservedMembers(0, 80)]
     public class WebViewMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -6,8 +6,8 @@ using System;
 
 namespace GameLogic.Config
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1, 3 })]
+    [MetaSerializable]
     public class ItemDialogueEntry
     {
         [MetaMember(2, (MetaMemberFlags)0)]

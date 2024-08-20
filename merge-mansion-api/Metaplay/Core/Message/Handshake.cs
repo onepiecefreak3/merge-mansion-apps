@@ -96,8 +96,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(6, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(6, (MessageDirection)1, true)]
         public class ClientAbandon : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -132,8 +132,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(7, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(7, (MessageDirection)1, true)]
         public class DeviceLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -380,8 +380,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MessageRoutingRuleProtocol]
         [MetaMessage(32, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class DualSocialAuthenticationLoginRequest : Handshake.LoginRequest
         {
             [MetaMember(100, (MetaMemberFlags)0)]

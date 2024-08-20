@@ -17,9 +17,9 @@ using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
+    [DefaultMember("Item")]
     [MetaSerializable]
     [MetaActivableConfigData("SideBoardEvent", false, true)]
-    [DefaultMember("Item")]
     public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IHasGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo, IEventGroupInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -160,6 +160,10 @@ namespace Code.GameLogic.GameEvents
         public EventGroupId GroupId { get; set; }
 
         public SideBoardEventInfo(SideBoardEventId sideBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, ExtendableEventParams extendableEventParams, int limitResourceItem, MetaRef<ItemDefinition> resourceItemRef, MetaRef<ItemDefinition> resourceItemCollectableRef, MetaRef<ItemDefinition> resourceItemSpawnerRef, MetaRef<ItemDefinition> emptySinkResourceItemRef, List<MetaRef<ItemDefinition>> itemRefsDisplayingResourceItemCountOnBoard, List<MetaRef<ItemDefinition>> itemRefsDisplayingResourceItemCountOnItemInfoArea, string isResourceItemAtMaxItemInfoAreaLocId, string isResourceItemAtMaxItemInfoAreaPortalLocId, List<EventTaskLocEntry> endPopupOptions, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaDuration? showTimeInCalendarPopupAfterFinish, EventGroupId groupId)
+        {
+        }
+
+        public SideBoardEventInfo(SideBoardEventId sideBoardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, List<MetaRef<EventLevelInfo>> levelRefs, Dictionary<EventLevelId, MetaRef<EventLevelInfo>> fallbackLevelRefs, StoryDefinitionId enterBoardDialogue, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, DecorationId activeDecoration, List<int> progressionPopupHeaderImageLevels, string initTask, List<MetaRef<EventTaskInfo>> eventTasks, ExtendableEventParams extendableEventParams, int limitResourceItem, MetaRef<ItemDefinition> resourceItemRef, MetaRef<ItemDefinition> resourceItemCollectableRef, MetaRef<ItemDefinition> resourceItemSpawnerRef, MetaRef<ItemDefinition> emptySinkResourceItemRef, List<MetaRef<ItemDefinition>> itemRefsDisplayingResourceItemCountOnBoard, List<MetaRef<ItemDefinition>> itemRefsDisplayingResourceItemCountOnItemInfoArea, string isResourceItemAtMaxItemInfoAreaLocId, string isResourceItemAtMaxItemInfoAreaPortalLocId, List<EventTaskLocEntry> endPopupOptions, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaDuration? showTimeInCalendarPopupAfterFinish, EventGroupId groupId)
         {
         }
     }

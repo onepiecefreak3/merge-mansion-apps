@@ -1,8 +1,12 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Offers;
+using Metaplay.Core;
+using GameLogic.Config;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Rewards
 {
+    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(34)]
     public class RewardOfferContents : PlayerReward
     {
@@ -16,5 +20,8 @@ namespace GameLogic.Player.Rewards
         public RewardOfferContents(MetaOfferId offerId, CurrencySource source)
         {
         }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        private MetaRef<MergeMansionOfferInfo> Offer { get; set; }
     }
 }

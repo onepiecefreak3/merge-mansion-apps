@@ -125,6 +125,11 @@ namespace Analytics
         DailyTaskV2StateChanged = 114,
         DailyTasksV2StreakChanged = 115,
         CutsceneView = 116,
-        ItemSpawnedByMerge = 117
+        ItemSpawnedByMerge = 117,
+        HapticsChanged = 118,
+        SoloMilestoneTokenReceived = 119,
+        DailyScoopProgress = 120,
+        DailyScoopTaskStatusChanged = 121,
+        DailyScoopDayStarted = 122
     }
 }

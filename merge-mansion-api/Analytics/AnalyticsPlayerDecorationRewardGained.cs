@@ -16,9 +16,9 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the decoration received")]
         public string DecorationId;
-        [Description("Number of decorations received")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("amount")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Number of decorations received")]
         public int Amount;
         [JsonProperty("level", NullValueHandling = (NullValueHandling)1)]
         [Description("Level of decoration received")]

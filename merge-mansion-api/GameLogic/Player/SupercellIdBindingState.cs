@@ -6,8 +6,8 @@ namespace GameLogic.Player
     [MetaSerializable]
     public class SupercellIdBindingState
     {
-        [ServerOnly]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [ServerOnly]
         public string PendingSupercellIdBindingEmail { get; set; }
 
         [ServerOnly]

@@ -16,11 +16,11 @@ using Metaplay.Core.LiveOpsEvent;
 
 namespace Metaplay.Core.Player
 {
-    [MetaBlockedMembers(new int[] { 9, 15, 20, 21, 26, 27, 36, 44 })]
-    [MetaReservedMembers(7, 10)]
     [MetaReservedMembers(12, 99)]
     [MetaReservedMembers(10000, 20000)]
     [MetaReservedMembers(1, 6)]
+    [MetaReservedMembers(7, 10)]
+    [MetaBlockedMembers(new int[] { 9, 15, 20, 21, 26, 27, 36, 44 })]
     public abstract class PlayerModelBase<TPlayerModel, TPlayerStatistics, TPlayerMetaOfferGroups, TPlayerGuildState> : IPlayerModel<TPlayerModel>, IPlayerModelBase, IModel<IPlayerModelBase>, IModel, ISchemaMigratable, IMetaIntegrationConstructible<IPlayerModelBase>, IMetaIntegration<IPlayerModelBase>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         private static int CurrentBaseFixupVersion;
@@ -233,5 +233,9 @@ namespace Metaplay.Core.Player
 
         [MetaMember(55, (MetaMemberFlags)0)]
         public PlayerLiveOpsEventsModel LiveOpsEvents { get; set; }
+
+        [MetaMember(56, (MetaMemberFlags)0)]
+        [ServerOnly]
+        public PlayerSessionDebugMode SessionDebugModeOverride { get; set; }
     }
 }

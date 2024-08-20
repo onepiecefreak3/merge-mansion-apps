@@ -58,6 +58,10 @@ namespace GameLogic
         MachineTaskCompleted = 49,
         MysteryMachineContinue = 50,
         Tutorial = 51,
-        DailyTaskV2Reward = 52
+        DailyTaskV2Reward = 52,
+        ItemActivation = 53,
+        SoloMilestone = 54,
+        DailyScoop = 55,
+        WeeklyMilestone = 56
     }
 }

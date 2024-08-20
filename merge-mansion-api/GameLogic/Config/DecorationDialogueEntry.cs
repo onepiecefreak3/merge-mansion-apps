@@ -5,8 +5,8 @@ using GameLogic.Decorations;
 
 namespace GameLogic.Config
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializable]
     public class DecorationDialogueEntry
     {
         [MetaMember(2, (MetaMemberFlags)0)]

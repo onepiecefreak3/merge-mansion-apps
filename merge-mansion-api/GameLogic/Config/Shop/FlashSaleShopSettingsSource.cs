@@ -18,5 +18,7 @@ namespace GameLogic.Config.Shop
         public FlashSaleShopSettingsSource()
         {
         }
+
+        public bool RefreshDisabled { get; set; }
     }
 }

@@ -9,11 +9,11 @@ using GameLogic.Player.Rewards;
 
 namespace Game.Logic
 {
-    [MetaSerializableDerived(3)]
+    [MetaFormDeprecated]
     [MetaReservedMembers(100, 101)]
     [MetaReservedMembers(102, 200)]
+    [MetaSerializableDerived(3)]
     [MetaBlockedMembers(new int[] { 111 })]
-    [MetaFormDeprecated]
     public class LegacyMergeMansionInGameMail : MetaInGameMail
     {
         [MetaMember(100, (MetaMemberFlags)0)]

@@ -162,5 +162,10 @@ namespace Analytics
         [MetaMember(33, (MetaMemberFlags)0)]
         [Description("Free amount of Producer inventory slots")]
         public int FreeProducerInventorySlots { get; set; }
+
+        [Description("Player haptics state, are the haptics on or off")]
+        [JsonProperty("haptics_is_on")]
+        [MetaMember(34, (MetaMemberFlags)0)]
+        public bool HapticsIsOn { get; set; }
     }
 }

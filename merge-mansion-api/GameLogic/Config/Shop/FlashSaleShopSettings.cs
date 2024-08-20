@@ -32,5 +32,12 @@ namespace GameLogic.Config.Shop
         public FlashSaleShopSettings(FlashSaleShopSettingsId flashSaleShopSettingsId, List<FlashSaleSlotId> activeFlashSaleSlots, Currencies flashResetCurrency, List<int> flashResetCosts, OfferPlacementId placementId)
         {
         }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public bool RefreshDisabled { get; set; }
+
+        public FlashSaleShopSettings(FlashSaleShopSettingsId flashSaleShopSettingsId, List<FlashSaleSlotId> activeFlashSaleSlots, Currencies flashResetCurrency, List<int> flashResetCosts, OfferPlacementId placementId, bool refreshDisabled)
+        {
+        }
     }
 }

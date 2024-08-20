@@ -150,5 +150,8 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachine(IPlayer player, MysteryMachineEventInfo mysteryMachineEventInfo, MysteryMachineInfo mysteryMachineInfo)
         {
         }
+
+        [MetaMember(43, (MetaMemberFlags)0)]
+        public int RunDiamondsSpentOnMachineEnergy { get; set; }
     }
 }

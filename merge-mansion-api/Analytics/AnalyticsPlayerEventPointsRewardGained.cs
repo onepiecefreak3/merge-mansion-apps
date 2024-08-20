@@ -13,16 +13,16 @@ namespace Analytics
     public class AnalyticsPlayerEventPointsRewardGained : AnalyticsPlayerRewardGained
     {
         [Description("Event ID")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string EventId;
         [Description("Amount of points received")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("amount")]
         public int Amount;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("saldo")]
         [Description("Total event points")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public long TotalAfterAdd;
         [Description("Type of the reward received")]
         [JsonProperty("reward_type")]

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableSet("ShopEvent", false)]
     [MetaSerializableDerived(3)]
+    [MetaActivableSet("ShopEvent", false)]
     public class PlayerShopEventsModel : ExtendableEventSet<EventId, ShopEventInfo, ShopEventModel>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

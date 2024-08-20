@@ -7,8 +7,8 @@ using Metaplay.Core;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [AnalyticsEvent(121, "Session end", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class AnalyticsEventSessionEnd : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

@@ -105,5 +105,7 @@ namespace GameLogic.Player
         private Dictionary<string, int> wdSequenceIndexes;
         [MetaMember(4, (MetaMemberFlags)0)]
         private Dictionary<string, ulong> wdRandomSequenceSeeds;
+        private static string SinkPrefix;
+        private static string OrderPrefix;
     }
 }

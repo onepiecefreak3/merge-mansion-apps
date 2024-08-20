@@ -13,7 +13,7 @@ namespace Metaplay.Core.Client
         }
 
         public static ClientSlot Nft;
-        public static ClientSlot PlayerDivision;
-        public static ClientSlot GuildDivision;
+        [Obsolete("Create a game-specific client slot instead.")]
+        public static ClientSlot PlayerDivisionLegacy;
     }
 }

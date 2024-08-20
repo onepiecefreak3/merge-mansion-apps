@@ -111,6 +111,13 @@ namespace Metaplay.Core.Message
                 PlayerModel = playerModel;
                 CurrentOperation = currentOperation;
             }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public EntityDebugConfig DebugConfig { get; set; }
+
+            public InitialPlayerState(MetaSerialized<IPlayerModelBase> playerModel, int currentOperation, EntityDebugConfig debugConfig)
+            {
+            }
         }
 
         [MetaSerializable]
@@ -162,8 +169,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MessageRoutingRuleProtocol]
         [MetaMessage(16, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionStartRequest : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -317,7 +324,8 @@ namespace Metaplay.Core.Message
                 Banned = 3,
                 PlayerDeserializationFailure = 4,
                 WrongAuthenticationPlatform = 5,
-                LogicVersionDowngradeNotAllowed = 5
+                LogicVersionDowngradeNotAllowed = 5,
+                Deleted = 6
             }
         }
 
@@ -371,8 +379,8 @@ namespace Metaplay.Core.Message
         {
         }
 
-        [MetaMessage(43, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(43, (MessageDirection)1, true)]
         public class SessionStartAbortReasonTrailer : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]

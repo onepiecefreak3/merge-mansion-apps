@@ -43,6 +43,7 @@ namespace GameLogic
         MysteryMachineContinue = 35,
         FillDailyTaskV2StepWithPurchase = 36,
         DailyTasksV2TimeExtensionPurchase = 37,
-        FillDailyTaskV2StepWithRefresh = 38
+        FillDailyTaskV2StepWithRefresh = 38,
+        SoloMilestoneProgress = 39
     }
 }

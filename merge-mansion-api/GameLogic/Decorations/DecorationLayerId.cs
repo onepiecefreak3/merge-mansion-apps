@@ -84,6 +84,21 @@ namespace GameLogic.Decorations
         LDE_Hopeberry2024_TB3 = 75,
         LDE_Hopeberry2024_TC1 = 76,
         LDE_Hopeberry2024_TC2 = 77,
-        LDE_Hopeberry2024_TC3 = 78
+        LDE_Hopeberry2024_TC3 = 78,
+        LDE_GreenAcresQuest2024_TA1 = 79,
+        LDE_GreenAcresQuest2024_TA2 = 80,
+        LDE_GreenAcresQuest2024_TA3 = 81,
+        LDE_GreenAcresQuest2024_TA4 = 82,
+        LDE_GreenAcresQuest2024_TA5 = 83,
+        LDE_GreenAcresQuest2024_TA6 = 84,
+        LDE_GreenAcresQuest2024_TA7 = 85,
+        LDE_GreenAcresQuest2024_TB1 = 86,
+        LDE_GreenAcresQuest2024_TB2 = 87,
+        LDE_GreenAcresQuest2024_TB3 = 88,
+        LDE_GreenAcresQuest2024_TC1 = 89,
+        LDE_GreenAcresQuest2024_TC2 = 90,
+        LDE_GreenAcresQuest2024_TC3 = 91,
+        SP_MysteriousMaelstrom2024_TA1 = 92,
+        SP_MysteriousMaelstrom2024_TA2 = 93
     }
 }

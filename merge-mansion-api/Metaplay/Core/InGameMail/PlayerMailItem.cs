@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.InGameMail
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class PlayerMailItem
     {
         [MetaMember(100, (MetaMemberFlags)0)]

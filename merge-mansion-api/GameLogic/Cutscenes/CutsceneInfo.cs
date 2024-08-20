@@ -26,5 +26,13 @@ namespace GameLogic.Cutscenes
         public CutsceneInfo(CutsceneId cutsceneId, CutsceneGroupId cutsceneGroupId, F32 startDelay)
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        private LocationId LocationId { get; set; }
+        public LocationId CutsceneLocation { get; }
+
+        public CutsceneInfo(CutsceneId cutsceneId, CutsceneGroupId cutsceneGroupId, F32 startDelay, LocationId locationId)
+        {
+        }
     }
 }

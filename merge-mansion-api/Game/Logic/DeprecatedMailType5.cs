@@ -5,8 +5,8 @@ using System;
 
 namespace Game.Logic
 {
-    [MetaSerializableDerived(5)]
     [MetaFormDeprecated]
+    [MetaSerializableDerived(5)]
     public class DeprecatedMailType5 : MetaInGameMail
     {
         public override string Description { get; }

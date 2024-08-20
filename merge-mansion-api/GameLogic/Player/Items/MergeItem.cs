@@ -21,6 +21,8 @@ using GameLogic.Player.Items.Fishing;
 using GameLogic.Player.Items.Persistent;
 using Merge;
 using System.Runtime.CompilerServices;
+using GameLogic.Player.Items.Order;
+using GameLogic.Config;
 
 namespace GameLogic.Player.Items
 {
@@ -108,6 +110,8 @@ namespace GameLogic.Player.Items
             public WeightState WeightState;
             [MetaMember(20, (MetaMemberFlags)0)]
             public PersistentState PersistentState;
+            [MetaMember(21, (MetaMemberFlags)0)]
+            public OrderParentState OrderState;
         }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -213,9 +217,6 @@ namespace GameLogic.Player.Items
         [IgnoreDataMember]
         public bool IsAffectedByBooster { get; }
         public bool IsSink { get; }
-
-        [IgnoreDataMember]
-        public ItemDefinition SinkCompletionItem { get; }
 
         [IgnoreDataMember]
         public bool IsConsumable { get; }
@@ -329,6 +330,27 @@ namespace GameLogic.Player.Items
 
         private static string HotspotTagKey;
         public MergeItem(IPlayer player, ItemDefinition itemDefinition, MetaTime timestamp, MergeBoardId boardId, ItemVisibility itemVisibility, bool insideBubble)
+        {
+        }
+
+        [IgnoreDataMember]
+        public OrderParentState OrderState { get; }
+
+        [IgnoreDataMember]
+        public bool IsDecayableOrder { get; }
+
+        [IgnoreDataMember]
+        public bool IsActivableOrder { get; }
+
+        [IgnoreDataMember]
+        public bool IsSpawnableOrder { get; }
+        public bool IsSinkableOrder { get; }
+
+        public MergeItem(SharedGameConfig config, ItemDefinition resultingItem, MergeItem sourceItem, MetaTime timestamp, IPlayer player)
+        {
+        }
+
+        public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, OrderParentState orderState, PersistentState persistentState)
         {
         }
     }

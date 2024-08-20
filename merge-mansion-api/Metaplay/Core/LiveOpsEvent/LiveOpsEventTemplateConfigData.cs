@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace Metaplay.Core.LiveOpsEvent
 {
     [MetaSerializable]
-    public class LiveOpsEventTemplateConfigData<TContentClass> : IGameConfigData<LiveOpsEventTemplateId>, IGameConfigData, IHasGameConfigKey<LiveOpsEventTemplateId>, ILiveOpsEventTemplate
+    public class LiveOpsEventTemplateConfigData<TContentClass> : IGameConfigData<LiveOpsEventTemplateId>, IGameConfigData, IHasGameConfigKey<LiveOpsEventTemplateId>, ILiveOpsEventTemplate<TContentClass>, ILiveOpsEventTemplate
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public LiveOpsEventTemplateId TemplateId { get; set; }
@@ -13,9 +13,11 @@ namespace Metaplay.Core.LiveOpsEvent
         [MetaMember(2, (MetaMemberFlags)0)]
         public TContentClass Content { get; set; }
 
-        [IgnoreDataMember]
+        public LiveOpsEventTemplateId ConfigKey => TemplateId;
+
         public LiveOpsEventContent ContentBase { get; }
-        public LiveOpsEventTemplateId ConfigKey { get; }
+        public string DefaultDisplayName { get; }
+        public string DefaultDescription { get; }
 
         public LiveOpsEventTemplateConfigData()
         {

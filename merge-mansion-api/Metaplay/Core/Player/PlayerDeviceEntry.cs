@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializable]
     public class PlayerDeviceEntry
     {
         [MetaMember(2, (MetaMemberFlags)0)]

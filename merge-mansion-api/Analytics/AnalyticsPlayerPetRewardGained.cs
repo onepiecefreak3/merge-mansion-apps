@@ -16,9 +16,9 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the pet received")]
         public string PetId;
+        [JsonProperty("amount")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Number of pets received")]
-        [JsonProperty("amount")]
         public int Amount;
         [JsonProperty("reward_type")]
         [Description("Type of the reward received")]

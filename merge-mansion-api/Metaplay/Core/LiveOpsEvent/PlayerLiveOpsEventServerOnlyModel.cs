@@ -22,5 +22,15 @@ namespace Metaplay.Core.LiveOpsEvent
         public PlayerLiveOpsEventServerOnlyModel(MetaGuid eventId, LiveOpsEventPhase latestAssignedPhase, int editVersion)
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public MetaDuration PlayerUtcOffsetForEvent { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public bool PlayerIsInTargetAudience { get; set; }
+
+        public PlayerLiveOpsEventServerOnlyModel(MetaGuid eventId, MetaDuration playerUtcOffsetForEvent, LiveOpsEventPhase latestAssignedPhase, int editVersion, bool playerIsInTargetAudience)
+        {
+        }
     }
 }

@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEvent(1001, "In App Purchase Started (with dynamic content)", 1, "Player is about to start an IAP flow in the platform store. The purchase contents are dynamically generated. The event contents describe the purchase the player is attempting to buy.", true, true, false)]
     [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
+    [AnalyticsEvent(1001, "In App Purchase Started (with dynamic content)", 1, "Player is about to start an IAP flow in the platform store. The purchase contents are dynamically generated. The event contents describe the purchase the player is attempting to buy.", true, true, false)]
     public class PlayerEventPendingDynamicPurchaseContentAssigned : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

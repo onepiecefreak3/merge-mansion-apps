@@ -55,6 +55,11 @@ using GameLogic.Advertisement;
 using Metaplay;
 using GameLogic.DailyTasksV2;
 using GameLogic.Config.EnergyModeEvent;
+using GameLogic.MiniEvents;
+using Code.GameLogic.GameEvents.SoloMilestone;
+using Code.GameLogic.GameEvents.DailyScoop;
+using GameLogic.Player.Items.Sink;
+using GameLogic.Player.Items.Order;
 
 namespace GameLogic.Config
 {
@@ -620,5 +625,73 @@ namespace GameLogic.Config
         [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." }, false)]
         [GameConfigEntryTransform(typeof(EnergyModeEventSource))]
         public GameConfigLibrary<EnergyModeEventId, EnergyModeEventInfo> EnergyModeEvents { get; set; }
+
+        [GameConfigEntry("MiniEvents", true, null)]
+        [GameConfigEntryTransform(typeof(MiniEventConfigSource))]
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." }, false)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> MiniEventId #key" }, new string[] { }, false)]
+        public GameConfigLibrary<MiniEventId, MiniEventInfo> MiniEvents { get; set; }
+
+        [GameConfigEntry("MakeYourOwnOffers", true, null)]
+        [GameConfigEntryTransform(typeof(MakeYourOwnOfferSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<MetaOfferId, MakeYourOwnOfferInfo> MakeYourOwnOffers { get; set; }
+
+        [GameConfigEntryTransform(typeof(SoloMilestoneEventInfoSource))]
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." }, false)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("SoloMilestoneEvents", true, null)]
+        public GameConfigLibrary<SoloMilestoneEventId, SoloMilestoneEventInfo> SoloMilestoneEvents { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntryTransform(typeof(SoloMilestoneMilestonesInfoSource))]
+        [GameConfigEntry("SoloMilestoneMilestones", true, null)]
+        public GameConfigLibrary<SoloMilestoneMilestonesId, SoloMilestoneMilestonesInfo> SoloMilestoneMilestones { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("SoloMilestoneTokenSpawns", true, null)]
+        [GameConfigEntryTransform(typeof(SoloMilestoneTokenSpawnsInfoSource))]
+        public GameConfigLibrary<SoloMilestoneTokenSpawnsId, SoloMilestoneTokenSpawnsInfo> SoloMilestoneTokenSpawns { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("DailyScoopMilestones", true, null)]
+        [GameConfigEntryTransform(typeof(DailyScoopMilestoneDataSource))]
+        public GameConfigLibrary<DailyScoopMilestoneId, DailyScoopMilestoneData> DailyScoopMilestones { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntryTransform(typeof(DailyScoopStandardObjectiveDataSource))]
+        [GameConfigEntry("DailyScoopStandardObjectives", true, null)]
+        public GameConfigLibrary<DailyScoopStandardObjectiveId, DailyScoopStandardObjectiveData> DailyScoopStandardObjectives { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntryTransform(typeof(DailyScoopSpecialObjectiveDataSource))]
+        [GameConfigEntry("DailyScoopSpecialObjectives", true, null)]
+        public GameConfigLibrary<DailyScoopSpecialObjectiveId, DailyScoopSpecialObjectiveData> DailyScoopSpecialObjectives { get; set; }
+
+        [GameConfigEntryTransform(typeof(DailyScoopDayDataSource))]
+        [GameConfigEntry("DailyScoopDays", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<DailyScoopDayId, DailyScoopDayData> DailyScoopDays { get; set; }
+
+        [GameConfigEntry("DailyScoopWeeks", true, null)]
+        [GameConfigEntryTransform(typeof(DailyScoopWeekDataSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<DailyScoopWeekId, DailyScoopWeekData> DailyScoopWeeks { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "#StartDate -> Schedule.Start.Date", "#StartTime -> Schedule.Start.Time" }, new string[] { "# -> Schedule." }, false)]
+        [GameConfigEntry("DailyScoopEvents", true, null)]
+        [GameConfigEntryTransform(typeof(DailyScoopEventInfoSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<DailyScoopEventId, DailyScoopEventInfo> DailyScoopEvents { get; set; }
+
+        [GameConfigEntryTransform(typeof(TagRewardsSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("TagRewards", true, null)]
+        public GameConfigLibrary<string, TagRewardsInfo> TagRewards { get; set; }
+
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        [GameConfigEntry("OrderRequirements", true, null)]
+        [GameConfigEntryTransform(typeof(OrderRequirementsSource))]
+        public GameConfigLibrary<OrderRequirementsId, OrderRequirements> OrderRequirements { get; set; }
     }
 }

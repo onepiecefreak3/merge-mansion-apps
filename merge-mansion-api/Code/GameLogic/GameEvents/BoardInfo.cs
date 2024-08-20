@@ -12,8 +12,8 @@ using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 12 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 12 })]
     public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, 0)]

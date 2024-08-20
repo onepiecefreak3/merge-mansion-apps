@@ -52,6 +52,9 @@ namespace GameLogic
         Kazuko = 40,
         SgtPepper = 41,
         Babylon = 42,
-        Empty = 43
+        Empty = 43,
+        Leonard = 44,
+        CocoBabies = 45,
+        Bella = 46
     }
 }

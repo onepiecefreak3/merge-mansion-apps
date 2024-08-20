@@ -1,6 +1,7 @@
 namespace Metaplay.Core.Config
 {
     public interface IGameConfigEntry // TypeDefIndex: 1189
+ : IGameConfigMember
     {
         // Methods
         // RVA: -1 Offset: -1 Slot: 0

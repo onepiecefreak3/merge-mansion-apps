@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
+    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializable]
     public class PlayerLiveOpsEventsModel
     {
@@ -12,9 +13,6 @@ namespace Metaplay.Core.LiveOpsEvent
         [ServerOnly]
         [MetaMember(3, (MetaMemberFlags)0)]
         public PlayerLiveOpsEventsServerOnlyModel ServerOnly { get; set; }
-
-        [MetaMember(2, (MetaMemberFlags)0)]
-        public Dictionary<MetaGuid, PlayerLiveOpsEventUpdate> LatestUnacknowledgedUpdatePerEvent { get; set; }
 
         public PlayerLiveOpsEventsModel()
         {

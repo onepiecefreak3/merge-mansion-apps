@@ -41,6 +41,7 @@ namespace Metaplay.Core.Config
         MultipleEnergyModeProgressionEventItemsForSameEvent = 1029,
         MergeChainElementsMismatch = 1030,
         UsingDeprecatedIgnoresEnergyModeTag = 1031,
-        InvalidCutscene = 1032
+        InvalidCutscene = 1032,
+        StorageMaxLessThanEnergyModeConsumptionMultiplier = 1033
     }
 }

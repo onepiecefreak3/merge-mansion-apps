@@ -50,6 +50,7 @@ namespace GameLogic.GameFeatures
         ShowMergeItemFlashSaleBuyButton = 36,
         PetsEnabled = 37,
         WebShop = 38,
-        DailyTasksMenuV2 = 39
+        DailyTasksMenuV2 = 39,
+        Haptics = 40
     }
 }

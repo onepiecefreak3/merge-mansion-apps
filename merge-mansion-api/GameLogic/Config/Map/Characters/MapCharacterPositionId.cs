@@ -221,6 +221,14 @@ namespace GameLogic.Config.Map.Characters
         AreaMansionDanceFloorFirstMapCharacterPosition = 6799,
         AreaMansionDanceFloorEntryMapMaddie = 6800,
         AreaMansionDanceFloorCharacter = 6801,
-        AreaMansionDanceFloorEntrance = 6802
+        AreaMansionDanceFloorEntrance = 6802,
+        AreaPetHomeMapCoco = 5802,
+        AreaPetHomePetPreview = 5803,
+        AreaMansionSpeakEasyFirstMapCharacterPosition = 6999,
+        AreaMansionSpeakEasyEntryMapMaddie = 7000,
+        AreaMansionSpeakEasyCharacter = 7001,
+        AreaMansionMusicianRoomFirstMapCharacterPosition = 7199,
+        AreaMansionMusicianRoomEntryMapMaddie = 7200,
+        AreaMansionMusicianRoomCharacter = 7201
     }
 }

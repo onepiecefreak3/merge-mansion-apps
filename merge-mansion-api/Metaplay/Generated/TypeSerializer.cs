@@ -70,6 +70,8 @@ namespace Metaplay.Generated
             for (var i = 0; i < list.Count; i++)
             {
                 var item = list[i];
+                if (item == null)
+                    continue;
 
                 if (item is IMetaRef metaRef)
                 {
@@ -359,6 +361,13 @@ namespace Metaplay.Generated
                         return;
 
                     Deserialize_F32(ref context, reader, out value);
+                    break;
+
+                case WireDataType.NullableF64:
+                    if (IsNull(reader))
+                        return;
+
+                    Deserialize_F64(ref context, reader, out value);
                     break;
 
                 case WireDataType.Float32:

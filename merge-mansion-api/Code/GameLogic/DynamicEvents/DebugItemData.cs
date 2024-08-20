@@ -29,5 +29,8 @@ namespace Code.GameLogic.DynamicEvents
         public DebugItemData()
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public string FinalPoolColumn;
     }
 }

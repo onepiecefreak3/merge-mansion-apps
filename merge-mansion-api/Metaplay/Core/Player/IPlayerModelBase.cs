@@ -129,5 +129,7 @@ namespace Metaplay.Core.Player
         Dictionary<ClientSlot, PlayerSubClientStateBase> PlayerSubClientStates { get; }
 
         PlayerLiveOpsEventsModel LiveOpsEvents { get; }
+
+        PlayerSessionDebugMode SessionDebugModeOverride { get; set; }
     }
 }

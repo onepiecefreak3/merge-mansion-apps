@@ -11,6 +11,8 @@ namespace GameLogic.Player.Items.Production
         Decaying = 3,
         Merge = 4,
         Bubble = 5,
-        Chest = 6
+        Chest = 6,
+        Sink = 7,
+        Order = 8
     }
 }

@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Player;
+using System.Collections.Generic;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
@@ -20,6 +21,16 @@ namespace Metaplay.Core.LiveOpsEvent
         }
 
         public PlayerAddLiveOpsEvent(MetaGuid eventId, LiveOpsEventScheduleOccasion scheduleMaybe, LiveOpsEventContent content)
+        {
+        }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public List<LiveOpsEventPhase> FastForwardedPhases { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public LiveOpsEventPhase Phase { get; set; }
+
+        public PlayerAddLiveOpsEvent(MetaGuid eventId, LiveOpsEventScheduleInfo scheduleMaybe, LiveOpsEventContent content, List<LiveOpsEventPhase> fastForwardedPhases, LiveOpsEventPhase phase)
         {
         }
     }

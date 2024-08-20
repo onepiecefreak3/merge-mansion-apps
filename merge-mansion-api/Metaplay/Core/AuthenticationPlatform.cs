@@ -17,6 +17,7 @@ namespace Metaplay.Core
         GameCenter2020UAGT = 9,
         SupercellId = 10,
         Ethereum = 11,
-        ImmutableX = 12
+        ImmutableX = 12,
+        CompanyAccount = 13
     }
 }

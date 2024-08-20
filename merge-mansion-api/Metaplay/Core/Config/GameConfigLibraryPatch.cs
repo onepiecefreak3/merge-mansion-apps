@@ -1,15 +1,19 @@
 using System;
 using Metaplay.Core.Model;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Metaplay.Core.Config
 {
     [MetaSerializable]
     public class GameConfigLibraryPatch<TKey, TInfo> : GameConfigEntryPatch<GameConfigLibrary<TKey, TInfo>, Dictionary<TKey, TInfo>>, IGameConfigLibraryPatch
     {
+        [JsonProperty("replacedItems")]
         private Dictionary<TKey, TInfo> _replacedItems;
+        [JsonProperty("appendedItems")]
         private Dictionary<TKey, TInfo> _appendedItems;
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonIgnore]
         [MaxCollectionSize(2147483647)]
         private List<GameConfigDataContent<TInfo>> _replacedItemsForSerialization { get; set; }
 

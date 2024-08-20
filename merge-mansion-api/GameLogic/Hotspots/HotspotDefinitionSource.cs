@@ -61,5 +61,6 @@ namespace GameLogic.Hotspots
         }
 
         public CustomHotspotTableId CustomHotspotTableId { get; set; }
+        public int SoloMilestoneHotspotValue { get; set; }
     }
 }

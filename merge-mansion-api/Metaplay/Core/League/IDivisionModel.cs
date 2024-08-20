@@ -27,6 +27,8 @@ namespace Metaplay.Core.League
         IDivisionServerModel ServerModel { get; set; }
 
         int NextParticipantIdx { get; set; }
+
+        int DesiredParticipantCount { get; set; }
     }
 
     public interface IDivisionModel<TDivisionModel> : IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IMultiplayerModel<TDivisionModel>, IModel<TDivisionModel>

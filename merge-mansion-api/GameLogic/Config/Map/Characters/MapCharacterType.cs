@@ -25,6 +25,12 @@ namespace GameLogic.Config.Map.Characters
         Malzar = 17,
         Babylon = 18,
         Mason = 19,
-        Julius = 20
+        Julius = 20,
+        Kazuko = 21,
+        Emilio = 22,
+        Leonard = 23,
+        SgtPepper = 24,
+        Bella = 25,
+        Amy = 26
     }
 }

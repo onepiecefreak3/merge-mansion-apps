@@ -22,5 +22,9 @@ namespace Metaplay.Core.LiveOpsEvent
         public PlayerUpdateEventLiveOpsEventParams(MetaGuid eventId, LiveOpsEventScheduleOccasion scheduleMaybe, LiveOpsEventContent content)
         {
         }
+
+        public PlayerUpdateEventLiveOpsEventParams(MetaGuid eventId, LiveOpsEventScheduleInfo scheduleMaybe, LiveOpsEventContent content)
+        {
+        }
     }
 }

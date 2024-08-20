@@ -4,8 +4,8 @@ using System;
 
 namespace Metaplay.Core.Guild
 {
-    [MetaSerializable]
     [JsonConverter(typeof(GuildInviteCodeConverter))]
+    [MetaSerializable]
     public struct GuildInviteCode
     {
         public static ulong MaxRawValue;

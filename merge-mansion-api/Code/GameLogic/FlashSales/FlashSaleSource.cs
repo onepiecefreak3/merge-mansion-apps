@@ -3,6 +3,8 @@ using GameLogic;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using Metaplay.Core;
+using GameLogic.Config;
 
 namespace Code.GameLogic.FlashSales
 {
@@ -26,5 +28,7 @@ namespace Code.GameLogic.FlashSales
         public FlashSaleSource()
         {
         }
+
+        private List<MetaRef<PlayerSegmentInfo>> Segments { get; set; }
     }
 }

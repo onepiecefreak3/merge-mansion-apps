@@ -1,10 +1,11 @@
 using Metaplay.Core.Model;
+using System;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
     [MetaReservedMembers(100, 200)]
     [MetaSerializable]
-    public abstract class PlayerLiveOpsEventModel
+    public abstract class PlayerLiveOpsEventModel : IMetaIntegration<PlayerLiveOpsEventModel>, IMetaIntegration
     {
         [MetaMember(102, (MetaMemberFlags)0)]
         private LiveOpsEventContent _content;
@@ -23,6 +24,17 @@ namespace Metaplay.Core.LiveOpsEvent
         }
 
         protected PlayerLiveOpsEventModel(IPlayerLiveOpsEventInfo info)
+        {
+        }
+
+        [MetaMember(104, (MetaMemberFlags)0)]
+        public MetaTime? LatestUnacknowledgedUpdate { get; set; }
+
+        [MetaMember(105, (MetaMemberFlags)0)]
+        public bool PlayerIsInTargetAudience { get; set; }
+        public virtual bool AllowRemove { get; }
+
+        protected PlayerLiveOpsEventModel(PlayerLiveOpsEventInfo info)
         {
         }
     }

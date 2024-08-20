@@ -7,8 +7,8 @@ using Merge;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14 })]
     public class Statistics
     {
         [MetaMember(16, (MetaMemberFlags)0)]
@@ -41,6 +41,30 @@ namespace GameLogic.Player
 
         [MetaMember(19, (MetaMemberFlags)0)]
         public MetaDuration TotalPlaytimeApprox { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public Dictionary<int, int> ItemMergeCount { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public Dictionary<Currencies, long> ResourceSpentCount { get; set; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        public Dictionary<Currencies, long> ResourceGainedCount { get; set; }
+
+        [MetaMember(23, (MetaMemberFlags)0)]
+        public int BubblesBurstCount { get; set; }
+
+        [MetaMember(24, (MetaMemberFlags)0)]
+        public Dictionary<int, int> ProducerUseCount { get; set; }
+
+        [MetaMember(25, (MetaMemberFlags)0)]
+        public Dictionary<int, int> ItemsClaimedFromShopCount { get; set; }
+
+        [MetaMember(26, (MetaMemberFlags)0)]
+        public Dictionary<int, int> ChestsOpenedCount { get; set; }
+
+        [MetaMember(27, (MetaMemberFlags)0)]
+        public Dictionary<int, int> TaskCompletedCount { get; set; }
     // STUB
     }
 }

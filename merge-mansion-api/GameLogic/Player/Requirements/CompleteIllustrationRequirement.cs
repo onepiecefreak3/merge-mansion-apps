@@ -8,7 +8,6 @@ namespace GameLogic.Player.Requirements
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private CustomHotspotTableId IllustrationId { get; set; }
-
         public CustomHotspotTableId Illustration => IllustrationId;
 
         public CompleteIllustrationRequirement()

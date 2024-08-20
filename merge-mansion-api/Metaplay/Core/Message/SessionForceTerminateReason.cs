@@ -96,5 +96,13 @@ namespace Metaplay.Core.Message
             {
             }
         }
+
+        [MetaSerializableDerived(101)]
+        public class ConfigUpdate : SessionForceTerminateReason
+        {
+            public ConfigUpdate()
+            {
+            }
+        }
     }
 }

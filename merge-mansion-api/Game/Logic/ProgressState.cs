@@ -21,8 +21,8 @@ using GameLogic.Hotspots.CardStack;
 
 namespace Game.Logic
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44, 62 })]
+    [MetaSerializable]
     public class ProgressState
     {
         public Action OnUndoSellItemCleared;
@@ -276,5 +276,10 @@ namespace Game.Logic
         [ExcludeFromGdprExport]
         [MetaMember(76, (MetaMemberFlags)0)]
         private Dictionary<HotspotId, int> hotspotAppearActionCount { get; set; }
+
+        [MetaMember(77, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        [ServerOnly]
+        private MetaTime? latestCompletedHotspotTime { get; set; }
     }
 }

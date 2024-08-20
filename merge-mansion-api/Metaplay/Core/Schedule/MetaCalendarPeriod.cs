@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace Metaplay.Core.Schedule
 {
-    [TypeConverter(typeof(MetaCalendarPeriodTypeConverter))]
     [MetaSerializable]
+    [TypeConverter(typeof(MetaCalendarPeriodTypeConverter))]
     public struct MetaCalendarPeriod
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -24,5 +24,9 @@ namespace Metaplay.Core.Schedule
         public bool IsNone { get; }
 
         private static Regex s_isoPattern;
+        private static int MinDaysPerMonth;
+        private static int MaxDaysPerMonth;
+        private static int MinDaysPerYear;
+        private static int MaxDaysPerYear;
     }
 }

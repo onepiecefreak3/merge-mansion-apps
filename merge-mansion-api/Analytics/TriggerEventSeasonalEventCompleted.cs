@@ -10,8 +10,8 @@ namespace Analytics
     public class TriggerEventSeasonalEventCompleted : PlayerTriggerEvent
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Completed seasonal event")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [Description("Completed seasonal event")]
         [JsonProperty("event_id")]
         public EventId EventId { get; set; }
 

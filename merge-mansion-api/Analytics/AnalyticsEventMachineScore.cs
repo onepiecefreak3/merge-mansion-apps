@@ -91,5 +91,17 @@ namespace Analytics
         public AnalyticsEventMachineScore(int machineEventInstance, int runNumber, int score, F64 permanentMultiplier, F64 temporaryMultiplier, int heatLevel, Dictionary<string, int> itemsSpawned, Dictionary<string, int> diamondsSpentOnSpecialItems, Dictionary<string, int> batterySpentOnSpecialItems, AnalyticsContext context, int numberOfTaps, string startTime, int mysteryMachineEnergyRemaining)
         {
         }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("diamonds_spent_on_machine_energy")]
+        public int DiamondsSpentOnMachineEnergy { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("total_diamonds_spent")]
+        public int TotalDiamondsSpent { get; set; }
+
+        public AnalyticsEventMachineScore(int machineEventInstance, int runNumber, int score, F64 permanentMultiplier, F64 temporaryMultiplier, int heatLevel, Dictionary<string, int> itemsSpawned, Dictionary<string, int> diamondsSpentOnSpecialItems, Dictionary<string, int> batterySpentOnSpecialItems, AnalyticsContext context, int numberOfTaps, string startTime, int mysteryMachineEnergyRemaining, int diamondsSpentOnMachineEnergy)
+        {
+        }
     }
 }

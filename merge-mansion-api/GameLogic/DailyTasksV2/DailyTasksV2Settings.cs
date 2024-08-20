@@ -59,5 +59,8 @@ namespace GameLogic.DailyTasksV2
         public DailyTasksV2Settings()
         {
         }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public int TimeExtensionTimeWindowMaxHours { get; set; }
     }
 }

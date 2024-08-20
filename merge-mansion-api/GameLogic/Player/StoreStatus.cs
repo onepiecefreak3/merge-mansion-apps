@@ -128,6 +128,12 @@ namespace GameLogic.Player
             public FlashSale()
             {
             }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public Dictionary<ShopItemId, ValueTuple<EnergyType, int>> BonusEnergies { get; set; }
         }
+
+        [MetaMember(34, (MetaMemberFlags)0)]
+        public Dictionary<ShopItemId, ValueTuple<int, int>> FlashSaleSMETokensAttachments { get; set; }
     }
 }

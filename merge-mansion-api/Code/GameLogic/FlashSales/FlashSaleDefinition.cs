@@ -9,11 +9,13 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using GameLogic;
 using GameLogic.Player.Rewards;
+using GameLogic.Config;
+using GameLogic.Player;
 
 namespace Code.GameLogic.FlashSales
 {
-    [MetaBlockedMembers(new int[] { 1, 5, 2, 7, 8 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 5, 2, 7, 8 })]
     public class FlashSaleDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>, IHasRequirements
     {
         [MetaMember(9, (MetaMemberFlags)0)]
@@ -50,6 +52,16 @@ namespace Code.GameLogic.FlashSales
         public PlayerReward Reward { get; set; }
 
         public FlashSaleDefinition(ShopItemId configKey, PlayerReward reward, int quantity, int weight, List<ICost> itemCost, List<PlayerRequirement> playerRequirements)
+        {
+        }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public List<MetaRef<PlayerSegmentInfo>> Segments { get; set; }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public ValueTuple<EnergyType, int> SoloMilestoneToken { get; set; }
+
+        public FlashSaleDefinition(ShopItemId configKey, PlayerReward reward, int quantity, int weight, List<ICost> itemCost, List<PlayerRequirement> playerRequirements, List<MetaRef<PlayerSegmentInfo>> segments)
         {
         }
     }

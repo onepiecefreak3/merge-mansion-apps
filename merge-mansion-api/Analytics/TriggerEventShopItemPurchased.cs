@@ -6,14 +6,14 @@ using GameLogic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [AnalyticsEvent(3045, "Shop item purchased", 1, null, false, false, true)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class TriggerEventShopItemPurchased : PlayerTriggerEvent
     {
         [JsonProperty("shop_item_id")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Purchased shop item")]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public ShopItemId ShopItemId { get; set; }
 
         private TriggerEventShopItemPurchased()

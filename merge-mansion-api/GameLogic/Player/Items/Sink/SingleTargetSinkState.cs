@@ -16,8 +16,6 @@ namespace GameLogic.Player.Items.Sink
         private Dictionary<int, int> takeInScores;
         [MetaMember(4, (MetaMemberFlags)0)]
         private MetaRef<ItemDefinition> rewardItem;
-        public ItemDefinition CompletionItem { get; }
-
         public SingleTargetSinkState()
         {
         }

@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.Offers
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class MetaOfferPerPlayerStateBase
     {
         [MetaMember(101, (MetaMemberFlags)0)]

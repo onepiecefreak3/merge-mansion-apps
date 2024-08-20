@@ -4,8 +4,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class PlayerSegmentInfoBase : IGameConfigData<PlayerSegmentId>, IGameConfigData, IHasGameConfigKey<PlayerSegmentId>
     {
         [MetaMember(100, (MetaMemberFlags)0)]

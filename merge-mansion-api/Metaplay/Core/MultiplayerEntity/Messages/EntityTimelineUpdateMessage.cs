@@ -7,8 +7,8 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
     [MetaMessage(17600, (MessageDirection)2, true)]
     public class EntityTimelineUpdateMessage : MetaMessage
     {
-        [PrettyPrint((PrettyPrintFlag)1)]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [PrettyPrint((PrettyPrintFlag)1)]
         public List<ModelAction> Operations { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

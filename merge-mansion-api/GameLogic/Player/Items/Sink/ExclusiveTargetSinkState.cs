@@ -16,8 +16,6 @@ namespace GameLogic.Player.Items.Sink
         private Dictionary<int, int> targets;
         [MetaMember(4, (MetaMemberFlags)0)]
         private int targetItem;
-        public ItemDefinition CompletionItem { get; }
-
         public ExclusiveTargetSinkState()
         {
         }

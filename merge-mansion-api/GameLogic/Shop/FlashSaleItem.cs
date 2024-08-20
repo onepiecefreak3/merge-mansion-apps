@@ -28,5 +28,11 @@ namespace GameLogic.Shop
         public FlashSaleItem(PlayerReward reward, Func<ValueTuple<Currencies, long>> priceGetter, Func<int> amountChecker, Action<IPlayer> afterPurchase)
         {
         }
+
+        public ValueTuple<EnergyType, int, int> BonusEnergy { get; set; }
+
+        public FlashSaleItem(PlayerReward reward, Func<ValueTuple<Currencies, long>> priceGetter, Func<int> amountChecker, Action<IPlayer> afterPurchase, ValueTuple<EnergyType, int, int> bonusEnergy)
+        {
+        }
     }
 }

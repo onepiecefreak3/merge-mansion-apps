@@ -9,13 +9,13 @@ namespace Analytics
     [AnalyticsEvent(139, "Player claimed chain completion reward", 1, null, true, true, false)]
     public class PlayerClaimedChainCompletionReward : AnalyticsServersideEventBase
     {
+        [Description("ID of the merge chain claimed")]
         [JsonProperty("merge_chain_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("ID of the merge chain claimed")]
         public string MergeChainId;
-        [Description("ID of the reward claimed")]
         [JsonProperty("codex_discovery_reward_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("ID of the reward claimed")]
         public string CodexDiscoveryRewardId;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

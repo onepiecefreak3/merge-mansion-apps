@@ -65,8 +65,8 @@ namespace Metaplay.Core.Localization
         {
             [MetaMember(1, (MetaMemberFlags)0)]
             public LanguageId LanguageId; // 0x10
-            [MaxCollectionSize(2147483647)]
             [MetaMember(2, (MetaMemberFlags)0)]
+            [MaxCollectionSize(2147483647)]
             public Dictionary<TranslationId, string> Translations; // 0x18
             public BinaryV1()
             {

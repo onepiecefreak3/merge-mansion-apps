@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using Metaplay.Core.Offers;
 using System;
+using Metaplay.Core;
 
 namespace Analytics
 {
@@ -68,6 +69,45 @@ namespace Analytics
         public string PopupTrigger { get; set; }
 
         public AnalyticEventOfferImpression(MetaOfferId offerId, MetaOfferGroupId offerGroupId, string platformId, OfferPlacementId placementId, bool automaticallyShown, int activations, int purchases, string impressionId, string popupTrigger)
+        {
+        }
+
+        [Description("The offer start date and hour")]
+        [JsonProperty("start_date_hour")]
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public MetaTime? StartDate { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        [JsonProperty("end_date_hour")]
+        [Description("The offer end date and hour")]
+        public MetaTime? EndDate { get; set; }
+
+        [JsonProperty("duration")]
+        [Description("The offer duration in hours")]
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public long? Duration { get; set; }
+
+        [JsonProperty("reference_price")]
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [Description("The offer price in USD")]
+        public long ReferencePrice { get; set; }
+
+        [JsonProperty("offer_items")]
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [Description("Array of all rewards & their amount in the offer - only contant items")]
+        public string OfferItems { get; set; }
+
+        [Description("Players segment for the offer")]
+        [JsonProperty("segment")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public string Segment { get; set; }
+
+        [Description("Offer global counter")]
+        [JsonProperty("offer_counter")]
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public int OfferGlobalCounter { get; set; }
+
+        public AnalyticEventOfferImpression(MetaOfferId offerId, MetaOfferGroupId offerGroupId, string platformId, OfferPlacementId placementId, bool automaticallyShown, int activations, int purchases, string impressionId, string popupTrigger, MetaTime? startDate, MetaTime? endDate, long? duration, long referencePrice, string offerItems, string segment, int offerGlobalCounter)
         {
         }
     }

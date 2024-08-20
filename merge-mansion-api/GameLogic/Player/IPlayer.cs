@@ -20,6 +20,9 @@ using Code.GameLogic.DynamicEvents;
 using GameLogic.Player.DailyTasksV2;
 using System.Runtime.CompilerServices;
 using GameLogic.Config.EnergyModeEvent;
+using GameLogic.Player.Events;
+using GameLogic.MiniEvents;
+using Code.GameLogic.Player.Events.DailyScoopEvent;
 
 namespace GameLogic.Player
 {
@@ -127,6 +130,22 @@ namespace GameLogic.Player
         DailyTasksV2Status DailyTasksV2Status { get; }
 
         PlayerEnergyModeEventsModel EnergyModeEvents { get; }
+
+        IEnumerable<SoloMilestoneEventModel> ActiveSoloMilestoneEvents { get; }
+
+        IEnumerable<MiniEventModel> ActiveMiniEvents { get; }
+
+        PlayerBoardEventsModel BoardEvents { get; }
+
+        PlayerLeaderboardEventsModel LeaderboardEvents { get; }
+
+        PlayerMysteryMachineEventsModel MysteryMachineEvents { get; }
+
+        RandomPCG SoloMilestoneRandom { get; }
+
+        PlayerMiniEventOverrides MiniEventOverrides { get; }
+
+        IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

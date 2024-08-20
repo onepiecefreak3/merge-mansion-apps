@@ -3,9 +3,9 @@ using Metaplay.Core.Guild;
 
 namespace Metaplay.Core.Rewards
 {
-    [GuildsEnabledCondition]
-    [MetaSerializable]
     [UseCustomParserFromDerived]
+    [MetaSerializable]
+    [GuildsEnabledCondition]
     public abstract class MetaGuildRewardBase : MetaReward
     {
         protected MetaGuildRewardBase()

@@ -4,8 +4,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaFormHidden]
     [MetaSerializableDerived(17)]
+    [MetaFormHidden]
     public class ProgressionEventPremiumIAPReward : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

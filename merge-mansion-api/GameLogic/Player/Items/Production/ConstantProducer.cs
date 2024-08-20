@@ -56,5 +56,9 @@ namespace GameLogic.Player.Items.Production
         public ConstantProducer(IEnumerable<ValueTuple<int, int>> pairs)
         {
         }
+
+        public ConstantProducer(IEnumerable<ValueTuple<MetaRef<ItemDefinition>, int>> pairs)
+        {
+        }
     }
 }

@@ -3,6 +3,7 @@ using Metaplay.Core.Serialization;
 using GameLogic.Config.Costs;
 using Newtonsoft.Json;
 using System;
+using System.ComponentModel;
 
 namespace Analytics
 {
@@ -23,6 +24,20 @@ namespace Analytics
         }
 
         public AnalyticsFlashSaleImpressionItemBase(ICost cost, int slotId)
+        {
+        }
+
+        [JsonProperty("attachment")]
+        [Description("Attachment")]
+        [MetaMember(102, (MetaMemberFlags)0)]
+        public string Attachment { get; set; }
+
+        [JsonProperty("attachment_amount")]
+        [Description("Attachment amount")]
+        [MetaMember(103, (MetaMemberFlags)0)]
+        public int AttachmentAmount { get; set; }
+
+        public AnalyticsFlashSaleImpressionItemBase(ICost cost, int slotId, string attachment, int attachmentAmount)
         {
         }
     }

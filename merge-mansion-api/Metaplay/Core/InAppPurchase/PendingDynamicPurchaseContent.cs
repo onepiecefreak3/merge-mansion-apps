@@ -11,8 +11,8 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(3, (MetaMemberFlags)0)]
         public string DeviceId;
         [NoChecksum]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public PendingDynamicPurchaseContentStatus Status;
         [MetaMember(4, (MetaMemberFlags)0)]
         public string GameProductAnalyticsId;

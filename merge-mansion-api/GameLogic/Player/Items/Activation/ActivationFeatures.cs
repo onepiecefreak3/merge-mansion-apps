@@ -11,8 +11,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {
-    [MetaBlockedMembers(new int[] { 7 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7 })]
     public class ActivationFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]

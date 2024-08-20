@@ -5,8 +5,8 @@ using Metaplay.Core.Math;
 
 namespace Game.Cloud.Webshop
 {
-    [MetaBlockedMembers(new int[] { 3, 4 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 3, 4 })]
     public class WebShopSettings : GameConfigKeyValue<WebShopSettings>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
