@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using GameLogic;
 using GameLogic.Player.Items;
-using System.Threading.Tasks;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -29,7 +28,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(GarageCleanupPatternInfo),
 
                 typeof(BoardCell),
-                typeof(EventOfferSetInfo)
+                typeof(EventOfferSetInfo),
+
+                typeof(DailyTaskDefinition)
             };
 
         protected override Type[] GetTypes() => _supportedTypes;
@@ -64,6 +65,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 SerializeBoardCell(writer, boardCell, serializer);
             else if (value is EventOfferSetInfo eventOfferSet)
                 SerializeEventOfferSet(writer, eventOfferSet, serializer);
+
+            else if (value is DailyTaskDefinition dailyTask)
+                SerializeDailyTask(writer, dailyTask, serializer);
         }
 
         private void SerializeBoardEvent(JsonWriter writer, BoardEventInfo boardEvent, JsonSerializer serializer)
@@ -207,6 +211,17 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             }
 
             WriteObject(writer, eventOfferSet.GetType(), eventOfferSet, serializer);
+        }
+
+        private void SerializeDailyTask(JsonWriter writer, DailyTaskDefinition dailyTask, JsonSerializer serializer)
+        {
+            if (dailyTask.ConfigKey.Value == null)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, dailyTask.GetType(), dailyTask, serializer);
         }
 
         #region Task graph
@@ -392,6 +407,28 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 if (name == nameof(EventTaskInfo.Description))
                 {
                     WriteProperty(writer, name, LocMan.GetEventDescription((string)value), serializer);
+
+                    return;
+                }
+            }
+
+            #endregion
+
+
+            #region Daily Task
+
+            if (type.IsAssignableTo(typeof(DailyTaskDefinition)))
+            {
+                if (name == nameof(DailyTaskDefinition.RequiredItemType))
+                {
+                    WriteProperty(writer, name, ((MetaRef<ItemDefinition>)value).KeyObject, serializer);
+
+                    return;
+                }
+
+                if (name == nameof(DailyTaskDefinition.RewardItemType))
+                {
+                    WriteProperty(writer, name, ((MetaRef<ItemDefinition>)value).KeyObject, serializer);
 
                     return;
                 }

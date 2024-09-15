@@ -14,7 +14,7 @@ namespace GameLogic.Player.Items.Order
         public bool IsOrder { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        private IOrderProducer OrderProducer { get; set; }
+        public IOrderProducer OrderProducer { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public bool HideRequirementsPhaseProgressBar { get; set; }
@@ -29,7 +29,7 @@ namespace GameLogic.Player.Items.Order
         public IItemProducer DecayProducer { get; set; }
 
         [MetaMember(7, (MetaMemberFlags)0)]
-        private OrderItemDecayLogic DecayLogic { get; set; }
+        public OrderItemDecayLogic DecayLogic { get; set; }
 
         private OrderFeatures()
         {

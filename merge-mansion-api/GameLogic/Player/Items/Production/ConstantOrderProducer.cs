@@ -10,16 +10,16 @@ namespace GameLogic.Player.Items.Production
     public class ConstantOrderProducer : IOrderSpawner, IOrderProducer
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        private RollHistoryType RollType { get; set; }
+        public RollHistoryType RollType { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        private int ItemType { get; set; }
+        public int ItemType { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        private List<ValueTuple<OrderRequirementsId, int>> GenerationOdds { get; set; }
+        public List<(OrderRequirementsId, int)> GenerationOdds { get; set; }
 
-        [IgnoreDataMember]
-        public int OrderCount { get; }
+        [IgnoreDataMember] 
+        public int OrderCount => GenerationOdds.Count;
 
         private ConstantOrderProducer()
         {

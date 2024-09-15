@@ -18,7 +18,7 @@ namespace merge_mansion_dumper.Dumper.Json
             {
                 new MetaJsonSerializer(output),
                 new MetaMathJsonSerializer(),
-                new MetaMergeChainSerializer(dropsAsPercent, output),
+                new MetaMergeChainSerializer(resolver, dropsAsPercent, output),
                 new MetaAreaSerializer(resolver, output),
                 new MetaEventSerializer(),
             };

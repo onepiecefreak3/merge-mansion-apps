@@ -43,15 +43,22 @@ namespace Metaplay.Core.Math
             return new F32(Fixed32.Rcp(a.Raw));
         }
 
+        public static int RoundToInt(F32 value)
+        {
+            return value.Raw + 0x8000 >> 16;
+        }
+
         public static F32 operator +(F32 v1, F32 v2) => new F32(v1.Raw + v2.Raw);
         public static F32 operator +(int v1, F32 v2) => new F32(v1 << 16 + v2.Raw);
         public static F32 operator +(F32 v1, int v2) => new F32(v1.Raw + v2 << 16);
+        public static F32 operator *(int v1, F32 v2) => new F32(v1 * v2.Raw);
+        public static F32 operator *(F32 v1, int v2) => new F32(v1.Raw * v2);
         public static bool operator <(F32 v1, F32 v2) => v1.Raw < v2.Raw;
         public static bool operator <(int v1, F32 v2) => v1 << 16 < v2.Raw;
         public static bool operator <(F32 v1, int v2) => v1.Raw < v2 << 16;
-        public static bool operator>(F32 v1, F32 v2) => v1.Raw > v2.Raw;
-        public static bool operator>(int v1, F32 v2) => v1 << 16 > v2.Raw;
-        public static bool operator>(F32 v1, int v2) => v1.Raw > v2 << 16;
+        public static bool operator >(F32 v1, F32 v2) => v1.Raw > v2.Raw;
+        public static bool operator >(int v1, F32 v2) => v1 << 16 > v2.Raw;
+        public static bool operator >(F32 v1, int v2) => v1.Raw > v2 << 16;
         public static bool operator !=(F32 v1, F32 v2) => v1.Raw != v2.Raw;
         public static bool operator !=(int v1, F32 v2) => v1 << 16 != v2.Raw;
         public static bool operator !=(F32 v1, int v2) => v1.Raw != v2 << 16;

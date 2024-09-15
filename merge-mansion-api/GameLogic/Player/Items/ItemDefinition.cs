@@ -310,8 +310,8 @@ namespace GameLogic.Player.Items
         [MetaMember(55, (MetaMemberFlags)0)]
         public List<int> OverrideProductionSource { get; set; }
 
-        [IgnoreDataMember]
-        public OrderFeatures OrderFeatures { get; }
+        [IgnoreDataMember] 
+        public OrderFeatures OrderFeatures => _OrderFeatures;
 
         [IgnoreDataMember]
         public MiniEventFeatures MiniEventFeatures { get; }

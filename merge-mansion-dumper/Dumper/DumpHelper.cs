@@ -10,6 +10,7 @@ namespace merge_mansion_dumper.Dumper
         private const string MergeChainFileName = "dump/chain_item_odds.json";
         private const string AreaFileName = "dump/areas.json";
         private const string EventFileName = "dump/events.json";
+        private const string DailyTaskFileName = "dump/daily_tasks.json";
         private const string DialogDirName = "dump/dialogs";
 
         public static void DumpAll()

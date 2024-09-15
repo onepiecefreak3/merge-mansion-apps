@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.PortableExecutable;
+using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 using GameLogic.Config;
 using GameLogic.MergeChains;
@@ -375,6 +376,27 @@ namespace Metaplay.Generated
                     break;
 
                 case WireDataType.Struct:
+                    if (memberType.IsAssignableTo(typeof(ITuple)))
+                    {
+                        var tupleArguments = memberType.GetGenericArguments();
+                        var tupleValues = new List<object>(tupleArguments.Length);
+
+                        do
+                        {
+                            var tupleWireType = TaggedWireSerializer.ReadWireType(reader);
+                            if (tupleWireType == WireDataType.EndStruct)
+                                break;
+
+                            var tagId = TaggedWireSerializer.ReadTagId(reader);
+                            Deserialize_WireType(ref context, reader, tupleWireType, tupleArguments[tagId - 1], out var tupleValue);
+
+                            tupleValues.Add(tupleValue);
+                        } while (true);
+
+                        value = Activator.CreateInstance(memberType, tupleValues.ToArray());
+                        return;
+                    }
+
                     value = Activator.CreateInstance(memberType, true);
                     Deserialize_Members(ref context, reader, value, memberType);
                     return;

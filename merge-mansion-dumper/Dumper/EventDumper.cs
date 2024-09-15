@@ -19,7 +19,9 @@ namespace merge_mansion_dumper.Dumper
                 ["Progressions"] = config.ProgressionEvents.EnumerateAll().Select(x => x.Value).ToArray(),
                 ["Leaderboards"] = config.LeaderboardEvents.EnumerateAll().Select(x => x.Value).ToArray(),
                 ["GarageCleanups"] = config.GarageCleanupEvents.EnumerateAll().Select(x => x.Value).ToArray(),
-                ["Shops"] = config.ShopEvents.EnumerateAll().Select(x => x.Value).ToArray()
+                ["Shops"] = config.ShopEvents.EnumerateAll().Select(x => x.Value).ToArray(),
+                ["DailyTasks"] = config.DailyTasks.EnumerateAll().Select(x => x.Value).ToArray(),
+                ["DailyTasksV2"] = config.DailyTasksV2.EnumerateAll().Select(x => x.Value).ToArray()
             };
 
             return events;

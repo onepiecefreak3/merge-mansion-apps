@@ -12,16 +12,16 @@ namespace GameLogic.Player.Items.Order
         public OrderRequirementsId ConfigKey { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        private string SinkFactoryType { get; set; }
+        public string SinkFactoryType { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        private Dictionary<int, int> SinkItemsAndAmounts { get; set; }
+        public Dictionary<int, int> SinkItemsAndAmounts { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        private string ActivationType { get; set; }
+        public string ActivationType { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
-        private Dictionary<int, int> ActivationRewardsAndAmounts { get; set; }
+        public Dictionary<int, int> ActivationRewardsAndAmounts { get; set; }
 
         public OrderRequirements()
         {
