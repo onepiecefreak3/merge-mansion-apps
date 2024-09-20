@@ -8,6 +8,7 @@ using GameLogic.StatsTracking;
 namespace Analytics
 {
     [AnalyticsEvent(198, "Daily Scoop Task Progress", 1, null, true, true, false)]
+    [MetaBlockedMembers(new int[] { 14, 15 })]
     public class AnalyticsDailyScoopProgress : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -78,16 +79,6 @@ namespace Analytics
         [MetaMember(13, (MetaMemberFlags)0)]
         public string PreviousMileStoneId { get; set; }
 
-        [Description("The ID of the next milestone")]
-        [MetaMember(14, (MetaMemberFlags)0)]
-        [JsonProperty("current_daily_challenge_weekly_milestone")]
-        public string NextMileStoneId { get; set; }
-
-        [JsonProperty("max_daily_challenge_weekly_milestone")]
-        [Description("The ID of the last milestone")]
-        [MetaMember(15, (MetaMemberFlags)0)]
-        public string LastMileStoneId { get; set; }
-
         [Description("The ID of the daily reward")]
         [MetaMember(16, (MetaMemberFlags)0)]
         [JsonProperty("daily_challenge_total_reward")]
@@ -98,6 +89,25 @@ namespace Analytics
         }
 
         public AnalyticsDailyScoopProgress(string eventId, string weekId, string dayId, StatsObjectiveType objectiveType, int objectiveOrder, string objectiveCategory, string objectiveParameter, int objectiveRequirement, int objectiveProgressAmount, int objectiveProgressSaldo, int eventPointReceived, int eventPointSaldo, string previousMileStoneId, string nextMileStoneId, string lastMileStoneId, string dailyRewardId)
+        {
+        }
+
+        [Description("The ID of the next milestone")]
+        [MetaMember(17, (MetaMemberFlags)0)]
+        [JsonProperty("current_daily_challenge_weekly_milestone")]
+        public int NextMileStoneIndex { get; set; }
+
+        [Description("The ID of the last milestone")]
+        [MetaMember(18, (MetaMemberFlags)0)]
+        [JsonProperty("max_daily_challenge_weekly_milestone")]
+        public int LastMileStoneIndex { get; set; }
+
+        [JsonProperty("secondary_reward_recieved")]
+        [MetaMember(19, (MetaMemberFlags)0)]
+        [Description("The Second Reward")]
+        public string SecondaryReward { get; set; }
+
+        public AnalyticsDailyScoopProgress(string eventId, string weekId, string dayId, StatsObjectiveType objectiveType, int objectiveOrder, string objectiveCategory, string objectiveParameter, int objectiveRequirement, int objectiveProgressAmount, int objectiveProgressSaldo, int eventPointReceived, int eventPointSaldo, string previousMileStoneId, int nextMileStoneIndex, int lastMileStoneIndex, string dailyRewardId, string secondaryReward)
         {
         }
     }

@@ -3,6 +3,7 @@ using Metaplay.Core;
 using GameLogic.Player.Items;
 using System;
 using System.Collections.Generic;
+using Analytics;
 
 namespace GameLogic.StatsTracking
 {
@@ -42,6 +43,21 @@ namespace GameLogic.StatsTracking
         }
 
         public StatsObjectiveMerge(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements)
+        {
+        }
+
+        [MetaMember(106, (MetaMemberFlags)0)]
+        public sealed override TaskType TypeTask { get; set; }
+
+        public StatsObjectiveMerge(string targetItemType, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
+        {
+        }
+
+        public StatsObjectiveMerge(MetaRef<ItemDefinition> targetItem, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
+        {
+        }
+
+        public StatsObjectiveMerge(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
         {
         }
     }

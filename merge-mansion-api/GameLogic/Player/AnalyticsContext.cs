@@ -24,5 +24,12 @@ namespace GameLogic.Player
         protected AnalyticsContext(string context, string target)
         {
         }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public string FlashSaleContext { get; set; }
+
+        protected AnalyticsContext(string context, string target, string flashSaleContext)
+        {
+        }
     }
 }

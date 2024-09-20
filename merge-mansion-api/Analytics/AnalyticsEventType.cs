@@ -130,6 +130,8 @@ namespace Analytics
         SoloMilestoneTokenReceived = 119,
         DailyScoopProgress = 120,
         DailyScoopTaskStatusChanged = 121,
-        DailyScoopDayStarted = 122
+        DailyScoopDayStarted = 122,
+        ItemSinkTransform = 123,
+        UiInteraction = 124
     }
 }

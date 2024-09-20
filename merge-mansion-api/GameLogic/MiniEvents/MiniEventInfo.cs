@@ -8,8 +8,8 @@ using GameLogic.Player.Requirements;
 
 namespace GameLogic.MiniEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("MiniEvent", false, true)]
+    [MetaSerializable]
     public class MiniEventInfo : IMetaActivableConfigData<MiniEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MiniEventId>, IHasGameConfigKey<MiniEventId>, IMetaActivableInfo<MiniEventId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

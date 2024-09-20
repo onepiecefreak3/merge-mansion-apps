@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [TypeConverter(typeof(EnumStringConverter<DialogCharacterType>))]
+    [MetaSerializable]
     public enum DialogCharacterType
     {
         NoChange = 0,
@@ -55,6 +55,8 @@ namespace GameLogic
         Empty = 43,
         Leonard = 44,
         CocoBabies = 45,
-        Bella = 46
+        Bella = 46,
+        Ignatius = 47,
+        Ghost = 48
     }
 }

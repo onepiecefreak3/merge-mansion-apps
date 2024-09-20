@@ -11,8 +11,8 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsBoardStateMetaData
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("item_type")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemType { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

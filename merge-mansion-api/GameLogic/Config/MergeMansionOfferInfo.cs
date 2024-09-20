@@ -105,5 +105,12 @@ namespace GameLogic.Config
         public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions, MetaRef<InAppProductInfoBase> previousInAppProduct, int maxPurchasesGlobally)
         {
         }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public int SaleAmount { get; set; }
+
+        public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions, MetaRef<InAppProductInfoBase> previousInAppProduct, int maxPurchasesGlobally, int saleAmount)
+        {
+        }
     }
 }

@@ -16,5 +16,7 @@ namespace GameLogic.Advertisement
         public AdvertisementPlacementsSource()
         {
         }
+
+        public int Threshold { get; set; }
     }
 }

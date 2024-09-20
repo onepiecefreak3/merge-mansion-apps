@@ -8,11 +8,12 @@ using Metaplay.Core;
 using Metaplay.Core.Player;
 using System.Runtime.Serialization;
 using Metaplay.Core.Schedule;
+using GameLogic.Config;
 
 namespace Code.GameLogic.GameEvents.DailyScoop
 {
-    [MetaActivableConfigData("DailyScoopEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("DailyScoopEvent", false, true)]
     public class DailyScoopEventInfo : IMetaActivableConfigData<DailyScoopEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DailyScoopEventId>, IHasGameConfigKey<DailyScoopEventId>, IMetaActivableInfo<DailyScoopEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

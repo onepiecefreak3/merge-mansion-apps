@@ -54,6 +54,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         private void SerializeHotspot(JsonWriter writer, HotspotDefinition hotspot, JsonSerializer serializer)
         {
+            if (hotspot.ConfigKey == (HotspotId)11102)
+                Debugger.Break();
+
             if (!Enum.IsDefined(hotspot.ConfigKey))
                 _output.Warning(Program.VersionBumped ? "HotspotId {0} unknown" : "[Metacore] HotspotId {0} unknown", hotspot.ConfigKey);
 

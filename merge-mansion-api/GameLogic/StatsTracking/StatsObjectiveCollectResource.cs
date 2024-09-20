@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using System;
 using System.Collections.Generic;
 using Metaplay.Core;
+using Analytics;
 
 namespace GameLogic.StatsTracking
 {
@@ -37,6 +38,17 @@ namespace GameLogic.StatsTracking
         }
 
         public StatsObjectiveCollectResource(Currencies targetResource, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements)
+        {
+        }
+
+        [MetaMember(106, (MetaMemberFlags)0)]
+        public sealed override TaskType TypeTask { get; set; }
+
+        public StatsObjectiveCollectResource(string targetItemId, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
+        {
+        }
+
+        public StatsObjectiveCollectResource(Currencies targetResource, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
         {
         }
     }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Metaplay.Core;
 using GameLogic.Config;
 using Metaplay.Core.Schedule;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents.SoloMilestone
 {

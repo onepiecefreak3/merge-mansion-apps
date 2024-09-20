@@ -12,8 +12,8 @@ namespace GameLogic.Banks
     public class CurrencyBanksModel : MetaActivableSet<CurrencyBankId, CurrencyBankInfo, CurrencyBankModel>
     {
         private static string ActivableKindId;
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string AnalyticsId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]

@@ -10,9 +10,9 @@ namespace Analytics
     [MetaSerializable]
     public class GameResourceCost
     {
-        [Description("Type of the currency used")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("virtual_currency_name")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Type of the currency used")]
         public Currencies Currency { get; set; }
 
         [JsonProperty("value")]

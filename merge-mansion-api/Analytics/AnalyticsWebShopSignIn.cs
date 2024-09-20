@@ -13,9 +13,9 @@ namespace Analytics
         [JsonProperty("state")]
         [Description("State of the webshop sign in")]
         public AnalyticsWebShopSignInState State;
+        [Description("Has code")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("has_code")]
-        [Description("Has code")]
         public bool HasCode;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

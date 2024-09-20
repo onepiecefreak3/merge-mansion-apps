@@ -26,5 +26,9 @@ namespace GameLogic.Player
         public OfferAnalyticsContext(string context, string target, int slotId, string impressionId, string shopItemId)
         {
         }
+
+        public OfferAnalyticsContext(string context, string target, int? slotId, string impressionId, string flashSaleContext, string shopItemId)
+        {
+        }
     }
 }

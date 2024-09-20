@@ -4,6 +4,7 @@ using Metaplay.Core.Math;
 using GameLogic.Story;
 using System.Collections.Generic;
 using GameLogic.Player.Rewards;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Items.Fishing
 {
@@ -50,6 +51,13 @@ namespace GameLogic.Player.Items.Fishing
         public List<WeightStarRewardData> StarRewards { get; set; }
 
         public WeightFeatures(bool hasWeight, F32 minWeight, F32 maxWeight, int framesItem, F32 worldRecordWeightThreshold, StoryDefinitionId worldRecordWeightDialogue, IEnumerable<PlayerReward> worldRecordRewards, Dictionary<WeightCategory, SplashType> splashTypesByWeightCategory, FishRarity fishRarity, List<WeightStarRewardData> starRewards)
+        {
+        }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public LuckyType LuckyType { get; set; }
+
+        public WeightFeatures(bool hasWeight, F32 minWeight, F32 maxWeight, int framesItem, F32 worldRecordWeightThreshold, StoryDefinitionId worldRecordWeightDialogue, IEnumerable<PlayerReward> worldRecordRewards, Dictionary<WeightCategory, SplashType> splashTypesByWeightCategory, FishRarity fishRarity, List<WeightStarRewardData> starRewards, LuckyType luckyType)
         {
         }
     }

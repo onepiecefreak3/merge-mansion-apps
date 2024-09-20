@@ -33,5 +33,12 @@ namespace GameLogic.Advertisement
         public AdvertisementPlacementsInfo(AdvertisementPlacementId configKey, string adsProviderIds, int capPerCooldown, int rewardAmount, AdsRewardType adsRewardType, List<int> rewardIds)
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public int Threshold { get; set; }
+
+        public AdvertisementPlacementsInfo(AdvertisementPlacementId configKey, string adsProviderIds, int capPerCooldown, int rewardAmount, AdsRewardType adsRewardType, List<int> rewardIds, int threshold)
+        {
+        }
     }
 }

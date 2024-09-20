@@ -7,6 +7,7 @@ using Metaplay.Core.Math;
 using System.Collections.Generic;
 using Metaplay.Core.Schedule;
 using Metaplay.Core.Activables;
+using Metaplay.Core.Player;
 
 namespace GameLogic.Banks
 {

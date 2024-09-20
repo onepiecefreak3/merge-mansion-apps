@@ -8,6 +8,7 @@ namespace GameLogic.Advertisement
         None = 0,
         FlashSaleItem = 1,
         FlashSaleRefresh = 2,
-        OutOfEnergy = 3
+        OutOfEnergy = 3,
+        ClaimBubble = 4
     }
 }

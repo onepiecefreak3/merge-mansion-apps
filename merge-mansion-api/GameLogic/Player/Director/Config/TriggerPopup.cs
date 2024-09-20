@@ -5,8 +5,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Director.Config
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(9)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class TriggerPopup : IDirectorAction
     {
         [MetaMember(1, (MetaMemberFlags)0)]

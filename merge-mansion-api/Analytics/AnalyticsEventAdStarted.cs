@@ -35,5 +35,14 @@ namespace Analytics
         public AnalyticsEventAdStarted(string adPlacement, string itemName, string auctionId)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("item_diamond_price")]
+        [Description("Item Diamond value")]
+        public int ItemDiamondValue { get; set; }
+
+        public AnalyticsEventAdStarted(string adPlacement, string itemName, string auctionId, int itemDiamondValue)
+        {
+        }
     }
 }

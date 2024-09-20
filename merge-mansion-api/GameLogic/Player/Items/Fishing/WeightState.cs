@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Math;
+using System;
 
 namespace GameLogic.Player.Items.Fishing
 {
@@ -17,6 +18,13 @@ namespace GameLogic.Player.Items.Fishing
         }
 
         public WeightState(F32 weight, WeightCategory weightCategory)
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public int RodUsed { get; set; }
+
+        public WeightState(F32 weight, WeightCategory weightCategory, int rodUsed)
         {
         }
     }

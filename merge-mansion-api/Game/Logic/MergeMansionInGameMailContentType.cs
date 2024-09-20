@@ -3,8 +3,8 @@ using GameLogic;
 
 namespace Game.Logic
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum MergeMansionInGameMailContentType
     {
         Default = 0,

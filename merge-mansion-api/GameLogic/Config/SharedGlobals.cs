@@ -12,8 +12,8 @@ using Metaplay.Core.Player;
 
 namespace GameLogic.Config
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48 })]
     public class SharedGlobals : GameConfigKeyValue<SharedGlobals>, IValidatable
     {
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -181,5 +181,11 @@ namespace GameLogic.Config
 
         [MetaMember(62, (MetaMemberFlags)0)]
         public int MinLevelForAdditionalSpawnItem { get; set; }
+
+        [MetaMember(63, (MetaMemberFlags)0)]
+        public MetaDuration? DefaultQuaternaryEnergyUnitRestoreDuration { get; set; }
+
+        [MetaMember(64, (MetaMemberFlags)0)]
+        public long QuaternaryEnergyMaxAmount { get; set; }
     }
 }

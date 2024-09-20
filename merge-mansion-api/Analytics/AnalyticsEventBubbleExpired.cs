@@ -7,8 +7,8 @@ using Merge;
 
 namespace Analytics
 {
-    [AnalyticsEvent(102, "Bubble expired", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [AnalyticsEvent(102, "Bubble expired", 1, null, false, true, false)]
     public class AnalyticsEventBubbleExpired : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -53,6 +53,15 @@ namespace Analytics
         public int AttachmentAmount { get; set; }
 
         public AnalyticsEventBubbleExpired(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount, bool dismissed)
+        {
+        }
+
+        [Description("Is there and Active ads on the bubble")]
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("ActiveAds")]
+        public bool IsActiveAds { get; set; }
+
+        public AnalyticsEventBubbleExpired(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount, bool isActiveAds, bool dismissed)
         {
         }
     }

@@ -66,5 +66,9 @@ namespace Code.GameLogic.Player.Events.DailyScoopEvent
         public DailyScoopEventModel(DailyScoopEventInfo info)
         {
         }
+
+        [IgnoreDataMember]
+        public bool objectivesProgressLogged;
+        public bool TodayObjectivesSeen { get; set; }
     }
 }

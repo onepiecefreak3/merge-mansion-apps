@@ -5,8 +5,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [TypeConverter(typeof(EnumStringConverter<Currencies>))]
+    [MetaSerializable]
     public enum Currencies
     {
         None = 0,
@@ -24,6 +24,7 @@ namespace GameLogic
         MysteryMachineEnergy = 11,
         MysteryMachineCoins = 12,
         SoloMilestoneBaseToken = 13,
-        InfiniteEnergy = 14
+        InfiniteEnergy = 14,
+        QuaternaryEnergy = 15
     }
 }

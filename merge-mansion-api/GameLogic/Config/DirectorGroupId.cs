@@ -195,5 +195,10 @@ namespace GameLogic.Config
         public static DirectorGroupId SocialMediaInboxLink;
         public static DirectorGroupId ProducerInventoryLockedFTUE;
         public static DirectorGroupId PetFTUE;
+        public static DirectorGroupId GemMineActivateGoldMine;
+        public static DirectorGroupId GemMineGemLogStep01;
+        public static DirectorGroupId GemMineGemLogStep02;
+        public static DirectorGroupId GemMineGemLogStep03;
+        public static DirectorGroupId GemMineGemLogStep04;
     }
 }

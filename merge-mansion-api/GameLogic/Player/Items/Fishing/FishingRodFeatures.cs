@@ -37,5 +37,22 @@ namespace GameLogic.Player.Items.Fishing
         private FishingRodFeatures(bool isFishingRod, List<ItemOdds> itemOdds, IPlacement placement, FishingRodRarity rarity)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public int[] FishWeightCategoryOddsOverrides { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public int[] FishWeightCategorySizePercentagesOverrides { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public int WaterDropletOverride { get; set; }
+
+        public FishingRodFeatures(IEnumerable<ValueTuple<int, int>> itemWeightPairs, FishingRodRarity rarity, string fishWeightCategoryOddsOverrides, string fishWeightCategorySizePercentagesOverrides, string waterDropletOverride)
+        {
+        }
+
+        private FishingRodFeatures(bool isFishingRod, List<ItemOdds> itemOdds, IPlacement placement, FishingRodRarity rarity, string fishWeightCategoryOddsOverrides, string fishWeightCategorySizePercentagesOverrides, string waterDropletOverride)
+        {
+        }
     }
 }

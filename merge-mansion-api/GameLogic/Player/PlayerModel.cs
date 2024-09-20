@@ -36,23 +36,24 @@ using GameLogic.Config.EnergyModeEvent;
 using GameLogic.MiniEvents;
 using GameLogic.Player.Events;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
+using GameLogic.Player.Items;
 
 namespace GameLogic.Player
 {
-    [MetaSerializableDerived(1)]
+    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
     [MetaReservedMembers(11, 12)]
     [MetaReservedMembers(99, 300)]
+    [MetaSerializableDerived(1)]
     [SupportedSchemaVersions(21, 39)]
-    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
+        [Transient]
         [ServerOnly]
         [MetaMember(211, (MetaMemberFlags)0)]
-        [Transient]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -381,5 +382,8 @@ namespace GameLogic.Player
         public IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
         public IEnumerable<SoloMilestoneEventModel> ActiveSoloMilestoneEvents { get; }
         public IEnumerable<MiniEventModel> ActiveMiniEvents { get; }
+
+        [MetaMember(274, (MetaMemberFlags)0)]
+        public Dictionary<Coordinate, MergeItem> bubblesWithAds { get; set; }
     }
 }

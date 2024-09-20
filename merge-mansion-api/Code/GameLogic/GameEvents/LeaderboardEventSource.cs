@@ -9,6 +9,7 @@ using Metaplay.Core.Offers;
 using GameLogic.Story;
 using GameLogic.Player;
 using Metaplay.Core.Math;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {

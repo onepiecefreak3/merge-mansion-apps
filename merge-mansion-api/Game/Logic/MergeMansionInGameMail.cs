@@ -16,8 +16,8 @@ namespace Game.Logic
     {
         private static int ShortTopicLimit;
         private static int ShortContentLimit;
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         public LocalizedString ExcerptTopic { get; set; }
 
         [MetaValidateRequired]

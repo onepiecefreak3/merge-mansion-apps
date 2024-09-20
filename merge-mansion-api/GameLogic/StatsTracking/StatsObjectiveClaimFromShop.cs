@@ -3,6 +3,7 @@ using Metaplay.Core;
 using GameLogic.Player.Items;
 using System;
 using System.Collections.Generic;
+using Analytics;
 
 namespace GameLogic.StatsTracking
 {
@@ -41,6 +42,21 @@ namespace GameLogic.StatsTracking
         }
 
         public StatsObjectiveClaimFromShop(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements)
+        {
+        }
+
+        [MetaMember(106, (MetaMemberFlags)0)]
+        public sealed override TaskType TypeTask { get; set; }
+
+        public StatsObjectiveClaimFromShop(string targetItemType, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
+        {
+        }
+
+        public StatsObjectiveClaimFromShop(MetaRef<ItemDefinition> targetItem, IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
+        {
+        }
+
+        public StatsObjectiveClaimFromShop(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
         {
         }
     }

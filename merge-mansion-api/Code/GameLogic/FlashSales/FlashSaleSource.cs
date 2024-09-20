@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Metaplay.Core;
 using GameLogic.Config;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.FlashSales
 {

@@ -6,8 +6,8 @@ using System;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [AnalyticsEvent(6, "Gifted IAP", 1, null, true, false, false)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class PlayerEventGainedIAP : PlayerEventBase
     {
         [MetaMember(2, (MetaMemberFlags)0)]

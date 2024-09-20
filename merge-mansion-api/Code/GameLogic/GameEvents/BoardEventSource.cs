@@ -9,6 +9,7 @@ using Metaplay.Core.Offers;
 using GameLogic.ConfigPrefabs;
 using GameLogic.Story;
 using GameLogic.Decorations;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {

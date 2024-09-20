@@ -3,6 +3,8 @@ using Metaplay.Core.Offers;
 using Metaplay.Core;
 using GameLogic.Config;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
+using Metaplay.Core.Rewards;
 
 namespace GameLogic.Player.Rewards
 {
@@ -23,5 +25,8 @@ namespace GameLogic.Player.Rewards
 
         [MetaMember(2, (MetaMemberFlags)0)]
         private MetaRef<MergeMansionOfferInfo> Offer { get; set; }
+
+        [IgnoreDataMember]
+        public List<MetaPlayerRewardBase> Rewards { get; }
     }
 }

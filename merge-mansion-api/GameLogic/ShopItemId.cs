@@ -2081,5 +2081,7 @@ namespace GameLogic
         public ShopItemId()
         {
         }
+
+        public static ShopItemId QuaternaryEnergyItem_ItemRecharge;
     }
 }

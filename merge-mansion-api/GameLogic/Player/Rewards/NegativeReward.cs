@@ -5,8 +5,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaFormHidden]
     [MetaSerializableDerived(8)]
+    [MetaFormHidden]
     public class NegativeReward : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

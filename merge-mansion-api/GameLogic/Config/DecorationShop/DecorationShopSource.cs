@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Metaplay.Core;
 using Metaplay.Core.Schedule;
+using Metaplay.Core.Player;
 
 namespace GameLogic.Config.DecorationShop
 {

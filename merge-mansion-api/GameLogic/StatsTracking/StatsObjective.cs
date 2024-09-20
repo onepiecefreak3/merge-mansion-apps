@@ -2,14 +2,13 @@ using Metaplay.Core.Model;
 using System;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
+using Analytics;
 
 namespace GameLogic.StatsTracking
 {
     [MetaSerializable]
     public abstract class StatsObjective
     {
-        static string Standard;
-        static string Special;
         [IgnoreDataMember]
         public int lastProgress;
         public abstract StatsObjectiveType ObjectiveType { get; }
@@ -23,5 +22,7 @@ namespace GameLogic.StatsTracking
         protected StatsObjective()
         {
         }
+
+        public abstract TaskType TypeTask { get; set; }
     }
 }

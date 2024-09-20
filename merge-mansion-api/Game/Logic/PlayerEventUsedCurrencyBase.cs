@@ -30,5 +30,11 @@ namespace Game.Logic
         public PlayerEventUsedCurrencyBase(long amount, CurrencySink currencySink, string spendOnItemType, long totalAfterUse, AnalyticsContext analyticsContext)
         {
         }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public string FlashSaleContext;
+        public PlayerEventUsedCurrencyBase(long amount, CurrencySink currencySink, string spendOnItemType, long totalAfterUse, AnalyticsContext analyticsContext, string flashSaleContext)
+        {
+        }
     }
 }

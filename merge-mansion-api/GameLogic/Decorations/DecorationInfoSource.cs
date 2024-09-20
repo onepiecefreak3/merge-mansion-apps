@@ -4,6 +4,8 @@ using System;
 using GameLogic.ConfigPrefabs;
 using System.Collections.Generic;
 using GameLogic.Cutscenes;
+using Metaplay.Core;
+using GameLogic.Area;
 
 namespace GameLogic.Decorations
 {
@@ -25,5 +27,7 @@ namespace GameLogic.Decorations
         public DecorationInfoSource()
         {
         }
+
+        private List<MetaRef<MapObjectGroupInfo>> MapObjectGroupsToHide { get; set; }
     }
 }

@@ -5,8 +5,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(19)]
     [MetaFormHidden]
+    [MetaSerializableDerived(19)]
     public class RewardCurrencyBank : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

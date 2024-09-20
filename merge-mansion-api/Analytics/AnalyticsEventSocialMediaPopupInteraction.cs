@@ -9,17 +9,17 @@ namespace Analytics
     [AnalyticsEvent(154, "Player interaction with Social Media popup", 1, null, false, true, false)]
     public class AnalyticsEventSocialMediaPopupInteraction : AnalyticsServersideEventBase
     {
-        [Description("ConfigKey")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("config_key")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("ConfigKey")]
         public string ConfigKey;
         [JsonProperty("interaction")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Interaction type")]
         public string Interaction;
-        [JsonProperty("source")]
         [Description("Where did the player come from")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("source")]
         public string Source;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

@@ -10,12 +10,12 @@ namespace Analytics
     public class PlayerClaimedChainCompletionReward : AnalyticsServersideEventBase
     {
         [Description("ID of the merge chain claimed")]
-        [JsonProperty("merge_chain_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("merge_chain_id")]
         public string MergeChainId;
         [JsonProperty("codex_discovery_reward_id")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("ID of the reward claimed")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string CodexDiscoveryRewardId;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

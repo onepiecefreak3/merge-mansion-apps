@@ -60,6 +60,7 @@ using Code.GameLogic.GameEvents.SoloMilestone;
 using Code.GameLogic.GameEvents.DailyScoop;
 using GameLogic.Player.Items.Sink;
 using GameLogic.Player.Items.Order;
+using GameLogic.Player.Items.GemMining;
 
 namespace GameLogic.Config
 {
@@ -390,8 +391,8 @@ namespace GameLogic.Config
         public List<PortalPieceChainData> PortalPieceChains { get; set; }
         public Dictionary<DecorationShopItemId, List<PlayerSegmentId>> DecorationShopItemSegments { get; set; }
 
-        [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { }, false)]
         [GameConfigEntry("Languages", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { }, false)]
         public GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
 
         [GameConfigEntry("InAppProducts", true, true, true, null)]
@@ -693,5 +694,17 @@ namespace GameLogic.Config
         [GameConfigEntry("OrderRequirements", true, null)]
         [GameConfigEntryTransform(typeof(OrderRequirementsSource))]
         public GameConfigLibrary<OrderRequirementsId, OrderRequirements> OrderRequirements { get; set; }
+
+        [GameConfigEntry("GemSettings", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> Member" }, new string[] { }, false)]
+        public GemSettings GemSettings { get; set; }
+
+        [GameConfigEntry("MapObjectGroups", true, null)]
+        [GameConfigEntryTransform(typeof(MapObjectGroupInfoSource))]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<MapObjectGroupId, MapObjectGroupInfo> MapObjectGroups { get; set; }
+        public List<ItemDefinition> CutGemItems { get; set; }
+        public HashSet<int> CardDeckItems { get; set; }
+        public Dictionary<MergeBoardId, CollectibleBoardEventId> GemMineEventBoards { get; set; }
     }
 }

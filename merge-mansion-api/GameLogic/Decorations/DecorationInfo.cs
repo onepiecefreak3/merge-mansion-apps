@@ -6,6 +6,8 @@ using Metaplay.Core.Model;
 using Metaplay.Core;
 using System;
 using GameLogic.Cutscenes;
+using GameLogic.Area;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Decorations
 {
@@ -57,6 +59,16 @@ namespace GameLogic.Decorations
         public MetaRef<CutsceneInfo> OnClaimedCutscene { get; set; }
 
         public DecorationInfo(DecorationId decorationId, string displayName, string description, CameraTargetName cameraTargetName, CameraZoomTarget cameraZoomTarget, ConfigAssetPackId assetPackId, string nameLocId, string descLocId, List<IDirectorAction> onReceiveActions, CutsceneId onClaimedCutscene, string layeredDecorationSetId)
+        {
+        }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public List<MetaRef<MapObjectGroupInfo>> MapObjectGroupsToHideRefs { get; set; }
+
+        [IgnoreDataMember]
+        public IEnumerable<MapObjectGroupInfo> MapObjectGroupsToHide { get; }
+
+        public DecorationInfo(DecorationId decorationId, string displayName, string description, CameraTargetName cameraTargetName, CameraZoomTarget cameraZoomTarget, ConfigAssetPackId assetPackId, string nameLocId, string descLocId, List<IDirectorAction> onReceiveActions, CutsceneId onClaimedCutscene, string layeredDecorationSetId, List<MetaRef<MapObjectGroupInfo>> mapObjectGroupsToHide)
         {
         }
     }

@@ -8,8 +8,8 @@ using Metaplay.Core.Offers;
 
 namespace Analytics
 {
-    [AnalyticsEvent(192, "Shop Item IAP Impression", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 6 })]
+    [AnalyticsEvent(192, "Shop Item IAP Impression", 1, null, false, true, false)]
     public class AnalyticsEventShopItemIapImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

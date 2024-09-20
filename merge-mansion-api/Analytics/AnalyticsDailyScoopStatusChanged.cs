@@ -49,5 +49,14 @@ namespace Analytics
         public AnalyticsDailyScoopStatusChanged(string eventId, string weekId, string dayId, TaskStatus status, TaskType type, int tokenAmount)
         {
         }
+
+        [JsonProperty("daily_challenge_task_id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("Task ID")]
+        public string TaskId { get; set; }
+
+        public AnalyticsDailyScoopStatusChanged(string eventId, string weekId, string dayId, TaskStatus status, TaskType type, int tokenAmount, string taskId)
+        {
+        }
     }
 }

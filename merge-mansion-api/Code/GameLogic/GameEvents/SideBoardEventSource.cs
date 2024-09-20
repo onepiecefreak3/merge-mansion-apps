@@ -8,6 +8,7 @@ using Metaplay.Core.Schedule;
 using GameLogic.Story;
 using Metaplay.Core.Offers;
 using GameLogic.Decorations;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {

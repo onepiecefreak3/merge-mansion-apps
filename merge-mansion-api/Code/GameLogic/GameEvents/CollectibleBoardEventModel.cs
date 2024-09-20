@@ -107,5 +107,9 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public ILevelEventInfo LevelEventInfo { get; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        protected HashSet<int> FoundGems { get; set; }
+        public bool GemFound { get; set; }
     }
 }

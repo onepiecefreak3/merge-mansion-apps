@@ -10,6 +10,8 @@ using Metaplay.Core.Offers;
 using GameLogic.Decorations;
 using GameLogic.Cutscenes;
 using Metaplay.Core.Math;
+using GameLogic.MergeChains;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -69,5 +71,7 @@ namespace Code.GameLogic.GameEvents
         }
 
         private bool ShouldReset { get; set; }
+        private MergeChainId PersistingChainID { get; set; }
+        private LuckyType LuckyType { get; set; }
     }
 }

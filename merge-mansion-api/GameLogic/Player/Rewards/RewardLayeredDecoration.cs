@@ -10,8 +10,8 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(21)]
     public class RewardLayeredDecoration : PlayerReward
     {
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         private MetaRef<DecorationInfo> DecorationRef { get; set; }
 
         [MetaMember(2, 0)]

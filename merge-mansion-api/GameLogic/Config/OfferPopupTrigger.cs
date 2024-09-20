@@ -28,5 +28,12 @@ namespace GameLogic.Config
         public OfferPopupTrigger(OfferPopupTriggerId configKey, int maxTriggersPerSession, int maxTriggersTotal, List<PlayerRequirement> triggerRequirements)
         {
         }
+
+        public static string ShowMethodBadgeClicked;
+        public static string ShowMethodManualActivation;
+        public static string ShowMethodShopPopup;
+        public static string ShowMethodAppLoading;
+        public static string ShowMethodLobbyReturn;
+        public static string ShowMethodWebShop;
     }
 }

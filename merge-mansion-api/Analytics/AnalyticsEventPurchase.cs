@@ -6,11 +6,12 @@ using System;
 using Metaplay.Core.InAppPurchase;
 using Metaplay.Core.Math;
 using Metaplay.Core.Offers;
+using Metaplay.Core.Player;
 
 namespace Analytics
 {
-    [AnalyticsEvent(118, "IAP purchase event", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 11 })]
+    [AnalyticsEvent(118, "IAP purchase event", 1, null, false, true, false)]
     public class AnalyticsEventPurchase : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -86,6 +87,25 @@ namespace Analytics
         }
 
         public AnalyticsEventPurchase(string itemName, string iapPlatformId, int purchaseIndex, AnalyticsCurrencyCost currencyCost, string transactionId, InAppProductId productId, string orderId, F64 referencePrice, InAppPurchaseStatus status, InAppPurchasePlatform platform, string placementId, MetaOfferGroupId groupId, string impressionId)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("segment")]
+        [Description("Players segment for the offer")]
+        public PlayerSegmentId Segment { get; set; }
+
+        [JsonProperty("trigger_type")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [Description("The trigger that caused the offer impression")]
+        public string TriggerType { get; set; }
+
+        [Description("Array of rewards & their amount in the offer")]
+        [MetaMember(17, (MetaMemberFlags)0)]
+        [JsonProperty("offer_items")]
+        public string OfferItems { get; set; }
+
+        public AnalyticsEventPurchase(string itemName, string iapPlatformId, int purchaseIndex, AnalyticsCurrencyCost currencyCost, string transactionId, InAppProductId productId, string orderId, F64 referencePrice, InAppPurchaseStatus status, InAppPurchasePlatform platform, string placementId, MetaOfferGroupId groupId, string impressionId, PlayerSegmentId segment, string triggerType, string offerItems)
         {
         }
     }

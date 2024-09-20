@@ -42,6 +42,7 @@ namespace Metaplay.Core.Config
         MergeChainElementsMismatch = 1030,
         UsingDeprecatedIgnoresEnergyModeTag = 1031,
         InvalidCutscene = 1032,
-        StorageMaxLessThanEnergyModeConsumptionMultiplier = 1033
+        StorageMaxLessThanEnergyModeConsumptionMultiplier = 1033,
+        HintLocIdOnNonConstantProducerChest = 1034
     }
 }

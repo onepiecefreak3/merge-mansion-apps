@@ -6,6 +6,7 @@ namespace Analytics
     public enum TaskType
     {
         Standard = 0,
-        Special = 1
+        Special = 1,
+        CatchUp = 2
     }
 }

@@ -7,8 +7,8 @@ using Metaplay.Core.InAppPurchase;
 
 namespace Game.Cloud.Webshop
 {
-    [MetaReservedMembers(100, 110)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 110)]
     public abstract class WebshopItem
     {
         [MetaMember(100, (MetaMemberFlags)0)]

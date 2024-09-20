@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using System;
 using System.Collections.Generic;
 using Metaplay.Core;
+using Analytics;
 
 namespace GameLogic.StatsTracking
 {
@@ -29,6 +30,13 @@ namespace GameLogic.StatsTracking
         }
 
         public StatsObjectiveOpenChests(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements)
+        {
+        }
+
+        [MetaMember(105, (MetaMemberFlags)0)]
+        public sealed override TaskType TypeTask { get; set; }
+
+        public StatsObjectiveOpenChests(IStringId objectiveId, long snapshotAmount, List<int> objectiveRequirements, TaskType typeTask)
         {
         }
     }

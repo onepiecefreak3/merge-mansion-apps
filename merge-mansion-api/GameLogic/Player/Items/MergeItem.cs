@@ -23,11 +23,12 @@ using Merge;
 using System.Runtime.CompilerServices;
 using GameLogic.Player.Items.Order;
 using GameLogic.Config;
+using GameLogic.Player.Items.GemMining;
 
 namespace GameLogic.Player.Items
 {
-    [MetaSerializableDerived(2)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [MetaSerializableDerived(2)]
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
@@ -112,6 +113,10 @@ namespace GameLogic.Player.Items
             public PersistentState PersistentState;
             [MetaMember(21, (MetaMemberFlags)0)]
             public OrderParentState OrderState;
+            [MetaMember(22, (MetaMemberFlags)0)]
+            public RockChunkState RockChunkState;
+            [MetaMember(23, (MetaMemberFlags)0)]
+            public GemState GemState;
         }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -351,6 +356,26 @@ namespace GameLogic.Player.Items
         }
 
         public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, OrderParentState orderState, PersistentState persistentState)
+        {
+        }
+
+        [IgnoreDataMember]
+        public RockChunkState RockChunkState { get; }
+
+        [IgnoreDataMember]
+        public GemState GemState { get; }
+
+        [IgnoreDataMember]
+        public bool SupportsRockChunkTap { get; }
+
+        [IgnoreDataMember]
+        public bool HasGemWeight { get; }
+
+        public MergeItem(IPlayer player, ItemDefinition itemDefinition, MetaTime timestamp, MergeBoardId boardId, ItemVisibility itemVisibility, bool insideBubble, bool checkNullExtra)
+        {
+        }
+
+        public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, OrderParentState orderState, PersistentState persistentState, GemState gemState)
         {
         }
     }

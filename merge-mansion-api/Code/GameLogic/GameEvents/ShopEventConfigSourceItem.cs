@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using GameLogic.Config;
 using Metaplay.Core.Schedule;
 using GameLogic.ConfigPrefabs;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {

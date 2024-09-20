@@ -46,5 +46,10 @@ namespace Analytics
         public AnalyticEventFlashSaleImpression(List<AnalyticsFlashSaleImpressionItemBase> impressionItems, MetaTime refreshTime, string impressionId, string placementId, string attachment)
         {
         }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("flash_sale_context")]
+        [Description("Context where it was shown")]
+        public string Context { get; set; }
     }
 }

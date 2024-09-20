@@ -6,6 +6,7 @@ using Metaplay.Core;
 using GameLogic.Config;
 using Metaplay.Core.Schedule;
 using Merge;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {

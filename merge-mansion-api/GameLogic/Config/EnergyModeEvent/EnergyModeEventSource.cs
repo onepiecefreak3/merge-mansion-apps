@@ -5,6 +5,7 @@ using Metaplay.Core;
 using GameLogic.Player.Modes;
 using System.Collections.Generic;
 using Metaplay.Core.Schedule;
+using Metaplay.Core.Player;
 
 namespace GameLogic.Config.EnergyModeEvent
 {

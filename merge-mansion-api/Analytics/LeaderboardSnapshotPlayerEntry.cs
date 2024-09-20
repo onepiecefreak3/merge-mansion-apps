@@ -10,8 +10,8 @@ namespace Analytics
     public class LeaderboardSnapshotPlayerEntry
     {
         [JsonProperty("rank")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Rank")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Rank { get; set; }
 
         [JsonProperty("points")]

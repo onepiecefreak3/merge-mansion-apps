@@ -9,8 +9,8 @@ namespace Analytics
     public class SimpleSinkProgressStatus
     {
         [JsonProperty("current")]
-        [Description("Current sink progress")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Current sink progress")]
         public int Current { get; set; }
 
         [JsonProperty("target")]

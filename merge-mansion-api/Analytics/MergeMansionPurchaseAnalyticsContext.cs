@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core.InAppPurchase;
 using System;
 using Metaplay.Core.Offers;
+using Metaplay.Core.Player;
 
 namespace Analytics
 {
@@ -26,6 +27,19 @@ namespace Analytics
         }
 
         public MergeMansionPurchaseAnalyticsContext(string placementId, MetaOfferGroupId groupId, string impressionId)
+        {
+        }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public PlayerSegmentId Segment { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string TriggerType { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public string OfferItems { get; set; }
+
+        public MergeMansionPurchaseAnalyticsContext(string placementId, MetaOfferGroupId groupId, string impressionId, PlayerSegmentId segment, string triggerType, string offerItems)
         {
         }
     }

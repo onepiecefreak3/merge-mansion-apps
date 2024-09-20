@@ -9,7 +9,7 @@ using GameLogic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 2 })]
+    [MetaBlockedMembers(new int[] { 2, 10 })]
     [AnalyticsEvent(115, "Currency sink", 1, null, false, true, false)]
     public class AnalyticsEventCurrencySink : AnalyticsServersideEventBase
     {
@@ -93,5 +93,14 @@ namespace Analytics
         [Description("Shop Item Id if a shop item")]
         [JsonProperty("shop_item_id", NullValueHandling = (NullValueHandling)1)]
         public string ShopItemId { get; set; }
+
+        [JsonProperty("flash_sale_context", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [Description("Flash sale context")]
+        public string FlashSaleContext { get; set; }
+
+        public AnalyticsEventCurrencySink(CurrencySink currencySink, GameResourceCost gameResourceCost, long costSoft, long costHard, long newFreeCurrencySaldo, long newHardCurrencySaldo, AnalyticsContext context, string flashSaleContext)
+        {
+        }
     }
 }

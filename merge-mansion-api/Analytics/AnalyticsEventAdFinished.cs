@@ -85,5 +85,14 @@ namespace Analytics
         public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm)
         {
         }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [Description("Item Diamond value")]
+        [JsonProperty("item_diamond_price")]
+        public int ItemDiamondValue { get; set; }
+
+        public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm, int itemDiamondValue)
+        {
+        }
     }
 }

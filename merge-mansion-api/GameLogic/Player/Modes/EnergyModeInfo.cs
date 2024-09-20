@@ -8,8 +8,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Modes
 {
-    [MetaBlockedMembers(new int[] { 2, 6, 7 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 2, 6, 7 })]
     public class EnergyModeInfo : IGameConfigData<PlayerModeId>, IGameConfigData, IHasGameConfigKey<PlayerModeId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

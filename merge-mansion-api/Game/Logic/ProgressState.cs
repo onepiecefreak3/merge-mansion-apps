@@ -21,14 +21,14 @@ using GameLogic.Hotspots.CardStack;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44, 62 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44, 62 })]
     public class ProgressState
     {
         public Action OnUndoSellItemCleared;
         public ItemDiscoveredEvent ItemDiscovered;
-        [ExcludeFromGdprExport]
         [MetaMember(40, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<HotspotId> FinalizedHotspots;
         private static DirectorGroupId notificationsGroupId;
         public CharacterDiscoveredEvent CharacterDiscovered;
@@ -281,5 +281,29 @@ namespace Game.Logic
         [ExcludeFromGdprExport]
         [ServerOnly]
         private MetaTime? latestCompletedHotspotTime { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(78, (MetaMemberFlags)0)]
+        private Dictionary<int, F32> gemWeightRecords { get; set; }
+
+        [MetaMember(79, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private Dictionary<int, int> gemFoundCount { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(80, (MetaMemberFlags)0)]
+        public List<int> UnclaimedWorldRecordGemReward { get; set; }
+
+        [MetaMember(81, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public Dictionary<int, HashSet<int>> ClaimedGemWeightRewards { get; set; }
+
+        [MetaMember(82, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public List<int> GemMineStoryItems { get; set; }
+
+        [MetaMember(83, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private Dictionary<int, int> itemWeightRecordsRodUsed { get; set; }
     }
 }

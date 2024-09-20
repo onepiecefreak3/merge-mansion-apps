@@ -27,5 +27,7 @@ namespace GameLogic.Player.Items.Sink
         public TagSinkState(string tag, int targetCount, string rewardTagName)
         {
         }
+
+        public int GetCurrentPoints { get; }
     }
 }

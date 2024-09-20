@@ -18,7 +18,7 @@ namespace GameLogic.Player.Items.Production
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<ValueTuple<OrderRequirementsId, int>> GenerationOdds { get; set; }
 
-        [IgnoreDataMember] 
+        [IgnoreDataMember]
         public int OrderCount => GenerationOdds.Count;
 
         private ControlledRandomOrderProducer()

@@ -6,6 +6,7 @@ using Merge;
 using System;
 using GameLogic.Player.Items.Fishing;
 using GameLogic.Player;
+using Code.GameLogic.GameEvents;
 
 namespace Analytics
 {
@@ -54,6 +55,22 @@ namespace Analytics
         }
 
         public AnalyticsEventFishCaught(MergeBoardId mergeBoardId, string itemName, WeightCategory weightCategory, double weight, bool personalHighScore, bool worldHighScore, AnalyticsContext context)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("rarity")]
+        public string Rarity { get; set; }
+
+        [JsonProperty("lucky_event_type")]
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public string LuckyEventType { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("merge_parts_weights")]
+        public double[] MergePartsWeight { get; set; }
+
+        public AnalyticsEventFishCaught(MergeBoardId mergeBoardId, string itemName, WeightCategory weightCategory, double weight, bool personalHighScore, bool worldHighScore, AnalyticsContext context, LuckyType luckyType, FishRarity rarity, double[] mergePartsWeight)
         {
         }
     }

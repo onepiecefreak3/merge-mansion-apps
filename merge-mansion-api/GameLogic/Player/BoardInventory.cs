@@ -9,8 +9,8 @@ using Game.Logic;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1, 2 })]
+    [MetaSerializable]
     public class BoardInventory
     {
         [MetaMember(3, (MetaMemberFlags)0)]
