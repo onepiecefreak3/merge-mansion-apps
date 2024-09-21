@@ -54,9 +54,6 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         private void SerializeHotspot(JsonWriter writer, HotspotDefinition hotspot, JsonSerializer serializer)
         {
-            if (hotspot.ConfigKey == (HotspotId)11102)
-                Debugger.Break();
-
             if (!Enum.IsDefined(hotspot.ConfigKey))
                 _output.Warning(Program.VersionBumped ? "HotspotId {0} unknown" : "[Metacore] HotspotId {0} unknown", hotspot.ConfigKey);
 
@@ -107,14 +104,14 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
             var description = string.Empty;
             if (LocMan.HasString(LocMan.GetHotspotDescriptionLocId(hotspot.Id)))
-                description = LocMan.GetHotspotDescription(hotspot.Id);
+                description = LocMan.GetHotspotDescription(hotspot.Id).Replace('"','\'');
 
             var res = hotspot.ConfigKey + Environment.NewLine + description;
 
             foreach (var req in hotspot.RequirementsList)
             {
                 if (req is PlayerItemRequirement pir)
-                    res += Environment.NewLine + LocMan.GetItemName(pir.Item.ItemType) + " x" + pir.Requirement;
+                    res += Environment.NewLine + LocMan.GetItemName(pir.Item.ItemType).Replace('"', '\'') + " x" + pir.Requirement;
                 else if (req is CostRequirement cr && cr.RequiredCost is CurrencyCost cc)
                     res += Environment.NewLine + "Coins x" + cc.CurrencyAmount;
             }
