@@ -27,8 +27,8 @@ namespace Game.Logic
     {
         public Action OnUndoSellItemCleared;
         public ItemDiscoveredEvent ItemDiscovered;
-        [MetaMember(40, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(40, (MetaMemberFlags)0)]
         private HashSet<HotspotId> FinalizedHotspots;
         private static DirectorGroupId notificationsGroupId;
         public CharacterDiscoveredEvent CharacterDiscovered;

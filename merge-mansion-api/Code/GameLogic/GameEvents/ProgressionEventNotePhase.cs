@@ -7,6 +7,7 @@ namespace Code.GameLogic.GameEvents
     {
         Start = 0,
         End = 1,
-        Streak = 2
+        Streak = 2,
+        BonusRewards = 3
     }
 }

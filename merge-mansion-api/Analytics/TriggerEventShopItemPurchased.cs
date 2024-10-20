@@ -12,8 +12,8 @@ namespace Analytics
     {
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Purchased shop item")]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [JsonProperty("shop_item_id")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public ShopItemId ShopItemId { get; set; }
 
         private TriggerEventShopItemPurchased()

@@ -9,8 +9,8 @@ namespace Game.Logic
     [AnalyticsEvent(15, "Gained coins", 1, null, true, false, false)]
     public class PlayerEventGainedCoins : PlayerEventGainedCurrency
     {
-        [MetaMember(100, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("FixItemType")]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public string itemType;
         public override string EventDescription { get; }
 

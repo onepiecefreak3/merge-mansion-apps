@@ -25,8 +25,8 @@ namespace Game.Logic
         {
         }
 
-        [MetaSerializable]
         [ForceExplicitEnumValues]
+        [MetaSerializable]
         public enum ChangeSource
         {
             Player = 0,

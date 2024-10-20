@@ -43,6 +43,7 @@ namespace Metaplay.Core.Config
         UsingDeprecatedIgnoresEnergyModeTag = 1031,
         InvalidCutscene = 1032,
         StorageMaxLessThanEnergyModeConsumptionMultiplier = 1033,
-        HintLocIdOnNonConstantProducerChest = 1034
+        HintLocIdOnNonConstantProducerChest = 1034,
+        ProgressionEventDuplicateRewards = 1035
     }
 }

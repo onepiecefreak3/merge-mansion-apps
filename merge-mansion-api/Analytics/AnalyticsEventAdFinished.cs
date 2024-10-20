@@ -6,8 +6,8 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEvent(188, "Rewarded ad finished", 1, null, true, true, false)]
     [MetaBlockedMembers(new int[] { 3 })]
+    [AnalyticsEvent(188, "Rewarded ad finished", 1, null, true, true, false)]
     public class AnalyticsEventAdFinished : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

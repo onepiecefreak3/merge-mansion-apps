@@ -6,11 +6,12 @@ using System.Collections.Generic;
 using GameLogic.Player;
 using Metaplay.Core;
 using GameLogic.Player.Rewards;
+using System.Runtime.Serialization;
 
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(6)]
-    public class ProgressionEventModel : MetaActivableState<ProgressionEventId, ProgressionEventInfo>, IPointsEvent
+    public class ProgressionEventModel : MetaActivableState<ProgressionEventId, ProgressionEventInfo>, IPointsEvent, IGroupIdGetter
     {
         public static int InitialLevelNumber;
         private static int InitialLevelProgress;
@@ -24,8 +25,6 @@ namespace Code.GameLogic.GameEvents
         public bool EndNoted;
         [MetaMember(12, (MetaMemberFlags)0)]
         public bool EndDialogueTriggered;
-        [MetaMember(7, (MetaMemberFlags)0)]
-        public bool PremiumIAPPurchased;
         [MetaMember(9, (MetaMemberFlags)0)]
         public bool RewardMailTriggered;
         [MetaMember(11, (MetaMemberFlags)0)]
@@ -68,5 +67,26 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(18, (MetaMemberFlags)0)]
         public bool PassObtainedPopupNoted { get; set; }
+
+        [MetaMember(23, (MetaMemberFlags)0)]
+        public bool BonusRewardsNoted;
+        [MetaMember(20, (MetaMemberFlags)0)]
+        public List<int> ClaimedTrack2LevelNumbers { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public List<int> ClaimedChallengeRewards { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public bool PremiumIAPPurchased { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        private ProgressionEventTrack ActiveIAPTrack { get; set; }
+
+        [IgnoreDataMember]
+        public ProgressionEventTrack ActiveTrack { get; }
+        public bool IsV2Event { get; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        private int LastLevelNoted { get; set; }
     }
 }

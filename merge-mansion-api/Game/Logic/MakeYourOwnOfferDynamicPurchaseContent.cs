@@ -7,8 +7,8 @@ using Metaplay.Core.Offers;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 1, 2 })]
     [MetaSerializableDerived(5)]
+    [MetaBlockedMembers(new int[] { 1, 2 })]
     public class MakeYourOwnOfferDynamicPurchaseContent : DynamicPurchaseContent
     {
         [MetaMember(3, (MetaMemberFlags)0)]

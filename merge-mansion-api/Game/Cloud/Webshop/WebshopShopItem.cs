@@ -4,8 +4,8 @@ using Metaplay.Core.InAppPurchase;
 
 namespace Game.Cloud.Webshop
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class WebshopShopItem : WebshopItem
     {
         [MetaMember(2, (MetaMemberFlags)0)]

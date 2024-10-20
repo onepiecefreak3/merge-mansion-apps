@@ -6,8 +6,8 @@ using System;
 
 namespace GameLogic.Config
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 4 })]
+    [MetaSerializable]
     public class CollectibleDialoguesInfo : IGameConfigData<CollectibleDialoguesInfoId>, IGameConfigData, IHasGameConfigKey<CollectibleDialoguesInfoId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

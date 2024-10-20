@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializableDerived(11)]
     [MetaActivableSet("MysteryMachineEvent", false)]
+    [MetaSerializableDerived(11)]
     public class PlayerMysteryMachineEventsModel : MetaActivableSet<MysteryMachineEventId, MysteryMachineEventInfo, MysteryMachineEventModel>
     {
         public PlayerMysteryMachineEventsModel()

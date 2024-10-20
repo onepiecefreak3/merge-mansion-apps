@@ -391,8 +391,8 @@ namespace GameLogic.Config
         public List<PortalPieceChainData> PortalPieceChains { get; set; }
         public Dictionary<DecorationShopItemId, List<PlayerSegmentId>> DecorationShopItemSegments { get; set; }
 
-        [GameConfigEntry("Languages", true, null)]
         [GameConfigSyntaxAdapter(new string[] { "LanguageId -> LanguageId #key" }, new string[] { }, false)]
+        [GameConfigEntry("Languages", true, null)]
         public GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
 
         [GameConfigEntry("InAppProducts", true, true, true, null)]
@@ -706,5 +706,11 @@ namespace GameLogic.Config
         public List<ItemDefinition> CutGemItems { get; set; }
         public HashSet<int> CardDeckItems { get; set; }
         public Dictionary<MergeBoardId, CollectibleBoardEventId> GemMineEventBoards { get; set; }
+
+        [GameConfigEntryTransform(typeof(ProgressionEventV2Source))]
+        [GameConfigEntry("ProgressionEventsV2", true, null)]
+        [GameConfigSyntaxAdapter(new string[] { "ConfigKey -> ConfigKey #key" }, new string[] { }, false)]
+        public GameConfigLibrary<ProgressionEventV2Id, ProgressionEventV2Info> ProgressionEventsV2 { get; set; }
+        public HashSet<int> CardItems { get; set; }
     }
 }

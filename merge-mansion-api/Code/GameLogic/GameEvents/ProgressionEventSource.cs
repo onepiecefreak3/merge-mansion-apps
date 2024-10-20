@@ -62,5 +62,9 @@ namespace Code.GameLogic.GameEvents
         public ProgressionEventSource()
         {
         }
+
+        private string ShopBundleHeaderId { get; set; }
+        private List<int> PurchasePopupTriggeringLevels { get; set; }
+        private ProgressionEventV2Id V2Id { get; set; }
     }
 }

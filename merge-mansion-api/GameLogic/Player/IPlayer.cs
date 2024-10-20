@@ -23,6 +23,7 @@ using GameLogic.Config.EnergyModeEvent;
 using GameLogic.Player.Events;
 using GameLogic.MiniEvents;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
+using GameLogic.Player.Items;
 
 namespace GameLogic.Player
 {
@@ -146,6 +147,8 @@ namespace GameLogic.Player
         PlayerMiniEventOverrides MiniEventOverrides { get; }
 
         IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
+
+        Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

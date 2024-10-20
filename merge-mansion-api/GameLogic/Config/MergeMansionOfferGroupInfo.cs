@@ -8,8 +8,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Config
 {
-    [MetaActivableConfigData("OfferGroup", false, true)]
     [MetaSerializableDerived(1)]
+    [MetaActivableConfigData("OfferGroup", false, true)]
     public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

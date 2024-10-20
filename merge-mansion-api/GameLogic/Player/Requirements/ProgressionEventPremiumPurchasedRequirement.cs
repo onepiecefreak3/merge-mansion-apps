@@ -16,5 +16,12 @@ namespace GameLogic.Player.Requirements
         public ProgressionEventPremiumPurchasedRequirement(ProgressionEventId id)
         {
         }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        private ProgressionEventTrack Track { get; set; }
+
+        public ProgressionEventPremiumPurchasedRequirement(ProgressionEventId id, ProgressionEventTrack track)
+        {
+        }
     }
 }

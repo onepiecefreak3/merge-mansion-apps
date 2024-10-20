@@ -16,15 +16,15 @@ namespace Analytics
         [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("producer_level")]
         public int ProducerLvl;
-        [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("target_id")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public string TargetId;
-        [MetaMember(10, (MetaMemberFlags)0)]
         [JsonProperty("target_lvl")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public int TargetLvl;
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
-        [JsonProperty("board_items")]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [JsonProperty("board_items")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> BoardItems;
         public sealed override AnalyticsEventType EventType { get; }
 

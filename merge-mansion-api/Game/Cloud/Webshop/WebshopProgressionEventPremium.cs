@@ -20,5 +20,12 @@ namespace Game.Cloud.Webshop
         public WebshopProgressionEventPremium(ProgressionEventId id)
         {
         }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public ProgressionEventTrack Track { get; set; }
+
+        public WebshopProgressionEventPremium(ProgressionEventId id, ProgressionEventTrack track)
+        {
+        }
     }
 }

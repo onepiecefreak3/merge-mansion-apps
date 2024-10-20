@@ -6,12 +6,12 @@ using GameLogic;
 
 namespace Analytics
 {
-    [MetaSerializableDerived(1)]
     [MetaBlockedMembers(new int[] { 3, 4, 1 })]
+    [MetaSerializableDerived(1)]
     public class AnalyticsFlashSaleImpressionItem : AnalyticsFlashSaleImpressionItemBase
     {
-        [JsonProperty("shop_item_id")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("shop_item_id")]
         public ShopItemId ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

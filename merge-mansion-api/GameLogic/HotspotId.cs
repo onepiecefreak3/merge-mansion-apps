@@ -5399,6 +5399,8 @@ namespace GameLogic
         StablesInteriorCharacterTask39 = 10998,
         StablesInteriorCharacterTask40 = 10999,
         LibraryUnlock = 11100,
-        LibraryPlaceholderTask = 11101
+        LibraryPlaceholderTask = 11101,
+        MaddiesRoomUnlock = 11102,
+        MaddiesRoomPlaceholderTask = 11103
     }
 }

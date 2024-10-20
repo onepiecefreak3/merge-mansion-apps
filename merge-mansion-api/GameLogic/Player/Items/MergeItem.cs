@@ -27,15 +27,15 @@ using GameLogic.Player.Items.GemMining;
 
 namespace GameLogic.Player.Items
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
         private MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
         public DecayState DecayState => Extra.DecayState;
         public ActivationState ActivationState => Extra.ActivationState;

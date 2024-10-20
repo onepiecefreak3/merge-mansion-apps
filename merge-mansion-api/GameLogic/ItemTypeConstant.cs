@@ -6,9 +6,9 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
+    [MetaSerializable]
     [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
     [ForceExplicitEnumValues]
-    [MetaSerializable]
     public enum ItemTypeConstant
     {
         None = 0,
@@ -5427,7 +5427,6 @@ namespace GameLogic
         SpeakEasy_DrinkDecoration_09 = 24105947,
         SpeakEasy_DrinkDecoration_10 = 24105946,
         SpeakEasy_CardDeck_01 = 18913943,
-        MaintenanceRoom_CardDeck_01 = 33953975,
         CBE_VoyancesVisions_TarotCards_031 = 11770610,
         LDE_GreenAcresQuest2024_FlowerBed_06_Decay_01 = 82198157,
         LDE_GreenAcresQuest2024_FlowerCompost_Producing_02 = 77660349,
@@ -5764,6 +5763,31 @@ namespace GameLogic
         CBE_GemMine_TinDust_02 = 32014778,
         CBE_GemMine_TinDust_03 = 32014777,
         CBE_GemMine_TinDust_04 = 32014776,
-        CBE_GemMine_TinDust_05 = 32014775
+        CBE_GemMine_TinDust_05 = 32014775,
+        Garage_CardDeck_01 = 52345218,
+        Stables_Compost_Carrot_Producing_01 = 57638352,
+        Stables_Compost_Tomato_Producing_01 = 53347570,
+        CSE_SoloMilestone_ChestB3_01 = 22284326,
+        CSE_SoloMilestone_ChestB2_01 = 22496499,
+        CSE_SoloMilestone_ChestB1_01 = 55331696,
+        CSE_SoloMilestone_ChestB4_01 = 7684537,
+        CBE_GemMine_TinDustA_01 = 53013370,
+        CBE_GemMine_GoldMineA_01 = 50508630,
+        CBE_GemMine_GoldMineB_01 = 10124733,
+        CBE_GemMine_GoldMineC_01 = 36845012,
+        CBE_GemMine_GoldMineActiveA_01 = 54553664,
+        CBE_GemMine_GoldMineActiveB_01 = 78635520,
+        CBE_GemMine_GoldMineActiveC_01 = 86749519,
+        CBE_GemMine_FinalChest_01 = 63156829,
+        CBE_GemMineA_EntranceExit_01 = 67608291,
+        CBE_GemMineA_EntranceEnter_01 = 35463503,
+        CBE_GemMine_GoldMineCooldownA_01 = 17800898,
+        CBE_GemMine_GoldMineCooldownB_01 = 19247524,
+        CBE_GemMine_GoldMineCooldownC_01 = 13138173,
+        SP_Halloween2024_MysteryPassChestA_01 = 82033003,
+        SP_Halloween2024_MysteryPassChestB_01 = 87148181,
+        SP_Halloween2024_MysteryPassChestC_01 = 13325513,
+        SP_Halloween2024_MysteryPassChestD_01 = 44721830,
+        SP_Halloween2024_MysteryPassChestE_01 = 13851281
     }
 }

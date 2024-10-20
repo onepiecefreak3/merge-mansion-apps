@@ -6,8 +6,8 @@ using Metaplay.Core.Math;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 3 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 3 })]
     public class MysteryMachineItemInfo : IGameConfigData<MysteryMachineItemId>, IGameConfigData, IHasGameConfigKey<MysteryMachineItemId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

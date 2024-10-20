@@ -20,5 +20,12 @@ namespace Game.Logic
         public ProgressionEventDynamicPurchaseContent(ProgressionEventId eventId)
         {
         }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public ProgressionEventTrack Track { get; set; }
+
+        public ProgressionEventDynamicPurchaseContent(ProgressionEventId eventId, ProgressionEventTrack track)
+        {
+        }
     }
 }

@@ -6,8 +6,8 @@ namespace Game.Cloud.Webshop
     [MetaSerializable]
     public class WebshopState
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public HashSet<WebshopPurchase> WebShopPurchaseHistory { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

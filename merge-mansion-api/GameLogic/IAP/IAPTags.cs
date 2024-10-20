@@ -77,6 +77,9 @@ namespace GameLogic.IAP
         ShopPackOffer_1799 = 69,
         GemsBag_07 = 70,
         GemsBag_08 = 71,
-        ShopPackOffer_27 = 72
+        ShopPackOffer_27 = 72,
+        SuperPass_MPv2 = 73,
+        PremiumPass_MPv2 = 74,
+        UpgradePremiumPass_MPv2 = 75
     }
 }

@@ -8,8 +8,8 @@ using GameLogic.Player.Rewards;
 
 namespace Analytics
 {
-    [AnalyticsEvent(124, "Survey sent to player", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 4 })]
+    [AnalyticsEvent(124, "Survey sent to player", 1, null, false, true, false)]
     public class AnalyticsEventSurveyReady : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

@@ -9,10 +9,10 @@ namespace Analytics
     [AnalyticsEvent(3043, "Area completed", 1, null, false, false, true)]
     public class TriggerEventAreaCompleted : PlayerTriggerEvent
     {
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("area_id")]
         [Description("Completed area")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [JsonProperty("area_id")]
         public AreaId AreaId { get; set; }
 
         private TriggerEventAreaCompleted()

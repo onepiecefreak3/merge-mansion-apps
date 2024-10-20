@@ -21,11 +21,11 @@ namespace Game.Cloud.Webshop
         public WebshopType Type;
         [MetaMember(5, (MetaMemberFlags)0)]
         public List<WebshopItem> Items;
+        [ServerOnly]
         [MetaMember(6, (MetaMemberFlags)0)]
-        [ServerOnly]
         public string RefundId;
-        [ServerOnly]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [ServerOnly]
         public bool RefundProcessed;
         [MetaMember(8, (MetaMemberFlags)0)]
         [ServerOnly]

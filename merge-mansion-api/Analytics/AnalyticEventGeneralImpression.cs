@@ -8,9 +8,9 @@ namespace Analytics
     [MetaReservedMembers(200, 299)]
     public abstract class AnalyticEventGeneralImpression : AnalyticsServersideEventBase
     {
-        [Description("Platform Id")]
         [JsonProperty("iap_platform_id")]
         [MetaMember(200, (MetaMemberFlags)0)]
+        [Description("Platform Id")]
         public string PlatformId { get; set; }
 
         [Description("Placement Id")]

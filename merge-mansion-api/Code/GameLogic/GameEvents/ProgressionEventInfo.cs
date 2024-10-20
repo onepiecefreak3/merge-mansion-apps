@@ -16,11 +16,11 @@ using GameLogic.Cutscenes;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
-    [MetaActivableConfigData("ProgressionEvent", false, true)]
-    [MetaBlockedMembers(new int[] { 5, 6 })]
-    [MetaBlockedMembers(new int[] { 7, 8 })]
     [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
+    [MetaBlockedMembers(new int[] { 5, 6 })]
+    [MetaActivableConfigData("ProgressionEvent", false, true)]
+    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
     public class ProgressionEventInfo : IMetaActivableConfigData<ProgressionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ProgressionEventId>, IHasGameConfigKey<ProgressionEventId>, IMetaActivableInfo<ProgressionEventId>, IValidatable, IBubbleBonusEvent, IEventGroupInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -37,9 +37,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(5)]
         public List<EventLevelId> FreeEventLevels { get; set; }
-
-        [MetaMember(6)]
-        public List<EventLevelId> PremiumEventLevels { get; set; }
 
         [MetaMember(9)]
         public List<int> ChancesToSpawnEventItemPerLevel { get; set; }
@@ -94,9 +91,6 @@ namespace Code.GameLogic.GameEvents
         private List<MetaRef<EventLevelInfo>> StoryTriggeringLevelRefs { get; set; }
         public ProgressionEventId ActivableId { get; }
         public string DisplayShortInfo { get; }
-
-        [IgnoreDataMember]
-        public IEnumerable<ProgressionEventPerkInfo> PremiumIAPPerks { get; }
 
         [IgnoreDataMember]
         public IEnumerable<StoryElementInfo> LevelRewardClaimedStories { get; }
@@ -198,6 +192,28 @@ namespace Code.GameLogic.GameEvents
         public string UiCharacterItemId { get; set; }
 
         public ProgressionEventInfo(ProgressionEventId progressionEventId, string nameLocId, string startPopupDescId, string endPopupNoRewardsDescId, string displayName, string description, MetaActivableParams activableParams, List<int> chancesToSpawnEventPerItemLevel, int eventItem, MetaRef<InAppProductInfo> premiumIap, int premiumIapOfferMinLevel, List<MetaRef<ProgressionEventPerkInfo>> premiumIapPerks, List<MetaRef<ProgressionEventStreakRewards>> premiumIAPStreakRewards, List<MetaRef<EventLevelInfo>> freeEventLevels, List<MetaRef<EventLevelInfo>> premiumEventLevels, List<MetaRef<EventLevelInfo>> recurringFreeEventLevels, List<MetaRef<EventLevelInfo>> recurringPremiumEventLevels, int recurringLevelPointsIncrement, bool hasZeroLevel, StoryDefinitionId introDialogue, StoryDefinitionId endDialogue, List<MetaRef<StoryElementInfo>> levelRewardClaimedStories, List<MetaRef<EventLevelInfo>> storyTriggeringLevels, PlayerRequirement unlockRequirement, F32? bubbleBonusDivisor, EventGroupId groupId, List<EventLevelId> teasedEventLevelIds, CutsceneId introCutscene, string eventPrefabsId, string startHeaderBackgroundId, string endHeaderBackgroundId, string mainHubBadgeIconId, string todoItemHeaderBackgroundId, string progressionPopupHeaderBackgroundId, string eventRewardTagId, string uiCharacterItemId)
+        {
+        }
+
+        [MetaMember(48, (MetaMemberFlags)0)]
+        public string ShopBundleHeaderId { get; set; }
+
+        [MetaMember(47, (MetaMemberFlags)0)]
+        public MetaRef<ProgressionEventV2Info> V2Info { get; set; }
+
+        [MetaMember(49, (MetaMemberFlags)0)]
+        public List<int> PurchasePopupTriggeringLevels { get; set; }
+
+        [IgnoreDataMember]
+        public IEnumerable<EventLevelInfo> Track1EventLevels { get; }
+
+        [IgnoreDataMember]
+        public IEnumerable<EventLevelInfo> Track2EventLevels { get; }
+
+        [IgnoreDataMember]
+        public IEnumerable<EventLevelInfo> BonusEventLevels { get; }
+
+        public ProgressionEventInfo(ProgressionEventId progressionEventId, string nameLocId, string startPopupDescId, string endPopupNoRewardsDescId, string displayName, string description, MetaActivableParams activableParams, List<int> chancesToSpawnEventPerItemLevel, int eventItem, MetaRef<InAppProductInfo> premiumIap, int premiumIapOfferMinLevel, List<MetaRef<ProgressionEventPerkInfo>> premiumIapPerks, List<MetaRef<ProgressionEventStreakRewards>> premiumIAPStreakRewards, List<MetaRef<EventLevelInfo>> freeEventLevels, List<MetaRef<EventLevelInfo>> premiumEventLevels, List<MetaRef<EventLevelInfo>> recurringFreeEventLevels, List<MetaRef<EventLevelInfo>> recurringPremiumEventLevels, int recurringLevelPointsIncrement, bool hasZeroLevel, StoryDefinitionId introDialogue, StoryDefinitionId endDialogue, List<MetaRef<StoryElementInfo>> levelRewardClaimedStories, List<MetaRef<EventLevelInfo>> storyTriggeringLevels, PlayerRequirement unlockRequirement, F32? bubbleBonusDivisor, EventGroupId groupId, List<EventLevelId> teasedEventLevelIds, CutsceneId introCutscene, string eventPrefabsId, string startHeaderBackgroundId, string endHeaderBackgroundId, string mainHubBadgeIconId, string todoItemHeaderBackgroundId, string progressionPopupHeaderBackgroundId, string eventRewardTagId, string uiCharacterItemId, string shopBundleHeaderId, List<int> purchasePopupTriggeringLevels, ProgressionEventV2Id v2Id)
         {
         }
     }

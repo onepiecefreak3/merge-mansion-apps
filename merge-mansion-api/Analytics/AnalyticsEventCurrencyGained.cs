@@ -9,8 +9,8 @@ using GameLogic;
 
 namespace Analytics
 {
-    [AnalyticsEvent(116, "Currency gained", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 3, 6, 8 })]
+    [AnalyticsEvent(116, "Currency gained", 1, null, false, true, false)]
     public class AnalyticsEventCurrencyGained : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -101,6 +101,15 @@ namespace Analytics
         }
 
         public AnalyticsEventCurrencyGained(CurrencySource currencySource, GameResourceCost gameResourceCost, long costSoft, long costHard, long newFreeCurrencySaldo, long newHardCurrencySaldo, long hardDiamondsSaldo, long hardCoinsSaldo, int lindsayEventProgress, int caseyAndSkatieEventProgress, int ignatiousEventProgress, AnalyticsContext context)
+        {
+        }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        [JsonProperty("mystery_pass_track", NullValueHandling = (NullValueHandling)1)]
+        [Description("Current active track in mystery pass event")]
+        public string ProgressionEventTrack { get; set; }
+
+        public AnalyticsEventCurrencyGained(CurrencySource currencySource, GameResourceCost gameResourceCost, long costSoft, long costHard, long newFreeCurrencySaldo, long newHardCurrencySaldo, long hardDiamondsSaldo, long hardCoinsSaldo, int lindsayEventProgress, int caseyAndSkatieEventProgress, int ignatiousEventProgress, string progressionEventTrack, AnalyticsContext context)
         {
         }
     }

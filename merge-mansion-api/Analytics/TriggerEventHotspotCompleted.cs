@@ -9,8 +9,8 @@ namespace Analytics
     [AnalyticsEvent(3044, "Hotspot completed", 1, null, false, false, true)]
     public class TriggerEventHotspotCompleted : PlayerTriggerEvent
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("hotspot_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Completed hotspot")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public HotspotId HotspotId { get; set; }

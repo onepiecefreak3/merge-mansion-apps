@@ -44,16 +44,16 @@ namespace GameLogic.Player
     [MetaReservedMembers(11, 12)]
     [MetaReservedMembers(99, 300)]
     [MetaSerializableDerived(1)]
-    [SupportedSchemaVersions(21, 39)]
+    [SupportedSchemaVersions(21, 40)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [Transient]
         [ServerOnly]
         [MetaMember(211, (MetaMemberFlags)0)]
+        [Transient]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -385,5 +385,8 @@ namespace GameLogic.Player
 
         [MetaMember(274, (MetaMemberFlags)0)]
         public Dictionary<Coordinate, MergeItem> bubblesWithAds { get; set; }
+
+        [IgnoreDataMember]
+        public Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
     }
 }
