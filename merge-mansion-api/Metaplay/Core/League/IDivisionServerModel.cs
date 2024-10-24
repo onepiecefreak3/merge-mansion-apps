@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.League
 {
-    [MetaSerializable]
     [LeaguesEnabledCondition]
+    [MetaSerializable]
     public interface IDivisionServerModel
     {
         Dictionary<int, EntityId> ParticipantIndexToEntityId { get; }

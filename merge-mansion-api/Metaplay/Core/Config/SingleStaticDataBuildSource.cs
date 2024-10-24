@@ -4,9 +4,9 @@ using System;
 
 namespace Metaplay.Core.Config
 {
+    [MetaAllowNoSerializedMembers]
     [MetaSerializableDerived(103)]
     [MetaFormHidden]
-    [MetaAllowNoSerializedMembers]
     public class SingleStaticDataBuildSource : GameConfigBuildSource, IGameConfigSourceFetcher
     {
         private StaticSourceDataItem _data;

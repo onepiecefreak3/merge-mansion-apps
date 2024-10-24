@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using GameLogic.Player.Rewards;
+using GameLogic.ConfigPrefabs;
 
 namespace GameLogic.DailyTasksV2
 {
@@ -18,6 +19,13 @@ namespace GameLogic.DailyTasksV2
         }
 
         public DailyTasksV2CompletionRewardInfo(DailyTasksV2CompletionRewardId configKey, PlayerReward reward)
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public ConfigAssetPackId AssetPackId { get; set; }
+
+        public DailyTasksV2CompletionRewardInfo(DailyTasksV2CompletionRewardId configKey, PlayerReward reward, ConfigAssetPackId configAssetPackId)
         {
         }
     }

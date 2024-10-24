@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using GameLogic.Player.Items;
 using System.Runtime.Serialization;
 using Metaplay.Core.Offers;
+using Metaplay.Core;
+using Metaplay.Core.Player;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -57,5 +59,18 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachineEventModel(MysteryMachineEventInfo info)
         {
         }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public string EventInstanceId { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public MetaTime? StartTimeInGameConfig { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public AcknowledgedMysteryMachineLeaderboardPositionData AcknowledgedLeaderboardPositionData { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public HashSet<PlayerSegmentId> LeaderboardRewardSegmentsAtStartOfEvent { get; set; }
+        public bool LeaderboardRewardsClaimed { get; set; }
     }
 }

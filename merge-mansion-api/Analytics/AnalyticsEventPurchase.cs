@@ -10,8 +10,8 @@ using Metaplay.Core.Player;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 11 })]
     [AnalyticsEvent(118, "IAP purchase event", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 11 })]
     public class AnalyticsEventPurchase : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

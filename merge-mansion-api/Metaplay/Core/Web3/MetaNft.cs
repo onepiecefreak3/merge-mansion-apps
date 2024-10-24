@@ -12,14 +12,14 @@ namespace Metaplay.Core.Web3
         [MetaFormNotEditable]
         [MetaMember(100, (MetaMemberFlags)0)]
         public NftId TokenId;
+        [MetaFormNotEditable]
         [MetaMember(101, (MetaMemberFlags)0)]
-        [MetaFormNotEditable]
         public EntityId OwnerEntity;
+        [MetaFormNotEditable]
         [MetaMember(102, (MetaMemberFlags)0)]
-        [MetaFormNotEditable]
         public NftOwnerAddress OwnerAddress;
-        [MetaMember(104, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(104, (MetaMemberFlags)0)]
         public bool IsMinted;
         [MetaMember(103, (MetaMemberFlags)0)]
         [MetaFormNotEditable]

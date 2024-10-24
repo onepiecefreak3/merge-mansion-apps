@@ -26,5 +26,7 @@ namespace GameLogic.Config.DecorationShop
         public DecorationShopSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

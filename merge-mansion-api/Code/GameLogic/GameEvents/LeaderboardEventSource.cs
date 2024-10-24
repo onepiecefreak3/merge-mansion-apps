@@ -47,5 +47,7 @@ namespace Code.GameLogic.GameEvents
         public LeaderboardEventSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

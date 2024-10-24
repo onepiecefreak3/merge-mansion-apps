@@ -2,6 +2,8 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using Merge;
+using Metaplay.Core.Offers;
 
 namespace GameLogic.Advertisement
 {
@@ -38,6 +40,16 @@ namespace GameLogic.Advertisement
         public int Threshold { get; set; }
 
         public AdvertisementPlacementsInfo(AdvertisementPlacementId configKey, string adsProviderIds, int capPerCooldown, int rewardAmount, AdsRewardType adsRewardType, List<int> rewardIds, int threshold)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public List<MergeBoardId> BoardIds { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public List<OfferPlacementId> OfferPlacementIds { get; set; }
+
+        public AdvertisementPlacementsInfo(AdvertisementPlacementId configKey, string adsProviderIds, int capPerCooldown, int rewardAmount, AdsRewardType adsRewardType, List<int> rewardIds, int threshold, List<MergeBoardId> boardIds, List<OfferPlacementId> offerPlacementIds)
         {
         }
     }

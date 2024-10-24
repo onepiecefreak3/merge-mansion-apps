@@ -99,6 +99,8 @@ namespace GameLogic.Decorations
         LDE_GreenAcresQuest2024_TC2 = 90,
         LDE_GreenAcresQuest2024_TC3 = 91,
         SP_MysteriousMaelstrom2024_TA1 = 92,
-        SP_MysteriousMaelstrom2024_TA2 = 93
+        SP_MysteriousMaelstrom2024_TA2 = 93,
+        SP_AlpacaPet2024_TA1 = 94,
+        SP_AlpacaPet2024_TA2 = 95
     }
 }

@@ -44,6 +44,7 @@ namespace GameLogic
         FillDailyTaskV2StepWithPurchase = 36,
         DailyTasksV2TimeExtensionPurchase = 37,
         FillDailyTaskV2StepWithRefresh = 38,
-        SoloMilestoneProgress = 39
+        SoloMilestoneProgress = 39,
+        SkipEvidenceBoxCooldown = 40
     }
 }

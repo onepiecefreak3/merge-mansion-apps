@@ -3,6 +3,8 @@ using System.ComponentModel;
 using Metaplay.Core.Model;
 using Newtonsoft.Json;
 using System;
+using GameLogic;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -41,6 +43,35 @@ namespace Analytics
         public int ItemDiamondValue { get; set; }
 
         public AnalyticsEventAdPlacementShown(string adPlacement, string itemName, string auctionId, int itemDiamondValue)
+        {
+        }
+
+        [Description("Item cost value")]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("item_cost_value")]
+        public int ItemCostValue { get; set; }
+
+        [Description("Item cost value type")]
+        [JsonProperty("item_cost_value_type")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public Currencies ItemCostValueType { get; set; }
+
+        [JsonProperty("time_skipped_amount")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("Amount of time skipped for a producer")]
+        public string TimeSkippedAmount { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("time_skipped_diamond_value")]
+        [Description("Diamond value of time skipped")]
+        public int TimeSkippedDiamondValue { get; set; }
+
+        [Description("Remaining time for producer")]
+        [JsonProperty("time_remaining_amount")]
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public string ProducerTimeRemaining { get; set; }
+
+        public AnalyticsEventAdPlacementShown(string adPlacement, string itemName, string auctionId, int itemDiamondValue, int itemCostValue, Currencies itemCostValueType, AnalyticsContext analyticsContext)
         {
         }
     }

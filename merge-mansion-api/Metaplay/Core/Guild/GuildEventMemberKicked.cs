@@ -7,8 +7,8 @@ namespace Metaplay.Core.Guild
     [AnalyticsEvent(1104, null, 1, "A member was kicked by a fellow member or an admin.", true, true, false)]
     public class GuildEventMemberKicked : GuildEventBase
     {
-        [FirebaseAnalyticsIgnore]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public GuildEventMemberInfo KickedMember { get; set; }
 
         [FirebaseAnalyticsIgnore]

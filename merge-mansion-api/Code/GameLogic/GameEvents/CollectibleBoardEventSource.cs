@@ -73,5 +73,6 @@ namespace Code.GameLogic.GameEvents
         private bool ShouldReset { get; set; }
         private MergeChainId PersistingChainID { get; set; }
         private LuckyType LuckyType { get; set; }
+        private int Priority { get; set; }
     }
 }

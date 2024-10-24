@@ -5,8 +5,8 @@ using Metaplay.Core.InAppPurchase;
 
 namespace Analytics
 {
-    [Obsolete("Replaced with SDK-side PlayerEventInAppPurchaseClientRefused")]
     [AnalyticsEvent(156, "In App Purchase Refused by Client", 1, null, false, true, false)]
+    [Obsolete("Replaced with SDK-side PlayerEventInAppPurchaseClientRefused")]
     public class AnalyticsEventInAppPurchaseClientRefused : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

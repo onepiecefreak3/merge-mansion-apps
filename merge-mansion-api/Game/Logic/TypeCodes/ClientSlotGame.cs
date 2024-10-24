@@ -11,5 +11,7 @@ namespace Game.Logic.TypeCodes
         public ClientSlotGame(int id, string name) : base(id, name)
         {
         }
+
+        public static ClientSlot BoultonLeague;
     }
 }

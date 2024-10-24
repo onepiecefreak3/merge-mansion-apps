@@ -8,8 +8,8 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.Player.Items.Merging
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(4)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class XpAccumulationMergeMechanic : IMergeMechanic
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -23,5 +23,8 @@ namespace GameLogic.Merge
             FromDecay = 5,
             FromInventory = 6
         }
+
+        public readonly MergeItem SourceItem;
+        public readonly ItemDefinition ItemToPocket;
     }
 }

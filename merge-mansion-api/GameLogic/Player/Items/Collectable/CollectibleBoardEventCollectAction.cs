@@ -5,8 +5,8 @@ using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(7)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class CollectibleBoardEventCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(2, (MetaMemberFlags)0)]

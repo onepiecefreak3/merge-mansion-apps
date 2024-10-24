@@ -11,8 +11,8 @@ namespace Analytics
     public class TriggerEventEventEnded : PlayerTriggerEvent
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("event_id")]
         [Description("Ended event")]
+        [JsonProperty("event_id")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public string EventId { get; set; }
 

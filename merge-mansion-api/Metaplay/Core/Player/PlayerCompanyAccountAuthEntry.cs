@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializableDerived(102)]
     [MetaImplicitMembersRange(200, 300)]
+    [MetaSerializableDerived(102)]
     public class PlayerCompanyAccountAuthEntry : PlayerAuthEntryBase
     {
         private PlayerCompanyAccountAuthEntry()

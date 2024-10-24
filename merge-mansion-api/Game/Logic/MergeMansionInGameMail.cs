@@ -10,8 +10,8 @@ using Metaplay.Core;
 
 namespace Game.Logic
 {
-    [MetaReservedMembers(0, 80)]
     [MetaSerializableDerived(10)]
+    [MetaReservedMembers(0, 80)]
     public class MergeMansionInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         private static int ShortTopicLimit;

@@ -12,5 +12,8 @@ namespace Metaplay.Core.LiveOpsEvent
         public PlayerLiveOpsEventsServerOnlyModel()
         {
         }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public MetaTime LastRefreshedAt { get; set; }
     }
 }

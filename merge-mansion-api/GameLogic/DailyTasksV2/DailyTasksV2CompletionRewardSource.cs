@@ -1,6 +1,7 @@
 using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
+using GameLogic.ConfigPrefabs;
 
 namespace GameLogic.DailyTasksV2
 {
@@ -16,5 +17,7 @@ namespace GameLogic.DailyTasksV2
         public DailyTasksV2CompletionRewardSource()
         {
         }
+
+        private ConfigAssetPackId AssetPackId { get; set; }
     }
 }

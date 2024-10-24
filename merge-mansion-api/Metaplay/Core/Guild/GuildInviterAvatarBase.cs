@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.Guild
 {
-    [MetaSerializable]
     [MetaReservedMembers(1, 100)]
+    [MetaSerializable]
     public abstract class GuildInviterAvatarBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

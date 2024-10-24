@@ -27,5 +27,9 @@ namespace GameLogic.Player.Items.Production
 
         [IgnoreDataMember]
         public int ConfigKey => Item.ConfigKey;
+
+        public ItemOdds(ItemDefinition itemDefinition, int weight)
+        {
+        }
     }
 }

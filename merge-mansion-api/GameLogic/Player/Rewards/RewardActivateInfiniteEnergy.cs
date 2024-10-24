@@ -4,8 +4,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaFormDeprecated]
     [MetaSerializableDerived(23)]
+    [MetaFormDeprecated]
     public class RewardActivateInfiniteEnergy : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

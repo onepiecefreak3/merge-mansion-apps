@@ -153,5 +153,14 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(43, (MetaMemberFlags)0)]
         public int RunDiamondsSpentOnMachineEnergy { get; set; }
+
+        [MetaMember(44, (MetaMemberFlags)0)]
+        public bool NewHighScore { get; set; }
+
+        [MetaMember(45, (MetaMemberFlags)0)]
+        public int FinishCount { get; set; }
+
+        [MetaMember(46, (MetaMemberFlags)0)]
+        public int? FinishedHighScore { get; set; }
     }
 }

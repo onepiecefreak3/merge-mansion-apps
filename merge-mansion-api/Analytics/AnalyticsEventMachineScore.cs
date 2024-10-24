@@ -103,5 +103,10 @@ namespace Analytics
         public AnalyticsEventMachineScore(int machineEventInstance, int runNumber, int score, F64 permanentMultiplier, F64 temporaryMultiplier, int heatLevel, Dictionary<string, int> itemsSpawned, Dictionary<string, int> diamondsSpentOnSpecialItems, Dictionary<string, int> batterySpentOnSpecialItems, AnalyticsContext context, int numberOfTaps, string startTime, int mysteryMachineEnergyRemaining, int diamondsSpentOnMachineEnergy)
         {
         }
+
+        [JsonProperty("leaderboard_position", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [Description("Position of player on the leaderboard after the run. Only sent if the run was a new high score and the event is using a leaderboard. Null in case not or the leaderboard request fails.")]
+        public int? LeaderboardPosition { get; set; }
     }
 }

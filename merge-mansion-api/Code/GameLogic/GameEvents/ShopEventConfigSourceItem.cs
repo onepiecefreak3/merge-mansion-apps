@@ -48,5 +48,7 @@ namespace Code.GameLogic.GameEvents
         public ShopEventConfigSourceItem()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

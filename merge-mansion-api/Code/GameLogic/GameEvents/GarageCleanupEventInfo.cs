@@ -12,9 +12,9 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializable]
-    [MetaBlockedMembers(new int[] { 10, 11, 12, 13, 15, 16 })]
     [MetaActivableConfigData("GarageCleanupEvent", false, true)]
-    public class GarageCleanupEventInfo : IMetaActivableConfigData<GarageCleanupEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<GarageCleanupEventId>, IHasGameConfigKey<GarageCleanupEventId>, IMetaActivableInfo<GarageCleanupEventId>, IValidatable, IEventGroupInfo
+    [MetaBlockedMembers(new int[] { 10, 11, 12, 13, 15, 16 })]
+    public class GarageCleanupEventInfo : IMetaActivableConfigData<GarageCleanupEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<GarageCleanupEventId>, IHasGameConfigKey<GarageCleanupEventId>, IMetaActivableInfo<GarageCleanupEventId>, IValidatable, IEventSharedInfo
     {
         public static GarageCleanupEventInfo.BoardSizeInfo BoardSize;
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -81,6 +81,14 @@ namespace Code.GameLogic.GameEvents
         public EventGroupId GroupId { get; set; }
 
         public GarageCleanupEventInfo(GarageCleanupEventId garageCleanupEventId, string displayName, string description, MetaActivableParams activableParams, List<GarageCleanupBoardInfo> boards, List<MetaRef<GarageCleanupPatternSetInfo>> patternSets, List<int> spawnerItems, List<int> boardCosts, List<MetaRef<GarageCleanupRewardInfo>> slotFillRewards, MergeBoardId mergeBoardId, PlayerRequirement unlockRequirement, string prefabsOverride, bool alwaysShowPatternsAndRewards, EventGroupId groupId)
+        {
+        }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public GarageCleanupEventInfo(GarageCleanupEventId garageCleanupEventId, string displayName, string description, MetaActivableParams activableParams, List<GarageCleanupBoardInfo> boards, List<MetaRef<GarageCleanupPatternSetInfo>> patternSets, List<int> spawnerItems, List<int> boardCosts, List<MetaRef<GarageCleanupRewardInfo>> slotFillRewards, MergeBoardId mergeBoardId, PlayerRequirement unlockRequirement, string prefabsOverride, bool alwaysShowPatternsAndRewards, EventGroupId groupId, int priority)
         {
         }
     }

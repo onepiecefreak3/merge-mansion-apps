@@ -15,5 +15,6 @@ namespace Metaplay.Core.LiveOpsEvent
 
     public interface ILiveOpsEventTemplate<TContentClass> : ILiveOpsEventTemplate
     {
+        TContentClass Content { get; }
     }
 }

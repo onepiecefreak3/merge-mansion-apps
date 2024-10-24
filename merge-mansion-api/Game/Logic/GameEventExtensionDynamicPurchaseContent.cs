@@ -10,8 +10,8 @@ namespace Game.Logic
     [MetaSerializableDerived(2)]
     public class GameEventExtensionDynamicPurchaseContent : DynamicPurchaseContent
     {
-        [Obsolete]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Obsolete]
         public EventId EventId_DEPRECATED { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

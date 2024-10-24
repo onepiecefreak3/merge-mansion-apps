@@ -4,7 +4,7 @@ namespace Metaplay.Core
 {
     public struct EntityKind : IEquatable<EntityKind>
     {
-        public const int MaxValue = 64;
+        public const int MaxValue = 1024;
 
         public static readonly EntityKind None = new EntityKind(0); // 0x0
 

@@ -12,9 +12,9 @@ using GameLogic.Config;
 
 namespace Code.GameLogic.GameEvents.DailyScoop
 {
-    [MetaSerializable]
     [MetaActivableConfigData("DailyScoopEvent", false, true)]
-    public class DailyScoopEventInfo : IMetaActivableConfigData<DailyScoopEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DailyScoopEventId>, IHasGameConfigKey<DailyScoopEventId>, IMetaActivableInfo<DailyScoopEventId>
+    [MetaSerializable]
+    public class DailyScoopEventInfo : IMetaActivableConfigData<DailyScoopEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DailyScoopEventId>, IHasGameConfigKey<DailyScoopEventId>, IMetaActivableInfo<DailyScoopEventId>, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DailyScoopEventId ConfigKey { get; set; }
@@ -50,6 +50,17 @@ namespace Code.GameLogic.GameEvents.DailyScoop
         }
 
         public DailyScoopEventInfo(DailyScoopEventId configKey, string displayName, string description, MetaActivableParams activableParams, PlayerRequirement unlockRequirement, List<DailyScoopWeekId> weekIds, List<MetaRef<PlayerSegmentInfo>> segments, List<PlayerSegmentId> weekSegments)
+        {
+        }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public DailyScoopEventInfo(DailyScoopEventId configKey, string displayName, string description, MetaActivableParams activableParams, PlayerRequirement unlockRequirement, List<DailyScoopWeekId> weekIds, List<MetaRef<PlayerSegmentInfo>> segments, List<PlayerSegmentId> weekSegments, int priority)
         {
         }
     }

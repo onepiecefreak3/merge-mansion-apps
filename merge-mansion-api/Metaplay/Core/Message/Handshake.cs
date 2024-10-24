@@ -33,10 +33,17 @@ namespace Metaplay.Core.Message
                 FullProtocolHash = fullProtocolHash;
                 CommitId = commitId;
             }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public string ProjectName { get; set; }
+
+            public ServerHello(string serverVersion, string buildNumber, uint fullProtocolHash, string commitId, string projectName)
+            {
+            }
         }
 
-        [MetaMessage(5, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(5, (MessageDirection)1, true)]
         public class ClientHello : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -92,6 +99,14 @@ namespace Metaplay.Core.Message
             }
 
             public ClientHello(string clientVersion, string buildNumber, int clientLogicVersion, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
+            {
+            }
+
+            [MetaMember(12, (MetaMemberFlags)0)]
+            public string TargetHostname { get; set; }
+            public int ClientLogicVersion { get; }
+
+            public ClientHello(string clientVersion, string buildNumber, int clientLogicVersion, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion, string targetHostname)
             {
             }
         }

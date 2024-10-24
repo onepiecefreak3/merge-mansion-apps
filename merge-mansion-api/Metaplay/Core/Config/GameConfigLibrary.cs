@@ -101,6 +101,8 @@ namespace Metaplay.Core.Config
         {
         }
 
+        public int SpecializationSpecificDuplicationAmount { get; }
+
         private Dictionary<TKey, TInfo> _infos;
     }
 }

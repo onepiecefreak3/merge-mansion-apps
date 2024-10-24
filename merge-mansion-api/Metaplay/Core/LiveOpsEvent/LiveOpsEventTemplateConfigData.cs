@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Config;
+using System.Runtime.Serialization;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
@@ -8,6 +9,7 @@ namespace Metaplay.Core.LiveOpsEvent
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public LiveOpsEventTemplateId TemplateId { get; set; }
+
         [MetaMember(2, (MetaMemberFlags)0)]
         public TContentClass Content { get; set; }
 

@@ -5,12 +5,13 @@ using Code.GameLogic.Config;
 using System;
 using System.Collections.Generic;
 using GameLogic.Player.Requirements;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.MiniEvents
 {
     [MetaActivableConfigData("MiniEvent", false, true)]
     [MetaSerializable]
-    public class MiniEventInfo : IMetaActivableConfigData<MiniEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MiniEventId>, IHasGameConfigKey<MiniEventId>, IMetaActivableInfo<MiniEventId>, IValidatable
+    public class MiniEventInfo : IMetaActivableConfigData<MiniEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MiniEventId>, IHasGameConfigKey<MiniEventId>, IMetaActivableInfo<MiniEventId>, IValidatable, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public MiniEventId MiniEventId { get; set; }
@@ -53,6 +54,17 @@ namespace GameLogic.MiniEvents
         }
 
         public MiniEventInfo(MiniEventId id, string nameLocId, string descLocId, string displayName, string description, MetaActivableParams activableParams, Dictionary<MiniEventTypeId, MiniEventValues<string>> newValuesLookup, PlayerRequirement unlockRequirement, MiniEventUIId uiSchemeId, bool showStartPopup, bool showMainHubBadge)
+        {
+        }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public MiniEventInfo(MiniEventId id, string nameLocId, string descLocId, string displayName, string description, MetaActivableParams activableParams, Dictionary<MiniEventTypeId, MiniEventValues<string>> newValuesLookup, PlayerRequirement unlockRequirement, MiniEventUIId uiSchemeId, bool showStartPopup, bool showMainHubBadge, int priority)
         {
         }
     }

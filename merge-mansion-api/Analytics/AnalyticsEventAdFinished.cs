@@ -3,6 +3,8 @@ using Metaplay.Core.Model;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System;
+using GameLogic;
+using GameLogic.Player;
 
 namespace Analytics
 {
@@ -92,6 +94,35 @@ namespace Analytics
         public int ItemDiamondValue { get; set; }
 
         public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm, int itemDiamondValue)
+        {
+        }
+
+        [JsonProperty("item_cost_value")]
+        [Description("Item cost value")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public int ItemCostValue { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        [JsonProperty("item_cost_value_type")]
+        [Description("Item cost value type")]
+        public Currencies ItemCostValueType { get; set; }
+
+        [Description("Amount of time skipped for a producer")]
+        [MetaMember(18, (MetaMemberFlags)0)]
+        [JsonProperty("time_skipped_amount")]
+        public string TimeSkippedAmount { get; set; }
+
+        [Description("Diamond value of time skipped")]
+        [JsonProperty("time_skipped_diamond_value")]
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public int TimeSkippedDiamondValue { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        [JsonProperty("time_remaining_amount")]
+        [Description("Remaining time for producer")]
+        public string ProducerTimeRemaining { get; set; }
+
+        public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm, int itemDiamondValue, int itemCostValue, Currencies itemCostValueType, AnalyticsContext analyticsContext)
         {
         }
     }

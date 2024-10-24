@@ -76,5 +76,7 @@ namespace Code.GameLogic.GameEvents
         public BoardEventSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

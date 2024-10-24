@@ -4,8 +4,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [AnalyticsEvent(1300, null, 1, "Division was created. At this point there are 0 participants in the division.", true, true, false)]
     [LeaguesEnabledCondition]
+    [AnalyticsEvent(1300, null, 1, "Division was created. At this point there are 0 participants in the division.", true, true, false)]
     public class DivisionEventCreated : DivisionEventBase
     {
         [FirebaseAnalyticsIgnore]

@@ -135,6 +135,12 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 return;
             }
 
+            else if (requirement is TemporaryCardCollectionEventActiveRequirement tccear)
+            {
+                JValue.CreateString("TemporaryCardCollectionEventActive").WriteTo(writer);
+                return;
+            }
+
             writer.WriteStartObject();
 
             if (requirement is AreaCompletedRequirement aReq)

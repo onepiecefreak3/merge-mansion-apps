@@ -4,6 +4,7 @@ using Metaplay.Core;
 using GameLogic.Player.Items;
 using System;
 using System.Collections.Generic;
+using GameLogic.Random.ControlledRandom;
 
 namespace GameLogic.Player.DailyTasksV2
 {
@@ -43,5 +44,8 @@ namespace GameLogic.Player.DailyTasksV2
         public DailyTaskV2State()
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public ControlledRandomFiniteSequence UnlimitedRandomSequenceForBoultonLeague { get; set; }
     }
 }

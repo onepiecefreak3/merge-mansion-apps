@@ -5,8 +5,8 @@ using System;
 namespace GameLogic.Player.Leaderboard
 {
     [PlayerLeaguesEnabledCondition]
-    [MetaSerializableDerived(150)]
     [MetaSerializable]
+    [MetaSerializableDerived(150)]
     public class PlayerDivisionAvatar : PlayerDivisionAvatarBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

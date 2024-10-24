@@ -10,20 +10,20 @@ namespace Analytics
     [AnalyticsEvent(176, "Bot test end", 1, null, true, true, false)]
     public class AnalyticsEventBotTestEnd : AnalyticsServersideEventBase
     {
-        [JsonProperty("producer_id")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("producer_id")]
         public string ProducerId;
         [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("producer_level")]
         public int ProducerLvl;
-        [JsonProperty("target_id")]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [JsonProperty("target_id")]
         public string TargetId;
-        [JsonProperty("target_lvl")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("target_lvl")]
         public int TargetLvl;
-        [MetaMember(11, (MetaMemberFlags)0)]
         [JsonProperty("board_items")]
+        [MetaMember(11, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> BoardItems;
         public sealed override AnalyticsEventType EventType { get; }

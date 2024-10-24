@@ -9,11 +9,12 @@ using Merge;
 using Code.GameLogic.GameEvents;
 using Code.GameLogic.Config;
 using Metaplay.Core.Player;
+using GameLogic.Player;
 
 namespace GameLogic.Config
 {
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48, 61, 16, 17, 40, 41, 54, 55, 56, 63, 64 })]
     [MetaSerializable]
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48 })]
     public class SharedGlobals : GameConfigKeyValue<SharedGlobals>, IValidatable
     {
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -51,9 +52,6 @@ namespace GameLogic.Config
 
         [MetaMember(15, (MetaMemberFlags)0)]
         public List<int> ItemSellPrices { get; set; }
-
-        [MetaMember(17, (MetaMemberFlags)0)]
-        public long SecondaryEnergyMaxAmount { get; set; }
 
         [MetaMember(18, (MetaMemberFlags)0)]
         public int PlayerNamePopupTriggerLevel { get; set; }
@@ -113,17 +111,8 @@ namespace GameLogic.Config
         [MetaMember(38, (MetaMemberFlags)0)]
         public int ItemsNeededCountDisplayMax { get; set; }
 
-        [MetaMember(16, (MetaMemberFlags)0)]
-        public MetaDuration DefaultSecondaryEnergyUnitRestoreDuration { get; set; }
-
         [MetaMember(39, (MetaMemberFlags)0)]
         public F32 DefaultBubbleBonusDivisor { get; set; }
-
-        [MetaMember(40, (MetaMemberFlags)0)]
-        public MetaDuration DefaultTertiaryEnergyUnitRestoreDuration { get; set; }
-
-        [MetaMember(41, (MetaMemberFlags)0)]
-        public long TertiaryEnergyMaxAmount { get; set; }
 
         [MetaMember(42, (MetaMemberFlags)0)]
         public F32 SinkItemToolTipDisplayDuration { get; set; }
@@ -155,15 +144,6 @@ namespace GameLogic.Config
         [MetaMember(53, (MetaMemberFlags)0)]
         public List<MetaRef<PlayerSegmentInfoBase>> AdsSoftLaunchSegments { get; set; }
 
-        [MetaMember(54, (MetaMemberFlags)0)]
-        public long MysteryMachineEnergyMaxAmount { get; set; }
-
-        [MetaMember(55, (MetaMemberFlags)0)]
-        public MetaDuration DefaultMysteryMachineCoinsUnitRestoreDuration { get; set; }
-
-        [MetaMember(56, (MetaMemberFlags)0)]
-        public long MysteryMachineCoinsMaxAmount { get; set; }
-
         [MetaMember(57, (MetaMemberFlags)0)]
         public int InventorySlotsRequiredToTeaseProducerInventory { get; set; }
 
@@ -176,16 +156,10 @@ namespace GameLogic.Config
         [MetaMember(60, (MetaMemberFlags)0)]
         public bool DefaultHapticsEnabled { get; set; }
 
-        [MetaMember(61, (MetaMemberFlags)0)]
-        public long SoloMilestoneMaxAmount { get; set; }
-
         [MetaMember(62, (MetaMemberFlags)0)]
         public int MinLevelForAdditionalSpawnItem { get; set; }
 
-        [MetaMember(63, (MetaMemberFlags)0)]
-        public MetaDuration? DefaultQuaternaryEnergyUnitRestoreDuration { get; set; }
-
-        [MetaMember(64, (MetaMemberFlags)0)]
-        public long QuaternaryEnergyMaxAmount { get; set; }
+        [MetaMember(65, (MetaMemberFlags)0)]
+        public Dictionary<EnergyType, EnergySettings> EnergySettings { get; set; }
     }
 }

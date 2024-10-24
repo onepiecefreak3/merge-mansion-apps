@@ -16,10 +16,10 @@ using Metaplay.Core.LiveOpsEvent;
 
 namespace Metaplay.Core.Player
 {
-    [MetaReservedMembers(12, 99)]
     [MetaReservedMembers(10000, 20000)]
-    [MetaReservedMembers(1, 6)]
+    [MetaReservedMembers(12, 99)]
     [MetaReservedMembers(7, 10)]
+    [MetaReservedMembers(1, 6)]
     [MetaBlockedMembers(new int[] { 9, 15, 20, 21, 26, 27, 36, 44 })]
     public abstract class PlayerModelBase<TPlayerModel, TPlayerStatistics, TPlayerMetaOfferGroups, TPlayerGuildState> : IPlayerModel<TPlayerModel>, IPlayerModelBase, IModel<IPlayerModelBase>, IModel, ISchemaMigratable, IMetaIntegrationConstructible<IPlayerModelBase>, IMetaIntegration<IPlayerModelBase>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {

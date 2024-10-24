@@ -37,23 +37,24 @@ using GameLogic.MiniEvents;
 using GameLogic.Player.Events;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
 using GameLogic.Player.Items;
+using GameLogic.Player.Leaderboard.BoultonLeague;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233 })]
-    [MetaReservedMembers(11, 12)]
-    [MetaReservedMembers(99, 300)]
+    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
     [MetaSerializableDerived(1)]
-    [SupportedSchemaVersions(21, 40)]
+    [MetaReservedMembers(99, 300)]
+    [MetaReservedMembers(11, 12)]
+    [SupportedSchemaVersions(21, 41)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [ServerOnly]
-        [MetaMember(211, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(211, (MetaMemberFlags)0)]
+        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -383,10 +384,29 @@ namespace GameLogic.Player
         public IEnumerable<SoloMilestoneEventModel> ActiveSoloMilestoneEvents { get; }
         public IEnumerable<MiniEventModel> ActiveMiniEvents { get; }
 
-        [MetaMember(274, (MetaMemberFlags)0)]
-        public Dictionary<Coordinate, MergeItem> bubblesWithAds { get; set; }
-
         [IgnoreDataMember]
         public Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
+
+        [MetaMember(275, (MetaMemberFlags)0)]
+        public RandomPCG RewardContainerRandom { get; set; }
+
+        [MetaMember(276, (MetaMemberFlags)0)]
+        public PlayerMysteryMachineLeaderboardRewardsState MysteryMachineLeaderboardRewardsState { get; set; }
+
+        [MetaMember(277, (MetaMemberFlags)0)]
+        public PlayerBoultonLeagueEventsModel BoultonLeagueEvents { get; set; }
+
+        [MetaMember(278, (MetaMemberFlags)0)]
+        public BoultonLeagueStatus BoultonLeagueStatus { get; set; }
+
+        [MetaMember(279, (MetaMemberFlags)0)]
+        public PlayerTemporaryCardCollectionEventsModel TemporaryCardCollectionEvents { get; set; }
+
+        [MetaMember(280, (MetaMemberFlags)0)]
+        public Dictionary<string, Coordinate> bubbleAdsDictionary { get; set; }
+
+        [IgnoreDataMember]
+        public BoultonLeagueDivisionClientState BoultonLeagueDivisionClientState { get; }
+        public IEnumerable<TemporaryCardCollectionEventModel> ActiveTemporaryCardCollectionEvents { get; }
     }
 }

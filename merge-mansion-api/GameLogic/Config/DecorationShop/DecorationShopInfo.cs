@@ -5,12 +5,13 @@ using System;
 using System.Collections.Generic;
 using Metaplay.Core;
 using GameLogic.Player.Requirements;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Config.DecorationShop
 {
-    [MetaActivableConfigData("DecorationShop", false, true)]
     [MetaSerializable]
-    public class DecorationShopInfo : IMetaActivableConfigData<DecorationShopId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DecorationShopId>, IHasGameConfigKey<DecorationShopId>, IMetaActivableInfo<DecorationShopId>
+    [MetaActivableConfigData("DecorationShop", false, true)]
+    public class DecorationShopInfo : IMetaActivableConfigData<DecorationShopId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DecorationShopId>, IHasGameConfigKey<DecorationShopId>, IMetaActivableInfo<DecorationShopId>, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationShopId ConfigKey { get; set; }
@@ -40,6 +41,17 @@ namespace GameLogic.Config.DecorationShop
         }
 
         public DecorationShopInfo(DecorationShopId configKey, string displayName, string description, string nameLocId, List<MetaRef<DecorationShopSetInfo>> setRefs, MetaActivableParams activableParams, PlayerRequirement unlockRequirement)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public DecorationShopInfo(DecorationShopId configKey, string displayName, string description, string nameLocId, List<MetaRef<DecorationShopSetInfo>> setRefs, MetaActivableParams activableParams, PlayerRequirement unlockRequirement, int priority)
         {
         }
     }

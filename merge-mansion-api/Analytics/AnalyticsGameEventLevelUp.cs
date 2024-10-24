@@ -10,21 +10,21 @@ namespace Analytics
     [AnalyticsEvent(125, "Event level was reached and claimed", 1, null, false, true, false)]
     public class AnalyticsGameEventLevelUp : AnalyticsServersideEventBase
     {
+        [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the event")]
-        [JsonProperty("event_id")]
         public string EventId;
-        [JsonProperty("claimed_level")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Claimed level")]
+        [JsonProperty("claimed_level")]
         public int ClaimedLevel;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("auto_claim")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Was the level claimed automatically?")]
         public bool AutoClaim;
         [MetaMember(4, (MetaMemberFlags)0)]
-        [Description("Event level id")]
         [JsonProperty("event_level_id")]
+        [Description("Event level id")]
         public EventLevelId EventLevelId;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

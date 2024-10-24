@@ -12,12 +12,12 @@ using Metaplay.Core.Math;
 namespace GameLogic.Banks
 {
     [MetaBlockedMembers(new int[] { 8 })]
-    [MetaSerializable]
     [MetaActivableConfigData("CurrencyBankEvent", false, true)]
+    [MetaSerializable]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
-        [Description("Id of the bank")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Id of the bank")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
         [Description("Localisation key of bank name")]

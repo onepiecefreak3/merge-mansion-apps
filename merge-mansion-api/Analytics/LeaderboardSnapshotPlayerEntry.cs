@@ -5,13 +5,13 @@ using System;
 
 namespace Analytics
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializable]
     public class LeaderboardSnapshotPlayerEntry
     {
         [Description("Rank")]
-        [JsonProperty("rank")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("rank")]
         public int Rank { get; set; }
 
         [JsonProperty("points")]

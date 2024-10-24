@@ -9,6 +9,7 @@ using Code.GameLogic.GameEvents;
 
 namespace Analytics
 {
+    [MetaBlockedMembers(new int[] { 6 })]
     [AnalyticsEvent(165, "Leaderboard snapshot", 1, null, false, true, false)]
     public class AnalyticEventLeaderboardSnapshot : AnalyticsServersideDivisionEventBase
     {
@@ -53,6 +54,10 @@ namespace Analytics
         public LeaderboardEventId EventId { get; set; }
 
         public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, int rank, LeaderboardEventId eventId, string newPlayerId)
+        {
+        }
+
+        public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, int rank, string eventId, string newPlayerId)
         {
         }
     }

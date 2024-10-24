@@ -12,10 +12,10 @@ using System.Runtime.Serialization;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 6, 7, 8, 9, 12, 13, 14, 15, 21, 24, 25, 26, 27 })]
     [MetaActivableConfigData("ShopEvent", false, true)]
-    public class ShopEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IEventGroupInfo
+    [MetaSerializable]
+    public class ShopEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventId EventId { get; set; }
@@ -101,6 +101,14 @@ namespace Code.GameLogic.GameEvents
         public string PrefabsId { get; set; }
 
         public ShopEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<EventOfferInfo>> eventShopOfferInfos, MetaRef<EventLevels> eventLevels, MetaRef<EventCurrencyInfo> eventCurrencyInfo, List<MetaRef<BoardEventInfo>> hintedBoardEventInfos, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId endPopupId, ConfigPrefabId shopPopupId, ConfigPrefabId hudButtonId, List<MetaRef<EventOfferSetInfo>> eventOfferSetInfos, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, EventGroupId groupId, string prefabsId)
+        {
+        }
+
+        [MetaMember(35, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public ShopEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, List<MetaRef<EventOfferInfo>> eventShopOfferInfos, MetaRef<EventLevels> eventLevels, MetaRef<EventCurrencyInfo> eventCurrencyInfo, List<MetaRef<BoardEventInfo>> hintedBoardEventInfos, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId endPopupId, ConfigPrefabId shopPopupId, ConfigPrefabId hudButtonId, List<MetaRef<EventOfferSetInfo>> eventOfferSetInfos, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, EventGroupId groupId, string prefabsId, int priority)
         {
         }
     }

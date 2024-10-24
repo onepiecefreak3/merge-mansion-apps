@@ -1,6 +1,9 @@
 using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
+using System.Collections.Generic;
+using Merge;
+using Metaplay.Core.Offers;
 
 namespace GameLogic.Advertisement
 {
@@ -18,5 +21,7 @@ namespace GameLogic.Advertisement
         }
 
         public int Threshold { get; set; }
+        public List<MergeBoardId> BoardIds { get; set; }
+        public List<OfferPlacementId> OfferPlacementIds { get; set; }
     }
 }

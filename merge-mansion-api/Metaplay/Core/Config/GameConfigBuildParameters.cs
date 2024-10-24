@@ -14,10 +14,10 @@ namespace Metaplay.Core.Config
         {
         }
 
-        [MetaMember(101, (MetaMemberFlags)0)]
-        [MetaValidateRequired]
         [MetaFormExcludeDerivedType(new string[] { "Game.Cloud.Localization.GridlyBuildSource" })]
         [MetaFormLayoutOrderHint(-1)]
+        [MetaMember(101, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         public GameConfigBuildSource DefaultSource;
     }
 }

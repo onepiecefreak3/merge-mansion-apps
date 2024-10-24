@@ -4,8 +4,8 @@ using System;
 
 namespace Metaplay.Core.Config
 {
-    [MetaSerializableDerived(102)]
     [MetaFormHidden]
+    [MetaSerializableDerived(102)]
     public class FileSystemBuildSource : GameConfigBuildSource
     {
         [MetaMember(1, (MetaMemberFlags)0)]

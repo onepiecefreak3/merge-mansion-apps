@@ -6,8 +6,8 @@ using Metaplay.Core.Math;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     [AnalyticsEvent(1008, null, 2, "In App Purchase has been completed and the rewards have been granted to the player.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     public class PlayerEventInAppPurchased : PlayerEventBase
     {
         [MetaMember(2, (MetaMemberFlags)0)]

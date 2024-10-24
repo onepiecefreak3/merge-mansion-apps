@@ -149,6 +149,12 @@ namespace GameLogic.Player
         IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
 
         Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
+
+        BoultonLeagueStatus BoultonLeagueStatus { get; }
+
+        IEnumerable<TemporaryCardCollectionEventModel> ActiveTemporaryCardCollectionEvents { get; }
+
+        RandomPCG RewardContainerRandom { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

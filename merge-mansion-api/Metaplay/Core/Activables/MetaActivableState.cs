@@ -37,8 +37,8 @@ namespace Metaplay.Core.Activables
         {
         }
 
-        [MetaBlockedMembers(new int[] { 4 })]
         [MetaSerializable]
+        [MetaBlockedMembers(new int[] { 4 })]
         public struct Activation
         {
             [MetaMember(1, (MetaMemberFlags)0)]

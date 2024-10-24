@@ -7,8 +7,8 @@ using Metaplay.Core.Session;
 
 namespace Metaplay.Core.Debugging
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class PlayerIncidentReport
     {
         [MetaSerializableDerived(4)]
@@ -199,6 +199,30 @@ namespace Metaplay.Core.Debugging
 
         public PlayerIncidentReport(string incidentId, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo)
         {
+        }
+
+        [MetaSerializableDerived(5)]
+        public class CompanyIdLoginError : PlayerIncidentReport
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public string Phase { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public string Message { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public string Exception { get; set; }
+            public override string Type { get; }
+            public override string SubType { get; }
+            public string StackTrace { get; }
+
+            private CompanyIdLoginError()
+            {
+            }
+
+            public CompanyIdLoginError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string phase, string message, string exception)
+            {
+            }
         }
     }
 }

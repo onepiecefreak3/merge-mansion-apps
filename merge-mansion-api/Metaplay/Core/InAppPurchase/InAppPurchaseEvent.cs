@@ -5,11 +5,11 @@ using Metaplay.Core.Math;
 
 namespace Metaplay.Core.InAppPurchase
 {
+    [MetaSerializable]
+    [MetaReservedMembers(1, 12)]
+    [MetaReservedMembers(13, 17)]
     [MetaDeserializationConvertFromIntegrationImplementation]
     [MetaReservedMembers(18, 100)]
-    [MetaReservedMembers(13, 17)]
-    [MetaReservedMembers(1, 12)]
-    [MetaSerializable]
     public abstract class InAppPurchaseEvent : IMetaIntegrationConstructible<InAppPurchaseEvent>, IMetaIntegration<InAppPurchaseEvent>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         [MetaMember(1, (MetaMemberFlags)0)]

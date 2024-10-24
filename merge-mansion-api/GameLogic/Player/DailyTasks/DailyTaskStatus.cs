@@ -9,8 +9,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.DailyTasks
 {
-    [DefaultMember("Item")]
     [MetaSerializable]
+    [DefaultMember("Item")]
     [MetaBlockedMembers(new int[] { 1, 2, 3, 4, 5, 7, 9, 10, 13, 19 })]
     public class DailyTaskStatus
     {
@@ -20,8 +20,8 @@ namespace GameLogic.Player.DailyTasks
         [MetaMember(16, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int Points;
-        [MetaMember(17, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public int LastSeenPoints;
         [MetaMember(18, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]

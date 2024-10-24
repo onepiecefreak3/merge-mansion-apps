@@ -24,5 +24,7 @@ namespace GameLogic.DailyTasksV2
         public DailyTasksV2MergeChainSource()
         {
         }
+
+        public List<string> RequireOnlyIfHaveProducer { get; set; }
     }
 }

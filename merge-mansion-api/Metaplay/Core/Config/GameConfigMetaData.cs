@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Config
 {
-    [MetaBlockedMembers(new int[] { 100 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 100 })]
     public class GameConfigMetaData
     {
         [MetaMember(1, (MetaMemberFlags)0)]

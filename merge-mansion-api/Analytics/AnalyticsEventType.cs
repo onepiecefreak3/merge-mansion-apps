@@ -132,6 +132,9 @@ namespace Analytics
         DailyScoopTaskStatusChanged = 121,
         DailyScoopDayStarted = 122,
         ItemSinkTransform = 123,
-        UiInteraction = 124
+        UiInteraction = 124,
+        BoultonLeagueEventScoreChanged = 125,
+        AnalyticEventLeaderboardScoreAdded = 126,
+        CardCollectionChanged = 127
     }
 }

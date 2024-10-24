@@ -13,9 +13,9 @@ namespace Game.Logic
         public int AnsweredCount;
         [MetaMember(5, (MetaMemberFlags)0)]
         public int AbortedCount;
-        [ExcludeFromGdprExport]
-        [NoChecksum]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [NoChecksum]
+        [ExcludeFromGdprExport]
         public HashSet<SurveyStatus> SurveyStatus { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

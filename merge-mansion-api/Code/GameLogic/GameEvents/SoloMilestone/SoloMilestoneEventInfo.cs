@@ -10,7 +10,7 @@ namespace Code.GameLogic.GameEvents.SoloMilestone
 {
     [MetaActivableConfigData("SoloMilestoneEvent", false, true)]
     [MetaSerializable]
-    public class SoloMilestoneEventInfo : IMetaActivableConfigData<SoloMilestoneEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SoloMilestoneEventId>, IHasGameConfigKey<SoloMilestoneEventId>, IMetaActivableInfo<SoloMilestoneEventId>
+    public class SoloMilestoneEventInfo : IMetaActivableConfigData<SoloMilestoneEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SoloMilestoneEventId>, IHasGameConfigKey<SoloMilestoneEventId>, IMetaActivableInfo<SoloMilestoneEventId>, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public SoloMilestoneEventId ConfigKey { get; set; }
@@ -48,6 +48,17 @@ namespace Code.GameLogic.GameEvents.SoloMilestone
         }
 
         public SoloMilestoneEventInfo(SoloMilestoneEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, PlayerRequirement unlockRequirement, List<SoloMilestoneMilestonesId> milestones, bool tokenSpawnsEnabled, string theme)
+        {
+        }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public SoloMilestoneEventInfo(SoloMilestoneEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, PlayerRequirement unlockRequirement, List<SoloMilestoneMilestonesId> milestones, bool tokenSpawnsEnabled, string theme, int priority)
         {
         }
     }

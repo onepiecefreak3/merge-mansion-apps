@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
-    [MetaSerializable]
     [MetaAllowNoSerializedMembers]
+    [MetaSerializable]
     public abstract class PlayerPropertyId
     {
         public abstract Type PropertyType { get; }

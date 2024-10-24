@@ -25,6 +25,7 @@ namespace GameLogic
         MysteryMachineCoins = 12,
         SoloMilestoneBaseToken = 13,
         InfiniteEnergy = 14,
-        QuaternaryEnergy = 15
+        QuaternaryEnergy = 15,
+        CardCollectionStars = 16
     }
 }

@@ -16,12 +16,12 @@ namespace Analytics
         [Description("ID of the pet received")]
         [JsonProperty("pet_id")]
         public string PetId;
+        [Description("Number of pets received")]
         [JsonProperty("amount")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Number of pets received")]
         public int Amount;
-        [Description("Type of the reward received")]
         [JsonProperty("reward_type")]
+        [Description("Type of the reward received")]
         public sealed override string RewardType { get; }
         public override string EventDescription { get; }
 

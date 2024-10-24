@@ -29,5 +29,7 @@ namespace Code.GameLogic.GameEvents.SoloMilestone
         public SoloMilestoneEventInfoSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [MetaSerializable]
+    [LeaguesEnabledCondition]
     public struct DivisionEventParticipantInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

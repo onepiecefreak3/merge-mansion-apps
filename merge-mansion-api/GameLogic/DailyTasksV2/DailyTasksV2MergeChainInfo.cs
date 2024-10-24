@@ -5,6 +5,8 @@ using System;
 using Metaplay.Core.Math;
 using System.Collections.Generic;
 using GameLogic.Area;
+using Metaplay.Core;
+using GameLogic.Player.Items;
 
 namespace GameLogic.DailyTasksV2
 {
@@ -46,6 +48,13 @@ namespace GameLogic.DailyTasksV2
         }
 
         public DailyTasksV2MergeChainInfo(MergeChainId configKey, int? minLevel, int? maxLevel, bool canBeRequirement, bool canBeReward, F32 requirementMultiplier, F32 rewardMultiplier, bool rewardOnlyIfInHotspotRequirement, bool onlyPossibleRequirementsHighPriority, List<AreaId> rewardOnlyIfHasAtLeastOneVisibleHotspotInAreas)
+        {
+        }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public List<MetaRef<ItemDefinition>> RequireOnlyIfHaveProducer { get; set; }
+
+        public DailyTasksV2MergeChainInfo(MergeChainId configKey, int? minLevel, int? maxLevel, bool canBeRequirement, bool canBeReward, F32 requirementMultiplier, F32 rewardMultiplier, bool rewardOnlyIfInHotspotRequirement, bool onlyPossibleRequirementsHighPriority, List<AreaId> rewardOnlyIfHasAtLeastOneVisibleHotspotInAreas, List<MetaRef<ItemDefinition>> requireOnlyIfHaveProducer)
         {
         }
     }

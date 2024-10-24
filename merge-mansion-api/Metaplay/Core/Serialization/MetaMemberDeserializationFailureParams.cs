@@ -6,5 +6,6 @@ namespace Metaplay.Core.Serialization
     {
         public byte[] MemberPayload;
         public Exception Exception;
+        public MetaSerializerTypeRegistry TypeInfo;
     }
 }

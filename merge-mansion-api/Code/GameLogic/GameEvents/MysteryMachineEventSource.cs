@@ -34,5 +34,9 @@ namespace Code.GameLogic.GameEvents
         public MysteryMachineEventSource()
         {
         }
+
+        private MetaRef<MysteryMachineLeaderboardConfigInfo> LeaderboardConfig { get; set; }
+        private MetaRef<MysteryMachineScreenInfo> Screen { get; set; }
+        private int Priority { get; set; }
     }
 }

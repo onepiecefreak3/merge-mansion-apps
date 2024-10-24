@@ -4,8 +4,8 @@ using Metaplay.Core.Config;
 
 namespace Metaplay.Core.Schedule
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     [ParseAsDerivedType(typeof(MetaRecurringCalendarSchedule))]
     public abstract class MetaScheduleBase
     {

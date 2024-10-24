@@ -8,8 +8,8 @@ namespace Metaplay.Core.League
     [AnalyticsEvent(1301, null, 1, "A participant joined the division. Either assigned by the league manager, or by the participant themselves.", true, true, false)]
     public class DivisionEventParticipantJoined : DivisionEventBase
     {
-        [FirebaseAnalyticsIgnore]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public DivisionEventParticipantInfo ParticipantInfo { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

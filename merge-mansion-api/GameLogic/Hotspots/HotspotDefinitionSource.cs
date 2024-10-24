@@ -62,5 +62,8 @@ namespace GameLogic.Hotspots
 
         public CustomHotspotTableId CustomHotspotTableId { get; set; }
         public int SoloMilestoneHotspotValue { get; set; }
+        public MultistepGroupId MultistepGroupId { get; set; }
+        public int BoultonLeaguePoints { get; set; }
+        public bool DelayDebrisAnimation { get; set; }
     }
 }

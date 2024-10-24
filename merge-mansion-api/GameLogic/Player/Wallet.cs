@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 5, 10, 13 })]
+    [MetaSerializable]
     public class Wallet
     {
         private static long EnergyNormalMax;
@@ -115,5 +115,8 @@ namespace GameLogic.Player
 
         [IgnoreDataMember]
         public long[] InitialCurrenciesThisSession { get; set; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        public long CardCollectionStars { get; set; }
     }
 }

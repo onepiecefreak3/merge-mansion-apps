@@ -5,6 +5,7 @@ using GameLogic.Config;
 using Metaplay.Core;
 using Metaplay.Core.Schedule;
 using Metaplay.Core.Player;
+using System;
 
 namespace Code.GameLogic.GameEvents.DailyScoop
 {
@@ -26,5 +27,7 @@ namespace Code.GameLogic.GameEvents.DailyScoop
         public DailyScoopEventInfoSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

@@ -34,5 +34,7 @@ namespace GameLogic.MiniEvents
         public MiniEventConfigSource()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

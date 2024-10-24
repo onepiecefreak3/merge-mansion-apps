@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Metaplay.Core.Serialization
@@ -8,5 +8,8 @@ namespace Metaplay.Core.Serialization
         // Fields
         public Dictionary<Type, MetaSerializableType> Specs; // 0x0
         public uint FullTypeHash; // 0x8
+        public MetaSerializerTypeInfo()
+        {
+        }
     }
 }

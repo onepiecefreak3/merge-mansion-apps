@@ -4,11 +4,12 @@ using Newtonsoft.Json;
 using System.ComponentModel;
 using Metaplay.Core.Model;
 using GameLogic.StatsTracking;
+using System.Collections.Generic;
 
 namespace Analytics
 {
+    [MetaBlockedMembers(new int[] { 5, 6, 8, 10, 11, 14, 15, 19 })]
     [AnalyticsEvent(198, "Daily Scoop Task Progress", 1, null, true, true, false)]
-    [MetaBlockedMembers(new int[] { 14, 15 })]
     public class AnalyticsDailyScoopProgress : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -108,6 +109,17 @@ namespace Analytics
         public string SecondaryReward { get; set; }
 
         public AnalyticsDailyScoopProgress(string eventId, string weekId, string dayId, StatsObjectiveType objectiveType, int objectiveOrder, string objectiveCategory, string objectiveParameter, int objectiveRequirement, int objectiveProgressAmount, int objectiveProgressSaldo, int eventPointReceived, int eventPointSaldo, string previousMileStoneId, int nextMileStoneIndex, int lastMileStoneIndex, string dailyRewardId, string secondaryReward)
+        {
+        }
+
+        private static string Locked;
+        private static string Unlocked;
+        [MetaMember(20, (MetaMemberFlags)0)]
+        [JsonProperty("daily_challenge_event_state")]
+        [Description("The state of the daily challenge event")]
+        public string EventState { get; set; }
+
+        public AnalyticsDailyScoopProgress(string eventId, string weekId, string dayId, StatsObjectiveType objectiveType, int objectiveProgressAmount, int eventPointSaldo, string previousMileStoneId, int nextMileStoneIndex, int lastMileStoneIndex, string dailyRewardId, bool eventState, List<DailyScoopProgressAnalyticsData> objectivesData)
         {
         }
     }

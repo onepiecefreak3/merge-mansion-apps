@@ -66,6 +66,7 @@ namespace Metaplay.Core.Config
         protected GameConfigTopLevelDeduplicationStorage DeduplicationStorage { get; set; }
         protected GameConfigDeduplicationOwnership DeduplicationOwnership { get; set; }
         protected bool IsConstructingDeduplicationStorage { get; }
+        public int SpecializationSpecificDuplicationAmount { get; set; }
 
         ContentHash Metaplay.Core.Config.IGameConfig.ArchiveVersion => ArchiveVersion;
 

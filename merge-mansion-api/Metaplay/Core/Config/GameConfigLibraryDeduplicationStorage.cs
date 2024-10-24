@@ -24,5 +24,8 @@ namespace Metaplay.Core.Config
             {
             }
         }
+
+        public int NumSinglePatchDirectlyDuplicatedItems { get; }
+        public int NumSinglePatchIndirectlyDuplicatedItems { get; }
     }
 }

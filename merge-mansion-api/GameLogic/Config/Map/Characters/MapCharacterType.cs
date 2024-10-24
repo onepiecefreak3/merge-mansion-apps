@@ -31,6 +31,7 @@ namespace GameLogic.Config.Map.Characters
         Leonard = 23,
         SgtPepper = 24,
         Bella = 25,
-        Amy = 26
+        Amy = 26,
+        Arthur = 27
     }
 }

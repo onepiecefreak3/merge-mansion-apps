@@ -16,9 +16,10 @@ using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("MysteryMachineEvent", false, true)]
-    public class MysteryMachineEventInfo : IMetaActivableConfigData<MysteryMachineEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MysteryMachineEventId>, IHasGameConfigKey<MysteryMachineEventId>, IMetaActivableInfo<MysteryMachineEventId>, IBoardEventInfo
+    [MetaBlockedMembers(new int[] { 10, 11 })]
+    [MetaSerializable]
+    public class MysteryMachineEventInfo : IMetaActivableConfigData<MysteryMachineEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MysteryMachineEventId>, IHasGameConfigKey<MysteryMachineEventId>, IMetaActivableInfo<MysteryMachineEventId>, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public MysteryMachineEventId ConfigKey { get; set; }
@@ -46,12 +47,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(9, (MetaMemberFlags)0)]
         public PlayerRequirement UnlockRequirement { get; set; }
-
-        [MetaMember(10, (MetaMemberFlags)0)]
-        public List<MetaRef<EventLevelInfo>> LevelRefs { get; set; }
-
-        [MetaMember(11, (MetaMemberFlags)0)]
-        public List<MetaRef<EventLevelInfo>> RecurringLevelRefs { get; set; }
 
         [MetaMember(12, (MetaMemberFlags)0)]
         public OfferPlacementId BoardShopPlacementId { get; set; }
@@ -99,6 +94,23 @@ namespace Code.GameLogic.GameEvents
         }
 
         public MysteryMachineEventInfo(MysteryMachineEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, MysteryMachineId mysteryMachineId, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId enterBoardDialogue, StoryDefinitionId startMachineDialogue)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public MetaRef<MysteryMachineLeaderboardConfigInfo> LeaderboardConfigRef { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public MetaRef<MysteryMachineScreenInfo> ScreenRef { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public EventGroupId GroupId { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public int Priority { get; set; }
+        public string SharedEventId { get; }
+
+        public MysteryMachineEventInfo(MysteryMachineEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, MysteryMachineId mysteryMachineId, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId enterBoardDialogue, StoryDefinitionId startMachineDialogue, MetaRef<MysteryMachineLeaderboardConfigInfo> leaderboardConfigRef, MetaRef<MysteryMachineScreenInfo> screenRef, int priority)
         {
         }
     }

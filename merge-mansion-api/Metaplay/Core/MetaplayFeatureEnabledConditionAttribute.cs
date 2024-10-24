@@ -2,7 +2,7 @@ using System;
 
 namespace Metaplay.Core
 {
-    [AttributeUsage((AttributeTargets)1436)]
+    [AttributeUsage((AttributeTargets)1437)]
     public abstract class MetaplayFeatureEnabledConditionAttribute : Attribute
     {
         public abstract bool IsEnabled { get; }

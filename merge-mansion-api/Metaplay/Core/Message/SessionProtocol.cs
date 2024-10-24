@@ -405,8 +405,8 @@ namespace Metaplay.Core.Message
         {
         }
 
-        [MessageRoutingRuleProtocol]
         [MetaMessage(42, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionStartAbort : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]

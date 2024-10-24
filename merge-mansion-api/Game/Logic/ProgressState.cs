@@ -305,5 +305,9 @@ namespace Game.Logic
         [MetaMember(83, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         private Dictionary<int, int> itemWeightRecordsRodUsed { get; set; }
+
+        [MetaMember(84, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        private HashSet<TaskGroupId> completedTaskGroups { get; set; }
     }
 }

@@ -229,6 +229,10 @@ namespace GameLogic.Config.Map.Characters
         AreaMansionSpeakEasyCharacter = 7001,
         AreaMansionMusicianRoomFirstMapCharacterPosition = 7199,
         AreaMansionMusicianRoomEntryMapMaddie = 7200,
-        AreaMansionMusicianRoomCharacter = 7201
+        AreaMansionMusicianRoomCharacter = 7201,
+        AreaPetHomeMapBuddy = 5804,
+        AreaRanchStablesInteriorFirstMapCharacterPosition = 7399,
+        AreaRanchStablesInteriorEntryMapMaddie = 7400,
+        AreaRanchStablesInteriorCharacter = 7401
     }
 }

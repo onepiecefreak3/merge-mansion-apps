@@ -6,8 +6,8 @@ using Metaplay.Core.Json;
 
 namespace Metaplay.Core.EventLog
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializable]
+    [MetaAllowNoSerializedMembers]
     public abstract class EntityEventBase : AnalyticsEventBase
     {
         [JsonIgnore]

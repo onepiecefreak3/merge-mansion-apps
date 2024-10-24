@@ -3,6 +3,8 @@ using System;
 using Metaplay.Core;
 using System.Collections.Generic;
 using GameLogic.Player.Items;
+using GameLogic.DailyTasksV2;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.DailyTasksV2
 {
@@ -64,5 +66,9 @@ namespace GameLogic.Player.DailyTasksV2
         public DailyTasksV2Status()
         {
         }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public Dictionary<DailyTaskV2Id, DailyTaskV2StateCustomizationForBoultonLeague> BoultonLeagueTasksCustomizations { get; set; }
     }
 }

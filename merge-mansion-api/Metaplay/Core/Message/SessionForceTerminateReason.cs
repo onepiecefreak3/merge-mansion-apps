@@ -104,5 +104,13 @@ namespace Metaplay.Core.Message
             {
             }
         }
+
+        [MetaSerializableDerived(11)]
+        public class GameConfigUpdated : SessionForceTerminateReason
+        {
+            public GameConfigUpdated()
+            {
+            }
+        }
     }
 }

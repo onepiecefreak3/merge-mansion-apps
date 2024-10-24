@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     [AnalyticsEvent(1014, "In App Purchase Refused by Client", 1, "Client-side refusal in the IAP flow in the platform store. This can be either a store failure, or user cancellation. The event contents describe the error code of the refusal.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "InAppPurchase" })]
     public class PlayerEventInAppPurchaseClientRefused : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

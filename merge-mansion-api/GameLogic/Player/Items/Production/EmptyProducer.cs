@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Production
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializableDerived(10)]
+    [MetaAllowNoSerializedMembers]
     public class EmptyProducer : IItemSpawner, IItemProducer
     {
         [IgnoreDataMember]

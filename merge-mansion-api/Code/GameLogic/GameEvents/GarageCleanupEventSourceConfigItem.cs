@@ -35,5 +35,7 @@ namespace Code.GameLogic.GameEvents
         public GarageCleanupEventSourceConfigItem()
         {
         }
+
+        private int Priority { get; set; }
     }
 }

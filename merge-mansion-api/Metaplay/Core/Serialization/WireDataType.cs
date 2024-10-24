@@ -1,4 +1,4 @@
-﻿namespace Metaplay.Core.Serialization
+namespace Metaplay.Core.Serialization
 {
     public enum WireDataType
     {
