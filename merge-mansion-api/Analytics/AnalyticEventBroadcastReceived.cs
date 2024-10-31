@@ -6,8 +6,8 @@ using GameLogic.Mail;
 
 namespace Analytics
 {
-    [AnalyticsEvent(134, "Broadcast received", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [AnalyticsEvent(134, "Broadcast received", 1, null, false, true, false)]
     public class AnalyticEventBroadcastReceived : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

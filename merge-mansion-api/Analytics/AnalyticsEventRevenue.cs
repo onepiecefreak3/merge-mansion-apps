@@ -6,8 +6,8 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 2, 4 })]
     [AnalyticsEvent(119, "Revenue event", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 2, 4 })]
     public class AnalyticsEventRevenue : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

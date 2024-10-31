@@ -13,11 +13,11 @@ namespace Analytics
     public class AnalyticsPlayerCardPackRewardGained : AnalyticsPlayerRewardGained
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("card_pack_id")]
         [Description("ID of the card pack received")]
+        [JsonProperty("card_pack_id")]
         public string CardPackId;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("amount")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Number of card packs received")]
         public int Amount;
         [Description("Type of the reward received")]

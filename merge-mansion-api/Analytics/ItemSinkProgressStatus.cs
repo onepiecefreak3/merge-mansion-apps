@@ -9,8 +9,8 @@ namespace Analytics
     public class ItemSinkProgressStatus
     {
         [JsonProperty("current")]
-        [Description("How many items have been fed to the sink")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("How many items have been fed to the sink")]
         public int Current { get; set; }
 
         [Description("How many items the sink expects")]

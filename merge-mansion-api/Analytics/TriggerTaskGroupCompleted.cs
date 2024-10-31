@@ -11,8 +11,8 @@ namespace Analytics
     {
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [Description("Completed task group")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("taskgroup_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public TaskGroupId TaskGroupId { get; set; }
 
         private TriggerTaskGroupCompleted()

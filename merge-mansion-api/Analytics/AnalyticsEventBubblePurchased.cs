@@ -7,8 +7,8 @@ using Merge;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 3 })]
     [AnalyticsEvent(107, "Bubble purchased", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 3 })]
     public class AnalyticsEventBubblePurchased : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }

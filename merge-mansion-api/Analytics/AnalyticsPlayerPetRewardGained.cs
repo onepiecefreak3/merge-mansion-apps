@@ -12,13 +12,13 @@ namespace Analytics
     [AnalyticsEvent(178, "Player received a pet reward", 1, null, true, true, false)]
     public class AnalyticsPlayerPetRewardGained : AnalyticsPlayerRewardGained
     {
+        [JsonProperty("pet_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the pet received")]
-        [JsonProperty("pet_id")]
         public string PetId;
-        [Description("Number of pets received")]
         [JsonProperty("amount")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Number of pets received")]
         public int Amount;
         [JsonProperty("reward_type")]
         [Description("Type of the reward received")]

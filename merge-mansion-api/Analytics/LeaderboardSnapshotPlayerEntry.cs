@@ -5,8 +5,8 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class LeaderboardSnapshotPlayerEntry
     {
         [Description("Rank")]

@@ -6,8 +6,8 @@ using GameLogic;
 
 namespace Analytics
 {
-    [AnalyticsEvent(3045, "Shop item purchased", 1, null, false, false, true)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [AnalyticsEvent(3045, "Shop item purchased", 1, null, false, false, true)]
     public class TriggerEventShopItemPurchased : PlayerTriggerEvent
     {
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]

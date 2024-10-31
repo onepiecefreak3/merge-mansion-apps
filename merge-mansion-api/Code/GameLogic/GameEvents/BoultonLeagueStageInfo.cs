@@ -30,7 +30,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(7, (MetaMemberFlags)0)]
         public PlayerReward PromotionReward { get; set; }
-
         public BoultonLeagueStageId ConfigKey => StageId;
 
         public BoultonLeagueStageInfo()

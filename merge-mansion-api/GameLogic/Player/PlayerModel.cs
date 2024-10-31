@@ -52,9 +52,9 @@ namespace GameLogic.Player
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
+        [ServerOnly]
         [Transient]
         [MetaMember(211, (MetaMemberFlags)0)]
-        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;

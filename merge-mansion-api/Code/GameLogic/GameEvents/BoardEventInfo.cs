@@ -23,9 +23,9 @@ using GameLogic.Player;
 namespace Code.GameLogic.GameEvents
 {
     [DefaultMember("Item")]
+    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16, 33, 34, 45 })]
     [MetaActivableConfigData("BoardEvent", false, true)]
-    [MetaSerializable]
     public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

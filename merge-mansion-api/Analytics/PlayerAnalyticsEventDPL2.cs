@@ -23,9 +23,9 @@ namespace Analytics
         [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("context")]
         public AnalyticsContextBase Context;
+        [JsonProperty("payload")]
         [MetaMember(6, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
-        [JsonProperty("payload")]
         public AnalyticsEventBase Payload;
     }
 }

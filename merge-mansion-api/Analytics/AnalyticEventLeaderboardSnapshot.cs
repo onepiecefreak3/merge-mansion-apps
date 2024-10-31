@@ -9,8 +9,8 @@ using Code.GameLogic.GameEvents;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 6 })]
     [AnalyticsEvent(165, "Leaderboard snapshot", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticEventLeaderboardSnapshot : AnalyticsServersideDivisionEventBase
     {
         public override AnalyticsEventType EventType { get; }

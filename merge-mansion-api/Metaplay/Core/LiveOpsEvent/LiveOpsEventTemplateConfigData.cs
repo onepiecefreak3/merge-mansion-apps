@@ -12,7 +12,6 @@ namespace Metaplay.Core.LiveOpsEvent
 
         [MetaMember(2, (MetaMemberFlags)0)]
         public TContentClass Content { get; set; }
-
         public LiveOpsEventTemplateId ConfigKey => TemplateId;
 
         public LiveOpsEventContent ContentBase { get; }

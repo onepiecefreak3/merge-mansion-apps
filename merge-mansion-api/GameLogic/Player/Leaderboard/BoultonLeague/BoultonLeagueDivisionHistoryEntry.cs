@@ -21,8 +21,7 @@ namespace GameLogic.Player.Leaderboard.BoultonLeague
         [MetaMember(4, (MetaMemberFlags)0)]
         public List<BoultonLeagueDivisionParticipantSnapshot> LeaderboardEntries { get; set; }
 
-        public BoultonLeagueDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex, List<BoultonLeagueDivisionParticipantSnapshot> leaderboardEntries, int stageNumber)
-            : base(divisionId, divisionIndex, rewards)
+        public BoultonLeagueDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex, List<BoultonLeagueDivisionParticipantSnapshot> leaderboardEntries, int stageNumber) : base(divisionId, divisionIndex, rewards)
         {
         }
 

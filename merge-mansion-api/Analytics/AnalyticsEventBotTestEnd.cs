@@ -19,8 +19,8 @@ namespace Analytics
         [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("target_id")]
         public string TargetId;
-        [MetaMember(10, (MetaMemberFlags)0)]
         [JsonProperty("target_lvl")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public int TargetLvl;
         [JsonProperty("board_items")]
         [MetaMember(11, (MetaMemberFlags)0)]

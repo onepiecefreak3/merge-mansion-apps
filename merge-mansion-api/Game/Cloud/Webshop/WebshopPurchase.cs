@@ -13,8 +13,8 @@ namespace Game.Cloud.Webshop
         [ServerOnly]
         [MetaMember(2, (MetaMemberFlags)0)]
         public string OrderNumber;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaTime PurchaseTime;
         [ServerOnly]
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -24,11 +24,11 @@ namespace Game.Cloud.Webshop
         [MetaMember(6, (MetaMemberFlags)0)]
         [ServerOnly]
         public string RefundId;
-        [ServerOnly]
         [MetaMember(7, (MetaMemberFlags)0)]
-        public bool RefundProcessed;
         [ServerOnly]
+        public bool RefundProcessed;
         [MetaMember(8, (MetaMemberFlags)0)]
+        [ServerOnly]
         public string Currency;
         public WebshopPurchase()
         {

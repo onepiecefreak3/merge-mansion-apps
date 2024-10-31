@@ -11,8 +11,8 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 8, 9, 10 })]
     [AnalyticsEvent(138, "Board state snapshot", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 8, 9, 10 })]
     public class AnalyticEventBoardState : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }

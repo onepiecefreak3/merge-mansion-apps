@@ -29,7 +29,6 @@ namespace GameLogic.DailyTasksV2
 
         [MetaMember(7, (MetaMemberFlags)0)]
         public F32 EOCItemRequirementValueMultiplier { get; set; }
-
         public DailyTaskV2Id ConfigKey => TaskId;
 
         public DailyTaskV2BoultonLeagueInfo()

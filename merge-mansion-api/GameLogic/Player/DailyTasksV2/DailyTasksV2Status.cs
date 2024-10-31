@@ -11,8 +11,8 @@ namespace GameLogic.Player.DailyTasksV2
     [MetaSerializable]
     public class DailyTasksV2Status
     {
-        [ExcludeFromGdprExport]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string TasksSetId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

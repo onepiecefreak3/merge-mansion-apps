@@ -18,7 +18,6 @@ namespace Metaplay.Core
         private ulong _rawValue;
         [MetaMember(2, (MetaMemberFlags)0)]
         private ushort _rawKind;
-
         public EntityKind Kind => new EntityKind((int)(_rawValue >> _rawKind));
         public ulong Value => _rawValue & ValueMask;
         public bool IsValid => EntityKindRegistry.IsValid(Kind) && EntityKind.None != Kind;
@@ -82,7 +81,7 @@ namespace Metaplay.Core
             if (kind.Value < EntityKind.MaxValue)
             {
                 return new EntityId((ushort)kind.Value, value & ValueMask);
-                //throw new ArgumentException($"Invalid EntityId value {kind.Value}:{value}");
+            //throw new ArgumentException($"Invalid EntityId value {kind.Value}:{value}");
             }
 
             throw new ArgumentException($"Invalid EntityKind value {kind.Value}");
@@ -131,7 +130,7 @@ namespace Metaplay.Core
                 val /= NumValidIdCharacters;
             }
 
-            return new string(res);
+            return new string (res);
         }
 
         private static ulong ParseValue(string str)

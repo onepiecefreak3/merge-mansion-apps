@@ -11,8 +11,8 @@ namespace GameLogic.Player.Leaderboard
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string DisplayName;
-        [ServerOnly]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ServerOnly]
         public string AssociationId;
         private PlayerDivisionAvatar()
         {

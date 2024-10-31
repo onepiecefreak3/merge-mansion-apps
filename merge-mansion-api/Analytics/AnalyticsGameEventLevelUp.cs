@@ -14,16 +14,16 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the event")]
         public string EventId;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Claimed level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("claimed_level")]
         public int ClaimedLevel;
+        [Description("Was the level claimed automatically?")]
         [JsonProperty("auto_claim")]
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Was the level claimed automatically?")]
         public bool AutoClaim;
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("event_level_id")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Event level id")]
         public EventLevelId EventLevelId;
         public override AnalyticsEventType EventType { get; }
@@ -33,8 +33,8 @@ namespace Analytics
         {
         }
 
-        [Description("The amount of ResourceItems used until now in the whole event (SideBoardEvent only)")]
         [JsonProperty("resource_item_used", NullValueHandling = (NullValueHandling)1)]
+        [Description("The amount of ResourceItems used until now in the whole event (SideBoardEvent only)")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public int? ResourceItemUsed;
     }

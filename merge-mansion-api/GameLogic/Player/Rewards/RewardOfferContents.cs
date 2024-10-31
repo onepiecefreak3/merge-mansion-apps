@@ -8,8 +8,8 @@ using Metaplay.Core.Rewards;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(34)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class RewardOfferContents : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]
