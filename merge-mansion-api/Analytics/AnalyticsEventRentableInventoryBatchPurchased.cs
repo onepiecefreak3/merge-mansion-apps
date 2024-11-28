@@ -18,9 +18,9 @@ namespace Analytics
         [JsonProperty("batch_cost")]
         public long Cost { get; set; }
 
-        [Description("Batch currency")]
         [JsonProperty("batch_currency")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Batch currency")]
         public Currencies Currency { get; set; }
         public override string EventDescription { get; }
 

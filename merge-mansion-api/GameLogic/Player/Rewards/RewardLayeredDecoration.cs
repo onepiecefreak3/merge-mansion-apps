@@ -14,7 +14,7 @@ namespace GameLogic.Player.Rewards
         [MetaValidateRequired]
         private MetaRef<DecorationInfo> DecorationRef { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Progress { get; set; }
 
         [IgnoreDataMember]

@@ -9,22 +9,22 @@ namespace Metaplay.Core.Schedule
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaCalendarDateTime Start { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaCalendarPeriod Duration { get; set; }
 
-        [MetaMember(7)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public MetaCalendarPeriod EndingSoon { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaCalendarPeriod Preview { get; set; }
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaCalendarPeriod Review { get; set; }
 
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public MetaCalendarPeriod? Recurrence { get; set; }
 
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int? NumRepeats { get; set; }
 
         private MetaRecurringCalendarSchedule()

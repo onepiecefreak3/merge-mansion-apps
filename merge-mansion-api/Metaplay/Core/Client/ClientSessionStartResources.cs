@@ -41,7 +41,7 @@ namespace Metaplay.Core.Client
                 {
                     foreach (var entityState in sessionStartSuccess.EntityStates)
                     {
-                        if (configArchive.Key != entityState.ContextData.ClientSlot)
+                        if (configArchive.Key != entityState.ClientData.ClientSlot)
                             continue;
 
                         expAssignment = entityState.State.TryGetNonEmptyExperimentAssignment();
@@ -50,12 +50,12 @@ namespace Metaplay.Core.Client
                 }
                 else
                 {
-                    if (sessionStartSuccess.ActiveExperiments != null)
-                    {
-                        var assignments = sessionStartSuccess.ActiveExperiments.ToDictionary(x => x.ExperimentId, y => y.VariantId);
-                        if (assignments.Count != 0)
-                            expAssignment = assignments;
-                    }
+                    //if (sessionStartSuccess.ActiveExperiments != null)
+                    //{
+                    //    var assignments = sessionStartSuccess.ActiveExperiments.ToDictionary(x => x.ExperimentId, y => y.VariantId);
+                    //    if (assignments.Count != 0)
+                    //        expAssignment = assignments;
+                    //}
                 }
 
                 // Z346

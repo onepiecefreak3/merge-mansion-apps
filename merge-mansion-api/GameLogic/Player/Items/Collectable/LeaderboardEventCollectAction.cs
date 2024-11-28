@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Collectable
         [MetaMember(1, (MetaMemberFlags)0)]
         private MetaRef<LeaderboardEventInfo> LeaderboardEventRef { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Progress { get; set; }
         public LeaderboardEventInfo LeaderboardEvent { get; }
 

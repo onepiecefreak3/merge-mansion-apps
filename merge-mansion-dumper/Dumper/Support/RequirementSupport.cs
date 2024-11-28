@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GameLogic.Config.Costs;
+using GameLogic.Player.Items;
 using GameLogic.Player.Requirements;
 using merge_mansion_dumper.Models.Area;
 using Serilog;
@@ -16,46 +18,59 @@ namespace merge_mansion_dumper.Dumper.Support
 
             foreach (var require in requirements)
             {
-                var requireInfo = GetRequirement(require, log);
+                var requireInfos = GetRequirement(require, log);
+                foreach (var requireInfo in requireInfos)
+                {
+                    if (!res.ContainsKey(requireInfo.Key))
+                        res[requireInfo.Key] = new List<RequireModel>();
 
-                if (!res.ContainsKey(requireInfo.Key))
-                    res[requireInfo.Key] = new List<RequireModel>();
-                res[requireInfo.Key].Add(requireInfo.Value);
+                    res[requireInfo.Key].Add(requireInfo.Value);
+                }
             }
 
             return res.Count <= 0 ? null : res;
         }
 
-        public static KeyValuePair<RequirementType, RequireModel> GetRequirement(PlayerRequirement playerReq, ILogger log = null)
+        public static IList<KeyValuePair<RequirementType, RequireModel>> GetRequirement(PlayerRequirement playerReq, ILogger log = null)
         {
             switch (playerReq)
             {
                 case PlayerLevelRequirement plr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.PlayerLevel,
-                        new RequireModel { Value = plr.Min.GetValueOrDefault(0).ToString() });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.PlayerLevel, new RequireModel { Value = plr.Min.GetValueOrDefault(0).ToString() })
+                    };
 
                 case AreaCompletedRequirement acr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.AreaUnlocked,
-                        new RequireModel { Value = acr.AreaRef.Ref.AreaId.Value });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.AreaUnlocked, new RequireModel { Value = acr.AreaRef.Ref.AreaId.Value })
+                    };
 
                 case PlayerSeenItemRequirement psir:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.ItemSeen,
-                        new RequireModel { Value = psir.ItemRef.Ref.ConfigKey.ToString() });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.ItemSeen, new RequireModel { Value = psir.ItemRef.Ref.ConfigKey.ToString() })
+                    };
 
                 case HotspotCompletedRequirement hcr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.HotspotUnlocked,
-                        new RequireModel { Value = hcr.GetRequiredHotspot().Ref.ConfigKey.ToString() });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.HotspotUnlocked, new RequireModel { Value = hcr.GetRequiredHotspot().ConfigKey.ToString() })
+                    };
 
                 case PlayerItemRequirement pir:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.ItemAcquired,
-                        new RequireModel { Value = pir.Item.ConfigKey.ToString(), Amount = pir.Requirement });
+                    return pir.Items.Select(i => new KeyValuePair<RequirementType, RequireModel>(RequirementType.ItemAcquired, 
+                        new RequireModel { Value = i.ToString(), Amount = pir.Requirement })).ToList();
 
                 case CostRequirement cr:
                     switch (cr.RequiredCost)
                     {
                         case CurrencyCost cc:
-                            return new KeyValuePair<RequirementType, RequireModel>(RequirementType.Coins,
-                                new RequireModel { Amount = cc.CurrencyAmount });
+                            return new List<KeyValuePair<RequirementType, RequireModel>>
+                            {
+                                new(RequirementType.Coins, new RequireModel { Amount = cc.CurrencyAmount })
+                            };
 
                         default:
                             log?.Error("Unknown cost requirement type {0}.", cr.RequiredCost.GetType());
@@ -63,16 +78,22 @@ namespace merge_mansion_dumper.Dumper.Support
                     }
 
                 case PlayerCurrentTimeRequirement pctr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.Time,
-                        new RequireModel { Value = $"{pctr.StartInclusive}{(pctr.EndExclusive.HasValue ? ";" + pctr.EndExclusive : "")}" });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.Time, new RequireModel { Value = $"{pctr.StartInclusive}{(pctr.EndExclusive.HasValue ? ";" + pctr.EndExclusive : "")}" })
+                    };
 
                 case SessionCountRequirement scr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.SessionCount,
-                        new RequireModel { Value = $"{scr.Min}{(scr.Max.HasValue ? "-" + scr.Max : "")}" });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.SessionCount, new RequireModel { Value = $"{scr.Min}{(scr.Max.HasValue ? "-" + scr.Max : "")}" })
+                    };
 
                 case PlayerInitialClientVersionRequirement picvr:
-                    return new KeyValuePair<RequirementType, RequireModel>(RequirementType.ClientVersion,
-                        new RequireModel { Value = $"{picvr.Min}-{picvr.Max}" });
+                    return new List<KeyValuePair<RequirementType, RequireModel>>
+                    {
+                        new(RequirementType.ClientVersion, new RequireModel { Value = $"{picvr.Min}-{picvr.Max}" })
+                    };
 
                 default:
                     log?.Error("Unknown requirement type {0}.", playerReq.GetType());

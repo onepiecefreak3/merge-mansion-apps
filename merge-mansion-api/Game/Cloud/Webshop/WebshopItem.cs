@@ -7,8 +7,8 @@ using Metaplay.Core.InAppPurchase;
 
 namespace Game.Cloud.Webshop
 {
-    [MetaReservedMembers(100, 110)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 110)]
     public abstract class WebshopItem
     {
         [MetaMember(100, (MetaMemberFlags)0)]
@@ -21,16 +21,16 @@ namespace Game.Cloud.Webshop
         [ServerOnly]
         public int ReferencePrice { get; set; }
 
-        [MetaMember(103, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(103, (MetaMemberFlags)0)]
         public string ReferenceCurrency { get; set; }
 
         [ServerOnly]
         [MetaMember(104, (MetaMemberFlags)0)]
         public MetaTime? ConsumeTime { get; set; }
 
-        [ServerOnly]
         [MetaMember(105, (MetaMemberFlags)0)]
+        [ServerOnly]
         public int Price { get; set; }
 
         [MetaMember(106, (MetaMemberFlags)0)]

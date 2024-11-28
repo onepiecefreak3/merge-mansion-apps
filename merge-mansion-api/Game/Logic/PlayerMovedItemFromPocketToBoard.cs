@@ -3,11 +3,12 @@ using Metaplay.Core.Player;
 using Metaplay.Core.Model;
 using System;
 using Merge;
+using Analytics;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(11, "Item moved from pocket to board", 1, null, true, false, false)]
-    public class PlayerMovedItemFromPocketToBoard : PlayerEventBase
+    [AnalyticsEvent(11, "Item moved from pocket to board", 1, null, true, true, false)]
+    public class PlayerMovedItemFromPocketToBoard : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public int Item { get; set; }
@@ -21,6 +22,15 @@ namespace Game.Logic
         }
 
         public PlayerMovedItemFromPocketToBoard(int item, MergeBoardId boardId)
+        {
+        }
+
+        public override AnalyticsEventType EventType { get; }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public string ItemName { get; set; }
+
+        public PlayerMovedItemFromPocketToBoard(int item, MergeBoardId boardId, string itemName)
         {
         }
     }

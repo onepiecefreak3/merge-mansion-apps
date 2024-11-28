@@ -56,6 +56,7 @@ namespace GameLogic
         CocoBabies = 44,
         Bella = 45,
         Ignatius = 46,
-        Ghost = 47
+        Ghost = 47,
+        MysteryMachine = 48
     }
 }

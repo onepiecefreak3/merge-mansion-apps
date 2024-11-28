@@ -3,7 +3,6 @@ using System.Buffers.Binary;
 using System.IO;
 using System.Text;
 using Metaplay.Core.Math;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.IO
 {
@@ -139,9 +138,9 @@ namespace Metaplay.Core.IO
             return (ulong)_bReader.Read7BitEncodedInt64();
         }
 
-        public UInt128 ReadVarUInt128()
+        public MetaUInt128 ReadVarUInt128()
         {
-            var res = UInt128.Zero;
+            var res = MetaUInt128.Zero;
 
             var shift = 0;
             do
@@ -149,11 +148,11 @@ namespace Metaplay.Core.IO
                 var byteValue = _bReader.ReadByte();
                 if (byteValue >> 7 == 0)
                 {
-                    var value1 = UInt128.FromUInt(byteValue) << shift;
+                    var value1 = MetaUInt128.FromUInt(byteValue) << shift;
                     return res | value1;
                 }
 
-                var value = UInt128.FromUInt((uint)(byteValue & 0x7F)) << shift;
+                var value = MetaUInt128.FromUInt((uint)(byteValue & 0x7F)) << shift;
                 shift += 7;
 
                 res |= value;
@@ -209,9 +208,9 @@ namespace Metaplay.Core.IO
             return BinaryPrimitives.ReadUInt64BigEndian(buffer);
         }
         
-        public UInt128 ReadUInt128()
+        public MetaUInt128 ReadUInt128()
         {
-            return new UInt128(ReadUInt64(), ReadUInt64());
+            return new MetaUInt128(ReadUInt64(), ReadUInt64());
         }
         
         public float ReadFloat()

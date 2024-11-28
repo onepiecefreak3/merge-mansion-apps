@@ -24,9 +24,6 @@ namespace GameLogic.Player.DynamicEvents
         [MetaMember(4, (MetaMemberFlags)0)]
         public EventTaskInfo originalEventTaskInfo { get; set; }
 
-        [IgnoreDataMember]
-        public IEnumerable<ValueTuple<IEnumerable<ItemDefinition>, int>> RequiredItems { get; }
-
         private DynamicEventTaskState()
         {
         }

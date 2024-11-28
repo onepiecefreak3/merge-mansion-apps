@@ -12,8 +12,8 @@ namespace Analytics
         public sealed override AnalyticsEventType EventType { get; }
 
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Item that has been merge")]
         [JsonProperty("item_name")]
+        [Description("Item that has been merge")]
         public string MergedItem { get; set; }
         public override string EventDescription { get; }
 
@@ -25,18 +25,18 @@ namespace Analytics
         {
         }
 
-        [Description("Merged item level")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Merged item level")]
         [JsonProperty("item_level")]
         public int MergedItemLevel { get; set; }
 
-        [Description("Merge chain total length of the merged item")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_total_length")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Merge chain total length of the merged item")]
         public int MergedItemMergeChainTotalLength { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_unlocked_length")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Merge chain unlocked length of the merged item")]
         public int MergedItemMergeChainUnlockedLength { get; set; }
 

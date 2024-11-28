@@ -11,9 +11,9 @@ namespace GameLogic.Player.Requirements
     public class ItemNeededAndConsumeRequirement : PlayerRequirement
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        private List<ItemTypeConstant> ItemTypes { get; set; }
+        private List<int> ItemTypes { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<MetaRef<ItemDefinition>> ItemRefs { get; set; }
         public ItemDefinition Item { get; }
 

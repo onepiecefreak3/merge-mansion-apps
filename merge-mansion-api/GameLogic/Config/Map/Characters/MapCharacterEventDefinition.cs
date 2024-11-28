@@ -8,29 +8,29 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Config.Map.Characters
 {
-    [MetaBlockedMembers(new int[] { 2, 3 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 2, 3 })]
     public class MapCharacterEventDefinition : IGameConfigData<MapCharacterEventId>, IGameConfigData, IHasGameConfigKey<MapCharacterEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private MapCharacterEventId MapCharacterEventId { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MapCharacterType CharacterType { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public MapCharacterDirection CharacterAppearDirection { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public MapCharacterDirection CharacterActDirection { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public MapCharacterTransitionType CharacterAppearType { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public int Priority { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public MapCharacterPositionId CharacterPositionId { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]

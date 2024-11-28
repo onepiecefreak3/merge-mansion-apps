@@ -21,8 +21,8 @@ using GameLogic.Hotspots.CardStack;
 
 namespace Game.Logic
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1, 10, 11, 15, 16, 20, 21, 23, 28, 35, 36, 37, 38, 39, 41, 44, 62 })]
+    [MetaSerializable]
     public class ProgressState
     {
         public Action OnUndoSellItemCleared;
@@ -42,12 +42,12 @@ namespace Game.Logic
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<int> legacyEventGroupsCompleted { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<HotspotId> visibleHotspots { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<HotspotId> completedHotspots { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -74,20 +74,20 @@ namespace Game.Logic
         private int currentEventBoardAdventureStep { get; set; }
 
         [MetaMember(14, (MetaMemberFlags)0)]
-        [NoChecksum]
         [ExcludeFromGdprExport]
+        [NoChecksum]
         private CalendarBoardEventStatus currentEventBoardStatus { get; set; }
 
-        [MetaMember(17, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(17, (MetaMemberFlags)0)]
         private MergeItem undoItemSellItem { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(18, (MetaMemberFlags)0)]
         private int undoItemSellCoordinateX { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(19, (MetaMemberFlags)0)]
         private int undoItemSellCoordinateY { get; set; }
 
         [MetaMember(22, (MetaMemberFlags)0)]
@@ -117,48 +117,48 @@ namespace Game.Logic
         [MetaMember(30, (MetaMemberFlags)0)]
         private Dictionary<MergeBoardId, long> nextPossibleEventReplayDay2 { get; set; }
 
-        [MetaMember(31, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(31, (MetaMemberFlags)0)]
         private Dictionary<MergeBoardId, int> eventProgressValues2 { get; set; }
 
-        [MetaMember(32, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(32, (MetaMemberFlags)0)]
         private Dictionary<MergeBoardId, int> eventStartedTimes2 { get; set; }
 
-        [MetaMember(33, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(33, (MetaMemberFlags)0)]
         private HashSet<string> eventsStartedAtLeastOnce { get; set; }
 
         [MetaMember(34, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         private Dictionary<string, string> storedUnityAnimationStates { get; set; }
 
-        [MetaMember(42, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(42, (MetaMemberFlags)0)]
         private HashSet<int> claimedDiscoveryRewards { get; set; }
 
-        [MetaMember(43, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(43, (MetaMemberFlags)0)]
         private HashSet<MergeChainId> claimedDiscoveryCompletionRewards { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(45, (MetaMemberFlags)0)]
         private HashSet<AreaId> completedAreas { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(46, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<MergeRewardId> CollectedMergeRewards { get; set; }
 
-        [MetaMember(47, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(47, (MetaMemberFlags)0)]
         private HashSet<AreaId> notedTeasedAreas { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(48, (MetaMemberFlags)0)]
         private HashSet<EventOfferSetId> claimedEventOfferSets { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(49, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<DirectorGroupId> eventGroupsCompleted { get; set; }
 
         [MetaMember(50, (MetaMemberFlags)0)]
@@ -169,16 +169,16 @@ namespace Game.Logic
         [MetaMember(51, (MetaMemberFlags)0)]
         private Dictionary<MergeChainId, int> mergeChainLevels { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(52, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<DialogCharacterType> discoveredCharacterTypes { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(53, (MetaMemberFlags)0)]
         private Dictionary<LayeredDecorationSetId, int> layeredDecorationProgress { get; set; }
 
-        [MetaMember(54, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(54, (MetaMemberFlags)0)]
         private Dictionary<string, DecorationId> visibleEventDecorations { get; set; }
 
         [MetaMember(55, (MetaMemberFlags)0)]
@@ -201,8 +201,8 @@ namespace Game.Logic
         [ExcludeFromGdprExport]
         private HashSet<int> photoTakenItems { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(58, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private Dictionary<int, int> itemCaughtCount { get; set; }
 
         public ItemUnlockedEvent ItemUnlocked;
@@ -214,37 +214,38 @@ namespace Game.Logic
         [MetaMember(60, (MetaMemberFlags)0)]
         public Dictionary<int, HashSet<int>> ClaimedWeightStarRewards { get; set; }
 
-        [MetaMember(61, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(61, (MetaMemberFlags)0)]
         private HashSet<SeasonId> seasonsDiscovered { get; set; }
 
         [IgnoreDataMember]
         public IEnumerable<SeasonId> SeasonsDiscovered { get; }
 
+        [ExcludeFromGdprExport]
         [MetaMember(63, (MetaMemberFlags)0)]
         private Dictionary<HotspotId, int> completedRepeatableTasks { get; set; }
 
-        [MetaMember(64, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(64, (MetaMemberFlags)0)]
         public bool DidClaimFreeGems { get; set; }
 
         [MetaMember(65, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         private Dictionary<HotspotId, MetaTime> visibleHotspotsWithTimestamps { get; set; }
 
-        [MetaMember(66, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(66, (MetaMemberFlags)0)]
         public bool DidFlashSellTutorialFinished { get; set; }
 
         [IgnoreDataMember]
         public MetaTime LastModificationTime { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(67, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private HashSet<PetId> Pets { get; set; }
 
-        [MetaMember(68, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(68, (MetaMemberFlags)0)]
         private PetId ActivePet { get; set; }
 
         public Dictionary<ItemDefinition, int> DebugGeneratedDynamicTasksPool;
@@ -254,8 +255,8 @@ namespace Game.Logic
         [MetaMember(70, (MetaMemberFlags)0)]
         public Dictionary<EventTaskId, List<PlayerReward>> DynamicTaskRewards { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(71, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public Dictionary<SideBoardEventId, SideBoardEventProgressState> SideBoardEventProgressStateBySideBoardEventId { get; set; }
 
         [MetaMember(72, (MetaMemberFlags)0)]
@@ -265,29 +266,29 @@ namespace Game.Logic
         [MetaMember(73, (MetaMemberFlags)0)]
         public Dictionary<EventTaskId, List<DebugItemData>> DynamicTasksPayload { get; set; }
 
-        [MetaMember(74, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(74, (MetaMemberFlags)0)]
         private Dictionary<HotspotId, CardStack> visibleCardStacks { get; set; }
 
-        [MetaMember(75, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(75, (MetaMemberFlags)0)]
         public AdsData adRewardToClaim { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(76, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         private Dictionary<HotspotId, int> hotspotAppearActionCount { get; set; }
 
-        [MetaMember(77, (MetaMemberFlags)0)]
-        [ExcludeFromGdprExport]
         [ServerOnly]
+        [ExcludeFromGdprExport]
+        [MetaMember(77, (MetaMemberFlags)0)]
         private MetaTime? latestCompletedHotspotTime { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(78, (MetaMemberFlags)0)]
         private Dictionary<int, F32> gemWeightRecords { get; set; }
 
-        [MetaMember(79, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(79, (MetaMemberFlags)0)]
         private Dictionary<int, int> gemFoundCount { get; set; }
 
         [ExcludeFromGdprExport]
@@ -306,8 +307,16 @@ namespace Game.Logic
         [ExcludeFromGdprExport]
         private Dictionary<int, int> itemWeightRecordsRodUsed { get; set; }
 
-        [MetaMember(84, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(84, (MetaMemberFlags)0)]
         private HashSet<TaskGroupId> completedTaskGroups { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(85, (MetaMemberFlags)0)]
+        private HashSet<int> completedPlayerSteps { get; set; }
+
+        [ExcludeFromGdprExport]
+        [MetaMember(86, (MetaMemberFlags)0)]
+        private Dictionary<HotspotId, List<ValueTuple<int, int>>> visibleStackMiniGamePositions { get; set; }
     }
 }

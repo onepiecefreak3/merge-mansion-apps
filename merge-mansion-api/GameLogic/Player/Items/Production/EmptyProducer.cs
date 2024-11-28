@@ -13,7 +13,7 @@ namespace GameLogic.Player.Items.Production
     public class EmptyProducer : IItemSpawner, IItemProducer
     {
         [IgnoreDataMember]
-        public IEnumerable<(ItemDefinition, int)> Odds => Array.Empty<(ItemDefinition, int)>();
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => Array.Empty<(ItemDefinition, int)>();
         public int SpawnQuantity => 0;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

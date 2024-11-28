@@ -10,7 +10,7 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventPerkId Id { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public ProgressionEventPerk Perk { get; set; }
         public ProgressionEventPerkId ConfigKey => Id;
 

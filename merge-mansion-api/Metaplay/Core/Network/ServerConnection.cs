@@ -161,7 +161,7 @@ namespace Metaplay.Core.Network
             EnqueueInfo(new SessionStartRequested());
 
             _currentSessionStartQueryId++;
-            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
+            var req = new SessionProtocol.SessionStartRequest(_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus);
 
             _transport.EnqueueSendMessage(req);
         }
@@ -880,7 +880,7 @@ namespace Metaplay.Core.Network
                 EnqueueInfo(new SessionStartRequested());
 
                 var sessionReq = _currentSession == null ?
-                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, false, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
+                    (MetaMessage)new SessionProtocol.SessionStartRequest(++_currentSessionStartQueryId, _guidService.TryGetDeviceGuid(), _config.DeviceInfo, PlayerTimeZoneInfo.CreateForCurrentDevice(), _resourceProposal, _config.SessionStartGamePayload, CompressUtil.GetSupportedDecompressionAlgorithms(), _clientAppPauseStatus) :
                     new SessionProtocol.SessionResumeRequest(SessionResumptionInfo.FromParticipantState(_currentSession.SessionParticipant));
 
                 _transport.EnqueueSendMessage(sessionReq);

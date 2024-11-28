@@ -15,19 +15,19 @@ namespace GameLogic.Player.Items.Spawning
         [MetaMember(1, (MetaMemberFlags)0)]
         public IItemSpawner Spawn { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public IPlacement Placement { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public ISpawnCycle SpawnCycle { get; set; }
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int StorageMax { get; set; }
 
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public IItemProducer DecayProducer { get; set; }
 
-        [MetaMember(7)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public ItemVisibility SpawnVisibility { get; set; }
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

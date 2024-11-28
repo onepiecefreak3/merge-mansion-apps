@@ -7,10 +7,11 @@ namespace Metaplay.Core.Config
     public class GameConfigBuildReport
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        public GameConfigBuildMessageLevel HighestMessageLevel { get; set; }
+        public GameConfigLogLevel HighestMessageLevel { get; set; }
 
+        [MaxCollectionSize(2147483647)]
         [MetaMember(2, (MetaMemberFlags)0)]
-        public List<GameConfigBuildMessage> ValidationMessages { get; set; }
+        public GameConfigValidationMessage[] ValidationMessages { get; set; }
 
         public GameConfigBuildReport(List<GameConfigValidationResult> validationResults)
         {
@@ -20,8 +21,8 @@ namespace Metaplay.Core.Config
         {
         }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [MaxCollectionSize(2147483647)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public GameConfigBuildMessage[] BuildMessages { get; set; }
 
         public GameConfigBuildReport(IEnumerable<GameConfigBuildMessage> buildMessages, List<GameConfigValidationResult> validationResults)

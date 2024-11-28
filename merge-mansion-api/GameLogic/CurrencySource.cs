@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum CurrencySource
     {
         Unknown = 0,
@@ -74,6 +74,8 @@ namespace GameLogic
         EventFallbackReward = 65,
         CardCollectionEvidenceBoxPurchase = 66,
         CardCollectionCraftCard = 67,
-        FromChest = 68
+        FromChest = 68,
+        SoloMilestoneEventDailyTaskV2Reward = 69,
+        DifficultHotspotCompleted = 70
     }
 }

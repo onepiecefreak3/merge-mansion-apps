@@ -22,8 +22,8 @@ namespace GameLogic
         [MetaMember(1, (MetaMemberFlags)0)]
         public string adsProviderIds { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public bool canBeClaimed { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -42,8 +42,8 @@ namespace GameLogic
         [ExcludeFromGdprExport]
         public OfferPlacementId offerPlacementId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public Coordinate itemCoordinates { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]

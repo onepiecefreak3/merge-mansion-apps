@@ -235,14 +235,14 @@ namespace Metaplay.Unity
             {
                 ActiveExperiments.Clear();
 
-                if (sessionStart.ActiveExperiments != null)
-                {
-                    foreach (var activeExp in sessionStart.ActiveExperiments)
-                    {
-                        var memStatus = ExperimentMembershipStatus.FromSessionInfo(activeExp);
-                        ActiveExperiments.Add(activeExp.ExperimentId, memStatus);
-                    }
-                }
+                //if (sessionStart.ActiveExperiments != null)
+                //{
+                //    foreach (var activeExp in sessionStart.ActiveExperiments)
+                //    {
+                //        var memStatus = ExperimentMembershipStatus.FromSessionInfo(activeExp);
+                //        ActiveExperiments.Add(activeExp.ExperimentId, memStatus);
+                //    }
+                //}
 
                 MetaplayConfigManager.OnSessionStarted();
                 //SocialAuthentication.OnSessionStarted();

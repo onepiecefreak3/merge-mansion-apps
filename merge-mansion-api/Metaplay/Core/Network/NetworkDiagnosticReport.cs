@@ -52,7 +52,7 @@ namespace Metaplay.Core.Network
         [MetaMember(12, (MetaMemberFlags)0)]
         public SocketProbeResult AppleComIPv6 { get; set; }
 
-        [MetaMember(102, (MetaMemberFlags)0)]
-        public SocketProbeResult MetacoreGlobalAcceleratorTls { get; set; }
+        [MetaMember(103, (MetaMemberFlags)0)]
+        public HttpRequestProbeResult MetacoreGlobalAcceleratorTls { get; set; }
     }
 }

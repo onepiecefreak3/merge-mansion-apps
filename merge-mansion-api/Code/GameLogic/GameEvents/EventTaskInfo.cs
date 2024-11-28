@@ -19,30 +19,27 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventTaskId EventTaskId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public List<PlayerItemRequirement> Requirements { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public List<MetaRef<EventTaskInfo>> UnlockTaskRefs { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string TaskTitleLocId { get; set; }
         public EventTaskId ConfigKey => EventTaskId;
 
         [IgnoreDataMember]
         public IEnumerable<EventTaskInfo> UnlockTasks { get; }
-
-        [IgnoreDataMember]
-        public IEnumerable<ValueTuple<IEnumerable<ItemDefinition>, int>> RequiredItems { get; }
 
         public EventTaskInfo()
         {

@@ -7,8 +7,6 @@ namespace Metaplay.Core
     [MetaSerializable]
     public struct MetaTime
     {
-        // 0x0
-        public static MetaDuration DebugTimeOffset = MetaDuration.Zero;
         // 0x8
         public static readonly MetaTime Epoch = default;
         // 0x10
@@ -25,8 +23,7 @@ namespace Metaplay.Core
             "H:m",
             "H:m:s.FFF"
         };
-        // 0x0
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public long MillisecondsSinceEpoch { get; set; }
         public static MetaTime Now => FromDateTime(DateTime.UtcNow);
 
@@ -134,5 +131,8 @@ namespace Metaplay.Core
                 throw new ArgumentException();
             return MillisecondsSinceEpoch.CompareTo(v.MillisecondsSinceEpoch);
         }
+
+        private static long s_debugTimeOffsetMilliseconds;
+        public static MetaDuration DebugTimeOffset { get; set; }
     }
 }

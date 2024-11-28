@@ -4,8 +4,8 @@ using Metaplay.Core.Forms;
 
 namespace Metaplay.Core.Config
 {
-    [MetaReservedMembers(101, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(101, 200)]
     public abstract class GameConfigBuildParameters : IMetaIntegration<GameConfigBuildParameters>, IMetaIntegration, IGameDataBuildParameters
     {
         public abstract bool IsIncremental { get; }
@@ -14,10 +14,10 @@ namespace Metaplay.Core.Config
         {
         }
 
+        [MetaValidateRequired]
+        [MetaMember(101, (MetaMemberFlags)0)]
         [MetaFormExcludeDerivedType(new string[] { "Game.Cloud.Localization.GridlyBuildSource" })]
         [MetaFormLayoutOrderHint(-1)]
-        [MetaMember(101, (MetaMemberFlags)0)]
-        [MetaValidateRequired]
         public GameConfigBuildSource DefaultSource;
     }
 }

@@ -17,17 +17,10 @@ namespace Metaplay.Core.Player
 {
     public interface IPlayerModelBase : IModel<IPlayerModelBase>, IModel, ISchemaMigratable, IMetaIntegrationConstructible<IPlayerModelBase>, IMetaIntegration<IPlayerModelBase>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
-        // STUB
-        // RVA: -1 Offset: -1 Slot: 9
-        // RVA: -1 Offset: -1 Slot: 10
         ISharedGameConfig GameConfig { get; set; }
 
-        // RVA: -1 Offset: -1 Slot: 34
-        // RVA: -1 Offset: -1 Slot: 35
         LanguageId Language { get; set; }
 
-        // RVA: -1 Offset: -1 Slot: 36
-        // RVA: -1 Offset: -1 Slot: 37
         LanguageSelectionSource LanguageSelectionSource { get; set; }
 
         LogChannel Log { get; set; }
@@ -50,7 +43,7 @@ namespace Metaplay.Core.Player
 
         MetaTime TimeAtFirstTick { get; }
 
-        int CurrentTick { get; }
+        long CurrentTick { get; }
 
         int TicksPerSecond { get; }
 

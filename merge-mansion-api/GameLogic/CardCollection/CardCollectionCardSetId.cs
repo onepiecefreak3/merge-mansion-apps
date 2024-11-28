@@ -9,5 +9,7 @@ namespace GameLogic.CardCollection
         public CardCollectionCardSetId()
         {
         }
+
+        public static CardCollectionCardSetId None;
     }
 }

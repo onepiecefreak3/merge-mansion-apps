@@ -34,8 +34,13 @@ namespace Metaplay.Core.Math
             return new F64((long)(value * 4294967296)); // Shift left by 32
         }
 
+        [IgnoreDataMember]
         public F32 F32 => new((int)((Raw >> 16) & 0xFFFFFFFF));
+
+        [IgnoreDataMember]
         public float Float => Raw * 2.328306e-10f;
+
+        [IgnoreDataMember]
         public double Double => Raw * 2.328306436538696e-10;
 
         public static F64 operator +(F64 a, F64 b) => new F64(a.Raw + b.Raw);

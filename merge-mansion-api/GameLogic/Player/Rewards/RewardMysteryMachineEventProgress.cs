@@ -3,6 +3,7 @@ using Metaplay.Core;
 using Code.GameLogic.GameEvents;
 using System;
 using System.Runtime.Serialization;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
@@ -13,6 +14,7 @@ namespace GameLogic.Player.Rewards
         private MetaRef<MysteryMachineEventInfo> EventInfoRef { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
+        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         public int Amount { get; set; }
 
         [IgnoreDataMember]

@@ -112,5 +112,13 @@ namespace Metaplay.Core.Message
             {
             }
         }
+
+        [MetaSerializableDerived(12)]
+        public class LogicVersionUpdated : SessionForceTerminateReason
+        {
+            public LogicVersionUpdated()
+            {
+            }
+        }
     }
 }

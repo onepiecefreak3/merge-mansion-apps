@@ -23,6 +23,8 @@ namespace GameLogic.Config
         [MetaMember(4, (MetaMemberFlags)0)]
         public int SlotIndex { get; set; }
         public ProducerInventorySlotId ConfigKey => SlotId;
+
+        [IgnoreDataMember]
         public PlayerRequirement UnlockRequirement => UnlockRequirements.FirstOrDefault();
 
         public ProducerInventorySlotConfig()

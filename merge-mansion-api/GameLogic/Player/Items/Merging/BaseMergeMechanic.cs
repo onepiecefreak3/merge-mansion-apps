@@ -14,7 +14,7 @@ namespace GameLogic.Player.Items.Merging
         [MetaMember(1, (MetaMemberFlags)0)]
         public ItemVisibility ResultVisibility { get; set; } // 0x10
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public bool ResetTimers { get; set; } // 0x15
 
         /// <summary>

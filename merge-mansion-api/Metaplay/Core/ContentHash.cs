@@ -2,7 +2,6 @@ using System;
 using System.Security.Cryptography;
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core
 {
@@ -10,12 +9,12 @@ namespace Metaplay.Core
     public struct ContentHash
     {
         // 0x0
-        public static readonly ContentHash None = new ContentHash(UInt128.Zero);
+        public static readonly ContentHash None = new ContentHash(MetaUInt128.Zero);
         [MetaMember(1, (MetaMemberFlags)0)]
-        public UInt128 Value { get; set; }
-        public bool IsValid => Value != UInt128.Zero;
+        public MetaUInt128 Value { get; set; }
+        public bool IsValid => Value != MetaUInt128.Zero;
 
-        public ContentHash(UInt128 value)
+        public ContentHash(MetaUInt128 value)
         {
             Value = value;
         }
@@ -53,7 +52,7 @@ namespace Metaplay.Core
                 throw new ArgumentException($"Invalid hash string '{str}'");
             var p1 = Convert.ToUInt64(parts[0], 16);
             var p2 = Convert.ToUInt64(parts[1], 16);
-            return new ContentHash(new UInt128(p1, p2));
+            return new ContentHash(new MetaUInt128(p1, p2));
         }
 
         public static bool TryParseString(string str, out ContentHash contentHash)
@@ -77,7 +76,7 @@ namespace Metaplay.Core
             var hash = sha1.ComputeHash(bytes);
             var p1 = BitConverter.ToUInt64(hash, 0);
             var p2 = BitConverter.ToUInt64(hash, 8);
-            return new ContentHash(new UInt128(p1, p2));
+            return new ContentHash(new MetaUInt128(p1, p2));
         }
     }
 }

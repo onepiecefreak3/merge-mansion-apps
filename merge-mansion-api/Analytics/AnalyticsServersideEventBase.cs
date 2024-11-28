@@ -6,8 +6,8 @@ using System;
 namespace Analytics
 {
     [MetaBlockedMembers(new int[] { 100, 101, 102, 103, 104, 105, 106 })]
-    [MetaSerializable]
     [MetaReservedMembers(100, 199)]
+    [MetaSerializable]
     public abstract class AnalyticsServersideEventBase : PlayerEventBase, IMergeMansionAnalyticsEvent
     {
         [JsonIgnore]

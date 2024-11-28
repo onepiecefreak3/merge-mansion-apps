@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializableDerived(17)]
     [MetaActivableSet("BoultonLeagueEvent", false)]
+    [MetaSerializableDerived(17)]
     public class PlayerBoultonLeagueEventsModel : MetaActivableSet<BoultonLeagueEventId, BoultonLeagueEventInfo, BoultonLeagueEventModel>
     {
         public PlayerBoultonLeagueEventsModel()

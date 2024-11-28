@@ -16,19 +16,19 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Type of merge that caused the item to spawn")]
         [JsonProperty("origin_type")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string OriginType { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("origin_item_name")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("The item that was merged to spawn the new item")]
         public string OriginItemName { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("in_bubble")]
         [Description("Whether the item was spawned in a bubble")]
+        [JsonProperty("in_bubble")]
         public bool InBubble { get; set; }
         public override string EventDescription { get; }
 

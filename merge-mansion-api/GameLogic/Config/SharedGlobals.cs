@@ -13,15 +13,12 @@ using GameLogic.Player;
 
 namespace GameLogic.Config
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 31, 32, 37, 44, 48, 61, 16, 17, 40, 41, 54, 55, 56, 63, 64 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 5, 31, 32, 37, 44, 48, 61, 16, 17, 40, 41, 54, 55, 56, 63, 64, 65 })]
     public class SharedGlobals : GameConfigKeyValue<SharedGlobals>, IValidatable
     {
         [MetaMember(4, (MetaMemberFlags)0)]
         public int DefaultActivationCost { get; set; }
-
-        [MetaMember(5, (MetaMemberFlags)0)]
-        public MetaDuration EnergyUnitRestoreDuration { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
         public List<string> ItemTagsRequiringBoosterAnalytics { get; set; }
@@ -159,7 +156,10 @@ namespace GameLogic.Config
         [MetaMember(62, (MetaMemberFlags)0)]
         public int MinLevelForAdditionalSpawnItem { get; set; }
 
-        [MetaMember(65, (MetaMemberFlags)0)]
-        public Dictionary<EnergyType, EnergySettings> EnergySettings { get; set; }
+        [MetaMember(66, (MetaMemberFlags)0)]
+        public int MaxOfferPopupTriggersPerSession { get; set; }
+
+        [MetaMember(67, (MetaMemberFlags)0)]
+        public int MaxConsecutiveOfferPopupTriggers { get; set; }
     }
 }

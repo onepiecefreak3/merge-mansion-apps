@@ -6,8 +6,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(20)]
     [MetaFormDeprecated]
+    [MetaSerializableDerived(20)]
     public class RewardLevelUpMergeChain : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -12,18 +12,18 @@ namespace GameLogic.Player.Items.Bubble
     public class BracketedBubbleLogic : IBubbleLogic, IProvidesDebugOutput
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        private List<Bracket> Brackets { get; set; }
+        private List<BracketedBubbleLogic.Bracket> Brackets { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private F32 NonNeededPenalty { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         private F32 HardestTaskBoost { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         private F32 NormalizationQuot { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         private int MaxBubblesOnBoard { get; set; }
 
         [MetaSerializable]
@@ -32,10 +32,10 @@ namespace GameLogic.Player.Items.Bubble
             [MetaMember(1, (MetaMemberFlags)0)]
             public MetaDuration? Min { get; set; }
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public MetaDuration? Max { get; set; }
 
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public F32 Quotient { get; set; }
 
             private Bracket()

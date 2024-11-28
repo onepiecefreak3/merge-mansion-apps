@@ -13,7 +13,7 @@ namespace GameLogic.Player.Items.Decay
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime EstimatedTime { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaTime StartTime { get; set; }
 
         public DecayState()

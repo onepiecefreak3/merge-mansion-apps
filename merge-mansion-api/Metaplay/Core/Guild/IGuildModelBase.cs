@@ -26,8 +26,6 @@ namespace Metaplay.Core.Guild
 
         Dictionary<EntityId, GuildPendingMemberKickState> PendingKicks { get; set; }
 
-        bool IsNameSearchValid { get; set; }
-
         int RunningInviteId { get; set; }
 
         int MaxNumMembers { get; }
@@ -35,5 +33,7 @@ namespace Metaplay.Core.Guild
         int MemberCount { get; }
 
         GuildEventLog EventLog { get; }
+
+        int SearchVersion { get; set; }
     }
 }

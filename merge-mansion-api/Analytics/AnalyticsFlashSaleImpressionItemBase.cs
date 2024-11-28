@@ -8,8 +8,8 @@ using System.ComponentModel;
 namespace Analytics
 {
     [MetaReservedMembers(100, 199)]
-    [MetaSerializable]
     [MetaDeserializationConvertFromConcreteDerivedType(typeof(AnalyticsFlashSaleImpressionItem))]
+    [MetaSerializable]
     public abstract class AnalyticsFlashSaleImpressionItemBase
     {
         [MetaMember(100, (MetaMemberFlags)0)]
@@ -27,14 +27,14 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("attachment")]
         [Description("Attachment")]
+        [JsonProperty("attachment")]
         [MetaMember(102, (MetaMemberFlags)0)]
         public string Attachment { get; set; }
 
+        [MetaMember(103, (MetaMemberFlags)0)]
         [JsonProperty("attachment_amount")]
         [Description("Attachment amount")]
-        [MetaMember(103, (MetaMemberFlags)0)]
         public int AttachmentAmount { get; set; }
 
         public AnalyticsFlashSaleImpressionItemBase(ICost cost, int slotId, string attachment, int attachmentAmount)

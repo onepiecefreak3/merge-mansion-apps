@@ -3,11 +3,11 @@
 	[MetaMessage(15, MessageDirection.ServerToClient, false)]
     public class UpdateScheduledMaintenanceMode : MetaMessage
     {
-        public ScheduledMaintenanceMode ScheduledMaintenanceMode { get; set; } // 0x10
+        public ScheduledMaintenanceModeForClient ScheduledMaintenanceMode { get; set; } // 0x10
 
         private UpdateScheduledMaintenanceMode() { }
 
-        public UpdateScheduledMaintenanceMode(ScheduledMaintenanceMode scheduledMaintenanceMode)
+        public UpdateScheduledMaintenanceMode(ScheduledMaintenanceModeForClient scheduledMaintenanceMode)
         {
             ScheduledMaintenanceMode = scheduledMaintenanceMode;
         }

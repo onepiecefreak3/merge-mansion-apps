@@ -7,7 +7,7 @@ namespace GameLogic.Player
     public class OfferAnalyticsContext : AnalyticsContext
     {
         [MetaMember(10, (MetaMemberFlags)0)]
-        public int SlotId { get; set; }
+        public int? SlotId { get; set; }
 
         [MetaMember(11, (MetaMemberFlags)0)]
         public string ImpressionId { get; set; }

@@ -9,26 +9,26 @@ using System;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 7, 8 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
     public class EventOfferInfo : IMetaActivableConfigData<EventOfferId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventOfferId>, IHasGameConfigKey<EventOfferId>, IMetaActivableInfo<EventOfferId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventOfferId EventOfferId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public ICost Cost { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
         public EventOfferId ConfigKey => EventOfferId;
         public EventOfferId ActivableId { get; }

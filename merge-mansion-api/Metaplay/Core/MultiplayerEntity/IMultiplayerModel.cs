@@ -16,7 +16,7 @@ namespace Metaplay.Core.MultiplayerEntity
 
         MetaTime TimeAtFirstTick { get; }
 
-        int CurrentTick { get; }
+        long CurrentTick { get; }
 
         EntityId EntityId { get; set; }
 

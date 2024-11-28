@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
@@ -9,6 +10,7 @@ namespace GameLogic.Player.Rewards
         [MetaMember(1, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 
+        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 

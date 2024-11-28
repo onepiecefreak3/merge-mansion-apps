@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Metaplay.Core.Model;
 using Metaplay.Core.Serialization;
+using System;
 
 namespace Metaplay.Core.Player
 {
@@ -27,13 +28,13 @@ namespace Metaplay.Core.Player
             [MetaMember(1, (MetaMemberFlags)0)]
             public PlayerActionBase Action { get; set; }
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public int NumSteps { get; set; }
 
-            [MetaMember(3, 0)]
-            public int StartTick { get; set; }
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public long StartTick { get; set; }
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public int OperationIndex { get; set; }
         }
     }

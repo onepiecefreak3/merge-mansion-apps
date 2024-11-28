@@ -12,7 +12,7 @@ namespace Metaplay.Core.Config
         [MetaMember(1, (MetaMemberFlags)0)]
         public ContentHash Version { get; set; } // 0x10
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public Dictionary<PlayerExperimentId, Dictionary<ExperimentVariantId, byte[]>> Patches { get; set; } // 0x20
 
         private GameConfigSpecializationPatches()

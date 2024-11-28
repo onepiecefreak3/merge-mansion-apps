@@ -22,44 +22,44 @@ namespace GameLogic
         [MetaMember(2, (MetaMemberFlags)0)]
         public AdvertisementPlacementId AdPlacementId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string ItemName { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public ShopItemId ShopItemId { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int ItemDiamondValue { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public AdsRewardType AdsRewardType { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int ItemCostValue { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public Currencies ItemCostValueType { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(10, (MetaMemberFlags)0)]
         public string AdvertiserId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string NetworkId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public MergeBoardId MergeBoardId { get; set; }
 
         [MetaMember(13, (MetaMemberFlags)0)]
@@ -70,8 +70,8 @@ namespace GameLogic
         [MetaMember(14, (MetaMemberFlags)0)]
         public AnalyticsContext AnalyticsContext { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(15, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public OfferPlacementId OfferPlacementId { get; set; }
 
         [IgnoreDataMember]

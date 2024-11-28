@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.MultiplayerEntity
 {
-    [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
     [MetaSerializable]
+    [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
     public abstract class MultiplayerMemberPrivateStateBase
     {
         [MetaMember(100, (MetaMemberFlags)0)]

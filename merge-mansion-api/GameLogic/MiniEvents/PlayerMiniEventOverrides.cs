@@ -24,5 +24,14 @@ namespace GameLogic.MiniEvents
         public PlayerMiniEventOverrides()
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public MiniEventOverrides<int> ProducerCapacityOverrides { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public MiniEventOverrides<int> ProducerTimerOverrides { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public MiniEventOverrides<int> BubblePriceOverrides { get; set; }
     }
 }

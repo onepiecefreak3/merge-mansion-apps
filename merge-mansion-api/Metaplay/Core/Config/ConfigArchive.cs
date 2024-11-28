@@ -7,7 +7,6 @@ using System.Runtime.Serialization;
 using System.Text;
 using Metaplay.Core.IO;
 using Metaplay.Core.Math;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.Config
 {
@@ -54,7 +53,7 @@ namespace Metaplay.Core.Config
 
         private static ContentHash ComputeVersionHashForEntries(IEnumerable<ConfigArchiveEntry> entries)
         {
-            var res = UInt128.Zero;
+            var res = MetaUInt128.Zero;
             foreach (var entry in entries)
             {
                 var hash = ContentHash.ComputeFromBytes(Encoding.UTF8.GetBytes(entry.Name));

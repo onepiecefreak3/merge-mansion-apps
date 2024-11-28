@@ -23,28 +23,28 @@ namespace GameLogic.MergeChains
         [MetaMember(1, (MetaMemberFlags)0)]
         public MergeChainId ConfigKey { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<IMergeChainElement> PrimaryChain { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public List<IMergeChainElement> FallbackChain { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaRef<CodexCategoryInfo> CodexCategory { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public MetaRef<CodexDiscoveryRewardInfo> DiscoveryRewardRef { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public string CompletionSfx { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public int? InitialLevel { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int? UnsellableUntilPlayerLevel { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public int? ShowSellConfirmationUntilPlayerLevel { get; set; }
         public int Length => PrimaryChain.Count;
         public int FallbackLength => FallbackChain?.Count ?? 0;

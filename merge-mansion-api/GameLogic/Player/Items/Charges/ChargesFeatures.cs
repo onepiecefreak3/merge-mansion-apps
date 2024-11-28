@@ -9,10 +9,10 @@ namespace GameLogic.Player.Items.Charges
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool SupportsCharges { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int DefaultInitialCharges { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public ChargeMergeBehavior MergeBehavior { get; set; }
 
         public static ChargesFeatures NoCharges;

@@ -11,11 +11,11 @@ namespace GameLogic.Player.Requirements
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
 
-        [MetaMember(2, 0)]
-        public Nullable<int> MinLevel { get; set; }
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public int? MinLevel { get; set; }
 
-        [MetaMember(3, 0)]
-        public Nullable<int> MaxLevel { get; set; }
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public int? MaxLevel { get; set; }
         private MergeChainDefinition MergeChain { get; }
 
         private MergeChainItemNeededRequirement()

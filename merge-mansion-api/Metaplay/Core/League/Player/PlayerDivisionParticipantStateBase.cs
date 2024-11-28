@@ -5,11 +5,8 @@ namespace Metaplay.Core.League.Player
     [MetaReservedMembers(200, 300)]
     public abstract class PlayerDivisionParticipantStateBase<TDivisionScore, TDivisionContribution, TDivisionPlayerAvatar> : DivisionParticipantStateBase<TDivisionScore>, IPlayerDivisionParticipantState, IDivisionParticipantState
     {
-        [MetaMember(201, (MetaMemberFlags)0)]
-        public TDivisionPlayerAvatar PlayerAvatar { get; set; }
-
-        [MetaMember(202, (MetaMemberFlags)0)]
-        public TDivisionContribution PlayerContribution { get; set; }
+        public PlayerDivisionAvatarBase PlayerAvatar { get; set; }
+        public IDivisionContribution PlayerContribution { get; set; }
 
         PlayerDivisionAvatarBase Metaplay.Core.League.Player.IPlayerDivisionParticipantState.PlayerAvatar { get; set; }
 

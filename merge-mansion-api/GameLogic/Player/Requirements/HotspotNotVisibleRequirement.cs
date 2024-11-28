@@ -8,6 +8,7 @@ namespace GameLogic.Player.Requirements
     public class HotspotNotVisibleRequirement : PlayerRequirement
     {
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("FixRef")]
         private MetaRef<HotspotDefinition> hotspot;
         public HotspotNotVisibleRequirement()
         {

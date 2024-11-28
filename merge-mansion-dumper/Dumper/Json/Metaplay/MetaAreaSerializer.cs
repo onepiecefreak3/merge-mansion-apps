@@ -11,7 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Game.Cloud.Config;
 using GameLogic;
+using GameLogic.Player.Items;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -19,11 +21,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
     {
         private readonly SharedGameConfig _config;
         private readonly ILogger _output;
+
         private readonly Type[] _supportedTypes =
         {
-                typeof(AreaInfo),
-                typeof(HotspotDefinition)
-            };
+            typeof(AreaInfo),
+            typeof(HotspotDef),
+            typeof(HotspotDefinition)
+        };
 
         public MetaAreaSerializer(SharedGameConfig config, ILogger output)
         {
@@ -37,6 +41,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
         {
             if (value is AreaInfo area)
                 SerializeArea(writer, area, serializer);
+            else if (value is HotspotDef hotspotDef)
+                SerializeHotspotDef(writer, hotspotDef, serializer);
             else if (value is HotspotDefinition hotspot)
                 SerializeHotspot(writer, hotspot, serializer);
         }
@@ -50,6 +56,20 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             }
 
             WriteObject(writer, area.GetType(), area, serializer);
+        }
+
+        private void SerializeHotspotDef(JsonWriter writer, HotspotDef hotspotDef, JsonSerializer serializer)
+        {
+            if (!Enum.IsDefined(hotspotDef.ConfigKey))
+                _output.Warning(Program.VersionBumped ? "HotspotId {0} unknown" : "[Metacore] HotspotId {0} unknown", hotspotDef.ConfigKey);
+
+            if (hotspotDef.ConfigKey == HotspotId.None)
+            {
+                WriteEmptyObject(writer);
+                return;
+            }
+
+            WriteObject(writer, typeof(HotspotDefinition), _config.HotspotDefinitions.GetInfoByKey(hotspotDef.ConfigKey), serializer);
         }
 
         private void SerializeHotspot(JsonWriter writer, HotspotDefinition hotspot, JsonSerializer serializer)
@@ -68,29 +88,31 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
         #region Task graphs
 
-        private string GetTaskGraph(IList<MetaRef<HotspotDefinition>> hotspots)
+        private string GetTaskGraph(IList<HotspotDef> hotspots)
         {
             var nodes = GetTaskNodes(hotspots);
             return GraphViz.GetGraph(nodes);
         }
 
-        private IList<Node> GetTaskNodes(IList<MetaRef<HotspotDefinition>> hotspots)
+        private IList<Node> GetTaskNodes(IList<HotspotDef> hotspotDefs)
         {
-            var hotspotDict = new Dictionary<HotspotId, Node>();
-            foreach (var hotspot in hotspots.Where(x => x.Ref.ConfigKey != HotspotId.None).OrderBy(x => x.Ref.ConfigKey))
-            {
-                if (!hotspotDict.TryGetValue(hotspot.Ref.ConfigKey, out var node))
-                    node = new Node { Text = GetNodeText(hotspot.Ref) };
+            var hotspots = hotspotDefs.Select(h => (HotspotDefinition)_config.HotspotDefinitions.GetInfoByKey(h.ConfigKey));
 
-                foreach (var unlockParent in hotspot.Ref.UnlockingParentRefs)
+            var hotspotDict = new Dictionary<HotspotId, Node>();
+            foreach (var hotspot in hotspots.Where(x => x.ConfigKey != HotspotId.None).OrderBy(x => x.ConfigKey))
+            {
+                if (!hotspotDict.TryGetValue(hotspot.ConfigKey, out var node))
+                    node = new Node { Text = GetNodeText(hotspot) };
+
+                foreach (var unlockParent in hotspot.UnlockingParentRefs)
                 {
-                    if (!hotspotDict.TryGetValue(unlockParent.Ref.Id, out var unlockParentNode))
-                        hotspotDict[unlockParent.Ref.Id] = unlockParentNode = new Node { Text = GetNodeText((HotspotDefinition)_config.HotspotDefinitions.EnumerateAll().FirstOrDefault(x => (HotspotId)x.Key == unlockParent.Ref.Id).Value) };
+                    if (!hotspotDict.TryGetValue(unlockParent.ConfigKey, out var unlockParentNode))
+                        hotspotDict[unlockParent.ConfigKey] = unlockParentNode = new Node { Text = GetNodeText((HotspotDefinition)_config.HotspotDefinitions.EnumerateAll().FirstOrDefault(x => (HotspotId)x.Key == unlockParent.ConfigKey).Value) };
 
                     unlockParentNode.AddChild(node);
                 }
 
-                hotspotDict[hotspot.Ref.ConfigKey] = node;
+                hotspotDict[hotspot.ConfigKey] = node;
             }
 
             return hotspotDict.Values.ToArray();
@@ -111,7 +133,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             foreach (var req in hotspot.RequirementsList)
             {
                 if (req is PlayerItemRequirement pir)
-                    res += Environment.NewLine + LocMan.GetItemName(pir.Item.ItemType).Replace('"', '\'') + " x" + pir.Requirement;
+                    res += string.Join(Environment.NewLine, pir.Items.Select(i=> LocMan.GetItemName(((ItemDefinition)_config.Items.GetInfoByKey(i)).ItemType).Replace('"', '\'') + " x" + pir.Requirement));
                 else if (req is CostRequirement cr && cr.RequiredCost is CurrencyCost cc)
                     res += Environment.NewLine + "Coins x" + cc.CurrencyAmount;
             }
@@ -129,7 +151,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 if (areaName != null)
                     WriteProperty(writer, "Name", areaName, serializer);
 
-                var hotspots = area.HotspotsRefs.DistinctBy(x => x.Ref.ConfigKey).ToArray();
+                var hotspots = area.HotspotsRefs.DistinctBy(x => x.ConfigKey).ToArray();
                 if (area.HotspotsRefs.Count != hotspots.Length)
                     _output.Warning("[Metacore] Area {0} has {1} duplicated tasks.", area.ConfigKey, area.HotspotsRefs.Count - hotspots.Length);
 
@@ -154,7 +176,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
 
                 if (name == nameof(AreaInfo.HotspotsRefs))
                 {
-                    var hotspots = (value as List<MetaRef<HotspotDefinition>>).DistinctBy(x => x.Ref.ConfigKey).ToArray();
+                    var hotspots = (value as List<HotspotDef>).DistinctBy(x => x.ConfigKey).ToArray();
                     WriteProperty(writer, name, hotspots, serializer);
 
                     return;
@@ -172,8 +194,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WritePropertyName(name);
                     writer.WriteStartArray();
 
-                    foreach (var task in (List<MetaRef<HotspotDefinition>>)value)
-                        serializer.Serialize(writer, task.KeyObject);
+                    foreach (var task in (List<HotspotDef>)value)
+                        serializer.Serialize(writer, task.ConfigKey);
 
                     writer.WriteEndArray();
 

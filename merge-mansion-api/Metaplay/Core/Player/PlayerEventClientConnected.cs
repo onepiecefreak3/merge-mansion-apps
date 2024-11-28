@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEventKeywords(new string[] { "Session" })]
     [AnalyticsEvent(1005, null, 1, "Client has connected to the server.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "Session" })]
     public class PlayerEventClientConnected : PlayerEventBase
     {
         [MetaMember(7, (MetaMemberFlags)0)]
@@ -21,12 +21,12 @@ namespace Metaplay.Core.Player
         [MetaMember(3, (MetaMemberFlags)0)]
         public int LogicVersion { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public PlayerTimeZoneInfo TimeZoneInfo { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public PlayerLocation? Location { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]

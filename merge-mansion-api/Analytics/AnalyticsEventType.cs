@@ -135,6 +135,13 @@ namespace Analytics
         UiInteraction = 124,
         BoultonLeagueEventScoreChanged = 125,
         AnalyticEventLeaderboardScoreAdded = 126,
-        CardCollectionChanged = 127
+        CardCollectionChanged = 127,
+        PocketChanged = 128,
+        InventoryChanged = 129,
+        UnitySystemInfo = 130,
+        ClientConnectedToEndpoint = 131,
+        PlayerMovedItemFromPocketToBoard = 132,
+        ServerEventExperimentInfo = 133,
+        ServerEventExperimentVariantInfo = 134
     }
 }

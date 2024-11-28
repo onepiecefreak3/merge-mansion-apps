@@ -1,5 +1,7 @@
 using Metaplay.Core.Model;
 using Metaplay.Core;
+using System;
+using System.Collections.Generic;
 
 namespace GameLogic.Player.Items.Bubble
 {
@@ -9,6 +11,7 @@ namespace GameLogic.Player.Items.Bubble
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime BubbleEndTime { get; set; }
 
+        [Obsolete("Bonuses should be used instead")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public IBubbleBonus Bonus { get; set; }
 
@@ -17,6 +20,13 @@ namespace GameLogic.Player.Items.Bubble
         }
 
         public BubbleState(MetaTime endTime, IBubbleBonus bonus)
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public List<IBubbleBonus> Bonuses { get; set; }
+
+        public BubbleState(MetaTime endTime, List<IBubbleBonus> bonuses)
         {
         }
     }

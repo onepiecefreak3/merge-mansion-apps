@@ -16,19 +16,19 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Currency Bank Id from config")]
         [JsonProperty("bank_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Currency Bank Id from config")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
+        [Description("Threshold value for this stash")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("bank_threshold_value")]
-        [Description("Threshold value for this stash")]
         public int Threshold { get; set; }
 
+        [Description("Max value for the stash")]
         [JsonProperty("bank_max_value")]
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Max value for the stash")]
         public int MaxValue { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -41,39 +41,39 @@ namespace Analytics
         [JsonProperty("bank_action")]
         public CurrencyBankAction Action { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("bank_action_trigger")]
         [Description("Id of the source that is causing the action")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public string TriggerId { get; set; }
 
-        [Description("Currency Type deposit / withdrawn from the bank")]
         [JsonProperty("bank_resource_type")]
+        [Description("Currency Type deposit / withdrawn from the bank")]
         [MetaMember(7, (MetaMemberFlags)0)]
         public Currencies CurrencyType { get; set; }
 
-        [Description("How much resource was used in the action / how much resource was withdrawn")]
-        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("bank_resource_amount")]
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [Description("How much resource was used in the action / how much resource was withdrawn")]
         public int Amount { get; set; }
 
+        [Description("Change of points introduced by the action")]
         [JsonProperty("bank_points_amount")]
         [MetaMember(9, (MetaMemberFlags)0)]
-        [Description("Change of points introduced by the action")]
         public int Points { get; set; }
 
-        [Description("Current amount of points after the action has been performed")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [Description("Current amount of points after the action has been performed")]
         [JsonProperty("bank_amount_status")]
         public int AmountTotal { get; set; }
 
-        [Description("Current status of the timer")]
         [JsonProperty("bank_timer")]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [Description("Current status of the timer")]
         public double StashTimer { get; set; }
 
+        [MetaMember(12, (MetaMemberFlags)0)]
         [Description("Duration hidden in hours")]
         [JsonProperty("bank_duration_hidden")]
-        [MetaMember(12, (MetaMemberFlags)0)]
         public double DurationHidden { get; set; }
 
         [Description("Segments")]
@@ -81,24 +81,24 @@ namespace Analytics
         [JsonProperty("segments")]
         public List<PlayerSegmentId> Segments { get; set; }
 
-        [Description("Bank action trigger type, for example Task")]
-        [JsonProperty("bank_action_trigger_type")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("bank_action_trigger_type")]
+        [Description("Bank action trigger type, for example Task")]
         public CurrencyBankTriggerType TriggerType { get; set; }
 
-        [Description("Unique id for this players activation")]
-        [MetaMember(15, (MetaMemberFlags)0)]
         [JsonProperty("activation_id")]
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [Description("Unique id for this players activation")]
         public string ActivationId { get; set; }
 
-        [Description("Duration bank not full")]
-        [MetaMember(16, (MetaMemberFlags)0)]
         [JsonProperty("bank_duration_not_full")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [Description("Duration bank not full")]
         public double DurationNotFull { get; set; }
 
         [JsonProperty("bank_duration_full")]
-        [Description("Max value of the timer")]
         [MetaMember(17, (MetaMemberFlags)0)]
+        [Description("Max value of the timer")]
         public double DurationFull { get; set; }
         public override string EventDescription { get; }
 

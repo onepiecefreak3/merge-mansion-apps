@@ -11,13 +11,13 @@ namespace GameLogic.Player.Items.Boosting
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool DoesBoost { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public BoostAreaStyle BoostAreaStyle { get; set; }
 
-        [MetaMember(3, 0)]
-        public List<ItemTypeConstant> AffectedItemsSet { get; set; }
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public List<int> AffectedItemsSet { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public F32 BoostFactor { get; set; }
 
         public static BoosterFeatures NoBoost;

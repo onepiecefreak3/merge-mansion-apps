@@ -13,15 +13,15 @@ namespace Metaplay.Core.Client
 
         public SessionProtocol.SessionResourceProposal ToResourceProposal()
         {
-            var dict = new Dictionary<ClientSlot, ContentHash>();
-            var dict2 = new Dictionary<ClientSlot, ContentHash>();
+            //var dict = new Dictionary<ClientSlot, ContentHash>();
+            //var dict2 = new Dictionary<ClientSlot, ContentHash>();
 
-            foreach (var value in ConfigArchives)
-                dict[value.Key] = value.Value.Version;
-            foreach (var value in PatchArchives)
-                dict2[value.Key] = value.Value.Version;
+            //foreach (var value in ConfigArchives)
+            //    dict[value.Key] = value.Value.Version;
+            //foreach (var value in PatchArchives)
+            //    dict2[value.Key] = value.Value.Version;
 
-            return new SessionProtocol.SessionResourceProposal(dict, dict2, ActiveLanguage.LanguageId, ActiveLanguage.Version);
+            return new SessionProtocol.SessionResourceProposal(null, null, ActiveLanguage.LanguageId, ActiveLanguage.Version);
         }
 
         public ClientSessionNegotiationResources()

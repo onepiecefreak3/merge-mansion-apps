@@ -12,7 +12,7 @@ namespace GameLogic.Player.Requirements
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Requirement { get; set; }
         public ItemDefinition Item { get; }
         public IEnumerable<ItemDefinition> Items { get; }

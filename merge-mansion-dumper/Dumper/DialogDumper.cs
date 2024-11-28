@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using GameLogic;
 using GameLogic.Area;
 using GameLogic.Config;
+using GameLogic.Hotspots;
 using GameLogic.Player.Director.Config;
 using GameLogic.Story;
 using merge_mansion_dumper.Dumper.Base;
@@ -51,11 +52,13 @@ namespace merge_mansion_dumper.Dumper
         public override IEnumerable<(string, Image<Rgba32>)> Dump(SharedGameConfig config)
         {
             foreach (var area in config.Areas.EnumerateAll())
-                foreach (var hotspot in ((AreaInfo)area.Value).HotspotsRefs)
+                foreach (var hotspotDef in ((AreaInfo)area.Value).HotspotsRefs)
                 {
-                    var actions = hotspot.Ref.CompletionActions.OfType<TriggerDialogue>().Select(x => ("Completion", x));
-                    actions = actions.Concat(hotspot.Ref.AppearActions.OfType<TriggerDialogue>().Select(x => ("Appear", x)));
-                    actions = actions.Concat(hotspot.Ref.FinalizationActions.OfType<TriggerDialogue>().Select(x => ("Finalization", x)));
+                    var hotspot = (HotspotDefinition)config.HotspotDefinitions.GetInfoByKey(hotspotDef.ConfigKey);
+
+                    var actions = hotspot.CompletionActions.OfType<TriggerDialogue>().Select(x => ("Completion", x));
+                    actions = actions.Concat(hotspot.AppearActions.OfType<TriggerDialogue>().Select(x => ("Appear", x)));
+                    actions = actions.Concat(hotspot.FinalizationActions.OfType<TriggerDialogue>().Select(x => ("Finalization", x)));
 
                     foreach (var dialogueAction in actions)
                     {
@@ -67,7 +70,7 @@ namespace merge_mansion_dumper.Dumper
                         var storyElement = config.StoryElements.GetInfoByKey(dialogueAction.x.StoryDefinitionId);
                         if (storyElement == null)
                         {
-                            Output.Warning("[Metacore] Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.StoryDefinitionId, dialogueAction.Item1, hotspot.KeyObject);
+                            Output.Warning("[Metacore] Unknown dialog {0} for action {1} on hotspot {2}.", dialogueAction.x.StoryDefinitionId, dialogueAction.Item1, hotspot.Id);
                             continue;
                         }
 
@@ -76,7 +79,7 @@ namespace merge_mansion_dumper.Dumper
                             var dialogImg = CreateImage(dialog.Ref, leftChar, rightChar, leftMood, rightMood);
                             if (dialogImg != null)
                             {
-                                yield return (Path.Combine(((AreaId)area.Key).Value, hotspot.Ref.Id.ToString(), dialogueAction.Item1, dialog.Ref.ConfigKey.Value), dialogImg);
+                                yield return (Path.Combine(((AreaId)area.Key).Value, hotspot.Id.ToString(), dialogueAction.Item1, dialog.Ref.ConfigKey.Value), dialogImg);
                                 dialogImg.Dispose();
                             }
 

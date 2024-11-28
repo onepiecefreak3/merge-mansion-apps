@@ -15,8 +15,8 @@ namespace Analytics
         [Description("ID of the event")]
         public string EventId;
         [Description("Claimed level")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("claimed_level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int ClaimedLevel;
         [Description("Was the level claimed automatically?")]
         [JsonProperty("auto_claim")]
@@ -34,8 +34,8 @@ namespace Analytics
         }
 
         [JsonProperty("resource_item_used", NullValueHandling = (NullValueHandling)1)]
-        [Description("The amount of ResourceItems used until now in the whole event (SideBoardEvent only)")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("The amount of ResourceItems used until now in the whole event (SideBoardEvent only)")]
         public int? ResourceItemUsed;
     }
 }

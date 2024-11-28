@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Merging
         [MetaMember(1, (MetaMemberFlags)0)]
         public IMergeMechanic Mechanic { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public IItemProducer AdditionalSpawnProducer { get; set; }
 
         public static MergeFeatures NoMerge;

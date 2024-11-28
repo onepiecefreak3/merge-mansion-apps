@@ -13,7 +13,7 @@ namespace Analytics
     {
         [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("shop_item_id")]
-        public ShopItemId ShopItemId { get; set; }
+        public string ShopItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("energy_type")]

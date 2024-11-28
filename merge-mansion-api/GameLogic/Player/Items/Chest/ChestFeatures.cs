@@ -12,16 +12,16 @@ namespace GameLogic.Player.Items.Chest
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsChest { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaDuration OpenDuration { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int HowManyToRoll { get; set; }
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public IItemProducer LootProducer { get; set; }
 
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public string HintLocId { get; set; }
 
         private static string LootRollerPrefix;

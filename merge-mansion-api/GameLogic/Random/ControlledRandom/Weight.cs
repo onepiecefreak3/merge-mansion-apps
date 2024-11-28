@@ -1,5 +1,6 @@
 using Metaplay.Core.Math;
 using Metaplay.Core.Model;
+using System;
 
 namespace GameLogic.Random.ControlledRandom
 {
@@ -9,10 +10,10 @@ namespace GameLogic.Random.ControlledRandom
         [MetaMember(1, (MetaMemberFlags)0)]
         public F32 NextEventTime { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public F32 AverageTimeBetweenEvents { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int OriginalIndex { get; set; }
 
         public Weight(F32 frequency, int originalIndex)

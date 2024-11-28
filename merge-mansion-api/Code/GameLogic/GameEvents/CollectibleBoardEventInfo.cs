@@ -20,46 +20,46 @@ using GameLogic.MergeChains;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("CollectibleBoardEvent", false, true)]
-    [DefaultMember("Item")]
     [MetaBlockedMembers(new int[] { 6, 13, 24, 27 })]
+    [MetaSerializable]
+    [DefaultMember("Item")]
     public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IHasGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public CollectibleBoardEventId CollectibleBoardEventId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string NameLocId { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> PortalItemRef { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public List<MetaRef<EventLevelInfo>> LevelRefs { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public List<MetaRef<EventLevelInfo>> RecurringLevelRefs { get; set; }
 
-        [MetaMember(10, 0)]
-        public Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; set; }
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public Dictionary<EventLevelId, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; set; }
 
-        [MetaMember(11, 0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public StoryDefinitionId EnterBoardDialogue { get; set; }
 
-        [MetaMember(12, 0)]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public PlayerRequirement UnlockRequirement { get; set; }
 
-        [MetaMember(14, 0)]
+        [MetaMember(14, (MetaMemberFlags)0)]
         public StoryDefinitionId EndDialogue { get; set; }
         public CollectibleBoardEventId ConfigKey => CollectibleBoardEventId;
 

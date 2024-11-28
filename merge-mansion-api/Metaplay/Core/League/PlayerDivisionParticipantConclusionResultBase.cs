@@ -8,9 +8,7 @@ namespace Metaplay.Core.League
     {
         [MetaMember(100, (MetaMemberFlags)0)]
         public EntityId ParticipantId { get; set; }
-
-        [MetaMember(101, (MetaMemberFlags)0)]
-        public TAvatar Avatar { get; set; }
+        public PlayerDivisionAvatarBase Avatar { get; set; }
 
         PlayerDivisionAvatarBase Metaplay.Core.League.IPlayerDivisionParticipantConclusionResult.Avatar { get; }
 

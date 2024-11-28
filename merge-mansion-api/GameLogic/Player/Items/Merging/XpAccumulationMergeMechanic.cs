@@ -15,16 +15,16 @@ namespace GameLogic.Player.Items.Merging
         [MetaMember(1, (MetaMemberFlags)0)]
         public ItemVisibility ResultVisibility { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public bool ResetTimers { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public IItemProducer ResultProducer { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int ExperienceRequired { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         private List<MetaRef<MergeReward>> MergeRewardsRefs { get; set; }
 
         public bool CanMerge(MergeItem sourceItem, MergeItem targetItem)

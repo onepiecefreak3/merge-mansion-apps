@@ -10,16 +10,16 @@ namespace GameLogic.Player.Items.Consumption
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool IsConsumable { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public IConsumptionLogic Logic { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public bool AllowNearMatching { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public bool DragSafeAreaEnabled { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int ItemStackCap { get; set; }
 
         public static ConsumableFeatures NoConsumable;

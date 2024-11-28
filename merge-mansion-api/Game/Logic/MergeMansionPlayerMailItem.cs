@@ -13,6 +13,7 @@ namespace Game.Logic
     [MetaSerializableDerived(1)]
     public class MergeMansionPlayerMailItem : PlayerMailItem, IMailMessage
     {
+        [JsonIgnore]
         public MergeMansionMailContents Contents { get; }
         public InboxItemStatus Status { get; }
 

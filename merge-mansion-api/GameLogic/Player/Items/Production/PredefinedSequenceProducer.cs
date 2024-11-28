@@ -19,7 +19,7 @@ namespace GameLogic.Player.Items.Production
         private ulong TotalCount { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        private HashSet<MetaRef<ItemDefinition>> UniqueItems { get; set; }
+        private List<MetaRef<ItemDefinition>> UniqueItems { get; set; }
 
         [IgnoreDataMember]
         public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Item, x.Weight));

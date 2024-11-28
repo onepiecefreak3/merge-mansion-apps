@@ -4,11 +4,12 @@ using Metaplay.Core.Model;
 using System;
 using Merge;
 using GameLogic.Player;
+using Analytics;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(12, "Pocket changed", 1, null, true, false, false)]
-    public class PlayerPocketChanged : PlayerEventBase
+    [AnalyticsEvent(12, "Pocket changed", 1, null, true, true, false)]
+    public class PlayerPocketChanged : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public int Item { get; set; }
@@ -30,5 +31,10 @@ namespace Game.Logic
         public PlayerPocketChanged(int item, MergeBoardId boardId, int count, PlayerPocketChangeEventType changeType)
         {
         }
+
+        public override AnalyticsEventType EventType { get; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string ItemName { get; set; }
     }
 }

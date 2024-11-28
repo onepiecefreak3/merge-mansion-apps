@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
@@ -8,6 +9,7 @@ namespace GameLogic.Player.Rewards
     {
         public static string PoolTag;
         public static string SkinName;
+        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         [MetaMember(1, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 

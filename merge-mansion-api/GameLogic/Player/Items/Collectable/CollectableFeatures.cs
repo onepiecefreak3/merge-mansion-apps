@@ -10,10 +10,10 @@ namespace GameLogic.Player.Items.Collectable
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool Collectable { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public ICollectAction CollectAction { get; set; }
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public bool ConfirmCollectBelowMergeChainLevel { get; set; }
 
         public static CollectableFeatures NoCollectable;

@@ -27,5 +27,15 @@ namespace GameLogic.Hotspots.CardStack
         public CardStackInfo(CardStackId id, List<ValueTuple<int, int>> cards, int width, int height)
         {
         }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public GroupingStyle Style { get; set; }
+
+        [MetaMember(6, (MetaMemberFlags)0)]
+        public string Theme { get; set; }
+
+        public CardStackInfo(CardStackId id, List<ValueTuple<int, int, int>> cards, int width, int height, GroupingStyle style, string theme)
+        {
+        }
     }
 }

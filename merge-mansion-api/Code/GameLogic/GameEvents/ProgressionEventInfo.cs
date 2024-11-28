@@ -17,43 +17,43 @@ using GameLogic.Cutscenes;
 namespace Code.GameLogic.GameEvents
 {
     [MetaActivableConfigData("ProgressionEvent", false, true)]
-    [MetaBlockedMembers(new int[] { 5, 6 })]
-    [MetaBlockedMembers(new int[] { 7, 8 })]
-    [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
+    [MetaBlockedMembers(new int[] { 5, 6 })]
     public class ProgressionEventInfo : IMetaActivableConfigData<ProgressionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ProgressionEventId>, IHasGameConfigKey<ProgressionEventId>, IMetaActivableInfo<ProgressionEventId>, IValidatable, IBubbleBonusEvent, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ProgressionEventId ProgressionEventId { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string NameLocId { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(5)]
-        public List<EventLevelId> FreeEventLevels { get; set; }
+        [IgnoreDataMember]
+        public IEnumerable<EventLevelInfo> FreeEventLevels { get; set; }
 
-        [MetaMember(9)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public List<int> ChancesToSpawnEventItemPerLevel { get; set; }
 
-        [MetaMember(10)]
-        public ItemTypeConstant EventItem { get; set; }
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public int EventItem { get; set; }
 
-        [MetaMember(11)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> PremiumIAP { get; set; }
 
-        [MetaMember(12, 0)]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(13, 0)]
+        [MetaMember(13, (MetaMemberFlags)0)]
         public int PremiumIAPOfferMinLevel { get; set; }
 
-        [MetaMember(19, 0)]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public StoryDefinitionId IntroDialogue { get; set; }
         public ProgressionEventId ConfigKey => ProgressionEventId;
 

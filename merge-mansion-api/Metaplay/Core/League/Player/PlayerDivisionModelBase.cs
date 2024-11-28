@@ -11,11 +11,8 @@ namespace Metaplay.Core.League.Player
         private IPlayerDivisionModelServerListenerCore _BackingField_ServerListenerCore;
         [IgnoreDataMember]
         private IPlayerDivisionModelClientListenerCore _BackingField_ClientListenerCore;
-        [IgnoreDataMember]
-        public IDivisionModelServerListenerCore ServerListenerCore { get; }
-
-        [IgnoreDataMember]
-        public IDivisionModelClientListenerCore ClientListenerCore { get; }
+        public IPlayerDivisionModelServerListenerCore ServerListenerCore { get; }
+        public IPlayerDivisionModelClientListenerCore ClientListenerCore { get; }
 
         IPlayerDivisionModelServerListenerCore Metaplay.Core.League.Player.IPlayerDivisionModel.ServerListenerCore { get; }
 

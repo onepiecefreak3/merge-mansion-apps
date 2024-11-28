@@ -19,6 +19,7 @@ namespace Metaplay.Core.InGameMail
         [MetaFormTextArea]
         public LocalizedString Body { get; set; }
 
+        [MetaFormDisplayProps("Attachment")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [MetaFormFieldCustomValidator(typeof(InGameMailRewardListValidator))]
         [MetaFormFieldContext("AttachmentRewardList", true)]

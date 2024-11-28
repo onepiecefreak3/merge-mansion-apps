@@ -19,6 +19,8 @@ namespace Metaplay.Core.Config
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public MetaGuid ParentConfigId { get; set; }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
         public GameConfigBuildSummary BuildSummary { get; set; }
 
         public GameConfigMetaData()

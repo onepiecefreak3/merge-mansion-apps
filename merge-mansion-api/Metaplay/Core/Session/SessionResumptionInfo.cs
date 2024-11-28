@@ -8,7 +8,7 @@ namespace Metaplay.Core.Session
         [MetaMember(1, (MetaMemberFlags)0)]
         public SessionToken Token { get; set; } // 0x10
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public SessionAcknowledgement Acknowledgement { get; set; } // 0x18
 
         public SessionResumptionInfo()

@@ -15,37 +15,37 @@ namespace Metaplay.Core.Offers
         [MetaMember(100, (MetaMemberFlags)0)]
         public MetaOfferId OfferId { get; set; }
 
-        [MetaMember(101, 0)]
+        [MetaMember(101, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(102, 0)]
+        [MetaMember(102, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(103, 0)]
+        [MetaMember(103, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfoBase> InAppProduct { get; set; }
 
-        [MetaMember(104, 0)]
+        [MetaMember(104, (MetaMemberFlags)0)]
         public List<MetaPlayerRewardBase> Rewards { get; set; }
 
-        [MetaMember(110, 0)]
+        [MetaMember(110, (MetaMemberFlags)0)]
         public int? MaxActivationsPerPlayer { get; set; }
 
-        [MetaMember(107, 0)]
+        [MetaMember(107, (MetaMemberFlags)0)]
         public int? MaxPurchasesPerPlayer { get; set; }
 
-        [MetaMember(105, 0)]
+        [MetaMember(105, (MetaMemberFlags)0)]
         public int? MaxPurchasesPerOfferGroup { get; set; }
 
-        [MetaMember(106, 0)]
+        [MetaMember(106, (MetaMemberFlags)0)]
         public int? MaxPurchasesPerActivation { get; set; }
 
-        [MetaMember(108, 0)]
+        [MetaMember(108, (MetaMemberFlags)0)]
         public List<MetaRef<PlayerSegmentInfoBase>> Segments { get; set; }
 
-        [MetaMember(109, 0)]
+        [MetaMember(109, (MetaMemberFlags)0)]
         public List<PlayerCondition> AdditionalConditions { get; set; }
 
-        [MetaMember(111, 0)]
+        [MetaMember(111, (MetaMemberFlags)0)]
         public bool IsSticky { get; set; }
         public MetaOfferId ConfigKey => OfferId;
         public virtual bool RequireInAppProduct => true;
@@ -61,5 +61,7 @@ namespace Metaplay.Core.Offers
         protected MetaOfferInfoBase(MetaOfferSourceConfigItemBase source)
         {
         }
+
+        public virtual string CustomReferencePriceForDashboard { get; }
     }
 }

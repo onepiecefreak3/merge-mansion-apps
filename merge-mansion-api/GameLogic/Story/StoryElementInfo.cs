@@ -14,22 +14,22 @@ namespace GameLogic.Story
         [MetaMember(1, (MetaMemberFlags)0)]
         private StoryDefinitionId StoryDefinitionId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public bool StealAllSteps { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public Dictionary<DialogItemId, MetaRef<DialogItemInfo>> DialogItems { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string Music { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int MusicTriggerIndex { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         private List<IDirectorAction> CompleteActions { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public bool SupportsSimpleSkip { get; set; }
         public StoryDefinitionId ConfigKey => StoryDefinitionId;
         public IEnumerable<IDirectorAction> OnComplete => CompleteActions;

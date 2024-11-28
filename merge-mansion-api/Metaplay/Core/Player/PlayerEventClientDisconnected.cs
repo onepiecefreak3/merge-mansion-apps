@@ -5,8 +5,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [AnalyticsEventKeywords(new string[] { "Session" })]
     [AnalyticsEvent(1006, null, 1, "The connection from client to the server has been lost.", true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "Session" })]
     public class PlayerEventClientDisconnected : PlayerEventBase
     {
         [MetaMember(3, (MetaMemberFlags)0)]

@@ -73,8 +73,8 @@ namespace Metaplay.Core.Config
 
         public Type ItemType => typeof(TInfo);
         public int Count => _infos.Count;
-        public Dictionary<TKey, TInfo>.KeyCollection Keys => _infos.Keys;
-        public Dictionary<TKey, TInfo>.ValueCollection Values => _infos.Values;
+        public IEnumerable<TKey> Keys => _infos.Keys;
+        public IEnumerable<TInfo> Values => _infos.Values;
 
         IEnumerable<TKey> Metaplay.Core.Config.IGameConfigLibrary<TKey, TInfo>.Keys => Keys;
 
@@ -104,5 +104,14 @@ namespace Metaplay.Core.Config
         public int SpecializationSpecificDuplicationAmount { get; }
 
         private Dictionary<TKey, TInfo> _infos;
+        public struct KeysEnumerable<TKey, TInfo>
+        {
+            private GameConfigLibrary<TKey, TInfo> _library;
+        }
+
+        public struct ValuesEnumerable<TKey, TInfo>
+        {
+            private GameConfigLibrary<TKey, TInfo> _library;
+        }
     }
 }

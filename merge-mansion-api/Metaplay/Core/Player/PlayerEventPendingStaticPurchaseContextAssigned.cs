@@ -18,8 +18,8 @@ namespace Metaplay.Core.Player
         [MetaMember(3, (MetaMemberFlags)0)]
         public string GameProductAnalyticsId { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public PurchaseAnalyticsContext PurchaseContext { get; set; }
         public override string EventDescription { get; }
 

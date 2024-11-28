@@ -1,3 +1,5 @@
+using System;
+
 namespace Metaplay.Core
 {
     public interface IDynamicEnum

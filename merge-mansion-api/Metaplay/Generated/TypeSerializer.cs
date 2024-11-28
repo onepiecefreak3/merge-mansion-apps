@@ -8,7 +8,9 @@ using System.Reflection;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
+using GameLogic.Area;
 using GameLogic.Config;
+using GameLogic.Hotspots;
 using GameLogic.MergeChains;
 using GameLogic.Player.Items;
 using GameLogic.Player.Items.Production;
@@ -22,7 +24,6 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Serialization;
 using Newtonsoft.Json.Linq;
 using static Metaplay.Core.Player.PlayerPropertyConstant;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Generated
 {
@@ -738,7 +739,7 @@ namespace Metaplay.Generated
                     break;
 
                 case WireDataType.VarInt128:
-                    Serialize_UInt128(ref context, writer, (UInt128)item);
+                    Serialize_UInt128(ref context, writer, (MetaUInt128)item);
                     break;
 
                 case WireDataType.String:
@@ -820,7 +821,7 @@ namespace Metaplay.Generated
             writer.WriteVarULong(value);
         }
 
-        private static void Serialize_UInt128(ref MetaSerializationContext context, IOWriter writer, UInt128 inValue)
+        private static void Serialize_UInt128(ref MetaSerializationContext context, IOWriter writer, MetaUInt128 inValue)
         {
             writer.WriteVarUInt128(inValue);
         }

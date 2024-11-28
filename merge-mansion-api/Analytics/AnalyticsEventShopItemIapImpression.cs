@@ -8,8 +8,8 @@ using Metaplay.Core.Offers;
 
 namespace Analytics
 {
-    [AnalyticsEvent(192, "Shop Item IAP Impression", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 6 })]
+    [AnalyticsEvent(192, "Shop Item IAP Impression", 1, null, false, true, false)]
     public class AnalyticsEventShopItemIapImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -25,18 +25,18 @@ namespace Analytics
         public string PlatformId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Placement Id")]
         [JsonProperty("placement")]
+        [Description("Placement Id")]
         public OfferPlacementId PlacementId { get; set; }
 
         [JsonProperty("automatic_show")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Shown automatically")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public bool AutomaticallyShown { get; set; }
 
+        [Description("Impression Id")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("impression_id")]
-        [Description("Impression Id")]
         public string ImpressionId { get; set; }
         public override string EventDescription { get; }
 

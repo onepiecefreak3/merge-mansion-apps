@@ -40,5 +40,7 @@ namespace Code.GameLogic.GameEvents
         public TemporaryCardCollectionEventSource()
         {
         }
+
+        private int SegmentPriority { get; set; }
     }
 }

@@ -15,15 +15,25 @@ using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player.Board
 {
-    [DefaultMember("Item")]
     [MetaSerializable]
+    [DefaultMember("Item")]
     [MetaBlockedMembers(new int[] { 4 })]
     public class MergeBoard : IBoard, IBoardQuery
     {
-        public (int, int) BoardDimensions { get; }
+        [IgnoreDataMember]
+        public ValueTuple<int, int> BoardDimensions { get; }
+
+        [JsonProperty("boardId")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public MergeBoardId BoardIdentifier { get; }
+
+        [IgnoreDataMember]
         public IEnumerable<MergeItem> MergeItems { get; }
+
+        [IgnoreDataMember]
         public IEnumerable<Coordinate> Coordinates { get; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
         public BoardBubbleState BubbleState { get; }
 
         public MergeItem GetItem(Coordinate coordinate)

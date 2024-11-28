@@ -16,31 +16,31 @@ namespace Code.GameLogic.GameEvents
     [MetaSerializable]
     public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>
     {
-        [MetaMember(1, 0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId BoardId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<BoardCell> BoardLayout { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int Width { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int Height { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public ICost ItemSellCost { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public ConfigPrefabId BoardPrefabId { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         private MetaRef<BubblesSetup> BubbleSetup { get; set; }
         public MergeBoardId ConfigKey => BoardId;
 

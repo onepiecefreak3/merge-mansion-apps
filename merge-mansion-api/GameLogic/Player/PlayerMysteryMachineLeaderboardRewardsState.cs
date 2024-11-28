@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core;
 using System;
 using System.Collections.Generic;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player
 {
@@ -11,7 +12,7 @@ namespace GameLogic.Player
     {
         private static MetaDuration requestRewardsCooldown;
         [MetaMember(1, (MetaMemberFlags)0)]
-        private Dictionary<string, MysteryMachineLeaderboardPositionData> PositionsByEventInstanceId { get; set; }
+        private Dictionary<EventInstanceId, MysteryMachineLeaderboardPositionData> PositionsByEventInstanceId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
         private List<MysteryMachineLeaderboardEventInstanceData> ClaimRewardsEventInstances { get; set; }

@@ -47,7 +47,7 @@ namespace Code.GameLogic.GameEvents
         public List<MetaRef<EventLevelInfo>> LevelRefs { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]
-        public Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; set; }
+        public Dictionary<EventLevelId, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; set; }
 
         [MetaMember(10, (MetaMemberFlags)0)]
         public MetaRef<EventCurrencyInfo> EventCurrencyInfo { get; set; }

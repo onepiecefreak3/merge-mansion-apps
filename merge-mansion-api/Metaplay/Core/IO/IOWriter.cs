@@ -3,7 +3,6 @@ using System.Buffers.Binary;
 using System.IO;
 using System.Text;
 using Metaplay.Core.Math;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.IO
 {
@@ -52,9 +51,9 @@ namespace Metaplay.Core.IO
             _bWriter.Write7BitEncodedInt64((long)value);
         }
 
-        public void WriteVarUInt128(UInt128 value)
+        public void WriteVarUInt128(MetaUInt128 value)
         {
-            var compare = UInt128.FromUInt(0x80);
+            var compare = MetaUInt128.FromUInt(0x80);
 
             do
             {
@@ -123,7 +122,7 @@ namespace Metaplay.Core.IO
             _bWriter.Write(buffer);
         }
 
-        public void WriteUInt128(UInt128 value)
+        public void WriteUInt128(MetaUInt128 value)
         {
             WriteUInt64(value.High);
             WriteUInt64(value.Low);

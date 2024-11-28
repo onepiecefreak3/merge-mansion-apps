@@ -16,17 +16,17 @@ namespace Game.Logic
     {
         private static int ShortTopicLimit;
         private static int ShortContentLimit;
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         public LocalizedString ExcerptTopic { get; set; }
 
-        [MetaValidateRequired]
         [MetaFormTextArea]
+        [MetaValidateRequired]
         [MetaMember(2, (MetaMemberFlags)0)]
         public LocalizedString ExcerptContent { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [MetaValidateRequired]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public LocalizedString FullTopic { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -40,8 +40,8 @@ namespace Game.Logic
         [MetaMember(6, (MetaMemberFlags)0)]
         public string FullImageFile { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [MetaFormFieldContext("AttachmentRewardList", true)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public List<PlayerReward> Attachments { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]
@@ -52,15 +52,16 @@ namespace Game.Logic
         [MetaFormNotEditable]
         public int BroadcastNo { get; set; }
 
+        [MetaFormFieldCustomValidator(typeof(MergeMansionInGameMail.SocialMediaPlatformValidator))]
         [MetaMember(10, (MetaMemberFlags)0)]
         public List<SocialMediaPlatform> SocialMediaButtonsToShow { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public MergeMansionInGameMailContentType ContentType { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string ContentExtra { get; set; }
         public override string TitleExcerpt { get; }
         public override string BodyExcerpt { get; }
@@ -83,6 +84,13 @@ namespace Game.Logic
 
         public MergeMansionInGameMail(string messageTopic, string messageTopicExcerpt, string messageContent, string messageContentExcerpt, List<PlayerReward> attachments, long endDay, LanguageId language)
         {
+        }
+
+        public class SocialMediaPlatformValidator : MetaFormValidator<List<SocialMediaPlatform>>
+        {
+            public SocialMediaPlatformValidator()
+            {
+            }
         }
     }
 }

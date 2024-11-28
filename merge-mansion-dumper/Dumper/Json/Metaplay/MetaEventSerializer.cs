@@ -7,11 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using GameLogic;
 using GameLogic.Player.Items;
+using GameLogic.Config;
+using Serilog;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
     class MetaEventSerializer : BaseMetaJsonSerializer
     {
+        private readonly SharedGameConfig _config;
+
         private readonly Type[] _supportedTypes =
         {
                 typeof(BoardEventInfo),
@@ -34,6 +38,11 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             };
 
         protected override Type[] GetTypes() => _supportedTypes;
+
+        public MetaEventSerializer(SharedGameConfig config)
+        {
+            _config = config;
+        }
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
@@ -271,7 +280,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 res = LocMan.Get(taskInfo.Description).Replace("\"", "'");
 
             foreach (var req in taskInfo.Requirements)
-                res += Environment.NewLine + LocMan.GetItemName(req.Item.ItemType) + " x" + req.Requirement;
+                res += string.Join(Environment.NewLine, req.Items.Select(i => LocMan.GetItemName(((ItemDefinition)_config.Items.GetInfoByKey(i)).ItemType).Replace('"', '\'') + " x" + req.Requirement));
 
             return res;
         }
@@ -343,9 +352,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     writer.WritePropertyName(name);
                     writer.WriteStartObject();
 
-                    var fallbackRefs = (Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>>)value;
+                    var fallbackRefs = (Dictionary<EventLevelId, MetaRef<EventLevelInfo>>)value;
                     foreach (var key in fallbackRefs.Keys)
-                        WriteProperty(writer, key.Ref.ConfigKey.Value, fallbackRefs[key].Ref, serializer);
+                        WriteProperty(writer, key.Value, fallbackRefs[key].Ref, serializer);
 
                     writer.WriteEndObject();
 

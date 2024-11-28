@@ -233,6 +233,13 @@ namespace GameLogic.Config.Map.Characters
         AreaPetHomeMapBuddy = 5804,
         AreaRanchStablesInteriorFirstMapCharacterPosition = 7399,
         AreaRanchStablesInteriorEntryMapMaddie = 7400,
-        AreaRanchStablesInteriorCharacter = 7401
+        AreaRanchStablesInteriorCharacter = 7401,
+        MaddieRoomFirstMapCharacterPosition = 7599,
+        MaddieRoomEntryMapMaddie = 7600,
+        MaddieRoomCharacter = 7601,
+        MaddieRoomGrandma = 7602,
+        LibraryFirstMapCharacterPosition = 7799,
+        LibraryEntryMapMaddie = 7800,
+        LibraryCharacter = 7801
     }
 }

@@ -12,25 +12,25 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(100, (MetaMemberFlags)0)]
         public InAppProductId ProductId { get; set; }
 
-        [MetaMember(101)]
+        [MetaMember(101, (MetaMemberFlags)0)]
         public string Name { get; set; }
 
-        [MetaMember(102)]
+        [MetaMember(102, (MetaMemberFlags)0)]
         public InAppProductType Type { get; set; }
 
-        [MetaMember(103)]
+        [MetaMember(103, (MetaMemberFlags)0)]
         public F64 Price { get; set; }
 
-        [MetaMember(107)]
+        [MetaMember(107, (MetaMemberFlags)0)]
         public bool HasDynamicContent { get; set; }
 
-        [MetaMember(104)]
+        [MetaMember(104, (MetaMemberFlags)0)]
         public string DevelopmentId { get; set; }
 
-        [MetaMember(105)]
+        [MetaMember(105, (MetaMemberFlags)0)]
         public string GoogleId { get; set; }
 
-        [MetaMember(106)]
+        [MetaMember(106, (MetaMemberFlags)0)]
         public string AppleId { get; set; }
         public InAppProductId ConfigKey => ProductId;
 

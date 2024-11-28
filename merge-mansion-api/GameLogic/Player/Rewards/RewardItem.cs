@@ -16,17 +16,18 @@ namespace GameLogic.Player.Rewards
         [ValidateItemDefinitionMetaRef]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaFormNotEditable]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public bool FromSupport { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public OverrideItemFeatures OverrideItemFeatures { get; set; }
 
         [IgnoreDataMember]
@@ -72,5 +73,8 @@ namespace GameLogic.Player.Rewards
         public RewardItem(MergeBoardId boardId, ItemDefinition itemDefinition, int amount, bool fromSupport, CurrencySource currencySource, OverrideItemFeatures overrideItemFeatures, bool forceOnTopOfPocket, string overridePoolTag)
         {
         }
+
+        [IgnoreDataMember]
+        public override bool ShouldShowInfoButton { get; }
     }
 }

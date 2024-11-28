@@ -11,26 +11,26 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 7 })]
+    [MetaSerializable]
     public class ActivationFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public IItemSpawner ActivationSpawn { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public IPlacement Placement { get; set; } // 0x18
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public IActivationCycle ActivationCycle { get; set; } // 0x20
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int StorageMax { get; set; } // 0x28
 
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public IItemProducer DecayAfterLastCycleProducer { get; set; }
 
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public ItemVisibility SpawnVisibility { get; set; }
         public bool Activable => ActivationSpawn != null && !(ActivationSpawn is EmptyProducer);
 

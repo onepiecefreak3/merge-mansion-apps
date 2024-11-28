@@ -17,15 +17,15 @@ namespace Analytics
         [JsonProperty("timestamp")]
         [MetaMember(3, (MetaMemberFlags)0)]
         public MetaTime ModelTime;
-        [JsonProperty("unique_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("unique_id")]
         public MetaUInt128 UniqueId;
         [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("context")]
         public AnalyticsContextBase Context;
+        [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
         [JsonProperty("payload")]
         [MetaMember(6, (MetaMemberFlags)0)]
-        [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
         public AnalyticsEventBase Payload;
     }
 }

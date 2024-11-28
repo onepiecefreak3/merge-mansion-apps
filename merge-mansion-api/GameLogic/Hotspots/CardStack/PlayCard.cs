@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Hotspots.CardStack
 {
+    [MetaBlockedMembers(new int[] { 4, 5 })]
     [MetaSerializable]
     public class PlayCard
     {
@@ -23,6 +24,13 @@ namespace GameLogic.Hotspots.CardStack
         }
 
         public PlayCard(int itemId, int row)
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public int Column { get; set; }
+
+        public PlayCard(int itemId, int row, int column)
         {
         }
     }

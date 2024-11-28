@@ -9,7 +9,7 @@ namespace Metaplay.Core.Session
         [MetaMember(1, (MetaMemberFlags)0)]
         public int NumReceived { get; set; } // 0x10
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public uint ChecksumForReceived { get; set; } // 0x14
 
         public SessionAcknowledgement()

@@ -14,12 +14,14 @@ namespace GameLogic.Player.Items.Production
         [MetaMember(1, (MetaMemberFlags)0)]
         public RollHistoryType RollType { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int ItemType { get; set; } // 0x14
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         private List<ItemOdds> GenerationOdds { get; set; } // 0x18
-        public IEnumerable<(ItemDefinition, int)> Odds => GenerationOdds.Select(x => (x.Item, x.Weight));
+
+        [IgnoreDataMember]
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => GenerationOdds.Select(x => (x.Item, x.Weight));
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

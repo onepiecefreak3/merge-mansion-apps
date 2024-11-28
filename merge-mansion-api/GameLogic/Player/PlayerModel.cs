@@ -41,20 +41,20 @@ using GameLogic.Player.Leaderboard.BoultonLeague;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
-    [MetaSerializableDerived(1)]
     [MetaReservedMembers(99, 300)]
     [MetaReservedMembers(11, 12)]
-    [SupportedSchemaVersions(21, 41)]
+    [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 117, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
+    [SupportedSchemaVersions(21, 42)]
+    [MetaSerializableDerived(1)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [ServerOnly]
         [Transient]
         [MetaMember(211, (MetaMemberFlags)0)]
+        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -83,8 +83,8 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public CurrencyBankModel CurrencyBankModel { get; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public RandomPCG Random { get; set; }
 
         [MetaMember(99, (MetaMemberFlags)0)]
@@ -111,8 +111,8 @@ namespace GameLogic.Player
         [MetaMember(106, (MetaMemberFlags)0)]
         public SpawnFactoryState SpawnFactoryState { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(107, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public BoardInventory GarageBoardInventory { get; set; }
 
         [ExcludeFromGdprExport]
@@ -128,9 +128,6 @@ namespace GameLogic.Player
 
         [MetaMember(115, (MetaMemberFlags)0)]
         public DailyTaskStatus DailyTaskStatus { get; set; }
-
-        [MetaMember(117, (MetaMemberFlags)0)]
-        public Surveys Surveys { get; set; }
 
         [MetaMember(201, (MetaMemberFlags)0)]
         [Transient]
@@ -180,12 +177,12 @@ namespace GameLogic.Player
         [MetaMember(219, (MetaMemberFlags)0)]
         public HashSet<PlayerSegmentId> ForcedSegments { get; set; }
 
-        [MetaMember(233, (MetaMemberFlags)0)]
+        [MetaMember(261, (MetaMemberFlags)0)]
         [ServerOnly]
         public Queue<PlayerAnalyticsEventDPL2> AnalyticsEvents { get; set; }
 
-        [MetaMember(221, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(221, (MetaMemberFlags)0)]
         public int NumOfResets { get; set; }
 
         [MetaMember(222, (MetaMemberFlags)0)]
@@ -200,8 +197,8 @@ namespace GameLogic.Player
         [MetaMember(226, (MetaMemberFlags)0)]
         public PlayerCollectibleBoardEventsModel CollectibleBoardEvents { get; set; }
 
-        [MetaMember(227, (MetaMemberFlags)0)]
         [NoChecksum]
+        [MetaMember(227, (MetaMemberFlags)0)]
         public sealed override string PlayerName { get; set; }
 
         [MetaMember(228, (MetaMemberFlags)0)]
@@ -329,7 +326,7 @@ namespace GameLogic.Player
         [MetaMember(258, (MetaMemberFlags)0)]
         public bool MysteryMachineAllTasksCompletedRewardClaimed_DEPRECATED { get; set; }
 
-        [IgnoreDataMember]
+        [MetaMember(259, (MetaMemberFlags)0)]
         public List<BoardInventory.ProducerInventorySlotState> ProducerInventoryEntries { get; set; }
 
         [MetaMember(260, (MetaMemberFlags)0)]
@@ -374,8 +371,8 @@ namespace GameLogic.Player
         [MetaMember(272, (MetaMemberFlags)0)]
         public PlayerDailyScoopEventModel DailyScoopEvents { get; set; }
 
-        [MetaMember(273, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(273, (MetaMemberFlags)0)]
         public List<int> MassMailsReceived { get; set; }
 
         [IgnoreDataMember]
@@ -385,7 +382,7 @@ namespace GameLogic.Player
         public IEnumerable<MiniEventModel> ActiveMiniEvents { get; }
 
         [IgnoreDataMember]
-        public Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
+        public Dictionary<string, Coordinate> BubblesWithAds { get; }
 
         [MetaMember(275, (MetaMemberFlags)0)]
         public RandomPCG RewardContainerRandom { get; set; }
@@ -408,5 +405,8 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public BoultonLeagueDivisionClientState BoultonLeagueDivisionClientState { get; }
         public IEnumerable<TemporaryCardCollectionEventModel> ActiveTemporaryCardCollectionEvents { get; }
+
+        [MetaMember(281, (MetaMemberFlags)0)]
+        public RandomPCG StackMiniGameRandom { get; set; }
     }
 }

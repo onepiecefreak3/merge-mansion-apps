@@ -4,11 +4,12 @@ using Metaplay.Core.Network;
 using System;
 using System.Collections.Generic;
 using Metaplay.Core.Session;
+using Metaplay.Core.Player;
 
 namespace Metaplay.Core.Debugging
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class PlayerIncidentReport
     {
         [MetaSerializableDerived(4)]
@@ -17,19 +18,16 @@ namespace Metaplay.Core.Debugging
             [MetaMember(4, (MetaMemberFlags)0)]
             public string ErrorType { get; set; }
 
-            [MetaMember(1, 0)]
+            [MetaMember(1, (MetaMemberFlags)0)]
             public string NetworkError { get; set; }
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public ServerEndpoint Endpoint { get; set; }
 
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public string NetworkReachability { get; set; }
 
-            [MetaMember(5, 0)]
-            public NetworkDiagnosticReport NetworkReport { get; set; }
-
-            [MetaMember(6, 0)]
+            [MetaMember(6, (MetaMemberFlags)0)]
             public string TlsPeerDescription { get; set; }
 
             [MetaMember(7, (MetaMemberFlags)0)]
@@ -46,6 +44,14 @@ namespace Metaplay.Core.Debugging
             }
 
             public SessionStartFailed(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
+            {
+            }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public NetworkDiagnosticReport NetworkReportObsolete { get; set; }
+            public string StackTrace { get; }
+
+            public SessionStartFailed(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
             {
             }
         }
@@ -97,9 +103,6 @@ namespace Metaplay.Core.Debugging
             [MetaMember(3, (MetaMemberFlags)0)]
             public string NetworkReachability { get; set; }
 
-            [MetaMember(5, (MetaMemberFlags)0)]
-            public NetworkDiagnosticReport NetworkReport { get; set; }
-
             [MetaMember(6, (MetaMemberFlags)0)]
             public string TlsPeerDescription { get; set; }
             public override string Type { get; }
@@ -114,6 +117,14 @@ namespace Metaplay.Core.Debugging
             }
 
             public TerminalNetworkError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
+            {
+            }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public NetworkDiagnosticReport NetworkReportObsolete { get; set; }
+            public string StackTrace { get; }
+
+            public TerminalNetworkError(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, string errorType, string networkError, string reasonOverride, ServerEndpoint endpoint, string networkReachability, NetworkDiagnosticReport networkReport, string tlsPeerDescription)
             {
             }
         }
@@ -141,6 +152,10 @@ namespace Metaplay.Core.Debugging
             }
 
             public UnhandledExceptionError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string exceptionName, string exceptionMessage, string stackTrace)
+            {
+            }
+
+            public UnhandledExceptionError(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, string exceptionName, string exceptionMessage, string stackTrace)
             {
             }
         }
@@ -191,6 +206,14 @@ namespace Metaplay.Core.Debugging
             public SessionCommunicationHanged(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string issueType, string issueInfo, LoginDebugDiagnostics debugDiagnostics, MetaDuration roundtripEstimate, ServerGateway serverGateway, string networkReachability, string tlsPeerDescription, SessionToken sessionToken, int pingId, MetaDuration elapsedSinceCommunication)
             {
             }
+
+            public SessionCommunicationHanged(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, string issueType, string issueInfo, LoginDebugDiagnostics debugDiagnostics, TimeSpan roundtripEstimate, ServerGateway serverGateway, string networkReachability, string tlsPeerDescription, SessionToken sessionToken, int pingId, TimeSpan elapsedSinceCommunication)
+            {
+            }
+
+            public SessionCommunicationHanged(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string issueType, string issueInfo, LoginDebugDiagnostics debugDiagnostics, TimeSpan roundtripEstimate, ServerGateway serverGateway, string networkReachability, string tlsPeerDescription, SessionToken sessionToken, int pingId, TimeSpan elapsedSinceCommunication)
+            {
+            }
         }
 
         [MetaMember(107, (MetaMemberFlags)0)]
@@ -221,6 +244,83 @@ namespace Metaplay.Core.Debugging
             }
 
             public CompanyIdLoginError(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string phase, string message, string exception)
+            {
+            }
+
+            public CompanyIdLoginError(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, string phase, string message, string exception)
+            {
+            }
+        }
+
+        [MetaMember(108, (MetaMemberFlags)0)]
+        public NetworkDiagnosticReport NetworkReport { get; set; }
+
+        public PlayerIncidentReport(MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string incidentId, NetworkDiagnosticReport networkReport)
+        {
+        }
+
+        public PlayerIncidentReport(PlayerIncidentReport.SharedIncidentInfo info, NetworkDiagnosticReport networkReport)
+        {
+        }
+
+        public struct SharedIncidentInfo
+        {
+            public MetaTime OccurredAt;
+            public List<ClientLogEntry> ClientLogEntries;
+            public UnitySystemInfo ClientSystemInfo;
+            public UnityPlatformInfo ClientPlatformInfo;
+            public IncidentGameConfigInfo GameConfigInfo;
+            public IncidentApplicationInfo ApplicationInfo;
+        }
+
+        [MetaSerializableDerived(6)]
+        public class PlayerChecksumMismatch : PlayerIncidentReport
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public int ActionNdx { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public long ConflictTick { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public string PlayerModelDiff { get; set; }
+
+            [MetaMember(4, (MetaMemberFlags)0)]
+            public List<string> VagueDifferencePathsMaybe { get; set; }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public PlayerActionBase PlayerAction { get; set; }
+            public override string Type { get; }
+            public override string SubType { get; }
+
+            private PlayerChecksumMismatch()
+            {
+            }
+
+            public PlayerChecksumMismatch(PlayerIncidentReport.SharedIncidentInfo sharedIncidentInfo, int actionNdx, long conflictTick, string playerModelDiff, List<string> vagueDifferencePathsMaybe, PlayerActionBase playerAction)
+            {
+            }
+        }
+
+        [MetaSerializableDerived(7)]
+        public class PlayerActorCrashed : PlayerIncidentReport
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public string ExceptionType { get; set; }
+
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public string ExceptionMessage { get; set; }
+
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public string StackTrace { get; set; }
+            public override string Type { get; }
+            public override string SubType { get; }
+
+            private PlayerActorCrashed()
+            {
+            }
+
+            public PlayerActorCrashed(string id, MetaTime occurredAt, List<ClientLogEntry> logEntries, UnitySystemInfo systemInfo, UnityPlatformInfo platformInfo, IncidentGameConfigInfo gameConfigInfo, IncidentApplicationInfo applicationInfo, string exceptionType, string exceptionMessage, string stackTrace)
             {
             }
         }

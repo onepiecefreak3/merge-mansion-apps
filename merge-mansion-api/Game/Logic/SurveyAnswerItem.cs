@@ -12,8 +12,8 @@ namespace Game.Logic
         [MetaMember(2, (MetaMemberFlags)0)]
         public int QuestionNo { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Explanation { get; set; }
 
         public SurveyAnswerItem()

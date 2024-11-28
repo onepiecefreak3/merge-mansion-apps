@@ -11,6 +11,6 @@ namespace GameLogic.Player
         public MysteryMachineEventId EventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        public string EventInstanceId { get; set; }
+        public EventInstanceId EventInstanceId { get; set; }
     }
 }

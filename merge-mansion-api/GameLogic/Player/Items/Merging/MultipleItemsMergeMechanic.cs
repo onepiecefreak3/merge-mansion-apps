@@ -7,8 +7,8 @@ using GameLogic.Merge;
 
 namespace GameLogic.Player.Items.Merging
 {
-    [MetaSerializableDerived(5)]
     [MetaReservedMembers(100, 199)]
+    [MetaSerializableDerived(5)]
     public class MultipleItemsMergeMechanic : BaseMergeMechanic
     {
         [MetaMember(100, (MetaMemberFlags)0)]

@@ -19,5 +19,12 @@ namespace GameLogic.Hotspots.CardStack
         public CardStack(CardStackId id, List<PlayCard> cards)
         {
         }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public GroupingStyle Style { get; set; }
+
+        public CardStack(CardStackId id, List<PlayCard> cards, GroupingStyle style)
+        {
+        }
     }
 }

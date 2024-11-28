@@ -10,13 +10,17 @@ namespace Metaplay.Core
         public string Message { get; set; }
         public string Description { get; set; }
         public EntityId PlayerId { get; set; }
-        public MetaTime Timestamp { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
 
         private ImmutableXLoginChallengeResponse()
         {
         }
 
         public ImmutableXLoginChallengeResponse(string message, string description, EntityId playerId, MetaTime timestamp)
+        {
+        }
+
+        public ImmutableXLoginChallengeResponse(string message, string description, EntityId playerId, DateTimeOffset timestamp)
         {
         }
     }

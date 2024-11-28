@@ -5,9 +5,9 @@ using System;
 
 namespace GameLogic.Player
 {
-    [MetaReservedMembers(1, 9)]
     [MetaDeserializationConvertFromConcreteDerivedType(typeof(DefaultAnalyticsContext))]
     [MetaSerializable]
+    [MetaReservedMembers(1, 9)]
     public abstract class AnalyticsContext : IRewardSource
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -31,5 +31,8 @@ namespace GameLogic.Player
         protected AnalyticsContext(string context, string target, string flashSaleContext)
         {
         }
+
+        public static string ContextIAP;
+        private static string CardCollectionSource;
     }
 }

@@ -12,8 +12,8 @@ namespace Metaplay.Core.EventLog
         [MetaMember(3, (MetaMemberFlags)0)]
         public int PayloadSchemaVersion { get; set; }
 
-        [MetaOnMemberDeserializationFailure("CreatePayloadDeserializationFailureSubstitute")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("CreatePayloadDeserializationFailureSubstitute")]
         public TPayload Payload { get; set; }
 
         protected EntityEventLogEntry()

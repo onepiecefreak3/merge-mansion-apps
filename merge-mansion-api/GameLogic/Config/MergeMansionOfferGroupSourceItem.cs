@@ -3,6 +3,7 @@ using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using Metaplay.Core;
 
 namespace GameLogic.Config
 {
@@ -24,8 +25,11 @@ namespace GameLogic.Config
         }
 
         private string DescriptionLocId { get; set; }
-        private ManuallyActivatedOfferGroupId ManualActivationInfo { get; set; }
-        private List<OfferPopupTriggerId> OfferPopupTriggers { get; set; }
+        private List<MetaRef<OfferPopupTrigger>> OfferPopupTriggers { get; set; }
         private int? MaxPurchasesPerActivation { get; set; }
+        private MetaDuration? OfferPopupTriggerCooldown { get; set; }
+        private List<MetaOfferId> PrecursorId { get; set; }
+        private List<bool> PrecursorConsumed { get; set; }
+        private List<MetaDuration> PrecursorDelay { get; set; }
     }
 }

@@ -11,88 +11,88 @@ using System.Runtime.CompilerServices;
 
 namespace GameLogic.Story
 {
-    [MetaBlockedMembers(new int[] { 16 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 16 })]
     public class DialogItemInfo : IGameConfigData<DialogItemId>, IGameConfigData, IHasGameConfigKey<DialogItemId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public DialogItemId DialogItemId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string LocalizationId { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public DialogMode DialogMode { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public DialogCharacterState LeftCharacterState { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public DialogCharacterType LeftCharacter { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public bool LeftSpeaks { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public bool RightSpeaks { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public DialogCharacterType RightCharacter { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public DialogCharacterState RightCharacterState { get; set; }
 
-        [MetaMember(10, 0)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public bool WaitConfirmation { get; set; }
 
-        [MetaMember(11, 0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public CameraTargetName ScrollToCameraTarget { get; set; }
 
-        [MetaMember(12, 0)]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public bool WaitForEndOfScrolling { get; set; }
 
-        [MetaMember(13, 0)]
+        [MetaMember(13, (MetaMemberFlags)0)]
         public CameraZoomTarget CameraZoomTarget { get; set; }
 
-        [MetaMember(14, 0)]
+        [MetaMember(14, (MetaMemberFlags)0)]
         public bool NeedsTransition { get; set; }
 
-        [MetaMember(15, 0)]
+        [MetaMember(15, (MetaMemberFlags)0)]
         public CameraTargetName MoveToCameraTarget { get; set; }
 
-        [MetaMember(17, 0)]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public HotspotId ActivateHotSpot { get; set; }
 
-        [MetaMember(18, 0)]
+        [MetaMember(18, (MetaMemberFlags)0)]
         public List<DialogLayoutEvent> LayoutEvents { get; set; }
 
-        [MetaMember(19, 0)]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public string AnimationGameObjectName { get; set; }
 
-        [MetaMember(20, 0)]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public string AnimationTrackName { get; set; }
 
-        [MetaMember(21, 0)]
+        [MetaMember(21, (MetaMemberFlags)0)]
         public string AnimationSpineName { get; set; }
 
-        [MetaMember(22, 0)]
+        [MetaMember(22, (MetaMemberFlags)0)]
         public string AnimationFinalState { get; set; }
 
-        [MetaMember(23, 0)]
+        [MetaMember(23, (MetaMemberFlags)0)]
         public List<MetaRef<MapCharacterEventDefinition>> MapCharactersEventsRefs { get; set; }
 
-        [MetaMember(24, 0)]
+        [MetaMember(24, (MetaMemberFlags)0)]
         public List<MapCharacterType> ResetMapCharacters { get; set; }
 
-        [MetaMember(25, 0)]
+        [MetaMember(25, (MetaMemberFlags)0)]
         public List<HotspotId> ScrollToHotSpot { get; set; }
 
-        [MetaMember(26, 0)]
+        [MetaMember(26, (MetaMemberFlags)0)]
         public List<DialogCharacterType> DiscoveredCharacters { get; set; }
         public DialogItemId ConfigKey => DialogItemId;
 
         [IgnoreDataMember]
-        public (string gameObjectName, string animationTrackName, string spineAnimation, string finalState) AnimationFormat { get; }
+        public ValueTuple<string, string, string, string> AnimationFormat { get; }
 
         [IgnoreDataMember]
         public IEnumerable<MapCharacterEventDefinition> MapCharactersEvents { get; }

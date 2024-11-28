@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Bubble
         [MetaMember(1, (MetaMemberFlags)0)]
         public BubblesSetupId ConfigKey { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public IBubbleLogic Logic { get; set; }
 
         public BubblesSetup()

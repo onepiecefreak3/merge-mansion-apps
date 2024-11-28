@@ -16,11 +16,11 @@ namespace merge_mansion_dumper.Dumper.Json
         {
             _serializers = new BaseMetaJsonSerializer[]
             {
-                new MetaJsonSerializer(output),
+                new MetaJsonSerializer(resolver, output),
                 new MetaMathJsonSerializer(),
                 new MetaMergeChainSerializer(resolver, dropsAsPercent, output),
                 new MetaAreaSerializer(resolver, output),
-                new MetaEventSerializer(),
+                new MetaEventSerializer(resolver),
             };
         }
 

@@ -8,8 +8,8 @@ namespace Metaplay.Core.Config
         private string _variantScope;
         private List<GameConfigBuildMessage> _validationMessages;
         private List<Predicate<GameConfigBuildMessage>> _filters;
-        public IEnumerable<GameConfigBuildMessage> FilteredValidationMessages { get; }
-        public IReadOnlyList<GameConfigBuildMessage> ValidationMessages { get; }
+        public IEnumerable<GameConfigValidationMessage> FilteredValidationMessages { get; }
+        public IReadOnlyList<GameConfigValidationMessage> ValidationMessages { get; }
 
         public GameConfigValidationResult(string variantScope)
         {

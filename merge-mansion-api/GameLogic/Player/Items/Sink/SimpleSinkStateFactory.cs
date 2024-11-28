@@ -9,12 +9,12 @@ namespace GameLogic.Player.Items.Sink
     public class SimpleSinkStateFactory : ISinkStateFactory
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        public Dictionary<ItemTypeConstant, int> Scores { get; set; }
+        public Dictionary<int, int> Scores { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int ScoreTarget { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> Reward { get; set; }
 
         private SimpleSinkStateFactory()

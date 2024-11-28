@@ -13,14 +13,14 @@ namespace Analytics
         [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("producer_id")]
         public string ProducerId;
-        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("producer_level")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int ProducerLvl;
         [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("target_id")]
         public string TargetId;
-        [JsonProperty("target_lvl")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("target_lvl")]
         public int TargetLvl;
         [JsonProperty("board_items")]
         [MetaMember(11, (MetaMemberFlags)0)]
@@ -40,16 +40,16 @@ namespace Analytics
         [JsonProperty("total_sessions")]
         public int TotalSessions { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("diamonds_spent")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int DiamondsSpent { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("energy_spent")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int EnergySpent { get; set; }
 
-        [JsonProperty("was_goal_achieved")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("was_goal_achieved")]
         public bool WasGoalAchieved { get; set; }
         public override string EventDescription { get; }
 

@@ -5,8 +5,8 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
-    [TypeConverter(typeof(EnumStringConverter<LocalizationLanguageMetacore>))]
     [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<LocalizationLanguageMetacore>))]
     public enum LocalizationLanguageMetacore
     {
         English = 0,

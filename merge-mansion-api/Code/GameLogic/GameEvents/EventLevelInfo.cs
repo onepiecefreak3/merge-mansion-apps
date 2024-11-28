@@ -14,10 +14,10 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventLevelId EventLevelId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int RequiredPoints { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
         public EventLevelId ConfigKey => EventLevelId;
 

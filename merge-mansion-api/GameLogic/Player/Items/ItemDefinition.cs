@@ -69,34 +69,34 @@ namespace GameLogic.Player.Items
         [MetaMember(1, (MetaMemberFlags)0)]
         public int ConfigKey { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string PoolTag { get; set; } // 0x18
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string SkinName { get; set; } // 0x20
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int LevelNumber { get; set; } // 0x28
 
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public bool Movable { get; set; } // 0x2C
 
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public F64 CostInDiamonds { get; set; } // 0x30
 
-        [MetaMember(7)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         private F64 AnchorPriceGems { get; set; }
 
-        [MetaMember(8)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         private F64 AnchorPriceCoins { get; set; }
 
-        [MetaMember(9)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public F64 TimeSkipPriceGems { get; set; } // 0x48
 
-        [MetaMember(10)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public F64 UnlockOnBoardPriceGems { get; set; }
 
-        [MetaMember(11)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public int ExperienceValue { get; set; }
 
         [IgnoreDataMember]
@@ -138,31 +138,31 @@ namespace GameLogic.Player.Items
         [IgnoreDataMember]
         public TimeContainerFeatures TimeContainer => _TimeContainer;
 
-        [MetaMember(25)]
+        [MetaMember(25, (MetaMemberFlags)0)]
         public List<string> Tags { get; set; }
 
-        [MetaMember(26)]
+        [MetaMember(26, (MetaMemberFlags)0)]
         public MetaRef<MergeChainDefinition> MergeChainRef { get; set; }
 
-        [MetaMember(27)]
+        [MetaMember(27, (MetaMemberFlags)0)]
         public List<string> ConfirmableMergeResults { get; set; }
 
-        [MetaMember(28)]
+        [MetaMember(28, (MetaMemberFlags)0)]
         private List<IDirectorAction> OnDiscoveredActions { get; set; }
 
-        [MetaMember(29)]
+        [MetaMember(29, (MetaMemberFlags)0)]
         public bool ShowTutorialFingerOnDiscovery { get; set; }
 
-        [MetaMember(30)]
+        [MetaMember(30, (MetaMemberFlags)0)]
         public List<string> AnalyticsMetaData { get; set; }
 
-        [MetaMember(31)]
+        [MetaMember(31, (MetaMemberFlags)0)]
         public List<int> CombineInfoWithItem { get; set; }
 
-        [MetaMember(32)]
+        [MetaMember(32, (MetaMemberFlags)0)]
         public ItemRarity Rarity { get; set; }
 
-        [MetaMember(33)]
+        [MetaMember(33, (MetaMemberFlags)0)]
         public bool Unsellable { get; set; }
 
         [MetaMember(35, (MetaMemberFlags)0)]
@@ -176,6 +176,8 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public MergeChainDefinition MergeChain => MergeChainRef.Ref;
+
+        [IgnoreDataMember]
         public IEnumerable<IDirectorAction> OnDiscovered => OnDiscoveredActions;
         public bool IsMaxLevel => MergeChain.IsLastItem(ConfigKey);
 

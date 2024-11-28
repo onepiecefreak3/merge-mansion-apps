@@ -5,15 +5,15 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Requirements
 {
-    [MetaSerializableDerived(11)]
     [MetaBlockedMembers(new int[] { 3 })]
+    [MetaSerializableDerived(11)]
     public class PlayerCurrentTimeRequirement : PlayerRequirement
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        public Nullable<MetaTime> StartInclusive { get; set; }
+        public MetaTime? StartInclusive { get; set; }
 
-        [MetaMember(2, 0)]
-        public Nullable<MetaTime> EndExclusive { get; set; }
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public MetaTime? EndExclusive { get; set; }
 
         [IgnoreDataMember]
         public MetaTime? StartTimeInclusive { get; }

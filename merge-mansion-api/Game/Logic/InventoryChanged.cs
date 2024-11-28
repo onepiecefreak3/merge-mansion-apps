@@ -3,11 +3,12 @@ using Metaplay.Core.Player;
 using Metaplay.Core.Model;
 using System;
 using Merge;
+using Analytics;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(23, "Inventory changed", 1, null, true, false, false)]
-    public class InventoryChanged : PlayerEventBase
+    [AnalyticsEvent(23, "Inventory changed", 1, null, true, true, false)]
+    public class InventoryChanged : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemType { get; set; }
@@ -29,5 +30,7 @@ namespace Game.Logic
         public InventoryChanged(string itemType, MergeBoardId boardId, int count, PlayerInventoryChangeEventType changeType)
         {
         }
+
+        public override AnalyticsEventType EventType { get; }
     }
 }

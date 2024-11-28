@@ -7,7 +7,7 @@ namespace Code.GameLogic.GameEvents
 {
     public class GarageCleanupPatternRowSource : IConfigItemSource<GarageCleanupPatternRowInfo, GarageCleanupPatternRowId>, IGameConfigSourceItem<GarageCleanupPatternRowId, GarageCleanupPatternRowInfo>, IHasGameConfigKey<GarageCleanupPatternRowId>
     {
-        private GarageCleanupPatternId ConfigKey { get; set; }
+        private GarageCleanupPatternRowId ConfigKey { get; set; }
         private int RowNumber { get; set; }
         private List<bool> ColumnNumber { get; set; }
 

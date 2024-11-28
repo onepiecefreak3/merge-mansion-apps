@@ -11,8 +11,8 @@ namespace Metaplay.Core.Guild
         [FirebaseAnalyticsIgnore]
         public GuildEventMemberInfo KickedMember { get; set; }
 
-        [FirebaseAnalyticsIgnore]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public GuildEventInvokerInfo KickInvoker { get; set; }
         public override string EventDescription { get; }
 

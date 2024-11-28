@@ -10,16 +10,16 @@ namespace GameLogic.Player.Board
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime LastBubbleAppearance { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaTime GraceChanceTimestamp { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public F32 GraceChance { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaTime BehaviourChanceTimestamp { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public F32 BehaviourChance { get; set; }
 
         public BoardBubbleState()

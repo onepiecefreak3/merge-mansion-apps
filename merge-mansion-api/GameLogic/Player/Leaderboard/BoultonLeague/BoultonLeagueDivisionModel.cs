@@ -13,10 +13,7 @@ namespace GameLogic.Player.Leaderboard.BoultonLeague
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public string EventId { get; set; }
-
         public override int TicksPerSecond { get; }
-
-        public Dictionary<int, BoultonLeagueDivisionParticipantState> Participants { get; set; }
 
         public BoultonLeagueDivisionModel()
         {

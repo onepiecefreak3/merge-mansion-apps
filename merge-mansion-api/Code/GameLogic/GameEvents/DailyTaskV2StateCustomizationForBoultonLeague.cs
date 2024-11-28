@@ -1,6 +1,7 @@
 using Metaplay.Core.Model;
 using GameLogic.DailyTasksV2;
 using GameLogic.Player.Rewards;
+using System;
 
 namespace Code.GameLogic.GameEvents
 {
@@ -19,5 +20,8 @@ namespace Code.GameLogic.GameEvents
         public DailyTaskV2StateCustomizationForBoultonLeague()
         {
         }
+
+        [MetaMember(4, (MetaMemberFlags)0)]
+        public int SoloMilestonePoints { get; set; }
     }
 }

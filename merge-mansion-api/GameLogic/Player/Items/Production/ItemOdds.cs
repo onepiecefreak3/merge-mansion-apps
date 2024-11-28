@@ -11,7 +11,7 @@ namespace GameLogic.Player.Items.Production
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> Type { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Weight { get; set; } // 0x18
 
         private ItemOdds()

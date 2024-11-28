@@ -6,29 +6,29 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Offers
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class MetaOfferGroupInfoBase : IMetaActivableConfigData<MetaOfferGroupId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MetaOfferGroupId>, IHasGameConfigKey<MetaOfferGroupId>, IMetaActivableInfo<MetaOfferGroupId>, IGameConfigPostLoad
     {
         [MetaMember(100, (MetaMemberFlags)0)]
         public MetaOfferGroupId GroupId { get; set; }
 
-        [MetaMember(101, 0)]
+        [MetaMember(101, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(102, 0)]
+        [MetaMember(102, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(103, 0)]
+        [MetaMember(103, (MetaMemberFlags)0)]
         public OfferPlacementId Placement { get; set; }
 
-        [MetaMember(104, 0)]
+        [MetaMember(104, (MetaMemberFlags)0)]
         public int Priority { get; set; }
 
-        [MetaMember(105, 0)]
+        [MetaMember(105, (MetaMemberFlags)0)]
         public List<MetaRef<MetaOfferInfoBase>> Offers { get; set; }
 
-        [MetaMember(106, 0)]
+        [MetaMember(106, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
         public MetaOfferGroupId ConfigKey => GroupId;
 

@@ -11,7 +11,7 @@ namespace GameLogic.Codex
         [MetaMember(1, (MetaMemberFlags)0)]
         public CodexCategoryId ConfigKey { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> IconItem { get; set; }
 
         public CodexCategoryInfo()

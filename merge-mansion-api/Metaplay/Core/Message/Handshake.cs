@@ -13,13 +13,13 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public string ServerVersion { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public string BuildNumber { get; set; } // 0x18
 
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public uint FullProtocolHash { get; set; } // 0x20
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public string CommitId { get; set; } // 0x28
 
             private ServerHello()
@@ -49,41 +49,39 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public string ClientVersion { get; set; }
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public string BuildNumber { get; set; }
 
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public MetaVersionRange SupportedLogicVersions { get; set; }
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public uint FullProtocolHash { get; set; }
 
-            [MetaMember(5, 0)]
+            [MetaMember(5, (MetaMemberFlags)0)]
             public string CommitId { get; set; }
+            public DateTime Timestamp { get; set; }
 
-            [MetaMember(6, 0)]
-            public MetaTime Timestamp { get; set; }
-
-            [MetaMember(7, 0)]
+            [MetaMember(7, (MetaMemberFlags)0)]
             public uint AppLaunchId { get; set; }
 
-            [MetaMember(8, 0)]
+            [MetaMember(8, (MetaMemberFlags)0)]
             public uint ClientSessionNonce { get; set; }
 
-            [MetaMember(9, 0)]
+            [MetaMember(9, (MetaMemberFlags)0)]
             public uint ClientSessionConnectionNdx { get; set; }
 
-            [MetaMember(10, 0)]
+            [MetaMember(10, (MetaMemberFlags)0)]
             public ClientPlatform Platform { get; set; }
 
-            [MetaMember(11, 0)]
+            [MetaMember(11, (MetaMemberFlags)0)]
             public int LoginProtocolVersion { get; set; }
 
             private ClientHello()
             {
             }
 
-            public ClientHello(string clientVersion, string buildNumber, MetaVersionRange supportedLogicVersions, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
+            public ClientHello(string clientVersion, string buildNumber, MetaVersionRange supportedLogicVersions, uint fullProtocolHash, string commitId, DateTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion)
             {
                 ClientVersion = clientVersion;
                 BuildNumber = buildNumber;
@@ -109,25 +107,26 @@ namespace Metaplay.Core.Message
             public ClientHello(string clientVersion, string buildNumber, int clientLogicVersion, uint fullProtocolHash, string commitId, MetaTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion, string targetHostname)
             {
             }
+
+            [MetaMember(6, (MetaMemberFlags)0)]
+            private MetaTime _timestamp;
+            public ClientHello(string clientVersion, string buildNumber, int clientLogicVersion, uint fullProtocolHash, string commitId, DateTime timestamp, uint appLaunchId, uint clientSessionNonce, uint clientSessionConnectionNdx, ClientPlatform platform, int loginProtocolVersion, string targetHostname)
+            {
+            }
         }
 
-        [MessageRoutingRuleProtocol]
         [MetaMessage(6, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class ClientAbandon : MetaMessage
         {
-            [MetaMember(1, (MetaMemberFlags)0)]
-            public MetaTime ConnectionStartedAt { get; set; }
+            public DateTime ConnectionStartedAt { get; set; }
+            public DateTime ConnectionAbandonedAt { get; set; }
+            public DateTime AbandonedCompletedAt { get; set; }
 
-            [MetaMember(2, 0)]
-            public MetaTime ConnectionAbandonedAt { get; set; }
+            [MetaMember(4, (MetaMemberFlags)0)]
+            public Handshake.ClientAbandon.AbandonSource Source { get; set; }
 
-            [MetaMember(3, 0)]
-            public MetaTime AbandonedCompletedAt { get; set; }
-
-            [MetaMember(4, 0)]
-            public AbandonSource Source { get; set; }
-
-            public ClientAbandon(MetaTime connectionStartedAt, MetaTime connectionAbandonedAt, MetaTime abandonedCompletedAt, AbandonSource source)
+            public ClientAbandon(DateTime connectionStartedAt, DateTime connectionAbandonedAt, DateTime abandonedCompletedAt, AbandonSource source)
             {
                 ConnectionStartedAt = connectionStartedAt;
                 ConnectionAbandonedAt = connectionAbandonedAt;
@@ -145,6 +144,16 @@ namespace Metaplay.Core.Message
             private ClientAbandon()
             {
             }
+
+            [MetaMember(1, (MetaMemberFlags)0)]
+            [PrettyPrint((PrettyPrintFlag)8)]
+            private MetaTime _connectionStartedAt;
+            [MetaMember(2, (MetaMemberFlags)0)]
+            [PrettyPrint((PrettyPrintFlag)8)]
+            private MetaTime _connectionAbandonedAt;
+            [MetaMember(3, (MetaMemberFlags)0)]
+            [PrettyPrint((PrettyPrintFlag)8)]
+            private MetaTime _abandonedCompletedAt;
         }
 
         [MessageRoutingRuleProtocol]
@@ -154,7 +163,8 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public string DeviceId { get; set; } // 0x30
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
+            [Sensitive]
             public string AuthToken { get; set; } // 0x38
 
             private DeviceLoginRequest()
@@ -254,7 +264,7 @@ namespace Metaplay.Core.Message
         public class ClientHelloAccepted : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
-            public ServerOptions ServerOptions { get; set; }
+            public Handshake.ServerOptions ServerOptions { get; set; }
 
             private ClientHelloAccepted()
             {
@@ -285,14 +295,14 @@ namespace Metaplay.Core.Message
             [MetaMember(3, (MetaMemberFlags)0)]
             public EntityId PlayerIdHint { get; set; } // 0x10
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public bool IsBot { get; set; } // 0x18
 
-            [MetaMember(5, 0)]
+            [MetaMember(5, (MetaMemberFlags)0)]
             public LoginDebugDiagnostics DebugDiagnostics { get; set; } // 0x20
 
-            [MetaMember(6, 0)]
-            public ILoginRequestGamePayload GamePayload { get; set; } // 0x28
+            [MetaMember(6, (MetaMemberFlags)0)]
+            public Handshake.ILoginRequestGamePayload GamePayload { get; set; } // 0x28
 
             protected LoginRequest()
             {
@@ -320,6 +330,7 @@ namespace Metaplay.Core.Message
             }
         }
 
+        [MetaBlockedMembers(new int[] { 7, 8 })]
         [MetaSerializable]
         public struct ServerOptions
         {
@@ -337,6 +348,8 @@ namespace Metaplay.Core.Message
             public string GameEnvironment; // 0x20
             [MetaMember(100, (MetaMemberFlags)0)]
             public int ClientTosVersion;
+            [MetaMember(9, (MetaMemberFlags)0)]
+            public MetaDuration GameTimeOffset;
         }
 
         [MetaSerializable]

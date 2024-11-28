@@ -15,12 +15,15 @@ using Metaplay.Core.Activables;
 using Metaplay.Core.Player;
 using Game.Logic;
 using System.Security.Cryptography;
+using GameLogic.Config;
 using GameLogic.Story;
+using static Metaplay.Core.Network.ServerConnection;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
     class MetaJsonSerializer : BaseMetaJsonSerializer
     {
+        private readonly SharedGameConfig _config;
         private readonly ILogger _output;
         private readonly Type[] _supportedTypes =
         {
@@ -42,8 +45,9 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(DialogItemInfo)
             };
 
-        public MetaJsonSerializer(ILogger output)
+        public MetaJsonSerializer(SharedGameConfig config, ILogger output)
         {
+            _config = config;
             _output = output;
         }
 
@@ -146,7 +150,7 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             if (requirement is AreaCompletedRequirement aReq)
                 WriteProperty(writer, "AreaCompleted", aReq.AreaRef.KeyObject, serializer);
             else if (requirement is HotspotCompletedRequirement hReq)
-                WriteProperty(writer, "HotspotCompleted", hReq.GetRequiredHotspot().KeyObject, serializer);
+                WriteProperty(writer, "HotspotCompleted", hReq.GetRequiredHotspot().ConfigKey, serializer);
             else if (requirement is HotspotVisibleOrCompletedRequirement hvcReq)
                 WriteProperty(writer, "HotspotVisibleOrCompleted", hvcReq.GetRequiredHotspot().KeyObject, serializer);
             else if (requirement is HotspotVisibleRequirement hvReq)
@@ -177,12 +181,19 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (requirement is PlayerItemRequirement piReq)
             {
                 writer.WritePropertyName("ItemAcquired");
-                writer.WriteStartObject();
+                writer.WriteStartArray();
 
-                WriteProperty(writer, "ItemRef", piReq.Item.ItemType, serializer);
-                WriteProperty(writer, "Requirement", piReq.Requirement, serializer);
+                foreach (var req in piReq.Items)
+                {
+                    writer.WriteStartObject();
 
-                writer.WriteEndObject();
+                    WriteProperty(writer, "ItemRef", ((ItemDefinition)_config.Items.GetInfoByKey(req)).ItemType, serializer);
+                    WriteProperty(writer, "Requirement", piReq.Requirement, serializer);
+
+                    writer.WriteEndObject();
+                }
+
+                writer.WriteEndArray();
             }
             else if (requirement is PlayerSeenItemRequirement psiReq)
             {

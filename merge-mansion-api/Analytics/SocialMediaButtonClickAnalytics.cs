@@ -17,8 +17,8 @@ namespace Analytics
         [JsonProperty("menu_name")]
         public string MenuName { get; set; }
 
-        [JsonProperty("ui_name")]
         [Description("The name of the clicked UI element")]
+        [JsonProperty("ui_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public string UiName { get; set; }
 

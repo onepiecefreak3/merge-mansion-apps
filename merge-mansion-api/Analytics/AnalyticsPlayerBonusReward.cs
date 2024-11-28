@@ -9,13 +9,13 @@ namespace Analytics
     public class AnalyticsPlayerBonusReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Type of the reward")]
         [JsonProperty("reward_type")]
+        [Description("Type of the reward")]
         public string Type { get; set; }
 
         [Description("Id/Name of the reward")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("reward_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string Id { get; set; }
 
         [JsonProperty("reward_amount")]

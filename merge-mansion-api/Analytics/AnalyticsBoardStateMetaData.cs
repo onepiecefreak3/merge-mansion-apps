@@ -11,20 +11,20 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsBoardStateMetaData
     {
-        [JsonProperty("item_type")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_type")]
         public string ItemType { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("charges", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int? Charges { get; set; }
 
         [JsonProperty("duration_left", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(3, (MetaMemberFlags)0)]
         public MetaDuration? TimeContainerRemaining { get; set; }
 
-        [JsonProperty("is_active", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("is_active", NullValueHandling = (NullValueHandling)1)]
         public bool? IsActive { get; set; }
 
         public AnalyticsBoardStateMetaData()
@@ -40,9 +40,9 @@ namespace Analytics
         [Description("Item level")]
         public int ItemLevel { get; set; }
 
-        [JsonProperty("item_mergechain_total_length")]
-        [Description("Merge chain total length of the item")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Merge chain total length of the item")]
+        [JsonProperty("item_mergechain_total_length")]
         public int ItemMergeChainTotalLength { get; set; }
 
         [Description("Merge chain unlocked length of the item")]

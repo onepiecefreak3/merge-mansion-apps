@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using GameLogic.Area;
+using Code.GameLogic.Hotspots;
 
 namespace GameLogic.Player.Requirements
 {

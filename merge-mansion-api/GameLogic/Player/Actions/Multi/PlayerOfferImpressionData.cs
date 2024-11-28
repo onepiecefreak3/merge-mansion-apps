@@ -2,11 +2,13 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Offers;
 using System;
 using Metaplay.Core;
+using Metaplay.Core.Math;
+using Metaplay.Core.Player;
 
 namespace GameLogic.Player.Actions.Multi
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 9, 11 })]
+    [MetaSerializable]
     public struct PlayerOfferImpressionData
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -33,14 +35,14 @@ namespace GameLogic.Player.Actions.Multi
         [MetaMember(8, (MetaMemberFlags)0)]
         public long? Duration { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
-        public long ReferencePrice { get; set; }
+        [MetaMember(13, (MetaMemberFlags)0)]
+        public F64 ReferencePrice { get; set; }
 
         [MetaMember(10, (MetaMemberFlags)0)]
         public string OfferItems { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
-        public string Segment { get; set; }
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public PlayerSegmentId Segment { get; set; }
 
         [MetaMember(12, (MetaMemberFlags)0)]
         public int OfferGlobalCounter { get; set; }

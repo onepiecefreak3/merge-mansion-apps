@@ -114,7 +114,7 @@ namespace Metaplay.Core.Network
             var headerDelay = Task.Delay(config.HeaderReadTimeout, _cts.Token);
 
             var clientHello = new Handshake.ClientHello(config.Version, config.BuildNumber, config.SupportedLogicVersions,
-                config.FullProtocolHash, config.CommitId, MetaTime.Now, config.AppLaunchId, config.ClientSessionNonce,
+                config.FullProtocolHash, config.CommitId, DateTime.Now, config.AppLaunchId, config.ClientSessionNonce,
                 config.ClientSessionConnectionNdx, config.Platform, config.LoginProtocolVersion);
             var clientHelloData = EncodeMessage(clientHello, _enableCompression);
             EnqueueSendBytes(clientHelloData, OutgoingMessage.MessageKind.MetaMessage);
@@ -303,7 +303,7 @@ namespace Metaplay.Core.Network
 
         private async Task<(Stream, TransportHandshakeReport)> TryOpenStream(CancellationToken ct)
         {
-            var connectionStartedAt = MetaTime.Now;
+            var connectionStartedAt = DateTime.Now;
 
             var config = Config();
             var openTask = OpenStream(ct);
@@ -333,7 +333,7 @@ namespace Metaplay.Core.Network
             return await openTask;
         }
 
-        protected void AbandonConnectionStream(Task<(Stream, TransportHandshakeReport)> streamTask, MetaTime connectionStartedAt)
+        protected void AbandonConnectionStream(Task<(Stream, TransportHandshakeReport)> streamTask, DateTime connectionStartedAt)
         {
             var continueTask = streamTask.ContinueWith(task =>
             {
@@ -349,9 +349,9 @@ namespace Metaplay.Core.Network
             AbandonConnectionStream(continueTask, connectionStartedAt);
         }
 
-        protected void AbandonConnectionStream(Task<Stream> streamTask, MetaTime connectionStartedAt)
+        protected void AbandonConnectionStream(Task<Stream> streamTask, DateTime connectionStartedAt)
         {
-            var abandonAt = MetaTime.Now;
+            var abandonAt = DateTime.Now;
 
             streamTask.ContinueWith(async task =>
             {
@@ -365,7 +365,7 @@ namespace Metaplay.Core.Network
 
                 await using var res = task.Result;
 
-                var abandonReq = new Handshake.ClientAbandon(connectionStartedAt, abandonAt, MetaTime.Now, Handshake.ClientAbandon.AbandonSource.PrimaryConnection);
+                var abandonReq = new Handshake.ClientAbandon(connectionStartedAt, abandonAt, DateTime.Now, Handshake.ClientAbandon.AbandonSource.PrimaryConnection);
                 var encodedAbandonReq = EncodeMessage(abandonReq, _enableCompression);
 
                 await res.WriteAsync(encodedAbandonReq, 0, encodedAbandonReq.Length);

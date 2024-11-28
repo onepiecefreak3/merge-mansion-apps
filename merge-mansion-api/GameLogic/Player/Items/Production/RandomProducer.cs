@@ -11,11 +11,11 @@ namespace GameLogic.Player.Items.Production
     [MetaSerializableDerived(2)]
     public class RandomProducer : IItemSpawner, IItemProducer
     {
-        [MetaMember(1)]
+        [MetaMember(1, (MetaMemberFlags)0)]
         private List<ItemOdds> OddsList { get; set; }
 
         [IgnoreDataMember]
-        public IEnumerable<(ItemDefinition, int)> Odds => OddsList.Select(x => (x.Item, x.Weight));
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => OddsList.Select(x => (x.Item, x.Weight));
         public int SpawnQuantity => 1;
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

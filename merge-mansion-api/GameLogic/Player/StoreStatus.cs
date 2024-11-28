@@ -11,11 +11,11 @@ using System.Runtime.CompilerServices;
 namespace GameLogic.Player
 {
     [MetaSerializable]
-    [MetaBlockedMembers(new int[] { 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17, 18, 19, 21, 22, 26 })]
+    [MetaBlockedMembers(new int[] { 1, 2, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 17, 18, 19, 21, 22, 23, 26 })]
     public class StoreStatus
     {
         private static int PurchaseHistoryLength;
-        [MetaMember(9, (MetaMemberFlags)0)]
+        [MetaMember(31, (MetaMemberFlags)0)]
         private List<ShopItemId> CurrentShopItems { get; set; }
 
         [MetaMember(15, (MetaMemberFlags)0)]
@@ -24,11 +24,8 @@ namespace GameLogic.Player
         [MetaMember(16, (MetaMemberFlags)0)]
         private long LastShopOfferSet { get; set; }
 
-        [MetaMember(20, (MetaMemberFlags)0)]
+        [MetaMember(32, (MetaMemberFlags)0)]
         private Dictionary<ShopItemId, StoreStatus.PurchaseHistory> RecordedPurchases { get; set; }
-
-        [MetaMember(23, (MetaMemberFlags)0)]
-        private StoreStatus.AutoOfferInfo ActiveAutoOfferInfo { get; set; }
 
         [MetaMember(24, (MetaMemberFlags)0)]
         public MetaTime? GarageShopLastOpened_DEPRECATED { get; set; }
@@ -91,7 +88,7 @@ namespace GameLogic.Player
             }
         }
 
-        [MetaMember(26, (MetaMemberFlags)0)]
+        [MetaMember(33, (MetaMemberFlags)0)]
         public Dictionary<AdvertisementPlacementId, ValueTuple<ShopItemId, int>> FlashSaleAdPlacements { get; set; }
 
         [MetaMember(28, (MetaMemberFlags)0)]
@@ -115,8 +112,8 @@ namespace GameLogic.Player
         [MetaMember(30, (MetaMemberFlags)0)]
         public Dictionary<OfferPlacementId, StoreStatus.FlashSale> CurrentFlashSales { get; set; }
 
-        [MetaSerializable]
         [MetaBlockedMembers(new int[] { 3 })]
+        [MetaSerializable]
         public class FlashSale
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -132,5 +129,8 @@ namespace GameLogic.Player
 
         [MetaMember(34, (MetaMemberFlags)0)]
         public Dictionary<ShopItemId, ValueTuple<int, int>> FlashSaleSMETokensAttachments { get; set; }
+
+        [MetaMember(35, (MetaMemberFlags)0)]
+        private Dictionary<MetaOfferGroupId, MetaTime> OfferPopupTriggersActivatedTimestamps { get; set; }
     }
 }

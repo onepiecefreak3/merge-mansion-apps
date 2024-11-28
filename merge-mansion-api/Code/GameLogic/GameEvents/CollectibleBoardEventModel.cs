@@ -59,6 +59,8 @@ namespace Code.GameLogic.GameEvents
         public bool EndDialogueTriggered { get; set; }
         public bool ActiveDecorationNoted { get; set; }
         public bool IsPlayable { get; set; }
+
+        [IgnoreDataMember]
         public bool RequestExtension { get; set; }
         public bool CanBeResolved { get; set; }
         public bool FtueNoted { get; set; }
@@ -111,5 +113,8 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(15, (MetaMemberFlags)0)]
         protected HashSet<int> FoundGems { get; set; }
         public bool GemFound { get; set; }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public int GivenPlayerPortalItem { get; set; }
     }
 }

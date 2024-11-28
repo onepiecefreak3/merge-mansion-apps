@@ -16,13 +16,15 @@ namespace GameLogic.Player.Items.Production
         [MetaMember(1, (MetaMemberFlags)0)]
         public string Marker { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private List<MetaRef<ItemDefinition>> Items { get; set; } // 0x18
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public IItemSpawner BaseProducer { get; set; } // 0x20
         public int SpawnQuantity => BaseProducer.SpawnQuantity;
-        public IEnumerable<(ItemDefinition, int)> Odds => BaseProducer.Odds;
+
+        [IgnoreDataMember]
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => BaseProducer.Odds;
 
         public IEnumerable<ItemDefinition> Produce(IGenerationContext context, int quantity)
         {

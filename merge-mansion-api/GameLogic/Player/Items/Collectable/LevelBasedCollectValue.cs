@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Collectable
         [MetaMember(1, (MetaMemberFlags)0)]
         public int Factor { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 
         private LevelBasedCollectValue()

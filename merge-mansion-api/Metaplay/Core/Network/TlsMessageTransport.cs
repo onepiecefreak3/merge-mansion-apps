@@ -28,7 +28,7 @@ namespace Metaplay.Core.Network
 
         protected override async Task<(Stream, TransportHandshakeReport)> OpenStream(CancellationToken ct)
         {
-            var connectionStartedAt = MetaTime.Now;
+            var connectionStartedAt = DateTime.Now;
             var (tcpStream, tcpReport) = await base.OpenStream(ct);
 
             // Log debug "Authenticating TLS..."

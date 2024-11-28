@@ -11,7 +11,7 @@ namespace Metaplay.Core.LiveOpsEvent
         public MetaGuid EventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        public LiveOpsEventScheduleOccasion ScheduleMaybe { get; set; }
+        public LiveOpsEventScheduleInfo ScheduleMaybe { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
         public LiveOpsEventContent Content { get; set; }

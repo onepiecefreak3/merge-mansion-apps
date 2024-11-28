@@ -20,43 +20,43 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventId EventId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public MetaRef<EventCurrencyInfo> EventCurrencyInfo { get; set; }
 
-        [MetaMember(10, 0)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public List<MetaRef<EventOfferInfo>> EventShopOfferInfos { get; set; }
 
-        [MetaMember(11, 0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public MetaRef<EventLevels> Levels { get; set; }
 
-        [MetaMember(16, 0)]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public List<MetaRef<BoardEventInfo>> HintedBoardEventInfos { get; set; }
 
-        [MetaMember(18, 0)]
+        [MetaMember(18, (MetaMemberFlags)0)]
         public ExtendableEventParams ExtendableEventParams { get; set; }
 
-        [MetaMember(19, 0)]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public MetaDuration ExtensionPurchaseSafetyMargin { get; set; }
 
-        [MetaMember(20, 0)]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> ExtensionInAppProduct { get; set; }
 
-        [MetaMember(22, 0)]
+        [MetaMember(22, (MetaMemberFlags)0)]
         public ConfigPrefabId EndPopupId { get; set; }
 
-        [MetaMember(23, 0)]
+        [MetaMember(23, (MetaMemberFlags)0)]
         public ConfigPrefabId ShopPopupId { get; set; }
 
-        [MetaMember(28, 0)]
+        [MetaMember(28, (MetaMemberFlags)0)]
         public ConfigPrefabId HudButtonId { get; set; }
         public EventId ConfigKey => EventId;
 

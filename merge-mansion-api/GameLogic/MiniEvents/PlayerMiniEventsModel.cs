@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.MiniEvents
 {
-    [MetaSerializableDerived(15)]
     [MetaActivableSet("MiniEvent", false)]
+    [MetaSerializableDerived(15)]
     public class PlayerMiniEventsModel : MetaActivableSet<MiniEventId, MiniEventInfo, MiniEventModel>
     {
         public PlayerMiniEventsModel()

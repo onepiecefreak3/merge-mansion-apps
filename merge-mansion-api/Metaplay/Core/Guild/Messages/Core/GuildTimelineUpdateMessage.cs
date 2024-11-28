@@ -16,7 +16,7 @@ namespace Metaplay.Core.Guild.Messages.Core
         public uint FinalChecksum { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        public int StartTick { get; set; }
+        public long StartTick { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public int StartOperation { get; set; }

@@ -88,5 +88,7 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(22, (MetaMemberFlags)0)]
         private int LastLevelNoted { get; set; }
+
+        private static int InvalidProgressValue;
     }
 }

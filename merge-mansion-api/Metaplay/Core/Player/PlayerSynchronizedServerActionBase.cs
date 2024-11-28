@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Player
 {
-    [ModelActionExecuteFlags((ModelActionExecuteFlags)4)]
     [MetaImplicitMembersRange(120, 140)]
+    [ModelActionExecuteFlags((ModelActionExecuteFlags)4)]
     public abstract class PlayerSynchronizedServerActionBase : PlayerActionBase
     {
         protected PlayerSynchronizedServerActionBase()

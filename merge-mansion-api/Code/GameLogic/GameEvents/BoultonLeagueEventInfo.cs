@@ -8,8 +8,8 @@ using Metaplay.Core;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableConfigData("BoultonLeagueEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("BoultonLeagueEvent", false, true)]
     public class BoultonLeagueEventInfo : IMetaActivableConfigData<BoultonLeagueEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<BoultonLeagueEventId>, IHasGameConfigKey<BoultonLeagueEventId>, IMetaActivableInfo<BoultonLeagueEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -1,6 +1,8 @@
 using Metaplay.Core.Model;
 using Metaplay.Core.Rewards;
 using Code.GameLogic.Config;
+using System.Runtime.Serialization;
+using System;
 
 namespace GameLogic.Player.Rewards
 {
@@ -13,5 +15,8 @@ namespace GameLogic.Player.Rewards
         protected PlayerReward()
         {
         }
+
+        [IgnoreDataMember]
+        public virtual bool ShouldShowInfoButton { get; }
     }
 }

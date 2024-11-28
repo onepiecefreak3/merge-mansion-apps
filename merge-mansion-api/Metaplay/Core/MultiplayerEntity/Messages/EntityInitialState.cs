@@ -9,21 +9,21 @@ namespace Metaplay.Core.MultiplayerEntity.Messages
         [MetaMember(1, (MetaMemberFlags)0)]
         public EntitySerializedState State { get; set; } // 0x10
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int ChannelId { get; set; } // 0x60
 
-        [MetaMember(3, 0)]
-        public ChannelContextDataBase ContextData { get; set; } // 0x68
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public EntityClientData ClientData { get; set; }
 
         private EntityInitialState()
         {
         }
 
-        public EntityInitialState(EntitySerializedState state, int channelId, ChannelContextDataBase contextData)
+        public EntityInitialState(EntitySerializedState state, int channelId, EntityClientData clientData)
         {
             State = state;
             ChannelId = channelId;
-            ContextData = contextData;
+            ClientData = clientData;
         }
     }
 }

@@ -5,14 +5,14 @@ using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaSerializableDerived(7)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(7)]
     public class CollectibleBoardEventCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(2, (MetaMemberFlags)0)]
         public int Progress { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public bool LevelUpMergeChain { get; set; }
 
         private CollectibleBoardEventCollectAction()

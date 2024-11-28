@@ -31,8 +31,8 @@ namespace Metaplay.Core.Player
         [MetaMember(7, (MetaMemberFlags)0)]
         public MetaTime? EndTime { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [FirebaseAnalyticsIgnore]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public List<string> FastForwardedPhases { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]

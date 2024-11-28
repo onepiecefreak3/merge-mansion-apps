@@ -10,7 +10,7 @@ namespace Metaplay.Core.Localization
         [MetaMember(1, (MetaMemberFlags)0)]
         public LanguageId LanguageId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
         public LanguageId ConfigKey => LanguageId;
 

@@ -1,22 +1,20 @@
-﻿using System;
+using System;
+using System.ComponentModel;
 
 namespace Metaplay.Core
 {
-    public struct EntityKind : IEquatable<EntityKind>
+    [TypeConverter(typeof(EntityKindTypeConverter))]
+    public struct EntityKind
     {
         public const int MaxValue = 1024;
-
         public static readonly EntityKind None = new EntityKind(0); // 0x0
-
         public readonly int Value; // 0x0
-
         public string Name => EntityKindRegistry.GetName(this);
 
         public EntityKind(int value)
         {
             if (value >= MaxValue)
                 throw new ArgumentOutOfRangeException(nameof(value));
-
             Value = value;
         }
 
@@ -29,7 +27,6 @@ namespace Metaplay.Core
         {
             if (!(obj is EntityKind idObj))
                 return false;
-
             return Value == idObj.Value;
         }
 

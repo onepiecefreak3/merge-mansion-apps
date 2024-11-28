@@ -19,40 +19,40 @@ namespace GameLogic.Config
         [MetaMember(1, (MetaMemberFlags)0)]
         private string TitleLocId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private string SaleBadgeLocId { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         private string OfferPanePrefabId { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         private string BackgroundSpriteId { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public ICost OfferCost { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int FlashSalePriceModifier { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public int Weight { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public List<PlayerRequirement> Requirements { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public string TitleColorHex { get; set; }
 
-        [MetaMember(10, 0)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public string BackgroundColorHex { get; set; }
 
-        [MetaMember(11, 0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public string BackgroundGradientHex { get; set; }
 
-        [MetaMember(12, 0)]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public string LeftCharacterId { get; set; }
 
-        [MetaMember(13, 0)]
+        [MetaMember(13, (MetaMemberFlags)0)]
         public string RightCharacterId { get; set; }
 
         [IgnoreDataMember]
@@ -112,5 +112,7 @@ namespace GameLogic.Config
         public MergeMansionOfferInfo(MetaOfferSourceConfigItemBase metaOfferInfo, string titleLocId, string saleBadgeLocId, string offerPanePrefabId, string backgroundAnimationId, string foregroundEffectId, string backgroundSpriteId, string titleColorHex, string backgroundColorHex, string backgroundGradientHex, string leftCharacterId, string rightCharacterId, ICost cost, List<int> costAmounts, int flashSalePriceModifier, int weight, List<PlayerRequirement> requirements, List<IDirectorAction> firstTimePurchaseActions, MetaRef<InAppProductInfoBase> previousInAppProduct, int maxPurchasesGlobally, int saleAmount)
         {
         }
+
+        public override string CustomReferencePriceForDashboard { get; }
     }
 }

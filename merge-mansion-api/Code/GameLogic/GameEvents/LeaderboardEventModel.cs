@@ -45,7 +45,7 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(9, (MetaMemberFlags)0)]
         public List<int> ClaimedLevels { get; set; }
 
-        [MetaMember(10, (MetaMemberFlags)0)]
+        [IgnoreDataMember]
         public int EnterMergeBoardCount { get; set; }
         public bool PortalItemGiven { get; set; }
         public bool StartNoted { get; set; }

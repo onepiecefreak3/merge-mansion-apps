@@ -61,7 +61,7 @@ namespace Code.GameLogic.GameEvents
         }
 
         [MetaMember(8, (MetaMemberFlags)0)]
-        public string EventInstanceId { get; set; }
+        public EventInstanceId EventInstanceId { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]
         public MetaTime? StartTimeInGameConfig { get; set; }
@@ -72,5 +72,8 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(11, (MetaMemberFlags)0)]
         public HashSet<PlayerSegmentId> LeaderboardRewardSegmentsAtStartOfEvent { get; set; }
         public bool LeaderboardRewardsClaimed { get; set; }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        private MysteryMachineLeaderboardConfigId CachedLeaderboardConfigId { get; set; }
     }
 }

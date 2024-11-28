@@ -9,10 +9,10 @@ namespace Metaplay.Core.Player
         [MetaMember(1, (MetaMemberFlags)0)]
         public List<PlayerPropertyRequirement> PropertyRequirements { get; set; }
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<PlayerSegmentId> RequireAnySegment { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public List<PlayerSegmentId> RequireAllSegments { get; set; }
 
         private PlayerSegmentBasicCondition()

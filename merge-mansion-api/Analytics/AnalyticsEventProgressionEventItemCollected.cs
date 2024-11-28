@@ -14,24 +14,24 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("event_id")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Event where progress was made")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
         public string EventId { get; set; }
 
+        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("board_id")]
         [Description("Board where event item was collected")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         public MergeBoardId BoardId { get; set; }
 
-        [JsonProperty("event_progress_gained")]
-        [Description("How many points player made")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("How many points player made")]
+        [JsonProperty("event_progress_gained")]
         public int EventProgressGained { get; set; }
 
-        [Description("True if item was collected from inventory")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("from_inventory")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("True if item was collected from inventory")]
         public bool FromInventory { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -58,9 +58,9 @@ namespace Analytics
         [Description("Merge chain total length of the item")]
         public int ItemMergeChainTotalLength { get; set; }
 
+        [MetaMember(9, (MetaMemberFlags)0)]
         [Description("Merge chain unlocked length of the item")]
         [JsonProperty("item_mergechain_unlocked_length")]
-        [MetaMember(9, (MetaMemberFlags)0)]
         public int ItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticsEventProgressionEventItemCollected(IStringId eventId, MergeBoardId boardId, int eventProgressGained, bool fromInventory, string itemType, int itemLevel, int itemMergeChainTotalLength, int itemMergeChainUnlockedLength)

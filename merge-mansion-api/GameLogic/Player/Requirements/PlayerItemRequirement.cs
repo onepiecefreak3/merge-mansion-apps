@@ -4,6 +4,8 @@ using GameLogic.Player.Items;
 using Metaplay.Core;
 using Metaplay.Core.Model;
 using System;
+using Newtonsoft.Json;
+using GameLogic.Config;
 
 namespace GameLogic.Player.Requirements
 {
@@ -11,16 +13,15 @@ namespace GameLogic.Player.Requirements
     public class PlayerItemRequirement : PlayerRequirement
     {
         [MetaMember(3, (MetaMemberFlags)0)]
-        private List<ItemTypeConstant> ItemTypes { get; set; }
+        private List<int> ItemTypes { get; set; }
 
-        [MetaMember(1, 0)]
-        private List<MetaRef<ItemDefinition>> ItemRefs { get; set; }
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("FixRefs")]
+        private List<ItemDef> ItemRefs { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Requirement { get; set; }
-        public IReadOnlyCollection<ItemTypeConstant> Items => ItemTypes;
-        public IEnumerable<ItemDefinition> ItemDefinitions => ItemRefs.Select(x => x.Ref);
-        public ItemDefinition Item => ItemRefs.FirstOrDefault()?.Ref;
+        public IReadOnlyCollection<int> Items => ItemTypes;
 
         public PlayerItemRequirement()
         {
@@ -37,5 +38,8 @@ namespace GameLogic.Player.Requirements
         public PlayerItemRequirement(ItemDefinition definition, int amount)
         {
         }
+
+        [JsonProperty("item")]
+        public int? ItemKey { get; }
     }
 }

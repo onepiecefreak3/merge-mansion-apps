@@ -16,22 +16,22 @@ namespace Analytics
         public sealed override AnalyticsEventType EventType { get; }
 
         [JsonProperty("board_id")]
-        [Description("Id of the board where the fish was caught")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Id of the board where the fish was caught")]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [Description("Name of the item that was caught")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Name of the item that was caught")]
         public string ItemName { get; set; }
 
         [Description("Weight category of the fish that was caught")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("weight_category")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public WeightCategory WeightCategory { get; set; }
 
-        [Description("Weight of the fish that was caught")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Weight of the fish that was caught")]
         [JsonProperty("weight")]
         public double Weight { get; set; }
 
@@ -41,8 +41,8 @@ namespace Analytics
         public bool PersonalHighScore { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
-        [JsonProperty("world_high_score")]
         [Description("True if this fish beat the previous \"world record\" (configured limit, or personal high score if that's higher), false otherwise")]
+        [JsonProperty("world_high_score")]
         public bool WorldHighScore { get; set; }
 
         [JsonProperty("event_id")]
@@ -66,8 +66,8 @@ namespace Analytics
         [MetaMember(9, (MetaMemberFlags)0)]
         public string LuckyEventType { get; set; }
 
-        [MetaMember(10, (MetaMemberFlags)0)]
         [JsonProperty("merge_parts_weights")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public double[] MergePartsWeight { get; set; }
 
         public AnalyticsEventFishCaught(MergeBoardId mergeBoardId, string itemName, WeightCategory weightCategory, double weight, bool personalHighScore, bool worldHighScore, AnalyticsContext context, LuckyType luckyType, FishRarity rarity, double[] mergePartsWeight)

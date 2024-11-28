@@ -6,9 +6,9 @@ using Metaplay.Core;
 
 namespace GameLogic.Banks
 {
-    [MetaSerializableDerived(6)]
     [MetaBlockedMembers(new int[] { 2 })]
     [MetaActivableSet("CurrencyBankEvent", false)]
+    [MetaSerializableDerived(6)]
     public class CurrencyBanksModel : MetaActivableSet<CurrencyBankId, CurrencyBankInfo, CurrencyBankModel>
     {
         private static string ActivableKindId;

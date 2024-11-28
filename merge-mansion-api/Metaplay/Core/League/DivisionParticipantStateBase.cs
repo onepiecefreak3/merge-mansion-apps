@@ -8,7 +8,9 @@ namespace Metaplay.Core.League
     public abstract class DivisionParticipantStateBase<TDivisionScore> : IDivisionParticipantState
     {
         public EntityId ParticipantId { get; set; }
-        public TDivisionScore DivisionScore { get; set; }
+
+        [IgnoreDataMember]
+        public IDivisionScore DivisionScore { get; set; }
         public int SortOrderIndex { get; set; }
 
         [MetaMember(101, (MetaMemberFlags)0)]

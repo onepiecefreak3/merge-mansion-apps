@@ -11,7 +11,7 @@ namespace GameLogic.Shop
     [MetaAllowNoSerializedMembers]
     public class FlashSaleItem : IShopItem
     {
-        private (Currencies currency, long price) HowMuchPlayerMustPay { get; set; }
+        private Func<ValueTuple<Currencies, long>> HowMuchPlayerMustPay { get; set; }
         private Func<int> HowManyPlayerCanStillBuy { get; set; }
         private Action<IPlayer> OnAfterPurchase { get; set; }
 

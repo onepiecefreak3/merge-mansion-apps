@@ -22,103 +22,103 @@ using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
-    [DefaultMember("Item")]
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16, 33, 34, 45 })]
     [MetaActivableConfigData("BoardEvent", false, true)]
+    [DefaultMember("Item")]
     public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventId EventId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public MetaRef<EventCurrencyInfo> EventCurrencyInfo { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public MetaRef<BoardInfo> BoardInfo { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public MetaRef<EventTaskInfo> EventInitTask { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public List<MetaRef<EventTaskInfo>> EventTasks { get; set; }
 
-        [MetaMember(9, 0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public MetaRef<EventLevels> Levels { get; set; }
 
-        [MetaMember(12, 0)]
-        public ItemTypeConstant? PortalItem { get; set; }
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public int? PortalItem { get; set; }
 
-        [MetaMember(15, 0)]
+        [MetaMember(15, (MetaMemberFlags)0)]
         public string NameLocalizationId { get; set; }
 
-        [MetaMember(17, 0)]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public OfferPlacementId BoardShopPlacementId { get; set; }
 
-        [MetaMember(18, 0)]
+        [MetaMember(18, (MetaMemberFlags)0)]
         public ExtendableEventParams ExtendableEventParams { get; set; }
 
-        [MetaMember(19, 0)]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> ExtensionInAppProduct { get; set; }
 
-        [MetaMember(20, 0)]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public MetaDuration ExtensionPurchaseSafetyMargin { get; set; }
 
-        [MetaMember(21, 0)]
+        [MetaMember(21, (MetaMemberFlags)0)]
         public ConfigPrefabId InfoPopupId { get; set; }
 
-        [MetaMember(22, 0)]
+        [MetaMember(22, (MetaMemberFlags)0)]
         public ConfigPrefabId TaskProgressionId { get; set; }
 
-        [MetaMember(23, 0)]
+        [MetaMember(23, (MetaMemberFlags)0)]
         public ConfigPrefabId TaskGoalItemId { get; set; }
 
-        [MetaMember(24, 0)]
+        [MetaMember(24, (MetaMemberFlags)0)]
         public MetaRef<ShopEventInfo> HintedShopEvent { get; set; }
 
-        [MetaMember(25, 0)]
+        [MetaMember(25, (MetaMemberFlags)0)]
         public StoryDefinitionId StartEventDialogue { get; set; }
 
-        [MetaMember(26, 0)]
+        [MetaMember(26, (MetaMemberFlags)0)]
         public ConfigPrefabId StartPopupId { get; set; }
 
-        [MetaMember(27, 0)]
+        [MetaMember(27, (MetaMemberFlags)0)]
         public ConfigPrefabId TeasePopupId { get; set; }
 
-        [MetaMember(28, 0)]
+        [MetaMember(28, (MetaMemberFlags)0)]
         public ConfigPrefabId IntroPopupId { get; set; }
 
-        [MetaMember(29, 0)]
+        [MetaMember(29, (MetaMemberFlags)0)]
         public ConfigPrefabId ExtendPopupId { get; set; }
 
-        [MetaMember(30, 0)]
+        [MetaMember(30, (MetaMemberFlags)0)]
         public ConfigPrefabId EndPopupId { get; set; }
 
-        [MetaMember(31, 0)]
+        [MetaMember(31, (MetaMemberFlags)0)]
         public ConfigPrefabId HudButtonId { get; set; }
 
-        [MetaMember(32, 0)]
+        [MetaMember(32, (MetaMemberFlags)0)]
         public ConfigPrefabId RewardInfoPopupId { get; set; }
 
-        [MetaMember(35, 0)]
+        [MetaMember(35, (MetaMemberFlags)0)]
         public bool VisualiseEventPoints { get; set; }
 
-        [MetaMember(36, 0)]
+        [MetaMember(36, (MetaMemberFlags)0)]
         public ConfigPrefabId TaskItemCheckmarkId { get; set; }
 
-        [MetaMember(37, 0)]
+        [MetaMember(37, (MetaMemberFlags)0)]
         private List<IDirectorAction> StartActions { get; set; }
 
-        [MetaMember(38, 0)]
+        [MetaMember(38, (MetaMemberFlags)0)]
         private List<IDirectorAction> EndActions { get; set; }
         public EventId ConfigKey => EventId;
         public IEnumerable<IDirectorAction> OnStart => StartActions;

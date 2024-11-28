@@ -10,10 +10,10 @@ namespace Metaplay.Core.Offers
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaOfferId OfferId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public bool Purchased { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaDuration Delay { get; set; }
 
         private MetaOfferPrecursorCondition()

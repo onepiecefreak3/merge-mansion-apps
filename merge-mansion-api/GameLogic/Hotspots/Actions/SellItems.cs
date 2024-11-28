@@ -14,10 +14,10 @@ namespace GameLogic.Hotspots.Actions
         [MetaMember(1, (MetaMemberFlags)0)]
         private MergeBoardId MergeBoardId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private string Tag { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         private MetaDuration SellDuration { get; set; }
 
         private SellItems()

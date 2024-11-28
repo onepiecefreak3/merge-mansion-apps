@@ -11,49 +11,49 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.Banks
 {
-    [MetaBlockedMembers(new int[] { 8 })]
     [MetaActivableConfigData("CurrencyBankEvent", false, true)]
+    [MetaBlockedMembers(new int[] { 8 })]
     [MetaSerializable]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the bank")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [Description("Localisation key of bank name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Localisation key of bank name")]
         public string DisplayName { get; set; }
 
-        [Description("Description about the bank")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Description about the bank")]
         public string Description { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Store product to purchase")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> InAppProductInfo { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Stored currency type")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public Currencies CurrencyType { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Minimum stored amount required for purchasing")]
         public int MinBuyAmount { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Maximun stored amount")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public int MaxBuyAmount { get; set; }
 
-        [Description("Activable parameters")]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [Description("Activable parameters")]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [Description("Item type used in info popup to show the chain items that should be merged to fill the bank")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [Description("Item type used in info popup to show the chain items that should be merged to fill the bank")]
         public int InfoPopupItemId { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [Description("Item types which merge is increasing bank amount")]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public List<int> MergeableItemTypes { get; set; }
 
         [MetaMember(12, (MetaMemberFlags)0)]
@@ -64,8 +64,8 @@ namespace GameLogic.Banks
         [Description("Multiplier used to fill the bank when completing tasks")]
         public F64 MultiplierCompleteTask { get; set; }
 
-        [Description("Multiplier used to fill the bank when spawning items using energy")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [Description("Multiplier used to fill the bank when spawning items using energy")]
         public F64 MultiplierSpawnItemUsingEnergy { get; set; }
 
         [MetaMember(15, (MetaMemberFlags)0)]
@@ -80,16 +80,16 @@ namespace GameLogic.Banks
         [MetaMember(17, (MetaMemberFlags)0)]
         public MetaDuration? DurationStateFull { get; set; }
 
-        [MetaMember(18, (MetaMemberFlags)0)]
         [Description("Skip hidden preview on first activation")]
+        [MetaMember(18, (MetaMemberFlags)0)]
         public bool SkipHiddenPreviewOnFirstActivation { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [Description("Max number of currency banks purchases to allow this one to be activated")]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public int MaxNumOfStashesPerPlayer { get; set; }
 
-        [MetaMember(20, (MetaMemberFlags)0)]
         [Description("Max number of currency banks activated to allow this one to be activated")]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public int? MaxActivationsGlobal { get; set; }
         public CurrencyBankId ActivableId { get; }
         public CurrencyBankId ConfigKey => CurrencyBankId;

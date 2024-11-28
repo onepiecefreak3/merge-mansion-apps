@@ -15,24 +15,24 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("leaderboard_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Leaderboard division id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("leaderboard_id")]
         public EntityId DivisionId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Participants")]
         [JsonProperty("players")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<LeaderboardSnapshotPlayerEntry> Players { get; set; }
 
-        [JsonProperty("gathered_from")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("gathered_from")]
         [Description("Snapshot taken at")]
         public AnalyticsLeaderboardSnapshotType SnapshotType { get; set; }
 
+        [Description("New player id if added")]
         [JsonProperty("new_player_id", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(4, (MetaMemberFlags)0)]
-        [Description("New player id if added")]
         public string NewPlayerId { get; set; }
         public override string EventDescription { get; }
 
@@ -44,14 +44,14 @@ namespace Analytics
         {
         }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Division rank")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int Rank { get; set; }
 
-        [Description("Event Id")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
-        public LeaderboardEventId EventId { get; set; }
+        [Description("Event Id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public string EventId { get; set; }
 
         public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, int rank, LeaderboardEventId eventId, string newPlayerId)
         {

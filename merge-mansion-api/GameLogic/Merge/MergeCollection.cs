@@ -9,7 +9,7 @@ namespace GameLogic.Merge
     public class MergeCollection
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        public Dictionary<ItemPair, IItemProducer> Collection { get; set; }
+        public Dictionary<MergeCollection.ItemPair, IItemProducer> Collection { get; set; }
 
         public bool ContainsPair((int, int) pair)
         {
@@ -28,7 +28,7 @@ namespace GameLogic.Merge
             [MetaMember(1, (MetaMemberFlags)0)]
             public int First { get; set; }
 
-            [MetaMember(2)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public int Second { get; set; }
 
             public ItemPair()

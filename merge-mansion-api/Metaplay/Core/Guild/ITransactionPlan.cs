@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Guild
 {
-    [MetaSerializable((MetaSerializableFlags)1)]
     [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
+    [MetaSerializable((MetaSerializableFlags)1)]
     public interface ITransactionPlan
     {
     }

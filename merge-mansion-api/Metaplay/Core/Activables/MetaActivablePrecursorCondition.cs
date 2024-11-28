@@ -10,10 +10,10 @@ namespace Metaplay.Core.Activables
         [MetaMember(1, (MetaMemberFlags)0)]
         public TId Id { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public bool Consumed { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaDuration Delay { get; set; }
 
         public MetaActivablePrecursorCondition()

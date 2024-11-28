@@ -8,8 +8,8 @@ namespace Metaplay.Core.Config
     public abstract class LocalizationsBuildParameters : IMetaIntegration<LocalizationsBuildParameters>, IMetaIntegration, IGameDataBuildParameters
     {
         [MetaMember(101, (MetaMemberFlags)0)]
-        [MetaFormExcludeDerivedType(new string[] { "Metaplay.Core.Config.GoogleSheetBuildSource" })]
         [MetaFormLayoutOrderHint(-1)]
+        [MetaFormExcludeDerivedType(new string[] { "Metaplay.Core.Config.GoogleSheetBuildSource" })]
         [MetaValidateRequired]
         public GameConfigBuildSource DefaultSource;
         protected LocalizationsBuildParameters()

@@ -9,9 +9,9 @@ namespace Analytics
     [AnalyticsEvent(184, "WebShop purchase", 1, null, false, true, false)]
     public class AnalyticsWebShopPurchase : AnalyticsServersideEventBase
     {
-        [JsonProperty("webshop_purchase_item_id")]
         [Description("ID of the purchased item")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("webshop_purchase_item_id")]
         public string WebShopPurchaseItemId;
         [Description("ID of the WebShop purchase")]
         [MetaMember(2, (MetaMemberFlags)0)]

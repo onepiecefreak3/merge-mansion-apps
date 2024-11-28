@@ -15,10 +15,10 @@ namespace GameLogic.Config
         [MetaMember(201, (MetaMemberFlags)0)]
         public IAPTags IAPTags { get; set; }
 
-        [MetaMember(202)]
+        [MetaMember(202, (MetaMemberFlags)0)]
         public MetaRef<DynamicPurchaseDefinition> PurchaseDefinition { get; set; }
 
-        [MetaMember(203)]
+        [MetaMember(203, (MetaMemberFlags)0)]
         public string LocalizationId { get; set; }
 
         [MetaMember(204, (MetaMemberFlags)0)]

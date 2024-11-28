@@ -10,6 +10,8 @@ namespace GameLogic.Player.Rewards
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private MetaRef<DecorationInfo> DecorationRef { get; set; }
+
+        [IgnoreDataMember]
         public DecorationInfo Decoration => DecorationRef.Ref;
 
         public RewardDecoration()

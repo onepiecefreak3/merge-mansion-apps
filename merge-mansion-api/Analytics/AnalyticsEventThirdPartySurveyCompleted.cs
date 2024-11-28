@@ -6,20 +6,20 @@ using System;
 
 namespace Analytics
 {
-    [JsonConverter(typeof(AnalyticsEventThirdPartySurveyCompletedJsonConverter))]
     [AnalyticsEvent(140, "Third Party Survey completed", 1, null, true, true, false)]
+    [JsonConverter(typeof(AnalyticsEventThirdPartySurveyCompletedJsonConverter))]
     public class AnalyticsEventThirdPartySurveyCompleted : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Broadcast Id of the completed survey")]
-        [JsonProperty("broadcast_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("broadcast_id")]
+        [Description("Broadcast Id of the completed survey")]
         public int BroadcastId { get; set; }
 
         [JsonProperty("survey_type")]
-        [Description("Survey Type")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Survey Type")]
         public string SurveyType { get; set; }
         public override string EventDescription { get; }
 

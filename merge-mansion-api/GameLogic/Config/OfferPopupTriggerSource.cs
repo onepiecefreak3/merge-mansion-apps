@@ -2,6 +2,7 @@ using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using Metaplay.Core;
 
 namespace GameLogic.Config
 {
@@ -18,5 +19,9 @@ namespace GameLogic.Config
         public OfferPopupTriggerSource()
         {
         }
+
+        private bool ActivatesOfferGroup { get; set; }
+        private List<string> TriggerPlacements { get; set; }
+        private MetaDuration? MaxWaitTimerToPrompt { get; set; }
     }
 }

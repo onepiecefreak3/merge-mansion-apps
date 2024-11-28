@@ -24,7 +24,7 @@ namespace GameLogic.Config
         public BuildLogCode BuildLogCode { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
-        public BuildLogLevel BuildLogLevel { get; set; }
+        public GameConfigLogLevel BuildLogLevel { get; set; }
         public int ConfigKey => RuleId;
 
         public SuppressedBuildLogsInfo()

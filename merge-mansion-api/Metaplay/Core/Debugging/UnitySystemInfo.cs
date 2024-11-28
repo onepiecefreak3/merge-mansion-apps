@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace Metaplay.Core.Debugging
 {
@@ -73,6 +74,7 @@ namespace Metaplay.Core.Debugging
         {
         }
 
+        [IgnoreDataMember]
         private MetaTime _nextBatteryUpdateAt;
     }
 }

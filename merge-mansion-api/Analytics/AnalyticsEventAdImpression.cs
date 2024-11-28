@@ -11,49 +11,49 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("Ad platform")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("ad_platform")]
+        [Description("Ad platform")]
         public string AdPlatform { get; set; }
 
+        [Description("Ad Network (previously Ad Source)")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("ad_source")]
-        [Description("Ad source")]
+        [JsonProperty("ad_network")]
         public string AdSource { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("ad_unit_name")]
         [Description("Ad unit name")]
+        [JsonProperty("ad_unit_name")]
         public string AdUnitName { get; set; }
 
-        [JsonProperty("ad_format")]
         [Description("Ad format")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("ad_format")]
         public string AdFormat { get; set; }
 
-        [JsonProperty("currency")]
-        [Description("Currency")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Currency")]
+        [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        [Description("Value")]
         [JsonProperty("value")]
         [MetaMember(6, (MetaMemberFlags)0)]
-        [Description("Value")]
         public double? Value { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
-        [JsonProperty("auction_id")]
         [Description("Auction Id")]
+        [JsonProperty("auction_id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
 
+        [JsonProperty("ad_placement")]
         [MetaMember(8, (MetaMemberFlags)0)]
         [Description("Ad placement")]
-        [JsonProperty("ad_placement")]
         public string AdPlacement { get; set; }
 
+        [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
         [Description("Item name")]
-        [MetaMember(9, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
         public override string EventDescription { get; }
 

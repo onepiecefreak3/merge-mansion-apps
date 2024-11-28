@@ -8,6 +8,7 @@ using Metaplay.Core.Model;
 using System.Runtime.Serialization;
 using System;
 using GameLogic.MergeChains;
+using Game.Cloud.Config;
 
 namespace GameLogic.Area
 {
@@ -17,45 +18,39 @@ namespace GameLogic.Area
         [MetaMember(1, (MetaMemberFlags)0)]
         public AreaId AreaId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string TitleLocalizationId { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string CategoryLocalizationId { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerRequirement> TeaseRequirements { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public List<PlayerRequirement> UnlockRequirements { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public List<PlayerReward> Rewards { get; set; }
 
-        [MetaMember(8, 0)]
-        public List<MetaRef<HotspotDefinition>> HotspotsRefs { get; set; }
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public List<HotspotDef> HotspotsRefs { get; set; }
 
-        [MetaMember(9, 0)]
-        public MetaRef<HotspotDefinition> UnlockingHotspotRef { get; set; }
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public HotspotDef UnlockingHotspotRef { get; set; }
 
-        [MetaMember(10, 0)]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public string LockedDescriptionLocalizationId { get; set; }
 
-        [MetaMember(11, 0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public string UnlockedDescriptionLocalizationId { get; set; }
 
-        [MetaMember(12, 0)]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public string ShortDescriptionLocalizationId { get; set; }
         public AreaId ConfigKey => AreaId;
 
         [IgnoreDataMember]
         private bool? isStoryEventArea;
-        [IgnoreDataMember]
-        public IEnumerable<HotspotDefinition> Hotspots { get; }
-
-        [IgnoreDataMember]
-        public HotspotDefinition UnlockingHotspot { get; }
-
         [IgnoreDataMember]
         public bool IsStoryEventArea { get; }
 

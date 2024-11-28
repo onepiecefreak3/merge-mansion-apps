@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.Player
 {
-    [MetaReservedMembers(6, 100)]
     [MetaReservedMembers(1, 5)]
+    [MetaReservedMembers(6, 100)]
     [MetaSerializable]
     public abstract class PlayerStatisticsBase
     {

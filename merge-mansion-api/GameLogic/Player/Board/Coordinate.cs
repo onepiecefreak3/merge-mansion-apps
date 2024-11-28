@@ -11,7 +11,7 @@ namespace GameLogic.Player.Board
         [MetaMember(1, (MetaMemberFlags)0)]
         public int X { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Y { get; set; }
 
         public static Coordinate Invalid;

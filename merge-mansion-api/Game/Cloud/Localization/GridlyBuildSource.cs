@@ -13,8 +13,8 @@ namespace Game.Cloud.Localization
         public string Name { get; set; }
 
         [GridlyBranchFieldTypeHint]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [MetaValidateRequired]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string Branch { get; set; }
         public override string DisplayName { get; }
 

@@ -10,7 +10,7 @@ namespace Code.GameLogic.GameEvents
 
         List<MetaRef<EventLevelInfo>> LevelRefs { get; }
 
-        Dictionary<MetaRef<EventLevelInfo>, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; }
+        Dictionary<EventLevelId, MetaRef<EventLevelInfo>> FallbackLevelRefs { get; }
 
         List<MetaRef<EventLevelInfo>> RecurringLevelRefs { get; }
 

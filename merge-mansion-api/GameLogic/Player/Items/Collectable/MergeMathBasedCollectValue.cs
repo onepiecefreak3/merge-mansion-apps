@@ -9,7 +9,7 @@ namespace GameLogic.Player.Items.Collectable
         [MetaMember(1, (MetaMemberFlags)0)]
         public Currencies Currency { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Multiplier { get; set; }
 
         private static int[] levelToValueConversion;

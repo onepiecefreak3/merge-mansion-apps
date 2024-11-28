@@ -32,14 +32,23 @@ namespace GameLogic.Player.Items
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
-        private MergeItemExtra Extra => extra ??= new MergeItemExtra();
+        [IgnoreDataMember]
+        private MergeItem.MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
         [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
+
+        [IgnoreDataMember]
         public DecayState DecayState => Extra.DecayState;
+
+        [IgnoreDataMember]
         public ActivationState ActivationState => Extra.ActivationState;
+
+        [IgnoreDataMember]
         public StorageState ActivationStorageState => Extra.ActivationStorageState;
+
+        [IgnoreDataMember]
         public ItemDefinition Definition => DefinitionRef.Ref;
 
         public void ResetStates(MetaTime timestamp)
@@ -234,7 +243,7 @@ namespace GameLogic.Player.Items
         public BubbleState BubbleStateMaybe { get; }
 
         [IgnoreDataMember]
-        public (Currencies currency, int amount) UnlockValue { get; }
+        public ValueTuple<Currencies, int> UnlockValue { get; }
 
         [IgnoreDataMember]
         public bool CanBeUnlocked { get; }

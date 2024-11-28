@@ -17,25 +17,25 @@ namespace GameLogic.Decorations
         [MetaMember(1, (MetaMemberFlags)0)]
         public DecorationId DecorationId { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public CameraTargetName CameraTargetName { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public ConfigAssetPackId AssetPackId { get; set; }
 
-        [MetaMember(6, 0)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public string NameLocId { get; set; }
 
-        [MetaMember(7, 0)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string DescLocId { get; set; }
 
-        [MetaMember(8, 0)]
+        [MetaMember(8, (MetaMemberFlags)0)]
         private List<IDirectorAction> OnReceiveActions { get; set; }
         public DecorationId ConfigKey => DecorationId;
         public IEnumerable<IDirectorAction> OnReceive => OnReceiveActions;

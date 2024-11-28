@@ -16,9 +16,11 @@ namespace GameLogic.Player.Items.Production
         [MetaMember(1, (MetaMemberFlags)0)]
         public List<MetaRef<ItemDefinition>> Products { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<int> Quantities { get; set; } // 0x18
-        public IEnumerable<(ItemDefinition, int)> Odds => Products.Select(x => (x.Ref, 1));
+
+        [IgnoreDataMember]
+        public IEnumerable<ValueTuple<ItemDefinition, int>> Odds => Products.Select(x => (x.Ref, 1));
         public int SpawnQuantity => Quantities.Sum();
 
         public F64 TimeSkipPriceGems(IGenerationContext context)

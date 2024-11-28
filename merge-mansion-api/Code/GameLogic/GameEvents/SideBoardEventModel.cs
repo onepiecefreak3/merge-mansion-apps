@@ -71,6 +71,8 @@ namespace Code.GameLogic.GameEvents
         public bool EndDialogueTriggered { get; set; }
         public bool ActiveDecorationNoted { get; set; }
         public bool IsPlayable { get; set; }
+
+        [IgnoreDataMember]
         public bool RequestExtension { get; set; }
         public bool CanBeResolved { get; set; }
         public bool FtueNoted { get; set; }

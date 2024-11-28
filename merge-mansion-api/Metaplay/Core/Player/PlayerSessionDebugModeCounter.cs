@@ -1,6 +1,6 @@
 using Metaplay.Core.Model;
-using System;
 using Metaplay.Core.Client;
+using System;
 
 namespace Metaplay.Core.Player
 {
@@ -9,9 +9,14 @@ namespace Metaplay.Core.Player
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private int forNextNumSessions;
+
         public override EntityDebugConfig DebugConfigForCurrentSession { get; }
 
         public PlayerSessionDebugModeCounter(int forNextNumSessions)
+        {
+        }
+
+        public PlayerSessionDebugModeCounter(PlayerSessionDebugModeParameters parameters, int forNextNumSessions)
         {
         }
     }

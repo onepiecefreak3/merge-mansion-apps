@@ -33,5 +33,9 @@ namespace Code.GameLogic.GameEvents
         MergeBoardId MergeBoardId { get; }
 
         IStringId BoardEventId { get; }
+
+        MetaActivableParams ActivableParams { get; }
+
+        string Description { get; }
     }
 }

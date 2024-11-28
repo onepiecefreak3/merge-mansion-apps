@@ -14,14 +14,14 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Segments player belongs to")]
         [JsonProperty("segments")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Segments player belongs to")]
         public List<PlayerSegmentId> Segments { get; set; }
 
+        [Description("Did we resolve the segments succesgully")]
         [JsonProperty("resolved_succesfully")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Did we resolve the segments succesgully")]
         public bool ResolvedSuccesfully { get; set; }
         public override string EventDescription { get; }
 

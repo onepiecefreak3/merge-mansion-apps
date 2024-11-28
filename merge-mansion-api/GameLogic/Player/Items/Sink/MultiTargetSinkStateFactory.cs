@@ -9,9 +9,9 @@ namespace GameLogic.Player.Items.Sink
     public class MultiTargetSinkStateFactory : ISinkStateFactory
     {
         [MetaMember(1, (MetaMemberFlags)0)]
-        public Dictionary<ItemTypeConstant, int> ScoreTargets { get; set; }
+        public Dictionary<int, int> ScoreTargets { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> Reward { get; set; }
 
         private MultiTargetSinkStateFactory()

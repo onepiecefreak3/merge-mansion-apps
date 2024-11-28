@@ -13,8 +13,8 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(3, (MetaMemberFlags)0)]
         public string DeviceId;
         [NoChecksum]
-        [Transient]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [Transient]
         public PendingPurchaseAnalyticsContextStatus Status;
         private PendingNonDynamicPurchaseContext()
         {

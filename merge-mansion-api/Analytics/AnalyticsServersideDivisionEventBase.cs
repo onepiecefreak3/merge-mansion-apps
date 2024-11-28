@@ -5,8 +5,8 @@ using System;
 
 namespace Analytics
 {
-    [MetaReservedMembers(100, 199)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 199)]
     public abstract class AnalyticsServersideDivisionEventBase : DivisionEventBase, IMergeMansionAnalyticsEvent
     {
         [JsonIgnore]

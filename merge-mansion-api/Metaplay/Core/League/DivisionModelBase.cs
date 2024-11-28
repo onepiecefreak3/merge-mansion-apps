@@ -11,10 +11,7 @@ namespace Metaplay.Core.League
     [LeaguesEnabledCondition]
     public abstract class DivisionModelBase<TModel, TParticipantState, TDivisionScore> : MultiplayerModelBase<TModel>, IDivisionModel<TModel>, IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IMultiplayerModel<TModel>, IModel<TModel>
     {
-        [IgnoreDataMember]
         public IDivisionModelServerListenerCore ServerListenerCore { get; }
-
-        [IgnoreDataMember]
         public IDivisionModelClientListenerCore ClientListenerCore { get; }
 
         IDivisionModelServerListenerCore Metaplay.Core.League.IDivisionModel.ServerListenerCore { get; }
@@ -27,8 +24,8 @@ namespace Metaplay.Core.League
         [MetaMember(303, (MetaMemberFlags)0)]
         public DivisionIndex DivisionIndex { get; set; }
 
-        [MetaMember(304, (MetaMemberFlags)0)]
-        public Dictionary<EntityId, TParticipantState> Participants { get; set; }
+        [MetaMember(309, (MetaMemberFlags)0)]
+        public Dictionary<int, TParticipantState> Participants { get; set; }
 
         [MetaMember(305, (MetaMemberFlags)0)]
         public MetaTime StartsAt { get; set; }

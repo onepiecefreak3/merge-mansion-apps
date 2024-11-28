@@ -10,19 +10,19 @@ namespace GameLogic.Player.Items.Activation
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration ActivationDelay { get; set; } // 0x10
 
-        [MetaMember(2)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public MetaDuration FirstCycleStartDelay { get; set; }
 
-        [MetaMember(3)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaDuration DelayBetweenCycles { get; set; } // 0x20
 
-        [MetaMember(4)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int HowManyAreGeneratedInCycle { get; set; } // 0x28
 
-        [MetaMember(5)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int ActivationAmountInCycle { get; set; } // 0x2C
 
-        [MetaMember(6)]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int HowManyCycles { get; set; } // 0x30
 
         public int GetActivationAmountInCycle()

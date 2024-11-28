@@ -7,9 +7,9 @@ namespace Metaplay.Core.Config
     [MetaSerializableDerived(101)]
     public class GoogleSheetBuildSource : GameConfigBuildSource
     {
-        [MetaFormDisplayProps("Google Spreadsheet Name", DisplayHint = "Name of the Google Spreadsheet to use as a data source.", DisplayPlaceholder = "Enter Google Spreadsheet Name")]
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
+        [MetaFormDisplayProps("Google Spreadsheet Name", DisplayHint = "Name of the Google Spreadsheet to use as a data source.", DisplayPlaceholder = "Enter Google Spreadsheet Name")]
         public string Name { get; set; }
 
         [MetaFormDisplayProps("Google Spreadsheet ID", DisplayHint = "ID of the Google Spreadsheet to use as a data source.", DisplayPlaceholder = "Enter Google Spreadsheet ID")]

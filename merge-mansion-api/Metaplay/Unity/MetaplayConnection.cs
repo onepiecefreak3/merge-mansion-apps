@@ -393,7 +393,7 @@ namespace Metaplay.Unity
             // L288
             var lastSentSessionResumptionPingId = 0;
             var lastReceivedSessionResumptionPongId = 0;
-            ScheduledMaintenanceMode latestConnectionScheduledMaintenanceMode = null;
+            ScheduledMaintenanceModeForClient latestConnectionScheduledMaintenanceMode = null;
             Handshake.ServerOptions latestServerOptions = default;
 
             // L296
@@ -1351,7 +1351,7 @@ namespace Metaplay.Unity
             return new TerminalError.Unknown(null);
         }
 
-        private MaintenanceModeState ScheduledMaintenanceModeToMaintenanceModeState(ScheduledMaintenanceMode scheduledMaintenanceMaybe)
+        private MaintenanceModeState ScheduledMaintenanceModeToMaintenanceModeState(ScheduledMaintenanceModeForClient scheduledMaintenanceMaybe)
         {
             if (scheduledMaintenanceMaybe == null)
                 return MaintenanceModeState.CreateNotScheduled();
@@ -1793,11 +1793,11 @@ namespace Metaplay.Unity
 
                 if (!_negotiationResources.PatchArchives.ContainsKey(ClientSlotCore.Player))
                     MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(archiveVersion, patchesVersion, null);
-                else
-                {
-                    var experiments = sessionStartSuccess.ActiveExperiments.Select(x => new ExperimentVariantPair(x.ExperimentId, x.VariantId)).ToList();
-                    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(archiveVersion, patchesVersion, experiments);
-                }
+                //else
+                //{
+                //    var experiments = sessionStartSuccess.ActiveExperiments.Select(x => new ExperimentVariantPair(x.ExperimentId, x.VariantId)).ToList();
+                //    MetaplaySDK.Connection.LatestGameConfigInfo = new ConnectionGameConfigInfo(archiveVersion, patchesVersion, experiments);
+                //}
             }
         }
 

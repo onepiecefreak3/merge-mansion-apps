@@ -13,23 +13,23 @@ namespace GameLogic.Player.Items.Bubble
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaDuration BubbleDuration { get; set; }
 
-        [MetaMember(2, 0)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public Currencies OpenCurrency { get; set; }
 
-        [MetaMember(3, 0)]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int OpenQuantity { get; set; }
 
-        [MetaMember(4, 0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         private MetaRef<ItemDefinition> ReplacementItem { get; set; }
 
-        [MetaMember(5, 0)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int SpawnOdds { get; set; }
 
         [IgnoreDataMember]
         public ItemDefinition Replacement => ReplacementItem?.Deref();
 
         [IgnoreDataMember]
-        public (Currencies, int) OpenCost => (OpenCurrency, OpenQuantity);
+        public ValueTuple<Currencies, int> OpenCost => (OpenCurrency, OpenQuantity);
 
         private BubbleFeatures()
         {

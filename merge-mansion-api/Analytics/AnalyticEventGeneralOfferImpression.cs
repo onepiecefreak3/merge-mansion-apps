@@ -11,9 +11,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("EventId")]
-        [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
+        [Description("EventId")]
         public string EventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -27,6 +27,15 @@ namespace Analytics
         }
 
         public AnalyticEventGeneralOfferImpression(string eventId, OfferImpressionType type, string iapPlatformId, string placementId, bool automaticallyShown, string impressionId)
+        {
+        }
+
+        [Description("Last chance -type of popup")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("is_last_chance", NullValueHandling = (NullValueHandling)1)]
+        public bool IsLastChance { get; set; }
+
+        public AnalyticEventGeneralOfferImpression(string eventId, OfferImpressionType type, string iapPlatformId, string placementId, bool automaticallyShown, string impressionId, bool isLastChance)
         {
         }
     }

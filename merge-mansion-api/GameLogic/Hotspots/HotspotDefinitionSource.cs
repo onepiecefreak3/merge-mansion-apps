@@ -3,6 +3,7 @@ using Metaplay.Core.Config;
 using System;
 using Merge;
 using System.Collections.Generic;
+using Code.GameLogic.Hotspots;
 using Metaplay.Core;
 using GameLogic.Config.Map.Characters;
 using GameLogic.Area;
@@ -65,5 +66,11 @@ namespace GameLogic.Hotspots
         public MultistepGroupId MultistepGroupId { get; set; }
         public int BoultonLeaguePoints { get; set; }
         public bool DelayDebrisAnimation { get; set; }
+        public int Difficulty { get; set; }
+        private List<string> DifficultyRewardType { get; set; }
+        private List<string> DifficultyRewardId { get; set; }
+        private List<string> DifficultyRewardAux0 { get; set; }
+        private List<string> DifficultyRewardAux1 { get; set; }
+        private List<int> DifficultyRewardAmount { get; set; }
     }
 }

@@ -8,7 +8,6 @@ namespace Metaplay.Core.Config
 {
     public interface ISharedGameConfig : IGameConfig, IGameConfigDataResolver
     {
-        // RVA: -1 Offset: -1 Slot: 0
         GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; }
 
         IGameConfigLibrary<InAppProductId, InAppProductInfoBase> InAppProducts { get; }

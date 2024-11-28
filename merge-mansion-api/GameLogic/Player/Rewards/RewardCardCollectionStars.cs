@@ -4,8 +4,8 @@ using System;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(41)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class RewardCardCollectionStars : PlayerReward, ICurrencyReward
     {
         [JsonIgnore]

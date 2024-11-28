@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.MultiplayerEntity.Messages
 {
-    [MessageRoutingRuleEntityChannel]
     [MetaMessage(17503, (MessageDirection)1, true)]
+    [MessageRoutingRuleEntityChannel]
     public class EntityChecksumMismatchDetails : MetaMessage
     {
         [MetaMember(1, (MetaMemberFlags)0)]

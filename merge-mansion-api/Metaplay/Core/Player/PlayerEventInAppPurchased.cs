@@ -34,8 +34,8 @@ namespace Metaplay.Core.Player
         [MetaMember(12, (MetaMemberFlags)0)]
         public InAppPurchasePaymentType? PaymentType { get; set; }
 
-        [FirebaseAnalyticsIgnore]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public PurchaseAnalyticsContext PurchaseContext { get; set; }
 
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -46,8 +46,8 @@ namespace Metaplay.Core.Player
         [MetaMember(9, (MetaMemberFlags)0)]
         public ResolvedPurchaseContentBase ResolvedDynamicContent { get; set; }
 
-        [FirebaseAnalyticsIgnore]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public SubscriptionInstanceState? Subscription { get; set; }
         public override string EventDescription { get; }
 

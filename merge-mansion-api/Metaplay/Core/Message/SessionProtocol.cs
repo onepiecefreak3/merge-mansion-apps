@@ -8,7 +8,6 @@ using Metaplay.Core.Serialization;
 using Metaplay.Core.Session;
 using System;
 using Metaplay.Core.Math;
-using UInt128 = Metaplay.Core.Math.UInt128;
 
 namespace Metaplay.Core.Message
 {
@@ -79,8 +78,8 @@ namespace Metaplay.Core.Message
                 }
             }
 
-            [MetaSerializable((MetaSerializableFlags)1)]
             [MetaImplicitMembersRange(1, 100)]
+            [MetaSerializable((MetaSerializableFlags)1)]
             public struct LanguageUpdateInfo
             {
                 public LanguageId ActiveLanguage; // 0x0
@@ -99,7 +98,7 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public MetaSerialized<IPlayerModelBase> PlayerModel { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public int CurrentOperation { get; set; } // 0x20
 
             private InitialPlayerState()
@@ -118,24 +117,37 @@ namespace Metaplay.Core.Message
             public InitialPlayerState(MetaSerialized<IPlayerModelBase> playerModel, int currentOperation, EntityDebugConfig debugConfig)
             {
             }
+
+            [MetaMember(4, (MetaMemberFlags)0)]
+            public ContentHash SharedGameConfigVersion { get; set; }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public ContentHash SharedConfigPatchesVersion { get; set; }
+
+            [MetaMember(6, (MetaMemberFlags)0)]
+            public EntityActiveExperiment[] ActiveExperiments { get; set; }
+
+            public InitialPlayerState(MetaSerialized<IPlayerModelBase> playerModel, int currentOperation, EntityDebugConfig debugConfig, ContentHash sharedGameConfigVersion, ContentHash sharedConfigPatchesVersion, EntityActiveExperiment[] activeExperiments)
+            {
+            }
         }
 
         [MetaSerializable]
         public struct SessionResourceProposal
         {
             [MetaMember(1, (MetaMemberFlags)0)]
-            public Dictionary<ClientSlot, ContentHash> ConfigVersions { get; set; } // 0x0
+            public HashSet<ContentHash> ConfigVersions { get; set; } // 0x0
 
-            [MetaMember(2, 0)]
-            public Dictionary<ClientSlot, ContentHash> PatchVersions { get; set; } // 0x8
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public HashSet<ContentHash> PatchVersions { get; set; } // 0x8
 
-            [MetaMember(10, 0)]
+            [MetaMember(10, (MetaMemberFlags)0)]
             public LanguageId ClientActiveLanguage { get; set; } // 0x10
 
-            [MetaMember(11, 0)]
+            [MetaMember(11, (MetaMemberFlags)0)]
             public ContentHash ClientLocalizationVersion { get; set; } // 0x18
 
-            public SessionResourceProposal(Dictionary<ClientSlot, ContentHash> configVersions, Dictionary<ClientSlot, ContentHash> patchVersions, LanguageId clientActiveLanguage, ContentHash clientLocalizationVersion)
+            public SessionResourceProposal(HashSet<ContentHash> configVersions, HashSet<ContentHash> patchVersions, LanguageId clientActiveLanguage, ContentHash clientLocalizationVersion)
             {
                 ConfigVersions = configVersions;
                 PatchVersions = patchVersions;
@@ -176,51 +188,47 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public string DeviceGuid { get; set; } // 0x18
 
             [MetaMember(3, (MetaMemberFlags)0)]
             public SessionProtocol.ClientDeviceInfo DeviceInfo { get; set; }
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public PlayerTimeZoneInfo TimeZoneInfo { get; set; } // 0x28
 
-            [MetaMember(5, 0)]
+            [MetaMember(5, (MetaMemberFlags)0)]
             public SessionProtocol.SessionResourceProposal ResourceProposal { get; set; } // 0x30
 
-            [MetaMember(6, 0)]
-            public bool IsDryRun { get; set; } // 0x58
+            [MetaMember(7, (MetaMemberFlags)0)]
+            public ISessionStartRequestGamePayload GamePayload { get; set; } // 0x60
 
-            [MetaMember(7, 0)]
-            public SessionProtocol.ISessionStartRequestGamePayload GamePayload { get; set; } // 0x60
-
-            [MetaMember(8, 0)]
+            [MetaMember(8, (MetaMemberFlags)0)]
             public CompressionAlgorithmSet SupportedArchiveCompressions { get; set; } // 0x68
 
-            [MetaMember(9, 0)]
+            [MetaMember(9, (MetaMemberFlags)0)]
             public ClientAppPauseStatus ClientAppPauseStatus { get; set; } // 0x6C
 
             private SessionStartRequest()
             {
             }
 
-            public SessionStartRequest(int queryId, string deviceGuid, SessionProtocol.ClientDeviceInfo deviceInfo, PlayerTimeZoneInfo timeZoneInfo, SessionResourceProposal resourceProposal, bool isDryRun, ISessionStartRequestGamePayload gamePayload, CompressionAlgorithmSet supportedArchiveCompressions, ClientAppPauseStatus clientAppPauseStatus)
+            public SessionStartRequest(int queryId, string deviceGuid, SessionProtocol.ClientDeviceInfo deviceInfo, PlayerTimeZoneInfo timeZoneInfo, SessionResourceProposal resourceProposal, ISessionStartRequestGamePayload gamePayload, CompressionAlgorithmSet supportedArchiveCompressions, ClientAppPauseStatus clientAppPauseStatus)
             {
                 QueryId = queryId;
                 DeviceGuid = deviceGuid;
                 DeviceInfo = deviceInfo;
                 TimeZoneInfo = timeZoneInfo;
                 ResourceProposal = resourceProposal;
-                IsDryRun = isDryRun;
                 GamePayload = gamePayload;
                 SupportedArchiveCompressions = supportedArchiveCompressions;
                 ClientAppPauseStatus = clientAppPauseStatus;
                 ResourceProposal = new SessionResourceProposal
                 {
-                    ConfigVersions = new Dictionary<ClientSlot, ContentHash>(),
-                    PatchVersions = new Dictionary<ClientSlot, ContentHash>(),
+                    ConfigVersions = new HashSet<ContentHash>(),
+                    PatchVersions = new HashSet<ContentHash>(),
                     ClientActiveLanguage = LanguageId.FromString("en"),
-                    ClientLocalizationVersion = new ContentHash(new UInt128(0xD4B4D04FCA615E18, 0xB5774112D9F05D30))
+                    ClientLocalizationVersion = new ContentHash(new MetaUInt128(0xD4B4D04FCA615E18, 0xB5774112D9F05D30))
                 };
             }
         }
@@ -231,44 +239,41 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public int LogicVersion { get; set; } // 0x14
 
-            [MetaMember(3, 0)]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public SessionToken SessionToken { get; set; } // 0x18
 
-            [MetaMember(4, 0)]
-            public ScheduledMaintenanceMode ScheduledMaintenanceMode { get; set; } // 0x20
+            [MetaMember(4, (MetaMemberFlags)0)]
+            public ScheduledMaintenanceModeForClient ScheduledMaintenanceMode { get; set; } // 0x20
 
-            [MetaMember(5, 0)]
+            [MetaMember(5, (MetaMemberFlags)0)]
             public EntityId PlayerId { get; set; } // 0x28
 
-            [MetaMember(6, 0)]
-            public InitialPlayerState PlayerState { get; set; } // 0x30
+            [MetaMember(6, (MetaMemberFlags)0)]
+            public SessionProtocol.InitialPlayerState PlayerState { get; set; } // 0x30
 
-            [MetaMember(8, 0)]
+            [MetaMember(8, (MetaMemberFlags)0)]
             public Dictionary<LanguageId, ContentHash> LocalizationVersions { get; set; } // 0x38
 
-            [MetaMember(9, 0)]
-            public List<EntityActiveExperiment> ActiveExperiments { get; set; } // 0x40
-
-            [MetaMember(10, 0)]
+            [MetaMember(10, (MetaMemberFlags)0)]
             public bool DeveloperMaintenanceBypass { get; set; } // 0x48
 
-            [MetaMember(11, 0)]
+            [MetaMember(11, (MetaMemberFlags)0)]
             public List<EntityInitialState> EntityStates { get; set; } // 0x50
 
-            [MetaMember(12, 0)]
+            [MetaMember(12, (MetaMemberFlags)0)]
             public ISessionStartSuccessGamePayload GamePayload { get; set; } // 0x58
 
-            [MetaMember(14, 0)]
+            [MetaMember(14, (MetaMemberFlags)0)]
             public string CorrectedDeviceGuid { get; set; } // 0x60
 
             private SessionStartSuccess()
             {
             }
 
-            public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceMode scheduledMaintenanceMode, EntityId playerId, InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctDeviceGuid)
+            public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode, EntityId playerId, InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctDeviceGuid)
             {
                 QueryId = queryId;
                 LogicVersion = logicVersion;
@@ -277,7 +282,6 @@ namespace Metaplay.Core.Message
                 PlayerId = playerId;
                 PlayerState = playerState;
                 LocalizationVersions = localizationVersions;
-                ActiveExperiments = activeExperiments;
                 DeveloperMaintenanceBypass = developerMaintenanceBypass;
                 EntityStates = entityStates;
                 GamePayload = gamePayload;
@@ -291,6 +295,10 @@ namespace Metaplay.Core.Message
             public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode, EntityId playerId, SessionProtocol.InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctedDeviceGuid, byte[] resumptionToken)
             {
             }
+
+            public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode, EntityId playerId, SessionProtocol.InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctedDeviceGuid, byte[] resumptionToken)
+            {
+            }
         }
 
         [MetaMessage(18, (MessageDirection)2, true)]
@@ -299,10 +307,10 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public int QueryId { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
-            public ReasonCode Reason { get; set; } // 0x14
+            [MetaMember(2, (MetaMemberFlags)0)]
+            public SessionProtocol.SessionStartFailure.ReasonCode Reason { get; set; } // 0x14
 
-            [MetaMember(4, 0)]
+            [MetaMember(4, (MetaMemberFlags)0)]
             public string DebugOnlyErrorMessage { get; set; } // 0x18
 
             private SessionStartFailure()
@@ -320,12 +328,21 @@ namespace Metaplay.Core.Message
             public enum ReasonCode
             {
                 InternalError = 0,
-                DryRun = 1,
                 Banned = 3,
                 PlayerDeserializationFailure = 4,
                 WrongAuthenticationPlatform = 5,
                 LogicVersionDowngradeNotAllowed = 5,
                 Deleted = 6
+            }
+
+            [MetaMember(5, (MetaMemberFlags)0)]
+            public MetaTime? BanExpirationTime { get; set; }
+
+            [MetaMember(6, (MetaMemberFlags)0)]
+            public string BanReason { get; set; }
+
+            public SessionStartFailure(int queryId, SessionProtocol.SessionStartFailure.ReasonCode reason, string debugOnlyErrorMessage, MetaTime? banExpirationTime, string banReason)
+            {
             }
         }
 
@@ -352,41 +369,42 @@ namespace Metaplay.Core.Message
             [MetaMember(1, (MetaMemberFlags)0)]
             public SessionAcknowledgement ServerSessionAcknowledgement { get; set; } // 0x10
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public SessionToken SessionToken { get; set; } // 0x18
 
-            [MetaMember(3, 0)]
-            public ScheduledMaintenanceMode ScheduledMaintenanceMode { get; set; } // 0x20
+            [MetaMember(3, (MetaMemberFlags)0)]
+            public ScheduledMaintenanceModeForClient ScheduledMaintenanceMode { get; set; } // 0x20
 
             private SessionResumeSuccess()
             {
             }
 
-            public SessionResumeSuccess(SessionAcknowledgement serverSessionAcknowledgement, SessionToken sessionToken, ScheduledMaintenanceMode scheduledMaintenanceMode)
+            public SessionResumeSuccess(SessionAcknowledgement serverSessionAcknowledgement, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode)
             {
                 ServerSessionAcknowledgement = serverSessionAcknowledgement;
                 SessionToken = sessionToken;
                 ScheduledMaintenanceMode = scheduledMaintenanceMode;
             }
+        }
 
-            public SessionResumeSuccess(SessionAcknowledgement serverSessionAcknowledgement, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode)
+        [MetaMessage(21, (MessageDirection)2, true)]
+        public class SessionResumeFailure : MetaMessage
+        {
+            [MetaMember(1, (MetaMemberFlags)0)]
+            public bool GenerateIncidentReport;
+            public SessionResumeFailure(bool generateIncidentReport)
             {
             }
         }
 
-        [MetaMessage(21, MessageDirection.ServerToClient, true)]
-        public class SessionResumeFailure : MetaMessage
-        {
-        }
-
-        [MessageRoutingRuleProtocol]
         [MetaMessage(43, (MessageDirection)1, true)]
+        [MessageRoutingRuleProtocol]
         public class SessionStartAbortReasonTrailer : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
             public string IncidentId { get; set; }
 
-            [MetaMember(2, 0)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             public byte[] Incident { get; set; }
 
             private SessionStartAbortReasonTrailer()

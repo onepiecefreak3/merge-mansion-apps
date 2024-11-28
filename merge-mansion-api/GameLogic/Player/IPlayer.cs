@@ -31,7 +31,6 @@ namespace GameLogic.Player
     {
         SpawnFactoryState SpawnFactoryState { get; }
 
-        // TODO: Import player board
         IEnumerable<IBoard> Boards { get; }
 
         PlayerIdentity PlayerIdentity { get; }
@@ -148,13 +147,15 @@ namespace GameLogic.Player
 
         IEnumerable<DailyScoopEventModel> ActiveDailyScoopEvents { get; }
 
-        Dictionary<Coordinate, MergeItem> BubblesWithAds { get; }
+        Dictionary<string, Coordinate> BubblesWithAds { get; }
 
         BoultonLeagueStatus BoultonLeagueStatus { get; }
 
         IEnumerable<TemporaryCardCollectionEventModel> ActiveTemporaryCardCollectionEvents { get; }
 
         RandomPCG RewardContainerRandom { get; }
+
+        RandomPCG StackMiniGameRandom { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

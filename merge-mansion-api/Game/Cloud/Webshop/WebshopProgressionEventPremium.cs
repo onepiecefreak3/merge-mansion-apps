@@ -5,6 +5,7 @@ using System;
 
 namespace Game.Cloud.Webshop
 {
+    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(3)]
     public class WebshopProgressionEventPremium : WebshopItem
     {
@@ -21,10 +22,16 @@ namespace Game.Cloud.Webshop
         {
         }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        public ProgressionEventTrack Track { get; set; }
-
         public WebshopProgressionEventPremium(ProgressionEventId id, ProgressionEventTrack track)
+        {
+        }
+
+        private static string PrefixMysteryPass;
+        private static string PrefixMysteryPassV2;
+        [MetaMember(3, (MetaMemberFlags)0)]
+        public PurchasedProgressionEventTrackOption PurchasedTrackOption { get; set; }
+
+        public WebshopProgressionEventPremium(ProgressionEventId id, PurchasedProgressionEventTrackOption track)
         {
         }
     }
