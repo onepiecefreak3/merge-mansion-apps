@@ -19,18 +19,18 @@ namespace Analytics
         public MergeBoardId MergeBoardId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("source_item_sink_type")]
         [Description("Source item SinkType")]
+        [JsonProperty("source_item_sink_type")]
         public string SourceItemSinkType { get; set; }
 
-        [Description("Name of the item sink transformed into")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Name of the item sink transformed into")]
         [JsonProperty("item_name")]
         public string NewItemName { get; set; }
 
         [Description("Original sink item name")]
-        [JsonProperty("origin_item_name")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("origin_item_name")]
         public string OriginItemName { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]

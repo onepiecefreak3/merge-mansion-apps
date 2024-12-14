@@ -11,18 +11,18 @@ namespace Metaplay.Core.InGameMail
     [MetaSerializableDerived(100)]
     public class SimplePlayerMail : MetaInGameMail
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaValidateRequired]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public LocalizedString Title { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [MetaFormTextArea]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public LocalizedString Body { get; set; }
 
         [MetaFormDisplayProps("Attachment")]
-        [MetaMember(3, (MetaMemberFlags)0)]
-        [MetaFormFieldCustomValidator(typeof(InGameMailRewardListValidator))]
         [MetaFormFieldContext("AttachmentRewardList", true)]
+        [MetaFormFieldCustomValidator(typeof(InGameMailRewardListValidator))]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public List<MetaPlayerRewardBase> Attachments { get; set; }
         public override string Description { get; }
         public override IEnumerable<MetaPlayerRewardBase> ConsumableRewards { get; }

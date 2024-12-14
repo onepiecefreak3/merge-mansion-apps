@@ -17,16 +17,16 @@ namespace Game.Logic
         [MetaMember(1, (MetaMemberFlags)0)]
         public int SurveyId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string Token { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string SurveyDataAddress { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string ResultAddress { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -38,8 +38,8 @@ namespace Game.Logic
         [MetaMember(7, (MetaMemberFlags)0)]
         private List<PlayerReward> PromisedReward { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public Dictionary<int, string> Questions { get; set; }
         public override string TitleExcerpt { get; }
         public override string BodyExcerpt { get; }

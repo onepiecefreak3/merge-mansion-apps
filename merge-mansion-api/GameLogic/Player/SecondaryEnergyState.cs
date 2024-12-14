@@ -4,8 +4,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [Obsolete("Replaced by AuxEnergyState. Required for migration.")]
+    [MetaSerializable]
     public class SecondaryEnergyState
     {
         [MetaMember(1, (MetaMemberFlags)0)]

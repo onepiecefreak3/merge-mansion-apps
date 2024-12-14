@@ -2,6 +2,7 @@ using Code.GameLogic.Config;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using GameLogic.ConfigPrefabs;
 
 namespace GameLogic.Player.Rewards
 {
@@ -25,5 +26,10 @@ namespace GameLogic.Player.Rewards
         public RewardContainerSource()
         {
         }
+
+        private ConfigAssetPackId ModelId { get; set; }
+        private bool UseIconLibrary { get; set; }
+        private string SfxClose { get; set; }
+        private string SfxOpen { get; set; }
     }
 }

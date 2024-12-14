@@ -5,11 +5,11 @@ using Metaplay.Core.Math;
 
 namespace Metaplay.Core.InAppPurchase
 {
-    [MetaReservedMembers(1, 12)]
-    [MetaReservedMembers(18, 100)]
     [MetaReservedMembers(13, 17)]
     [MetaDeserializationConvertFromIntegrationImplementation]
+    [MetaReservedMembers(1, 12)]
     [MetaSerializable]
+    [MetaReservedMembers(18, 100)]
     public abstract class InAppPurchaseEvent : IMetaIntegrationConstructible<InAppPurchaseEvent>, IMetaIntegration<InAppPurchaseEvent>, IMetaIntegration, IMetaIntegrationConstructible, IRequireSingleConcreteType
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -24,8 +24,8 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(4, (MetaMemberFlags)0)]
         public string PlatformProductId { get; set; }
 
-        [PrettyPrint((PrettyPrintFlag)4)]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [PrettyPrint((PrettyPrintFlag)4)]
         public string Receipt { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -40,8 +40,8 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(8, (MetaMemberFlags)0)]
         public bool IsDuplicateTransaction { get; set; }
 
-        [MetaMember(18, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(18, (MetaMemberFlags)0)]
         public int NumValidationsStarted { get; set; }
 
         [ServerOnly]

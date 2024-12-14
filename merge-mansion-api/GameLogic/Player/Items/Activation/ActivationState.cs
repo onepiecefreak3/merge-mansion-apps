@@ -1,6 +1,7 @@
 using Metaplay.Core;
 using Metaplay.Core.Model;
 using System;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.Activation
 {
@@ -59,5 +60,11 @@ namespace GameLogic.Player.Items.Activation
         public ActivationState(MetaTime timestamp, MetaTime? activationStartTime)
         {
         }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public MetaTime? EstimatedDecayTime { get; set; }
+
+        [IgnoreDataMember]
+        public bool IsOnDecayDelay { get; }
     }
 }

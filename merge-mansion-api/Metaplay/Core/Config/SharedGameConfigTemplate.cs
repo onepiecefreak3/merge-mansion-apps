@@ -9,7 +9,7 @@ namespace Metaplay.Core.Config
     public class SharedGameConfigTemplate<TInAppProductInfo, TPlayerSegmentInfo, TMetaOfferInfo, TMetaOfferGroupInfo> : GameConfigBase, ISharedGameConfig, IGameConfig, IGameConfigDataResolver, IGameConfigDataRegistry
     {
         [GameConfigEntry("Languages")]
-        public GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
+        public IGameConfigLibrary<LanguageId, LanguageInfo> Languages { get; set; }
 
         [GameConfigEntry("InAppProducts", requireArchiveEntry: false)]
         public GameConfigLibrary<InAppProductId, TInAppProductInfo> InAppProducts { get; set; }
@@ -31,7 +31,8 @@ namespace Metaplay.Core.Config
         {
             if (language == null)
                 return null;
-            if (!Languages.TryGetValue(language, out var languageInfo))
+            var languageInfo = (LanguageInfo)Languages.GetInfoByKey(language);
+            if (languageInfo == null)
                 return null;
             return languageInfo;
         }

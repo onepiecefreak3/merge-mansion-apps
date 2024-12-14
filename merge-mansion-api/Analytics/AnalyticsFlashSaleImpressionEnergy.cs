@@ -7,8 +7,8 @@ using GameLogic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class AnalyticsFlashSaleImpressionEnergy : AnalyticsFlashSaleImpressionItemBase
     {
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -19,8 +19,8 @@ namespace Analytics
         [JsonProperty("energy_type")]
         public EnergyType EnergyType { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("energy_amount")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int EnergyAmount { get; set; }
 
         public AnalyticsFlashSaleImpressionEnergy()

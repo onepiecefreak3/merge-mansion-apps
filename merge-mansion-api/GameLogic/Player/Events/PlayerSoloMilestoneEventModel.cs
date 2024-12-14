@@ -7,8 +7,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Events
 {
-    [MetaActivableSet("SoloMilestoneEvent", false)]
     [MetaSerializableDerived(16)]
+    [MetaActivableSet("SoloMilestoneEvent", false)]
     public class PlayerSoloMilestoneEventModel : MetaActivableSet<SoloMilestoneEventId, SoloMilestoneEventInfo, SoloMilestoneEventModel>
     {
         [IgnoreDataMember]

@@ -11,24 +11,24 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("event_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Garage cleanup event id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
         public string EventId { get; set; }
 
-        [JsonProperty("required_item")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Id of the required item")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("required_item")]
         public string RequiredItem { get; set; }
 
+        [JsonProperty("board_level")]
         [Description("Level of the board")]
         [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("board_level")]
         public int BoardLevel { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [Description("Slot's row index (aka y axis)")]
         [JsonProperty("row_index")]
+        [Description("Slot's row index (aka y axis)")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int RowIndex { get; set; }
 
         [Description("Slot's column index (aka x axis)")]

@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 namespace Metaplay.Core.Guild
 {
-    [MetaBlockedMembers(new int[] { 11 })]
     [MetaReservedMembers(1, 100)]
+    [MetaBlockedMembers(new int[] { 11 })]
     public abstract class GuildModelBase<TGuildModel, TGuildMember> : IGuildModel<TGuildModel>, IGuildModelBase, IMultiplayerModel<IGuildModelBase>, IModel<IGuildModelBase>, IModel, ISchemaMigratable, IMultiplayerModel
     {
         [IgnoreDataMember]
@@ -35,8 +35,8 @@ namespace Metaplay.Core.Guild
         EntityId Metaplay.Core.MultiplayerEntity.IMultiplayerModel.EntityId { get; set; }
         public MetaTime CurrentTime { get; }
 
-        [Transient]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Transient]
         public MetaTime TimeAtFirstTick { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -62,20 +62,20 @@ namespace Metaplay.Core.Guild
         [MetaMember(8, (MetaMemberFlags)0)]
         public Dictionary<EntityId, TGuildMember> Members { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public Dictionary<EntityId, GuildPendingMemberKickState> PendingKicks { get; set; }
 
-        [ServerOnly]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [ServerOnly]
         public int RunningMemberInstanceId { get; set; }
 
         [MetaMember(12, (MetaMemberFlags)0)]
         [ServerOnly]
         public int RunningInviteId { get; set; }
 
-        [MetaMember(13, (MetaMemberFlags)0)]
         [PrettyPrint((PrettyPrintFlag)16)]
+        [MetaMember(13, (MetaMemberFlags)0)]
         [ServerOnly]
         public GuildEventLog EventLog { get; set; }
         public int MemberCount { get; }
@@ -85,8 +85,8 @@ namespace Metaplay.Core.Guild
         {
         }
 
-        [ServerOnly]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [ServerOnly]
         public int SearchVersion { get; set; }
     }
 }

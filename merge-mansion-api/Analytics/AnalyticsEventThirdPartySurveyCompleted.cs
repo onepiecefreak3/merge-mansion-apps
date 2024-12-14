@@ -12,13 +12,13 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
+        [Description("Broadcast Id of the completed survey")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("broadcast_id")]
-        [Description("Broadcast Id of the completed survey")]
         public int BroadcastId { get; set; }
 
-        [JsonProperty("survey_type")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("survey_type")]
         [Description("Survey Type")]
         public string SurveyType { get; set; }
         public override string EventDescription { get; }
@@ -32,13 +32,13 @@ namespace Analytics
         }
 
         [Description("Association Id")]
-        [JsonProperty("association_id")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("association_id")]
         public string AssociationId { get; set; }
 
+        [Description("Survey Response")]
         [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("survey_response")]
-        [Description("Survey Response")]
         public string SurveyResponse { get; set; }
 
         public AnalyticsEventThirdPartySurveyCompleted(int broadcastId, string surveyType, string associationId, string surveyResponse)

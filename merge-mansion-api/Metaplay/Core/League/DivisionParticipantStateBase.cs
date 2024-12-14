@@ -17,8 +17,8 @@ namespace Metaplay.Core.League
         [ServerOnly]
         public int AvatarDataEpoch { get; set; }
 
-        [MetaMember(102, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(102, (MetaMemberFlags)0)]
         public IDivisionRewards ResolvedDivisionRewards { get; set; }
 
         [IgnoreDataMember]

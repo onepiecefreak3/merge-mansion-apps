@@ -15,6 +15,8 @@ using GameLogic.Player.Items.Order;
 using Metaplay.Core.Math;
 using Metaplay.Unity;
 using System.Security.Cryptography;
+using GameLogic.Player.Items.Sink;
+using System.Collections.Generic;
 
 namespace merge_mansion_dumper.Dumper.Json.Metaplay
 {
@@ -31,7 +33,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 typeof(MergeCollection),
                 typeof(IItemProducer),
                 typeof(IOrderProducer),
-                typeof(PersistentFeatures)
+                typeof(PersistentFeatures),
+                typeof(ISinkStateFactory)
             };
 
         public MetaMergeChainSerializer(SharedGameConfig config, bool dropAsPercent, ILogger output)
@@ -57,6 +60,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 SerializeProducer(writer, producer, serializer);
             else if (value is IOrderProducer orderProducer)
                 SerializeOrderProducer(writer, orderProducer, serializer);
+            else if (value is ISinkStateFactory sinkFactory)
+                WriteObject(writer, sinkFactory.GetType(), sinkFactory, serializer);
             else if (value is PersistentFeatures persistent)
                 WriteObject(writer, persistent.GetType(), persistent, serializer);
         }
@@ -116,6 +121,8 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                 WriteValue(writer, "Empty", serializer);
             else if (producer is GarageCleanupEventProducer)
                 WriteValue(writer, "GarageCleanupEvent", serializer);
+            else if (producer is InstantDecayProducer)
+                WriteValue(writer, "InstantDecay", serializer);
             else if (producer is ConstantProducer cp)
             {
                 writer.WriteStartObject();
@@ -420,6 +427,14 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
             else if (type.IsAssignableTo(typeof(PersistentFeatures)))
             {
                 if (name == nameof(PersistentFeatures.ResetToItem))
+                {
+                    WriteProperty(writer, name, (value as MetaRef<ItemDefinition>)?.Ref.ItemType ?? string.Empty, serializer);
+                    return;
+                }
+            }
+            else if (type.IsAssignableTo(typeof(MultiTargetSinkStateFactory)))
+            {
+                if (name == nameof(MultiTargetSinkStateFactory.Reward))
                 {
                     WriteProperty(writer, name, (value as MetaRef<ItemDefinition>)?.Ref.ItemType ?? string.Empty, serializer);
                     return;

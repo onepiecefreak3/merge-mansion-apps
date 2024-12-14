@@ -12,8 +12,8 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Real Player Id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Real Player Id")]
         [JsonProperty("player_id")]
         public EntityId PlayerId { get; set; }
         public override string EventDescription { get; }

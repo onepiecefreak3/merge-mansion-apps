@@ -20,8 +20,8 @@ namespace Analytics
         [JsonProperty("board_id")]
         public MergeBoardId BoardId { get; set; }
 
-        [JsonProperty("activations_left")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("activations_left")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeChainId, int> ActivationsLeft { get; set; }
         public override string EventDescription { get; }

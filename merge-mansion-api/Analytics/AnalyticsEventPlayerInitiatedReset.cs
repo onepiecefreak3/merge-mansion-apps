@@ -6,15 +6,15 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [AnalyticsEvent(153, "Player Requested for reset", 1, null, true, true, false)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class AnalyticsEventPlayerInitiatedReset : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("old_association_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Previous Association Id")]
+        [JsonProperty("old_association_id")]
         public string OldAssociationId { get; set; }
         public override string EventDescription { get; }
 

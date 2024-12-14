@@ -21,8 +21,8 @@ namespace Metaplay.Core.InAppPurchase
         [MetaMember(4, (MetaMemberFlags)0)]
         public string PlatformProductId { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [PrettyPrint((PrettyPrintFlag)4)]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public string Receipt { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]

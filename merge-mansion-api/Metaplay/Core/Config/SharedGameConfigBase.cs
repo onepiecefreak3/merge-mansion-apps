@@ -20,7 +20,7 @@ namespace Metaplay.Core.Config
         private IGameConfigLibrary<MetaOfferId, MetaOfferInfoBase> _offersIntegration;
         private IGameConfigLibrary<MetaOfferId, MetaOfferInfoBase> _offersTieredIntegration;
         private IGameConfigLibrary<MetaOfferGroupId, MetaOfferGroupInfoBase> _offerGroupsIntegration;
-        GameConfigLibrary<LanguageId, LanguageInfo> Metaplay.Core.Config.ISharedGameConfig.Languages { get; }
+        IGameConfigLibrary<LanguageId, LanguageInfo> Metaplay.Core.Config.ISharedGameConfig.Languages { get; }
 
         IGameConfigLibrary<InAppProductId, InAppProductInfoBase> Metaplay.Core.Config.ISharedGameConfig.InAppProducts { get; }
 

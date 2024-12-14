@@ -20,12 +20,12 @@ namespace Analytics
         public LeaderboardEventId EventId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Action that caused score change")]
         [JsonProperty("source_action")]
+        [Description("Action that caused score change")]
         public LeaderboardEventScoreChangeSourceAction SourceAction { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("score_change")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("How much score changed")]
         public int ScoreChange { get; set; }
 
@@ -34,8 +34,8 @@ namespace Analytics
         [Description("Total score after change")]
         public int TotalScore { get; set; }
 
-        [JsonProperty("leaderboard_id")]
         [Description("Leaderboard division id")]
+        [JsonProperty("leaderboard_id")]
         [MetaMember(6, (MetaMemberFlags)0)]
         public EntityId DivisionId { get; set; }
         public override string EventDescription { get; }

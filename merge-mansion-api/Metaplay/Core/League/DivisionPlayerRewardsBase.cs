@@ -10,8 +10,8 @@ namespace Metaplay.Core.League
     {
         [MetaMember(100, (MetaMemberFlags)0)]
         public bool IsClaimed { get; set; }
-        
-        public abstract IEnumerable<MetaReward> Rewards { get; set; }
+
+        public IEnumerable<MetaReward> Rewards { get; }
 
         protected DivisionPlayerRewardsBase()
         {
@@ -21,7 +21,7 @@ namespace Metaplay.Core.League
         public class Default : DivisionPlayerRewardsBase
         {
             [MetaMember(1, (MetaMemberFlags)0)]
-            public sealed override IEnumerable<MetaReward> Rewards{ get; set; }
+            public List<MetaPlayerRewardBase> Rewards { get; set; }
 
             private Default()
             {

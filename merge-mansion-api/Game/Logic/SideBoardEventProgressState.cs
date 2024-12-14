@@ -16,8 +16,8 @@ namespace Game.Logic
         [MetaMember(2, (MetaMemberFlags)0)]
         public SideBoardEventStateReport CurrentState { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public Dictionary<int, SideBoardEventStateReport> ReportByEventLevel { get; set; }
 
         public SideBoardEventProgressState()

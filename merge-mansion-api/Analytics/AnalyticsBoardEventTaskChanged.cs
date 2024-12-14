@@ -12,17 +12,17 @@ namespace Analytics
     [AnalyticsEvent(126, "Board event task has changed", 1, null, false, true, false)]
     public class AnalyticsBoardEventTaskChanged : AnalyticsServersideEventBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the event")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
         public string EventId;
-        [JsonProperty("event_task_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("ID of the event task")]
+        [JsonProperty("event_task_id")]
         public string EventTaskId;
+        [JsonProperty("state")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("State of the event task")]
-        [JsonProperty("state")]
         public string State;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }
@@ -31,13 +31,13 @@ namespace Analytics
         {
         }
 
+        [JsonProperty("required_items")]
         [Description("Items required by the task")]
         [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("required_items")]
         public List<AnalyticsBoardEventTaskChanged.ItemRequirement> RequiredItems;
         [JsonProperty("task_type")]
-        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Task type: dynamic / predefined")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public string TaskType;
         [JsonProperty("rewards")]
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -69,8 +69,8 @@ namespace Analytics
             }
         }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("debug_data", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public List<DebugItemData> DebugData { get; set; }
     }
 }

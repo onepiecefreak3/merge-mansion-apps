@@ -16,14 +16,14 @@ namespace Analytics
         [JsonProperty("level")]
         public int Level { get; set; }
 
+        [Description("Streak count before if just reset")]
         [JsonProperty("level_at_reset")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Streak count before if just reset")]
         public int LevelAtReset { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("keys_spent")]
         [Description("Keys spent to claim the daily cycle completion reward (chest)")]
+        [JsonProperty("keys_spent")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int KeysSpent { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]

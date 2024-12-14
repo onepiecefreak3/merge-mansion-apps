@@ -11,17 +11,17 @@ namespace Analytics
     [AnalyticsEvent(185, "Scene change", 1, null, false, true, false)]
     public class AnalyticsEventSceneChange : AnalyticsServersideEventBase
     {
-        [Description("ID of the scene from where transition is happening")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("scene_from")]
+        [Description("ID of the scene from where transition is happening")]
         public LocationId SceneFrom;
         [Description("ID of the scene to where transition is happening")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("scene_to")]
         public LocationId SceneTo;
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("duration of the loading in seconds")]
         [JsonProperty("scene_loaded")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public F64 SceneLoaded;
         public override string EventDescription { get; }
         public override AnalyticsEventType EventType { get; }

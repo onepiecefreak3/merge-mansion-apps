@@ -17,9 +17,9 @@ namespace Analytics
         [Description("Currency Bank Id from config")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [Description("Threshold value for this stash")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("state")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Threshold value for this stash")]
         public CurrencyBankState CurrencyBankState { get; set; }
 
         [JsonProperty("activation_id")]

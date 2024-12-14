@@ -4,8 +4,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3 })]
+    [MetaSerializable]
     public class AuxEnergyState
     {
         [MetaMember(1, (MetaMemberFlags)0)]

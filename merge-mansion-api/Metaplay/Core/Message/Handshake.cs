@@ -389,8 +389,8 @@ namespace Metaplay.Core.Message
             [MetaMember(2, (MetaMemberFlags)0)]
             public SessionResumptionInfo SessionToResume { get; set; }
 
-            [MetaMember(3, (MetaMemberFlags)0)]
             [Sensitive]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public byte[] ResumptionToken { get; set; }
 
             [MetaMember(4, (MetaMemberFlags)0)]

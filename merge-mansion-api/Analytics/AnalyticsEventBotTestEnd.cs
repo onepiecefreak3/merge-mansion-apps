@@ -10,8 +10,8 @@ namespace Analytics
     [AnalyticsEvent(176, "Bot test end", 1, null, true, true, false)]
     public class AnalyticsEventBotTestEnd : AnalyticsServersideEventBase
     {
-        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("producer_id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string ProducerId;
         [JsonProperty("producer_level")]
         [MetaMember(8, (MetaMemberFlags)0)]
@@ -19,37 +19,37 @@ namespace Analytics
         [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("target_id")]
         public string TargetId;
-        [MetaMember(10, (MetaMemberFlags)0)]
         [JsonProperty("target_lvl")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public int TargetLvl;
-        [JsonProperty("board_items")]
-        [MetaMember(11, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [JsonProperty("board_items")]
         public Dictionary<string, int> BoardItems;
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("bot_configuration_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ConfigId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("test_id")]
         public string TestId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("total_sessions")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int TotalSessions { get; set; }
 
-        [JsonProperty("diamonds_spent")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("diamonds_spent")]
         public int DiamondsSpent { get; set; }
 
-        [JsonProperty("energy_spent")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("energy_spent")]
         public int EnergySpent { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("was_goal_achieved")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public bool WasGoalAchieved { get; set; }
         public override string EventDescription { get; }
 

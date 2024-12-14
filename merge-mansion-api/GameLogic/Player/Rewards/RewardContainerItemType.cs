@@ -9,6 +9,7 @@ namespace GameLogic.Player.Rewards
         None = 0,
         Item = 1,
         Currency = 2,
-        Energy = 3
+        Energy = 3,
+        ItemForCollectibleBoardEvent = 4
     }
 }

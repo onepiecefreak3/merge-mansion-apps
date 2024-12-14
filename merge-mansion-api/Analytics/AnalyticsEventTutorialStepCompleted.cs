@@ -11,9 +11,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the tutorial step that was completed")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("id")]
         public string Id { get; set; }
         public override string EventDescription { get; }
 

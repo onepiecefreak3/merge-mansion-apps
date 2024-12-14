@@ -8,8 +8,6 @@ namespace GameLogic.Config
     [MetaSerializableDerived(1019)]
     public class PlayerHasBoardEventActive : TypedPlayerPropertyId<bool>
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
-        private MergeBoardId RequiredBoardEvent { get; set; }
         public override string DisplayName { get; }
 
         public PlayerHasBoardEventActive()
@@ -19,5 +17,8 @@ namespace GameLogic.Config
         public PlayerHasBoardEventActive(MergeBoardId requiredBoardEvent)
         {
         }
+
+        [MetaMember(1, (MetaMemberFlags)0)]
+        private MergeBoardId RequiredEventBoard { get; set; }
     }
 }

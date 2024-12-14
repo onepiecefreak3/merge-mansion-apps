@@ -12,14 +12,14 @@ namespace Analytics
         private static string TypeId;
         public override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("type")]
         [Description("")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string Type { get; set; }
 
+        [Description("Unique daily cycle task set id")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("daily_tasks_set_id")]
-        [Description("Unique daily cycle task set id")]
         public string TasksSetId { get; set; }
         public override string EventDescription { get; }
 

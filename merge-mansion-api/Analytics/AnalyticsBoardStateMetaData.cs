@@ -11,16 +11,16 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsBoardStateMetaData
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("item_type")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemType { get; set; }
 
         [JsonProperty("charges", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(2, (MetaMemberFlags)0)]
         public int? Charges { get; set; }
 
-        [JsonProperty("duration_left", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("duration_left", NullValueHandling = (NullValueHandling)1)]
         public MetaDuration? TimeContainerRemaining { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -35,19 +35,19 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("item_level")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("item_level")]
         [Description("Item level")]
         public int ItemLevel { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Merge chain total length of the item")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_total_length")]
         public int ItemMergeChainTotalLength { get; set; }
 
         [Description("Merge chain unlocked length of the item")]
-        [JsonProperty("item_mergechain_unlocked_length")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("item_mergechain_unlocked_length")]
         public int ItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticsBoardStateMetaData(MergeItem item, PlayerModel player)

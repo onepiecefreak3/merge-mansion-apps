@@ -11,13 +11,13 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Garage cleanup event id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [Description("Garage cleanup event id")]
         public string EventId { get; set; }
 
-        [Description("Level of the board")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Level of the board")]
         [JsonProperty("board_level")]
         public int BoardLevel { get; set; }
         public override string EventDescription { get; }

@@ -17,15 +17,15 @@ namespace Analytics
         [Description("ID of the decoration received")]
         public string DecorationId;
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Number of decorations received")]
         [JsonProperty("amount")]
+        [Description("Number of decorations received")]
         public int Amount;
         [JsonProperty("level", NullValueHandling = (NullValueHandling)1)]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Level of decoration received")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int? Level;
-        [JsonProperty("reward_type")]
         [Description("Type of the reward received")]
+        [JsonProperty("reward_type")]
         public sealed override string RewardType { get; }
         public override string EventDescription { get; }
 

@@ -103,7 +103,6 @@ namespace Metaplay.Core.Config
 
         public int SpecializationSpecificDuplicationAmount { get; }
 
-        private Dictionary<TKey, TInfo> _infos;
         public struct KeysEnumerable<TKey, TInfo>
         {
             private GameConfigLibrary<TKey, TInfo> _library;
@@ -113,5 +112,7 @@ namespace Metaplay.Core.Config
         {
             private GameConfigLibrary<TKey, TInfo> _library;
         }
+
+        private Dictionary<TKey, TInfo> _infos;
     }
 }

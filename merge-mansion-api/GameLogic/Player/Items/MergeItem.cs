@@ -27,16 +27,16 @@ using GameLogic.Player.Items.GemMining;
 
 namespace GameLogic.Player.Items
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0
         [IgnoreDataMember]
         private MergeItem.MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
 
         [IgnoreDataMember]
@@ -387,5 +387,20 @@ namespace GameLogic.Player.Items
         public MergeItem(ItemDefinition itemDefinition, MetaTime timestamp, ItemVisibility itemVisibility, DecayState decayState, ActivationState activationState, StorageState activationStorage, SpawnState spawnState, StorageState spawnStorage, ChestState chestState, ISinkState sinkState, TimeContainerState timeContainerState, ChargesState chargesState, XpState xpState, OrderParentState orderState, PersistentState persistentState, GemState gemState)
         {
         }
+
+        [IgnoreDataMember]
+        public bool DecayOnActivation { get; }
+
+        [IgnoreDataMember]
+        public bool HasPrisonBadgeState { get; }
+
+        [IgnoreDataMember]
+        public bool IsPostBox { get; }
+
+        [IgnoreDataMember]
+        public bool IsMinigameActivation { get; }
+
+        [IgnoreDataMember]
+        public bool IsEscapeTool { get; }
     }
 }

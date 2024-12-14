@@ -12,8 +12,8 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(6)]
     public class RewardItem : PlayerReward
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ValidateItemDefinitionMetaRef]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -26,8 +26,8 @@ namespace GameLogic.Player.Rewards
         [MetaMember(4, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public OverrideItemFeatures OverrideItemFeatures { get; set; }
 
         [IgnoreDataMember]

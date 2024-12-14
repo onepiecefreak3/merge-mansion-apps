@@ -16,9 +16,9 @@ namespace Analytics
         [JsonProperty("broadcast_id")]
         public int BroadcastId { get; set; }
 
+        [Description("Survey Type")]
         [JsonProperty("survey_type")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Survey Type")]
         public string SurveyType { get; set; }
         public override string EventDescription { get; }
 

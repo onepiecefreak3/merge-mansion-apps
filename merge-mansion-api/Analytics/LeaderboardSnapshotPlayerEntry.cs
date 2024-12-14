@@ -5,23 +5,23 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class LeaderboardSnapshotPlayerEntry
     {
         [JsonProperty("rank")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Rank")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Rank { get; set; }
 
-        [Description("Points")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("points")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Points")]
         public int Points { get; set; }
 
-        [Description("Association Id")]
         [JsonProperty("association_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Association Id")]
         public string AssociationId { get; set; }
 
         private LeaderboardSnapshotPlayerEntry()

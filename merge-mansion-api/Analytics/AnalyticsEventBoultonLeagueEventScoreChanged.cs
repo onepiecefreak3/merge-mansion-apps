@@ -18,34 +18,34 @@ namespace Analytics
         [Description("Event id")]
         public BoultonLeagueEventId EventId { get; set; }
 
+        [JsonProperty("division_id")]
         [Description("Leaderboard division id")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("division_id")]
         public EntityId DivisionId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("League stage number")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("stage_number")]
         public int StageNumber { get; set; }
 
-        [JsonProperty("score_amount")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("score_amount")]
         [Description("Amount of points/score gained")]
         public int ScoreAmount { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
-        [JsonProperty("score_source_type")]
         [Description("Source of points/score gained")]
+        [JsonProperty("score_source_type")]
         public BoultonLeagueEventScoreSourceType ScoreSourceType { get; set; }
 
         [JsonProperty("total_score")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("New total score")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int TotalScore { get; set; }
 
+        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("stage_demotion_score_threshold")]
         [Description("Possible score requirement to avoid demotion to the previous league stage after the event concludes")]
-        [MetaMember(7, (MetaMemberFlags)0)]
         public int StageDemotionScoreThreshold { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]
@@ -62,9 +62,9 @@ namespace Analytics
         {
         }
 
+        [JsonProperty("division_rank")]
         [Description("Leaderboard division rank")]
         [MetaMember(9, (MetaMemberFlags)0)]
-        [JsonProperty("division_rank")]
         public int DivisionRank { get; set; }
     }
 }

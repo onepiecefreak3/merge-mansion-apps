@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.GameFeatures
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum GameFeatureId
     {
         None = 0,

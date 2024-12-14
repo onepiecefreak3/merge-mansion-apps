@@ -14,32 +14,32 @@ namespace GameLogic.Player.DailyTasks
     [DefaultMember("Item")]
     public class DailyTaskStatus
     {
-        [ExcludeFromGdprExport]
         [MetaMember(15, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int Level;
         [ExcludeFromGdprExport]
         [MetaMember(16, (MetaMemberFlags)0)]
         public int Points;
-        [MetaMember(17, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public int LastSeenPoints;
         [MetaMember(18, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int LastSeenLevel;
-        [ExcludeFromGdprExport]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public MetaTime StartTime { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(8, (MetaMemberFlags)0)]
         private List<DailyTaskState> States { get; set; }
 
         [MetaMember(11, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public bool PendingFirstImpressionAnalytics { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string DailyTasksSetId { get; set; }
 
         [ExcludeFromGdprExport]
@@ -64,12 +64,12 @@ namespace GameLogic.Player.DailyTasks
 
         public bool AllTasksComplete { get; }
 
-        [MetaMember(20, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public int AllTimeRefreshPurchasesCount { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(21, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int DailyRefreshPurchasesCount { get; set; }
     }
 }

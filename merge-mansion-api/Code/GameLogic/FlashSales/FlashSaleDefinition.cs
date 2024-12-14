@@ -15,8 +15,8 @@ using Metaplay.Core.Player;
 
 namespace Code.GameLogic.FlashSales
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1, 5, 2, 7, 8 })]
+    [MetaSerializable]
     public class FlashSaleDefinition : IGameConfigData<ShopItemId>, IGameConfigData, IHasGameConfigKey<ShopItemId>, IHasRequirements
     {
         [MetaMember(9, (MetaMemberFlags)0)]

@@ -13,19 +13,19 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("Ad placement")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("ad_placement")]
+        [Description("Ad placement")]
         public string AdPlacement { get; set; }
 
         [JsonProperty("item_name")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Item name")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("auction_id")]
         [Description("Auction Id")]
+        [JsonProperty("auction_id")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
         public override string EventDescription { get; }
 
@@ -37,8 +37,8 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("item_diamond_price")]
         [Description("Item Diamond value")]
+        [JsonProperty("item_diamond_price")]
         [MetaMember(4, (MetaMemberFlags)0)]
         public int ItemDiamondValue { get; set; }
 
@@ -46,19 +46,19 @@ namespace Analytics
         {
         }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("item_cost_value")]
         [Description("Item cost value")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public int ItemCostValue { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("item_cost_value_type")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Item cost value type")]
         public Currencies ItemCostValueType { get; set; }
 
         [MetaMember(7, (MetaMemberFlags)0)]
-        [Description("Amount of time skipped for a producer")]
         [JsonProperty("time_skipped_amount")]
+        [Description("Amount of time skipped for a producer")]
         public string TimeSkippedAmount { get; set; }
 
         [Description("Diamond value of time skipped")]

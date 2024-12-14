@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Decorations
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum DecorationLayerId
     {
         None = 0,

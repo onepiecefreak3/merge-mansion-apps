@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace Metaplay.Core.Config
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializable]
+    [MetaAllowNoSerializedMembers]
     public abstract class GameConfigBuildSourceMetadata
     {
         protected GameConfigBuildSourceMetadata()

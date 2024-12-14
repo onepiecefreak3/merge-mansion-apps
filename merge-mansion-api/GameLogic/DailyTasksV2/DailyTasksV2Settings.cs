@@ -62,5 +62,8 @@ namespace GameLogic.DailyTasksV2
 
         [MetaMember(17, (MetaMemberFlags)0)]
         public int TimeExtensionTimeWindowMaxHours { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        public F32 MaxRewardRequirementRatioForLowLow { get; set; }
     }
 }

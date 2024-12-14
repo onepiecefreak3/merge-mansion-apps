@@ -200,5 +200,22 @@ namespace GameLogic.Config
         public static DirectorGroupId GemMineGemLogStep02;
         public static DirectorGroupId GemMineGemLogStep03;
         public static DirectorGroupId GemMineGemLogStep04;
+        public static DirectorGroupId TGELetterCodexStep01;
+        public static DirectorGroupId TGELetterCodexStep02;
+        public static DirectorGroupId TGELetterCodexStep03;
+        public static DirectorGroupId TGELetterCodexStep04;
+        public static DirectorGroupId TGELetterCodexStep05;
+        public static DirectorGroupId TGESink1stClassStamp;
+        public static DirectorGroupId TGESink1stClassStampA;
+        public static DirectorGroupId TGESink1stClassStampB;
+        public static DirectorGroupId TGESink2ndClassStamp;
+        public static DirectorGroupId TGESink2ndClassStampA;
+        public static DirectorGroupId TGESink2ndClassStampB;
+        public static DirectorGroupId TGESink3rdClassStamp;
+        public static DirectorGroupId TGESink3rdClassStampA;
+        public static DirectorGroupId TGESink3rdClassStampB;
+        public static DirectorGroupId TGEActivateMinigame;
+        public static DirectorGroupId TGEActivateMinigameA;
+        public static DirectorGroupId TGEActivateMinigameB;
     }
 }

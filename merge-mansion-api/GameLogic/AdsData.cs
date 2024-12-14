@@ -26,12 +26,12 @@ namespace GameLogic
         [MetaMember(2, (MetaMemberFlags)0)]
         public bool canBeClaimed { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public AdsRewardType rewardType { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public ShopItemId shopItemId { get; set; }
 
         [ExcludeFromGdprExport]

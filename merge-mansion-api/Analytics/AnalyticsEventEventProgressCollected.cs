@@ -12,8 +12,8 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("event_id")]
         [Description("Merge board of the event where progress was made")]
+        [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId BoardId { get; set; }
 

@@ -18,8 +18,8 @@ namespace GameLogic
         [ExcludeFromGdprExport]
         public string AdPlacement { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public AdvertisementPlacementId AdPlacementId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -30,12 +30,12 @@ namespace GameLogic
         [MetaMember(4, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public ShopItemId ShopItemId { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int ItemDiamondValue { get; set; }
 
         [MetaMember(7, (MetaMemberFlags)0)]
@@ -54,24 +54,24 @@ namespace GameLogic
         [MetaMember(10, (MetaMemberFlags)0)]
         public string AdvertiserId { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public string NetworkId { get; set; }
 
-        [MetaMember(12, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }
 
         [MetaMember(13, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public Coordinate BubbleCoordinates { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public AnalyticsContext AnalyticsContext { get; set; }
 
-        [MetaMember(15, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(15, (MetaMemberFlags)0)]
         public OfferPlacementId OfferPlacementId { get; set; }
 
         [IgnoreDataMember]

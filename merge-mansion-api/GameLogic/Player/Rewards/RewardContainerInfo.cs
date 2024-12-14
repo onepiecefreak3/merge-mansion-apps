@@ -2,6 +2,7 @@ using Metaplay.Core.Model;
 using Metaplay.Core.Config;
 using System;
 using System.Collections.Generic;
+using GameLogic.ConfigPrefabs;
 
 namespace GameLogic.Player.Rewards
 {
@@ -34,6 +35,22 @@ namespace GameLogic.Player.Rewards
         }
 
         public RewardContainerInfo(RewardContainerId configKey, string poolTag, string skinName, string overrideLocalizationRewardContainerId, int minAmount, int maxAmount, List<RewardContainerItem> items)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public ConfigAssetPackId ModelId { get; set; }
+
+        [MetaMember(9, (MetaMemberFlags)0)]
+        public bool UseIconLibrary { get; set; }
+
+        [MetaMember(10, (MetaMemberFlags)0)]
+        public string SfxClose { get; set; }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        public string SfxOpen { get; set; }
+
+        public RewardContainerInfo(RewardContainerId configKey, string poolTag, string skinName, string overrideLocalizationRewardContainerId, int minAmount, int maxAmount, List<RewardContainerItem> items, ConfigAssetPackId modelId, bool useIconLibrary, string sfxClose, string sfxOpen)
         {
         }
     }

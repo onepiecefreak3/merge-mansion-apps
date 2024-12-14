@@ -12,8 +12,8 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Id of the activated/deactivated mode")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Id of the activated/deactivated mode")]
         [JsonProperty("player_mode_id")]
         public string PlayerModeId { get; set; }
 

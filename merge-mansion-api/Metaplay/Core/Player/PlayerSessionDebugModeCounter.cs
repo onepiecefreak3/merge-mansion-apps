@@ -9,9 +9,6 @@ namespace Metaplay.Core.Player
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private int forNextNumSessions;
-
-        public override EntityDebugConfig DebugConfigForCurrentSession { get; }
-
         public PlayerSessionDebugModeCounter(int forNextNumSessions)
         {
         }
@@ -19,5 +16,7 @@ namespace Metaplay.Core.Player
         public PlayerSessionDebugModeCounter(PlayerSessionDebugModeParameters parameters, int forNextNumSessions)
         {
         }
+
+        public override EntityDebugConfig DebugConfigForCurrentSession { get; }
     }
 }

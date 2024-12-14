@@ -8,7 +8,7 @@ namespace Metaplay.Core.Config
 {
     public interface ISharedGameConfig : IGameConfig, IGameConfigDataResolver
     {
-        GameConfigLibrary<LanguageId, LanguageInfo> Languages { get; }
+        IGameConfigLibrary<LanguageId, LanguageInfo> Languages { get; }
 
         IGameConfigLibrary<InAppProductId, InAppProductInfoBase> InAppProducts { get; }
 

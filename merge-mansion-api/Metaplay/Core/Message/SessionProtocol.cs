@@ -181,8 +181,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(16, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(16, (MessageDirection)1, true)]
         public class SessionStartRequest : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -288,8 +288,8 @@ namespace Metaplay.Core.Message
                 CorrectedDeviceGuid = correctDeviceGuid;
             }
 
-            [Sensitive]
             [MetaMember(15, (MetaMemberFlags)0)]
+            [Sensitive]
             public byte[] ResumptionToken { get; set; }
 
             public SessionStartSuccess(int queryId, int logicVersion, SessionToken sessionToken, ScheduledMaintenanceModeForClient scheduledMaintenanceMode, EntityId playerId, SessionProtocol.InitialPlayerState playerState, Dictionary<LanguageId, ContentHash> localizationVersions, List<EntityActiveExperiment> activeExperiments, bool developerMaintenanceBypass, List<EntityInitialState> entityStates, ISessionStartSuccessGamePayload gamePayload, string correctedDeviceGuid, byte[] resumptionToken)
@@ -397,8 +397,8 @@ namespace Metaplay.Core.Message
             }
         }
 
-        [MetaMessage(43, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(43, (MessageDirection)1, true)]
         public class SessionStartAbortReasonTrailer : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]
@@ -423,8 +423,8 @@ namespace Metaplay.Core.Message
         {
         }
 
-        [MetaMessage(42, (MessageDirection)1, true)]
         [MessageRoutingRuleProtocol]
+        [MetaMessage(42, (MessageDirection)1, true)]
         public class SessionStartAbort : MetaMessage
         {
             [MetaMember(1, (MetaMemberFlags)0)]

@@ -12,9 +12,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("leaderboard_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Leaderboard division id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("leaderboard_id")]
         public EntityId DivisionId { get; set; }
 
         [JsonProperty("event_id")]
@@ -37,9 +37,9 @@ namespace Analytics
         [Description("Placement after")]
         public int PlacementAfter { get; set; }
 
-        [JsonProperty("score")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Score")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("score")]
         public int Score { get; set; }
 
         [JsonProperty("total_score")]
@@ -47,9 +47,9 @@ namespace Analytics
         [Description("Score")]
         public int TotalScore { get; set; }
 
+        [JsonProperty("source_action")]
         [MetaMember(8, (MetaMemberFlags)0)]
         [Description("Source of score")]
-        [JsonProperty("source_action")]
         public string SourceAction { get; set; }
         public override string EventDescription { get; }
 

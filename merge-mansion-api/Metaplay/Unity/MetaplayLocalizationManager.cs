@@ -136,7 +136,7 @@ namespace Metaplay.Unity
                     // Log debug "Language fetch completed. Switching to language {Language}, version {Version}."
                     UpdateActiveLanguage(task.Result);
 
-                    var langInfo = MetaplaySDK.SessionContext?.PlayerContext?.Journal?.StagedModel?.GameConfig?.Languages?.GetValueOrDefault(task.Result.LanguageId);
+                    var langInfo = (LanguageInfo)MetaplaySDK.SessionContext?.PlayerContext?.Journal?.StagedModel?.GameConfig?.Languages?.GetInfoByKey(task.Result.LanguageId);
                     var change = new PlayerChangeLanguage(langInfo, task.Result.Version);
                     //MetaplaySDK.SessionContext?.PlayerContext?.ExecuteAction(change);
 

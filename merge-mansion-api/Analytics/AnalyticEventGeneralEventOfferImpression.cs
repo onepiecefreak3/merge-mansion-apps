@@ -17,9 +17,9 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         public EventOfferId EventOfferId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("event_offer_set_id")]
         [Description("Event Offer Set Id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public EventOfferSetId EventOfferSetId { get; set; }
         public override string EventDescription { get; }
 

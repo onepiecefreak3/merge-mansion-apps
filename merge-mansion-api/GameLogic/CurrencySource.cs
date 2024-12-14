@@ -76,6 +76,9 @@ namespace GameLogic
         CardCollectionCraftCard = 67,
         FromChest = 68,
         SoloMilestoneEventDailyTaskV2Reward = 69,
-        DifficultHotspotCompleted = 70
+        DifficultHotspotCompleted = 70,
+        PrisonerLetter = 71,
+        PrisonerBadge = 72,
+        CombinedReward = 73
     }
 }

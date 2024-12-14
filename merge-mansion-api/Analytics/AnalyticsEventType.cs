@@ -142,6 +142,7 @@ namespace Analytics
         ClientConnectedToEndpoint = 131,
         PlayerMovedItemFromPocketToBoard = 132,
         ServerEventExperimentInfo = 133,
-        ServerEventExperimentVariantInfo = 134
+        ServerEventExperimentVariantInfo = 134,
+        TheGreatEscapeMinigame = 135
     }
 }

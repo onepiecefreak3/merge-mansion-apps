@@ -7,15 +7,15 @@ using GameLogic;
 
 namespace Analytics
 {
-    [AnalyticsEvent(174, "Rentable inventory purchased", 1, null, true, true, false)]
     [MetaBlockedMembers(new int[] { 3 })]
+    [AnalyticsEvent(174, "Rentable inventory purchased", 1, null, true, true, false)]
     public class AnalyticsEventRentableInventoryBatchPurchased : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Batch cost")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("batch_cost")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Batch cost")]
         public long Cost { get; set; }
 
         [JsonProperty("batch_currency")]

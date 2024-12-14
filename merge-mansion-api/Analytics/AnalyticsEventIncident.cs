@@ -11,9 +11,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [Description("ID of the incident")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("incidentId")]
-        [Description("ID of the incident")]
         public string IncidentId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -22,13 +22,13 @@ namespace Analytics
         public string Type { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("If present, more detailed type of the incident")]
         [JsonProperty("subType")]
+        [Description("If present, more detailed type of the incident")]
         public string SubType { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("reason")]
         [Description("String describing the incident in more details (stacktrace, etc.)")]
+        [JsonProperty("reason")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string Reason { get; set; }
         public override string EventDescription { get; }
 

@@ -3,6 +3,7 @@ using GameLogic.CardCollection;
 using GameLogic.Fallbacks;
 using System;
 using System.Runtime.Serialization;
+using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
@@ -16,6 +17,7 @@ namespace GameLogic.Player.Rewards
         public FallbackPlayerRewardId FallbackPlayerRewardId { get; set; }
 
         [MetaMember(103, (MetaMemberFlags)0)]
+        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         public int Amount { get; set; }
 
         public RewardCardCollectionPack()

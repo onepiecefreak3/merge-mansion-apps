@@ -11,10 +11,10 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
         [Description("Discovered item")]
-        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         [MetaOnMemberDeserializationFailure("FixItemType")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
         public override string EventDescription { get; }
 
@@ -26,13 +26,13 @@ namespace Analytics
         {
         }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("item_level")]
         [Description("Discovered item level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int ItemLevel { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Merge chain total length of the discovered item")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_total_length")]
         public int ItemMergeChainTotalLength { get; set; }
 

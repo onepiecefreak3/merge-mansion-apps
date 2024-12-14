@@ -11,9 +11,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
+        [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Garage cleanup event id")]
-        [JsonProperty("event_id")]
         public string EventId { get; set; }
 
         [Description("Level of the board")]
@@ -21,8 +21,8 @@ namespace Analytics
         [JsonProperty("board_level")]
         public int BoardLevel { get; set; }
 
-        [Description("Where did the player go to the event popup from")]
         [JsonProperty("source")]
+        [Description("Where did the player go to the event popup from")]
         [MetaMember(3, (MetaMemberFlags)0)]
         public string Source { get; set; }
         public override string EventDescription { get; }

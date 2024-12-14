@@ -116,5 +116,24 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(16, (MetaMemberFlags)0)]
         public int GivenPlayerPortalItem { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        protected HashSet<int> FoundPrisonBadges { get; set; }
+
+        [MetaMember(18, (MetaMemberFlags)0)]
+        protected HashSet<int> BadgeActiveItems { get; set; }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        private Dictionary<TheGreatEscapeMinigameId, int> TheGreatEscapeMinigameProgress { get; set; }
+
+        [MetaMember(20, (MetaMemberFlags)0)]
+        private List<int> GrandmaCellVisualProgress { get; set; }
+
+        [MetaMember(21, (MetaMemberFlags)0)]
+        public int SelectedPortalVariation { get; set; }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        protected HashSet<TheGreatEscapeMinigameId> TheGreatEscapeMinigamesCompleted { get; set; }
+        public bool PrisonBadgeFound { get; set; }
     }
 }

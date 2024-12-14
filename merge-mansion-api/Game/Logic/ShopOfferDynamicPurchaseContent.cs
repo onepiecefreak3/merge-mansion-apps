@@ -6,8 +6,8 @@ using Metaplay.Core.Rewards;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(1)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class ShopOfferDynamicPurchaseContent : DynamicPurchaseContent
     {
         [MetaMember(2, (MetaMemberFlags)0)]

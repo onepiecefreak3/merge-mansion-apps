@@ -8,24 +8,24 @@ namespace Analytics
     [MetaReservedMembers(200, 299)]
     public abstract class AnalyticEventGeneralImpression : AnalyticsServersideEventBase
     {
-        [JsonProperty("iap_platform_id")]
         [MetaMember(200, (MetaMemberFlags)0)]
+        [JsonProperty("iap_platform_id")]
         [Description("Platform Id")]
         public string PlatformId { get; set; }
 
         [Description("Placement Id")]
-        [MetaMember(201, (MetaMemberFlags)0)]
         [JsonProperty("placement")]
+        [MetaMember(201, (MetaMemberFlags)0)]
         public string PlacementId { get; set; }
 
         [Description("Shown automatically")]
-        [MetaMember(202, (MetaMemberFlags)0)]
         [JsonProperty("automatic_show")]
+        [MetaMember(202, (MetaMemberFlags)0)]
         public bool AutomaticallyShown { get; set; }
 
-        [MetaMember(203, (MetaMemberFlags)0)]
-        [JsonProperty("impression_id")]
         [Description("Random impression id")]
+        [JsonProperty("impression_id")]
+        [MetaMember(203, (MetaMemberFlags)0)]
         public string ImpressionId { get; set; }
 
         public AnalyticEventGeneralImpression()

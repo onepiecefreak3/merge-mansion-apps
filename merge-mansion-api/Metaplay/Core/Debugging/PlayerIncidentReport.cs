@@ -8,8 +8,8 @@ using Metaplay.Core.Player;
 
 namespace Metaplay.Core.Debugging
 {
-    [MetaSerializable]
     [MetaReservedMembers(100, 200)]
+    [MetaSerializable]
     public abstract class PlayerIncidentReport
     {
         [MetaSerializableDerived(4)]

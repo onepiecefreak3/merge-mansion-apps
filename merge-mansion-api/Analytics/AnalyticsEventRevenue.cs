@@ -6,30 +6,30 @@ using System;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 2, 4 })]
     [AnalyticsEvent(119, "Revenue event", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 2, 4 })]
     public class AnalyticsEventRevenue : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Display name of the IAP product")]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Transaction to which revenue is attributed")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Order to which revenue is attributed")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("order_id")]
         public string OrderId { get; set; }
 
-        [JsonProperty("iap_platform_id")]
         [Description("Platform identifier of the item.")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("iap_platform_id")]
         public string PlatformId { get; set; }
         public override string EventDescription { get; }
 

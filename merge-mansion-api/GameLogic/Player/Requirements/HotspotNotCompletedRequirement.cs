@@ -7,8 +7,8 @@ namespace GameLogic.Player.Requirements
     [MetaSerializableDerived(24)]
     public class HotspotNotCompletedRequirement : PlayerRequirement
     {
-        [MetaOnMemberDeserializationFailure("FixRef")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("FixRef")]
         private MetaRef<HotspotDefinition> hotspot;
         public HotspotNotCompletedRequirement()
         {

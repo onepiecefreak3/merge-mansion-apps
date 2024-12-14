@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace Game.Logic
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum PlayerStep
     {
         None = 0,

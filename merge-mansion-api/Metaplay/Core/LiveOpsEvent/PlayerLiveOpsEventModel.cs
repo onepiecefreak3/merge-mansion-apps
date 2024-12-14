@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.LiveOpsEvent
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class PlayerLiveOpsEventModel : IMetaIntegration<PlayerLiveOpsEventModel>, IMetaIntegration
     {
         [MetaMember(102, (MetaMemberFlags)0)]

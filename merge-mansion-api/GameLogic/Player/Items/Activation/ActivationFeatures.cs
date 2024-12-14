@@ -11,8 +11,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {
-    [MetaBlockedMembers(new int[] { 7 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 7 })]
     public class ActivationFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -77,6 +77,14 @@ namespace GameLogic.Player.Items.Activation
         public bool AllowEnergyMode { get; set; }
 
         public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, bool startsFull, List<PlayerRequirement> activationRequirements, int? activationCost, bool showTapTextOnDiscovery, bool allowCooldownRemover, bool allowEnergyMode, ItemVisibility itemVisibility)
+        {
+        }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public MetaDuration? DecayDelay { get; set; }
+        public bool HasDecayDelay { get; }
+
+        public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, bool startsFull, List<PlayerRequirement> activationRequirements, int? activationCost, bool showTapTextOnDiscovery, bool allowCooldownRemover, bool allowEnergyMode, MetaDuration? decayDelay, ItemVisibility itemVisibility)
         {
         }
     }

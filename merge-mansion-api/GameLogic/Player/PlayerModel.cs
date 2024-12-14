@@ -41,20 +41,20 @@ using GameLogic.Player.Leaderboard.BoultonLeague;
 
 namespace GameLogic.Player
 {
+    [MetaSerializableDerived(1)]
     [MetaReservedMembers(99, 300)]
     [MetaReservedMembers(11, 12)]
     [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 117, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
-    [SupportedSchemaVersions(21, 42)]
-    [MetaSerializableDerived(1)]
+    [SupportedSchemaVersions(21, 43)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
+        [ServerOnly]
         [Transient]
         [MetaMember(211, (MetaMemberFlags)0)]
-        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -83,8 +83,8 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public CurrencyBankModel CurrencyBankModel { get; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public RandomPCG Random { get; set; }
 
         [MetaMember(99, (MetaMemberFlags)0)]
@@ -115,12 +115,12 @@ namespace GameLogic.Player
         [ExcludeFromGdprExport]
         public BoardInventory GarageBoardInventory { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(109, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public MergeBoard GarageMergeBoard { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(111, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public MergeBoard EventMergeBoard { get; set; }
 
         [MetaMember(113, (MetaMemberFlags)0)]
@@ -129,8 +129,8 @@ namespace GameLogic.Player
         [MetaMember(115, (MetaMemberFlags)0)]
         public DailyTaskStatus DailyTaskStatus { get; set; }
 
-        [MetaMember(201, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(201, (MetaMemberFlags)0)]
         public MergeBoardId ActiveMergeBoardId { get; set; }
 
         [MetaMember(202, (MetaMemberFlags)0)]
@@ -163,12 +163,12 @@ namespace GameLogic.Player
         [MetaMember(215, (MetaMemberFlags)0)]
         public List<MetaTime> SessionsInTheLast240HoursStartAt { get; set; }
 
-        [ServerOnly]
         [MetaMember(216, (MetaMemberFlags)0)]
+        [ServerOnly]
         public SupercellIdBindingState SupercellIdBindingState { get; set; }
 
-        [MetaMember(217, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(217, (MetaMemberFlags)0)]
         public string AnalyticsApiKey { get; set; }
 
         [MetaMember(218, (MetaMemberFlags)0)]
@@ -197,8 +197,8 @@ namespace GameLogic.Player
         [MetaMember(226, (MetaMemberFlags)0)]
         public PlayerCollectibleBoardEventsModel CollectibleBoardEvents { get; set; }
 
-        [NoChecksum]
         [MetaMember(227, (MetaMemberFlags)0)]
+        [NoChecksum]
         public sealed override string PlayerName { get; set; }
 
         [MetaMember(228, (MetaMemberFlags)0)]
@@ -371,8 +371,8 @@ namespace GameLogic.Player
         [MetaMember(272, (MetaMemberFlags)0)]
         public PlayerDailyScoopEventModel DailyScoopEvents { get; set; }
 
-        [ServerOnly]
         [MetaMember(273, (MetaMemberFlags)0)]
+        [ServerOnly]
         public List<int> MassMailsReceived { get; set; }
 
         [IgnoreDataMember]
@@ -408,5 +408,14 @@ namespace GameLogic.Player
 
         [MetaMember(281, (MetaMemberFlags)0)]
         public RandomPCG StackMiniGameRandom { get; set; }
+
+        [MetaMember(282, (MetaMemberFlags)0)]
+        public Dictionary<CollectibleBoardEventId, Queue<int>> PastPortalsGivenPerEvent { get; set; }
+
+        [MetaMember(283, (MetaMemberFlags)0)]
+        private MetaTime LastTimeZoneUpdateTimestamp { get; set; }
+
+        [IgnoreDataMember]
+        private MetaDuration MinTimeBetweenTimeZoneUpdate { get; }
     }
 }
