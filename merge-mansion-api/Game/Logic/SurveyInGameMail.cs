@@ -9,16 +9,16 @@ using Metaplay.Core.Analytics;
 
 namespace Game.Logic
 {
-    [MetaReservedMembers(0, 80)]
     [Obsolete("MM Internal Survey System (Messy) no longer in use, left for compatibility reasons")]
     [MetaSerializableDerived(11)]
+    [MetaReservedMembers(0, 80)]
     public class SurveyInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public int SurveyId { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string Token { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -38,8 +38,8 @@ namespace Game.Logic
         [MetaMember(7, (MetaMemberFlags)0)]
         private List<PlayerReward> PromisedReward { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<int, string> Questions { get; set; }
         public override string TitleExcerpt { get; }
         public override string BodyExcerpt { get; }

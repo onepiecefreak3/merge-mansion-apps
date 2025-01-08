@@ -9,8 +9,8 @@ using Metaplay.Core.Player;
 
 namespace GameLogic.GameFeatures
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3, 4 })]
+    [MetaSerializable]
     public class GameFeatureSetting : IGameConfigData<GameFeatureId>, IGameConfigData, IHasGameConfigKey<GameFeatureId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -5,9 +5,9 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
+    [MetaFormHidden]
     [MetaSerializableDerived(15)]
     [MetaBlockedMembers(new int[] { 1 })]
-    [MetaFormHidden]
     public class RewardExtendGameEvents : PlayerReward
     {
         [MetaMember(2, (MetaMemberFlags)0)]

@@ -11,8 +11,8 @@ namespace GameLogic.Player.Items.Bubble
         [MetaMember(1, (MetaMemberFlags)0)]
         public MetaTime BubbleEndTime { get; set; }
 
-        [Obsolete("Bonuses should be used instead")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Obsolete("Bonuses should be used instead")]
         public IBubbleBonus Bonus { get; set; }
 
         public BubbleState()

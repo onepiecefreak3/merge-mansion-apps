@@ -9,13 +9,13 @@ namespace Analytics
     [MetaBlockedMembers(new int[] { 1 })]
     public class LeaderboardSnapshotPlayerEntry
     {
-        [JsonProperty("rank")]
         [Description("Rank")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("rank")]
         public int Rank { get; set; }
 
-        [JsonProperty("points")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("points")]
         [Description("Points")]
         public int Points { get; set; }
 

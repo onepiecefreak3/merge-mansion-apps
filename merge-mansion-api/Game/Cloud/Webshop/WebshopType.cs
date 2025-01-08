@@ -4,8 +4,8 @@ using System.ComponentModel;
 
 namespace Game.Cloud.Webshop
 {
-    [TypeConverter(typeof(EnumStringConverter<WebshopType>))]
     [MetaSerializable]
+    [TypeConverter(typeof(EnumStringConverter<WebshopType>))]
     public enum WebshopType
     {
         Neonpay = 1

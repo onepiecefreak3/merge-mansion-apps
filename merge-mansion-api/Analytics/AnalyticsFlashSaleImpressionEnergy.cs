@@ -7,8 +7,8 @@ using GameLogic;
 
 namespace Analytics
 {
-    [MetaSerializableDerived(2)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(2)]
     public class AnalyticsFlashSaleImpressionEnergy : AnalyticsFlashSaleImpressionItemBase
     {
         [MetaMember(4, (MetaMemberFlags)0)]

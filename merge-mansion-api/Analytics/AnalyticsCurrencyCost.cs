@@ -8,14 +8,14 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsCurrencyCost
     {
+        [Description("Code of the currency used for purchase")]
         [JsonProperty("currency_code")]
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Code of the currency used for purchase")]
         public string CurrencyCode { get; set; }
 
+        [JsonProperty("amount")]
         [Description("Amount of the currency used for purchase")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("amount")]
         public double Amount { get; set; }
 
         public AnalyticsCurrencyCost()

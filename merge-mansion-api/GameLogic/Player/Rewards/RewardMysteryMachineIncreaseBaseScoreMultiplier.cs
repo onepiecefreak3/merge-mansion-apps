@@ -7,8 +7,8 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(32)]
     public class RewardMysteryMachineIncreaseBaseScoreMultiplier : PlayerReward
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<F64>))]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public F64 ScoreMultiplierIncrease { get; set; }
 
         public RewardMysteryMachineIncreaseBaseScoreMultiplier()

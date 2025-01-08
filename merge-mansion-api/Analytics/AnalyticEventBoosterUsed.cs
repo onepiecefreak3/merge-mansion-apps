@@ -14,30 +14,30 @@ namespace Analytics
         public override AnalyticsEventType EventType { get; }
 
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("Board where the Booster was used")]
         [JsonProperty("board_id")]
+        [Description("Board where the Booster was used")]
         public MergeBoardId BoardId { get; set; }
 
-        [Description("Boosters duration")]
-        [JsonProperty("duration_in_minutes")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("duration_in_minutes")]
+        [Description("Boosters duration")]
         public double Duration { get; set; }
 
-        [MetaOnMemberDeserializationFailure("FixItemType")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("target_item")]
         [Description("Boosters target item")]
+        [MetaOnMemberDeserializationFailure("FixItemType")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string TargetItem { get; set; }
 
         [MetaOnMemberDeserializationFailure("FixItemType")]
         [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("source_item")]
         [Description("Boosters target item")]
+        [JsonProperty("source_item")]
         public string SourceItem { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
-        [JsonProperty("from_inventory")]
         [Description("True if item was used from inventory")]
+        [JsonProperty("from_inventory")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public bool FromInventory { get; set; }
         public override string EventDescription { get; }
 
@@ -57,9 +57,9 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("target_item_level")]
-        [Description("Target item level")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Target item level")]
+        [JsonProperty("target_item_level")]
         public int TargetItemLevel { get; set; }
 
         [JsonProperty("target_item_mergechain_total_length")]
@@ -67,14 +67,14 @@ namespace Analytics
         [Description("Merge chain total length of the target item")]
         public int TargetItemMergeChainTotalLength { get; set; }
 
-        [JsonProperty("target_item_mergechain_unlocked_length")]
         [MetaMember(8, (MetaMemberFlags)0)]
         [Description("Merge chain unlocked length of the target item")]
+        [JsonProperty("target_item_mergechain_unlocked_length")]
         public int TargetItemMergeChainUnlockedLength { get; set; }
 
-        [JsonProperty("source_item_level")]
         [MetaMember(9, (MetaMemberFlags)0)]
         [Description("Source item level")]
+        [JsonProperty("source_item_level")]
         public int SourceItemLevel { get; set; }
 
         [JsonProperty("source_item_mergechain_total_length")]
@@ -82,9 +82,9 @@ namespace Analytics
         [Description("Merge chain total length of the source item")]
         public int SourceItemMergeChainTotalLength { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [Description("Merge chain unlocked length of the source item")]
         [JsonProperty("source_item_mergechain_unlocked_length")]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public int SourceItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticEventBoosterUsed(string sourceItem, MergeBoardId boardId, MetaDuration duration, bool fromInventory, int sourceItemLevel, int sourceItemMergeChainTotalLength, int sourceItemMergeChainUnlockedLength)

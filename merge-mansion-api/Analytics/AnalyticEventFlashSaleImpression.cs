@@ -14,23 +14,23 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("Impression Id")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("impression_id")]
+        [Description("Impression Id")]
         public string ImpressionId { get; set; }
 
-        [JsonProperty("refresh_time")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("refresh_time")]
         [Description("Refresh time")]
         public MetaTime RefreshTime { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
-        [Description("Placement Id")]
         [JsonProperty("placement")]
+        [Description("Placement Id")]
         public string PlacementId { get; set; }
 
-        [JsonProperty("impressions")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("impressions")]
         [Description("Impressions")]
         public List<AnalyticsFlashSaleImpressionItemBase> Impressions { get; set; }
         public override string EventDescription { get; }
@@ -47,9 +47,9 @@ namespace Analytics
         {
         }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
-        [JsonProperty("flash_sale_context")]
         [Description("Context where it was shown")]
+        [JsonProperty("flash_sale_context")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string Context { get; set; }
     }
 }

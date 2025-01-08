@@ -4,8 +4,8 @@ using Code.GameLogic.GameEvents.DailyScoop;
 
 namespace Code.GameLogic.Player.Events.DailyScoopEvent
 {
-    [MetaActivableSet("DailyScoopEvent", false)]
     [MetaSerializable]
+    [MetaActivableSet("DailyScoopEvent", false)]
     public class PlayerDailyScoopEventModel : MetaActivableSet<DailyScoopEventId, DailyScoopEventInfo, DailyScoopEventModel>
     {
         public PlayerDailyScoopEventModel()

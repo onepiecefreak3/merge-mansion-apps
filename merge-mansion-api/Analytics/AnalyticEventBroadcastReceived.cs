@@ -6,14 +6,14 @@ using GameLogic.Mail;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [AnalyticsEvent(134, "Broadcast received", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class AnalyticEventBroadcastReceived : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("broadcast_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int BroadcastId { get; set; }
 
         [JsonProperty("item_type")]

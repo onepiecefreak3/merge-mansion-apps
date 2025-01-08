@@ -7,8 +7,8 @@ using Newtonsoft.Json;
 
 namespace Game.Logic
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializable]
     public class PlayerIdentity
     {
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -23,8 +23,8 @@ namespace Game.Logic
         [MetaMember(5, (MetaMemberFlags)0)]
         private MetaTime tosAcceptanceTime { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(6, (MetaMemberFlags)0)]
         private HashSet<PlayerNameHistoryEntry> PlayerNameHistoryEntries { get; set; }
 
         [JsonProperty(NullValueHandling = (NullValueHandling)1)]

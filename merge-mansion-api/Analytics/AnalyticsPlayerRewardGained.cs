@@ -8,16 +8,16 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [MetaSerializable]
     [MetaReservedMembers(200, 299)]
+    [MetaSerializable]
     public abstract class AnalyticsPlayerRewardGained : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
         public abstract string RewardType { get; }
 
-        [MetaMember(200, (MetaMemberFlags)0)]
         [JsonProperty("reward_source")]
         [Description("Source of the reward received")]
+        [MetaMember(200, (MetaMemberFlags)0)]
         public CurrencySource RewardSource { get; set; }
 
         [Description("Context")]
@@ -25,13 +25,13 @@ namespace Analytics
         [JsonProperty("context")]
         public string Context { get; set; }
 
-        [Description("Context")]
-        [MetaMember(202, (MetaMemberFlags)0)]
         [JsonProperty("offer_set_id")]
+        [MetaMember(202, (MetaMemberFlags)0)]
+        [Description("Context")]
         public string EventOfferSetId { get; set; }
 
-        [Description("Level id")]
         [JsonProperty("event_level_id")]
+        [Description("Level id")]
         [MetaMember(203, (MetaMemberFlags)0)]
         public EventLevelId EventLevelId { get; set; }
 
@@ -43,14 +43,14 @@ namespace Analytics
         {
         }
 
-        [MetaMember(204, (MetaMemberFlags)0)]
         [JsonProperty("offer_id", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(204, (MetaMemberFlags)0)]
         [Description("Offer id")]
         public string OfferId { get; set; }
 
+        [MetaMember(205, (MetaMemberFlags)0)]
         [JsonProperty("transaction_id", NullValueHandling = (NullValueHandling)1)]
         [Description("Transaction id")]
-        [MetaMember(205, (MetaMemberFlags)0)]
         public string TransactionId { get; set; }
 
         protected AnalyticsPlayerRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId, AnalyticsContext analyticsContext)

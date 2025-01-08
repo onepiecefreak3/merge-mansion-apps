@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace Code.GameLogic.GameEvents
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum WeightsType
     {
         Heat = 0,

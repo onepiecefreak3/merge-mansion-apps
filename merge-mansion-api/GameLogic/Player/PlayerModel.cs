@@ -41,20 +41,20 @@ using GameLogic.Player.Leaderboard.BoultonLeague;
 
 namespace GameLogic.Player
 {
+    [SupportedSchemaVersions(21, 43)]
     [MetaSerializableDerived(1)]
     [MetaReservedMembers(99, 300)]
     [MetaReservedMembers(11, 12)]
     [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 117, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
-    [SupportedSchemaVersions(21, 43)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [ServerOnly]
         [Transient]
         [MetaMember(211, (MetaMemberFlags)0)]
+        [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -83,8 +83,8 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public CurrencyBankModel CurrencyBankModel { get; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public RandomPCG Random { get; set; }
 
         [MetaMember(99, (MetaMemberFlags)0)]
@@ -177,12 +177,12 @@ namespace GameLogic.Player
         [MetaMember(219, (MetaMemberFlags)0)]
         public HashSet<PlayerSegmentId> ForcedSegments { get; set; }
 
-        [MetaMember(261, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(261, (MetaMemberFlags)0)]
         public Queue<PlayerAnalyticsEventDPL2> AnalyticsEvents { get; set; }
 
-        [ServerOnly]
         [MetaMember(221, (MetaMemberFlags)0)]
+        [ServerOnly]
         public int NumOfResets { get; set; }
 
         [MetaMember(222, (MetaMemberFlags)0)]

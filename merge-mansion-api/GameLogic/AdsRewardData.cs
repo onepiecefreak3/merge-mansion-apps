@@ -22,24 +22,24 @@ namespace GameLogic
         [ExcludeFromGdprExport]
         public AdvertisementPlacementId AdPlacementId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string AuctionId { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public ShopItemId ShopItemId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int ItemDiamondValue { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public AdsRewardType AdsRewardType { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]

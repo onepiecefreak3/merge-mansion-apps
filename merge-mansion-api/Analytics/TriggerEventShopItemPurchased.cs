@@ -11,9 +11,9 @@ namespace Analytics
     [MetaBlockedMembers(new int[] { 1 })]
     public class TriggerEventShopItemPurchased : PlayerTriggerEvent
     {
+        [Description("Purchased shop item")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("shop_item_id")]
-        [Description("Purchased shop item")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public string ShopItemId { get; set; }
 

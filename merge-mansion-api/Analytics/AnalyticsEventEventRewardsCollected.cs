@@ -12,13 +12,13 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the board that corresponds to the event")]
         [JsonProperty("event_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId BoardId { get; set; }
 
-        [JsonProperty("event_level")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("event_level")]
         [Description("Level player reached in the event")]
         public int EventLevel { get; set; }
         public override string EventDescription { get; }

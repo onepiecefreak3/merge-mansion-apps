@@ -11,14 +11,14 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("New streak count")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("level")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("New streak count")]
         public int Level { get; set; }
 
+        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Streak count before if just reset")]
         [JsonProperty("level_at_reset")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         public int LevelAtReset { get; set; }
 
         [Description("Keys spent to claim the daily cycle completion reward (chest)")]
@@ -27,8 +27,8 @@ namespace Analytics
         public int KeysSpent { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("reward_item")]
         [Description("Daily cycle completion reward item id")]
+        [JsonProperty("reward_item")]
         public string RewardItem { get; set; }
         public override string EventDescription { get; }
 

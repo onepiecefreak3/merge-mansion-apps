@@ -4,8 +4,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaFormDeprecated]
     [MetaSerializableDerived(26)]
+    [MetaFormDeprecated]
     public class RewardCooldownRemover : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

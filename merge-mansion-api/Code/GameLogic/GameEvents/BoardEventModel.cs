@@ -12,8 +12,8 @@ using Metaplay.Core.Offers;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 6, 8, 10, 16, 20 })]
     [MetaSerializableDerived(2)]
+    [MetaBlockedMembers(new int[] { 6, 8, 10, 16, 20 })]
     public class BoardEventModel : ExtendableEventState<EventId, BoardEventInfo>, IBoardEventModel, IEventGroupModel<BoardEventInfo>, IPointsEvent, IGroupIdGetter
     {
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -60,8 +60,8 @@ namespace Code.GameLogic.GameEvents
         [IgnoreDataMember]
         public BoardEventInfo Info { get; }
 
-        [MetaMember(15, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("WorkaroundMetaMember15")]
+        [MetaMember(15, (MetaMemberFlags)0)]
         public List<EventTaskId> AvailableTaskIds { get; set; }
 
         [MetaMember(25, (MetaMemberFlags)0)]

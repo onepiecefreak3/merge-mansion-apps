@@ -16,8 +16,8 @@ using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("MysteryMachineEvent", false, true)]
+    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 10, 11 })]
     public class MysteryMachineEventInfo : IMetaActivableConfigData<MysteryMachineEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MysteryMachineEventId>, IHasGameConfigKey<MysteryMachineEventId>, IMetaActivableInfo<MysteryMachineEventId>, IBoardEventInfo, IEventSharedInfo
     {

@@ -12,7 +12,6 @@ namespace GameLogic.Player.Items.Production
     {
         [IgnoreDataMember]
         public IEnumerable<ValueTuple<ItemDefinition, int>> Odds { get; }
-
         public int SpawnQuantity { get; }
 
         public InstantDecayProducer()

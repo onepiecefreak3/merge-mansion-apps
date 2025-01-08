@@ -3,8 +3,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player.Requirements
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(20)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class ProgressionEventCurrencyPerkActive : PlayerRequirement
     {
         private ProgressionEventCurrencyPerkActive()

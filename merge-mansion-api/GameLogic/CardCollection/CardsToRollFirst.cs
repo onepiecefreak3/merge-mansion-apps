@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.CardCollection
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum CardsToRollFirst
     {
         Fixed = 0,

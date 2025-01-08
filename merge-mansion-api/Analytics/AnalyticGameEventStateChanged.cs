@@ -11,19 +11,19 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of event in question")]
         public string EventId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("event_state")]
         [Description("New state for the event")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string State { get; set; }
 
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("level")]
         [Description("Level associated to the event, if any")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         public int? Level { get; set; }
         public override string EventDescription { get; }
 

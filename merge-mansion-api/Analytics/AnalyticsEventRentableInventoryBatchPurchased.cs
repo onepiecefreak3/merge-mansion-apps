@@ -14,8 +14,8 @@ namespace Analytics
         public sealed override AnalyticsEventType EventType { get; }
 
         [JsonProperty("batch_cost")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Batch cost")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public long Cost { get; set; }
 
         [JsonProperty("batch_currency")]

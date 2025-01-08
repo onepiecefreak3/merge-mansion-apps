@@ -26,8 +26,8 @@ namespace GameLogic.Player.Rewards
         [MetaMember(4, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public OverrideItemFeatures OverrideItemFeatures { get; set; }
 
         [IgnoreDataMember]

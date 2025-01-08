@@ -15,64 +15,64 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Type of currency source")]
         [JsonProperty("earn_type")]
+        [Description("Type of currency source")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public CurrencySource CurrencySource { get; set; }
 
+        [JsonProperty("cost")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Amount of game resources gained")]
-        [JsonProperty("cost")]
         public GameResourceCost GameResourceCost { get; set; }
 
-        [JsonProperty("new_saldo")]
         [MetaMember(4, (MetaMemberFlags)0)]
         [Description("New balance of currency received via game mechanics")]
+        [JsonProperty("new_saldo")]
         public long NewFreeCurrencySaldo { get; set; }
 
-        [JsonProperty("new_saldo_hard")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [Description("New balance of currency received via real money purchases")]
+        [JsonProperty("new_saldo_hard")]
         public long NewHardCurrencySaldo { get; set; }
 
+        [JsonProperty("saldo_diamond_purchased")]
         [MetaMember(7, (MetaMemberFlags)0)]
         [Description("New balance of gems received via real money purchases")]
-        [JsonProperty("saldo_diamond_purchased")]
         public long HardDiamondsSaldo { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [Description("New balance of coins received via real money purchases")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("saldo_coins_purchased")]
         public long HardCoinsSaldo { get; set; }
 
         [JsonProperty("saldo_event1_progress")]
-        [Description("New balance of progress in Lindsay event")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [Description("New balance of progress in Lindsay event")]
         public int LindsayEventProgress { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [Description("New balance of progress in Casey&Skatie event")]
         [JsonProperty("saldo_event2_progress")]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public int CaseyAndSkatieProgress { get; set; }
 
-        [JsonProperty("saldo_event3_progress")]
-        [MetaMember(12, (MetaMemberFlags)0)]
         [Description("New balance of progress in TinCan (Ignatious) event")]
+        [MetaMember(12, (MetaMemberFlags)0)]
+        [JsonProperty("saldo_event3_progress")]
         public int IgnatiousEventProgress { get; set; }
 
+        [Description("Value received in soft currency (coins)")]
         [JsonProperty("cost_soft")]
         [MetaMember(13, (MetaMemberFlags)0)]
-        [Description("Value received in soft currency (coins)")]
         public long CostSoft { get; set; }
 
-        [JsonProperty("cost_hard")]
-        [MetaMember(14, (MetaMemberFlags)0)]
         [Description("Value received in hard currency (gems)")]
+        [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("cost_hard")]
         public long CostHard { get; set; }
 
-        [JsonProperty("context")]
-        [MetaMember(15, (MetaMemberFlags)0)]
         [Description("String describing the context of the receiving action")]
+        [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("context")]
         public string Context { get; set; }
 
         [JsonProperty("item_name")]
@@ -80,19 +80,19 @@ namespace Analytics
         [Description("Target of the earn (for example item type)")]
         public string ItemName { get; set; }
 
-        [Description("Event Level Id if Event level related")]
-        [MetaMember(17, (MetaMemberFlags)0)]
         [JsonProperty(PropertyName = "event_level_id", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(17, (MetaMemberFlags)0)]
+        [Description("Event Level Id if Event level related")]
         public EventLevelId EventLevelId { get; set; }
 
-        [JsonProperty(PropertyName = "from_inventory", NullValueHandling = (NullValueHandling)1)]
-        [MetaMember(18, (MetaMemberFlags)0)]
         [Description("True if collected from inventory")]
+        [MetaMember(18, (MetaMemberFlags)0)]
+        [JsonProperty(PropertyName = "from_inventory", NullValueHandling = (NullValueHandling)1)]
         public bool? FromInventory { get; set; }
 
-        [JsonProperty(PropertyName = "from_pocket", NullValueHandling = (NullValueHandling)1)]
-        [MetaMember(19, (MetaMemberFlags)0)]
         [Description("True if collected from pocket")]
+        [MetaMember(19, (MetaMemberFlags)0)]
+        [JsonProperty(PropertyName = "from_pocket", NullValueHandling = (NullValueHandling)1)]
         public bool? FromPocket { get; set; }
         public override string EventDescription { get; }
 
@@ -113,9 +113,9 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("saldo_card_collection_stars")]
-        [MetaMember(21, (MetaMemberFlags)0)]
         [Description("Current balance of Card collection stars")]
+        [MetaMember(21, (MetaMemberFlags)0)]
+        [JsonProperty("saldo_card_collection_stars")]
         public long CardCollectionStars { get; set; }
 
         public AnalyticsEventCurrencyGained(CurrencySource currencySource, GameResourceCost gameResourceCost, long costSoft, long costHard, long newFreeCurrencySaldo, long newHardCurrencySaldo, long hardDiamondsSaldo, long hardCoinsSaldo, int lindsayEventProgress, int caseyAndSkatieEventProgress, int ignatiousEventProgress, string progressionEventTrack, long cardCollectionStars, AnalyticsContext context)

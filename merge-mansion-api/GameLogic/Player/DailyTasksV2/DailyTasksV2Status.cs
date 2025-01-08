@@ -11,12 +11,12 @@ namespace GameLogic.Player.DailyTasksV2
     [MetaSerializable]
     public class DailyTasksV2Status
     {
-        [ExcludeFromGdprExport]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string TasksSetId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public MetaTime StartTime { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -31,16 +31,16 @@ namespace GameLogic.Player.DailyTasksV2
         [ExcludeFromGdprExport]
         public int ConsecutiveTimeExtensionCount { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public bool HasPendingFirstImpression { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(7, (MetaMemberFlags)0)]
         public bool IsCompletionResolved { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int LastResolvedConsecutiveTimeExtensionNumber { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]
@@ -51,24 +51,24 @@ namespace GameLogic.Player.DailyTasksV2
         [ExcludeFromGdprExport]
         public string AlgorithmLogContent { get; set; }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(11, (MetaMemberFlags)0)]
         public bool DidOpenPopupAtLeastOnce { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string LastGeneratedTaskVisibleHotspotHash { get; set; }
 
-        [MetaMember(13, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(13, (MetaMemberFlags)0)]
         public List<MetaRef<ItemDefinition>> LastGeneratedTaskRewardItemsHistory { get; set; }
 
         public DailyTasksV2Status()
         {
         }
 
-        [MetaMember(14, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(14, (MetaMemberFlags)0)]
         public Dictionary<DailyTaskV2Id, DailyTaskV2StateCustomizationForBoultonLeague> BoultonLeagueTasksCustomizations { get; set; }
     }
 }

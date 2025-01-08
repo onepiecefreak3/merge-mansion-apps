@@ -16,13 +16,13 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Currency Bank Id from config")]
         [JsonProperty("bank_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Currency Bank Id from config")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [Description("Threshold value for this stash")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Threshold value for this stash")]
         [JsonProperty("bank_threshold_value")]
         public int Threshold { get; set; }
 
@@ -31,9 +31,9 @@ namespace Analytics
         [MetaMember(3, (MetaMemberFlags)0)]
         public int MaxValue { get; set; }
 
-        [JsonProperty("bank_multiplier")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Multiplier")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("bank_multiplier")]
         public F64 Multiplier { get; set; }
 
         [Description("Currency Bank Action")]
@@ -46,24 +46,24 @@ namespace Analytics
         [Description("Id of the source that is causing the action")]
         public string TriggerId { get; set; }
 
+        [JsonProperty("bank_resource_type")]
         [Description("Currency Type deposit / withdrawn from the bank")]
         [MetaMember(7, (MetaMemberFlags)0)]
-        [JsonProperty("bank_resource_type")]
         public Currencies CurrencyType { get; set; }
 
         [JsonProperty("bank_resource_amount")]
-        [MetaMember(8, (MetaMemberFlags)0)]
         [Description("How much resource was used in the action / how much resource was withdrawn")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 
+        [JsonProperty("bank_points_amount")]
         [MetaMember(9, (MetaMemberFlags)0)]
         [Description("Change of points introduced by the action")]
-        [JsonProperty("bank_points_amount")]
         public int Points { get; set; }
 
         [JsonProperty("bank_amount_status")]
-        [MetaMember(10, (MetaMemberFlags)0)]
         [Description("Current amount of points after the action has been performed")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public int AmountTotal { get; set; }
 
         [JsonProperty("bank_timer")]
@@ -72,8 +72,8 @@ namespace Analytics
         public double StashTimer { get; set; }
 
         [JsonProperty("bank_duration_hidden")]
-        [Description("Duration hidden in hours")]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [Description("Duration hidden in hours")]
         public double DurationHidden { get; set; }
 
         [JsonProperty("segments")]
@@ -82,8 +82,8 @@ namespace Analytics
         public List<PlayerSegmentId> Segments { get; set; }
 
         [Description("Bank action trigger type, for example Task")]
-        [MetaMember(14, (MetaMemberFlags)0)]
         [JsonProperty("bank_action_trigger_type")]
+        [MetaMember(14, (MetaMemberFlags)0)]
         public CurrencyBankTriggerType TriggerType { get; set; }
 
         [JsonProperty("activation_id")]
@@ -92,13 +92,13 @@ namespace Analytics
         public string ActivationId { get; set; }
 
         [JsonProperty("bank_duration_not_full")]
-        [MetaMember(16, (MetaMemberFlags)0)]
         [Description("Duration bank not full")]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public double DurationNotFull { get; set; }
 
+        [JsonProperty("bank_duration_full")]
         [MetaMember(17, (MetaMemberFlags)0)]
         [Description("Max value of the timer")]
-        [JsonProperty("bank_duration_full")]
         public double DurationFull { get; set; }
         public override string EventDescription { get; }
 

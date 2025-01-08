@@ -11,45 +11,45 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.Banks
 {
+    [MetaBlockedMembers(new int[] { 8 })]
     [MetaSerializable]
     [MetaActivableConfigData("CurrencyBankEvent", false, true)]
-    [MetaBlockedMembers(new int[] { 8 })]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the bank")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Localisation key of bank name")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Description about the bank")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Store product to purchase")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> InAppProductInfo { get; set; }
 
-        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Stored currency type")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public Currencies CurrencyType { get; set; }
 
-        [Description("Minimum stored amount required for purchasing")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Minimum stored amount required for purchasing")]
         public int MinBuyAmount { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Maximun stored amount")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public int MaxBuyAmount { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [Description("Activable parameters")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public MetaActivableParams ActivableParams { get; set; }
 
-        [MetaMember(10, (MetaMemberFlags)0)]
         [Description("Item type used in info popup to show the chain items that should be merged to fill the bank")]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public int InfoPopupItemId { get; set; }
 
         [Description("Item types which merge is increasing bank amount")]
@@ -84,8 +84,8 @@ namespace GameLogic.Banks
         [Description("Skip hidden preview on first activation")]
         public bool SkipHiddenPreviewOnFirstActivation { get; set; }
 
-        [Description("Max number of currency banks purchases to allow this one to be activated")]
         [MetaMember(19, (MetaMemberFlags)0)]
+        [Description("Max number of currency banks purchases to allow this one to be activated")]
         public int MaxNumOfStashesPerPlayer { get; set; }
 
         [MetaMember(20, (MetaMemberFlags)0)]

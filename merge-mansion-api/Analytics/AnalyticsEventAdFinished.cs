@@ -14,14 +14,14 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [JsonProperty("ad_placement")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Ad placement")]
-        [JsonProperty("ad_placement")]
         public string AdPlacement { get; set; }
 
-        [JsonProperty("item_name")]
-        [Description("Item name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Item name")]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
 
         [Description("Auction Id")]
@@ -29,9 +29,9 @@ namespace Analytics
         [MetaMember(4, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
 
+        [JsonProperty("ad_unit")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Ad unit")]
-        [JsonProperty("ad_unit")]
         public string AdUnit { get; set; }
 
         [JsonProperty("ad_network")]
@@ -39,19 +39,19 @@ namespace Analytics
         [Description("Ad network")]
         public string AdNetwork { get; set; }
 
-        [Description("Instance name")]
-        [JsonProperty("instance_name")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("instance_name")]
+        [Description("Instance name")]
         public string InstanceName { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
-        [Description("Instance Id")]
         [JsonProperty("instance_id")]
+        [Description("Instance Id")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public string InstanceId { get; set; }
 
+        [Description("Country")]
         [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("country")]
-        [Description("Country")]
         public string Country { get; set; }
 
         [MetaMember(10, (MetaMemberFlags)0)]
@@ -59,14 +59,14 @@ namespace Analytics
         [Description("Revenue")]
         public double Revenue { get; set; }
 
-        [Description("Lifetime revenue")]
         [MetaMember(11, (MetaMemberFlags)0)]
         [JsonProperty("lifetime_revenue")]
+        [Description("Lifetime revenue")]
         public double LifetimeRevenue { get; set; }
 
-        [MetaMember(12, (MetaMemberFlags)0)]
-        [Description("Precision")]
         [JsonProperty("precision")]
+        [Description("Precision")]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public string Precision { get; set; }
 
         [Description("Segment name")]
@@ -74,9 +74,9 @@ namespace Analytics
         [MetaMember(13, (MetaMemberFlags)0)]
         public string SegmentName { get; set; }
 
-        [Description("Encrypted CPM")]
         [JsonProperty("encrypted_cpm")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [Description("Encrypted CPM")]
         public string EncryptedCpm { get; set; }
         public override string EventDescription { get; }
 
@@ -88,33 +88,33 @@ namespace Analytics
         {
         }
 
-        [Description("Item Diamond value")]
-        [JsonProperty("item_diamond_price")]
         [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("item_diamond_price")]
+        [Description("Item Diamond value")]
         public int ItemDiamondValue { get; set; }
 
         public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm, int itemDiamondValue)
         {
         }
 
-        [MetaMember(16, (MetaMemberFlags)0)]
-        [JsonProperty("item_cost_value")]
         [Description("Item cost value")]
+        [JsonProperty("item_cost_value")]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public int ItemCostValue { get; set; }
 
-        [Description("Item cost value type")]
         [MetaMember(17, (MetaMemberFlags)0)]
+        [Description("Item cost value type")]
         [JsonProperty("item_cost_value_type")]
         public Currencies ItemCostValueType { get; set; }
 
-        [MetaMember(18, (MetaMemberFlags)0)]
         [JsonProperty("time_skipped_amount")]
+        [MetaMember(18, (MetaMemberFlags)0)]
         [Description("Amount of time skipped for a producer")]
         public string TimeSkippedAmount { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [JsonProperty("time_skipped_diamond_value")]
         [Description("Diamond value of time skipped")]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public int TimeSkippedDiamondValue { get; set; }
 
         [MetaMember(20, (MetaMemberFlags)0)]

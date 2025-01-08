@@ -11,14 +11,14 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("EventId")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [Description("EventId")]
         public string EventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("type")]
         [Description("Impression Type")]
+        [JsonProperty("type")]
         public OfferImpressionType Type { get; set; }
         public override string EventDescription { get; }
 
@@ -30,8 +30,8 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("is_last_chance", NullValueHandling = (NullValueHandling)1)]
         [Description("Last chance -type of popup")]
+        [JsonProperty("is_last_chance", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(3, (MetaMemberFlags)0)]
         public bool IsLastChance { get; set; }
 

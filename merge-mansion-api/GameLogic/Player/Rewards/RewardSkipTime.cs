@@ -6,8 +6,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaFormDeprecated]
     [MetaSerializableDerived(24)]
+    [MetaFormDeprecated]
     public class RewardSkipTime : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

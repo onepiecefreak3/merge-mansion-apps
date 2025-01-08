@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum RewardContainerItemType
     {
         None = 0,

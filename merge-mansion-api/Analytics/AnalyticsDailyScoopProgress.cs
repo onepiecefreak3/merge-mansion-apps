@@ -15,34 +15,34 @@ namespace Analytics
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }
 
-        [Description("Event ID")]
-        [JsonProperty("daily_challenge_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("daily_challenge_id")]
+        [Description("Event ID")]
         public string EventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("week instance")]
         [JsonProperty("daily_challenge_week_id")]
+        [Description("week instance")]
         public string WeekId { get; set; }
 
-        [JsonProperty("daily_challenge_day")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Day instance")]
+        [JsonProperty("daily_challenge_day")]
         public string DayId { get; set; }
 
-        [JsonProperty("daily_challenge_objective_type")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Task objective type")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("daily_challenge_objective_type")]
         public StatsObjectiveType ObjectiveType { get; set; }
 
+        [JsonProperty("daily_challenge_objective_order")]
         [MetaMember(21, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
-        [JsonProperty("daily_challenge_objective_order")]
         public Dictionary<string, int> ObjectiveOrder { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
-        [MetaMember(22, (MetaMemberFlags)0)]
         [JsonProperty("daily_challenge_objective_category")]
+        [MetaMember(22, (MetaMemberFlags)0)]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, string> ObjectiveCategory { get; set; }
 
         [JsonProperty("daily_challenge_objective_name")]
@@ -50,14 +50,14 @@ namespace Analytics
         [Description("Task objective parameter/name")]
         public string ObjectiveParameter { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [JsonProperty("daily_challenge_objective_requirement")]
         [MetaMember(23, (MetaMemberFlags)0)]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> ObjectiveRequirement { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
-        [Description("Task progress amount")]
         [JsonProperty("daily_challenge_objective_requirement_amount")]
+        [Description("Task progress amount")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public int ObjectiveProgressAmount { get; set; }
 
         [JsonProperty("daily_challenge_objective_requirement_saldo")]
@@ -70,19 +70,19 @@ namespace Analytics
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> EventPointReceived { get; set; }
 
-        [JsonProperty("daily_challenge_token_saldo")]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [JsonProperty("daily_challenge_token_saldo")]
         [Description("Total amount of event points after receiving reward")]
         public int EventPointSaldo { get; set; }
 
-        [JsonProperty("previous_daily_challenge_weekly_milestone")]
         [MetaMember(13, (MetaMemberFlags)0)]
         [Description("The ID of the previous milestone")]
+        [JsonProperty("previous_daily_challenge_weekly_milestone")]
         public string PreviousMileStoneId { get; set; }
 
-        [MetaMember(16, (MetaMemberFlags)0)]
-        [Description("The ID of the daily reward")]
         [JsonProperty("daily_challenge_total_reward")]
+        [Description("The ID of the daily reward")]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public string DailyRewardId { get; set; }
 
         public AnalyticsDailyScoopProgress()
@@ -99,13 +99,13 @@ namespace Analytics
         public int NextMileStoneIndex { get; set; }
 
         [Description("The ID of the last milestone")]
-        [JsonProperty("max_daily_challenge_weekly_milestone")]
         [MetaMember(18, (MetaMemberFlags)0)]
+        [JsonProperty("max_daily_challenge_weekly_milestone")]
         public int LastMileStoneIndex { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [JsonProperty("secondary_reward_recieved")]
         [MetaMember(26, (MetaMemberFlags)0)]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, string> SecondaryReward { get; set; }
 
         public AnalyticsDailyScoopProgress(string eventId, string weekId, string dayId, StatsObjectiveType objectiveType, int objectiveOrder, string objectiveCategory, string objectiveParameter, int objectiveRequirement, int objectiveProgressAmount, int objectiveProgressSaldo, int eventPointReceived, int eventPointSaldo, string previousMileStoneId, int nextMileStoneIndex, int lastMileStoneIndex, string dailyRewardId, string secondaryReward)

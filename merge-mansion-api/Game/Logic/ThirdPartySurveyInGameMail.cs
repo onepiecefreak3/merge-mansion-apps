@@ -22,8 +22,8 @@ namespace Game.Logic
         [MetaFormFieldContext("AttachmentRewardList", true)]
         public List<PlayerReward> StartingRewards { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [MetaFormFieldContext("AttachmentRewardList", true)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<PlayerReward> CompletingRewards { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]

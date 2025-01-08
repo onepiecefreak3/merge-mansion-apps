@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum HotspotId
     {
         None = 0,

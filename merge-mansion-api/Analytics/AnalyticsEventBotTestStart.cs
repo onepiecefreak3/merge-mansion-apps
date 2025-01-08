@@ -14,8 +14,8 @@ namespace Analytics
         [JsonProperty("bot_configuration_id")]
         public string ConfigId { get; set; }
 
-        [JsonProperty("test_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("test_id")]
         public string TestId { get; set; }
         public override string EventDescription { get; }
 

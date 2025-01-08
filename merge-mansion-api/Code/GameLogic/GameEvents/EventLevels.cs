@@ -34,8 +34,8 @@ namespace Code.GameLogic.GameEvents
             Looping = 1
         }
 
-        [ForceExplicitEnumValues]
         [MetaSerializable]
+        [ForceExplicitEnumValues]
         public enum RewardingType
         {
             LevelReached = 0,

@@ -5,8 +5,8 @@ using System;
 
 namespace Game.Cloud.Webshop
 {
-    [MetaSerializableDerived(3)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [MetaSerializableDerived(3)]
     public class WebshopProgressionEventPremium : WebshopItem
     {
         [MetaMember(1, (MetaMemberFlags)0)]

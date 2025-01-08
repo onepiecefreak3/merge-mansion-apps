@@ -9,8 +9,8 @@ using Metaplay.Core;
 namespace GameLogic.Config
 {
     [MetaSerializableDerived(1)]
-    [MetaActivableConfigData("OfferGroup", false, true)]
     [MetaBlockedMembers(new int[] { 10 })]
+    [MetaActivableConfigData("OfferGroup", false, true)]
     public class MergeMansionOfferGroupInfo : MetaOfferGroupInfoBase, IOfferGroupVisuals, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

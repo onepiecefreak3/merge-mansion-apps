@@ -19,56 +19,56 @@ namespace Analytics
 
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [Description("Partially visible Board items of all on-going boards")]
-        [JsonProperty("partially_visible_board_items")]
         [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("partially_visible_board_items")]
         public Dictionary<MergeBoardId, Dictionary<string, int>> PartiallyVisibleBoardItems { get; set; }
 
         [Description("Merge goals")]
         [JsonProperty("merge_goals")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<HotspotId> MergeGoals { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("event_goals")]
         [Description("Event goals")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<EventId, List<EventTaskId>> EventGoals { get; set; }
 
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [JsonProperty("board_items")]
         [Description("Board items of all on-going boards")]
         [MetaMember(6, (MetaMemberFlags)0)]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> BoardItems { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(7, (MetaMemberFlags)0)]
-        [Description("Inventory items")]
         [JsonProperty("inventory_items")]
+        [Description("Inventory items")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> InventoryItems { get; set; }
 
-        [MetaMember(16, (MetaMemberFlags)0)]
-        [JsonProperty("pocket_items")]
         [Description("Pocket items")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [JsonProperty("pocket_items")]
+        [MetaMember(16, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, Dictionary<string, int>> PocketItems { get; set; }
 
         [MetaMember(11, (MetaMemberFlags)0)]
-        [JsonProperty("decorations")]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [Description("Decorations")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [JsonProperty("decorations")]
         public List<AnalyticsBoardStateDecorationMetaData> Decorations { get; set; }
 
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
-        [Description("Inventory items from extra perk")]
         [JsonProperty("inventory_items_extra")]
+        [Description("Inventory items from extra perk")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(12, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> InventoryExtraItems { get; set; }
 
         [MetaMember(13, (MetaMemberFlags)0)]
         [JsonProperty("hidden_item_count")]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [Description("Hidden items count")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeBoardId, int> HiddenItemCount { get; set; }
 
         [Description("Snapshot taken at session start or session end")]
@@ -85,20 +85,20 @@ namespace Analytics
         {
         }
 
-        [MetaMember(17, (MetaMemberFlags)0)]
-        [Description("Producer inventory items")]
-        [JsonProperty("producer_inventory_items")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [JsonProperty("producer_inventory_items")]
+        [Description("Producer inventory items")]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> ProducerInventoryItems { get; set; }
 
         [MetaMember(18, (MetaMemberFlags)0)]
-        [Description("Rentable inventory items")]
         [JsonProperty("rentable_inventory_items")]
+        [Description("Rentable inventory items")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeBoardId, List<AnalyticsBoardStateMetaData>> RentableInventoryItems { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(19, (MetaMemberFlags)0)]
         [JsonProperty("pets")]
         [Description("Pets")]
         public List<AnalyticsBoardStateDecorationMetaData> Pets { get; set; }

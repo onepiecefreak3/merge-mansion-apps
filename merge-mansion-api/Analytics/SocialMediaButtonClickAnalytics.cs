@@ -12,14 +12,14 @@ namespace Analytics
         public override string EventDescription { get; }
         public override AnalyticsEventType EventType { get; }
 
-        [Description("The menu where the button was clicked")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("menu_name")]
+        [Description("The menu where the button was clicked")]
         public string MenuName { get; set; }
 
-        [Description("The name of the clicked UI element")]
-        [JsonProperty("ui_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("ui_name")]
+        [Description("The name of the clicked UI element")]
         public string UiName { get; set; }
 
         public SocialMediaButtonClickAnalytics()

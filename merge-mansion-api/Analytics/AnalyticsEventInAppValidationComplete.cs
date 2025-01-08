@@ -37,8 +37,8 @@ namespace Analytics
         [MetaMember(7, (MetaMemberFlags)0)]
         public string GameProductAnalyticsId { get; set; }
 
-        [FirebaseAnalyticsIgnore]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [FirebaseAnalyticsIgnore]
         public PurchaseAnalyticsContext PurchaseContext { get; set; }
         public override string EventDescription { get; }
 

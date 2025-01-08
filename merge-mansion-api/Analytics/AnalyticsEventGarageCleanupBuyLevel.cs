@@ -16,9 +16,9 @@ namespace Analytics
         [Description("Garage cleanup event id")]
         public string EventId { get; set; }
 
-        [JsonProperty("board_level")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Level of the board that was just bought")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("board_level")]
         public int BoardLevel { get; set; }
         public override string EventDescription { get; }
 

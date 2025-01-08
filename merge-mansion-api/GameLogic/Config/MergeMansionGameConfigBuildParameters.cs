@@ -15,14 +15,14 @@ namespace GameLogic.Config
         {
         }
 
+        [Obsolete]
         [MetaMember(1, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
-        [Obsolete]
         public string LegacySpreadSheetTitle { get; set; }
 
-        [Obsolete]
         [MetaMember(2, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [Obsolete]
         public string LegacySpreadSheetUrl { get; set; }
     }
 }

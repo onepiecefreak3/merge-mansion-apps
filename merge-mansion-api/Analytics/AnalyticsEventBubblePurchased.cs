@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 namespace Analytics
 {
-    [AnalyticsEvent(107, "Bubble purchased", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 3, 5, 6, 9, 10 })]
+    [AnalyticsEvent(107, "Bubble purchased", 1, null, false, true, false)]
     public class AnalyticsEventBubblePurchased : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -19,9 +19,9 @@ namespace Analytics
         [Description("Item inside the bubble that was bought")]
         public string ItemInBubble { get; set; }
 
+        [Description("How many diamonds the bubble costs")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("bubble_cost")]
-        [Description("How many diamonds the bubble costs")]
         public int BubbleCostInDiamonds { get; set; }
 
         [Description("Merge Board Id")]
@@ -38,24 +38,24 @@ namespace Analytics
         {
         }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
-        [JsonProperty("attachments")]
         [Description("Attachments to the bubble")]
+        [MetaMember(11, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [JsonProperty("attachments")]
         public Dictionary<string, int> Attachment { get; set; }
 
         public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount)
         {
         }
 
-        [JsonProperty("active_ads")]
         [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Is there and Active ads on the bubble")]
+        [JsonProperty("active_ads")]
         public bool IsActiveAds { get; set; }
 
+        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("purchased_with_ads")]
         [Description("Was the bubble purchased with an ad")]
-        [MetaMember(8, (MetaMemberFlags)0)]
         public bool PurchasedWithAds { get; set; }
 
         public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount, bool isActiveAds, bool purchasedWithAds)

@@ -13,19 +13,19 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("context")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("context")]
         [Description("Id of the board where the item was sinked")]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Source item SinkType")]
         [JsonProperty("source_item_sink_type")]
+        [Description("Source item SinkType")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string SourceItemSinkType { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Name of the item sink transformed into")]
         [JsonProperty("item_name")]
+        [Description("Name of the item sink transformed into")]
         public string NewItemName { get; set; }
 
         [Description("Original sink item name")]

@@ -15,18 +15,18 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("board_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the board where the fish was caught")]
+        [JsonProperty("board_id")]
         public MergeBoardId MergeBoardId { get; set; }
 
         [Description("Name of the item that was caught")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("weight_category")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Weight category of the fish that was caught")]
         public WeightCategory WeightCategory { get; set; }
 
@@ -36,13 +36,13 @@ namespace Analytics
         public double Weight { get; set; }
 
         [JsonProperty("personal_high_score")]
-        [Description("True if this fish was a personal weight high score for the player, false otherwise")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("True if this fish was a personal weight high score for the player, false otherwise")]
         public bool PersonalHighScore { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
-        [JsonProperty("world_high_score")]
         [Description("True if this fish beat the previous \"world record\" (configured limit, or personal high score if that's higher), false otherwise")]
+        [JsonProperty("world_high_score")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public bool WorldHighScore { get; set; }
 
         [JsonProperty("event_id")]
@@ -58,8 +58,8 @@ namespace Analytics
         {
         }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("rarity")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public string Rarity { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]

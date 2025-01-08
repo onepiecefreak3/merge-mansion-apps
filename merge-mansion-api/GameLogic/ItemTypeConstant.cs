@@ -7,8 +7,8 @@ using System.ComponentModel;
 namespace GameLogic
 {
     [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum ItemTypeConstant
     {
         None = 0,
@@ -6833,6 +6833,7 @@ namespace GameLogic
         CBE_TheGreatEscapeA_EntranceEnter_01 = 18457522,
         CBE_TheGreatEscapeA_EntranceExit_01 = 5993072,
         CBE_TheGreatEscapeB_EntranceEnter_01 = 38907009,
-        CBE_TheGreatEscapeB_EntranceExit_01 = 59674277
+        CBE_TheGreatEscapeB_EntranceExit_01 = 59674277,
+        Tcce_final_chest_01 = 98430624
     }
 }

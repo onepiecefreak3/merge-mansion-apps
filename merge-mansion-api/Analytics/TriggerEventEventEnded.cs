@@ -10,10 +10,10 @@ namespace Analytics
     [AnalyticsEvent(3046, "Event ended", 1, null, false, false, true)]
     public class TriggerEventEventEnded : PlayerTriggerEvent
     {
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Ended event")]
         [JsonProperty("event_id")]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public string EventId { get; set; }
 
         private TriggerEventEventEnded()

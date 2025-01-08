@@ -7,8 +7,8 @@ using Metaplay.Core;
 
 namespace Analytics
 {
-    [AnalyticsEvent(114, "Session start", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 3, 4, 5, 6, 10, 11 })]
+    [AnalyticsEvent(114, "Session start", 1, null, false, true, false)]
     public class AnalyticsEventSessionStart : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -18,9 +18,9 @@ namespace Analytics
         [Description("How many logins happened for the player")]
         public int TotalLogins { get; set; }
 
+        [JsonProperty("created")]
         [Description("When the player was created")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("created")]
         public MetaTime CreatedAt { get; set; }
 
         [JsonProperty("user_first_touch_timestamp")]
@@ -39,18 +39,18 @@ namespace Analytics
         public string Location { get; set; }
 
         [Description("How many decorations player owns")]
-        [JsonProperty("decoration_count_owned")]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [JsonProperty("decoration_count_owned")]
         public int DecorationsOwned { get; set; }
 
+        [Description("How many decorations are visible")]
         [MetaMember(13, (MetaMemberFlags)0)]
         [JsonProperty("decoration_count_visible")]
-        [Description("How many decorations are visible")]
         public int DecorationVisible { get; set; }
 
-        [JsonProperty("player_time_offset")]
         [Description("Player local time (by device) offset in hour from utc (+ or -) ")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("player_time_offset")]
         public MetaDuration PlayerTimeOffset { get; set; }
 
         [Description("Attached authentication methods")]
@@ -63,9 +63,9 @@ namespace Analytics
         [MetaMember(16, (MetaMemberFlags)0)]
         public string ClientVersion { get; set; }
 
-        [MetaMember(17, (MetaMemberFlags)0)]
         [Description("Is Developer")]
         [JsonProperty("is_developer")]
+        [MetaMember(17, (MetaMemberFlags)0)]
         public bool IsDeveloper { get; set; }
         public override string EventDescription { get; }
 
@@ -73,19 +73,19 @@ namespace Analytics
         {
         }
 
-        [Description("Config Version")]
         [JsonProperty("config_version")]
         [MetaMember(18, (MetaMemberFlags)0)]
+        [Description("Config Version")]
         public string ConfigVersion { get; set; }
 
-        [JsonProperty("server_build_version")]
-        [MetaMember(19, (MetaMemberFlags)0)]
         [Description("Server Build Version")]
+        [MetaMember(19, (MetaMemberFlags)0)]
+        [JsonProperty("server_build_version")]
         public string ServerBuildVersion { get; set; }
 
-        [Description("OS Version")]
         [MetaMember(20, (MetaMemberFlags)0)]
         [JsonProperty("os_version")]
+        [Description("OS Version")]
         public string OsVersion { get; set; }
     }
 }

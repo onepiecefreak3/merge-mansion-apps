@@ -9,8 +9,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.MiniEvents
 {
-    [MetaActivableConfigData("MiniEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("MiniEvent", false, true)]
     public class MiniEventInfo : IMetaActivableConfigData<MiniEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MiniEventId>, IHasGameConfigKey<MiniEventId>, IMetaActivableInfo<MiniEventId>, IValidatable, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

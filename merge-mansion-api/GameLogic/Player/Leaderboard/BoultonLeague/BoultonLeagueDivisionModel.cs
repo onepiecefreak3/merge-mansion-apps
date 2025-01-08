@@ -7,8 +7,8 @@ using System.Collections.Generic;
 
 namespace GameLogic.Player.Leaderboard.BoultonLeague
 {
-    [MetaSerializableDerived(4)]
     [SupportedSchemaVersions(1, 1)]
+    [MetaSerializableDerived(4)]
     public class BoultonLeagueDivisionModel : PlayerDivisionModelBase<BoultonLeagueDivisionModel, BoultonLeagueDivisionParticipantState, PlayerDivisionScore, BoultonLeagueDivisionAvatar>, IMetacorePlayerDivisionModel<BoultonLeagueDivisionModel, BoultonLeagueDivisionParticipantState>, IPlayerDivisionModel<BoultonLeagueDivisionModel>, IPlayerDivisionModel, IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IDivisionModel<BoultonLeagueDivisionModel>, IMultiplayerModel<BoultonLeagueDivisionModel>, IModel<BoultonLeagueDivisionModel>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -3,8 +3,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(16)]
     [MetaFormHidden]
+    [MetaSerializableDerived(16)]
     public class EmptyReward : PlayerReward
     {
         public EmptyReward()

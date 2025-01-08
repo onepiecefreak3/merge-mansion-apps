@@ -12,19 +12,19 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("event_state")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("New state of the event")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("event_state")]
         public AnalyticsEventEventStateChanged.EventStateChangeType EventState { get; set; }
 
-        [JsonProperty("event_id")]
-        [Description("Merge board corresponding to the event")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Merge board corresponding to the event")]
+        [JsonProperty("event_id")]
         public MergeBoardId BoardId { get; set; }
 
-        [JsonProperty("ended_by_customer_support")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Ended by customer support?")]
+        [JsonProperty("ended_by_customer_support")]
         public bool EndedByCustomerSupport { get; set; }
         public override string EventDescription { get; }
 

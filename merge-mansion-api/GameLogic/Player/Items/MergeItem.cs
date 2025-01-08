@@ -27,8 +27,8 @@ using GameLogic.Player.Items.GemMining;
 
 namespace GameLogic.Player.Items
 {
-    [MetaSerializableDerived(2)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [MetaSerializableDerived(2)]
     public class MergeItem : IBoardItem
     {
         private static readonly MetaTime guaranteedFuture; // 0x0

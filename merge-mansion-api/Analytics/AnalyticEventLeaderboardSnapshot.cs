@@ -21,18 +21,18 @@ namespace Analytics
         public EntityId DivisionId { get; set; }
 
         [JsonProperty("players")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Participants")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public List<LeaderboardSnapshotPlayerEntry> Players { get; set; }
 
-        [JsonProperty("gathered_from")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Snapshot taken at")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("gathered_from")]
         public AnalyticsLeaderboardSnapshotType SnapshotType { get; set; }
 
-        [Description("New player id if added")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("new_player_id", NullValueHandling = (NullValueHandling)1)]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("New player id if added")]
         public string NewPlayerId { get; set; }
         public override string EventDescription { get; }
 
@@ -48,8 +48,8 @@ namespace Analytics
         [Description("Division rank")]
         public int Rank { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Event Id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
         public string EventId { get; set; }
 

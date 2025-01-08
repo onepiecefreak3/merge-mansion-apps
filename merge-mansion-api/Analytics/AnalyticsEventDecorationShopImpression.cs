@@ -24,13 +24,13 @@ namespace Analytics
         public DecorationShopSetId DecorationShopSetId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("cost_in_diamonds")]
         [Description("Cost in Diamonds (if available)")]
+        [JsonProperty("cost_in_diamonds")]
         public long? CostInDiamonds { get; set; }
 
-        [Description("Cost in Coins (if available)")]
-        [JsonProperty("cost_in_coins")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("cost_in_coins")]
+        [Description("Cost in Coins (if available)")]
         public long? CostInCoins { get; set; }
         public override string EventDescription { get; }
 
