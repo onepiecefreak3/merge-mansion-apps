@@ -8,8 +8,8 @@ namespace Metaplay.Core.League
     [MetaReservedMembers(100, 200)]
     public abstract class DivisionClientStateBase<TDivisionHistoryEntry> : PlayerSubClientStateBase, IDivisionClientState
     {
-        [MetaMember(100, (MetaMemberFlags)0)]
         [NoChecksum]
+        [MetaMember(100, (MetaMemberFlags)0)]
         public EntityId CurrentDivision { get; set; }
         public IEnumerable<IDivisionHistoryEntry> HistoricalDivisions { get; set; }
         public DivisionIndex CurrentDivisionIndex { get; }
@@ -22,8 +22,8 @@ namespace Metaplay.Core.League
         {
         }
 
-        [NoChecksum]
         [MetaMember(102, (MetaMemberFlags)0)]
+        [NoChecksum]
         [Transient]
         public int CurrentDivisionParticipantIdx { get; set; }
     }

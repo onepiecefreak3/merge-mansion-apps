@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum CurrencySource
     {
         Unknown = 0,
@@ -79,6 +79,10 @@ namespace GameLogic
         DifficultHotspotCompleted = 70,
         PrisonerLetter = 71,
         PrisonerBadge = 72,
-        CombinedReward = 73
+        CombinedReward = 73,
+        ShortLeaderboardEventStageCompleted = 74,
+        ShortLeaderboardEventFinalReward = 75,
+        ShortLeaderboardEventStageJoinRequested = 76,
+        ProgressionPackss = 77
     }
 }

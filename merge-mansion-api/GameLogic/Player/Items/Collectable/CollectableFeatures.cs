@@ -5,7 +5,7 @@ namespace GameLogic.Player.Items.Collectable
 {
     [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3 })]
-    public class CollectableFeatures
+    public class CollectableFeatures : ICollectableFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool Collectable { get; set; }
@@ -26,6 +26,10 @@ namespace GameLogic.Player.Items.Collectable
         }
 
         public CollectableFeatures(ICollectAction collectAction, bool confirmCollectBelowMergeChainLevel)
+        {
+        }
+
+        public CollectableFeatures(bool collectable, ICollectAction collectAction, bool confirmCollectBelowMergeChainLevel)
         {
         }
     }

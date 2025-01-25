@@ -6,6 +6,7 @@ using System;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "event", "buysell" })]
     [AnalyticsEvent(21, "Collectible board event extended while being stale", 1, null, true, false, false)]
     public class StaleCollectibleBoardEventExtensionPurchase : PlayerEventBase
     {

@@ -24,5 +24,6 @@ namespace GameLogic.StatsTracking
         }
 
         public abstract TaskType TypeTask { get; set; }
+        public bool HasFullProgress { get; set; }
     }
 }

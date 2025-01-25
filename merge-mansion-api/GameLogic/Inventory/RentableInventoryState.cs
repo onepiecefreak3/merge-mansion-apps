@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Inventory
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum RentableInventoryState
     {
         Inactive = 0,

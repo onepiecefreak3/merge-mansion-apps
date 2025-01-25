@@ -16,8 +16,8 @@ namespace GameLogic.Config
         }
 
         [Obsolete]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string LegacySpreadSheetTitle { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

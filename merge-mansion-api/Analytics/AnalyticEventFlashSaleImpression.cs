@@ -8,8 +8,8 @@ using System.Collections.Generic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1, 2 })]
     [AnalyticsEvent(150, "Flash Sale Impression", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 1, 2 })]
     public class AnalyticEventFlashSaleImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -19,9 +19,9 @@ namespace Analytics
         [Description("Impression Id")]
         public string ImpressionId { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("refresh_time")]
         [Description("Refresh time")]
+        [JsonProperty("refresh_time")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaTime RefreshTime { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -29,9 +29,9 @@ namespace Analytics
         [Description("Placement Id")]
         public string PlacementId { get; set; }
 
+        [Description("Impressions")]
         [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("impressions")]
-        [Description("Impressions")]
         public List<AnalyticsFlashSaleImpressionItemBase> Impressions { get; set; }
         public override string EventDescription { get; }
 
@@ -47,9 +47,9 @@ namespace Analytics
         {
         }
 
-        [Description("Context where it was shown")]
-        [JsonProperty("flash_sale_context")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("flash_sale_context")]
+        [Description("Context where it was shown")]
         public string Context { get; set; }
     }
 }

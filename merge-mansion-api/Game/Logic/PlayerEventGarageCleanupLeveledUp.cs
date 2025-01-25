@@ -7,6 +7,7 @@ using System;
 namespace Game.Logic
 {
     [AnalyticsEvent(14, "Garage cleanup event leveled up", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class PlayerEventGarageCleanupLeveledUp : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

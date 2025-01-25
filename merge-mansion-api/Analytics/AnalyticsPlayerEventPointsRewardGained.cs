@@ -10,15 +10,16 @@ using GameLogic.Player;
 namespace Analytics
 {
     [AnalyticsEvent(130, "Player received event points as a reward", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsPlayerEventPointsRewardGained : AnalyticsPlayerRewardGained
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Event ID")]
         public string EventId;
         [JsonProperty("amount")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Amount of points received")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount;
         [JsonProperty("saldo")]
         [MetaMember(3, (MetaMemberFlags)0)]

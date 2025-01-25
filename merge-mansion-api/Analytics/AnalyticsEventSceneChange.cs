@@ -15,13 +15,13 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the scene from where transition is happening")]
         public LocationId SceneFrom;
-        [Description("ID of the scene to where transition is happening")]
         [JsonProperty("scene_to")]
+        [Description("ID of the scene to where transition is happening")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public LocationId SceneTo;
-        [Description("duration of the loading in seconds")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("scene_loaded")]
+        [Description("duration of the loading in seconds")]
         public F64 SceneLoaded;
         public override string EventDescription { get; }
         public override AnalyticsEventType EventType { get; }

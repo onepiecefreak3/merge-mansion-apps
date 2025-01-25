@@ -11,9 +11,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Broadcast Id of the started survey")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("broadcast_id")]
+        [Description("Broadcast Id of the started survey")]
         public int BroadcastId { get; set; }
 
         [JsonProperty("survey_type")]

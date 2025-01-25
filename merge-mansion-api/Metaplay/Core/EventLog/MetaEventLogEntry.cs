@@ -4,8 +4,8 @@ using Metaplay.Core.Math;
 
 namespace Metaplay.Core.EventLog
 {
-    [MetaReservedMembers(100, 200)]
     [MetaSerializable]
+    [MetaReservedMembers(100, 200)]
     public abstract class MetaEventLogEntry
     {
         [MetaMember(100, (MetaMemberFlags)0)]

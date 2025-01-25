@@ -9,18 +9,19 @@ namespace Analytics
 {
     [MetaBlockedMembers(new int[] { 3 })]
     [AnalyticsEvent(174, "Rentable inventory purchased", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "buysell", "event" })]
     public class AnalyticsEventRentableInventoryBatchPurchased : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
         [JsonProperty("batch_cost")]
-        [Description("Batch cost")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Batch cost")]
         public long Cost { get; set; }
 
-        [JsonProperty("batch_currency")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Batch currency")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("batch_currency")]
         public Currencies Currency { get; set; }
         public override string EventDescription { get; }
 

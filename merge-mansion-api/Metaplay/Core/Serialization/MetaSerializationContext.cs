@@ -15,9 +15,11 @@ namespace Metaplay.Core.Serialization
 
         public int MaxStringSize => 0x4000000;
         public int MaxByteArraySize => 0x4000000;
-        // CUSTOM: Since version 23.11.01 this property doesn't exist and instead a maxCollectionOverride is passed through the TypeSerializer
+        // CUSTOM: As of version 23.11.01 this property doesn't exist and instead a maxCollectionOverride is passed through the TypeSerializer
         // To keep current code running, this stays here with double the capacity, until further research
-        public int MaxCollectionSize => DefaultMaxCollectionSize * 2;
+        // CUSTOM: As of version 25.01.01 there is at least one instance in the data, where a collection exceeds double the capacity
+        // To keep current code running, this is changed to triple the capacity, until further research
+        public int MaxCollectionSize => DefaultMaxCollectionSize * 3;
 
         public MetaSerializationContext(MetaSerializationFlags flags, IGameConfigDataResolver resolver, int? logicVersion, StringBuilder debugStream)
         {

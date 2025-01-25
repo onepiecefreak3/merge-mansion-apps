@@ -10,19 +10,20 @@ using GameLogic.Player;
 namespace Analytics
 {
     [AnalyticsEvent(129, "Player received a decoration reward", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsPlayerDecorationRewardGained : AnalyticsPlayerRewardGained
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("decoration_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the decoration received")]
         public string DecorationId;
+        [JsonProperty("amount")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Number of decorations received")]
-        [JsonProperty("amount")]
         public int Amount;
-        [JsonProperty("level", NullValueHandling = (NullValueHandling)1)]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Level of decoration received")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("level", NullValueHandling = (NullValueHandling)1)]
         public int? Level;
         [Description("Type of the reward received")]
         [JsonProperty("reward_type")]

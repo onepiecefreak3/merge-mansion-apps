@@ -7,6 +7,7 @@ using System;
 
 namespace Analytics
 {
+    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(162, "Currency Bank state changed", 1, null, true, true, false)]
     public class AnalyticsEventCurrencyBankStateChanged : AnalyticsServersideEventBase
     {
@@ -18,8 +19,8 @@ namespace Analytics
         public CurrencyBankId CurrencyBankId { get; set; }
 
         [Description("Threshold value for this stash")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("state")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public CurrencyBankState CurrencyBankState { get; set; }
 
         [Description("Unique id for this players activation")]

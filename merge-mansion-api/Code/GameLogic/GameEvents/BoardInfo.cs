@@ -12,8 +12,8 @@ using GameLogic.Player;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 12 })]
+    [MetaSerializable]
     public class BoardInfo : IGameConfigData<MergeBoardId>, IGameConfigData, IHasGameConfigKey<MergeBoardId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -77,6 +77,13 @@ namespace Code.GameLogic.GameEvents
         public BoardActionRequirements ActionRequirements { get; set; }
 
         public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string disableSelling, string energyType, string cobwebClearPoints, int width, int height)
+        {
+        }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        public bool AllowEnergyMode { get; set; }
+
+        public BoardInfo(MergeBoardId boardId, string displayName, string description, List<ValueTuple<int, ItemVisibility>> boardLayout, ICost itemSellCost, ConfigPrefabId boardPrefabId, MetaRef<BubblesSetup> bubblesSetup, string boardToggleSfxOverride, string boardMusicOverride, string disableAutospawns, string disableSelling, string energyType, string cobwebClearPoints, int width, int height, bool allowEnergyMode)
         {
         }
     }

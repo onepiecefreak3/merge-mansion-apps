@@ -13,24 +13,24 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [JsonProperty("item_name")]
         [Description("Decoration Id")]
         [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("item_name")]
         public DecorationId DecorationId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("decoration_set_id")]
         [Description("Decoration Shop Set Id")]
+        [JsonProperty("decoration_set_id")]
         public DecorationShopSetId DecorationShopSetId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Cost in Diamonds (if available)")]
         [JsonProperty("cost_in_diamonds")]
+        [Description("Cost in Diamonds (if available)")]
         public long? CostInDiamonds { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("cost_in_coins")]
         [Description("Cost in Coins (if available)")]
+        [JsonProperty("cost_in_coins")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public long? CostInCoins { get; set; }
         public override string EventDescription { get; }
 

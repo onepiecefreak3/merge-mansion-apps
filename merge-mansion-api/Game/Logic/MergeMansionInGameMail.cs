@@ -16,21 +16,21 @@ namespace Game.Logic
     {
         private static int ShortTopicLimit;
         private static int ShortContentLimit;
-        [MetaValidateRequired]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         public LocalizedString ExcerptTopic { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [MetaFormTextArea]
         [MetaValidateRequired]
+        [MetaFormTextArea]
         public LocalizedString ExcerptContent { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
         [MetaValidateRequired]
         public LocalizedString FullTopic { get; set; }
 
-        [MetaValidateRequired]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [MetaValidateRequired]
         [MetaFormTextArea]
         public LocalizedString FullContent { get; set; }
 
@@ -40,8 +40,8 @@ namespace Game.Logic
         [MetaMember(6, (MetaMemberFlags)0)]
         public string FullImageFile { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [MetaFormFieldContext("AttachmentRewardList", true)]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public List<PlayerReward> Attachments { get; set; }
 
         [MetaFormNotEditable]

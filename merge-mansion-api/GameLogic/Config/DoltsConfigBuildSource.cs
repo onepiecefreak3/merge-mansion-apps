@@ -5,8 +5,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Config
 {
-    [MetaSerializableDerived(1)]
     [MetaFormDeprecated]
+    [MetaSerializableDerived(1)]
     public class DoltsConfigBuildSource : GameConfigBuildSource
     {
         [MetaMember(1, (MetaMemberFlags)0)]

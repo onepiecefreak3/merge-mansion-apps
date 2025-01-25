@@ -10,8 +10,8 @@ namespace GameLogic.Player
         [ServerOnly]
         public string PendingSupercellIdBindingEmail { get; set; }
 
-        [ServerOnly]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ServerOnly]
         public string PendingSupercellIdBindingGameAccountId { get; set; }
 
         public SupercellIdBindingState()

@@ -15,19 +15,19 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("goal_id")]
-        [Description("ID of the opened hotspot")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("ID of the opened hotspot")]
+        [JsonProperty("goal_id")]
         public HotspotId HotspotId { get; set; }
 
         [Description("Area that was unlocked")]
-        [JsonProperty("area_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("area_name")]
         public string AreaName { get; set; }
 
         [Description("How many merge goals open")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("merge_goals_open")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int MergeGoalsOpen { get; set; }
         public override string EventDescription { get; }
 
@@ -49,19 +49,19 @@ namespace Analytics
         [MetaMember(5, (MetaMemberFlags)0)]
         public string TaskGroup { get; set; }
 
+        [JsonProperty("bonus_time_left")]
         [MetaMember(7, (MetaMemberFlags)0)]
         [Description("How much time is left for bonus")]
-        [JsonProperty("bonus_time_left")]
         public double? BonusTimeLeft { get; set; }
 
         [Description("Possible bonus rewards")]
-        [JsonProperty("bonus_rewards")]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [JsonProperty("bonus_rewards")]
         public AnalyticsPlayerBonusReward[] BonusRewards { get; set; }
 
-        [JsonProperty("character_id")]
-        [MetaMember(8, (MetaMemberFlags)0)]
         [Description("Character id of the hotspot task (may be empty)")]
+        [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("character_id")]
         public string Character { get; set; }
     }
 }

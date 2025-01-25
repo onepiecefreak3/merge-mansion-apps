@@ -11,9 +11,9 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.Banks
 {
-    [MetaBlockedMembers(new int[] { 8 })]
     [MetaSerializable]
     [MetaActivableConfigData("CurrencyBankEvent", false, true)]
+    [MetaBlockedMembers(new int[] { 8 })]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -28,12 +28,12 @@ namespace GameLogic.Banks
         [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [Description("Store product to purchase")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Store product to purchase")]
         public MetaRef<InAppProductInfo> InAppProductInfo { get; set; }
 
-        [Description("Stored currency type")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Stored currency type")]
         public Currencies CurrencyType { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -44,8 +44,8 @@ namespace GameLogic.Banks
         [MetaMember(7, (MetaMemberFlags)0)]
         public int MaxBuyAmount { get; set; }
 
-        [Description("Activable parameters")]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [Description("Activable parameters")]
         public MetaActivableParams ActivableParams { get; set; }
 
         [Description("Item type used in info popup to show the chain items that should be merged to fill the bank")]
@@ -72,12 +72,12 @@ namespace GameLogic.Banks
         [MetaMember(15, (MetaMemberFlags)0)]
         public MetaDuration? DurationStateHiddenPreview { get; set; }
 
-        [Description("Duration of the not full state")]
         [MetaMember(16, (MetaMemberFlags)0)]
+        [Description("Duration of the not full state")]
         public MetaDuration? DurationStateNotFull { get; set; }
 
-        [Description("Duration of the full state")]
         [MetaMember(17, (MetaMemberFlags)0)]
+        [Description("Duration of the full state")]
         public MetaDuration? DurationStateFull { get; set; }
 
         [MetaMember(18, (MetaMemberFlags)0)]
@@ -88,8 +88,8 @@ namespace GameLogic.Banks
         [Description("Max number of currency banks purchases to allow this one to be activated")]
         public int MaxNumOfStashesPerPlayer { get; set; }
 
-        [MetaMember(20, (MetaMemberFlags)0)]
         [Description("Max number of currency banks activated to allow this one to be activated")]
+        [MetaMember(20, (MetaMemberFlags)0)]
         public int? MaxActivationsGlobal { get; set; }
         public CurrencyBankId ActivableId { get; }
         public CurrencyBankId ConfigKey => CurrencyBankId;

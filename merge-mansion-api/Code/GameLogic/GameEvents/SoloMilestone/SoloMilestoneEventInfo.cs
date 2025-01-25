@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 
 namespace Code.GameLogic.GameEvents.SoloMilestone
 {
-    [MetaActivableConfigData("SoloMilestoneEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("SoloMilestoneEvent", false, true)]
     public class SoloMilestoneEventInfo : IMetaActivableConfigData<SoloMilestoneEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SoloMilestoneEventId>, IHasGameConfigKey<SoloMilestoneEventId>, IMetaActivableInfo<SoloMilestoneEventId>, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

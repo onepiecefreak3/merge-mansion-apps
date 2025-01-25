@@ -8,8 +8,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 5, 10, 13 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 5, 10, 13 })]
     public class Wallet
     {
         public PocketChangedEvent PocketContentChanged;
@@ -90,8 +90,8 @@ namespace GameLogic.Player
 
         [MetaMember(21, (MetaMemberFlags)0)]
         public Dictionary<EnergyType, AuxEnergyState> AuxEnergyStates;
-        [Obsolete("Replaced by AuxEnergyStates. Required for migration.")]
         [MetaMember(20, (MetaMemberFlags)0)]
+        [Obsolete("Replaced by AuxEnergyStates. Required for migration.")]
         public SecondaryEnergyState SecondaryEnergyState_DEPRECATED { get; set; }
 
         [IgnoreDataMember]

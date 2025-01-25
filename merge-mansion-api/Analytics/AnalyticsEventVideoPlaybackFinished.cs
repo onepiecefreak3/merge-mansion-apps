@@ -11,9 +11,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("video_key")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Video key")]
+        [JsonProperty("video_key")]
         public string Key { get; set; }
         public override string EventDescription { get; }
 

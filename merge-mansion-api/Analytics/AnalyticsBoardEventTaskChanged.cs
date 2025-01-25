@@ -13,16 +13,16 @@ namespace Analytics
     public class AnalyticsBoardEventTaskChanged : AnalyticsServersideEventBase
     {
         [Description("ID of the event")]
-        [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
         public string EventId;
+        [JsonProperty("event_task_id")]
         [Description("ID of the event task")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("event_task_id")]
         public string EventTaskId;
         [JsonProperty("state")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("State of the event task")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string State;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }
@@ -31,26 +31,26 @@ namespace Analytics
         {
         }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("required_items")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Items required by the task")]
         public List<AnalyticsBoardEventTaskChanged.ItemRequirement> RequiredItems;
         [Description("Task type: dynamic / predefined")]
-        [JsonProperty("task_type")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("task_type")]
         public string TaskType;
-        [Description("Task rewards")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("rewards")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Task rewards")]
         public List<AnalyticsPlayerReward> Rewards;
         [MetaSerializable]
         public class ItemRequirement
         {
-            [JsonProperty("item_id")]
             [MetaMember(1, (MetaMemberFlags)0)]
+            [JsonProperty("item_id")]
             public int ItemId;
-            [JsonProperty("merge_chain_id")]
             [MetaMember(2, (MetaMemberFlags)0)]
+            [JsonProperty("merge_chain_id")]
             public MergeChainId MergeChainId;
             [MetaMember(3, (MetaMemberFlags)0)]
             [JsonProperty("item_level")]
@@ -61,8 +61,8 @@ namespace Analytics
             [MetaMember(5, (MetaMemberFlags)0)]
             [JsonProperty("merge_chain_items_as_lvl_1", NullValueHandling = (NullValueHandling)1)]
             public List<int> MergeChainItemsAsLvl1;
-            [JsonProperty("sum_of_merge_chain_items_as_lvl_1", NullValueHandling = (NullValueHandling)1)]
             [MetaMember(6, (MetaMemberFlags)0)]
+            [JsonProperty("sum_of_merge_chain_items_as_lvl_1", NullValueHandling = (NullValueHandling)1)]
             public int? SumOfMergeChainItemsAsLvl1;
             public ItemRequirement()
             {

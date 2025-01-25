@@ -3,6 +3,7 @@ using Metaplay.Core.Player;
 using Metaplay.Core.Model;
 using System;
 using GameLogic;
+using System.Collections.Generic;
 
 namespace Game.Logic
 {
@@ -24,5 +25,7 @@ namespace Game.Logic
         public PlayerEventSupportReducedCurrency(Currencies currency, long amount, long totalAfterRemove)
         {
         }
+
+        public override IEnumerable<string> KeywordsForEventInstance { get; }
     }
 }

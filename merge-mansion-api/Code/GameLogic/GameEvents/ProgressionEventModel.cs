@@ -84,7 +84,6 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public ProgressionEventTrack ActiveTrack { get; }
-        public bool IsV2Event { get; }
 
         [MetaMember(22, (MetaMemberFlags)0)]
         private int LastLevelNoted { get; set; }

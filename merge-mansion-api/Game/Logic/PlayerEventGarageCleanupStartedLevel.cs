@@ -7,6 +7,7 @@ using System;
 namespace Game.Logic
 {
     [AnalyticsEvent(20, "Garage cleanup event started", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class PlayerEventGarageCleanupStartedLevel : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

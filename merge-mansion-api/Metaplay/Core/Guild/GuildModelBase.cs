@@ -39,8 +39,8 @@ namespace Metaplay.Core.Guild
         [Transient]
         public MetaTime TimeAtFirstTick { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public long CurrentTick { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -74,9 +74,9 @@ namespace Metaplay.Core.Guild
         [ServerOnly]
         public int RunningInviteId { get; set; }
 
-        [PrettyPrint((PrettyPrintFlag)16)]
-        [MetaMember(13, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(13, (MetaMemberFlags)0)]
+        [PrettyPrint((PrettyPrintFlag)16)]
         public GuildEventLog EventLog { get; set; }
         public int MemberCount { get; }
         public abstract int MaxNumMembers { get; }

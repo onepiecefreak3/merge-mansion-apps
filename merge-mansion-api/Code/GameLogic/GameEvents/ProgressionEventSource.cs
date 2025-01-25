@@ -33,17 +33,9 @@ namespace Code.GameLogic.GameEvents
         private MetaScheduleBase Schedule { get; set; }
         private string ChanceToSpawnEventItemPerLevel { get; set; }
         private string EventItem { get; set; }
-        private MetaRef<InAppProductInfo> PremiumIAP { get; set; }
         private int PremiumIAPOfferMinLevel { get; set; }
-        private List<MetaRef<ProgressionEventPerkInfo>> PremiumIAPPerks { get; set; }
         private List<MetaRef<ProgressionEventStreakRewards>> PremiumIAPStreakRewards { get; set; }
         private List<MetaRef<EventLevelInfo>> FreeEventLevels { get; set; }
-        private List<MetaRef<EventLevelInfo>> PremiumEventLevels { get; set; }
-        private MetaRef<EventLevelInfo> RecurringFreeEventLevel { get; set; }
-        private MetaRef<EventLevelInfo> RecurringPremiumEventLevel { get; set; }
-        private List<MetaRef<EventLevelInfo>> RecurringFreeEventLevels { get; set; }
-        private List<MetaRef<EventLevelInfo>> RecurringPremiumEventLevels { get; set; }
-        private int RecurringLevelPointsIncrement { get; set; }
         private bool HasZeroLevel { get; set; }
         private StoryDefinitionId IntroDialogue { get; set; }
         private StoryDefinitionId EndDialogue { get; set; }
@@ -65,7 +57,17 @@ namespace Code.GameLogic.GameEvents
 
         private string ShopBundleHeaderId { get; set; }
         private List<int> PurchasePopupTriggeringLevels { get; set; }
-        private ProgressionEventV2Id V2Id { get; set; }
         private int Priority { get; set; }
+        private MetaRef<InAppProductInfo> Track1IAP { get; set; }
+        private MetaRef<InAppProductInfo> Track2IAP { get; set; }
+        private MetaRef<InAppProductInfo> UpgradeIAP { get; set; }
+        private List<MetaRef<EventLevelInfo>> Track1EventLevels { get; set; }
+        private List<MetaRef<EventLevelInfo>> Track2EventLevels { get; set; }
+        private List<MetaRef<EventLevelInfo>> BonusLevels { get; set; }
+        private bool IsBonusRewardSecret { get; set; }
+        private List<MetaRef<ProgressionEventPerkInfo>> Track1IAPPerks { get; set; }
+        private List<MetaRef<ProgressionEventPerkInfo>> Track2IAPPerks { get; set; }
+        private string PriceValueLocIdTrack1 { get; set; }
+        private string PriceValueLocIdTrack2 { get; set; }
     }
 }

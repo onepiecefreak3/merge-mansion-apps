@@ -4,8 +4,8 @@ using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializableDerived(1)]
+    [MetaBlockedMembers(new int[] { 1 })]
     public class ProgressionEventFreeShopItemPerk : ProgressionEventPerk
     {
         [MetaMember(3, (MetaMemberFlags)0)]

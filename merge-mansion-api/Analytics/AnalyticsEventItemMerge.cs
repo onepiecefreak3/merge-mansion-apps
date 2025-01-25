@@ -3,17 +3,19 @@ using Metaplay.Core.Model;
 using System.ComponentModel;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 
 namespace Analytics
 {
+    [AnalyticsEventKeywords(new string[] { "item", "merge" })]
     [AnalyticsEvent(103, "Item merged", 1, null, true, true, false)]
     public class AnalyticsEventItemMerge : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Item that has been merge")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         public string MergedItem { get; set; }
         public override string EventDescription { get; }
 
@@ -25,22 +27,32 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("item_level")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Merged item level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("item_level")]
         public int MergedItemLevel { get; set; }
 
         [JsonProperty("item_mergechain_total_length")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Merge chain total length of the merged item")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int MergedItemMergeChainTotalLength { get; set; }
 
         [Description("Merge chain unlocked length of the merged item")]
-        [JsonProperty("item_mergechain_unlocked_length")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("item_mergechain_unlocked_length")]
         public int MergedItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticsEventItemMerge(string itemType, int itemLevel, int itemMergeChainTotalLength, int itemMergeChainUnlockedLength)
+        {
+        }
+
+        [Description("Is this spawner?")]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("spawner")]
+        public bool IsSpawner { get; set; }
+        public override IEnumerable<string> KeywordsForEventInstance { get; }
+
+        public AnalyticsEventItemMerge(string itemType, int itemLevel, int itemMergeChainTotalLength, int itemMergeChainUnlockedLength, bool isSpawner)
         {
         }
     }

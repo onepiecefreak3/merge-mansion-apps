@@ -101,6 +101,8 @@ namespace GameLogic.Decorations
         SP_MysteriousMaelstrom2024_TA1 = 92,
         SP_MysteriousMaelstrom2024_TA2 = 93,
         SP_AlpacaPet2024_TA1 = 94,
-        SP_AlpacaPet2024_TA2 = 95
+        SP_AlpacaPet2024_TA2 = 95,
+        SP_AmyPet2025_TA1 = 96,
+        SP_AmyPet2025_TA2 = 97
     }
 }

@@ -6,6 +6,7 @@ using GameLogic.Player.DailyTasks;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "daily", "task" })]
     [AnalyticsEvent(7, "Completed daily task", 1, null, true, false, false)]
     public class PlayerDailyTaskCompleted : PlayerEventBase
     {

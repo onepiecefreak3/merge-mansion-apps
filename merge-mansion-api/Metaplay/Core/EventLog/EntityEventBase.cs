@@ -6,15 +6,15 @@ using Metaplay.Core.Json;
 
 namespace Metaplay.Core.EventLog
 {
-    [MetaSerializable]
     [MetaAllowNoSerializedMembers]
+    [MetaSerializable]
     public abstract class EntityEventBase : AnalyticsEventBase
     {
         [JsonIgnore]
         public abstract string EventDescription { get; }
 
-        [IncludeOnlyInJsonSerializationMode((JsonSerializationMode)3)]
         [JsonProperty("eventDescription")]
+        [IncludeOnlyInJsonSerializationMode((JsonSerializationMode)3)]
         public string EventDescriptionErrorWrapper { get; }
 
         protected EntityEventBase()

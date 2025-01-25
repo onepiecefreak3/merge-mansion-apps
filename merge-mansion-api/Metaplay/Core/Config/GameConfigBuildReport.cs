@@ -21,8 +21,8 @@ namespace Metaplay.Core.Config
         {
         }
 
-        [MaxCollectionSize(2147483647)]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [MaxCollectionSize(2147483647)]
         public GameConfigBuildMessage[] BuildMessages { get; set; }
 
         public GameConfigBuildReport(IEnumerable<GameConfigBuildMessage> buildMessages, List<GameConfigValidationResult> validationResults)

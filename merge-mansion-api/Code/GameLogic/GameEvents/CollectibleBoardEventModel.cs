@@ -135,5 +135,8 @@ namespace Code.GameLogic.GameEvents
         [MetaMember(22, (MetaMemberFlags)0)]
         protected HashSet<TheGreatEscapeMinigameId> TheGreatEscapeMinigamesCompleted { get; set; }
         public bool PrisonBadgeFound { get; set; }
+
+        [MetaMember(23, (MetaMemberFlags)0)]
+        public int GrandmaCellVisualTapProgress { get; set; }
     }
 }

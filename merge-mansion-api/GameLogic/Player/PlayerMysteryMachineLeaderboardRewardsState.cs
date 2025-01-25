@@ -6,8 +6,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Player
 {
-    [MetaBlockedMembers(new int[] { 2 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 2 })]
     public class PlayerMysteryMachineLeaderboardRewardsState
     {
         private static MetaDuration requestRewardsCooldown;

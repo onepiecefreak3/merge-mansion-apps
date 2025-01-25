@@ -3,8 +3,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [MetaSerializable]
+    [LeaguesEnabledCondition]
     public struct DivisionIndex
     {
         private static int DivisionBits;

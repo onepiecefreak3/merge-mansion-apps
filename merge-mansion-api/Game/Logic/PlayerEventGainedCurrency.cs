@@ -3,6 +3,7 @@ using Metaplay.Core.Player;
 using System;
 using GameLogic.Player;
 using GameLogic;
+using System.Collections.Generic;
 
 namespace Game.Logic
 {
@@ -24,5 +25,7 @@ namespace Game.Logic
         public PlayerEventGainedCurrency(long amount, CurrencySource currencySource, long total, AnalyticsContext context)
         {
         }
+
+        public override IEnumerable<string> KeywordsForEventInstance { get; }
     }
 }

@@ -9,8 +9,8 @@ using Code.GameLogic.GameEvents;
 
 namespace Analytics
 {
-    [AnalyticsEvent(165, "Leaderboard snapshot", 1, null, false, true, false)]
     [MetaBlockedMembers(new int[] { 6 })]
+    [AnalyticsEvent(165, "Leaderboard snapshot", 1, null, false, true, false)]
     public class AnalyticEventLeaderboardSnapshot : AnalyticsServersideDivisionEventBase
     {
         public override AnalyticsEventType EventType { get; }
@@ -20,18 +20,18 @@ namespace Analytics
         [Description("Leaderboard division id")]
         public EntityId DivisionId { get; set; }
 
-        [JsonProperty("players")]
         [Description("Participants")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("players")]
         public List<LeaderboardSnapshotPlayerEntry> Players { get; set; }
 
         [Description("Snapshot taken at")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("gathered_from")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public AnalyticsLeaderboardSnapshotType SnapshotType { get; set; }
 
-        [JsonProperty("new_player_id", NullValueHandling = (NullValueHandling)1)]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("new_player_id", NullValueHandling = (NullValueHandling)1)]
         [Description("New player id if added")]
         public string NewPlayerId { get; set; }
         public override string EventDescription { get; }
@@ -48,9 +48,9 @@ namespace Analytics
         [Description("Division rank")]
         public int Rank { get; set; }
 
+        [JsonProperty("event_id")]
         [Description("Event Id")]
         [MetaMember(7, (MetaMemberFlags)0)]
-        [JsonProperty("event_id")]
         public string EventId { get; set; }
 
         public AnalyticEventLeaderboardSnapshot(EntityId divisionId, List<LeaderboardSnapshotPlayerEntry> players, AnalyticsLeaderboardSnapshotType snapshotType, int rank, LeaderboardEventId eventId, string newPlayerId)

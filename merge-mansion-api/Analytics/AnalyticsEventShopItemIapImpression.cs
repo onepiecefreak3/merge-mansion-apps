@@ -14,19 +14,19 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         [Description("Item Id")]
         public InAppProductId ShopItemIapId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("iap_platform_id")]
         [Description("Platform Id")]
+        [JsonProperty("iap_platform_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string PlatformId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("placement")]
         [Description("Placement Id")]
+        [JsonProperty("placement")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public OfferPlacementId PlacementId { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -34,9 +34,9 @@ namespace Analytics
         [Description("Shown automatically")]
         public bool AutomaticallyShown { get; set; }
 
+        [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Impression Id")]
         [JsonProperty("impression_id")]
-        [MetaMember(5, (MetaMemberFlags)0)]
         public string ImpressionId { get; set; }
         public override string EventDescription { get; }
 

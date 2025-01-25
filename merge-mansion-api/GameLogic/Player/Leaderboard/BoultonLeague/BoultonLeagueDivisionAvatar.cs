@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace GameLogic.Player.Leaderboard.BoultonLeague
 {
-    [PlayerLeaguesEnabledCondition]
     [MetaSerializableDerived(151)]
     [MetaSerializable]
+    [PlayerLeaguesEnabledCondition]
     public class BoultonLeagueDivisionAvatar : PlayerDivisionAvatarBase, IMetacoreLeagueAvatar
     {
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -15,8 +15,8 @@ namespace GameLogic.Player.Leaderboard.BoultonLeague
         [MetaMember(1, (MetaMemberFlags)0)]
         public string DisplayName { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string AssociationId { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]

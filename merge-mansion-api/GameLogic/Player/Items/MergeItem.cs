@@ -35,8 +35,8 @@ namespace GameLogic.Player.Items
         [IgnoreDataMember]
         private MergeItem.MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
 
         [IgnoreDataMember]
@@ -402,5 +402,11 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public bool IsEscapeTool { get; }
+
+        [IgnoreDataMember]
+        public ItemEffectFeatures ItemActivationEffects { get; }
+
+        [IgnoreDataMember]
+        public bool HasActivationVfx { get; }
     }
 }

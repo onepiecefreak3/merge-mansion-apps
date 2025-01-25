@@ -12,9 +12,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Board Id")]
         [JsonProperty("board_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         public MergeBoardId BoardId { get; set; }
         public override string EventDescription { get; }
 

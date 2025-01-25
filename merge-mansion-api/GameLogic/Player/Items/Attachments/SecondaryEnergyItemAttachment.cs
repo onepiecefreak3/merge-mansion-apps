@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player.Items.Attachments
 {
-    [Obsolete("Replaced by AuxEnergyItemAttachment. Required for migration.")]
     [MetaSerializableDerived(1)]
+    [Obsolete("Replaced by AuxEnergyItemAttachment. Required for migration.")]
     public class SecondaryEnergyItemAttachment : IItemAttachment
     {
         public static int GainOnConsumeAmount;

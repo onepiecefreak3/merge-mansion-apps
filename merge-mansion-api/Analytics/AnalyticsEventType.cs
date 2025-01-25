@@ -143,6 +143,8 @@ namespace Analytics
         PlayerMovedItemFromPocketToBoard = 132,
         ServerEventExperimentInfo = 133,
         ServerEventExperimentVariantInfo = 134,
-        TheGreatEscapeMinigame = 135
+        TheGreatEscapeMinigame = 135,
+        ShopOpeningImpression = 136,
+        ShortLeaderboardEventStarsCollected = 137
     }
 }

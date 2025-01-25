@@ -5,6 +5,7 @@ using System;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "daily" })]
     [AnalyticsEvent(8, "Daily task final reward collected", 1, null, true, false, false)]
     public class PlayerDailyTaskFinalRewardCollected : PlayerEventBase
     {

@@ -6,6 +6,7 @@ using System;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "event", "discovery" })]
     [AnalyticsEvent(26, "Opened card pack", 1, null, true, false, false)]
     public class PlayerOpenedCardPack : PlayerEventBase
     {

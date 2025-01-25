@@ -24,8 +24,8 @@ namespace Code.GameLogic.GameEvents
 {
     [MetaBlockedMembers(new int[] { 10, 11, 13, 14, 16, 33, 34, 45 })]
     [MetaActivableConfigData("BoardEvent", false, true)]
-    [DefaultMember("Item")]
     [MetaSerializable]
+    [DefaultMember("Item")]
     public class BoardEventInfo : IMetaActivableConfigData<EventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EventId>, IHasGameConfigKey<EventId>, IMetaActivableInfo<EventId>, IValidatable, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -158,9 +158,6 @@ namespace Code.GameLogic.GameEvents
         public EventTaskInfo Item { get; }
 
         [IgnoreDataMember]
-        StoryDefinitionId Code.GameLogic.GameEvents.IBoardEventInfo.EnterBoardDialogue { get; }
-
-        [IgnoreDataMember]
         public DecorationInfo ActiveDecoration { get; }
 
         public BoardEventInfo()
@@ -180,15 +177,6 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         MergeBoardId Code.GameLogic.GameEvents.IBoardEventInfo.MergeBoardId { get; }
-
-        [IgnoreDataMember]
-        public F32? BubbleBonusDivisor { get; }
-
-        [IgnoreDataMember]
-        public EnergyType? AuxEnergyType { get; }
-
-        [IgnoreDataMember]
-        public int AuxEnergyAttachmentChance { get; }
 
         public BoardEventInfo(EventId eventId, string displayName, string description, MetaActivableParams activableParams, MetaRef<EventCurrencyInfo> eventCurrencyInfo, MetaRef<BoardInfo> boardInfo, MetaRef<EventTaskInfo> eventInitTask, List<MetaRef<EventTaskInfo>> eventTasks, MetaRef<EventLevels> eventLevels, int? portalItem, string nameLocId, OfferPlacementId offerPlacementId, ExtendableEventParams extendableEventParams, MetaDuration extensionPurchaseSafetyMargin, MetaRef<InAppProductInfo> extensionInAppProduct, ConfigPrefabId infoPopupId, ConfigPrefabId taskProgressionId, ConfigPrefabId taskGoalItemId, StoryDefinitionId startEventDialogue, MetaRef<ShopEventInfo> hintedShopEvents, ConfigPrefabId startPopupId, ConfigPrefabId teasePopupId, ConfigPrefabId introPopupId, ConfigPrefabId extendPopupId, ConfigPrefabId endPopupId, ConfigPrefabId hudButtonId, ConfigPrefabId rewardInfoPopupId, ConfigPrefabId rewardClaimPopupId, ConfigPrefabId rewardChestPopupId, bool visualiseEventPoints, ConfigPrefabId taskItemCheckmarkId, List<IDirectorAction> startActions, List<IDirectorAction> endActions, string boardTransitionSfxOverride, PlayerRequirement previewRequirement, PlayerRequirement unlockRequirement, DecorationId activeDecoration, bool givePortalItemWithoutTask, IEnumerable<PlayerReward> extensionRewards, string prefabsId)
         {

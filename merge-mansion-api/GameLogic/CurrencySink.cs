@@ -46,6 +46,7 @@ namespace GameLogic
         FillDailyTaskV2StepWithRefresh = 38,
         SoloMilestoneProgress = 39,
         SkipEvidenceBoxCooldown = 40,
-        BuyEvidenceBox = 41
+        BuyEvidenceBox = 41,
+        ReplayShortLeaderboardEventStage = 42
     }
 }

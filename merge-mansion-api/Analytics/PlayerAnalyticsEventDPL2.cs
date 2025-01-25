@@ -7,12 +7,12 @@ using Metaplay.Core.Analytics;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 1 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1 })]
     public struct PlayerAnalyticsEventDPL2
     {
-        [JsonProperty("analytics_event_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("analytics_event_name")]
         public string AnalyticsEventName;
         [JsonProperty("timestamp")]
         [MetaMember(3, (MetaMemberFlags)0)]
@@ -23,9 +23,9 @@ namespace Analytics
         [JsonProperty("context")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public AnalyticsContextBase Context;
-        [JsonProperty("payload")]
         [MetaMember(6, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
+        [JsonProperty("payload")]
         public AnalyticsEventBase Payload;
     }
 }

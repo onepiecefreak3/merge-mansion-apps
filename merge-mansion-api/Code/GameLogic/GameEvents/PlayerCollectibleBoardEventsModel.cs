@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableSet("CollectibleBoardEvent", false)]
     [MetaSerializableDerived(8)]
+    [MetaActivableSet("CollectibleBoardEvent", false)]
     public class PlayerCollectibleBoardEventsModel : ExtendableEventSet<CollectibleBoardEventId, CollectibleBoardEventInfo, CollectibleBoardEventModel>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

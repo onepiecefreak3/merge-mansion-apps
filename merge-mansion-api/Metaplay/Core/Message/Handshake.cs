@@ -145,11 +145,11 @@ namespace Metaplay.Core.Message
             {
             }
 
+            [PrettyPrint((PrettyPrintFlag)8)]
             [MetaMember(1, (MetaMemberFlags)0)]
-            [PrettyPrint((PrettyPrintFlag)8)]
             private MetaTime _connectionStartedAt;
-            [MetaMember(2, (MetaMemberFlags)0)]
             [PrettyPrint((PrettyPrintFlag)8)]
+            [MetaMember(2, (MetaMemberFlags)0)]
             private MetaTime _connectionAbandonedAt;
             [MetaMember(3, (MetaMemberFlags)0)]
             [PrettyPrint((PrettyPrintFlag)8)]
@@ -366,8 +366,8 @@ namespace Metaplay.Core.Message
             [MetaMember(2, (MetaMemberFlags)0)]
             public string DeviceId { get; set; }
 
-            [MetaMember(3, (MetaMemberFlags)0)]
             [Sensitive]
+            [MetaMember(3, (MetaMemberFlags)0)]
             public string AuthToken { get; set; }
 
             private CreateGuestAccountResponse()
@@ -389,8 +389,8 @@ namespace Metaplay.Core.Message
             [MetaMember(2, (MetaMemberFlags)0)]
             public SessionResumptionInfo SessionToResume { get; set; }
 
-            [Sensitive]
             [MetaMember(3, (MetaMemberFlags)0)]
+            [Sensitive]
             public byte[] ResumptionToken { get; set; }
 
             [MetaMember(4, (MetaMemberFlags)0)]

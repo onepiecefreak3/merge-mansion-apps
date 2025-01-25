@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(4)]
     [MetaBlockedMembers(new int[] { 2 })]
+    [MetaSerializableDerived(4)]
     [Obsolete]
     public class LegacyRewardScrews : PlayerReward
     {

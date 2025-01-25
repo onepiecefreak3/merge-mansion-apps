@@ -6,8 +6,8 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Hotspots.CardStack
 {
-    [MetaBlockedMembers(new int[] { 4, 5 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 4, 5 })]
     public class PlayCard
     {
         [MetaMember(1, (MetaMemberFlags)0)]

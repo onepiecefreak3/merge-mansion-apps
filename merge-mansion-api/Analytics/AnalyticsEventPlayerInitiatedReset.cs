@@ -12,9 +12,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("old_association_id")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Previous Association Id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("old_association_id")]
         public string OldAssociationId { get; set; }
         public override string EventDescription { get; }
 

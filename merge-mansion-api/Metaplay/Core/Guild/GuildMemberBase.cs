@@ -22,9 +22,9 @@ namespace Metaplay.Core.Guild
         [MetaMember(5, (MetaMemberFlags)0)]
         [ServerOnly]
         public int LastPendingPlayerOpEpoch;
+        [ServerOnly]
         [ExcludeFromGdprExport]
         [MetaMember(6, (MetaMemberFlags)0)]
-        [ServerOnly]
         public Dictionary<int, GuildMemberPlayerOpLogEntry> PendingPlayerOps;
         [MetaMember(7, (MetaMemberFlags)0)]
         public int MemberInstanceId;

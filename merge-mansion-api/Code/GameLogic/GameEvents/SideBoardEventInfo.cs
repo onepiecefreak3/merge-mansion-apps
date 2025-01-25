@@ -18,8 +18,8 @@ using Merge;
 namespace Code.GameLogic.GameEvents
 {
     [DefaultMember("Item")]
-    [MetaActivableConfigData("SideBoardEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("SideBoardEvent", false, true)]
     public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IHasGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -141,9 +141,6 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public DecorationInfo ActiveDecoration { get; }
-
-        [IgnoreDataMember]
-        public int AuxEnergyAttachmentChance { get; }
 
         [IgnoreDataMember]
         public EventTaskInfo Item { get; }

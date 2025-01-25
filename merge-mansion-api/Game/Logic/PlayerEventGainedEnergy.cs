@@ -6,6 +6,7 @@ using GameLogic;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "energy" })]
     [AnalyticsEvent(13, "Gained energy", 1, null, true, false, false)]
     public class PlayerEventGainedEnergy : PlayerEventGainedCurrency
     {

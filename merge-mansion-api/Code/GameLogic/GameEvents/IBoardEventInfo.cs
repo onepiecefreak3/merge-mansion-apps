@@ -14,8 +14,6 @@ namespace Code.GameLogic.GameEvents
 {
     public interface IBoardEventInfo
     {
-        StoryDefinitionId EnterBoardDialogue { get; }
-
         PlayerRequirement UnlockRequirement { get; }
 
         DecorationInfo ActiveDecoration { get; }
@@ -27,8 +25,6 @@ namespace Code.GameLogic.GameEvents
         MetaDuration ExtensionPurchaseSafetyMargin { get; }
 
         List<PlayerReward> ExtensionRewards { get; }
-
-        int AuxEnergyAttachmentChance { get; }
 
         MergeBoardId MergeBoardId { get; }
 

@@ -240,6 +240,10 @@ namespace GameLogic.Config.Map.Characters
         MaddieRoomGrandma = 7602,
         LibraryFirstMapCharacterPosition = 7799,
         LibraryEntryMapMaddie = 7800,
-        LibraryCharacter = 7801
+        LibraryCharacter = 7801,
+        AreaPetHomeMapAmy = 5805,
+        AreaTombFirstMapCharacterPosition = 7999,
+        AreaTombEntryMapMaddie = 8000,
+        AreaTombCharacter = 8001
     }
 }

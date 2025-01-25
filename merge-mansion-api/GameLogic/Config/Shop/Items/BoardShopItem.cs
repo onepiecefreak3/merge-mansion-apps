@@ -8,8 +8,8 @@ using System;
 
 namespace GameLogic.Config.Shop.Items
 {
-    [MetaSerializableDerived(2)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(2)]
     public class BoardShopItem : IShopItem
     {
         [MetaMember(6, (MetaMemberFlags)0)]
@@ -35,5 +35,7 @@ namespace GameLogic.Config.Shop.Items
         public BoardShopItem(ShopItemId shopItemId, int item, MergeBoardId mergeBoardId, IPriceCurve priceCurve, IPurchaseLimiter purchaseLimiter)
         {
         }
+
+        public bool IsPurchasedWithAds { get; set; }
     }
 }

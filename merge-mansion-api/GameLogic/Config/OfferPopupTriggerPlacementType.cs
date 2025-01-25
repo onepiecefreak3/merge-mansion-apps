@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Config
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum OfferPopupTriggerPlacementType
     {
         None = 0,

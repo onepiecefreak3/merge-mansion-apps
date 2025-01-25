@@ -15,13 +15,13 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("board_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("board_id")]
         [Description("Board Id")]
         public MergeBoardId BoardId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("activations_left")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<MergeChainId, int> ActivationsLeft { get; set; }
         public override string EventDescription { get; }

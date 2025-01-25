@@ -9,8 +9,10 @@ using Analytics;
 namespace Game.Logic
 {
     [AnalyticsEvent(12, "Pocket changed", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "item", "pocket" })]
     public class PlayerPocketChanged : AnalyticsServersideEventBase
     {
+        [Obsolete("Item information now stored in ItemName. Item Id kept for backwards compatibility")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public int Item { get; set; }
 
@@ -36,5 +38,9 @@ namespace Game.Logic
 
         [MetaMember(5, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
+
+        public PlayerPocketChanged(int itemId, string itemName, MergeBoardId boardId, int count, PlayerPocketChangeEventType changeType)
+        {
+        }
     }
 }

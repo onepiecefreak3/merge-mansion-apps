@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaSerializableDerived(12)]
     [MetaBlockedMembers(new int[] { 1 })]
+    [MetaSerializableDerived(12)]
     public class MysteryMachineEventProgressCollectAction : IProgressCollectAction, ICollectAction
     {
         [MetaMember(2, (MetaMemberFlags)0)]

@@ -8,8 +8,10 @@ using GameLogic;
 namespace Game.Logic
 {
     [AnalyticsEvent(5, "Gained/gifted item", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "item" })]
     public class PlayerEventGainedItem : PlayerEventBase
     {
+        [Obsolete("Used for compatibility with old event data")]
         [MetaMember(1, (MetaMemberFlags)0)]
         public int ItemId;
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -29,6 +31,12 @@ namespace Game.Logic
         }
 
         public PlayerEventGainedItem(int itemId, bool supportGiven, CurrencySource source, AnalyticsContext context)
+        {
+        }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public string ItemType;
+        public PlayerEventGainedItem(string itemType, bool supportGiven, CurrencySource source, AnalyticsContext context)
         {
         }
     }

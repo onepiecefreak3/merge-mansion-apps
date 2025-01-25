@@ -13,5 +13,6 @@ namespace Game.Logic.TypeCodes
         }
 
         public static ClientSlot BoultonLeague;
+        public static ClientSlot ShortLeaderboardEvent;
     }
 }

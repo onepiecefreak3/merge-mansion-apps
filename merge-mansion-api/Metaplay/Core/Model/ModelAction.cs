@@ -7,8 +7,8 @@ namespace Metaplay.Core.Model
         }
     }
 
-    [MetaSerializable]
     [MetaImplicitMembersDefaultRangeForMostDerivedClass(1, 100)]
+    [MetaSerializable]
     public abstract class ModelAction
     {
         protected ModelAction()

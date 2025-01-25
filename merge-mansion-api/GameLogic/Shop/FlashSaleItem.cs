@@ -7,8 +7,8 @@ using System.Runtime.CompilerServices;
 
 namespace GameLogic.Shop
 {
-    [MetaAllowNoSerializedMembers]
     [MetaSerializableDerived(4)]
+    [MetaAllowNoSerializedMembers]
     public class FlashSaleItem : IShopItem
     {
         private Func<ValueTuple<Currencies, long>> HowMuchPlayerMustPay { get; set; }
@@ -40,5 +40,7 @@ namespace GameLogic.Shop
         public FlashSaleItem(PlayerReward reward, Func<ValueTuple<Currencies, long>> priceGetter, Func<int> amountChecker, Action<IPlayer> afterPurchase, ValueTuple<EnergyType, int, int> bonusEnergy, ShopItemId shopItemId)
         {
         }
+
+        public bool IsPurchasedWithAds { get; set; }
     }
 }

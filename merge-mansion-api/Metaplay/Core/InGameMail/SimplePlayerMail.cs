@@ -15,13 +15,13 @@ namespace Metaplay.Core.InGameMail
         [MetaMember(1, (MetaMemberFlags)0)]
         public LocalizedString Title { get; set; }
 
-        [MetaFormTextArea]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [MetaFormTextArea]
         public LocalizedString Body { get; set; }
 
-        [MetaFormDisplayProps("Attachment")]
         [MetaFormFieldContext("AttachmentRewardList", true)]
         [MetaFormFieldCustomValidator(typeof(InGameMailRewardListValidator))]
+        [MetaFormDisplayProps("Attachment")]
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<MetaPlayerRewardBase> Attachments { get; set; }
         public override string Description { get; }

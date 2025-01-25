@@ -8,8 +8,8 @@ using GameLogic.Player.Director.Config;
 
 namespace GameLogic.Seasonality
 {
-    [MetaBlockedMembers(new int[] { 4 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 4 })]
     public class SeasonInfo : IGameConfigData<SeasonId>, IGameConfigData, IHasGameConfigKey<SeasonId>
     {
         public SeasonId ConfigKey => Id;

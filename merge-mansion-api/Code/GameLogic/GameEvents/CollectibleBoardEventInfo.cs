@@ -20,9 +20,9 @@ using GameLogic.MergeChains;
 
 namespace Code.GameLogic.GameEvents
 {
-    [DefaultMember("Item")]
-    [MetaBlockedMembers(new int[] { 6, 7, 13, 24, 27 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 6, 7, 13, 24, 27 })]
+    [DefaultMember("Item")]
     [MetaActivableConfigData("CollectibleBoardEvent", false, true)]
     public class CollectibleBoardEventInfo : IMetaActivableConfigData<CollectibleBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CollectibleBoardEventId>, IHasGameConfigKey<CollectibleBoardEventId>, IMetaActivableInfo<CollectibleBoardEventId>, ILevelBoardEventInfo, ILevelEventInfo, IBoardEventInfo, IBubbleBonusEvent, IEventSharedInfo
     {

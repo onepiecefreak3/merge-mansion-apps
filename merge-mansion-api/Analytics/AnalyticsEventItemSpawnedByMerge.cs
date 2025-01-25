@@ -11,24 +11,24 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("The item that was spawned from a merge")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("The item that was spawned from a merge")]
         [JsonProperty("item_name")]
         public string ItemName { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("origin_type")]
         [Description("Type of merge that caused the item to spawn")]
+        [JsonProperty("origin_type")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string OriginType { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("origin_item_name")]
         [Description("The item that was merged to spawn the new item")]
+        [JsonProperty("origin_item_name")]
         public string OriginItemName { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("in_bubble")]
         [Description("Whether the item was spawned in a bubble")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public bool InBubble { get; set; }
         public override string EventDescription { get; }
 

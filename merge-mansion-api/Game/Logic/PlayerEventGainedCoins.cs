@@ -7,10 +7,11 @@ using GameLogic;
 namespace Game.Logic
 {
     [AnalyticsEvent(15, "Gained coins", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "coin" })]
     public class PlayerEventGainedCoins : PlayerEventGainedCurrency
     {
-        [MetaOnMemberDeserializationFailure("FixItemType")]
         [MetaMember(100, (MetaMemberFlags)0)]
+        [MetaOnMemberDeserializationFailure("FixItemType")]
         public string itemType;
         public override string EventDescription { get; }
 

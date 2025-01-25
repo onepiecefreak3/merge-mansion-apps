@@ -4,8 +4,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [AnalyticsEvent(1301, null, 1, "A participant joined the division. Either assigned by the league manager, or by the participant themselves.", true, true, false)]
+    [LeaguesEnabledCondition]
     public class DivisionEventParticipantJoined : DivisionEventBase
     {
         [FirebaseAnalyticsIgnore]

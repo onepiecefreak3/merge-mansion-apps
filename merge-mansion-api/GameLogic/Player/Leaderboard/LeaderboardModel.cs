@@ -5,8 +5,8 @@ using System;
 
 namespace GameLogic.Player.Leaderboard
 {
-    [MetaSerializableDerived(3)]
     [SupportedSchemaVersions(1, 3)]
+    [MetaSerializableDerived(3)]
     public class LeaderboardModel : PlayerDivisionModelBase<LeaderboardModel, PlayerDivisionParticipantState, PlayerDivisionScore, PlayerDivisionAvatar>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

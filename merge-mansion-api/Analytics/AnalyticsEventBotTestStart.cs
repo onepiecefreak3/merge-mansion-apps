@@ -10,12 +10,12 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("bot_configuration_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ConfigId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("test_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string TestId { get; set; }
         public override string EventDescription { get; }
 

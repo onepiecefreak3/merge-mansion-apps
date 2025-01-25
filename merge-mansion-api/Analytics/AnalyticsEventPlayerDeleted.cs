@@ -12,14 +12,14 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("Scheduled?")]
-        [JsonProperty("scheduled")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("scheduled")]
+        [Description("Scheduled?")]
         public bool Scheduled { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Deletion status")]
         [JsonProperty("status")]
+        [Description("Deletion status")]
         public PlayerDeletionStatus DeletionStatus { get; set; }
         public override string EventDescription { get; }
 

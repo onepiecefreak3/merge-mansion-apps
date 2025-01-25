@@ -3,9 +3,11 @@ using Metaplay.Core.Player;
 using Metaplay.Core.Model;
 using System;
 using GameLogic;
+using System.Collections.Generic;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "buysell" })]
     [AnalyticsEvent(1, "Currency used", 1, null, true, false, false)]
     public class PlayerEventUsedCurrency : PlayerEventBase
     {
@@ -29,5 +31,7 @@ namespace Game.Logic
         public PlayerEventUsedCurrency(Currencies currency, long amount, CurrencySink currencySink, string spendOnItemType, long totalAfterUse)
         {
         }
+
+        public override IEnumerable<string> KeywordsForEventInstance { get; }
     }
 }

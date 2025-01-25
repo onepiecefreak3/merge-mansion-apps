@@ -13,13 +13,13 @@ namespace Metaplay.Core.Config
         [JsonProperty("appendedItems")]
         private Dictionary<TKey, TInfo> _appendedItems;
         [JsonIgnore]
-        [MaxCollectionSize(2147483647)]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [MaxCollectionSize(2147483647)]
         private List<GameConfigDataContent<TInfo>> _replacedItemsForSerialization { get; set; }
 
         [JsonIgnore]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [MaxCollectionSize(2147483647)]
+        [MetaMember(2, (MetaMemberFlags)0)]
         private List<GameConfigDataContent<TInfo>> _appendedItemsForSerialization { get; set; }
 
         private GameConfigLibraryPatch()

@@ -7,8 +7,8 @@ using System;
 
 namespace Metaplay.Core.League
 {
-    [LeaguesEnabledCondition]
     [MetaReservedMembers(300, 400)]
+    [LeaguesEnabledCondition]
     public abstract class DivisionModelBase<TModel, TParticipantState, TDivisionScore> : MultiplayerModelBase<TModel>, IDivisionModel<TModel>, IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IMultiplayerModel<TModel>, IModel<TModel>
     {
         public IDivisionModelServerListenerCore ServerListenerCore { get; }
@@ -50,8 +50,8 @@ namespace Metaplay.Core.League
         [MetaMember(310, (MetaMemberFlags)0)]
         public IDivisionServerModel ServerModel { get; set; }
 
-        [MetaMember(304, (MetaMemberFlags)0)]
         [Obsolete("Use Participants instead.")]
+        [MetaMember(304, (MetaMemberFlags)0)]
         public Dictionary<EntityId, TParticipantState> LegacyParticipants { get; set; }
 
         [MetaMember(312, (MetaMemberFlags)0)]

@@ -2083,5 +2083,6 @@ namespace GameLogic
         }
 
         public static ShopItemId QuaternaryEnergyItem_ItemRecharge;
+        public static ShopItemId DailyDeal_EnergyChestAds;
     }
 }

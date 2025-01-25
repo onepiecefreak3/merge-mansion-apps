@@ -38,22 +38,23 @@ using GameLogic.Player.Events;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
 using GameLogic.Player.Items;
 using GameLogic.Player.Leaderboard.BoultonLeague;
+using GameLogic.Player.Leaderboard.ShortLeaderboardEvent;
 
 namespace GameLogic.Player
 {
-    [SupportedSchemaVersions(21, 43)]
     [MetaSerializableDerived(1)]
     [MetaReservedMembers(99, 300)]
     [MetaReservedMembers(11, 12)]
     [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 117, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
+    [SupportedSchemaVersions(21, 43)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [Transient]
         [MetaMember(211, (MetaMemberFlags)0)]
+        [Transient]
         [ServerOnly]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
@@ -129,8 +130,8 @@ namespace GameLogic.Player
         [MetaMember(115, (MetaMemberFlags)0)]
         public DailyTaskStatus DailyTaskStatus { get; set; }
 
-        [Transient]
         [MetaMember(201, (MetaMemberFlags)0)]
+        [Transient]
         public MergeBoardId ActiveMergeBoardId { get; set; }
 
         [MetaMember(202, (MetaMemberFlags)0)]
@@ -163,8 +164,8 @@ namespace GameLogic.Player
         [MetaMember(215, (MetaMemberFlags)0)]
         public List<MetaTime> SessionsInTheLast240HoursStartAt { get; set; }
 
-        [MetaMember(216, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(216, (MetaMemberFlags)0)]
         public SupercellIdBindingState SupercellIdBindingState { get; set; }
 
         [Transient]
@@ -177,12 +178,12 @@ namespace GameLogic.Player
         [MetaMember(219, (MetaMemberFlags)0)]
         public HashSet<PlayerSegmentId> ForcedSegments { get; set; }
 
-        [ServerOnly]
         [MetaMember(261, (MetaMemberFlags)0)]
+        [ServerOnly]
         public Queue<PlayerAnalyticsEventDPL2> AnalyticsEvents { get; set; }
 
-        [MetaMember(221, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(221, (MetaMemberFlags)0)]
         public int NumOfResets { get; set; }
 
         [MetaMember(222, (MetaMemberFlags)0)]
@@ -280,9 +281,6 @@ namespace GameLogic.Player
 
         [MetaMember(245, (MetaMemberFlags)0)]
         public PlayerDecorationShopsModel DecorationShops { get; set; }
-
-        [MetaMember(246, (MetaMemberFlags)0)]
-        public HashSet<PlayerModeId> ActiveModes { get; set; }
 
         [MetaMember(247, (MetaMemberFlags)0)]
         [Transient]
@@ -417,5 +415,27 @@ namespace GameLogic.Player
 
         [IgnoreDataMember]
         private MetaDuration MinTimeBetweenTimeZoneUpdate { get; }
+
+        public static int CleanSessionDataAfterDays;
+        [MetaMember(246, (MetaMemberFlags)0)]
+        public HashSet<PlayerModeId> ActiveModesGlobal { get; set; }
+
+        [MetaMember(284, (MetaMemberFlags)0)]
+        public PlayerShortLeaderboardEventsModel ShortLeaderboardEvents { get; set; }
+
+        [ServerOnly]
+        [MetaMember(285, (MetaMemberFlags)0)]
+        public ShortLeaderboardStatus ShortLeaderboardStatus { get; set; }
+
+        [MetaMember(286, (MetaMemberFlags)0)]
+        public ProgressionPackEventsModel ProgressionPackEvents { get; set; }
+
+        [MetaMember(287, (MetaMemberFlags)0)]
+        public Dictionary<MergeBoardId, HashSet<PlayerModeId>> ActiveModesPerBoard { get; set; }
+
+        [IgnoreDataMember]
+        public ShortLeaderboardEventDivisionClientState ShortLeaderboardEventDivisionClientState { get; }
+        public IEnumerable<ProgressionPackEventModel> ActiveProgressionPackEvents { get; }
+        public IEnumerable<ShortLeaderboardEventModel> ActiveShortLeaderboardEvents { get; }
     }
 }

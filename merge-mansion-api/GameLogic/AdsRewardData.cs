@@ -8,22 +8,23 @@ using Metaplay.Core.Offers;
 using System.Runtime.Serialization;
 using System.Collections.Generic;
 using GameLogic.Merge;
+using GameLogic.Player.Rewards;
 
 namespace GameLogic
 {
     [MetaSerializable]
     public class AdsRewardData
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string AdPlacement { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public AdvertisementPlacementId AdPlacementId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string ItemName { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
@@ -38,20 +39,20 @@ namespace GameLogic
         [ExcludeFromGdprExport]
         public int ItemDiamondValue { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public AdsRewardType AdsRewardType { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int ItemCostValue { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public Currencies ItemCostValueType { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public string AdvertiserId { get; set; }
 
         [ExcludeFromGdprExport]
@@ -62,8 +63,8 @@ namespace GameLogic
         [MetaMember(12, (MetaMemberFlags)0)]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [MetaMember(13, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(13, (MetaMemberFlags)0)]
         public Coordinate BubbleCoordinates { get; set; }
 
         [MetaMember(14, (MetaMemberFlags)0)]
@@ -82,6 +83,14 @@ namespace GameLogic
         }
 
         public AdsRewardData(string adsProviderIds, AdvertisementPlacementId adPlacementId, string itemName, string auctionId, ShopItemId shopItemId, int itemDiamondValue, AdsRewardType adsRewardType, int itemCostValue, Currencies itemCostValueType, string advertiserId, string networkId, MergeBoardId mergeBoardId, Coordinate itemCoordinates, AnalyticsContext analyticsContext, OfferPlacementId offerPlacementId, ICollection<MergeBoardAct> productActs)
+        {
+        }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
+        public PlayerReward DailyAdReward { get; set; }
+
+        public AdsRewardData(string adsProviderIds, AdvertisementPlacementId adPlacementId, string itemName, string auctionId, ShopItemId shopItemId, int itemDiamondValue, AdsRewardType adsRewardType, int itemCostValue, Currencies itemCostValueType, string advertiserId, string networkId, MergeBoardId mergeBoardId, Coordinate itemCoordinates, AnalyticsContext analyticsContext, OfferPlacementId offerPlacementId, ICollection<MergeBoardAct> productActs, PlayerReward dailyAdReward)
         {
         }
     }

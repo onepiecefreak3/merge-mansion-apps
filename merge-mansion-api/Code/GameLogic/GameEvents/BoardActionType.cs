@@ -3,8 +3,8 @@ using GameLogic;
 
 namespace Code.GameLogic.GameEvents
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum BoardActionType
     {
         None = 0,

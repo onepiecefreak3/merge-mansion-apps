@@ -24,6 +24,7 @@ using GameLogic.Player.Events;
 using GameLogic.MiniEvents;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
 using GameLogic.Player.Items;
+using Merge;
 
 namespace GameLogic.Player
 {
@@ -101,8 +102,6 @@ namespace GameLogic.Player
 
         BoardInventory GarageBoardProducerInventory { get; }
 
-        HashSet<PlayerModeId> ActiveModes { get; }
-
         DynamicEventTaskStatus DynamicEventTaskStatus { get; }
 
         PlayerModifiersChangedEvent ModifiersChanged { get; set; }
@@ -156,6 +155,16 @@ namespace GameLogic.Player
         RandomPCG RewardContainerRandom { get; }
 
         RandomPCG StackMiniGameRandom { get; }
+
+        HashSet<PlayerModeId> ActiveModesGlobal { get; }
+
+        Dictionary<MergeBoardId, HashSet<PlayerModeId>> ActiveModesPerBoard { get; }
+
+        IEnumerable<ShortLeaderboardEventModel> ActiveShortLeaderboardEvents { get; }
+
+        ProgressionPackEventsModel ProgressionPackEvents { get; }
+
+        PlayerShortLeaderboardEventsModel ShortLeaderboardEvents { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

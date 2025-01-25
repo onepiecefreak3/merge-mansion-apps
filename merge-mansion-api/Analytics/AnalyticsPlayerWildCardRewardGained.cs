@@ -10,14 +10,15 @@ using GameLogic.Player;
 namespace Analytics
 {
     [AnalyticsEvent(207, "Player received a wild card reward", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event", "discovery" })]
     public class AnalyticsPlayerWildCardRewardGained : AnalyticsPlayerRewardGained
     {
+        [Description("ID of the wild card received")]
         [JsonProperty("card_pack_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
-        [Description("ID of the wild card received")]
         public string WildCardId;
-        [JsonProperty("reward_type")]
         [Description("Type of the reward received")]
+        [JsonProperty("reward_type")]
         public sealed override string RewardType { get; }
         public override string EventDescription { get; }
 

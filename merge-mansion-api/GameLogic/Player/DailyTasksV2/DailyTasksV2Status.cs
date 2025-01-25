@@ -19,28 +19,28 @@ namespace GameLogic.Player.DailyTasksV2
         [ExcludeFromGdprExport]
         public MetaTime StartTime { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public MetaTime EndTime { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public List<DailyTaskV2State> Tasks { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
         public int ConsecutiveTimeExtensionCount { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public bool HasPendingFirstImpression { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public bool IsCompletionResolved { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int LastResolvedConsecutiveTimeExtensionNumber { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]
@@ -59,16 +59,16 @@ namespace GameLogic.Player.DailyTasksV2
         [ExcludeFromGdprExport]
         public string LastGeneratedTaskVisibleHotspotHash { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(13, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public List<MetaRef<ItemDefinition>> LastGeneratedTaskRewardItemsHistory { get; set; }
 
         public DailyTasksV2Status()
         {
         }
 
-        [ExcludeFromGdprExport]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public Dictionary<DailyTaskV2Id, DailyTaskV2StateCustomizationForBoultonLeague> BoultonLeagueTasksCustomizations { get; set; }
     }
 }

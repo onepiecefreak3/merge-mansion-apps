@@ -7,6 +7,7 @@ using Analytics;
 
 namespace Game.Logic
 {
+    [AnalyticsEventKeywords(new string[] { "item", "pocket" })]
     [AnalyticsEvent(11, "Item moved from pocket to board", 1, null, true, true, false)]
     public class PlayerMovedItemFromPocketToBoard : AnalyticsServersideEventBase
     {

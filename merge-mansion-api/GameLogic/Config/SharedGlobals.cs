@@ -161,5 +161,8 @@ namespace GameLogic.Config
 
         [MetaMember(67, (MetaMemberFlags)0)]
         public int MaxConsecutiveOfferPopupTriggers { get; set; }
+
+        [MetaMember(68, (MetaMemberFlags)0)]
+        public bool UseAlternateShopButtonLayout { get; set; }
     }
 }

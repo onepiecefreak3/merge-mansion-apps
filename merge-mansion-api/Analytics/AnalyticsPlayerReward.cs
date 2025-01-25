@@ -4,8 +4,8 @@ using System;
 
 namespace Analytics
 {
-    [MetaSerializable]
     [JsonConverter(typeof(AnalyticsTaskRewardJsonConverter))]
+    [MetaSerializable]
     public class AnalyticsPlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -12,13 +12,13 @@ namespace Analytics
         public override AnalyticsEventType EventType { get; }
 
         [JsonProperty("event_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of event in question")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string EventId { get; set; }
 
         [JsonProperty("event_state")]
-        [Description("New state for the event")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("New state for the event")]
         public string State { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
