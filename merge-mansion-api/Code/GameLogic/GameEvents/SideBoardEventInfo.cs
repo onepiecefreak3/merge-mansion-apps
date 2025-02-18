@@ -17,8 +17,8 @@ using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
-    [DefaultMember("Item")]
     [MetaSerializable]
+    [DefaultMember("Item")]
     [MetaActivableConfigData("SideBoardEvent", false, true)]
     public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IHasGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo, IEventSharedInfo
     {

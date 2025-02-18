@@ -13,13 +13,13 @@ namespace Analytics
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ConfigKey")]
         public string ConfigKey;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Interaction type")]
         [JsonProperty("interaction")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string Interaction;
-        [Description("Where did the player come from")]
         [JsonProperty("source")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Where did the player come from")]
         public string Source;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }

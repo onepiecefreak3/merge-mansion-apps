@@ -15,8 +15,8 @@ using GameLogic.Config;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableConfigData("ShortLeaderboardEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("ShortLeaderboardEvent", false, true)]
     public class ShortLeaderboardEventInfo : IMetaActivableConfigData<ShortLeaderboardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ShortLeaderboardEventId>, IHasGameConfigKey<ShortLeaderboardEventId>, IMetaActivableInfo<ShortLeaderboardEventId>, IBoardEventInfo, IEventSharedInfo, IBubbleBonusEvent, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]

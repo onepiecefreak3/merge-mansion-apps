@@ -12,24 +12,24 @@ using Metaplay.Core.Math;
 namespace GameLogic.Banks
 {
     [MetaSerializable]
-    [MetaActivableConfigData("CurrencyBankEvent", false, true)]
     [MetaBlockedMembers(new int[] { 8 })]
+    [MetaActivableConfigData("CurrencyBankEvent", false, true)]
     public class CurrencyBankInfo : IMetaActivableConfigData<CurrencyBankId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<CurrencyBankId>, IHasGameConfigKey<CurrencyBankId>, IMetaActivableInfo<CurrencyBankId>, IValidatable
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the bank")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [Description("Localisation key of bank name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Localisation key of bank name")]
         public string DisplayName { get; set; }
 
         [Description("Description about the bank")]
         [MetaMember(3, (MetaMemberFlags)0)]
         public string Description { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Store product to purchase")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public MetaRef<InAppProductInfo> InAppProductInfo { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -40,8 +40,8 @@ namespace GameLogic.Banks
         [Description("Minimum stored amount required for purchasing")]
         public int MinBuyAmount { get; set; }
 
-        [Description("Maximun stored amount")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("Maximun stored amount")]
         public int MaxBuyAmount { get; set; }
 
         [MetaMember(9, (MetaMemberFlags)0)]
@@ -60,12 +60,12 @@ namespace GameLogic.Banks
         [MetaMember(12, (MetaMemberFlags)0)]
         public F64 MultiplierMerge { get; set; }
 
-        [Description("Multiplier used to fill the bank when completing tasks")]
         [MetaMember(13, (MetaMemberFlags)0)]
+        [Description("Multiplier used to fill the bank when completing tasks")]
         public F64 MultiplierCompleteTask { get; set; }
 
-        [Description("Multiplier used to fill the bank when spawning items using energy")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [Description("Multiplier used to fill the bank when spawning items using energy")]
         public F64 MultiplierSpawnItemUsingEnergy { get; set; }
 
         [Description("Duration of the hidden preview state")]
@@ -84,8 +84,8 @@ namespace GameLogic.Banks
         [Description("Skip hidden preview on first activation")]
         public bool SkipHiddenPreviewOnFirstActivation { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [Description("Max number of currency banks purchases to allow this one to be activated")]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public int MaxNumOfStashesPerPlayer { get; set; }
 
         [Description("Max number of currency banks activated to allow this one to be activated")]
@@ -103,8 +103,8 @@ namespace GameLogic.Banks
         {
         }
 
-        [MetaMember(21, (MetaMemberFlags)0)]
         [Description("Recurrence - repeat time cycle after not full state start date")]
+        [MetaMember(21, (MetaMemberFlags)0)]
         public MetaDuration? CustomRecurrence { get; set; }
 
         public CurrencyBankInfo(CurrencyBankId currencyBankId, string displayName, string description, MetaRef<InAppProductInfo> inAppProductInfo, Currencies currencyType, int minBuyAmount, int maxBuyAmount, F64 multiplierMerge, F64 multiplierCompleteTask, F64 multiplierSpawnItemUsingEnergy, int infoPopupItemId, List<int> mergeableItemTypes, MetaDuration? durationStateHiddenPreview, bool skipHiddenPreviewOnFirstActivation, MetaDuration? durationStateNotFull, MetaDuration? durationStateFull, MetaActivableParams activableParams, int maxNumOfStashesPerPlayer, int? maxActivationsGlobal, MetaDuration? customRecurrence)

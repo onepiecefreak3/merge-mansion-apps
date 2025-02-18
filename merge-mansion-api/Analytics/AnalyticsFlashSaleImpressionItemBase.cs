@@ -27,9 +27,9 @@ namespace Analytics
         {
         }
 
+        [MetaMember(102, (MetaMemberFlags)0)]
         [JsonProperty("attachment")]
         [Description("Attachment")]
-        [MetaMember(102, (MetaMemberFlags)0)]
         public string Attachment { get; set; }
 
         [MetaMember(103, (MetaMemberFlags)0)]

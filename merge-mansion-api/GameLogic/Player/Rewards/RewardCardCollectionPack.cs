@@ -16,8 +16,8 @@ namespace GameLogic.Player.Rewards
         [MetaMember(102, (MetaMemberFlags)0)]
         public FallbackPlayerRewardId FallbackPlayerRewardId { get; set; }
 
-        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         [MetaMember(103, (MetaMemberFlags)0)]
+        [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
         public int Amount { get; set; }
 
         public RewardCardCollectionPack()

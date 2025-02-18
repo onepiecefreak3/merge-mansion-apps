@@ -12,14 +12,14 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("leaderboard_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Leaderboard division id")]
         public EntityId DivisionId { get; set; }
 
-        [JsonProperty("event_id")]
-        [Description("Leaderboard event id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Leaderboard event id")]
+        [JsonProperty("event_id")]
         public string EventId { get; set; }
 
         [Description("Player Id")]
@@ -27,29 +27,29 @@ namespace Analytics
         [JsonProperty("player_id")]
         public string PlayerId { get; set; }
 
+        [Description("Placement before")]
         [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("placement_before")]
-        [Description("Placement before")]
         public int PlacementBefore { get; set; }
 
-        [JsonProperty("placement_after")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [Description("Placement after")]
+        [JsonProperty("placement_after")]
         public int PlacementAfter { get; set; }
 
-        [JsonProperty("score")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("score")]
         [Description("Score")]
         public int Score { get; set; }
 
-        [JsonProperty("total_score")]
-        [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Score")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("total_score")]
         public int TotalScore { get; set; }
 
-        [Description("Source of score")]
         [JsonProperty("source_action")]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [Description("Source of score")]
         public string SourceAction { get; set; }
         public override string EventDescription { get; }
 
@@ -61,9 +61,9 @@ namespace Analytics
         {
         }
 
+        [JsonProperty("division_rank")]
         [Description("Leaderboard division rank")]
         [MetaMember(9, (MetaMemberFlags)0)]
-        [JsonProperty("division_rank")]
         public int DivisionRank { get; set; }
 
         [Description("Bot type")]

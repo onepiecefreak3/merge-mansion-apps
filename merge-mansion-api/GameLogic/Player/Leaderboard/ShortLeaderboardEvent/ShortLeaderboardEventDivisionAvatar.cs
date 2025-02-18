@@ -5,8 +5,8 @@ using Metaplay.Core.Player;
 
 namespace GameLogic.Player.Leaderboard.ShortLeaderboardEvent
 {
-    [PlayerLeaguesEnabledCondition]
     [MetaSerializable]
+    [PlayerLeaguesEnabledCondition]
     [MetaSerializableDerived(201)]
     public class ShortLeaderboardEventDivisionAvatar : PlayerDivisionAvatarBase, IMetacoreLeagueAvatar
     {
@@ -17,16 +17,16 @@ namespace GameLogic.Player.Leaderboard.ShortLeaderboardEvent
         [ServerOnly]
         public string AssociationId { get; set; }
 
-        [ServerOnly]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [ServerOnly]
         public PlayerSegmentId PlayerSegmentId { get; set; }
 
         [ServerOnly]
         [MetaMember(4, (MetaMemberFlags)0)]
         public int SegmentIdPriority { get; set; }
 
-        [ServerOnly]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [ServerOnly]
         public string BotType { get; set; }
 
         private ShortLeaderboardEventDivisionAvatar()

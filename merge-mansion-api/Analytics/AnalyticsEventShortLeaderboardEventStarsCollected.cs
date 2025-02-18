@@ -23,13 +23,13 @@ namespace Analytics
         public int StageNumber { get; set; }
 
         [JsonProperty("rank")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Rank (1-based) that player had at end of stage.")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int Rank { get; set; }
 
-        [JsonProperty("leaderboard_stars")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Number of stars collected.")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("leaderboard_stars")]
         public int LeaderboardStars { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -38,17 +38,17 @@ namespace Analytics
         public int LeaderboardStarsSaldo { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]
-        [Description("Number of gems spent to enter the stage. 0 if free.")]
         [JsonProperty("stage_cost")]
+        [Description("Number of gems spent to enter the stage. 0 if free.")]
         public long StageCost { get; set; }
 
-        [JsonProperty("stage_replay")]
-        [Description("How many times the stage has been replayed. 0 if this is the first time.")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("How many times the stage has been replayed. 0 if this is the first time.")]
+        [JsonProperty("stage_replay")]
         public int StageReplay { get; set; }
 
-        [Description("Score player had during this stage.")]
         [JsonProperty("score")]
+        [Description("Score player had during this stage.")]
         [MetaMember(8, (MetaMemberFlags)0)]
         public long Score { get; set; }
         public override string EventDescription { get; }

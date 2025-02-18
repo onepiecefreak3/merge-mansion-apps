@@ -13,13 +13,13 @@ namespace Analytics
         public sealed override AnalyticsEventType EventType { get; }
 
         [JsonProperty("event_state")]
-        [Description("New state of the event")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("New state of the event")]
         public AnalyticsEventEventStateChanged.EventStateChangeType EventState { get; set; }
 
-        [Description("Merge board corresponding to the event")]
         [JsonProperty("event_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Merge board corresponding to the event")]
         public MergeBoardId BoardId { get; set; }
 
         [Description("Ended by customer support?")]

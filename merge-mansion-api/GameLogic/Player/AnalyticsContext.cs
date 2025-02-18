@@ -6,8 +6,8 @@ using System;
 namespace GameLogic.Player
 {
     [MetaDeserializationConvertFromConcreteDerivedType(typeof(DefaultAnalyticsContext))]
-    [MetaSerializable]
     [MetaReservedMembers(1, 9)]
+    [MetaSerializable]
     public abstract class AnalyticsContext : IRewardSource
     {
         [MetaMember(1, (MetaMemberFlags)0)]

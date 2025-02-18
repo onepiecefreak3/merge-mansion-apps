@@ -6,12 +6,12 @@ using Merge;
 
 namespace Game.Logic
 {
-    [AnalyticsEventKeywords(new string[] { "item" })]
     [AnalyticsEvent(10, "Support removed item", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "item" })]
     public class PlayerEventSupportRemovedItem : PlayerEventBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Obsolete("Item information now stored in ItemType. ItemId kept for backwards compatibility")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int ItemId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

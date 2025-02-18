@@ -12,19 +12,19 @@ namespace Analytics
         public override string EventDescription { get; }
         public override AnalyticsEventType EventType { get; }
 
+        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
         [Description("Id of the event")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         public string EventId { get; set; }
 
-        [Description("The ID of the event day")]
         [JsonProperty("day_id")]
+        [Description("The ID of the event day")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public string DayId { get; set; }
 
-        [Description("A dictionary of the active tasks for the day")]
-        [JsonProperty("active_tasks")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("active_tasks")]
+        [Description("A dictionary of the active tasks for the day")]
         public string ActiveTasks { get; set; }
 
         public AnalyticsDailyScoopDayStartedEvent()

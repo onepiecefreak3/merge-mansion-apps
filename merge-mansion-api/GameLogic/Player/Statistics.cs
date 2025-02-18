@@ -7,8 +7,8 @@ using Merge;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 2, 3, 4, 5, 6, 7, 8, 11, 12, 13, 14 })]
+    [MetaSerializable]
     public class Statistics
     {
         [MetaMember(16, (MetaMemberFlags)0)]

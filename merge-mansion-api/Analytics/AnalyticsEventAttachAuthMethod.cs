@@ -11,14 +11,14 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Platform whose auth method was attached")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("platform")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Platform whose auth method was attached")]
         public string Platform { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("attached_auth_methods")]
         [Description("Attached authentication methods")]
+        [JsonProperty("attached_auth_methods")]
         public string AuthenticationMethods { get; set; }
 
         [JsonProperty(PropertyName = "auth_status", DefaultValueHandling = (DefaultValueHandling)0)]

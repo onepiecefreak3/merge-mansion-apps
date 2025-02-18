@@ -11,8 +11,8 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("system_info")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public UnitySystemInfo SystemInfo { get; set; }
         public override string EventDescription { get; }
 

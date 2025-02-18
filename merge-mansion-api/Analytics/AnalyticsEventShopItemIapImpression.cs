@@ -8,35 +8,35 @@ using Metaplay.Core.Offers;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 6 })]
     [AnalyticsEvent(192, "Shop Item IAP Impression", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 6 })]
     public class AnalyticsEventShopItemIapImpression : AnalyticsServersideEventBase
     {
         public override AnalyticsEventType EventType { get; }
 
         [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("item_name")]
         [Description("Item Id")]
+        [JsonProperty("item_name")]
         public InAppProductId ShopItemIapId { get; set; }
 
-        [Description("Platform Id")]
-        [JsonProperty("iap_platform_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("iap_platform_id")]
+        [Description("Platform Id")]
         public string PlatformId { get; set; }
 
-        [Description("Placement Id")]
-        [JsonProperty("placement")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("placement")]
+        [Description("Placement Id")]
         public OfferPlacementId PlacementId { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("automatic_show")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Shown automatically")]
         public bool AutomaticallyShown { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
-        [Description("Impression Id")]
         [JsonProperty("impression_id")]
+        [Description("Impression Id")]
         public string ImpressionId { get; set; }
         public override string EventDescription { get; }
 

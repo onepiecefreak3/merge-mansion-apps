@@ -7,8 +7,8 @@ using Metaplay.Core.Math;
 
 namespace GameLogic.DailyTasksV2
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3 })]
+    [MetaSerializable]
     public class DailyTasksV2Settings : GameConfigKeyValue<DailyTasksV2Settings>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

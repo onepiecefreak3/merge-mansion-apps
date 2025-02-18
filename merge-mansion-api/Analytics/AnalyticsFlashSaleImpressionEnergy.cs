@@ -19,8 +19,8 @@ namespace Analytics
         [JsonProperty("energy_type")]
         public EnergyType EnergyType { get; set; }
 
-        [JsonProperty("energy_amount")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("energy_amount")]
         public int EnergyAmount { get; set; }
 
         public AnalyticsFlashSaleImpressionEnergy()

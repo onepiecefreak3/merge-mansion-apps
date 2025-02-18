@@ -9,30 +9,30 @@ using Metaplay.Core;
 namespace Analytics
 {
     [MetaBlockedMembers(new int[] { 1 })]
-    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(164, "Leaderboard event score changed", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsEventLeaderboardEventScoreChanged : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
         [Description("Leaderboard event where score changed")]
-        [JsonProperty("event_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
         public LeaderboardEventId EventId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Action that caused score change")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("source_action")]
         public LeaderboardEventScoreChangeSourceAction SourceAction { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        [JsonProperty("score_change")]
         [Description("How much score changed")]
+        [JsonProperty("score_change")]
         public int ScoreChange { get; set; }
 
-        [JsonProperty("total_score")]
         [Description("Total score after change")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("total_score")]
         public int TotalScore { get; set; }
 
         [JsonProperty("leaderboard_id")]

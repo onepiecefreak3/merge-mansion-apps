@@ -5,8 +5,8 @@ using System;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(10)]
     [MetaFormDeprecated]
+    [MetaSerializableDerived(10)]
     public class LinkWithTimed12TraitVerificationReward : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

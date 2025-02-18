@@ -6,8 +6,8 @@ using GameLogic;
 
 namespace Game.Logic
 {
-    [AnalyticsEventKeywords(new string[] { "item", "buysell" })]
     [AnalyticsEvent(2, "Item sold", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "item", "buysell" })]
     [Obsolete("Item sold no longer used, combined with coins gained", false)]
     public class PlayerEventSoldItem : PlayerEventBase
     {

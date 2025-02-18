@@ -15,19 +15,19 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
+        [JsonProperty("goal_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the opened hotspot")]
-        [JsonProperty("goal_id")]
         public HotspotId HotspotId { get; set; }
 
+        [JsonProperty("area_name")]
         [Description("Area that was unlocked")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("area_name")]
         public string AreaName { get; set; }
 
-        [Description("How many merge goals open")]
         [JsonProperty("merge_goals_open")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("How many merge goals open")]
         public int MergeGoalsOpen { get; set; }
         public override string EventDescription { get; }
 
@@ -39,19 +39,19 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("map_spot_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("map_spot_id")]
         [Description("MapSpot where the hotspot is located")]
         public string MapSpot { get; set; }
 
-        [JsonProperty("task_group_id")]
         [Description("Multistep Group Id of the hotspot task (may be empty)")]
+        [JsonProperty("task_group_id")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public string TaskGroup { get; set; }
 
-        [JsonProperty("bonus_time_left")]
         [MetaMember(7, (MetaMemberFlags)0)]
         [Description("How much time is left for bonus")]
+        [JsonProperty("bonus_time_left")]
         public double? BonusTimeLeft { get; set; }
 
         [Description("Possible bonus rewards")]
@@ -60,8 +60,8 @@ namespace Analytics
         public AnalyticsPlayerBonusReward[] BonusRewards { get; set; }
 
         [Description("Character id of the hotspot task (may be empty)")]
-        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("character_id")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public string Character { get; set; }
     }
 }

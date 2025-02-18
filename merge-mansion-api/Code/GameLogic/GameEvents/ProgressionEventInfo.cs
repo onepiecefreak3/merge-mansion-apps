@@ -16,12 +16,12 @@ using GameLogic.Cutscenes;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaBlockedMembers(new int[] { 7, 8 })]
-    [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
-    [MetaActivableConfigData("ProgressionEvent", false, true)]
-    [MetaBlockedMembers(new int[] { 11, 20, 24, 25, 26, 27, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 })]
-    [MetaBlockedMembers(new int[] { 5, 6 })]
     [MetaSerializable]
+    [MetaActivableConfigData("ProgressionEvent", false, true)]
+    [MetaBlockedMembers(new int[] { 5, 6 })]
+    [MetaBlockedMembers(new int[] { 7, 8 })]
+    [MetaBlockedMembers(new int[] { 11, 20, 24, 25, 26, 27, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48 })]
+    [MetaBlockedMembers(new int[] { 14, 15, 16, 17, 18, 30 })]
     public class ProgressionEventInfo : IMetaActivableConfigData<ProgressionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<ProgressionEventId>, IHasGameConfigKey<ProgressionEventId>, IMetaActivableInfo<ProgressionEventId>, IValidatable, IBubbleBonusEvent, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -6,8 +6,8 @@ using GameLogic;
 
 namespace Game.Logic
 {
-    [AnalyticsEventKeywords(new string[] { "energy" })]
     [AnalyticsEvent(13, "Gained energy", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "energy" })]
     public class PlayerEventGainedEnergy : PlayerEventGainedCurrency
     {
         [MetaMember(100, (MetaMemberFlags)0)]

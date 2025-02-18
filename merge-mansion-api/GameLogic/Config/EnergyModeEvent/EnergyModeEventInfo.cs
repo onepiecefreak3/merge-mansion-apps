@@ -8,8 +8,8 @@ using GameLogic.Player.Requirements;
 
 namespace GameLogic.Config.EnergyModeEvent
 {
-    [MetaSerializable]
     [MetaActivableConfigData("EnergyModeEvent", false, true)]
+    [MetaSerializable]
     public class EnergyModeEventInfo : IMetaActivableConfigData<EnergyModeEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EnergyModeEventId>, IHasGameConfigKey<EnergyModeEventId>, IMetaActivableInfo<EnergyModeEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

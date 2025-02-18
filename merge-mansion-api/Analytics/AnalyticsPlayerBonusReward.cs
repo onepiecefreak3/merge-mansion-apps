@@ -8,19 +8,19 @@ namespace Analytics
     [MetaSerializable]
     public class AnalyticsPlayerBonusReward
     {
-        [Description("Type of the reward")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("reward_type")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Type of the reward")]
         public string Type { get; set; }
 
-        [Description("Id/Name of the reward")]
         [JsonProperty("reward_id")]
+        [Description("Id/Name of the reward")]
         [MetaMember(2, (MetaMemberFlags)0)]
         public string Id { get; set; }
 
+        [JsonProperty("reward_amount")]
         [Description("Reward amount")]
         [MetaMember(3, (MetaMemberFlags)0)]
-        [JsonProperty("reward_amount")]
         public long Amount { get; set; }
 
         public AnalyticsPlayerBonusReward()

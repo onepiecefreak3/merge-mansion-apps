@@ -12,8 +12,8 @@ namespace Game.Logic
     [AnalyticsEventKeywords(new string[] { "item", "pocket" })]
     public class PlayerPocketChanged : AnalyticsServersideEventBase
     {
-        [Obsolete("Item information now stored in ItemName. Item Id kept for backwards compatibility")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Obsolete("Item information now stored in ItemName. Item Id kept for backwards compatibility")]
         public int Item { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

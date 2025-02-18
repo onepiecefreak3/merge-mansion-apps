@@ -9,20 +9,20 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(206, "Player received a card pack reward", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsPlayerCardPackRewardGained : AnalyticsPlayerRewardGained
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the card pack received")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
         public string CardPackId;
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Number of card packs received")]
         [JsonProperty("amount")]
+        [Description("Number of card packs received")]
         public int Amount;
-        [Description("Type of the reward received")]
         [JsonProperty("reward_type")]
+        [Description("Type of the reward received")]
         public sealed override string RewardType { get; }
         public override string EventDescription { get; }
 

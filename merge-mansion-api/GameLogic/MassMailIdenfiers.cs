@@ -5,8 +5,8 @@ using System;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [TypeConverter(typeof(EnumStringConverter<MassMailIdenfiers>))]
+    [MetaSerializable]
     public enum MassMailIdenfiers
     {
         None = 0,

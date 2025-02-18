@@ -10,28 +10,28 @@ using Metaplay.Core;
 
 namespace Game.Logic
 {
-    [MetaSerializableDerived(10)]
     [MetaReservedMembers(0, 80)]
+    [MetaSerializableDerived(10)]
     public class MergeMansionInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         private static int ShortTopicLimit;
         private static int ShortContentLimit;
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaValidateRequired]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public LocalizedString ExcerptTopic { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        [MetaValidateRequired]
         [MetaFormTextArea]
+        [MetaValidateRequired]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public LocalizedString ExcerptContent { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [MetaValidateRequired]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public LocalizedString FullTopic { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
-        [MetaValidateRequired]
         [MetaFormTextArea]
+        [MetaValidateRequired]
         public LocalizedString FullContent { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -44,16 +44,16 @@ namespace Game.Logic
         [MetaMember(7, (MetaMemberFlags)0)]
         public List<PlayerReward> Attachments { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public long EndDay { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public int BroadcastNo { get; set; }
 
-        [MetaMember(10, (MetaMemberFlags)0)]
         [MetaFormFieldCustomValidator(typeof(MergeMansionInGameMail.SocialMediaPlatformValidator))]
+        [MetaMember(10, (MetaMemberFlags)0)]
         public List<SocialMediaPlatform> SocialMediaButtonsToShow { get; set; }
 
         [MetaFormNotEditable]

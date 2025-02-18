@@ -5,8 +5,8 @@ using Metaplay.Core;
 
 namespace Merge
 {
-    [MetaFormConfigLibraryItemReference(typeof(BoardInfo))]
     [MetaSerializable]
+    [MetaFormConfigLibraryItemReference(typeof(BoardInfo))]
     public class MergeBoardId : StringId<MergeBoardId>
     {
         public static MergeBoardId Garage;

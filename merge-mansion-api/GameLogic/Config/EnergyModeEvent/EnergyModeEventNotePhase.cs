@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Config.EnergyModeEvent
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum EnergyModeEventNotePhase
     {
         Start = 0,

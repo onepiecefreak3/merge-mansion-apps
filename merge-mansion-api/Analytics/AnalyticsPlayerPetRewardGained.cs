@@ -9,20 +9,20 @@ using GameLogic.Player;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(178, "Player received a pet reward", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsPlayerPetRewardGained : AnalyticsPlayerRewardGained
     {
-        [Description("ID of the pet received")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("pet_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("ID of the pet received")]
         public string PetId;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Number of pets received")]
         [JsonProperty("amount")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount;
-        [Description("Type of the reward received")]
         [JsonProperty("reward_type")]
+        [Description("Type of the reward received")]
         public sealed override string RewardType { get; }
         public override string EventDescription { get; }
 

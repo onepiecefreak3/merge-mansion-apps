@@ -6,8 +6,8 @@ using System;
 
 namespace GameLogic.GameFeatures
 {
-    [MetaSerializable]
     [DefaultMember("Item")]
+    [MetaSerializable]
     public class GameFeaturesStates
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -17,20 +17,20 @@ namespace Game.Cloud.Webshop
         [MetaMember(101, (MetaMemberFlags)0)]
         public bool IsConsumed { get; set; }
 
-        [MetaMember(102, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(102, (MetaMemberFlags)0)]
         public int ReferencePrice { get; set; }
 
-        [MetaMember(103, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(103, (MetaMemberFlags)0)]
         public string ReferenceCurrency { get; set; }
 
         [MetaMember(104, (MetaMemberFlags)0)]
         [ServerOnly]
         public MetaTime? ConsumeTime { get; set; }
 
-        [ServerOnly]
         [MetaMember(105, (MetaMemberFlags)0)]
+        [ServerOnly]
         public int Price { get; set; }
 
         [ServerOnly]

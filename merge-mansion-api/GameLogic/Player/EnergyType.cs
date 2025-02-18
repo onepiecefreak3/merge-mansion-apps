@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Player
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum EnergyType
     {
         Default = 0,

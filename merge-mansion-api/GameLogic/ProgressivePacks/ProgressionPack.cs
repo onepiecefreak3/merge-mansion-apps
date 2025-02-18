@@ -25,7 +25,6 @@ namespace GameLogic.ProgressivePacks
 
         [MetaMember(7, (MetaMemberFlags)0)]
         public List<string> ObjectiveParameter { get; set; }
-
         public ProgressionPackId ConfigKey => OfferId;
 
         public ProgressionPack()

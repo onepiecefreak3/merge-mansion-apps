@@ -11,14 +11,14 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("broadcast_id")]
         [Description("Broadcast Id of the started survey")]
+        [JsonProperty("broadcast_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int BroadcastId { get; set; }
 
-        [JsonProperty("survey_type")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Survey Type")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("survey_type")]
         public string SurveyType { get; set; }
         public override string EventDescription { get; }
 

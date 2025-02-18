@@ -24,29 +24,29 @@ namespace Analytics
         [MetaMember(2, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("auction_id")]
         [Description("Auction Id")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string AuctionId { get; set; }
 
-        [Description("Ad unit")]
-        [JsonProperty("ad_unit")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("ad_unit")]
+        [Description("Ad unit")]
         public string AdUnit { get; set; }
 
+        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("ad_network")]
         [Description("Ad network")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         public string AdNetwork { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("instance_name")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         [Description("Instance name")]
         public string InstanceName { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]
-        [JsonProperty("instance_id")]
         [Description("Instance Id")]
+        [JsonProperty("instance_id")]
         public string InstanceId { get; set; }
 
         [JsonProperty("country")]
@@ -59,24 +59,24 @@ namespace Analytics
         [Description("Revenue")]
         public double Revenue { get; set; }
 
-        [Description("Lifetime revenue")]
         [JsonProperty("lifetime_revenue")]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [Description("Lifetime revenue")]
         public double LifetimeRevenue { get; set; }
 
-        [JsonProperty("precision")]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [JsonProperty("precision")]
         [Description("Precision")]
         public string Precision { get; set; }
 
+        [Description("Segment name")]
         [MetaMember(13, (MetaMemberFlags)0)]
         [JsonProperty("segment_name")]
-        [Description("Segment name")]
         public string SegmentName { get; set; }
 
-        [Description("Encrypted CPM")]
-        [JsonProperty("encrypted_cpm")]
         [MetaMember(14, (MetaMemberFlags)0)]
+        [JsonProperty("encrypted_cpm")]
+        [Description("Encrypted CPM")]
         public string EncryptedCpm { get; set; }
         public override string EventDescription { get; }
 
@@ -89,8 +89,8 @@ namespace Analytics
         }
 
         [Description("Item Diamond value")]
-        [JsonProperty("item_diamond_price")]
         [MetaMember(15, (MetaMemberFlags)0)]
+        [JsonProperty("item_diamond_price")]
         public int ItemDiamondValue { get; set; }
 
         public AnalyticsEventAdFinished(string adPlacement, string itemName, string auctionId, string adUnit, string adNetwork, string instanceName, string instanceId, string country, double revenue, double lifetimeRevenue, string precision, string segmentName, string encryptedCpm, int itemDiamondValue)
@@ -108,13 +108,13 @@ namespace Analytics
         public Currencies ItemCostValueType { get; set; }
 
         [Description("Amount of time skipped for a producer")]
-        [JsonProperty("time_skipped_amount")]
         [MetaMember(18, (MetaMemberFlags)0)]
+        [JsonProperty("time_skipped_amount")]
         public string TimeSkippedAmount { get; set; }
 
-        [MetaMember(19, (MetaMemberFlags)0)]
         [Description("Diamond value of time skipped")]
         [JsonProperty("time_skipped_diamond_value")]
+        [MetaMember(19, (MetaMemberFlags)0)]
         public int TimeSkippedDiamondValue { get; set; }
 
         [JsonProperty("time_remaining_amount")]

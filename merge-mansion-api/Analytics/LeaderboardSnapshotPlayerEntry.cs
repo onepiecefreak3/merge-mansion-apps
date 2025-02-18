@@ -9,9 +9,9 @@ namespace Analytics
     [MetaSerializable]
     public class LeaderboardSnapshotPlayerEntry
     {
-        [Description("Rank")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("rank")]
+        [Description("Rank")]
         public int Rank { get; set; }
 
         [JsonProperty("points")]
@@ -20,8 +20,8 @@ namespace Analytics
         public int Points { get; set; }
 
         [Description("Association Id")]
-        [JsonProperty("association_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("association_id")]
         public string AssociationId { get; set; }
 
         private LeaderboardSnapshotPlayerEntry()
@@ -32,9 +32,9 @@ namespace Analytics
         {
         }
 
+        [JsonProperty("bot_type")]
         [Description("Bot Type")]
         [MetaMember(5, (MetaMemberFlags)0)]
-        [JsonProperty("bot_type")]
         public string BotType { get; set; }
 
         public LeaderboardSnapshotPlayerEntry(string associationId, int rank, int points, string botType)

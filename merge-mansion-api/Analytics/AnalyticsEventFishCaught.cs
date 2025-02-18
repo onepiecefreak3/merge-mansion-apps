@@ -15,19 +15,19 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("board_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Id of the board where the fish was caught")]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [JsonProperty("item_name")]
         [Description("Name of the item that was caught")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
 
+        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("weight_category")]
         [Description("Weight category of the fish that was caught")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         public WeightCategory WeightCategory { get; set; }
 
         [Description("Weight of the fish that was caught")]
@@ -35,18 +35,18 @@ namespace Analytics
         [JsonProperty("weight")]
         public double Weight { get; set; }
 
-        [Description("True if this fish was a personal weight high score for the player, false otherwise")]
         [JsonProperty("personal_high_score")]
+        [Description("True if this fish was a personal weight high score for the player, false otherwise")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public bool PersonalHighScore { get; set; }
 
-        [Description("True if this fish beat the previous \"world record\" (configured limit, or personal high score if that's higher), false otherwise")]
         [JsonProperty("world_high_score")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("True if this fish beat the previous \"world record\" (configured limit, or personal high score if that's higher), false otherwise")]
         public bool WorldHighScore { get; set; }
 
-        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [MetaMember(7, (MetaMemberFlags)0)]
         public string Context { get; set; }
         public override string EventDescription { get; }
 

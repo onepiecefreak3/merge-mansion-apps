@@ -42,20 +42,20 @@ using GameLogic.Player.Leaderboard.ShortLeaderboardEvent;
 
 namespace GameLogic.Player
 {
+    [SupportedSchemaVersions(21, 43)]
     [MetaSerializableDerived(1)]
     [MetaReservedMembers(99, 300)]
     [MetaReservedMembers(11, 12)]
     [MetaBlockedMembers(new int[] { 6, 108, 110, 112, 114, 116, 117, 200, 205, 208, 220, 224, 239, 241, 251, 233, 274 })]
-    [SupportedSchemaVersions(21, 43)]
     public class PlayerModel : PlayerModelBase<PlayerModel, PlayerStatisticsCore, PlayerMergeMansionOffersGroupModel, PlayerGuildStateCore>, IPlayer, IGenerationContext
     {
         public static int MaxLoginCounts;
         public static int MaxEnergySpentDays;
         public static int MaxMoneySpentDays;
         public static int TicksPerSecond;
-        [MetaMember(211, (MetaMemberFlags)0)]
         [Transient]
         [ServerOnly]
+        [MetaMember(211, (MetaMemberFlags)0)]
         public Dictionary<MergeBoardId, MetaTime> BoardActivationsLeftAnalyticsEvents;
         [IgnoreDataMember]
         private ICollection<MergeBoardAct> updateActs;
@@ -84,8 +84,8 @@ namespace GameLogic.Player
         [IgnoreDataMember]
         public CurrencyBankModel CurrencyBankModel { get; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public RandomPCG Random { get; set; }
 
         [MetaMember(99, (MetaMemberFlags)0)]
@@ -116,8 +116,8 @@ namespace GameLogic.Player
         [ExcludeFromGdprExport]
         public BoardInventory GarageBoardInventory { get; set; }
 
-        [MetaMember(109, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(109, (MetaMemberFlags)0)]
         public MergeBoard GarageMergeBoard { get; set; }
 
         [MetaMember(111, (MetaMemberFlags)0)]
@@ -282,8 +282,8 @@ namespace GameLogic.Player
         [MetaMember(245, (MetaMemberFlags)0)]
         public PlayerDecorationShopsModel DecorationShops { get; set; }
 
-        [MetaMember(247, (MetaMemberFlags)0)]
         [Transient]
+        [MetaMember(247, (MetaMemberFlags)0)]
         public bool IsProductionEnvironment { get; set; }
         public DynamicEventTaskStatus DynamicEventTaskStatus { get; set; }
         public PlayerModifiersChangedEvent ModifiersChanged { get; set; }
@@ -369,8 +369,8 @@ namespace GameLogic.Player
         [MetaMember(272, (MetaMemberFlags)0)]
         public PlayerDailyScoopEventModel DailyScoopEvents { get; set; }
 
-        [MetaMember(273, (MetaMemberFlags)0)]
         [ServerOnly]
+        [MetaMember(273, (MetaMemberFlags)0)]
         public List<int> MassMailsReceived { get; set; }
 
         [IgnoreDataMember]

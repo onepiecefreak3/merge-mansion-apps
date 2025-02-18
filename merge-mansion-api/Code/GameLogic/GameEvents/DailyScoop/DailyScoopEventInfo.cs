@@ -12,8 +12,8 @@ using GameLogic.Config;
 
 namespace Code.GameLogic.GameEvents.DailyScoop
 {
-    [MetaSerializable]
     [MetaActivableConfigData("DailyScoopEvent", false, true)]
+    [MetaSerializable]
     public class DailyScoopEventInfo : IMetaActivableConfigData<DailyScoopEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<DailyScoopEventId>, IHasGameConfigKey<DailyScoopEventId>, IMetaActivableInfo<DailyScoopEventId>, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]

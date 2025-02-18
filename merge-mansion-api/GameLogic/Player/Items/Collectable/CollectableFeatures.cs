@@ -3,8 +3,8 @@ using System;
 
 namespace GameLogic.Player.Items.Collectable
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 3 })]
+    [MetaSerializable]
     public class CollectableFeatures : ICollectableFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]

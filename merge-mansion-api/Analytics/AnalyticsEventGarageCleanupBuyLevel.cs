@@ -6,20 +6,20 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "event", "buysell" })]
     [AnalyticsEvent(145, "Garage Cleanup event level bought", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event", "buysell" })]
     public class AnalyticsEventGarageCleanupBuyLevel : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Garage cleanup event id")]
         [JsonProperty("event_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Garage cleanup event id")]
         public string EventId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("board_level")]
         [Description("Level of the board that was just bought")]
+        [JsonProperty("board_level")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int BoardLevel { get; set; }
         public override string EventDescription { get; }
 

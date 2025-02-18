@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum LocationId
     {
         UnKnown = 0,

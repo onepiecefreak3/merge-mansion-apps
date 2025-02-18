@@ -11,22 +11,22 @@ namespace GameLogic.Player.Rewards
     [MetaSerializableDerived(42)]
     public class RewardItemForCollectibleBoardEvent : PlayerReward
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ValidateItemDefinitionMetaRef]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> ItemRef { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public bool FromSupport { get; set; }
 
         [MetaMember(4, (MetaMemberFlags)0)]
         public CollectibleBoardEventId EventId { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public OverrideItemFeatures OverrideItemFeatures { get; set; }
 
         [MetaMember(6, (MetaMemberFlags)0)]

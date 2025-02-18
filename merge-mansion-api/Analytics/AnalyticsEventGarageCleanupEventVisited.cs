@@ -16,14 +16,14 @@ namespace Analytics
         [JsonProperty("event_id")]
         public string EventId { get; set; }
 
-        [Description("Level of the board")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Level of the board")]
         [JsonProperty("board_level")]
         public int BoardLevel { get; set; }
 
-        [Description("Where did the player go to the event popup from")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("source")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Where did the player go to the event popup from")]
         public string Source { get; set; }
         public override string EventDescription { get; }
 

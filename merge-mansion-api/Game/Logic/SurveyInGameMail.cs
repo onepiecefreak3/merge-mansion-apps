@@ -9,8 +9,8 @@ using Metaplay.Core.Analytics;
 
 namespace Game.Logic
 {
-    [MetaReservedMembers(0, 80)]
     [Obsolete("MM Internal Survey System (Messy) no longer in use, left for compatibility reasons")]
+    [MetaReservedMembers(0, 80)]
     [MetaSerializableDerived(11)]
     public class SurveyInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
@@ -21,12 +21,12 @@ namespace Game.Logic
         [MetaMember(2, (MetaMemberFlags)0)]
         public string Token { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [MetaFormNotEditable]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public string SurveyDataAddress { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string ResultAddress { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]

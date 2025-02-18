@@ -12,13 +12,13 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [Description("Event Offer Id")]
-        [JsonProperty("event_offer_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("event_offer_id")]
+        [Description("Event Offer Id")]
         public EventOfferId EventOfferId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("event_offer_set_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Event Offer Set Id")]
         public EventOfferSetId EventOfferSetId { get; set; }
         public override string EventDescription { get; }

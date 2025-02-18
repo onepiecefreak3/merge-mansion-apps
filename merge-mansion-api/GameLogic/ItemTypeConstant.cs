@@ -6,9 +6,9 @@ using System.ComponentModel;
 
 namespace GameLogic
 {
-    [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
     [MetaSerializable]
     [ForceExplicitEnumValues]
+    [TypeConverter(typeof(EnumStringConverter<ItemTypeConstant>))]
     public enum ItemTypeConstant
     {
         None = 0,

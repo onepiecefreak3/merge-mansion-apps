@@ -11,24 +11,24 @@ using GameLogic.Player.Rewards;
 
 namespace GameLogic
 {
-    [MetaBlockedMembers(new int[] { 4 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 4 })]
     public class AdsData
     {
         public AdsData()
         {
         }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string adsProviderIds { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public bool canBeClaimed { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public AdsRewardType rewardType { get; set; }
 
         [MetaMember(5, (MetaMemberFlags)0)]
@@ -39,16 +39,16 @@ namespace GameLogic
         [MetaMember(6, (MetaMemberFlags)0)]
         public MergeBoardId mergeBoardId { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public OfferPlacementId offerPlacementId { get; set; }
 
         [ExcludeFromGdprExport]
         [MetaMember(8, (MetaMemberFlags)0)]
         public Coordinate itemCoordinates { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public AdvertisementPlacementId adPlacementId { get; set; }
 
         [IgnoreDataMember]

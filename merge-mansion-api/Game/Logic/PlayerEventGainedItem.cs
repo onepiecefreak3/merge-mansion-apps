@@ -11,8 +11,8 @@ namespace Game.Logic
     [AnalyticsEventKeywords(new string[] { "item" })]
     public class PlayerEventGainedItem : PlayerEventBase
     {
-        [Obsolete("Used for compatibility with old event data")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [Obsolete("Used for compatibility with old event data")]
         public int ItemId;
         [MetaMember(2, (MetaMemberFlags)0)]
         public bool IsSupportGiven;

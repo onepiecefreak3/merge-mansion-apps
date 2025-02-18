@@ -29,9 +29,9 @@ namespace Analytics
         [Description("Placement Id")]
         public string PlacementId { get; set; }
 
-        [Description("Impressions")]
         [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("impressions")]
+        [Description("Impressions")]
         public List<AnalyticsFlashSaleImpressionItemBase> Impressions { get; set; }
         public override string EventDescription { get; }
 

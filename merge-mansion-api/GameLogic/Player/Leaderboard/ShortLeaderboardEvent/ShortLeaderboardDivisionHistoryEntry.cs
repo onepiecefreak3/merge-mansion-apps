@@ -18,8 +18,7 @@ namespace GameLogic.Player.Leaderboard.ShortLeaderboardEvent
         [MetaMember(3, (MetaMemberFlags)0)]
         public List<ShortLeaderboardEventDivisionParticipantSnapshot> ParticipantSnapshots { get; set; }
 
-        public ShortLeaderboardDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex, List<ShortLeaderboardEventDivisionParticipantSnapshot> participantSnapshots)
-        : base(divisionId, divisionIndex, rewards)
+        public ShortLeaderboardDivisionHistoryEntry(EntityId divisionId, DivisionIndex divisionIndex, IDivisionRewards rewards, PlayerDivisionScore playerScore, int leaderboardPlacementIndex, List<ShortLeaderboardEventDivisionParticipantSnapshot> participantSnapshots) : base(divisionId, divisionIndex, rewards)
         {
         }
     }

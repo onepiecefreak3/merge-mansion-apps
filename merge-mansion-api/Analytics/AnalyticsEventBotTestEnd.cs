@@ -13,8 +13,8 @@ namespace Analytics
         [JsonProperty("producer_id")]
         [MetaMember(7, (MetaMemberFlags)0)]
         public string ProducerId;
-        [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("producer_level")]
+        [MetaMember(8, (MetaMemberFlags)0)]
         public int ProducerLvl;
         [JsonProperty("target_id")]
         [MetaMember(9, (MetaMemberFlags)0)]
@@ -28,20 +28,20 @@ namespace Analytics
         public Dictionary<string, int> BoardItems;
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("bot_configuration_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ConfigId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("test_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string TestId { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("total_sessions")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int TotalSessions { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("diamonds_spent")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int DiamondsSpent { get; set; }
 
         [JsonProperty("energy_spent")]

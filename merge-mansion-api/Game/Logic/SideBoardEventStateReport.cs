@@ -10,8 +10,8 @@ namespace Game.Logic
         [MetaMember(1, (MetaMemberFlags)0)]
         public int SinkedResourceItemCount { get; set; }
 
-        [ExcludeFromGdprExport]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int CompletedTasksCount { get; set; }
 
         public SideBoardEventStateReport()

@@ -13,9 +13,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Session length in seconds")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("session_length")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Session length in seconds")]
         public double SessionLengthInSeconds { get; set; }
         public override string EventDescription { get; }
 

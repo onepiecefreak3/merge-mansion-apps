@@ -7,8 +7,8 @@ using System.Collections.Generic;
 
 namespace Game.Logic
 {
-    [AnalyticsEventKeywords(new string[] { "buysell" })]
     [AnalyticsEvent(1, "Currency used", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "buysell" })]
     public class PlayerEventUsedCurrency : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

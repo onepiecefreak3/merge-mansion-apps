@@ -9,10 +9,10 @@ namespace Analytics
     [AnalyticsEvent(3047, "Task Group completed", 1, null, false, false, true)]
     public class TriggerTaskGroupCompleted : PlayerTriggerEvent
     {
-        [Description("Completed task group")]
-        [MetaMember(1, (MetaMemberFlags)0)]
-        [JsonProperty("taskgroup_id")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [Description("Completed task group")]
+        [JsonProperty("taskgroup_id")]
         public TaskGroupId TaskGroupId { get; set; }
 
         private TriggerTaskGroupCompleted()

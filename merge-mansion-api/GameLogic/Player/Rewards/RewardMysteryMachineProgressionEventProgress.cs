@@ -9,8 +9,8 @@ namespace GameLogic.Player.Rewards
     {
         public static string PoolTag;
         public static string SkinName;
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

@@ -13,19 +13,19 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Currency Bank Id")]
+        [JsonProperty("item_name")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Currency Bank amount")]
         [JsonProperty("currency_amount")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public long Amount { get; set; }
 
-        [JsonProperty("currency_type")]
-        [Description("Currency Bank currency type")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Currency Bank currency type")]
+        [JsonProperty("currency_type")]
         public Currencies CurrencyType { get; set; }
         public override string EventDescription { get; }
 

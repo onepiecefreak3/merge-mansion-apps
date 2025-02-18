@@ -11,9 +11,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
         [Description("Item that has been taken from player")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
 
         [JsonProperty("info_type", DefaultValueHandling = (DefaultValueHandling)0)]

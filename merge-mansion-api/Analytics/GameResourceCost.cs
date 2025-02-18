@@ -15,9 +15,9 @@ namespace Analytics
         [JsonProperty("virtual_currency_name")]
         public Currencies Currency { get; set; }
 
-        [JsonProperty("value")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Amount of the currency used")]
+        [JsonProperty("value")]
         public int Amount { get; set; }
 
         [JsonProperty("event_currency_id")]

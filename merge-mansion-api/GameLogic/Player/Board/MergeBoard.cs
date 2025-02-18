@@ -15,9 +15,9 @@ using System.Runtime.CompilerServices;
 
 namespace GameLogic.Player.Board
 {
-    [MetaBlockedMembers(new int[] { 4 })]
     [MetaSerializable]
     [DefaultMember("Item")]
+    [MetaBlockedMembers(new int[] { 4 })]
     public class MergeBoard : IBoard, IBoardQuery
     {
         [IgnoreDataMember]

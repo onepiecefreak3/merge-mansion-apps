@@ -14,7 +14,6 @@ namespace GameLogic.Config
 
         [MetaMember(2, (MetaMemberFlags)0)]
         private List<ValueTuple<PlayerSegmentId, int>> Overrides { get; set; }
-
         public SharedProducerSettingsId ConfigKey => SettingsId;
 
         public SharedProducerSettings()

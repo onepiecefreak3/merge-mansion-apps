@@ -9,13 +9,13 @@ namespace Analytics
     [AnalyticsEvent(184, "WebShop purchase", 1, null, false, true, false)]
     public class AnalyticsWebShopPurchase : AnalyticsServersideEventBase
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("webshop_purchase_item_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the purchased item")]
         public string WebShopPurchaseItemId;
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("ID of the WebShop purchase")]
         [JsonProperty("purchase_id")]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public string PurchaseId;
         public override AnalyticsEventType EventType { get; }
         public override string EventDescription { get; }
