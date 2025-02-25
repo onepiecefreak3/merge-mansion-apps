@@ -5,7 +5,7 @@ using System;
 namespace GameLogic.Player.Items.TimeContainer
 {
     [MetaSerializable]
-    public class TimeContainerFeatures
+    public class TimeContainerFeatures : ITimeContainerFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool StoresTime { get; set; }

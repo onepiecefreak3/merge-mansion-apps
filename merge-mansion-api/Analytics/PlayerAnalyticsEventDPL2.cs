@@ -14,18 +14,18 @@ namespace Analytics
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("analytics_event_name")]
         public string AnalyticsEventName;
-        [JsonProperty("timestamp")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("timestamp")]
         public MetaTime ModelTime;
         [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("unique_id")]
         public MetaUInt128 UniqueId;
-        [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("context")]
+        [MetaMember(5, (MetaMemberFlags)0)]
         public AnalyticsContextBase Context;
-        [JsonProperty("payload")]
         [MetaOnMemberDeserializationFailure("CreateAnalyticsEventDeserializationSubstitute")]
         [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("payload")]
         public AnalyticsEventBase Payload;
     }
 }

@@ -101,19 +101,19 @@ namespace GameLogic.Player.Items
         public int ExperienceValue { get; set; }
 
         [IgnoreDataMember]
-        public MergeFeatures MergeFeatures => _MergeFeatures;
+        public IMergeFeatures MergeFeatures => _MergeFeatures;
 
         [IgnoreDataMember]
-        public ActivationFeatures ActivationFeatures => _ActivationFeatures;
+        public IActivationFeatures ActivationFeatures => _ActivationFeatures;
 
         [IgnoreDataMember]
-        public SpawnFeatures SpawnFeatures => _SpawnFeatures;
+        public ISpawnFeatures SpawnFeatures => _SpawnFeatures;
 
         [IgnoreDataMember]
-        public DecayFeatures DecayFeatures => _DecayFeatures;
+        public IDecayFeatures DecayFeatures => _DecayFeatures;
 
         [IgnoreDataMember]
-        public ChestFeatures ChestFeatures => _ChestFeatures;
+        public IChestFeatures ChestFeatures => _ChestFeatures;
 
         [IgnoreDataMember]
         public ICollectableFeatures CollectableFeatures => _CollectableFeatures;
@@ -122,22 +122,19 @@ namespace GameLogic.Player.Items
         public BoosterFeatures BoosterFeatures => _BoosterFeatures;
 
         [IgnoreDataMember]
-        public BubbleFeatures BubbleFeatures => _BubbleFeatures;
+        public IBubbleFeatures BubbleFeatures => _BubbleFeatures;
 
         [IgnoreDataMember]
         public SinkFeatures SinkFeatures => _SinkFeatures;
 
         [IgnoreDataMember]
-        public ConsumableFeatures ConsumableFeatures => _ConsumableFeatures;
+        public IConsumableFeatures ConsumableFeatures => _ConsumableFeatures;
 
         [IgnoreDataMember]
         public PortalFeatures PortalFeatures => _PortalFeatures;
 
         [IgnoreDataMember]
-        public ChargesFeatures ChargesFeatures => _ChargesFeatures;
-
-        [IgnoreDataMember]
-        public TimeContainerFeatures TimeContainer => _TimeContainer;
+        public IChargesFeatures ChargesFeatures => _ChargesFeatures;
 
         [MetaMember(25, (MetaMemberFlags)0)]
         public List<string> Tags { get; set; }
@@ -255,7 +252,7 @@ namespace GameLogic.Player.Items
         public List<PlayerRequirement> UnlockRequirements { get; set; }
 
         [IgnoreDataMember]
-        public PersistentFeatures PersistentFeatures { get; }
+        public IPersistentFeatures PersistentFeatures { get; }
         public bool HasUnlockRequirements { get; }
 
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements)
@@ -315,10 +312,10 @@ namespace GameLogic.Player.Items
         public List<int> OverrideProductionSource { get; set; }
 
         [IgnoreDataMember]
-        public OrderFeatures OrderFeatures => _OrderFeatures;
+        public IOrderFeatures OrderFeatures => _OrderFeatures;
 
         [IgnoreDataMember]
-        public MiniEventFeatures MiniEventFeatures { get; }
+        public IMiniEventFeatures MiniEventFeatures { get; }
 
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, OverrideSpawnChanceFeatures overrideSpawnChanceFeatures, AudioFeatures audioFeatures, OrderFeatures orderFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects, ConfigPrefabId customItemInfoPopupId, bool showCustomItemInfoPopupOnDiscovery, string overrideLocalizationItemKey, MiniEventFeatures miniEventFeatures, string fullOverrideLocalizationItemKey, string sinkTag, int sinkPoints, List<string> overrideProductionSource)
         {
@@ -329,7 +326,7 @@ namespace GameLogic.Player.Items
         [MetaMember(57, (MetaMemberFlags)0)]
         private RockChunkFeatures _RockChunkFeatures;
         [IgnoreDataMember]
-        public GemWeightFeatures GemWeightFeatures { get; }
+        public IGemWeightFeatures GemWeightFeatures { get; }
 
         [IgnoreDataMember]
         public RockChunkFeatures RockChunkFeatures { get; }
@@ -383,5 +380,8 @@ namespace GameLogic.Player.Items
         public ItemDefinition(int configKey, string itemType, string poolTag, string skinName, int levelNumber, bool movable, F64 costInDiamonds, F64 anchorPriceGems, F64 anchorPriceCoins, F64 timeSkipPriceGems, F64 unlockOnBoardPriceGems, int experienceValue, MergeFeatures mergeFeatures, ActivationFeatures activationFeatures, SpawnFeatures spawnFeatures, DecayFeatures decayFeatures, ChestFeatures chestFeatures, CollectableFeatures collectableFeatures, BoosterFeatures boosterFeatures, BubbleFeatures bubbleFeatures, SinkFeatures sinkFeatures, ConsumableFeatures consumableFeatures, PortalFeatures portalFeatures, ChargesFeatures chargesFeatures, TimeContainerFeatures timeContainer, LeaderboardFeatures leaderboardFeatures, FishingRodFeatures fishingRodFeatures, WeightFeatures weightFeatures, CameraFeatures cameraFeatures, SinkableFeatures sinkableFeatures, FramesFeatures framesFeatures, PersistentFeatures persistentFeatures, OverrideSpawnChanceFeatures overrideSpawnChanceFeatures, GemWeightFeatures gemWeightFeatures, RockChunkFeatures rockChunkFeatures, AudioFeatures audioFeatures, OrderFeatures orderFeatures, List<string> tags, List<string> confirmableMergeResults, List<IDirectorAction> onDiscoveredActions, bool showTutorialFingerOnDiscovery, List<string> analyticsMetadata, List<int> combineInfoWithItem, ItemRarity rarity, bool unsellable, IEnumerable<PlayerReward> rewards, IEnumerable<PlayerRequirement> unlockRequirements, List<string> spawnEffects, ConfigPrefabId customItemInfoPopupId, bool showCustomItemInfoPopupOnDiscovery, string overrideLocalizationItemKey, MiniEventFeatures miniEventFeatures, string fullOverrideLocalizationItemKey, string overrideLocalizationItemCategory, string sinkTag, int sinkPoints, List<string> overrideProductionSource, PrisonBadgeFeatures prisonBadgeFeatures, EscapeToolFeatures escapeToolFeatures, MinigameActivationFeatures minigameActivationFeatures, PostBoxFeatures postBoxFeatures, PrisonLetterFeatures prisonLetterFeatures, ItemEffectFeatures itemEffectFeatures)
         {
         }
+
+        [IgnoreDataMember]
+        public ITimeContainerFeatures TimeContainerFeatures { get; }
     }
 }

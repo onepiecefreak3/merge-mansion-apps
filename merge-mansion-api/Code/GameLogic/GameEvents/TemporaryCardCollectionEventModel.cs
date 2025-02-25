@@ -9,6 +9,7 @@ using System.Runtime.Serialization;
 namespace Code.GameLogic.GameEvents
 {
     [MetaSerializableDerived(18)]
+    [MetaBlockedMembers(new int[] { 11 })]
     public class TemporaryCardCollectionEventModel : MetaActivableState<TemporaryCardCollectionEventId, TemporaryCardCollectionEventInfo>
     {
         private static byte InitialBoolFields;
@@ -43,9 +44,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(10, (MetaMemberFlags)0)]
         public EvidenceRoomState EvidenceRoomState { get; set; }
-
-        [MetaMember(11, (MetaMemberFlags)0)]
-        private Dictionary<CardStars, TemporaryCardCollectionEventModel.DuplicateRewardPair> DuplicateRewards { get; set; }
 
         [MetaMember(12, (MetaMemberFlags)0)]
         public bool ClaimedRewards { get; set; }

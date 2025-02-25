@@ -4,8 +4,8 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializableDerived(9)]
     [MetaFormHidden]
+    [MetaSerializableDerived(9)]
     public class LinkWithNoReward : PlayerReward
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.CardCollection
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum CardHiddenRarity
     {
         Common = 1,

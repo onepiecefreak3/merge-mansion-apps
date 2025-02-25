@@ -9,7 +9,7 @@ using Metaplay.Core.Math;
 namespace GameLogic.Player.Items.Merging
 {
     [MetaBlockedMembers(new int[] { 2 })]
-    public abstract class BaseMergeMechanic : IMergeMechanic
+    public abstract class BaseMergeMechanic : IMergeMechanic, IStorageActionMergeMechanic
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public ItemVisibility ResultVisibility { get; set; } // 0x10

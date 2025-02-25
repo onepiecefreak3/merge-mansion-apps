@@ -11,9 +11,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [JsonProperty("ad_platform")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Ad platform")]
-        [JsonProperty("ad_platform")]
         public string AdPlatform { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
@@ -21,38 +21,38 @@ namespace Analytics
         [Description("Ad Network (previously Ad Source)")]
         public string AdSource { get; set; }
 
-        [JsonProperty("ad_unit_name")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Ad unit name")]
+        [JsonProperty("ad_unit_name")]
         public string AdUnitName { get; set; }
 
         [JsonProperty("ad_format")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Ad format")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public string AdFormat { get; set; }
 
-        [JsonProperty("currency")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [JsonProperty("currency")]
         [Description("Currency")]
         public string Currency { get; set; }
 
-        [Description("Value")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("value")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [Description("Value")]
         public double? Value { get; set; }
 
-        [JsonProperty("auction_id")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("auction_id")]
         [Description("Auction Id")]
         public string AuctionId { get; set; }
 
+        [Description("Ad placement")]
         [MetaMember(8, (MetaMemberFlags)0)]
         [JsonProperty("ad_placement")]
-        [Description("Ad placement")]
         public string AdPlacement { get; set; }
 
-        [JsonProperty("item_name")]
         [Description("Item name")]
+        [JsonProperty("item_name")]
         [MetaMember(9, (MetaMemberFlags)0)]
         public string ItemName { get; set; }
         public override string EventDescription { get; }

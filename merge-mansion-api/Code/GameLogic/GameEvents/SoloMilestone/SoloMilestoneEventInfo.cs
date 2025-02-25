@@ -61,5 +61,12 @@ namespace Code.GameLogic.GameEvents.SoloMilestone
         public SoloMilestoneEventInfo(SoloMilestoneEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, PlayerRequirement unlockRequirement, List<SoloMilestoneMilestonesId> milestones, bool tokenSpawnsEnabled, string theme, int priority)
         {
         }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public SoloMilestoneEventInfo(SoloMilestoneEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, PlayerRequirement unlockRequirement, List<SoloMilestoneMilestonesId> milestones, bool tokenSpawnsEnabled, string theme, int priority, EventCategoryInfo categoryInfo)
+        {
+        }
     }
 }

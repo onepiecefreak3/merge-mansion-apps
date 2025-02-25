@@ -244,6 +244,10 @@ namespace GameLogic.Config.Map.Characters
         AreaPetHomeMapAmy = 5805,
         AreaTombFirstMapCharacterPosition = 7999,
         AreaTombEntryMapMaddie = 8000,
-        AreaTombCharacter = 8001
+        AreaTombCharacter = 8001,
+        AreaPetHomeMapPatches = 5806,
+        CinemaFirstMapCharacterPosition = 8199,
+        CinemaEntryMapMaddie = 8200,
+        CinemaCharacter = 8201
     }
 }

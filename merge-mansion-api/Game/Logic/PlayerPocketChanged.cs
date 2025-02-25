@@ -8,8 +8,8 @@ using Analytics;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(12, "Pocket changed", 1, null, true, true, false)]
     [AnalyticsEventKeywords(new string[] { "item", "pocket" })]
+    [AnalyticsEvent(12, "Pocket changed", 1, null, true, true, false)]
     public class PlayerPocketChanged : AnalyticsServersideEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

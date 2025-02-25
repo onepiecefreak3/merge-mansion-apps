@@ -11,9 +11,9 @@ using System.Runtime.Serialization;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableConfigData("GarageCleanupEvent", false, true)]
-    [MetaBlockedMembers(new int[] { 10, 11, 12, 13, 15, 16 })]
     [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 10, 11, 12, 13, 15, 16 })]
+    [MetaActivableConfigData("GarageCleanupEvent", false, true)]
     public class GarageCleanupEventInfo : IMetaActivableConfigData<GarageCleanupEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<GarageCleanupEventId>, IHasGameConfigKey<GarageCleanupEventId>, IMetaActivableInfo<GarageCleanupEventId>, IValidatable, IEventSharedInfo
     {
         public static GarageCleanupEventInfo.BoardSizeInfo BoardSize;
@@ -89,6 +89,13 @@ namespace Code.GameLogic.GameEvents
         public string SharedEventId { get; }
 
         public GarageCleanupEventInfo(GarageCleanupEventId garageCleanupEventId, string displayName, string description, MetaActivableParams activableParams, List<GarageCleanupBoardInfo> boards, List<MetaRef<GarageCleanupPatternSetInfo>> patternSets, List<int> spawnerItems, List<int> boardCosts, List<MetaRef<GarageCleanupRewardInfo>> slotFillRewards, MergeBoardId mergeBoardId, PlayerRequirement unlockRequirement, string prefabsOverride, bool alwaysShowPatternsAndRewards, EventGroupId groupId, int priority)
+        {
+        }
+
+        [MetaMember(22, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public GarageCleanupEventInfo(GarageCleanupEventId garageCleanupEventId, string displayName, string description, MetaActivableParams activableParams, List<GarageCleanupBoardInfo> boards, List<MetaRef<GarageCleanupPatternSetInfo>> patternSets, List<int> spawnerItems, List<int> boardCosts, List<MetaRef<GarageCleanupRewardInfo>> slotFillRewards, MergeBoardId mergeBoardId, PlayerRequirement unlockRequirement, string prefabsOverride, bool alwaysShowPatternsAndRewards, EventGroupId groupId, int priority, EventCategoryInfo categoryInfo)
         {
         }
     }

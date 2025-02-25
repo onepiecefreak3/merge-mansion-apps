@@ -18,8 +18,8 @@ namespace Analytics
         [JsonProperty("item_name")]
         public string CardPackId;
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("amount")]
         [Description("Number of card packs received")]
+        [JsonProperty("amount")]
         public int Amount;
         [JsonProperty("reward_type")]
         [Description("Type of the reward received")]

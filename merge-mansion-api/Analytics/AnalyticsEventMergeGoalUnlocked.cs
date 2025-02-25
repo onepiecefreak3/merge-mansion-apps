@@ -15,9 +15,9 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("goal_id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the opened hotspot")]
+        [JsonProperty("goal_id")]
         public HotspotId HotspotId { get; set; }
 
         [JsonProperty("area_name")]
@@ -39,29 +39,29 @@ namespace Analytics
         {
         }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("map_spot_id")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("MapSpot where the hotspot is located")]
         public string MapSpot { get; set; }
 
-        [Description("Multistep Group Id of the hotspot task (may be empty)")]
         [JsonProperty("task_group_id")]
+        [Description("Multistep Group Id of the hotspot task (may be empty)")]
         [MetaMember(5, (MetaMemberFlags)0)]
         public string TaskGroup { get; set; }
 
         [MetaMember(7, (MetaMemberFlags)0)]
-        [Description("How much time is left for bonus")]
         [JsonProperty("bonus_time_left")]
+        [Description("How much time is left for bonus")]
         public double? BonusTimeLeft { get; set; }
 
+        [JsonProperty("bonus_rewards")]
         [Description("Possible bonus rewards")]
         [MetaMember(9, (MetaMemberFlags)0)]
-        [JsonProperty("bonus_rewards")]
         public AnalyticsPlayerBonusReward[] BonusRewards { get; set; }
 
-        [Description("Character id of the hotspot task (may be empty)")]
-        [JsonProperty("character_id")]
         [MetaMember(8, (MetaMemberFlags)0)]
+        [JsonProperty("character_id")]
+        [Description("Character id of the hotspot task (may be empty)")]
         public string Character { get; set; }
     }
 }

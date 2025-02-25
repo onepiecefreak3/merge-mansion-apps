@@ -36,5 +36,9 @@ namespace GameLogic.Player.Items
         {
             return currentAmount;
         }
+
+        public StorageState(IActivationFeatures mergedFeatures, IActivationFeatures featuresA, StorageState stateA, IActivationFeatures featuresB, StorageState stateB, StorageActionType storageAction)
+        {
+        }
     }
 }

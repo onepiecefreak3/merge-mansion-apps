@@ -8,15 +8,15 @@ using System.Collections.Generic;
 
 namespace Analytics
 {
-    [MetaBlockedMembers(new int[] { 3, 5, 6, 9, 10 })]
     [AnalyticsEvent(107, "Bubble purchased", 1, null, false, true, false)]
+    [MetaBlockedMembers(new int[] { 3, 5, 6, 9, 10 })]
     public class AnalyticsEventBubblePurchased : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Item inside the bubble that was bought")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         public string ItemInBubble { get; set; }
 
         [Description("How many diamonds the bubble costs")]
@@ -24,8 +24,8 @@ namespace Analytics
         [JsonProperty("bubble_cost")]
         public int BubbleCostInDiamonds { get; set; }
 
-        [JsonProperty("board_id")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("board_id")]
         [Description("Merge Board Id")]
         public MergeBoardId BoardId { get; set; }
         public override string EventDescription { get; }
@@ -38,10 +38,10 @@ namespace Analytics
         {
         }
 
-        [MetaMember(11, (MetaMemberFlags)0)]
-        [JsonProperty("attachments")]
-        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         [Description("Attachments to the bubble")]
+        [JsonProperty("attachments")]
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> Attachment { get; set; }
 
         public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount)
@@ -53,9 +53,9 @@ namespace Analytics
         [MetaMember(7, (MetaMemberFlags)0)]
         public bool IsActiveAds { get; set; }
 
-        [JsonProperty("purchased_with_ads")]
         [MetaMember(8, (MetaMemberFlags)0)]
         [Description("Was the bubble purchased with an ad")]
+        [JsonProperty("purchased_with_ads")]
         public bool PurchasedWithAds { get; set; }
 
         public AnalyticsEventBubblePurchased(string itemInBubble, int bubbleCostInDiamonds, MergeBoardId boardId, string attachment, int attachmentAmount, bool isActiveAds, bool purchasedWithAds)

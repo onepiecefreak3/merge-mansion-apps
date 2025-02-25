@@ -6,16 +6,16 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "item", "discovery" })]
     [AnalyticsEvent(117, "Item discovered first time", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "item", "discovery" })]
     public class AnalyticsEventItemDiscovered : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaOnMemberDeserializationFailure("FixItemType")]
-        [JsonProperty("item_name")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Discovered item")]
+        [MetaOnMemberDeserializationFailure("FixItemType")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
         public override string EventDescription { get; }
 
@@ -27,14 +27,14 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("item_level")]
         [Description("Discovered item level")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("item_level")]
         public int ItemLevel { get; set; }
 
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_total_length")]
         [Description("Merge chain total length of the discovered item")]
+        [MetaMember(3, (MetaMemberFlags)0)]
         public int ItemMergeChainTotalLength { get; set; }
 
         [JsonProperty("item_mergechain_unlocked_length")]

@@ -16,9 +16,9 @@ using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
+    [MetaSerializable]
     [MetaActivableConfigData("MysteryMachineEvent", false, true)]
     [MetaBlockedMembers(new int[] { 10, 11 })]
-    [MetaSerializable]
     public class MysteryMachineEventInfo : IMetaActivableConfigData<MysteryMachineEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MysteryMachineEventId>, IHasGameConfigKey<MysteryMachineEventId>, IMetaActivableInfo<MysteryMachineEventId>, IBoardEventInfo, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -78,9 +78,6 @@ namespace Code.GameLogic.GameEvents
         public MetaDuration ExtensionPurchaseSafetyMargin { get; }
 
         [IgnoreDataMember]
-        public List<PlayerReward> ExtensionRewards { get; }
-
-        [IgnoreDataMember]
         public List<int> ProgressionPopupHeaderImageLevels { get; }
 
         [IgnoreDataMember]
@@ -108,6 +105,13 @@ namespace Code.GameLogic.GameEvents
         public string SharedEventId { get; }
 
         public MysteryMachineEventInfo(MysteryMachineEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, MysteryMachineId mysteryMachineId, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId enterBoardDialogue, StoryDefinitionId startMachineDialogue, MetaRef<MysteryMachineLeaderboardConfigInfo> leaderboardConfigRef, MetaRef<MysteryMachineScreenInfo> screenRef, int priority)
+        {
+        }
+
+        [MetaMember(19, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public MysteryMachineEventInfo(MysteryMachineEventId configKey, string displayName, string description, MetaActivableParams activableParams, string nameLocId, MysteryMachineId mysteryMachineId, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, StoryDefinitionId enterBoardDialogue, StoryDefinitionId startMachineDialogue, MetaRef<MysteryMachineLeaderboardConfigInfo> leaderboardConfigRef, MetaRef<MysteryMachineScreenInfo> screenRef, int priority, EventCategoryInfo categoryInfo)
         {
         }
     }

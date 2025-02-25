@@ -46,5 +46,6 @@ namespace GameLogic.Config
         private MetaRef<InAppProductInfoBase> PreviousInAppProduct { get; set; }
         private int MaxPurchasesGlobally { get; set; }
         private int SaleAmount { get; set; }
+        private string OfferType { get; set; }
     }
 }

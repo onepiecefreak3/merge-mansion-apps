@@ -57,6 +57,7 @@ namespace GameLogic
         Bella = 45,
         Ignatius = 46,
         Ghost = 47,
-        MysteryMachine = 48
+        MysteryMachine = 48,
+        Ringleader = 49
     }
 }

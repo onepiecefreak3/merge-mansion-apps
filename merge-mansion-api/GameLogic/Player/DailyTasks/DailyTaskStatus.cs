@@ -9,16 +9,16 @@ using System.Runtime.Serialization;
 
 namespace GameLogic.Player.DailyTasks
 {
-    [MetaBlockedMembers(new int[] { 1, 2, 3, 4, 5, 7, 9, 10, 13, 19 })]
-    [MetaSerializable]
     [DefaultMember("Item")]
+    [MetaSerializable]
+    [MetaBlockedMembers(new int[] { 1, 2, 3, 4, 5, 7, 9, 10, 13, 19 })]
     public class DailyTaskStatus
     {
-        [ExcludeFromGdprExport]
         [MetaMember(15, (MetaMemberFlags)0)]
-        public int Level;
         [ExcludeFromGdprExport]
+        public int Level;
         [MetaMember(16, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public int Points;
         [ExcludeFromGdprExport]
         [MetaMember(17, (MetaMemberFlags)0)]
@@ -26,12 +26,12 @@ namespace GameLogic.Player.DailyTasks
         [ExcludeFromGdprExport]
         [MetaMember(18, (MetaMemberFlags)0)]
         public int LastSeenLevel;
-        [MetaMember(6, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public MetaTime StartTime { get; set; }
 
-        [MetaMember(8, (MetaMemberFlags)0)]
         [ExcludeFromGdprExport]
+        [MetaMember(8, (MetaMemberFlags)0)]
         private List<DailyTaskState> States { get; set; }
 
         [MetaMember(11, (MetaMemberFlags)0)]

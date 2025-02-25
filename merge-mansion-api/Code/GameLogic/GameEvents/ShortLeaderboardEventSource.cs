@@ -43,5 +43,8 @@ namespace Code.GameLogic.GameEvents
         public ShortLeaderboardEventSource()
         {
         }
+
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

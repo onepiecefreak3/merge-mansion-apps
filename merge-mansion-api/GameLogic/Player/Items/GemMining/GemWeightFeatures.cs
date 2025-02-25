@@ -4,11 +4,12 @@ using Metaplay.Core.Math;
 using System.Collections.Generic;
 using GameLogic.Story;
 using GameLogic.Player.Rewards;
+using System.Runtime.Serialization;
 
 namespace GameLogic.Player.Items.GemMining
 {
     [MetaSerializable]
-    public class GemWeightFeatures
+    public class GemWeightFeatures : IGemWeightFeatures
     {
         public static GemWeightFeatures NoGemWeightFeatures;
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -26,8 +27,8 @@ namespace GameLogic.Player.Items.GemMining
         [MetaMember(5, (MetaMemberFlags)0)]
         public bool IsCutGem { get; set; }
 
-        [MetaMember(6, (MetaMemberFlags)0)]
-        public List<GemWeightRewardData> WeightRewards { get; set; }
+        [IgnoreDataMember]
+        public IReadOnlyList<GemWeightRewardData> WeightRewards { get; set; }
 
         [MetaMember(7, (MetaMemberFlags)0)]
         public F32 CutMultiplier { get; set; }
@@ -38,8 +39,8 @@ namespace GameLogic.Player.Items.GemMining
         [MetaMember(9, (MetaMemberFlags)0)]
         public StoryDefinitionId WorldRecordWeightDialogue { get; set; }
 
-        [MetaMember(10, (MetaMemberFlags)0)]
-        public List<PlayerReward> WorldRecordRewards { get; set; }
+        [IgnoreDataMember]
+        public IReadOnlyList<PlayerReward> WorldRecordRewards { get; set; }
 
         [MetaMember(11, (MetaMemberFlags)0)]
         public GemPalette GemPalette { get; set; }
@@ -49,6 +50,13 @@ namespace GameLogic.Player.Items.GemMining
         }
 
         public GemWeightFeatures(bool hasWeight, F32 minWeight, F32 maxWeight, GemRarity gemRarity, bool isCutGem, List<GemWeightRewardData> weightRewards, F32 cutMultiplier, F32 worldRecordWeightThreshold, StoryDefinitionId worldRecordWeightDialogue, IEnumerable<PlayerReward> worldRecordRewards, GemPalette gemPalette)
+        {
+        }
+
+        [MetaMember(12, (MetaMemberFlags)0)]
+        public int GemDisplayPriority { get; set; }
+
+        public GemWeightFeatures(bool hasWeight, F32 minWeight, F32 maxWeight, GemRarity gemRarity, bool isCutGem, List<GemWeightRewardData> weightRewards, F32 cutMultiplier, F32 worldRecordWeightThreshold, StoryDefinitionId worldRecordWeightDialogue, IEnumerable<PlayerReward> worldRecordRewards, GemPalette gemPalette, int gemDisplayPriority)
         {
         }
     }

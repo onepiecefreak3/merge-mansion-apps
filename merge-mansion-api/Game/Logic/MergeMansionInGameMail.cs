@@ -10,8 +10,8 @@ using Metaplay.Core;
 
 namespace Game.Logic
 {
-    [MetaReservedMembers(0, 80)]
     [MetaSerializableDerived(10)]
+    [MetaReservedMembers(0, 80)]
     public class MergeMansionInGameMail : MergeMansionMailContents, IBroadcastMailMessage
     {
         private static int ShortTopicLimit;
@@ -20,9 +20,9 @@ namespace Game.Logic
         [MetaMember(1, (MetaMemberFlags)0)]
         public LocalizedString ExcerptTopic { get; set; }
 
-        [MetaFormTextArea]
         [MetaValidateRequired]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [MetaFormTextArea]
         public LocalizedString ExcerptContent { get; set; }
 
         [MetaValidateRequired]
@@ -60,8 +60,8 @@ namespace Game.Logic
         [MetaMember(11, (MetaMemberFlags)0)]
         public MergeMansionInGameMailContentType ContentType { get; set; }
 
-        [MetaFormNotEditable]
         [MetaMember(12, (MetaMemberFlags)0)]
+        [MetaFormNotEditable]
         public string ContentExtra { get; set; }
         public override string TitleExcerpt { get; }
         public override string BodyExcerpt { get; }

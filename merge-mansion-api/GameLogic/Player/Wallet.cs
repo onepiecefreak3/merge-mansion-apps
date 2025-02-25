@@ -90,8 +90,8 @@ namespace GameLogic.Player
 
         [MetaMember(21, (MetaMemberFlags)0)]
         public Dictionary<EnergyType, AuxEnergyState> AuxEnergyStates;
-        [Obsolete("Replaced by AuxEnergyStates. Required for migration.")]
         [MetaMember(20, (MetaMemberFlags)0)]
+        [Obsolete("Replaced by AuxEnergyStates. Required for migration.")]
         public SecondaryEnergyState SecondaryEnergyState_DEPRECATED { get; set; }
 
         [IgnoreDataMember]
@@ -117,5 +117,8 @@ namespace GameLogic.Player
 
         [MetaMember(22, (MetaMemberFlags)0)]
         public long CardCollectionStars { get; set; }
+
+        [MetaMember(23, (MetaMemberFlags)0)]
+        public long DigEventTaps { get; set; }
     }
 }

@@ -6,8 +6,8 @@ using System.Collections.Generic;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(22, "Item spawned with no energy", 1, null, true, false, false)]
     [AnalyticsEventKeywords(new string[] { "item" })]
+    [AnalyticsEvent(22, "Item spawned with no energy", 1, null, true, false, false)]
     public class PlayerEventItemSpawnedFromZeroEnergyProducer : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

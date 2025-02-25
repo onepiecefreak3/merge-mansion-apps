@@ -6,7 +6,7 @@ using System;
 namespace GameLogic.Player.Items.Decay
 {
     [MetaSerializable]
-    public class DecayFeatures
+    public class DecayFeatures : IDecayFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool DoesDecay { get; set; }
@@ -27,7 +27,9 @@ namespace GameLogic.Player.Items.Decay
         public DecayInheritMode DecayInheritMode { get; set; }
 
         public static DecayFeatures NoDecay;
+        [Obsolete("Doesn't seem to be in use")]
         public static DecayFeatures NoDecayButInherit;
+        [Obsolete("Doesn't seem to be in use")]
         public static DecayFeatures NoDecayButInheritAndSum;
         public bool NeedsDecayState { get; }
 

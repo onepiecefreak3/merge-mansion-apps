@@ -92,5 +92,21 @@ namespace GameLogic.Area
         public AreaInfo(AreaId configKey, LocationId locationId, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, List<MetaRef<HotspotDefinition>> hotspots, List<MetaRef<MapSpotInfo>> mapSpots, HotspotId unlockedBy, MergeChainId unlockInstructionMergeChain)
         {
         }
+
+        [MetaMember(16, (MetaMemberFlags)0)]
+        private MetaRef<AreaInfo> UnlockInstructionAreaInfoRefs { get; set; }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        private MetaRef<AreaInfo> NextAreaToUnlockRefs { get; set; }
+
+        [IgnoreDataMember]
+        public AreaInfo UnlockInstructionAreaInfo { get; }
+
+        [IgnoreDataMember]
+        public AreaInfo NextAreaToUnlock { get; }
+
+        public AreaInfo(AreaId configKey, LocationId locationId, string titleLocalizationId, string categoryLocalizationId, List<PlayerRequirement> teaseRequirements, List<PlayerRequirement> unlockRequirements, List<PlayerReward> rewards, string lockedDescriptionLocalizationId, string unlockedDescriptionLocalizationId, string shortDescriptionLocalizationId, List<MetaRef<HotspotDefinition>> hotspots, List<MetaRef<MapSpotInfo>> mapSpots, HotspotId unlockedBy, MergeChainId unlockInstructionMergeChain, MetaRef<AreaInfo> unlockInstructionArea, MetaRef<AreaInfo> nextAreaToUnlock)
+        {
+        }
     }
 }

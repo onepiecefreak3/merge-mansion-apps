@@ -7,8 +7,8 @@ using System.Collections.Generic;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "item", "merge" })]
     [AnalyticsEvent(103, "Item merged", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "item", "merge" })]
     public class AnalyticsEventItemMerge : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
@@ -27,9 +27,9 @@ namespace Analytics
         {
         }
 
-        [Description("Merged item level")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("item_level")]
+        [Description("Merged item level")]
         public int MergedItemLevel { get; set; }
 
         [Description("Merge chain total length of the merged item")]
@@ -37,18 +37,18 @@ namespace Analytics
         [JsonProperty("item_mergechain_total_length")]
         public int MergedItemMergeChainTotalLength { get; set; }
 
-        [JsonProperty("item_mergechain_unlocked_length")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [Description("Merge chain unlocked length of the merged item")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("item_mergechain_unlocked_length")]
         public int MergedItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticsEventItemMerge(string itemType, int itemLevel, int itemMergeChainTotalLength, int itemMergeChainUnlockedLength)
         {
         }
 
-        [Description("Is this spawner?")]
         [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("spawner")]
+        [Description("Is this spawner?")]
         public bool IsSpawner { get; set; }
         public override IEnumerable<string> KeywordsForEventInstance { get; }
 

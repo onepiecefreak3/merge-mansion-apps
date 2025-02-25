@@ -3,8 +3,8 @@ using Metaplay.Core.Model;
 
 namespace Game.Cloud.Webshop
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum PurchasedProgressionEventTrackOption
     {
         Track1 = 0,

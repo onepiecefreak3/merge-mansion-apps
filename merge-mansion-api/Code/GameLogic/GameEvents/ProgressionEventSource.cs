@@ -69,5 +69,7 @@ namespace Code.GameLogic.GameEvents
         private List<MetaRef<ProgressionEventPerkInfo>> Track2IAPPerks { get; set; }
         private string PriceValueLocIdTrack1 { get; set; }
         private string PriceValueLocIdTrack2 { get; set; }
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

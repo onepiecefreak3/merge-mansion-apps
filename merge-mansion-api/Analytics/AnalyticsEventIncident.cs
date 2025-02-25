@@ -17,12 +17,12 @@ namespace Analytics
         public string IncidentId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]
-        [JsonProperty("type")]
         [Description("Type of the incident (crash, recoverable, etc.)")]
+        [JsonProperty("type")]
         public string Type { get; set; }
 
-        [JsonProperty("subType")]
         [Description("If present, more detailed type of the incident")]
+        [JsonProperty("subType")]
         [MetaMember(3, (MetaMemberFlags)0)]
         public string SubType { get; set; }
 

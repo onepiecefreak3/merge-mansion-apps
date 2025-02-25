@@ -7,15 +7,15 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(162, "Currency Bank state changed", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsEventCurrencyBankStateChanged : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("bank_id")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Currency Bank Id from config")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("bank_id")]
         public CurrencyBankId CurrencyBankId { get; set; }
 
         [Description("Threshold value for this stash")]
@@ -23,9 +23,9 @@ namespace Analytics
         [JsonProperty("state")]
         public CurrencyBankState CurrencyBankState { get; set; }
 
-        [JsonProperty("activation_id")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Unique id for this players activation")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("activation_id")]
         public string ActivationId { get; set; }
         public override string EventDescription { get; }
 

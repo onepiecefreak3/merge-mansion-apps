@@ -12,6 +12,8 @@ namespace Code.GameLogic.GameEvents
         ExtraInventorySlots = 2,
         FreeDailyShopItem = 3,
         FreeDailyCurrency = 4,
-        EventXp = 5
+        EventXp = 5,
+        Decoration = 6,
+        Pet = 7
     }
 }

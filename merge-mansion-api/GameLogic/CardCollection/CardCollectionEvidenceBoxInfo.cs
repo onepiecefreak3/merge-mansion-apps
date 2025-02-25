@@ -61,5 +61,8 @@ namespace GameLogic.CardCollection
         public CardCollectionEvidenceBoxInfo(CardCollectionEvidenceBoxId configKey, int slotIndex, List<CurrencyPricePair> currencyPricePairs, BoxQuality quality, MetaDuration refreshTime, List<CurrencyPricePair> skipCurrencyPricePairs, bool isSkipPriceDynamic, List<PlayerReward> rewards, PlayerSegmentId segment, int segmentPriority, ConfigAssetPackId assetPackId, MetaRef<ItemDefinition> evidenceBoxItemRef)
         {
         }
+
+        [IgnoreDataMember]
+        public List<PlayerReward> RewardsForConfigValidation { get; }
     }
 }

@@ -15,29 +15,29 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [Description("Leaderboard event where score changed")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("event_id")]
+        [Description("Leaderboard event where score changed")]
         public LeaderboardEventId EventId { get; set; }
 
-        [Description("Action that caused score change")]
-        [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("source_action")]
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [Description("Action that caused score change")]
         public LeaderboardEventScoreChangeSourceAction SourceAction { get; set; }
 
+        [JsonProperty("score_change")]
         [MetaMember(4, (MetaMemberFlags)0)]
         [Description("How much score changed")]
-        [JsonProperty("score_change")]
         public int ScoreChange { get; set; }
 
-        [Description("Total score after change")]
-        [MetaMember(5, (MetaMemberFlags)0)]
         [JsonProperty("total_score")]
+        [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Total score after change")]
         public int TotalScore { get; set; }
 
-        [JsonProperty("leaderboard_id")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [Description("Leaderboard division id")]
+        [MetaMember(6, (MetaMemberFlags)0)]
+        [JsonProperty("leaderboard_id")]
         public EntityId DivisionId { get; set; }
         public override string EventDescription { get; }
 

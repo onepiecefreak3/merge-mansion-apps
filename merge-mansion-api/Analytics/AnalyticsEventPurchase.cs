@@ -16,24 +16,24 @@ namespace Analytics
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [JsonProperty("item_name")]
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("ID of the purchased item")]
+        [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
 
-        [Description("Platform identifier of the item.")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Platform identifier of the item.")]
         [JsonProperty("iap_platform_id")]
         public string IapPlatformId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]
-        [Description("Indox of purchase in the list")]
         [JsonProperty("index_of_purchase")]
+        [Description("Indox of purchase in the list")]
         public int PurchaseIndex { get; set; }
 
         [Description("Cost of purchase in currency")]
-        [JsonProperty("currency_cost")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("currency_cost")]
         public AnalyticsCurrencyCost CurrencyCost { get; set; }
 
         [JsonProperty("transaction_id")]
@@ -41,34 +41,34 @@ namespace Analytics
         [Description("Purchase transaction ID")]
         public string TransactionId { get; set; }
 
+        [JsonProperty("product_id")]
         [MetaMember(6, (MetaMemberFlags)0)]
         [Description("IAP product ID")]
-        [JsonProperty("product_id")]
         public InAppProductId ProductId { get; set; }
 
-        [Description("IAP order ID")]
-        [JsonProperty("order_id")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("order_id")]
+        [Description("IAP order ID")]
         public string OrderId { get; set; }
 
         [MetaMember(8, (MetaMemberFlags)0)]
-        [Description("Reference price for the purchase")]
         [JsonProperty("reference_price")]
+        [Description("Reference price for the purchase")]
         public F64 ReferencePrice { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
-        [Description("Final status of the purchase")]
         [JsonProperty("status")]
+        [Description("Final status of the purchase")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public InAppPurchaseStatus Status { get; set; }
 
-        [JsonProperty("iap_platform")]
         [MetaMember(10, (MetaMemberFlags)0)]
         [Description("Platform")]
+        [JsonProperty("iap_platform")]
         public InAppPurchasePlatform Platform { get; set; }
 
         [Description("Offer Group Id")]
-        [MetaMember(12, (MetaMemberFlags)0)]
         [JsonProperty("group_id")]
+        [MetaMember(12, (MetaMemberFlags)0)]
         public MetaOfferGroupId GroupId { get; set; }
 
         [MetaMember(13, (MetaMemberFlags)0)]
@@ -76,9 +76,9 @@ namespace Analytics
         [JsonProperty("placement")]
         public string PlacementId { get; set; }
 
-        [MetaMember(14, (MetaMemberFlags)0)]
-        [Description("Impression id to connect impression with purchase")]
         [JsonProperty("impression_id")]
+        [Description("Impression id to connect impression with purchase")]
+        [MetaMember(14, (MetaMemberFlags)0)]
         public string ImpressionId { get; set; }
         public override string EventDescription { get; }
 
@@ -90,14 +90,14 @@ namespace Analytics
         {
         }
 
-        [JsonProperty("segment")]
         [MetaMember(15, (MetaMemberFlags)0)]
         [Description("Players segment for the offer")]
+        [JsonProperty("segment")]
         public PlayerSegmentId Segment { get; set; }
 
-        [JsonProperty("trigger_type")]
-        [MetaMember(16, (MetaMemberFlags)0)]
         [Description("The trigger that caused the offer impression")]
+        [MetaMember(16, (MetaMemberFlags)0)]
+        [JsonProperty("trigger_type")]
         public string TriggerType { get; set; }
 
         [JsonProperty("offer_items")]

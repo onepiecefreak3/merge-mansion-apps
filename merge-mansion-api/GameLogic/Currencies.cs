@@ -26,6 +26,7 @@ namespace GameLogic
         SoloMilestoneBaseToken = 13,
         InfiniteEnergy = 14,
         QuaternaryEnergy = 15,
-        CardCollectionStars = 16
+        CardCollectionStars = 16,
+        DigEventTaps = 17
     }
 }

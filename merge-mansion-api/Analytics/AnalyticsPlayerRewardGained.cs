@@ -15,13 +15,13 @@ namespace Analytics
         public override AnalyticsEventType EventType { get; }
         public abstract string RewardType { get; }
 
-        [Description("Source of the reward received")]
-        [JsonProperty("reward_source")]
         [MetaMember(200, (MetaMemberFlags)0)]
+        [JsonProperty("reward_source")]
+        [Description("Source of the reward received")]
         public CurrencySource RewardSource { get; set; }
 
-        [MetaMember(201, (MetaMemberFlags)0)]
         [JsonProperty("context")]
+        [MetaMember(201, (MetaMemberFlags)0)]
         [Description("Context")]
         public string Context { get; set; }
 
@@ -30,9 +30,9 @@ namespace Analytics
         [Description("Context")]
         public string EventOfferSetId { get; set; }
 
+        [MetaMember(203, (MetaMemberFlags)0)]
         [JsonProperty("event_level_id")]
         [Description("Level id")]
-        [MetaMember(203, (MetaMemberFlags)0)]
         public EventLevelId EventLevelId { get; set; }
 
         protected AnalyticsPlayerRewardGained()
@@ -44,13 +44,13 @@ namespace Analytics
         }
 
         [MetaMember(204, (MetaMemberFlags)0)]
-        [Description("Offer id")]
         [JsonProperty("offer_id", NullValueHandling = (NullValueHandling)1)]
+        [Description("Offer id")]
         public string OfferId { get; set; }
 
+        [Description("Transaction id")]
         [MetaMember(205, (MetaMemberFlags)0)]
         [JsonProperty("transaction_id", NullValueHandling = (NullValueHandling)1)]
-        [Description("Transaction id")]
         public string TransactionId { get; set; }
 
         protected AnalyticsPlayerRewardGained(CurrencySource rewardSource, string context, string eventOfferSetId, EventLevelId eventLevelId, AnalyticsContext analyticsContext)

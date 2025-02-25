@@ -6,8 +6,8 @@ using System;
 
 namespace Game.Logic
 {
-    [AnalyticsEventKeywords(new string[] { "buysell", "event" })]
     [AnalyticsEvent(19, "Progression event premium IAP consumed while being stale", 1, null, true, false, false)]
+    [AnalyticsEventKeywords(new string[] { "buysell", "event" })]
     public class StaleProgressionEventPremiumIAPPurchase : PlayerEventBase
     {
         [MetaMember(1, (MetaMemberFlags)0)]

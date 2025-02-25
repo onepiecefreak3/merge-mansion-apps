@@ -17,8 +17,8 @@ using Merge;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [DefaultMember("Item")]
+    [MetaSerializable]
     [MetaActivableConfigData("SideBoardEvent", false, true)]
     public class SideBoardEventInfo : IMetaActivableConfigData<SideBoardEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<SideBoardEventId>, IHasGameConfigKey<SideBoardEventId>, IMetaActivableInfo<SideBoardEventId>, IBoardEventInfo, IEventSharedInfo
     {
@@ -129,7 +129,6 @@ namespace Code.GameLogic.GameEvents
         public int SecondaryEnergyAttachmentChance { get; }
         public MetaRef<InAppProductInfo> ExtensionInAppProduct { get; }
         public MetaDuration ExtensionPurchaseSafetyMargin { get; }
-        public List<PlayerReward> ExtensionRewards { get; }
         public OfferPlacementId BoardShopFlashPlacementId { get; }
         public OfferPlacementId BoardShopEventCurrencyPlacementId { get; }
 

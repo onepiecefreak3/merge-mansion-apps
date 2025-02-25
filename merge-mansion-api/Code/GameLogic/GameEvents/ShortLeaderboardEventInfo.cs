@@ -74,7 +74,6 @@ namespace Code.GameLogic.GameEvents
         public ExtendableEventParams ExtendableEventParams { get; }
         public MetaRef<InAppProductInfo> ExtensionInAppProduct { get; }
         public MetaDuration ExtensionPurchaseSafetyMargin { get; }
-        public List<PlayerReward> ExtensionRewards { get; }
         public string SharedEventId { get; }
 
         public ShortLeaderboardEventInfo()
@@ -82,6 +81,13 @@ namespace Code.GameLogic.GameEvents
         }
 
         public ShortLeaderboardEventInfo(ShortLeaderboardEventId configKey, string displayName, string description, MetaActivableParams activableParams, EventGroupId groupId, int priority, string nameLocalizationId, List<MetaRef<ShortLeaderboardEventStageInfo>> stageRefs, PlayerRequirement unlockRequirement, MetaRef<RewardUpgradableInfo> finalRewardRef, StoryDefinitionId introDialogue, StoryDefinitionId endDialogue, bool disableBubbleBonus, F32? bubbleBonusDivisor, List<BubbleBonusInfo> secondaryBoardBubbleBonus, PlayerRequirement previewRequirement)
+        {
+        }
+
+        [MetaMember(17, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public ShortLeaderboardEventInfo(ShortLeaderboardEventId configKey, string displayName, string description, MetaActivableParams activableParams, EventGroupId groupId, int priority, string nameLocalizationId, List<MetaRef<ShortLeaderboardEventStageInfo>> stageRefs, PlayerRequirement unlockRequirement, MetaRef<RewardUpgradableInfo> finalRewardRef, StoryDefinitionId introDialogue, StoryDefinitionId endDialogue, bool disableBubbleBonus, F32? bubbleBonusDivisor, List<BubbleBonusInfo> secondaryBoardBubbleBonus, PlayerRequirement previewRequirement, EventCategoryInfo categoryInfo)
         {
         }
     }

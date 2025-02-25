@@ -138,5 +138,12 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(23, (MetaMemberFlags)0)]
         public int GrandmaCellVisualTapProgress { get; set; }
+
+        [MetaMember(24, (MetaMemberFlags)0)]
+        private byte BoolFields3 { get; set; }
+        public bool MinigameInfoPopupTriggered { get; set; }
+        public bool SpecialItemFound { get; set; }
+        public bool CollectionItemFound { get; set; }
+        public bool CollectionInfoPopupTriggered { get; set; }
     }
 }

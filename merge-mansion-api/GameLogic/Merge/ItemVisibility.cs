@@ -8,6 +8,7 @@ namespace GameLogic.Merge
         HiddenWithPartiallyVisibleInside = 0,
         PartiallyVisible = 1,
         Visible = 2,
-        HiddenWithVisibleInside = 3
+        HiddenWithVisibleInside = 3,
+        HiddenWithBlocking = 4
     }
 }

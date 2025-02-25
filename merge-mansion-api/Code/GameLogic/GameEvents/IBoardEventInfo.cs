@@ -24,8 +24,6 @@ namespace Code.GameLogic.GameEvents
 
         MetaDuration ExtensionPurchaseSafetyMargin { get; }
 
-        List<PlayerReward> ExtensionRewards { get; }
-
         MergeBoardId MergeBoardId { get; }
 
         IStringId BoardEventId { get; }

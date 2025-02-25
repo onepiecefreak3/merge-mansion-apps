@@ -35,19 +35,19 @@ namespace Analytics
         {
         }
 
-        [Description("Item level")]
         [MetaMember(5, (MetaMemberFlags)0)]
+        [Description("Item level")]
         [JsonProperty("item_level")]
         public int ItemLevel { get; set; }
 
         [Description("Merge chain total length of the item")]
-        [MetaMember(6, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_total_length")]
+        [MetaMember(6, (MetaMemberFlags)0)]
         public int ItemMergeChainTotalLength { get; set; }
 
-        [Description("Merge chain unlocked length of the item")]
-        [MetaMember(7, (MetaMemberFlags)0)]
         [JsonProperty("item_mergechain_unlocked_length")]
+        [MetaMember(7, (MetaMemberFlags)0)]
+        [Description("Merge chain unlocked length of the item")]
         public int ItemMergeChainUnlockedLength { get; set; }
 
         public AnalyticsBoardStateMetaData(MergeItem item, PlayerModel player)

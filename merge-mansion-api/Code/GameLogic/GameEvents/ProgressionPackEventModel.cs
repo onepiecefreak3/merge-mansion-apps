@@ -32,7 +32,6 @@ namespace Code.GameLogic.GameEvents
         public bool BonusRewardsNoted;
         [IgnoreDataMember]
         public bool objectivesProgressLogged;
-        public int PreviousTaskRequirements;
         public Action<StatsObjective, TaskType, List<PlayerReward>, Action, int, bool> OnLevelUp;
         [MetaMember(1, (MetaMemberFlags)0)]
         public sealed override ProgressionPackEventId ActivableId { get; set; }
@@ -63,9 +62,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(18, (MetaMemberFlags)0)]
         public Dictionary<int, ProgressionEventRewardClaimStatus> PremiumRewardsStatus { get; set; }
-
-        [IgnoreDataMember]
-        public EventId EventId { get; }
         public IStringId Id { get; }
         public int Points { get; }
 

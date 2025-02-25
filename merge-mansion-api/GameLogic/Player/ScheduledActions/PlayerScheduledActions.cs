@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace GameLogic.Player.ScheduledActions
 {
-    [MetaSerializableDerived(1)]
     [MetaActivableSet("ScheduledAction", false)]
+    [MetaSerializableDerived(1)]
     public class PlayerScheduledActions : MetaActivableSet<ScheduledActionId, ScheduledActionInfo, ScheduledAction>
     {
         public PlayerScheduledActions()

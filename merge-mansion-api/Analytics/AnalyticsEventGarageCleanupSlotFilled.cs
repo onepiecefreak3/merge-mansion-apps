@@ -6,20 +6,20 @@ using System;
 
 namespace Analytics
 {
-    [AnalyticsEventKeywords(new string[] { "event" })]
     [AnalyticsEvent(144, "Garage cleanup item turned in", 1, null, true, true, false)]
+    [AnalyticsEventKeywords(new string[] { "event" })]
     public class AnalyticsEventGarageCleanupSlotFilled : AnalyticsServersideEventBase
     {
         public sealed override AnalyticsEventType EventType { get; }
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Garage cleanup event id")]
         [JsonProperty("event_id")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public string EventId { get; set; }
 
+        [Description("Id of the required item")]
         [JsonProperty("required_item")]
         [MetaMember(2, (MetaMemberFlags)0)]
-        [Description("Id of the required item")]
         public string RequiredItem { get; set; }
 
         [JsonProperty("board_level")]
@@ -27,9 +27,9 @@ namespace Analytics
         [Description("Level of the board")]
         public int BoardLevel { get; set; }
 
-        [MetaMember(4, (MetaMemberFlags)0)]
-        [Description("Slot's row index (aka y axis)")]
         [JsonProperty("row_index")]
+        [Description("Slot's row index (aka y axis)")]
+        [MetaMember(4, (MetaMemberFlags)0)]
         public int RowIndex { get; set; }
 
         [JsonProperty("column_index")]

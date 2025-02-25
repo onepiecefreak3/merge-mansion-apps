@@ -29,33 +29,31 @@ namespace GameLogic.Player.Items
 {
     public interface IItemDefinition
     {
-        SpawnFeatures SpawnFeatures { get; }
+        ISpawnFeatures SpawnFeatures { get; }
 
-        DecayFeatures DecayFeatures { get; }
+        IDecayFeatures DecayFeatures { get; }
 
-        MergeFeatures MergeFeatures { get; }
+        IMergeFeatures MergeFeatures { get; }
 
-        ActivationFeatures ActivationFeatures { get; }
+        IActivationFeatures ActivationFeatures { get; }
 
-        ChestFeatures ChestFeatures { get; }
+        IChestFeatures ChestFeatures { get; }
 
         SinkFeatures SinkFeatures { get; }
 
-        BubbleFeatures BubbleFeatures { get; }
+        IBubbleFeatures BubbleFeatures { get; }
 
-        ChargesFeatures ChargesFeatures { get; }
+        IChargesFeatures ChargesFeatures { get; }
 
-        PersistentFeatures PersistentFeatures { get; }
+        IPersistentFeatures PersistentFeatures { get; }
 
-        OrderFeatures OrderFeatures { get; }
+        IOrderFeatures OrderFeatures { get; }
 
-        GemWeightFeatures GemWeightFeatures { get; }
+        IGemWeightFeatures GemWeightFeatures { get; }
 
         RockChunkFeatures RockChunkFeatures { get; }
 
         FishingRodFeatures FishingRodFeatures { get; }
-
-        TimeContainerFeatures TimeContainer { get; }
 
         ICollectableFeatures CollectableFeatures { get; }
 
@@ -65,9 +63,9 @@ namespace GameLogic.Player.Items
 
         BoosterFeatures BoosterFeatures { get; }
 
-        ConsumableFeatures ConsumableFeatures { get; }
+        IConsumableFeatures ConsumableFeatures { get; }
 
-        MiniEventFeatures MiniEventFeatures { get; }
+        IMiniEventFeatures MiniEventFeatures { get; }
 
         PrisonBadgeFeatures PrisonBadgeFeatures { get; }
 
@@ -122,5 +120,7 @@ namespace GameLogic.Player.Items
         List<PlayerRequirement> UnlockRequirements { get; }
 
         List<PlayerReward> Rewards { get; }
+
+        ITimeContainerFeatures TimeContainerFeatures { get; }
     }
 }

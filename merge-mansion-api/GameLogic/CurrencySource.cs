@@ -83,6 +83,15 @@ namespace GameLogic
         ShortLeaderboardEventStageCompleted = 74,
         ShortLeaderboardEventFinalReward = 75,
         ShortLeaderboardEventStageJoinRequested = 76,
-        ProgressionPackss = 77
+        ProgressionPackss = 77,
+        FlashSaleItemAdReward = 78,
+        DailyEnergyChestAdReward = 79,
+        DailyMainHudAdReward = 80,
+        DigEventStart = 81,
+        DigEventTileReveal = 82,
+        DigEventSinkItemUse = 83,
+        DigEventShelfCompletion = 84,
+        DigEventShelfShinyCompletion = 85,
+        DigEventBoardCompleted = 86
     }
 }

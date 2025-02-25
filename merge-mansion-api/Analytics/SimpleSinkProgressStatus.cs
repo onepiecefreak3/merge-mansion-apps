@@ -8,14 +8,14 @@ namespace Analytics
     [MetaSerializable]
     public class SimpleSinkProgressStatus
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("current")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         [Description("Current sink progress")]
         public int Current { get; set; }
 
-        [JsonProperty("target")]
         [MetaMember(2, (MetaMemberFlags)0)]
         [Description("Target sink progress")]
+        [JsonProperty("target")]
         public int Target { get; set; }
 
         public SimpleSinkProgressStatus()

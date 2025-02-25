@@ -13,12 +13,12 @@ namespace Analytics
         public override AnalyticsEventType EventType { get; }
 
         [Description("The menu where the button was clicked")]
-        [JsonProperty("menu_name")]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [JsonProperty("menu_name")]
         public string MenuName { get; set; }
 
-        [JsonProperty("ui_name")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("ui_name")]
         [Description("The name of the clicked UI element")]
         public string UiName { get; set; }
 

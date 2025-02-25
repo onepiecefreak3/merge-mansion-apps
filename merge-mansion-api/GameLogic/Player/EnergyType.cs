@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Player
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum EnergyType
     {
         Default = 0,
@@ -13,6 +13,7 @@ namespace GameLogic.Player
         MysteryMachine = 4,
         MysteryMachineCoins = 5,
         SoloMilestoneProgress = 6,
-        Quaternary = 7
+        Quaternary = 7,
+        DigEventTaps = 8
     }
 }

@@ -31,15 +31,6 @@ namespace GameLogic.Config
         {
         }
 
-        public static string ShowMethodBadgeClicked;
-        public static string ShowMethodManualActivation;
-        public static string ShowMethodShopPopup;
-        public static string ShowMethodAppLoading;
-        public static string ShowMethodLobbyReturn;
-        public static string ShowMethodWebShop;
-        public static string ShowMethodMergeBoardEnter;
-        public static string ShowMethodPopupOpen;
-        public static string ShowMethodPopupClose;
         [MetaMember(5, (MetaMemberFlags)0)]
         private Dictionary<OfferPopupTriggerPlacementType, List<string>> TriggerPlacements { get; set; }
 
@@ -52,5 +43,24 @@ namespace GameLogic.Config
         public OfferPopupTrigger(OfferPopupTriggerId configKey, int maxTriggersPerSession, int maxTriggersTotal, List<PlayerRequirement> triggerRequirements, bool activatesOfferGroup, Dictionary<OfferPopupTriggerPlacementType, List<string>> triggerPlacements, MetaDuration? maxWaitTimerToPrompt)
         {
         }
+
+        public static string ShowMethodBadgeClicked { get; }
+        public static string ShowMethodManualActivation { get; }
+        public static string ShowMethodShopPopup { get; }
+        public static string ShowMethodAppLoading { get; }
+        public static string ShowMethodLobbyReturn { get; }
+        public static string ShowMethodWebShop { get; }
+        public static string ShowMethodMergeBoardEnter { get; }
+        public static string ShowMethodPopupOpen { get; }
+        public static string ShowMethodPopupClose { get; }
+        public static string ShowMethodPendingTimeExtensionOffer { get; }
+        public static string ShowMethodEventPassPurchaseStyleDefault { get; }
+        public static string ShowMethodEventPassPurchaseStyleRewards { get; }
+        public static string ShowMethodExtendGameEvent { get; }
+        public static string ShowMethodPromptOpenShopNotYetOpened { get; }
+        public static string ShowMethodShopHasARefreshedSection { get; }
+        public static string ShowMethodPromptForFreeOffer { get; }
+        public static string ShowMethodEventPassPurchaseClicked { get; }
+        public static string ShowMethodMysteryMachineOutOfCurrencyConfirmation { get; }
     }
 }

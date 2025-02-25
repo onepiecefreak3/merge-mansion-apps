@@ -10,9 +10,9 @@ namespace Analytics
     [AnalyticsEvent(181, "Portal piece chain", 1, null, false, true, false)]
     public class AnalyticsEventPortalPieceChain : AnalyticsServersideEventBase
     {
-        [Description("Action that happened")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("action")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Action that happened")]
         public PortalPieceChainAnalyticsType Action;
         public sealed override AnalyticsEventType EventType { get; }
 
@@ -21,14 +21,14 @@ namespace Analytics
         [Description("Board event id")]
         public string EventId { get; set; }
 
-        [JsonProperty("board_id")]
         [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("board_id")]
         [Description("Board id")]
         public string BoardId { get; set; }
 
-        [JsonProperty("item_name")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [Description("Related item name")]
+        [JsonProperty("item_name")]
         public string ItemName { get; set; }
         public override string EventDescription { get; }
 

@@ -46,5 +46,8 @@ namespace GameLogic.Player.Actions.Multi
 
         [MetaMember(12, (MetaMemberFlags)0)]
         public int OfferGlobalCounter { get; set; }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public int? Step { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace Analytics
         [Description("Id of the event")]
         public string EventId { get; set; }
 
+        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("day_id")]
         [Description("The ID of the event day")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         public string DayId { get; set; }
 
         [MetaMember(3, (MetaMemberFlags)0)]

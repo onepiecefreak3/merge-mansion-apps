@@ -12,9 +12,9 @@ namespace Analytics
     {
         public override AnalyticsEventType EventType { get; }
 
+        [Description("Event Offer Id")]
         [MetaMember(1, (MetaMemberFlags)0)]
         [JsonProperty("event_offer_id")]
-        [Description("Event Offer Id")]
         public EventOfferId EventOfferId { get; set; }
 
         [JsonProperty("event_offer_set_id")]
@@ -28,6 +28,15 @@ namespace Analytics
         }
 
         public AnalyticEventGeneralEventOfferImpression(EventOfferId eventOfferId, EventOfferSetId eventOfferSetId, string placementId, bool automaticallyShown, Guid impressionId)
+        {
+        }
+
+        [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("trigger_type")]
+        [Description("Event Offer Trigger Type")]
+        public string TriggerType { get; set; }
+
+        public AnalyticEventGeneralEventOfferImpression(EventOfferId eventOfferId, EventOfferSetId eventOfferSetId, string placementId, bool automaticallyShown, Guid impressionId, string triggerType)
         {
         }
     }

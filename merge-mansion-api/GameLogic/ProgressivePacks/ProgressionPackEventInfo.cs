@@ -63,6 +63,8 @@ namespace GameLogic.ProgressivePacks
         [IgnoreDataMember]
         public ProgressionPackEventId ActivableId { get; }
         public string DisplayShortInfo { get; }
+
+        [IgnoreDataMember]
         public MetaRecurringCalendarSchedule Schedule { get; }
         public string SharedEventId { get; }
         public int DefaultMaxLevelNumber { get; set; }
@@ -72,6 +74,13 @@ namespace GameLogic.ProgressivePacks
         }
 
         public ProgressionPackEventInfo(ProgressionPackEventId configKey, ProgressionPackId offerId, StatsObjectiveType objectiveType, string displayName, string description, PlayerRequirement unlockRequirement, List<MetaRef<PlayerSegmentInfo>> segments, int priority, MetaRef<InAppProductInfo> premiumIAP, List<string> objectiveParameter, MetaRef<MergeMansionOfferGroupInfo> offerGroupId, MetaActivableParams activableParams, string placementId)
+        {
+        }
+
+        [MetaMember(15, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public ProgressionPackEventInfo(ProgressionPackEventId configKey, ProgressionPackId offerId, StatsObjectiveType objectiveType, string displayName, string description, PlayerRequirement unlockRequirement, List<MetaRef<PlayerSegmentInfo>> segments, int priority, MetaRef<InAppProductInfo> premiumIAP, List<string> objectiveParameter, MetaRef<MergeMansionOfferGroupInfo> offerGroupId, MetaActivableParams activableParams, string placementId, EventCategoryInfo categoryInfo)
         {
         }
     }

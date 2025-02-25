@@ -31,5 +31,7 @@ namespace Code.GameLogic.GameEvents.SoloMilestone
         }
 
         private int Priority { get; set; }
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

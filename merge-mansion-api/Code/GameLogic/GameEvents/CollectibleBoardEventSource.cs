@@ -74,5 +74,8 @@ namespace Code.GameLogic.GameEvents
         private MergeChainId PersistingChainID { get; set; }
         private LuckyType LuckyType { get; set; }
         private int Priority { get; set; }
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
+        private string ConnectedMinigameId { get; set; }
     }
 }

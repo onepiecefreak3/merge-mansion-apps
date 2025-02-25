@@ -60,8 +60,8 @@ namespace Code.GameLogic.GameEvents
         [IgnoreDataMember]
         public BoardEventInfo Info { get; }
 
-        [MetaMember(15, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("WorkaroundMetaMember15")]
+        [MetaMember(15, (MetaMemberFlags)0)]
         public List<EventTaskId> AvailableTaskIds { get; set; }
 
         [MetaMember(25, (MetaMemberFlags)0)]

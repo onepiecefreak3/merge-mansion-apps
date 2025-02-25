@@ -7,7 +7,7 @@ using Metaplay.Core;
 namespace GameLogic.Player.Items.MiniEvents
 {
     [MetaSerializable]
-    public class MiniEventFeatures
+    public class MiniEventFeatures : IMiniEventFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         private List<F64?> ProducerTimeSkipPrice { get; set; }

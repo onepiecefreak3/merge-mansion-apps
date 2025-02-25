@@ -25,6 +25,8 @@ using GameLogic.MiniEvents;
 using Code.GameLogic.Player.Events.DailyScoopEvent;
 using GameLogic.Player.Items;
 using Merge;
+using Code.GameLogic.GameEvents.CardCollectionSupportingEvent;
+using Metaplay.Core.Math;
 
 namespace GameLogic.Player
 {
@@ -165,6 +167,16 @@ namespace GameLogic.Player
         ProgressionPackEventsModel ProgressionPackEvents { get; }
 
         PlayerShortLeaderboardEventsModel ShortLeaderboardEvents { get; }
+
+        IEnumerable<CardCollectionSupportingEventModel> ActiveCardCollectionSupportingEvents { get; }
+
+        HashSet<EventLevelData> EventLevelsUpgradedByCardCollectionSupportingEvent { get; }
+
+        PlayerCardCollectionSupportingEventsModel CardCollectionSupportingEvents { get; }
+
+        SortedDictionary<int, F64> MoneySpentPerDay { get; }
+
+        RandomPCG DigEventRandom { get; }
     // Slot: 50
     //void AddScriptedEvent(IScriptedEventCondition condition, ISerializedAction action);
     }

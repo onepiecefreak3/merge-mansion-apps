@@ -33,5 +33,8 @@ namespace GameLogic.ProgressivePacks
         public ProgressionPackEventSource()
         {
         }
+
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

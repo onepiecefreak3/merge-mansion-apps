@@ -145,6 +145,10 @@ namespace Analytics
         ServerEventExperimentVariantInfo = 134,
         TheGreatEscapeMinigame = 135,
         ShopOpeningImpression = 136,
-        ShortLeaderboardEventStarsCollected = 137
+        ShortLeaderboardEventStarsCollected = 137,
+        ServerError = 138,
+        DigEventMinigame = 139,
+        EventItemCollected = 140,
+        OutOfCurrency = 141
     }
 }

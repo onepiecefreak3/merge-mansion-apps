@@ -19,9 +19,9 @@ namespace Analytics
         [Description("Segments player belongs to")]
         public List<PlayerSegmentId> Segments { get; set; }
 
-        [Description("Did we resolve the segments succesgully")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("resolved_succesfully")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Did we resolve the segments succesgully")]
         public bool ResolvedSuccesfully { get; set; }
         public override string EventDescription { get; }
 

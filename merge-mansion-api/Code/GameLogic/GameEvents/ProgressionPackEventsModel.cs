@@ -5,8 +5,8 @@ using System.Collections.Generic;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableSet("ProgressionPackEvent", false)]
     [MetaSerializableDerived(20)]
+    [MetaActivableSet("ProgressionPackEvent", false)]
     public class ProgressionPackEventsModel : MetaActivableSet<ProgressionPackEventId, ProgressionPackEventInfo, ProgressionPackEventModel>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

@@ -5,11 +5,12 @@ using System;
 using Metaplay.Core;
 using GameLogic.Player.Modes;
 using GameLogic.Player.Requirements;
+using Code.GameLogic.GameEvents;
 
 namespace GameLogic.Config.EnergyModeEvent
 {
-    [MetaActivableConfigData("EnergyModeEvent", false, true)]
     [MetaSerializable]
+    [MetaActivableConfigData("EnergyModeEvent", false, true)]
     public class EnergyModeEventInfo : IMetaActivableConfigData<EnergyModeEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<EnergyModeEventId>, IHasGameConfigKey<EnergyModeEventId>, IMetaActivableInfo<EnergyModeEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -40,6 +41,13 @@ namespace GameLogic.Config.EnergyModeEvent
         }
 
         public EnergyModeEventInfo(EnergyModeEventId configKey, string displayName, string description, MetaRef<EnergyModeInfo> energyModeRef, MetaActivableParams activableParams, PlayerRequirement unlockRequirement, string nameLocId)
+        {
+        }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public EnergyModeEventInfo(EnergyModeEventId configKey, string displayName, string description, MetaRef<EnergyModeInfo> energyModeRef, MetaActivableParams activableParams, PlayerRequirement unlockRequirement, string nameLocId, EventCategoryInfo categoryInfo)
         {
         }
     }

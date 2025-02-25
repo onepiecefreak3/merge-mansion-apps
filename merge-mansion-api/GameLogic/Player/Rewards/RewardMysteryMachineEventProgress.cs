@@ -13,8 +13,8 @@ namespace GameLogic.Player.Rewards
         [MetaMember(1, (MetaMemberFlags)0)]
         private MetaRef<MysteryMachineEventInfo> EventInfoRef { get; set; }
 
-        [MetaMember(2, (MetaMemberFlags)0)]
         [MetaFormFieldCustomValidator(typeof(RewardAmountValidator<int>))]
+        [MetaMember(2, (MetaMemberFlags)0)]
         public int Amount { get; set; }
 
         [IgnoreDataMember]

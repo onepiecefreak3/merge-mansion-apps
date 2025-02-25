@@ -16,14 +16,14 @@ namespace Analytics
         [JsonProperty("producer_level")]
         [MetaMember(8, (MetaMemberFlags)0)]
         public int ProducerLvl;
-        [JsonProperty("target_id")]
         [MetaMember(9, (MetaMemberFlags)0)]
+        [JsonProperty("target_id")]
         public string TargetId;
-        [JsonProperty("target_lvl")]
         [MetaMember(10, (MetaMemberFlags)0)]
+        [JsonProperty("target_lvl")]
         public int TargetLvl;
-        [JsonProperty("board_items")]
         [MetaMember(11, (MetaMemberFlags)0)]
+        [JsonProperty("board_items")]
         [BigQueryAnalyticsFormat((BigQueryAnalyticsFormatMode)0)]
         public Dictionary<string, int> BoardItems;
         public sealed override AnalyticsEventType EventType { get; }
@@ -36,12 +36,12 @@ namespace Analytics
         [MetaMember(2, (MetaMemberFlags)0)]
         public string TestId { get; set; }
 
-        [JsonProperty("total_sessions")]
         [MetaMember(3, (MetaMemberFlags)0)]
+        [JsonProperty("total_sessions")]
         public int TotalSessions { get; set; }
 
-        [JsonProperty("diamonds_spent")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("diamonds_spent")]
         public int DiamondsSpent { get; set; }
 
         [JsonProperty("energy_spent")]

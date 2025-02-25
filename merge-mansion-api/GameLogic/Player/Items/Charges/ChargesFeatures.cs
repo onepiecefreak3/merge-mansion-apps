@@ -4,7 +4,7 @@ using System;
 namespace GameLogic.Player.Items.Charges
 {
     [MetaSerializable]
-    public class ChargesFeatures
+    public class ChargesFeatures : IChargesFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public bool SupportsCharges { get; set; }

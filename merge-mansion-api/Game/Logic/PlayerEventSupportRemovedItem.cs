@@ -6,8 +6,8 @@ using Merge;
 
 namespace Game.Logic
 {
-    [AnalyticsEvent(10, "Support removed item", 1, null, true, false, false)]
     [AnalyticsEventKeywords(new string[] { "item" })]
+    [AnalyticsEvent(10, "Support removed item", 1, null, true, false, false)]
     public class PlayerEventSupportRemovedItem : PlayerEventBase
     {
         [Obsolete("Item information now stored in ItemType. ItemId kept for backwards compatibility")]
@@ -55,6 +55,16 @@ namespace Game.Logic
         }
 
         public PlayerEventSupportRemovedItem(int itemId, string itemType, MergeBoardId boardId, bool fromInventory, bool fromPocket, bool fromProducerInventory)
+        {
+        }
+
+        [MetaMember(7, (MetaMemberFlags)0)]
+        public bool FromRentableInventory { get; set; }
+
+        [MetaMember(8, (MetaMemberFlags)0)]
+        public bool FromExtraInventory { get; set; }
+
+        public PlayerEventSupportRemovedItem(int itemId, string itemType, MergeBoardId boardId, bool fromInventory, bool fromPocket, bool fromProducerInventory, bool fromRentableInventory, bool fromExtraInventory)
         {
         }
     }

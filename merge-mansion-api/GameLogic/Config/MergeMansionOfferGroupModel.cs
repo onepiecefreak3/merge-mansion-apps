@@ -28,5 +28,8 @@ namespace GameLogic.Config
 
         [MetaMember(4, (MetaMemberFlags)0)]
         private MetaDuration? ExtensionDuration { get; set; }
+
+        [MetaMember(5, (MetaMemberFlags)0)]
+        public bool PopupNoted { get; set; }
     }
 }

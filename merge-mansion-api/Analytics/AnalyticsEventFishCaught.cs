@@ -20,19 +20,19 @@ namespace Analytics
         [Description("Id of the board where the fish was caught")]
         public MergeBoardId MergeBoardId { get; set; }
 
-        [Description("Name of the item that was caught")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [JsonProperty("item_name")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [Description("Name of the item that was caught")]
         public string ItemName { get; set; }
 
+        [Description("Weight category of the fish that was caught")]
         [MetaMember(3, (MetaMemberFlags)0)]
         [JsonProperty("weight_category")]
-        [Description("Weight category of the fish that was caught")]
         public WeightCategory WeightCategory { get; set; }
 
-        [Description("Weight of the fish that was caught")]
-        [MetaMember(4, (MetaMemberFlags)0)]
         [JsonProperty("weight")]
+        [MetaMember(4, (MetaMemberFlags)0)]
+        [Description("Weight of the fish that was caught")]
         public double Weight { get; set; }
 
         [JsonProperty("personal_high_score")]
@@ -45,8 +45,8 @@ namespace Analytics
         [Description("True if this fish beat the previous \"world record\" (configured limit, or personal high score if that's higher), false otherwise")]
         public bool WorldHighScore { get; set; }
 
-        [JsonProperty("event_id")]
         [MetaMember(7, (MetaMemberFlags)0)]
+        [JsonProperty("event_id")]
         public string Context { get; set; }
         public override string EventDescription { get; }
 
@@ -62,8 +62,8 @@ namespace Analytics
         [MetaMember(8, (MetaMemberFlags)0)]
         public string Rarity { get; set; }
 
-        [MetaMember(9, (MetaMemberFlags)0)]
         [JsonProperty("lucky_event_type")]
+        [MetaMember(9, (MetaMemberFlags)0)]
         public string LuckyEventType { get; set; }
 
         [JsonProperty("merge_parts_weights")]
@@ -71,6 +71,14 @@ namespace Analytics
         public double[] MergePartsWeight { get; set; }
 
         public AnalyticsEventFishCaught(MergeBoardId mergeBoardId, string itemName, WeightCategory weightCategory, double weight, bool personalHighScore, bool worldHighScore, AnalyticsContext context, LuckyType luckyType, FishRarity rarity, double[] mergePartsWeight)
+        {
+        }
+
+        [MetaMember(11, (MetaMemberFlags)0)]
+        [JsonProperty("is_codex_reward_unlocked")]
+        public bool IsCodexRewardUnlocked { get; set; }
+
+        public AnalyticsEventFishCaught(MergeBoardId mergeBoardId, string itemName, WeightCategory weightCategory, double weight, bool personalHighScore, bool worldHighScore, AnalyticsContext context, bool isCodexRewardUnlocked, LuckyType luckyType, FishRarity rarity, double[] mergePartsWeight)
         {
         }
     }

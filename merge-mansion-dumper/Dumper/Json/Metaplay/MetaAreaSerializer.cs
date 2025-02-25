@@ -174,6 +174,18 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     return;
                 }
 
+                if (name == "NextAreaToUnlockRefs")
+                {
+                    WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+
+                if (name == "UnlockInstructionAreaInfoRefs")
+                {
+                    WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+
                 if (name == nameof(AreaInfo.HotspotsRefs))
                 {
                     var hotspots = (value as List<HotspotDef>).DistinctBy(x => x.ConfigKey).ToArray();
@@ -189,6 +201,13 @@ namespace merge_mansion_dumper.Dumper.Json.Metaplay
                     WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
                     return;
                 }
+
+                if (name == "AreaInfoOverride")
+                {
+                    WriteProperty(writer, name, (value as IMetaRef)?.KeyObject, serializer);
+                    return;
+                }
+
                 if (name == nameof(HotspotDefinition.UnlockingParentRefs))
                 {
                     writer.WritePropertyName(name);

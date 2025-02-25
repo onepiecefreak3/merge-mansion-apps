@@ -47,6 +47,7 @@ namespace GameLogic
         SoloMilestoneProgress = 39,
         SkipEvidenceBoxCooldown = 40,
         BuyEvidenceBox = 41,
-        ReplayShortLeaderboardEventStage = 42
+        ReplayShortLeaderboardEventStage = 42,
+        DigEventTileReveal = 43
     }
 }

@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Decorations
 {
-    [ForceExplicitEnumValues]
     [MetaSerializable]
+    [ForceExplicitEnumValues]
     public enum DecorationLayerId
     {
         None = 0,
@@ -103,6 +103,16 @@ namespace GameLogic.Decorations
         SP_AlpacaPet2024_TA1 = 94,
         SP_AlpacaPet2024_TA2 = 95,
         SP_AmyPet2025_TA1 = 96,
-        SP_AmyPet2025_TA2 = 97
+        SP_AmyPet2025_TA2 = 97,
+        SP_RaccoonRiddle2025_TA1 = 98,
+        SP_RaccoonRiddle2025_TA2 = 99,
+        LDE_Rumors2025_TA1 = 100,
+        LDE_Rumors2025_TA2 = 101,
+        LDE_Rumors2025_TA3 = 102,
+        LDE_Rumors2025_TA4 = 103,
+        LDE_Rumors2025_TB1 = 104,
+        LDE_Rumors2025_TB2 = 105,
+        LDE_Rumors2025_TC1 = 106,
+        LDE_Rumors2025_TC2 = 107
     }
 }

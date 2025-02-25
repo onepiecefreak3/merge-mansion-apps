@@ -11,6 +11,7 @@ namespace GameLogic
         Ranch = 2,
         MansionUnderground = 3,
         LevelEditor = 9999,
-        TombUnderground = 4
+        TombUnderground = 4,
+        MansionInterior = 5
     }
 }

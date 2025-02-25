@@ -2,8 +2,8 @@ using Metaplay.Core.Model;
 
 namespace GameLogic.Random.ControlledRandom
 {
-    [MetaSerializable]
     [ForceExplicitEnumValues]
+    [MetaSerializable]
     public enum RandomType
     {
         ControlledRandomMinMaxSequence = 0,

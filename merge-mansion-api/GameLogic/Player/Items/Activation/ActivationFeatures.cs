@@ -11,9 +11,9 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Items.Activation
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 7 })]
-    public class ActivationFeatures
+    [MetaSerializable]
+    public class ActivationFeatures : IActivationFeatures
     {
         [MetaMember(1, (MetaMemberFlags)0)]
         public IItemSpawner ActivationSpawn { get; set; } // 0x10
@@ -53,7 +53,7 @@ namespace GameLogic.Player.Items.Activation
         }
 
         [MetaMember(9, (MetaMemberFlags)0)]
-        private List<PlayerRequirement> ActivationRequirements { get; set; }
+        public List<PlayerRequirement> ActivationRequirements { get; set; }
         public MetaTime? ActivationStartTime { get; }
 
         public ActivationFeatures(IItemSpawner activationSpawn, IPlacement placement, IActivationCycle cycle, int howManyCanStore, IItemProducer randomItemDecayProducer, string overrideSfx, bool startsFull, List<PlayerRequirement> activationRequirements, ItemVisibility itemVisibility)

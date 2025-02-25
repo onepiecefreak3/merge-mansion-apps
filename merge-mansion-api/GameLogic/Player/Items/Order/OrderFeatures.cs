@@ -7,7 +7,7 @@ using GameLogic.Merge;
 namespace GameLogic.Player.Items.Order
 {
     [MetaSerializable]
-    public class OrderFeatures
+    public class OrderFeatures : IOrderFeatures
     {
         public static OrderFeatures NoOrder;
         [MetaMember(1, (MetaMemberFlags)0)]

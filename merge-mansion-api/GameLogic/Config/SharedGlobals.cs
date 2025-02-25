@@ -164,5 +164,8 @@ namespace GameLogic.Config
 
         [MetaMember(68, (MetaMemberFlags)0)]
         public bool UseAlternateShopButtonLayout { get; set; }
+
+        [MetaMember(69, (MetaMemberFlags)0)]
+        public bool ShowRewardsInTaskList { get; set; }
     }
 }

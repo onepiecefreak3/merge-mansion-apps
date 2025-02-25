@@ -17,9 +17,9 @@ namespace Analytics
         [JsonProperty("event_id")]
         public MergeBoardId BoardId { get; set; }
 
-        [JsonProperty("event_progress_gained")]
-        [MetaMember(2, (MetaMemberFlags)0)]
         [Description("How many points player made")]
+        [MetaMember(2, (MetaMemberFlags)0)]
+        [JsonProperty("event_progress_gained")]
         public int EventProgressGained { get; set; }
 
         [JsonProperty("event_progress_saldo")]
@@ -27,9 +27,9 @@ namespace Analytics
         [Description("Current amount of points that player has")]
         public int EventProgressSaldo { get; set; }
 
-        [Description("How many times event was started")]
-        [JsonProperty("event_start_count")]
         [MetaMember(4, (MetaMemberFlags)0)]
+        [JsonProperty("event_start_count")]
+        [Description("How many times event was started")]
         public int EventStartCount { get; set; }
         public override string EventDescription { get; }
 

@@ -3,8 +3,8 @@ using Metaplay.Core.Activables;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaActivableSet("GarageCleanupEvent", false)]
     [MetaSerializableDerived(5)]
+    [MetaActivableSet("GarageCleanupEvent", false)]
     public class PlayerGarageCleanupEventsModel : MetaActivableSet<GarageCleanupEventId, GarageCleanupEventInfo, GarageCleanupEventModel>
     {
         public PlayerGarageCleanupEventsModel()

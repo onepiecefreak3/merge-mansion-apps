@@ -9,8 +9,8 @@ using GameLogic.Player.Rewards;
 
 namespace Code.GameLogic.GameEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("TemporaryCardCollectionEvent", false, true)]
+    [MetaSerializable]
     public class TemporaryCardCollectionEventInfo : IMetaActivableConfigData<TemporaryCardCollectionEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<TemporaryCardCollectionEventId>, IHasGameConfigKey<TemporaryCardCollectionEventId>, IMetaActivableInfo<TemporaryCardCollectionEventId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

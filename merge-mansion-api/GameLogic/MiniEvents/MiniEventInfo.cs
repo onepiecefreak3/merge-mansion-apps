@@ -9,8 +9,8 @@ using Code.GameLogic.GameEvents;
 
 namespace GameLogic.MiniEvents
 {
-    [MetaSerializable]
     [MetaActivableConfigData("MiniEvent", false, true)]
+    [MetaSerializable]
     public class MiniEventInfo : IMetaActivableConfigData<MiniEventId>, IMetaActivableConfigData, IGameConfigData, IMetaActivableInfo, IGameConfigData<MiniEventId>, IHasGameConfigKey<MiniEventId>, IMetaActivableInfo<MiniEventId>, IValidatable, IEventSharedInfo
     {
         [MetaMember(1, (MetaMemberFlags)0)]
@@ -65,6 +65,13 @@ namespace GameLogic.MiniEvents
         public string SharedEventId { get; }
 
         public MiniEventInfo(MiniEventId id, string nameLocId, string descLocId, string displayName, string description, MetaActivableParams activableParams, Dictionary<MiniEventTypeId, MiniEventValues<string>> newValuesLookup, PlayerRequirement unlockRequirement, MiniEventUIId uiSchemeId, bool showStartPopup, bool showMainHubBadge, int priority)
+        {
+        }
+
+        [MetaMember(14, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public MiniEventInfo(MiniEventId id, string nameLocId, string descLocId, string displayName, string description, MetaActivableParams activableParams, Dictionary<MiniEventTypeId, MiniEventValues<string>> newValuesLookup, PlayerRequirement unlockRequirement, MiniEventUIId uiSchemeId, bool showStartPopup, bool showMainHubBadge, int priority, EventCategoryInfo categoryInfo)
         {
         }
     }

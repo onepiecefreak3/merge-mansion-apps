@@ -217,7 +217,15 @@ namespace GameLogic.Config
         public static DirectorGroupId TGEActivateMinigame;
         public static DirectorGroupId TGEActivateMinigameA;
         public static DirectorGroupId TGEActivateMinigameB;
-        public static DirectorGroupId NewShopButtonOnMap;
-        public static DirectorGroupId NewShopButtonOnBoard;
+        public static DirectorGroupId NewShopForReturning;
+        public static DirectorGroupId NewShopForExisting;
+        public static DirectorGroupId NewShopForExistingOnBoard;
+        public static DirectorGroupId SettingsButtonInProfile;
+        public static DirectorGroupId BLETradeV2ActivationTutorial;
+        public static DirectorGroupId ADEToolsetDiscovery;
+        public static DirectorGroupId ADEToolsetUsage;
+        public static DirectorGroupId LocationTravelFTUE01;
+        public static DirectorGroupId LocationTravelFTUE02;
+        public static DirectorGroupId LocationTravelFTUE03;
     }
 }

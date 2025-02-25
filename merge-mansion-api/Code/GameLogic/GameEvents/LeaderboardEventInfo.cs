@@ -86,9 +86,6 @@ namespace Code.GameLogic.GameEvents
         [IgnoreDataMember]
         MetaDuration Code.GameLogic.GameEvents.IBoardEventInfo.ExtensionPurchaseSafetyMargin { get; }
 
-        [IgnoreDataMember]
-        List<PlayerReward> Code.GameLogic.GameEvents.IBoardEventInfo.ExtensionRewards { get; }
-
         public LeaderboardEventInfo()
         {
         }
@@ -134,6 +131,17 @@ namespace Code.GameLogic.GameEvents
         public string SharedEventId { get; }
 
         public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, EventGroupId eventGroupId, bool disableBubbleBonus, F32? bubbleBonusDivisor, List<BubbleBonusInfo> secondaryBoardBubbleBonus, int priority)
+        {
+        }
+
+        [ServerOnly]
+        [MetaMember(23, (MetaMemberFlags)0)]
+        public LeaderboardEventMatchmakingBucketsId MatchmakingBuckets { get; set; }
+
+        [MetaMember(24, (MetaMemberFlags)0)]
+        public EventCategoryInfo CategoryInfo { get; set; }
+
+        public LeaderboardEventInfo(LeaderboardEventId leaderboardEventId, string nameLocId, string displayName, string description, MetaActivableParams activableParams, MetaRef<BoardInfo> boardRef, MetaRef<ItemDefinition> portalItemRef, PlayerRequirement unlockRequirement, OfferPlacementId boardShopPlacementId, List<MetaRef<EventLevelInfo>> rankingRewardLevelRefs, List<MetaRef<EventLevelInfo>> levelRefs, StoryDefinitionId enterBoardDialogue, StoryDefinitionId endDialogue, MetaDuration? auxEnergyUnitRestoreDuration, int auxEnergyAttachmentChance, EventGroupId eventGroupId, bool disableBubbleBonus, F32? bubbleBonusDivisor, List<BubbleBonusInfo> secondaryBoardBubbleBonus, int priority, LeaderboardEventMatchmakingBucketsId matchmakingBuckets, EventCategoryInfo categoryInfo)
         {
         }
     }

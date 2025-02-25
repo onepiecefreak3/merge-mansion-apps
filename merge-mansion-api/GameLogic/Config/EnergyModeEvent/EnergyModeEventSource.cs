@@ -27,5 +27,8 @@ namespace GameLogic.Config.EnergyModeEvent
         public EnergyModeEventSource()
         {
         }
+
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

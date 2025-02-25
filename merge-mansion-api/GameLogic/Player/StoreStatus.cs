@@ -112,8 +112,8 @@ namespace GameLogic.Player
         [MetaMember(30, (MetaMemberFlags)0)]
         public Dictionary<OfferPlacementId, StoreStatus.FlashSale> CurrentFlashSales { get; set; }
 
-        [MetaBlockedMembers(new int[] { 3 })]
         [MetaSerializable]
+        [MetaBlockedMembers(new int[] { 3 })]
         public class FlashSale
         {
             [MetaMember(1, (MetaMemberFlags)0)]

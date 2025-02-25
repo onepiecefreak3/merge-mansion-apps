@@ -1,5 +1,6 @@
 using Metaplay.Core.Model;
 using Code.GameLogic.GameEvents;
+using System;
 
 namespace GameLogic.Player.Items.Chest
 {
@@ -14,6 +15,13 @@ namespace GameLogic.Player.Items.Chest
         }
 
         public ChestContext(IPlayer player)
+        {
+        }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public bool ShouldUpgradeCardPacks { get; set; }
+
+        public ChestContext(IPlayer player, bool shouldUpgradeCardPacks)
         {
         }
     }

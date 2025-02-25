@@ -6,8 +6,8 @@ using GameLogic;
 
 namespace Game.Logic
 {
-    [MetaBlockedMembers(new int[] { 3 })]
     [AnalyticsEventKeywords(new string[] { "daily" })]
+    [MetaBlockedMembers(new int[] { 3 })]
     [AnalyticsEvent(25, "Daily tasks V2 streak count changed", 1, null, true, false, false)]
     public class PlayerEventDailyTasksV2StreakCountChanged : PlayerEventBase
     {
@@ -26,8 +26,8 @@ namespace Game.Logic
         {
         }
 
-        [ForceExplicitEnumValues]
         [MetaSerializable]
+        [ForceExplicitEnumValues]
         public enum ChangeSource
         {
             Player = 0,

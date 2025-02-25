@@ -32,6 +32,7 @@ namespace GameLogic.Config.Map.Characters
         SgtPepper = 24,
         Bella = 25,
         Amy = 26,
-        Arthur = 27
+        Arthur = 27,
+        Ringleader = 28
     }
 }

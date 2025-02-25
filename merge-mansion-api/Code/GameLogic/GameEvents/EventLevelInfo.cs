@@ -58,5 +58,7 @@ namespace Code.GameLogic.GameEvents
         public EventLevelInfo(EventLevelId eventLevelId, int requiredPoints, List<PlayerReward> rewards, int? segmentColorOverride, List<IDirectorAction> onLevelClaimAction, List<EventLevelId> requiredLevelRewards, List<string> tags, List<int> pointsToTriggerAction, List<IDirectorAction> actions)
         {
         }
+
+        public List<PlayerReward> ConfiguredRewardsForValidation { get; }
     }
 }

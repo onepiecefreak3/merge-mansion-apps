@@ -6,7 +6,7 @@ using Metaplay.Core.Model;
 namespace GameLogic.Player.Items.Bubble
 {
     [MetaSerializable]
-    public class BubbleFeatures
+    public class BubbleFeatures : IBubbleFeatures
     {
         private static MetaDuration defaultBubbleDuration = MetaDuration.FromMinutes(1);
         public static BubbleFeatures Placeholder = new(MetaDuration.FromMinutes(1), Currencies.Diamonds, 1000, null, 0);

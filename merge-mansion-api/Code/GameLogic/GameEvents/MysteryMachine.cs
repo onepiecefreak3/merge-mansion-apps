@@ -162,5 +162,11 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(46, (MetaMemberFlags)0)]
         public int? FinishedHighScore { get; set; }
+
+        [MetaMember(47, (MetaMemberFlags)0)]
+        public int? SubmittedLeaderboardHighScore { get; set; }
+
+        [MetaMember(48, (MetaMemberFlags)0)]
+        public bool SubmittedNewLeaderboardHighScore { get; set; }
     }
 }

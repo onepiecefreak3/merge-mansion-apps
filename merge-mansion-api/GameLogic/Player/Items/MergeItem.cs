@@ -35,8 +35,8 @@ namespace GameLogic.Player.Items
         [IgnoreDataMember]
         private MergeItem.MergeItemExtra Extra => extra ??= new MergeItemExtra();
 
-        [MetaMember(1, (MetaMemberFlags)0)]
         [MetaOnMemberDeserializationFailure("GarageCleanupSpawnerFix")]
+        [MetaMember(1, (MetaMemberFlags)0)]
         public MetaRef<ItemDefinition> DefinitionRef { get; set; }
 
         [IgnoreDataMember]
@@ -408,5 +408,11 @@ namespace GameLogic.Player.Items
 
         [IgnoreDataMember]
         public bool HasActivationVfx { get; }
+
+        [IgnoreDataMember]
+        public bool ActivationMiniGame { get; }
+
+        [IgnoreDataMember]
+        public bool LargeItem2x2 { get; }
     }
 }

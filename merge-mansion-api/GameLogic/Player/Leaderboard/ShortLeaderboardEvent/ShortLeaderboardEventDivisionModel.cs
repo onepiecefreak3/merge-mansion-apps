@@ -7,8 +7,8 @@ using Metaplay.Core;
 
 namespace GameLogic.Player.Leaderboard.ShortLeaderboardEvent
 {
-    [MetaSerializableDerived(5)]
     [SupportedSchemaVersions(1, 1)]
+    [MetaSerializableDerived(5)]
     public class ShortLeaderboardEventDivisionModel : PlayerDivisionModelBase<ShortLeaderboardEventDivisionModel, ShortLeaderboardEventDivisionParticipantState, PlayerDivisionScore, ShortLeaderboardEventDivisionAvatar>, IMetacorePlayerDivisionModel<ShortLeaderboardEventDivisionModel, ShortLeaderboardEventDivisionParticipantState>, IPlayerDivisionModel<ShortLeaderboardEventDivisionModel>, IPlayerDivisionModel, IDivisionModel, IMultiplayerModel, IModel, ISchemaMigratable, IDivisionModel<ShortLeaderboardEventDivisionModel>, IMultiplayerModel<ShortLeaderboardEventDivisionModel>, IModel<ShortLeaderboardEventDivisionModel>
     {
         [MetaMember(1, (MetaMemberFlags)0)]

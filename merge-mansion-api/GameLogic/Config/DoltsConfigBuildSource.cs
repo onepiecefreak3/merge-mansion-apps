@@ -5,16 +5,10 @@ using Metaplay.Core.Forms;
 
 namespace GameLogic.Config
 {
-    [MetaSerializableDerived(1)]
     [MetaFormDeprecated]
+    [MetaSerializableDerived(1)]
     public class DoltsConfigBuildSource : GameConfigBuildSource
     {
-        [MetaMember(1, (MetaMemberFlags)0)]
-        public string BranchOrTag { get; set; }
-
-        [MetaMember(2, (MetaMemberFlags)0)]
-        public string CommitHash { get; set; }
-
         [MetaMember(3, (MetaMemberFlags)0)]
         public string Database { get; set; }
 
@@ -25,5 +19,11 @@ namespace GameLogic.Config
         public DoltsConfigBuildSource()
         {
         }
+
+        [MetaMember(1, (MetaMemberFlags)0)]
+        public string Branch { get; set; }
+
+        [MetaMember(2, (MetaMemberFlags)0)]
+        public string Hash { get; set; }
     }
 }

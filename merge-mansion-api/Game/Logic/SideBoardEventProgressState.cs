@@ -8,8 +8,8 @@ namespace Game.Logic
     [MetaSerializable]
     public class SideBoardEventProgressState
     {
-        [ExcludeFromGdprExport]
         [MetaMember(1, (MetaMemberFlags)0)]
+        [ExcludeFromGdprExport]
         public SideBoardEventId SideBoardEventId { get; set; }
 
         [MetaMember(2, (MetaMemberFlags)0)]

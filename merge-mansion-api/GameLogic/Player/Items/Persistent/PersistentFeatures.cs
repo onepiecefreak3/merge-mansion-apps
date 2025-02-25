@@ -5,7 +5,7 @@ using Metaplay.Core;
 namespace GameLogic.Player.Items.Persistent
 {
     [MetaSerializable]
-    public class PersistentFeatures
+    public class PersistentFeatures : IPersistentFeatures
     {
         public static PersistentFeatures NoPersistence;
         [MetaMember(1, (MetaMemberFlags)0)]

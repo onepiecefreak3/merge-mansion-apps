@@ -28,5 +28,8 @@ namespace Code.GameLogic.GameEvents
         public BoultonLeagueEventSource()
         {
         }
+
+        private string ContextCategory { get; set; }
+        private string ContextSubCategory { get; set; }
     }
 }

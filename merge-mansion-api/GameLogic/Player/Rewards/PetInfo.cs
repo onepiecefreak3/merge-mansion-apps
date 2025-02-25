@@ -13,8 +13,8 @@ using GameLogic.Config.Map.Characters;
 
 namespace GameLogic.Player.Rewards
 {
-    [MetaSerializable]
     [MetaBlockedMembers(new int[] { 9 })]
+    [MetaSerializable]
     public class PetInfo : IGameConfigData<PetId>, IGameConfigData, IHasGameConfigKey<PetId>
     {
         [MetaMember(1, (MetaMemberFlags)0)]
