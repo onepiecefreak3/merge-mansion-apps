@@ -26,7 +26,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(6, (MetaMemberFlags)0)]
         private PlayerReward BoardReward { get; set; }
-
         public DigEventBoardId ConfigKey => BoardId;
 
         public DigEventBoards()

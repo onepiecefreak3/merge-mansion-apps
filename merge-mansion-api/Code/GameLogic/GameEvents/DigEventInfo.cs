@@ -47,7 +47,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(13, (MetaMemberFlags)0)]
         public string SinkItem { get; set; }
-
         public DigEventId ConfigKey => EventId;
 
         public DigEventInfo()

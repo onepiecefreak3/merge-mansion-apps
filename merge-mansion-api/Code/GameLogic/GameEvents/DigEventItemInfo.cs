@@ -42,7 +42,6 @@ namespace Code.GameLogic.GameEvents
 
         [IgnoreDataMember]
         public string ResolvedShinyAssetId { get; }
-
         public DigEventItemId ConfigKey => ItemId;
 
         public DigEventItemInfo()

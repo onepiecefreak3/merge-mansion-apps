@@ -26,7 +26,6 @@ namespace Code.GameLogic.GameEvents
 
         [MetaMember(7, (MetaMemberFlags)0)]
         public F32 B { get; set; }
-
         public DigEventShinyProgressionId ConfigKey => ProgressionId;
 
         public DigEventShinyProgression()
